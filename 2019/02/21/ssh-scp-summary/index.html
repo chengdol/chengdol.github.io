@@ -96,25 +96,34 @@
 
 
 
-  <meta name="description" content="Issue descriptionI encountered the problem that when delete statefulset the execution hangs, for example:1kubectl delete statefulset is-en-conductor it cannot delete the statefulset and associated pod">
-<meta name="keywords" content="kubernetes,StatefulSet">
+  <meta name="description" content="#  This article used to record ssh and scp usage I learned in my daily work#  Insert latest update at the top of the logs################################################################## &amp;emsp; Date">
+<meta name="keywords" content="ssh,scp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Force Delete StatefulSet and Pods">
-<meta property="og:url" content="http://yoursite.com/2019/02/16/force-delete-statefulset/index.html">
+<meta property="og:title" content="SSH and SCP Daily Work Summary">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/ssh-scp-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Issue descriptionI encountered the problem that when delete statefulset the execution hangs, for example:1kubectl delete statefulset is-en-conductor it cannot delete the statefulset and associated pod">
+<meta property="og:description" content="#  This article used to record ssh and scp usage I learned in my daily work#  Insert latest update at the top of the logs################################################################## &amp;emsp; Date">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-16T17:39:47.315Z">
+<meta property="og:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
+<meta property="og:image" content="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP">
+<meta property="og:image" content="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ">
+<meta property="og:image" content="https://drive.google.com/uc?id=1HdAmGdDB1HxPtwFSzrTQcS-g7hw5r3o4">
+<meta property="og:image" content="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp">
+<meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
+<meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
+<meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
+<meta property="og:updated_time" content="2019-02-22T05:05:45.384Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Force Delete StatefulSet and Pods">
-<meta name="twitter:description" content="Issue descriptionI encountered the problem that when delete statefulset the execution hangs, for example:1kubectl delete statefulset is-en-conductor it cannot delete the statefulset and associated pod">
+<meta name="twitter:title" content="SSH and SCP Daily Work Summary">
+<meta name="twitter:description" content="#  This article used to record ssh and scp usage I learned in my daily work#  Insert latest update at the top of the logs################################################################## &amp;emsp; Date">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/16/force-delete-statefulset/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/21/ssh-scp-summary/">
 
 
 
@@ -124,7 +133,7 @@
   };
 </script>
 
-  <title>Force Delete StatefulSet and Pods | 海胆阶段's Blog</title>
+  <title>SSH and SCP Daily Work Summary | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/force-delete-statefulset/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/ssh-scp-summary/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Force Delete StatefulSet and Pods
+          <h1 class="post-title" itemprop="name headline">SSH and SCP Daily Work Summary
 
               
             
@@ -393,7 +402,7 @@
                 
               
 
-              <time title="Created: 2019-02-16 09:37:43 / Modified: 09:39:47" itemprop="dateCreated datePublished" datetime="2019-02-16T09:37:43-08:00">2019-02-16</time>
+              <time title="Created: 2019-02-21 20:56:58 / Modified: 21:05:45" itemprop="dateCreated datePublished" datetime="2019-02-21T20:56:58-08:00">2019-02-21</time>
             
 
             
@@ -415,7 +424,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -449,11 +458,20 @@
       
 
       
-        <h2 id="Issue-description"><a href="#Issue-description" class="headerlink" title="Issue description"></a>Issue description</h2><p>I encountered the problem that when delete <code>statefulset</code> the execution hangs, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete statefulset is-en-conductor</span><br></pre></td></tr></table></figure></p>
-<p>it cannot delete the <code>statefulset</code> and associated <code>pods</code> at all<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@opsft-lb-1 OpenShift] oc get all</span><br><span class="line">NAME                             DESIRED   CURRENT   AGE</span><br><span class="line">statefulsets/is-en-conductor     0         1         5h</span><br><span class="line">statefulsets/is-engine-compute   0         2         5h</span><br><span class="line"></span><br><span class="line">NAME                     READY     STATUS        RESTARTS   AGE</span><br><span class="line">po/is-en-conductor-0     0/1       Terminating   2          1h</span><br><span class="line">po/is-engine-compute-0   1/1       Running       0          5h</span><br><span class="line">po/is-engine-compute-1   0/1       Terminating   0          5h</span><br></pre></td></tr></table></figure></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete statefulsets &lt;statefulset name&gt; --force --grace-period=0 --cascade=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p>now we only have hanging pods, force delete them<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NAME                     READY     STATUS        RESTARTS   AGE</span><br><span class="line">po/is-en-conductor-0     0/1       Terminating   2          1h</span><br><span class="line">po/is-engine-compute-0   1/1       Running       0          5h</span><br><span class="line">po/is-engine-compute-1   0/1       Terminating   0          5h</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete pod &lt;pod name&gt; --force --grace-period=0</span><br></pre></td></tr></table></figure>
+        <p>#  This article used to record <code>ssh</code> and <code>scp</code> usage I learned in my daily work<br>#  Insert latest update at the top of the logs<br>#<br>################################################################<br># &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br># &emsp; 02/21/2019 &emsp; &emsp; scp folder or files<br># &emsp; 01/23/2019 &emsp; &emsp; sshpass<br># &emsp; 01/22/2019 &emsp; &emsp; no prompt first time<br># &emsp; 01/08/2019 &emsp; &emsp; ECDSA host key changed<br># &emsp; 01/06/2019 &emsp; &emsp; ssh-kenscan<br># &emsp; 12/19/2018 &emsp; &emsp; ssh-copy-id<br># &emsp; 11/14/2018 &emsp; &emsp; ssh run shell script<br># &emsp; 10/01/2018 &emsp; &emsp; ssh send command<br>################################################################</p>
+<h3 id="10-01-2018"><a href="#10-01-2018" class="headerlink" title="10/01/2018"></a>10/01/2018</h3><p>use <code>ssh</code> send commands to execute on remote machine:<br><img src="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV" alt=""><br><code>-t</code> flag allow you to interact with remote machine:<br><img src="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP" alt=""></p>
+<h3 id="11-14-2018"><a href="#11-14-2018" class="headerlink" title="11/14/2018"></a>11/14/2018</h3><p>use ssh run shell script in remote machine<br><img src="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ" alt=""></p>
+<h3 id="12-19-2018"><a href="#12-19-2018" class="headerlink" title="12/19/2018"></a>12/19/2018</h3><p>use <code>ssh-copy-id</code> to copy local machine public key to remote machine’s <code>~/.ssh/authorized_keys</code> file, so next time when you <code>ssh</code> again, no prompt to require password:<br><img src="https://drive.google.com/uc?id=1HdAmGdDB1HxPtwFSzrTQcS-g7hw5r3o4" alt=""></p>
+<h3 id="01-06-2019"><a href="#01-06-2019" class="headerlink" title="01/06/2019"></a>01/06/2019</h3><p>use <code>ssh-keyscan</code> to get remote machine ecdsa identity, you can put this item into local known_hosts file, so when first time <code>ssh</code> login, there is no prompt to input <code>yes</code>:<br><img src="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp" alt=""><br>actually better to use <code>-o StrictHostKeyChecking=no</code> flag.</p>
+<h3 id="01-08-2019"><a href="#01-08-2019" class="headerlink" title="01/08/2019"></a>01/08/2019</h3><p>I create a new cluster with the same master hostname as the deleted one, so when I try to ssh to it, interesting thing happens:<br><img src="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd" alt=""><br>go to <code>~/.ssh/known_hosts</code> file and delete the corresponding <code>ECDSA</code> line<br><img src="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10" alt=""></p>
+<h3 id="01-22-2019"><a href="#01-22-2019" class="headerlink" title="01/22/2019"></a>01/22/2019</h3><p>when you first time ssh or scp to remote machine, it will prompt to add remote machine to <code>~/.ssh/known_hosts</code> file, this may interrupt <code>ansible</code> or shell script running, so I want to skip it. For example:<br><img src="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq" alt=""><br>use <code>-o StrictHostKeyChecking=no</code> option, it will silently add remote host name to <code>~/.ssh/known_host</code> file.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_dsa.pub -o StrictHostKeyChecking=no root@example.com</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ./source root@example.com:~</span><br></pre></td></tr></table></figure>
+<p>if you don’t want to add the host name, <code>-o UserKnownHostsFile=/dev/null</code> option can save you.</p>
+<h3 id="01-23-2019"><a href="#01-23-2019" class="headerlink" title="01/23/2019"></a>01/23/2019</h3><p>scp or ssh without prompt input password<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sshpass</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; scp/ssh ...</span><br></pre></td></tr></table></figure>
+<h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>scp <code>source</code> directory and it’s content recursively to <code>root</code> directory in <code>example.com</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ~/source root@example.com:~</span><br></pre></td></tr></table></figure></p>
+<p>scp all files in <code>source</code> directory to <code>target</code> directory in <code>example.com</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no ./source/* root@example.com:~/target</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -476,9 +494,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+            <a href="/tags/ssh/" rel="tag"># ssh</a>
           
-            <a href="/tags/StatefulSet/" rel="tag"># StatefulSet</a>
+            <a href="/tags/scp/" rel="tag"># scp</a>
           
         </div>
       
@@ -491,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/27/set-up-hexo/" rel="next" title="Set Up Hexo with GitPage">
-                <i class="fa fa-chevron-left"></i> Set Up Hexo with GitPage
+              <a href="/2019/02/17/k8s-utils/" rel="next" title="Kubectx and Kubens">
+                <i class="fa fa-chevron-left"></i> Kubectx and Kubens
               </a>
             
           </div>
@@ -500,10 +518,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/17/k8s-utils/" rel="prev" title="Kubectx and Kubens">
-                Kubectx and Kubens <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -671,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Issue-description"><span class="nav-number">1.</span> <span class="nav-text">Issue description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-01-2018"><span class="nav-number">1.</span> <span class="nav-text">10/01/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-14-2018"><span class="nav-number">2.</span> <span class="nav-text">11/14/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-19-2018"><span class="nav-number">3.</span> <span class="nav-text">12/19/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-06-2019"><span class="nav-number">4.</span> <span class="nav-text">01/06/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-08-2019"><span class="nav-number">5.</span> <span class="nav-text">01/08/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-22-2019"><span class="nav-number">6.</span> <span class="nav-text">01/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-23-2019"><span class="nav-number">7.</span> <span class="nav-text">01/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">8.</span> <span class="nav-text">02/21/2019</span></a></li></ol></div>
             
 
           </div>
