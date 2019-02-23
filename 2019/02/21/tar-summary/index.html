@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="#  This article used to record tar usage I learned in my daily work#  Insert latest update at the top of the logs##################################################################  &amp;emsp; Date &amp;emsp;">
+  <meta name="description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Insert latest update at the to">
 <meta name="keywords" content="tar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tar Command Daily Work Summary">
 <meta property="og:url" content="http://yoursite.com/2019/02/21/tar-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="#  This article used to record tar usage I learned in my daily work#  Insert latest update at the top of the logs##################################################################  &amp;emsp; Date &amp;emsp;">
+<meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Insert latest update at the to">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-22T05:30:01.490Z">
+<meta property="og:updated_time" content="2019-02-23T05:11:37.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tar Command Daily Work Summary">
-<meta name="twitter:description" content="#  This article used to record tar usage I learned in my daily work#  Insert latest update at the top of the logs##################################################################  &amp;emsp; Date &amp;emsp;">
+<meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Insert latest update at the to">
 
 
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-02-21 21:28:51 / Modified: 21:30:01" itemprop="dateCreated datePublished" datetime="2019-02-21T21:28:51-08:00">2019-02-21</time>
+              <time title="Created: 2019-02-21 21:28:51" itemprop="dateCreated datePublished" datetime="2019-02-21T21:28:51-08:00">2019-02-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-22 21:11:37" itemprop="dateModified" datetime="2019-02-22T21:11:37-08:00">2019-02-22</time>
               
             
           </span>
@@ -449,7 +461,8 @@
       
 
       
-        <p>#  This article used to record <code>tar</code> usage I learned in my daily work<br>#  Insert latest update at the top of the logs<br>#<br>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar files<br>#<br>################################################################</p>
+        <p>This article used to walk you through some commonly <code>tar</code> usages , based on a real life scenario.</p>
+<p>################################################################<br>#  &emsp; Insert latest update at the top of the logs<br>#<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar files<br>#<br>################################################################</p>
 <h3 id="02-19-2019"><a href="#02-19-2019" class="headerlink" title="02/19/2019"></a>02/19/2019</h3><p>tar files into <code>example.tar.gz</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf example.tar.gz file1 file2 file3 …</span><br></pre></td></tr></table></figure></p>
 <h3 id="02-20-2019"><a href="#02-20-2019" class="headerlink" title="02/20/2019"></a>02/20/2019</h3><p>When untar multiple files, you cannot do this, it will fail<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf file1 file2 file3</span><br></pre></td></tr></table></figure></p>
 <p>The reason please see this <a href="https://stackoverflow.com/questions/583889/how-can-you-untar-more-than-one-file-at-a-time" target="_blank" rel="noopener">link</a>, the solution is to use <code>xargs</code> instead:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.tar.gz | xargs -i tar xzf &#123;&#125;</span><br></pre></td></tr></table></figure></p>
