@@ -96,25 +96,33 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
-<meta name="keywords" content="hexo,gitpage">
+  <meta name="description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
+<meta name="keywords" content="git-lfs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Set Up Hexo with GitPage">
-<meta property="og:url" content="http://yoursite.com/2019/01/27/set-up-hexo/index.html">
+<meta property="og:title" content="Versioning Large File in Git">
+<meta property="og:url" content="http://yoursite.com/2019/02/24/git-lfs/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-28T03:57:30.935Z">
+<meta property="og:image" content="https://drive.google.com/uc?id=1c2hUDmTQwOnD3GNz8S1QHfkyGwLzO5ur">
+<meta property="og:image" content="https://drive.google.com/uc?id=1Zhnjd815gHSBJFySqdAyvfqSDeZtd0oc">
+<meta property="og:image" content="https://drive.google.com/uc?id=1BtoVGRjTz1PHXplO5OuJnhYMy8oJPzKl">
+<meta property="og:image" content="https://drive.google.com/uc?id=1F4NO7fUTtq0cP0bfgm8EGNlIrvKAjp1T">
+<meta property="og:image" content="https://drive.google.com/uc?id=12xtxpkkbAzSjSXAecwjqb-dV0SFEt_qz">
+<meta property="og:image" content="https://drive.google.com/uc?id=1gTK8WwQi7i1Vfjq7_ysTU5H9jXN4w_Jo">
+<meta property="og:image" content="https://drive.google.com/uc?id=1x9TX8NBIEZaaG51_dQxEKljdeL0ziKK8">
+<meta property="og:updated_time" content="2019-02-24T18:37:47.980Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Set Up Hexo with GitPage">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:title" content="Versioning Large File in Git">
+<meta name="twitter:description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1c2hUDmTQwOnD3GNz8S1QHfkyGwLzO5ur">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/27/set-up-hexo/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/24/git-lfs/">
 
 
 
@@ -124,7 +132,7 @@
   };
 </script>
 
-  <title>Set Up Hexo with GitPage | 海胆阶段's Blog</title>
+  <title>Versioning Large File in Git | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +358,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/27/set-up-hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/git-lfs/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +375,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Set Up Hexo with GitPage
+          <h1 class="post-title" itemprop="name headline">Versioning Large File in Git
 
               
             
@@ -393,7 +401,7 @@
                 
               
 
-              <time title="Created: 2019-01-27 19:53:51 / Modified: 19:57:30" itemprop="dateCreated datePublished" datetime="2019-01-27T19:53:51-08:00">2019-01-27</time>
+              <time title="Created: 2019-02-24 10:34:37 / Modified: 10:37:47" itemprop="dateCreated datePublished" datetime="2019-02-24T10:34:37-08:00">2019-02-24</time>
             
 
             
@@ -415,7 +423,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
 
                 
                 
@@ -449,7 +457,31 @@
       
 
       
-        
+        <p>I want to introduce you <a href="https://git-lfs.github.com/" target="_blank" rel="noopener">Git LFS</a>, it is a command line extension and <a href="https://github.com/git-lfs/git-lfs/blob/master/docs/spec.md" target="_blank" rel="noopener">specification</a> for managing large files with Git. LFS is great for <strong>large, changing files</strong>, there is basically a text pointer to the large file archived some place else.</p>
+<h3 id="Install-Git-LFS"><a href="#Install-Git-LFS" class="headerlink" title="Install Git LFS"></a>Install Git LFS</h3><blockquote>
+<p>Note: you need to install <code>Git LFS</code> if you <code>git pull</code> from a remote repository that has it</p>
+</blockquote>
+<p>For example, I am working on a RHEL machine.<br>First go to source page, follow the installation guide to install:</p>
+<p><img src="https://drive.google.com/uc?id=1c2hUDmTQwOnD3GNz8S1QHfkyGwLzO5ur" alt=""></p>
+<p><img src="https://drive.google.com/uc?id=1Zhnjd815gHSBJFySqdAyvfqSDeZtd0oc" alt=""></p>
+<p>This will create a yum repos for git-lfs:</p>
+<p><img src="https://drive.google.com/uc?id=1BtoVGRjTz1PHXplO5OuJnhYMy8oJPzKl" alt=""></p>
+<p><img src="https://drive.google.com/uc?id=1F4NO7fUTtq0cP0bfgm8EGNlIrvKAjp1T" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y git-lfs</span><br></pre></td></tr></table></figure>
+<p>you can see git-lfs is installed in your machine:<br><img src="https://drive.google.com/uc?id=12xtxpkkbAzSjSXAecwjqb-dV0SFEt_qz" alt=""></p>
+<p>Once downloaded and installed, set up Git LFS and its respective hooks by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://drive.google.com/uc?id=1gTK8WwQi7i1Vfjq7_ysTU5H9jXN4w_Jo" alt=""></p>
+<blockquote>
+<p>Note: You’ll need to run this in your repository directory, once per repository.</p>
+</blockquote>
+<h3 id="Track-Large-File"><a href="#Track-Large-File" class="headerlink" title="Track Large File"></a>Track Large File</h3><p>Select the file types you’d like Git LFS to manage (or directly edit your <code>.gitattributes</code>). You can configure additional file extensions at anytime.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs track <span class="string">"*.tar.gz"</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note: run this track command at the top level of your repository, then you need to git add <code>.gitattributes</code> file</p>
+</blockquote>
+<h3 id="Manage-Large-File"><a href="#Manage-Large-File" class="headerlink" title="Manage Large File"></a>Manage Large File</h3><p>Then, just do normal <code>git add</code> and <code>git commit</code> to manage your large size file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add *.tar.gz</span><br><span class="line">git commit -m <span class="string">"add tar.gz file"</span></span><br><span class="line">git push origin &lt;your branch&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://drive.google.com/uc?id=1x9TX8NBIEZaaG51_dQxEKljdeL0ziKK8" alt=""></p>
+<p>Actually, you can check the large files you managed by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs ls-files</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -472,9 +504,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-            <a href="/tags/gitpage/" rel="tag"># gitpage</a>
+            <a href="/tags/git-lfs/" rel="tag"># git-lfs</a>
           
         </div>
       
@@ -487,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/27/role-rbac-k8s/" rel="next" title="RBAC Authorization for K8s API Access">
-                <i class="fa fa-chevron-left"></i> RBAC Authorization for K8s API Access
+              <a href="/2019/02/21/tar-summary/" rel="next" title="tar Command Daily Work Summary">
+                <i class="fa fa-chevron-left"></i> tar Command Daily Work Summary
               </a>
             
           </div>
@@ -496,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/16/force-delete-statefulset/" rel="prev" title="Force Delete StatefulSet and Pods">
-                Force Delete StatefulSet and Pods <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -544,8 +570,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -653,6 +688,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Git-LFS"><span class="nav-number">1.</span> <span class="nav-text">Install Git LFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Track-Large-File"><span class="nav-number">2.</span> <span class="nav-text">Track Large File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manage-Large-File"><span class="nav-number">3.</span> <span class="nav-text">Manage Large File</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
