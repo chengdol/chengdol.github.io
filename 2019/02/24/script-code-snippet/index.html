@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. ################################################################ if condit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Commonly Used Code Snippets">
+<meta property="og:url" content="http://yoursite.com/2019/02/24/script-code-snippet/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. ################################################################ if condit">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-25T01:22:00.584Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Commonly Used Code Snippets">
+<meta name="twitter:description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. ################################################################ if condit">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/24/script-code-snippet/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Commonly Used Code Snippets | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">15</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">6</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">10</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/script-code-snippet/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Commonly Used Code Snippets
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-24 17:19:39 / Modified: 17:22:00" itemprop="dateCreated datePublished" datetime="2019-02-24T17:19:39-08:00">2019-02-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell-Script/" itemprop="url" rel="index"><span itemprop="name">Shell Script</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This blog collects the commonly used code snippets based on my daily work, also do summary from related <em>stackoverflow</em> topics.</p>
+<p>################################################################</p>
+<h3 id="if-condition-statements"><a href="#if-condition-statements" class="headerlink" title="if condition statements"></a>if condition statements</h3><p>list of <a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html" target="_blank" rel="noopener">bash condition statements</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># sth does not exist?</span><br><span class="line">if [[ &quot;$&#123;sth&#125;&quot;&quot;X&quot; == &quot;X&quot; ]]; then</span><br><span class="line">  LogMsg &quot;###### INFO: ...&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># directory does not exist?</span><br><span class="line">if [[ ! -d &quot;$&#123;folder_path&#125;&quot; ]]; then</span><br><span class="line">   LogMsg &quot;###### ERROR: $&#123;folder_path&#125; directory doesn&apos;t exist!&quot;</span><br><span class="line">   exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="script-input-parameters"><a href="#script-input-parameters" class="headerlink" title="script input parameters"></a>script input parameters</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Usage()</span><br><span class="line">&#123;</span><br><span class="line">  echo</span><br><span class="line">  echo &quot;Usage $0 ...&quot;</span><br><span class="line">  echo &quot;For example: ...&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if [ $# -eq 0 ]</span><br><span class="line">then</span><br><span class="line">  echo &quot;No command-line arguments were specified...&quot;</span><br><span class="line">  Usage</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">while [ $# -gt 0 ]</span><br><span class="line">do</span><br><span class="line">  case &quot;$1&quot; in</span><br><span class="line">    -flag1)</span><br><span class="line">       shift</span><br><span class="line">       &lt;var1&gt;=$&#123;1&#125;</span><br><span class="line">       shift;;</span><br><span class="line"></span><br><span class="line">    -flag2)</span><br><span class="line">       shift</span><br><span class="line">       &lt;var2&gt;=$&#123;1&#125;</span><br><span class="line">       shift;;</span><br><span class="line"></span><br><span class="line">    *) Usage</span><br><span class="line">       exit 1;;</span><br><span class="line">  esac</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h3 id="log-message"><a href="#log-message" class="headerlink" title="log message"></a>log message</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LogMsg()</span><br><span class="line">&#123;</span><br><span class="line">  logMsg=&quot;$@&quot;</span><br><span class="line">  echo &quot;[&quot;`date +&quot;%Y/%m/%d %r&quot;`&quot;]&quot; $&#123;logMsg&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LogMsg &quot;###### INFO: ...&quot;</span><br><span class="line">LogMsg &quot;###### WARNING: ...&quot;</span><br><span class="line">LogMsg &quot;###### ERROR: ...&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="check-last-command-result"><a href="#check-last-command-result" class="headerlink" title="check last command result"></a>check last command result</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo_success_failure() &#123;</span><br><span class="line">  if [ $? -eq 0 ]; then </span><br><span class="line">    LogMsg &quot;###### INFO: Success...&quot;</span><br><span class="line">  else </span><br><span class="line">    LogMsg &quot;###### INFO: Failure...&quot;</span><br><span class="line">  fi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="run-as-root"><a href="#run-as-root" class="headerlink" title="run as root"></a>run as root</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">effective_uid=`id -u` 2&gt;/dev/null</span><br><span class="line">if [ $effective_uid -ne 0 ]; then</span><br><span class="line"> LogMsg &quot;###### ERROR: Please run this script as root or sudo&quot;  </span><br><span class="line"> exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="delimited-string-to-array"><a href="#delimited-string-to-array" class="headerlink" title="delimited string to array"></a>delimited string to array</h3><p>convert delimited string to array, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string=&quot;item1 item2 item3&quot;</span><br><span class="line">IFS=&apos; &apos; read -a array &lt;&lt;&lt; &quot;$&#123;string&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>this version has no globbing problem, the split character is set in <code>$IFS</code> (here is space), variables quoted.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$&#123;array[0]&#125;  ===&gt; item1</span><br><span class="line">$&#123;array[1]&#125;  ===&gt; item2</span><br><span class="line">$&#123;array[2]&#125;  ===&gt; item3</span><br></pre></td></tr></table></figure></p>
+<p>don’t forget to do sanity check after converting.</p>
+<h3 id="loop-array"><a href="#loop-array" class="headerlink" title="loop array"></a>loop array</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">declare -a array=(&quot;element1&quot; &quot;element2&quot; &quot;element3&quot;)</span><br><span class="line">for i in &quot;$&#123;array[@]&#125;&quot;</span><br><span class="line">do</span><br><span class="line">   echo &quot;$&#123;i&#125;&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p><code>declare</code> or <code>typeset</code> are an explicit way of declaring variable in shell scripts.</p>
+<p>In BASH it is safer to quote the variable using <code>&quot;&quot;</code> for the cases when <code>$i</code> may contain white spaces or shell expandable characters.</p>
+<p>if you want to use index of array element<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># get length of an array</span><br><span class="line">arraylength=$&#123;#array[@]&#125;</span><br><span class="line"></span><br><span class="line"># use for loop to read all values and indexes</span><br><span class="line">for (( i=0; i&lt;$&#123;arraylength&#125;; i++ ));</span><br><span class="line">do</span><br><span class="line">  echo $i &quot; / &quot; $&#123;arraylength&#125; &quot; : &quot; $&#123;array[$i]&#125;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<h3 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h3><p>chmod recursively for directory and it’s content<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 0755 &lt;target directory&gt;</span><br></pre></td></tr></table></figure></p>
+<p>only add executable for file not folder<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &apos;&lt;file name&gt;&apos; -type f | xargs chmod +x</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x ...</span><br></pre></td></tr></table></figure>
+<h3 id="pass-parameters-in-script"><a href="#pass-parameters-in-script" class="headerlink" title="pass parameters in script"></a>pass parameters in script</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># invoke, must stick to this format</span><br><span class="line">echo &quot;admin</span><br><span class="line">admin&quot; | ./script.sh</span><br><span class="line"># receive code snippet in script.sh</span><br><span class="line">MsgLog &quot;###### Please enter args1  ...&quot;</span><br><span class="line">read args1</span><br><span class="line">LogMsg &quot;###### Please enter password ...&quot;</span><br><span class="line">read -s password</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;args1&#125;     ===&gt; admin</span><br><span class="line">$&#123;password&#125;  ===&gt; admin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note: <code>read</code> <code>-s</code> flag: do not echo input coming from a terminal, used for password</p>
+</blockquote>
+<h3 id="setup-ssh-password-less"><a href="#setup-ssh-password-less" class="headerlink" title="setup ssh password-less"></a>setup ssh password-less</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-keyscan -H $&#123;remote&#125; &gt;&gt; ~/.ssh/known_hosts</span><br><span class="line">sshpass -p &quot;&lt;password&gt;&quot; ssh-copy-id -i ~/.ssh/id_rsa.pub root@$&#123;remote&#125;</span><br><span class="line">if [[ $? -ne 0 ]]; then</span><br><span class="line">  LogMsg &quot;######ERROR: Something went wrong with ssh-copy-id. Check for incorrect credentials ... &quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="reinvoke"><a href="#reinvoke" class="headerlink" title="reinvoke"></a>reinvoke</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if [[ $? -ne 0 ]]; then</span><br><span class="line">     LogMsg &quot;######ERROR: Something went wrong… &quot;</span><br><span class="line">     &lt;shell function name&gt;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/24/git-lfs/" rel="next" title="Versioning Large File in Git">
+                <i class="fa fa-chevron-left"></i> Versioning Large File in Git
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-condition-statements"><span class="nav-number">1.</span> <span class="nav-text">if condition statements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#script-input-parameters"><span class="nav-number">2.</span> <span class="nav-text">script input parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-message"><span class="nav-number">3.</span> <span class="nav-text">log message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-last-command-result"><span class="nav-number">4.</span> <span class="nav-text">check last command result</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run-as-root"><span class="nav-number">5.</span> <span class="nav-text">run as root</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delimited-string-to-array"><span class="nav-number">6.</span> <span class="nav-text">delimited string to array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loop-array"><span class="nav-number">7.</span> <span class="nav-text">loop array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chmod"><span class="nav-number">8.</span> <span class="nav-text">chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pass-parameters-in-script"><span class="nav-number">9.</span> <span class="nav-text">pass parameters in script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setup-ssh-password-less"><span class="nav-number">10.</span> <span class="nav-text">setup ssh password-less</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reinvoke"><span class="nav-number">11.</span> <span class="nav-text">reinvoke</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
