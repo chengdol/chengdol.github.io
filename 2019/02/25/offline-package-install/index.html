@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
 <meta property="og:image" content="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B">
 <meta property="og:image" content="https://drive.google.com/uc?id=1CasqYU-jLOvY8lvnNWYGipcvE1Ftcp_V">
-<meta property="og:updated_time" content="2019-02-26T07:27:09.825Z">
+<meta property="og:updated_time" content="2019-02-27T00:36:02.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Offline Package Installation">
 <meta name="twitter:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
@@ -397,16 +397,46 @@
                 
               
 
-              <time title="Created: 2019-02-25 23:10:18 / Modified: 23:27:09" itemprop="dateCreated datePublished" datetime="2019-02-25T23:10:18-08:00">2019-02-25</time>
+              <time title="Created: 2019-02-25 23:10:18" itemprop="dateCreated datePublished" datetime="2019-02-25T23:10:18-08:00">2019-02-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-26 16:36:02" itemprop="dateModified" datetime="2019-02-26T16:36:02-08:00">2019-02-26</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -443,8 +473,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly --downloaddir=&lt;directory&gt; &lt;package:version&gt;</span><br></pre></td></tr></table></figure>
 <p>For example, I want to get all rpms for <em>vim</em> editor, reside them in <code>/root/vim</code> folder<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly --downloaddir=/root/vim vim</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl" alt=""></p>
-<p>List the target folder:</p>
-<p><img src="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B" alt=""></p>
+<p>List the target folder:<br><img src="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B" alt=""></p>
 <p>If the package is already installed, you can first install <code>yum-utils</code> by running<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure></p>
 <p>then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yumdownloader --reslove --destdir=/root/vim vim</span><br></pre></td></tr></table></figure></p>
 <p>This method will only download the outer most rpm, not all.</p>
