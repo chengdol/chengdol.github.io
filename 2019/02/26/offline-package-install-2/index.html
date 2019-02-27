@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. ProblemLet’s say the command conky stopped responding on my desktop, and I want to kill i">
-<meta name="keywords" content="pipeline">
+  <meta name="description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
+<meta name="keywords" content="yum,rpm,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BASH Pipeline Demo">
-<meta property="og:url" content="http://yoursite.com/2019/02/24/bash-pipeline-demo/index.html">
+<meta property="og:title" content="Offline Package Installation II">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/offline-package-install-2/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. ProblemLet’s say the command conky stopped responding on my desktop, and I want to kill i">
+<meta property="og:description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T00:38:18.158Z">
+<meta property="og:updated_time" content="2019-02-27T07:19:53.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BASH Pipeline Demo">
-<meta name="twitter:description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. ProblemLet’s say the command conky stopped responding on my desktop, and I want to kill i">
+<meta name="twitter:title" content="Offline Package Installation II">
+<meta name="twitter:description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/24/bash-pipeline-demo/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/26/offline-package-install-2/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>BASH Pipeline Demo | 海胆阶段's Blog</title>
+  <title>Offline Package Installation II | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/bash-pipeline-demo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/offline-package-install-2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BASH Pipeline Demo
+          <h1 class="post-title" itemprop="name headline">Offline Package Installation II
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-02-24 18:25:09" itemprop="dateCreated datePublished" datetime="2019-02-24T18:25:09-08:00">2019-02-24</time>
+              <time title="Created: 2019-02-26 21:37:42 / Modified: 23:19:53" itemprop="dateCreated datePublished" datetime="2019-02-26T21:37:42-08:00">2019-02-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-26 16:38:18" itemprop="dateModified" datetime="2019-02-26T16:38:18-08:00">2019-02-26</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell-Script/" itemprop="url" rel="index"><span itemprop="name">Shell Script</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -461,34 +449,21 @@
       
 
       
-        <p>This blog reformats and builds on top of this <em>stackoverflow</em> <a href="https://unix.stackexchange.com/questions/30759/whats-a-good-example-of-piping-commands-together" target="_blank" rel="noopener">topic</a>. Big thanks to <strong>rahmu</strong> and people contributed.</p>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Let’s say the command <code>conky</code> stopped responding on my desktop, and I want to kill it manually. I know a little bit of Unix, so I know that what I need to do is execute the command <code>kill &lt;PID&gt;</code>. In order to retrieve the PID, I can use <code>ps</code> or <code>top</code> or whatever tool my Unix distribution has given me. But how can I do this in one command?</p>
-<h3 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep conky | grep -v grep | awk <span class="string">'&#123;print $2&#125;'</span> | xargs <span class="built_in">kill</span></span><br></pre></td></tr></table></figure>
-<p><em>DISCLAIMER</em>: This command only works in certain cases. Don’t copy/paste it in your terminal and start using it, it could kill processes unsuspectingly. Rather learn <strong>how to build it</strong>.</p>
-<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><ul>
-<li><strong><code>ps aux</code></strong></li>
-</ul>
-<p>This command will output the list of running processes and some info about them. The interesting info is that it’ll output the PID of each process in its 2nd column. Here’s an extract from the output of the command on my box:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux</span><br><span class="line"> rahmu     1925  0.0  0.1 129328  6112 ?        S    11:55   0:06 tint2</span><br><span class="line"> rahmu     1931  0.0  0.3 154992 12108 ?        S    11:55   0:00 volumeicon</span><br><span class="line"> rahmu     1933  0.1  0.2 134716  9460 ?        S    11:55   0:24 parcellite</span><br><span class="line"> rahmu     1940  0.0  0.0  30416  3008 ?        S    11:55   0:10 xcompmgr -cC -t-5 -l-5 -r4.2 -o.55 -D6</span><br><span class="line"> rahmu     1941  0.0  0.2 160336  8928 ?        Ss   11:55   0:00 xfce4-power-manager</span><br><span class="line"> rahmu     1943  0.0  0.0  32792  1964 ?        S    11:55   0:00 /usr/lib/xfconf/xfconfd</span><br><span class="line"> rahmu     1945  0.0  0.0  17584  1292 ?        S    11:55   0:00 /usr/lib/gamin/gam_server</span><br><span class="line"> rahmu     1946  0.0  0.5 203016 19552 ?        S    11:55   0:00 python /usr/bin/system-config-printer-applet</span><br><span class="line"> rahmu     1947  0.0  0.3 171840 12872 ?        S    11:55   0:00 nm-applet --sm-disable</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:38 conky -q</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>grep conky</code></strong></li>
-</ul>
-<p>I’m only interested in one process, so I use <code>grep</code> to find the entry corresponding to my program <code>conky</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:39 conky -q</span><br><span class="line"> rahmu     3233  0.0  0.0   7592   840 pts/1    S+   16:55   0:00 grep conky</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>grep -v grep</code></strong></li>
-</ul>
-<p>As you can see in step 2, the command ps outputs the <code>grep conky</code> process in its list (it’s a running process after all). In order to filter it, I can run <code>grep -v grep</code>. The option<code>-v</code> tells grep to match all the lines excluding the ones containing the pattern.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky | grep -v grep</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:39 conky -q</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>awk &#39;{print $2}&#39;</code></strong></li>
-</ul>
-<p>Now that I have isolated my target process. I want to retrieve its PID. In other words I want to retrieve the 2nd word of the output. Lucky for me, most (all?) modern unices will provide some version of <code>awk</code>, a scripting language that does wonders with tabular data. Our task becomes as easy as <code>print $2</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky | grep -v grep | awk <span class="string">'&#123;print $2&#125;'</span></span><br><span class="line"> 1948</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>xargs kill</code></strong></li>
-</ul>
-<p>I have the PID. All I need is to pass it to <code>kill</code>. To do this, I will use <code>xargs</code>.</p>
-<p><code>xargs kill</code> will read from the input (in our case from the pipe), form a command consisting of <code>kill &lt;items&gt;</code> (<code>&lt;items&gt;</code> are whatever it read from the input), and then execute the command created. In our case it will execute <code>kill 1948</code>. Mission accomplished.</p>
-<h3 id="Final-words"><a href="#Final-words" class="headerlink" title="Final words"></a>Final words</h3><p>Note that depending on what version of unix you’re using, certain programs may behave a little differently (for example, <code>ps</code> might output the PID in column $3). If something seems wrong or different, read your vendor’s documentation (or better, the man pages). Also be careful as <strong>long pipes can be dangerous</strong>. Don’t make any assumptions especially when using commands like <code>kill</code> or <code>rm</code>. For example, if there was another user named ‘conky’ (or ‘Aconkyous’) my command may kill all his running processes too!</p>
-<h3 id="Complement"><a href="#Complement" class="headerlink" title="Complement"></a>Complement</h3><p>actually you can simplify the pipeline further to<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill conky</span><br></pre></td></tr></table></figure></p>
-<p>or<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> $(pgrep conky)</span><br></pre></td></tr></table></figure></p>
+        <p>Now, let’s practice what we have learned from series <code>I</code>. For example, I want to create a self-contained k8s cluster installer, that means I need to install <code>docker</code> and <code>kubeadm</code> etc offline in the target machine.</p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>I want to install <code>Docker 18.06.3</code> (currently kubeadm now properly recognizes <code>Docker 18.09.0</code> and newer, but still treats <code>18.06</code> as the default supported version). You should perform below steps on a machine that hasn’t install docker yet (I am instill trying to find the method to get all rpms from a docker-ready machine). </p>
+<blockquote>
+<p>Note: <a href="https://docs.docker.com/install/linux/docker-ce/centos/#install-from-a-package" target="_blank" rel="noopener">install from a package</a>, rpms here are not comprehensive, can be used to upgrade version.</p>
+</blockquote>
+<h4 id="uninstall-old-version"><a href="#uninstall-old-version" class="headerlink" title="uninstall old version"></a>uninstall old version</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">           docker-client \</span><br><span class="line">           docker-client-latest \</span><br><span class="line">           docker-common \</span><br><span class="line">           docker-latest \</span><br><span class="line">           docker-latest-logrotate \</span><br><span class="line">           docker-logrotate \</span><br><span class="line">           docker-engine</span><br></pre></td></tr></table></figure>
+<p>The contents of <code>/var/lib/docker/</code>, including images, containers, volumes, and networks, are preserved. The Docker CE package is now called <code>docker-ce</code>.</p>
+<h4 id="set-up-docker-repository"><a href="#set-up-docker-repository" class="headerlink" title="set up docker repository"></a>set up docker repository</h4><p>Before you install Docker CE for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils \</span><br><span class="line">  device-mapper-persistent-data \</span><br><span class="line">  lvm2</span><br></pre></td></tr></table></figure></p>
+<p>Use the following command to set up the stable repository.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure></p>
+<h4 id="list-docker-version"><a href="#list-docker-version" class="headerlink" title="list docker version"></a>list docker version</h4><p>List and sort the versions available in your repo. This example sorts results by version number, highest to lowest, and is truncated:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: product-id, search-disabled-repos</span><br><span class="line">docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4 id="download-rpms"><a href="#download-rpms" class="headerlink" title="download rpms"></a>download rpms</h4><p>Install a specific version by its fully qualified package name, which is the package name (<code>docker-ce</code>) plus the version string (2nd column) starting at the first colon (:), up to the first hyphen, separated by a hyphen (-). For example, <code>docker-ce-18.06.3.ce</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/docker-18.06.3-rpms</span><br><span class="line">yum install --downloadonly --downloaddir=/root/docker-18.06.3-rpms docker-ce-18.06.3.ce</span><br></pre></td></tr></table></figure></p>
+<p>list the rpms in the target folder:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">audit-2.8.4-4.el7.x86_64.rpm               libselinux-utils-2.5-14.1.el7.x86_64.rpm</span><br><span class="line">audit-libs-2.8.4-4.el7.x86_64.rpm          libsemanage-2.5-14.el7.x86_64.rpm</span><br><span class="line">audit-libs-python-2.8.4-4.el7.x86_64.rpm   libsemanage-python-2.5-14.el7.x86_64.rpm</span><br><span class="line">checkpolicy-2.5-8.el7.x86_64.rpm           libsepol-2.5-10.el7.x86_64.rpm</span><br><span class="line">container-selinux-2.68-1.el7.noarch.rpm    libtool-ltdl-2.4.2-22.el7_3.x86_64.rpm</span><br><span class="line">docker-ce-18.06.3.ce-3.el7.x86_64.rpm      policycoreutils-2.5-29.el7_6.1.x86_64.rpm</span><br><span class="line">libcgroup-0.41-20.el7.x86_64.rpm           policycoreutils-python-2.5-29.el7_6.1.x86_64.rpm</span><br><span class="line">libseccomp-2.3.1-3.el7.x86_64.rpm          python-IPy-0.75-6.el7.noarch.rpm</span><br><span class="line">libselinux-2.5-14.1.el7.x86_64.rpm         setools-libs-3.3.8-4.el7.x86_64.rpm</span><br><span class="line">libselinux-python-2.5-14.1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure></p>
+<p>Note that the required components may be changed in later version, such as <code>18.09.2</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/docker-18.09.2-rpms</span><br><span class="line">yum install --downloadonly --downloaddir=/root/docker-18.09.2-rpms docker-ce-18.09.2 docker-ce-cli-18.09.2 containerd.io</span><br></pre></td></tr></table></figure></p>
+<h4 id="install-rpms-locally"><a href="#install-rpms-locally" class="headerlink" title="install rpms locally"></a>install rpms locally</h4><p>now install docker <code>18.06.3</code> offline by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* -y install /root/docker-18.06.3-rpms/*.rpm</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -512,7 +487,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/pipeline/" rel="tag"># pipeline</a>
+            <a href="/tags/yum/" rel="tag"># yum</a>
+          
+            <a href="/tags/rpm/" rel="tag"># rpm</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
           
         </div>
       
@@ -525,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/24/script-code-snippet/" rel="next" title="Commonly Used Code Snippets">
-                <i class="fa fa-chevron-left"></i> Commonly Used Code Snippets
+              <a href="/2019/02/25/offline-package-install-1/" rel="next" title="Offline Package Installation I">
+                <i class="fa fa-chevron-left"></i> Offline Package Installation I
               </a>
             
           </div>
@@ -534,10 +513,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/25/offline-package-install-1/" rel="prev" title="Offline Package Installation I">
-                Offline Package Installation I <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -721,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Answer"><span class="nav-number">2.</span> <span class="nav-text">Answer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-it-works"><span class="nav-number">3.</span> <span class="nav-text">How it works</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Final-words"><span class="nav-number">4.</span> <span class="nav-text">Final words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complement"><span class="nav-number">5.</span> <span class="nav-text">Complement</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#uninstall-old-version"><span class="nav-number">1.1.</span> <span class="nav-text">uninstall old version</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set-up-docker-repository"><span class="nav-number">1.2.</span> <span class="nav-text">set up docker repository</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-docker-version"><span class="nav-number">1.3.</span> <span class="nav-text">list docker version</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#download-rpms"><span class="nav-number">1.4.</span> <span class="nav-text">download rpms</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#install-rpms-locally"><span class="nav-number">1.5.</span> <span class="nav-text">install rpms locally</span></a></li></ol></li></ol></div>
             
 
           </div>

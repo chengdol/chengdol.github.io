@@ -96,23 +96,29 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
-<meta property="og:type" content="website">
-<meta property="og:title" content="海胆阶段&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/ssh/index.html">
+  <meta name="description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
+<meta name="keywords" content="yum,rpm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Offline Package Installation I">
+<meta property="og:url" content="http://yoursite.com/2019/02/25/offline-package-install-1/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
+<meta property="og:image" content="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B">
+<meta property="og:image" content="https://drive.google.com/uc?id=1CasqYU-jLOvY8lvnNWYGipcvE1Ftcp_V">
+<meta property="og:updated_time" content="2019-02-27T07:19:51.872Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="海胆阶段&#39;s Blog">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:title" content="Offline Package Installation I">
+<meta name="twitter:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/ssh/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/25/offline-package-install-1/">
 
 
 
@@ -122,7 +128,7 @@
   };
 </script>
 
-  <title>Tag: ssh | 海胆阶段's Blog</title>
+  <title>Offline Package Installation I | 海胆阶段's Blog</title>
   
 
 
@@ -170,7 +176,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -246,7 +252,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -308,28 +314,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -354,56 +338,226 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>ssh<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/offline-package-install-1/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/02/21/ssh-scp-summary/" itemprop="url">
-            
-              <span itemprop="name">Ssh and Scp Daily Work Summary</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Offline Package Installation I
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-21T20:56:58-08:00" content="2019-02-21">
-          02-21
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-25 23:10:18" itemprop="dateCreated datePublished" datetime="2019-02-25T23:10:18-08:00">2019-02-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-26 23:19:51" itemprop="dateModified" datetime="2019-02-26T23:19:51-08:00">2019-02-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install <code>ansible</code>, <code>docker</code> and <code>kubeadm</code> offline. In the production environment, we may not have internet access, that means we need to prepare the rpms and dependencies needed and create a self-contained installer.</p>
+<h3 id="Download-package-without-installing-it"><a href="#Download-package-without-installing-it" class="headerlink" title="Download package without installing it"></a>Download package without installing it</h3><blockquote>
+<p>Note: This method is for package that hasn’t been installed yet, more details please see this <a href="https://access.redhat.com/solutions/10154" target="_blank" rel="noopener">link</a></p>
+</blockquote>
+<p>First let’s install the utility:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-plugin-downloadonly</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly --downloaddir=&lt;directory&gt; &lt;package:version&gt;</span><br></pre></td></tr></table></figure>
+<p>For example, I want to get all rpms for <em>vim</em> editor, reside them in <code>/root/vim</code> folder<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly --downloaddir=/root/vim vim</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl" alt=""></p>
+<p>List the target folder:<br><img src="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B" alt=""></p>
+<p>If the package is already installed, you can first install <code>yum-utils</code> by running<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure></p>
+<p>then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yumdownloader --resolve --destdir=/root/vim vim</span><br></pre></td></tr></table></figure></p>
+<p>This method will only download the outer most rpm, not all.</p>
+<h3 id="Install-local-rpms"><a href="#Install-local-rpms" class="headerlink" title="Install local rpms"></a>Install local rpms</h3><p>Now the problem is how to install these rpms in correct order. Actually you can get the dependency relationship by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh &lt;rpm name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>This command will install a single rpm if it meets all dependencies, otherwise install will fail and the output will give you the lower level rpms missed.</p>
+<p><img src="https://drive.google.com/uc?id=1CasqYU-jLOvY8lvnNWYGipcvE1Ftcp_V" alt=""></p>
+<p>This way is obviously infeasible because such as <code>docker</code> and <code>ansible</code> have too many, install them one by one is very time consuming. One solution is put all rpms of one application in a dedicated folder, then run:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* -y install &lt;dedicated folder&gt;/*.rpm</span><br></pre></td></tr></table></figure></p>
+<h3 id="Search-rpm-installed"><a href="#Search-rpm-installed" class="headerlink" title="Search rpm installed"></a>Search rpm installed</h3><p>These two both works:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep &lt;package name&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep &lt;package name&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yum/" rel="tag"># yum</a>
+          
+            <a href="/tags/rpm/" rel="tag"># rpm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/24/bash-pipeline-demo/" rel="next" title="BASH Pipeline Demo">
+                <i class="fa fa-chevron-left"></i> BASH Pipeline Demo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/26/offline-package-install-2/" rel="prev" title="Offline Package Installation II">
+                Offline Package Installation II <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -424,8 +578,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -543,6 +706,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-package-without-installing-it"><span class="nav-number">1.</span> <span class="nav-text">Download package without installing it</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-local-rpms"><span class="nav-number">2.</span> <span class="nav-text">Install local rpms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-rpm-installed"><span class="nav-number">3.</span> <span class="nav-text">Search rpm installed</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -667,6 +847,10 @@
   
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
