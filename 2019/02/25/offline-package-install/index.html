@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
 <meta property="og:image" content="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B">
 <meta property="og:image" content="https://drive.google.com/uc?id=1CasqYU-jLOvY8lvnNWYGipcvE1Ftcp_V">
-<meta property="og:updated_time" content="2019-02-27T00:36:02.509Z">
+<meta property="og:updated_time" content="2019-02-27T00:49:04.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Offline Package Installation">
 <meta name="twitter:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-26 16:36:02" itemprop="dateModified" datetime="2019-02-26T16:36:02-08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-26 16:49:04" itemprop="dateModified" datetime="2019-02-26T16:49:04-08:00">2019-02-26</time>
               
             
           </span>
@@ -475,7 +475,7 @@
 <p><img src="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl" alt=""></p>
 <p>List the target folder:<br><img src="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B" alt=""></p>
 <p>If the package is already installed, you can first install <code>yum-utils</code> by running<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure></p>
-<p>then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yumdownloader --reslove --destdir=/root/vim vim</span><br></pre></td></tr></table></figure></p>
+<p>then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yumdownloader --resolve --destdir=/root/vim vim</span><br></pre></td></tr></table></figure></p>
 <p>This method will only download the outer most rpm, not all.</p>
 <h3 id="Install-local-rpms"><a href="#Install-local-rpms" class="headerlink" title="Install local rpms"></a>Install local rpms</h3><p>Now the problem is how to install these rpms in correct order. Actually you can get the dependency relationship by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh &lt;rpm name&gt;</span><br></pre></td></tr></table></figure></p>
 <p>This command will install a single rpm if it meets all dependencies, otherwise install will fail and the output will give you the lower level rpms missed.</p>
