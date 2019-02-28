@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
 <meta property="og:image" content="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B">
 <meta property="og:image" content="https://drive.google.com/uc?id=1I_QfnLAWpj-CNKnfZAvF4yKjZ6U8xHET">
-<meta property="og:updated_time" content="2019-02-28T06:39:19.972Z">
+<meta property="og:updated_time" content="2019-02-28T06:57:09.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Offline Package Installation I">
 <meta name="twitter:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-27 22:39:19" itemprop="dateModified" datetime="2019-02-27T22:39:19-08:00">2019-02-27</time>
+                <time title="Modified: 2019-02-27 22:57:09" itemprop="dateModified" datetime="2019-02-27T22:57:09-08:00">2019-02-27</time>
               
             
           </span>
@@ -478,7 +478,7 @@
 <p>Another way is using <code>yumdownloader</code> that is from <code>yum-utils</code>. The difference is if the package is already installed completely, <code>yumdownloader</code> will download the outermost rpm but <code>--downloadonly</code> will do nothing.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yumdownloader --resolve --destdir=/root/vim vim</span><br></pre></td></tr></table></figure>
 <p><img src="https://drive.google.com/uc?id=1I_QfnLAWpj-CNKnfZAvF4yKjZ6U8xHET" alt=""></p>
-<h3 id="Download-all-rpms-without-installing"><a href="#Download-all-rpms-without-installing" class="headerlink" title="Download all rpms without installing"></a>Download all rpms without installing</h3><h4 id="yumdownloader"><a href="#yumdownloader" class="headerlink" title="yumdownloader"></a>yumdownloader</h4><p>Usually what we really want is to resolve all dependencies and download them, <code>yumdownloader</code> with <code>--installroot</code> option is the solution.</p>
+<h3 id="Download-all-rpms-without-installing"><a href="#Download-all-rpms-without-installing" class="headerlink" title="Download all rpms without installing"></a>Download all rpms without installing</h3><h4 id="yum-amp-yumdownloader"><a href="#yum-amp-yumdownloader" class="headerlink" title="yum &amp; yumdownloader"></a>yum &amp; yumdownloader</h4><p>Usually what we really want is to resolve all dependencies and download them, <code>yumdownloader</code> or <code>yum --downloadonly</code> with <code>--installroot</code> option is the solution.</p>
 <p>Keep in mind, that <code>yumdownloader</code> will use your yum database when resolving dependencies.</p>
 <p>For example if you download bash, which needs glibc, it will resolve glibc and skip it, since it is installed. If you want to download all dependencies, use a different <code>installroot</code> instead.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">mkdir -p /root/new_root</span><br><span class="line">yumdownloader --installroot=/root/new_root --destdir=/root/vim/ --resolve vim</span><br></pre></td></tr></table></figure></p>
 <p>Let’s check how many ansible related rpms are here, way to many then what we get from the first section methods.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -ltr /root/vim | wc -l</span><br><span class="line">57</span><br></pre></td></tr></table></figure></p>
@@ -722,7 +722,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-missing-rpms-without-installing"><span class="nav-number">1.</span> <span class="nav-text">Download missing rpms without installing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-all-rpms-without-installing"><span class="nav-number">2.</span> <span class="nav-text">Download all rpms without installing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#yumdownloader"><span class="nav-number">2.1.</span> <span class="nav-text">yumdownloader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repotrack"><span class="nav-number">2.2.</span> <span class="nav-text">repotrack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-local-rpms"><span class="nav-number">3.</span> <span class="nav-text">Install local rpms</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-missing-rpms-without-installing"><span class="nav-number">1.</span> <span class="nav-text">Download missing rpms without installing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-all-rpms-without-installing"><span class="nav-number">2.</span> <span class="nav-text">Download all rpms without installing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#yum-amp-yumdownloader"><span class="nav-number">2.1.</span> <span class="nav-text">yum &amp; yumdownloader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repotrack"><span class="nav-number">2.2.</span> <span class="nav-text">repotrack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-local-rpms"><span class="nav-number">3.</span> <span class="nav-text">Install local rpms</span></a></li></ol></div>
             
 
           </div>
