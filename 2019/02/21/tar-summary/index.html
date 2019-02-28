@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Insert latest update at the to">
+  <meta name="description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta name="keywords" content="tar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tar Command Daily Work Summary">
 <meta property="og:url" content="http://yoursite.com/2019/02/21/tar-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Insert latest update at the to">
+<meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T00:36:01.450Z">
+<meta property="og:updated_time" content="2019-02-28T08:14:06.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tar Command Daily Work Summary">
-<meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Insert latest update at the to">
+<meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-26 16:36:01" itemprop="dateModified" datetime="2019-02-26T16:36:01-08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-28 00:14:06" itemprop="dateModified" datetime="2019-02-28T00:14:06-08:00">2019-02-28</time>
               
             
           </span>
@@ -462,15 +462,18 @@
 
       
         <p>This article used to walk you through some commonly <code>tar</code> usages , based on a real life scenario.</p>
-<p>################################################################<br>#  &emsp; Insert latest update at the top of the logs<br>#<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar files<br>#<br>################################################################</p>
-<h3 id="02-19-2019"><a href="#02-19-2019" class="headerlink" title="02/19/2019"></a>02/19/2019</h3><p>tar files into <code>example.tar.gz</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf example.tar.gz file1 file2 file3 …</span><br></pre></td></tr></table></figure></p>
-<p>tar directory <code>target</code> and its content into <code>example.tar.gz</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf example.tar.fz target</span><br></pre></td></tr></table></figure></p>
+<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 02/28/2019 &emsp; &emsp; dash or not<br>#  &emsp; 02/27/2019 &emsp; &emsp; untar to specified folder<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar multiple files<br>#<br>################################################################</p>
+<h3 id="02-19-2019"><a href="#02-19-2019" class="headerlink" title="02/19/2019"></a>02/19/2019</h3><p>Basic operation: tar multiple files into <code>example.tar.gz</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf example.tar.gz file1 file2 file3 …</span><br></pre></td></tr></table></figure></p>
 <h3 id="02-20-2019"><a href="#02-20-2019" class="headerlink" title="02/20/2019"></a>02/20/2019</h3><p>When untar multiple files, you cannot do this, it will fail<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf file1 file2 file3</span><br></pre></td></tr></table></figure></p>
 <p>The reason please see this <a href="https://stackoverflow.com/questions/583889/how-can-you-untar-more-than-one-file-at-a-time" target="_blank" rel="noopener">link</a>, the solution is to use <code>xargs</code> instead:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.tar.gz | xargs -i tar xzf &#123;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Or you can use <code>find</code> with <code>-exec</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -name <span class="string">"*.tar.gz"</span> -<span class="built_in">exec</span> tar zxf <span class="string">'&#123;&#125;'</span> \;</span><br></pre></td></tr></table></figure></p>
 <h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>For example, if you want to tar things inside a folder but exclude some files<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf target.tar.gz ./* --exclude=<span class="string">'createInstallerTar.sh'</span> --exclude=<span class="string">"target.tar.gz"</span> --exclude=<span class="string">'pushBIPayload.sh'</span></span><br></pre></td></tr></table></figure></p>
-<p>If you don’t exclude target.tar.gz, it will tar itself.</p>
-<h3 id="02-22-2019"><a href="#02-22-2019" class="headerlink" title="02/22/2019"></a>02/22/2019</h3><p>list tar.gz file content, flag <code>z</code> sued to distinguish tar or tar.gz<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar ztvf target.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>If you don’t exclude target.tar.gz, it will tar itself again.</p>
+<h3 id="02-22-2019"><a href="#02-22-2019" class="headerlink" title="02/22/2019"></a>02/22/2019</h3><p>List tar.gz file content, flag <code>z</code>  is used to distinguish tar and tar.gz<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar ztvf target.tar.gz</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-27-2019"><a href="#02-27-2019" class="headerlink" title="02/27/2019"></a>02/27/2019</h3><p>If you don’t specify target folder, untar will put things in current directory, use <code>-C</code> option to specify it. For example, I want to untar source.tar.gz file to <code>/etc/yum.repos.d/</code> folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf /tmp/source.tar.gz -C /etc/yum.repos.d/</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-28-2019"><a href="#02-28-2019" class="headerlink" title="02/28/2019"></a>02/28/2019</h3><p>Sometimes I see people use <code>-czf</code> but sometimes <code>czf</code>, dash or not to pass flags?</p>
+<p>Historical and compatible reason, <strong>no</strong> dash version is probably more portable.</p>
+<p><code>tar</code> is one of those ancient commands from the days when option syntax hadn’t been standardized. Because all useful invocations of <code>tar</code> require specifying an operation before providing any file name, most <code>tar</code> implementations interpret their first argument as an option even if it doesn’t begin with a <code>-</code>. Most current implementations accept a <code>-</code>.</p>
 
       
     </div>
@@ -703,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-19-2019"><span class="nav-number">1.</span> <span class="nav-text">02/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-20-2019"><span class="nav-number">2.</span> <span class="nav-text">02/20/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">3.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-22-2019"><span class="nav-number">4.</span> <span class="nav-text">02/22/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-19-2019"><span class="nav-number">1.</span> <span class="nav-text">02/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-20-2019"><span class="nav-number">2.</span> <span class="nav-text">02/20/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">3.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-22-2019"><span class="nav-number">4.</span> <span class="nav-text">02/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">5.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">6.</span> <span class="nav-text">02/28/2019</span></a></li></ol></div>
             
 
           </div>
