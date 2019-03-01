@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="I want to introduce you two useful tools for kubernetes development, github link with detail.  Note: this is not an official Google product.  kubectxkubectx helps you switch between clusters back and">
-<meta name="keywords" content="kubens,kubectx">
+  <meta name="description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transaction from? Sometimes the">
+<meta name="keywords" content="yum">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kubectx and Kubens">
-<meta property="og:url" content="http://yoursite.com/2019/02/17/k8s-utils/index.html">
+<meta property="og:title" content="Yum Pending Transaction">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/yum-pending/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I want to introduce you two useful tools for kubernetes development, github link with detail.  Note: this is not an official Google product.  kubectxkubectx helps you switch between clusters back and">
+<meta property="og:description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transaction from? Sometimes the">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T01:44:22.615Z">
+<meta property="og:updated_time" content="2019-03-01T06:15:07.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kubectx and Kubens">
-<meta name="twitter:description" content="I want to introduce you two useful tools for kubernetes development, github link with detail.  Note: this is not an official Google product.  kubectxkubectx helps you switch between clusters back and">
+<meta name="twitter:title" content="Yum Pending Transaction">
+<meta name="twitter:description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transaction from? Sometimes the">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/17/k8s-utils/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/yum-pending/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Kubectx and Kubens | 海胆阶段's Blog</title>
+  <title>Yum Pending Transaction | 海胆阶段's Blog</title>
   
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">13</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">14</span></a>
 
   </li>
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/k8s-utils/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/yum-pending/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kubectx and Kubens
+          <h1 class="post-title" itemprop="name headline">Yum Pending Transaction
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-02-17 19:41:13" itemprop="dateCreated datePublished" datetime="2019-02-17T19:41:13-08:00">2019-02-17</time>
+              <time title="Created: 2019-02-28 22:13:00 / Modified: 22:15:07" itemprop="dateCreated datePublished" datetime="2019-02-28T22:13:00-08:00">2019-02-28</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-24 17:44:22" itemprop="dateModified" datetime="2019-02-24T17:44:22-08:00">2019-02-24</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -461,24 +449,13 @@
       
 
       
-        <p>I want to introduce you two useful tools for kubernetes development, <a href="https://github.com/ahmetb/kubectx" target="_blank" rel="noopener">github link</a> with detail.</p>
-<blockquote>
-<p>Note: this is not an official Google product.</p>
-</blockquote>
-<h2 id="kubectx"><a href="#kubectx" class="headerlink" title="kubectx"></a>kubectx</h2><p><code>kubectx</code> helps you switch between clusters back and forth</p>
-<h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><p>since kubectx/kubens are written in Bash, you should be able to install them to any POSIX environment that has Bash installed.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ahmetb/kubectx /opt/kubectx</span><br></pre></td></tr></table></figure></p>
-<p>make sure kubectx script is executable:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@myk8s1 ~] ls /opt/kubectx/ -ltr</span><br><span class="line">total 40</span><br><span class="line">-rw-r--r-- 1 root root 11357 Feb 17 21:25 LICENSE</span><br><span class="line">-rw-r--r-- 1 root root   968 Feb 17 21:25 CONTRIBUTING.md</span><br><span class="line">-rw-r--r-- 1 root root  7784 Feb 17 21:25 README.md</span><br><span class="line">drwxr-xr-x 2 root root   121 Feb 17 21:25 completion</span><br><span class="line">drwxr-xr-x 2 root root    84 Feb 17 21:25 img</span><br><span class="line">drwxr-xr-x 3 root root   100 Feb 17 21:25 test</span><br><span class="line">-rwxr-xr-x 1 root root  5273 Feb 17 21:25 kubens</span><br><span class="line">-rwxr-xr-x 1 root root  5218 Feb 17 21:25 kubectx</span><br></pre></td></tr></table></figure></p>
-<p>create symlinks to kubectx/kubens from somewhere in your PATH, like /usr/local/bin<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /opt/kubectx/kubectx /usr/<span class="built_in">local</span>/bin/kubectx</span><br></pre></td></tr></table></figure></p>
-<h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><p>you should first understand how to switch among different clusters by using configuration files. please investigate this <a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/" target="_blank" rel="noopener">link</a>, actually <code>kubectx</code> is built on top of it.</p>
-<p>for example, I have one cluster on AWS and one cluster on Fyre, in each cluster there is a <code>~/.kube/config</code> file, rename it as <code>config.aws</code> and <code>config.fyre</code> and put them to another client machine <code>~/.kube/</code> folder with  kubectl installed.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube]# ls -ltr</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x 3 root root   23 Nov 26 16:38 cache</span><br><span class="line">-rw-r--r-- 1 root root 2214 Dec  6 10:16 config.aws</span><br><span class="line">drwxr-xr-x 2 root root   73 Dec  6 10:16 kubens</span><br><span class="line">drwxr-xr-x 3 root root 4096 Feb 17 22:05 http-cache</span><br><span class="line">-rw------- 1 root root 5474 Feb 17 22:22 config.fyre</span><br></pre></td></tr></table></figure></p>
-<p>append config files to environment variable <code>KUBECONFIG</code>, you can add export to <code>.bashrc</code> file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> KUBECONFIG=<span class="variable">$KUBECONFIG</span>:<span class="variable">$HOME</span>/.kube/config.aws:<span class="variable">$HOME</span>/.kube/config.fyre</span><br></pre></td></tr></table></figure></p>
-<p>now if you run <code>kubectx</code> you will see there are 2 contexts<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube] kubectx</span><br><span class="line">arn:aws:eks:us-west-2:296744932886:cluster/IIS-Test-Cluster</span><br><span class="line">kubernetes-admin@kubernetes</span><br></pre></td></tr></table></figure></p>
-<p>switch to <code>kubernetes-admin@kubernetes</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube] kubectx kubernetes-admin@kubernetes</span><br><span class="line">Switched to context &quot;kubernetes-admin@kubernetes&quot;.</span><br></pre></td></tr></table></figure></p>
-<p>switch back<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube] kubectx -</span><br><span class="line">Switched to context &quot;arn:aws:eks:us-west-2:296744932886:cluster/IIS-Test-Cluster&quot;.</span><br></pre></td></tr></table></figure></p>
-<p>actually the effect is the same as<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl config view</span><br><span class="line">kubectl config --kubeconfig=config.fyre use-context kubernetes-admin@kubernetes</span><br></pre></td></tr></table></figure></p>
-<h2 id="kubens"><a href="#kubens" class="headerlink" title="kubens"></a>kubens</h2><p><code>kubens</code> helps you switch between Kubernetes namespaces smoothly, so you don’t need to add <code>-n &lt;namespace&gt;</code> in every command.</p>
-<h3 id="install-1"><a href="#install-1" class="headerlink" title="install"></a>install</h3><p>download the same Github repository as <code>kubectx</code>, add symlinks:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /opt/kubectx/kubens /usr/<span class="built_in">local</span>/bin/kubens</span><br></pre></td></tr></table></figure></p>
-<h3 id="usage-1"><a href="#usage-1" class="headerlink" title="usage"></a>usage</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@myk8s1 ~] kubens</span><br><span class="line">default</span><br><span class="line">kube-public</span><br><span class="line">kube-system</span><br><span class="line">[root@myk8s1 ~] kubens kube-system</span><br><span class="line">Context &quot;kubernetes-admin@kubernetes&quot; modified.</span><br><span class="line">Active namespace is &quot;kube-system&quot;.</span><br><span class="line">[root@myk8s1 ~] kubens -</span><br><span class="line">Context &quot;kubernetes-admin@kubernetes&quot; modified.</span><br><span class="line">Active namespace is &quot;default&quot;.</span><br></pre></td></tr></table></figure>
+        <p>I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the <code>yum update</code> or <code>yum install</code> may fail. But where are these pending transaction from? Sometimes the machine is down or unexpected thing happens, the yum installation process failed.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>you may see error like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">There are unfinished transactions remaining. You might consider running yum-complete-transaction first to finish them.</span><br><span class="line">The program yum-complete-transaction is found in the yum-utils package.</span><br></pre></td></tr></table></figure></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>According to the prompt, we need first install <code>yum-utils</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure></p>
+<p><code>yum-complete-transaction</code> is a program which finds incomplete or aborted yum transactions on a system and attempts to complete them. It looks at the transaction-all<em> and transaction-done</em> files which can normally be found in /var/lib/yum if a yum transaction aborted in the middle of execution.</p>
+<p>If it finds more than one unfinished transaction it will attempt to complete the most recent one first. You can run it more than once to clean up all unfinished transactions.</p>
+<p>Then just issue the following command to do a cleanup:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-complete-transaction --cleanup-only</span><br></pre></td></tr></table></figure></p>
+<p>You can also check how many pending transactions exist:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/lib/yum -maxdepth 1 -<span class="built_in">type</span> f -name <span class="string">'transaction-all*'</span> -not -name <span class="string">'*disabled'</span> -<span class="built_in">printf</span> . | wc -c</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -502,9 +479,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kubens/" rel="tag"># kubens</a>
-          
-            <a href="/tags/kubectx/" rel="tag"># kubectx</a>
+            <a href="/tags/yum/" rel="tag"># yum</a>
           
         </div>
       
@@ -517,8 +492,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/16/force-delete-statefulset/" rel="next" title="Force Delete StatefulSet and Pods">
-                <i class="fa fa-chevron-left"></i> Force Delete StatefulSet and Pods
+              <a href="/2019/02/26/offline-package-install-2/" rel="next" title="Offline Package Installation II">
+                <i class="fa fa-chevron-left"></i> Offline Package Installation II
               </a>
             
           </div>
@@ -526,10 +501,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/21/ssh-scp-summary/" rel="prev" title="Ssh and Scp Daily Work Summary">
-                Ssh and Scp Daily Work Summary <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,7 +572,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -713,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kubectx"><span class="nav-number">1.</span> <span class="nav-text">kubectx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install"><span class="nav-number">1.1.</span> <span class="nav-text">install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage"><span class="nav-number">1.2.</span> <span class="nav-text">usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kubens"><span class="nav-number">2.</span> <span class="nav-text">kubens</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install-1"><span class="nav-number">2.1.</span> <span class="nav-text">install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage-1"><span class="nav-number">2.2.</span> <span class="nav-text">usage</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>

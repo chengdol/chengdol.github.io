@@ -96,34 +96,25 @@
 
 
 
-  <meta name="description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
-<meta name="keywords" content="ssh,scp">
+  <meta name="description" content="I want to introduce you two useful tools for kubernetes development, github link with detail.  Note: this is not an official Google product.  kubectxkubectx helps you switch between clusters back and">
+<meta name="keywords" content="kubens,kubectx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ssh and Scp Daily Work Summary">
-<meta property="og:url" content="http://yoursite.com/2019/02/21/ssh-scp-summary/index.html">
+<meta property="og:title" content="Kubectx and Kubens">
+<meta property="og:url" content="http://yoursite.com/2019/02/17/kubectx-kubens/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
+<meta property="og:description" content="I want to introduce you two useful tools for kubernetes development, github link with detail.  Note: this is not an official Google product.  kubectxkubectx helps you switch between clusters back and">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
-<meta property="og:image" content="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP">
-<meta property="og:image" content="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ">
-<meta property="og:image" content="https://drive.google.com/uc?id=1HdAmGdDB1HxPtwFSzrTQcS-g7hw5r3o4">
-<meta property="og:image" content="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp">
-<meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
-<meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
-<meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2019-02-27T00:35:41.545Z">
+<meta property="og:updated_time" content="2019-02-28T08:17:07.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ssh and Scp Daily Work Summary">
-<meta name="twitter:description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
-<meta name="twitter:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
+<meta name="twitter:title" content="Kubectx and Kubens">
+<meta name="twitter:description" content="I want to introduce you two useful tools for kubernetes development, github link with detail.  Note: this is not an official Google product.  kubectxkubectx helps you switch between clusters back and">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/21/ssh-scp-summary/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/17/kubectx-kubens/">
 
 
 
@@ -133,7 +124,7 @@
   };
 </script>
 
-  <title>Ssh and Scp Daily Work Summary | 海胆阶段's Blog</title>
+  <title>Kubectx and Kubens | 海胆阶段's Blog</title>
   
 
 
@@ -359,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/ssh-scp-summary/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/kubectx-kubens/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -376,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ssh and Scp Daily Work Summary
+          <h1 class="post-title" itemprop="name headline">Kubectx and Kubens
 
               
             
@@ -402,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-02-21 20:56:58" itemprop="dateCreated datePublished" datetime="2019-02-21T20:56:58-08:00">2019-02-21</time>
+              <time title="Created: 2019-02-17 19:41:13" itemprop="dateCreated datePublished" datetime="2019-02-17T19:41:13-08:00">2019-02-17</time>
             
 
             
@@ -419,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-26 16:35:41" itemprop="dateModified" datetime="2019-02-26T16:35:41-08:00">2019-02-26</time>
+                <time title="Modified: 2019-02-28 00:17:07" itemprop="dateModified" datetime="2019-02-28T00:17:07-08:00">2019-02-28</time>
               
             
           </span>
@@ -436,7 +427,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a></span>
 
                 
                 
@@ -470,20 +461,24 @@
       
 
       
-        <p>This article used to walk you through some commonly <code>ssh</code> and <code>scp</code> usages, based on a real life scenario.</p>
-<p>################################################################<br># &emsp; Insert latest update at the top of the logs<br>#<br># &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br># &emsp; 02/21/2019 &emsp; &emsp; scp folder or files<br># &emsp; 01/23/2019 &emsp; &emsp; sshpass<br># &emsp; 01/22/2019 &emsp; &emsp; no prompt first time<br># &emsp; 01/08/2019 &emsp; &emsp; ECDSA host key changed<br># &emsp; 01/06/2019 &emsp; &emsp; ssh-kenscan<br># &emsp; 12/19/2018 &emsp; &emsp; ssh-copy-id<br># &emsp; 11/14/2018 &emsp; &emsp; ssh run shell script<br># &emsp; 10/01/2018 &emsp; &emsp; ssh send command<br>################################################################</p>
-<h3 id="10-01-2018"><a href="#10-01-2018" class="headerlink" title="10/01/2018"></a>10/01/2018</h3><p>use <code>ssh</code> send commands to execute on remote machine:<br><img src="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV" alt=""><br><code>-t</code> flag allow you to interact with remote machine:<br><img src="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP" alt=""></p>
-<h3 id="11-14-2018"><a href="#11-14-2018" class="headerlink" title="11/14/2018"></a>11/14/2018</h3><p>use ssh run shell script in remote machine<br><img src="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ" alt=""></p>
-<h3 id="12-19-2018"><a href="#12-19-2018" class="headerlink" title="12/19/2018"></a>12/19/2018</h3><p>use <code>ssh-copy-id</code> to copy local machine public key to remote machine’s <code>~/.ssh/authorized_keys</code> file, so next time when you <code>ssh</code> again, no prompt to require password:<br><img src="https://drive.google.com/uc?id=1HdAmGdDB1HxPtwFSzrTQcS-g7hw5r3o4" alt=""></p>
-<h3 id="01-06-2019"><a href="#01-06-2019" class="headerlink" title="01/06/2019"></a>01/06/2019</h3><p>use <code>ssh-keyscan</code> to get remote machine ecdsa identity, you can put this item into local known_hosts file, so when first time <code>ssh</code> login, there is no prompt to input <code>yes</code>:<br><img src="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp" alt=""><br>actually better to use <code>-o StrictHostKeyChecking=no</code> flag.</p>
-<h3 id="01-08-2019"><a href="#01-08-2019" class="headerlink" title="01/08/2019"></a>01/08/2019</h3><p>I create a new cluster with the same master hostname as the deleted one, so when I try to ssh to it, interesting thing happens:<br><img src="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd" alt=""><br>go to <code>~/.ssh/known_hosts</code> file and delete the corresponding <code>ECDSA</code> line<br><img src="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10" alt=""></p>
-<h3 id="01-22-2019"><a href="#01-22-2019" class="headerlink" title="01/22/2019"></a>01/22/2019</h3><p>when you first time ssh or scp to remote machine, it will prompt to add remote machine to <code>~/.ssh/known_hosts</code> file, this may interrupt <code>ansible</code> or shell script running, so I want to skip it. For example:<br><img src="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq" alt=""><br>use <code>-o StrictHostKeyChecking=no</code> option, it will silently add remote host name to <code>~/.ssh/known_host</code> file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_dsa.pub -o StrictHostKeyChecking=no root@example.com</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ./<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure>
-<p>if you don’t want to add the host name, <code>-o UserKnownHostsFile=/dev/null</code> option can save you.</p>
-<h3 id="01-23-2019"><a href="#01-23-2019" class="headerlink" title="01/23/2019"></a>01/23/2019</h3><p>scp or ssh without prompt input password<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sshpass</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; scp/ssh ...</span><br></pre></td></tr></table></figure>
-<h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>scp <code>source</code> directory and it’s content recursively to <code>root</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ~/<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure></p>
-<p>scp all files in <code>source</code> directory to <code>target</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no ./<span class="built_in">source</span>/* root@example.com:~/target</span><br></pre></td></tr></table></figure></p>
+        <p>I want to introduce you two useful tools for kubernetes development, <a href="https://github.com/ahmetb/kubectx" target="_blank" rel="noopener">github link</a> with detail.</p>
+<blockquote>
+<p>Note: this is not an official Google product.</p>
+</blockquote>
+<h2 id="kubectx"><a href="#kubectx" class="headerlink" title="kubectx"></a>kubectx</h2><p><code>kubectx</code> helps you switch between clusters back and forth</p>
+<h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><p>since kubectx/kubens are written in Bash, you should be able to install them to any POSIX environment that has Bash installed.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ahmetb/kubectx /opt/kubectx</span><br></pre></td></tr></table></figure></p>
+<p>make sure kubectx script is executable:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@myk8s1 ~] ls /opt/kubectx/ -ltr</span><br><span class="line">total 40</span><br><span class="line">-rw-r--r-- 1 root root 11357 Feb 17 21:25 LICENSE</span><br><span class="line">-rw-r--r-- 1 root root   968 Feb 17 21:25 CONTRIBUTING.md</span><br><span class="line">-rw-r--r-- 1 root root  7784 Feb 17 21:25 README.md</span><br><span class="line">drwxr-xr-x 2 root root   121 Feb 17 21:25 completion</span><br><span class="line">drwxr-xr-x 2 root root    84 Feb 17 21:25 img</span><br><span class="line">drwxr-xr-x 3 root root   100 Feb 17 21:25 test</span><br><span class="line">-rwxr-xr-x 1 root root  5273 Feb 17 21:25 kubens</span><br><span class="line">-rwxr-xr-x 1 root root  5218 Feb 17 21:25 kubectx</span><br></pre></td></tr></table></figure></p>
+<p>create symlinks to kubectx/kubens from somewhere in your PATH, like /usr/local/bin<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /opt/kubectx/kubectx /usr/<span class="built_in">local</span>/bin/kubectx</span><br></pre></td></tr></table></figure></p>
+<h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><p>you should first understand how to switch among different clusters by using configuration files. please investigate this <a href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/" target="_blank" rel="noopener">link</a>, actually <code>kubectx</code> is built on top of it.</p>
+<p>for example, I have one cluster on AWS and one cluster on Fyre, in each cluster there is a <code>~/.kube/config</code> file, rename it as <code>config.aws</code> and <code>config.fyre</code> and put them to another client machine <code>~/.kube/</code> folder with  kubectl installed.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube]# ls -ltr</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x 3 root root   23 Nov 26 16:38 cache</span><br><span class="line">-rw-r--r-- 1 root root 2214 Dec  6 10:16 config.aws</span><br><span class="line">drwxr-xr-x 2 root root   73 Dec  6 10:16 kubens</span><br><span class="line">drwxr-xr-x 3 root root 4096 Feb 17 22:05 http-cache</span><br><span class="line">-rw------- 1 root root 5474 Feb 17 22:22 config.fyre</span><br></pre></td></tr></table></figure></p>
+<p>append config files to environment variable <code>KUBECONFIG</code>, you can add export to <code>.bashrc</code> file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> KUBECONFIG=<span class="variable">$KUBECONFIG</span>:<span class="variable">$HOME</span>/.kube/config.aws:<span class="variable">$HOME</span>/.kube/config.fyre</span><br></pre></td></tr></table></figure></p>
+<p>now if you run <code>kubectx</code> you will see there are 2 contexts<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube] kubectx</span><br><span class="line">arn:aws:eks:us-west-2:296744932886:cluster/IIS-Test-Cluster</span><br><span class="line">kubernetes-admin@kubernetes</span><br></pre></td></tr></table></figure></p>
+<p>switch to <code>kubernetes-admin@kubernetes</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube] kubectx kubernetes-admin@kubernetes</span><br><span class="line">Switched to context &quot;kubernetes-admin@kubernetes&quot;.</span><br></pre></td></tr></table></figure></p>
+<p>switch back<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@centctl1 .kube] kubectx -</span><br><span class="line">Switched to context &quot;arn:aws:eks:us-west-2:296744932886:cluster/IIS-Test-Cluster&quot;.</span><br></pre></td></tr></table></figure></p>
+<p>actually the effect is the same as<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl config view</span><br><span class="line">kubectl config --kubeconfig=config.fyre use-context kubernetes-admin@kubernetes</span><br></pre></td></tr></table></figure></p>
+<h2 id="kubens"><a href="#kubens" class="headerlink" title="kubens"></a>kubens</h2><p><code>kubens</code> helps you switch between Kubernetes namespaces smoothly, so you don’t need to add <code>-n &lt;namespace&gt;</code> in every command.</p>
+<h3 id="install-1"><a href="#install-1" class="headerlink" title="install"></a>install</h3><p>download the same Github repository as <code>kubectx</code>, add symlinks:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /opt/kubectx/kubens /usr/<span class="built_in">local</span>/bin/kubens</span><br></pre></td></tr></table></figure></p>
+<h3 id="usage-1"><a href="#usage-1" class="headerlink" title="usage"></a>usage</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@myk8s1 ~] kubens</span><br><span class="line">default</span><br><span class="line">kube-public</span><br><span class="line">kube-system</span><br><span class="line">[root@myk8s1 ~] kubens kube-system</span><br><span class="line">Context &quot;kubernetes-admin@kubernetes&quot; modified.</span><br><span class="line">Active namespace is &quot;kube-system&quot;.</span><br><span class="line">[root@myk8s1 ~] kubens -</span><br><span class="line">Context &quot;kubernetes-admin@kubernetes&quot; modified.</span><br><span class="line">Active namespace is &quot;default&quot;.</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -507,9 +502,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ssh/" rel="tag"># ssh</a>
+            <a href="/tags/kubens/" rel="tag"># kubens</a>
           
-            <a href="/tags/scp/" rel="tag"># scp</a>
+            <a href="/tags/kubectx/" rel="tag"># kubectx</a>
           
         </div>
       
@@ -522,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/17/kubectx-kubens/" rel="next" title="Kubectx and Kubens">
-                <i class="fa fa-chevron-left"></i> Kubectx and Kubens
+              <a href="/2019/02/16/force-delete-statefulset/" rel="next" title="Force Delete StatefulSet and Pods">
+                <i class="fa fa-chevron-left"></i> Force Delete StatefulSet and Pods
               </a>
             
           </div>
@@ -532,8 +527,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/21/tar-summary/" rel="prev" title="Tar Command Daily Work Summary">
-                Tar Command Daily Work Summary <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/21/ssh-scp-summary/" rel="prev" title="Ssh and Scp Daily Work Summary">
+                Ssh and Scp Daily Work Summary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -718,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-01-2018"><span class="nav-number">1.</span> <span class="nav-text">10/01/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-14-2018"><span class="nav-number">2.</span> <span class="nav-text">11/14/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-19-2018"><span class="nav-number">3.</span> <span class="nav-text">12/19/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-06-2019"><span class="nav-number">4.</span> <span class="nav-text">01/06/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-08-2019"><span class="nav-number">5.</span> <span class="nav-text">01/08/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-22-2019"><span class="nav-number">6.</span> <span class="nav-text">01/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-23-2019"><span class="nav-number">7.</span> <span class="nav-text">01/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">8.</span> <span class="nav-text">02/21/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kubectx"><span class="nav-number">1.</span> <span class="nav-text">kubectx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install"><span class="nav-number">1.1.</span> <span class="nav-text">install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage"><span class="nav-number">1.2.</span> <span class="nav-text">usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kubens"><span class="nav-number">2.</span> <span class="nav-text">kubens</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#install-1"><span class="nav-number">2.1.</span> <span class="nav-text">install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage-1"><span class="nav-number">2.2.</span> <span class="nav-text">usage</span></a></li></ol></li></ol></div>
             
 
           </div>
