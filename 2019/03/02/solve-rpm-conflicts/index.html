@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
-<meta name="keywords" content="yum,rpm,docker">
+  <meta name="description" content="ProblemI want to offline install some rpms for an application, I put all dependencies for that application in a dedicated directory. The problem is it will cause conflicts with the old installed ones,">
+<meta name="keywords" content="rpm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Offline Package Installation II">
-<meta property="og:url" content="http://yoursite.com/2019/02/26/offline-package-install-2/index.html">
+<meta property="og:title" content="Solve Conflicts in RPM installation">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/solve-rpm-conflicts/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
+<meta property="og:description" content="ProblemI want to offline install some rpms for an application, I put all dependencies for that application in a dedicated directory. The problem is it will cause conflicts with the old installed ones,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-28T07:02:44.731Z">
+<meta property="og:updated_time" content="2019-03-03T02:42:21.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Offline Package Installation II">
-<meta name="twitter:description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
+<meta name="twitter:title" content="Solve Conflicts in RPM installation">
+<meta name="twitter:description" content="ProblemI want to offline install some rpms for an application, I put all dependencies for that application in a dedicated directory. The problem is it will cause conflicts with the old installed ones,">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/26/offline-package-install-2/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/02/solve-rpm-conflicts/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Offline Package Installation II | 海胆阶段's Blog</title>
+  <title>Solve Conflicts in RPM installation | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/offline-package-install-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/solve-rpm-conflicts/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Offline Package Installation II
+          <h1 class="post-title" itemprop="name headline">Solve Conflicts in RPM installation
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-02-26 21:37:42" itemprop="dateCreated datePublished" datetime="2019-02-26T21:37:42-08:00">2019-02-26</time>
+              <time title="Created: 2019-03-02 18:41:41 / Modified: 18:42:21" itemprop="dateCreated datePublished" datetime="2019-03-02T18:41:41-08:00">2019-03-02</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-27 23:02:44" itemprop="dateModified" datetime="2019-02-27T23:02:44-08:00">2019-02-27</time>
               
             
           </span>
@@ -461,24 +449,14 @@
       
 
       
-        <p>Now, let’s practice what we have learned from series <code>I</code>. For example, I want to create a self-contained k8s cluster installer, that means I need to install <code>docker</code> and <code>kubeadm</code> etc offline in the target machine.</p>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><blockquote>
-<p>Note: here we only download actual dependencies need for installation, not all rpms if we use <code>--installroot</code> option</p>
-</blockquote>
-<p>I want to install <code>Docker 18.06.3</code> (currently kubeadm now properly recognizes <code>Docker 18.09.0</code> and newer, but still treats <code>18.06</code> as the default supported version). You should perform below steps on a machine that hasn’t install docker yet.</p>
-<blockquote>
-<p>Note: <a href="https://docs.docker.com/install/linux/docker-ce/centos/#install-from-a-package" target="_blank" rel="noopener">install from a package</a>, rpms list in this link are not complete, they are in top level but can be used to upgrade version.</p>
-</blockquote>
-<h4 id="Uninstall-old-version"><a href="#Uninstall-old-version" class="headerlink" title="Uninstall old version"></a>Uninstall old version</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">           docker-client \</span><br><span class="line">           docker-client-latest \</span><br><span class="line">           docker-common \</span><br><span class="line">           docker-latest \</span><br><span class="line">           docker-latest-logrotate \</span><br><span class="line">           docker-logrotate \</span><br><span class="line">           docker-engine</span><br></pre></td></tr></table></figure>
-<p>The contents of <code>/var/lib/docker/</code>, including images, containers, volumes, and networks, are preserved. The Docker CE package is now called <code>docker-ce</code>.</p>
-<h4 id="Set-up-docker-repository"><a href="#Set-up-docker-repository" class="headerlink" title="Set up docker repository"></a>Set up docker repository</h4><p>Before you install Docker CE for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils \</span><br><span class="line">  device-mapper-persistent-data \</span><br><span class="line">  lvm2</span><br></pre></td></tr></table></figure></p>
-<p>Use the following command to set up the stable repository.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure></p>
-<h4 id="List-docker-version"><a href="#List-docker-version" class="headerlink" title="List docker version"></a>List docker version</h4><p>List and sort the versions available in your repo. This example sorts results by version number, highest to lowest, and is truncated:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: product-id, search-disabled-repos</span><br><span class="line">docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h4 id="Download-docker-rpms"><a href="#Download-docker-rpms" class="headerlink" title="Download docker rpms"></a>Download docker rpms</h4><p>Install a specific version by its fully qualified package name, which is the package name (<code>docker-ce</code>) plus the version string (2nd column) starting at the first colon (:), up to the first hyphen, separated by a hyphen (-). For example, <code>docker-ce-18.06.3.ce</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/docker-18.06.3-rpms</span><br><span class="line">yum install --downloadonly --downloaddir=/root/docker-18.06.3-rpms docker-ce-18.06.3.ce</span><br></pre></td></tr></table></figure></p>
-<p>list the rpms in the target folder:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">audit-2.8.4-4.el7.x86_64.rpm               libselinux-utils-2.5-14.1.el7.x86_64.rpm</span><br><span class="line">audit-libs-2.8.4-4.el7.x86_64.rpm          libsemanage-2.5-14.el7.x86_64.rpm</span><br><span class="line">audit-libs-python-2.8.4-4.el7.x86_64.rpm   libsemanage-python-2.5-14.el7.x86_64.rpm</span><br><span class="line">checkpolicy-2.5-8.el7.x86_64.rpm           libsepol-2.5-10.el7.x86_64.rpm</span><br><span class="line">container-selinux-2.68-1.el7.noarch.rpm    libtool-ltdl-2.4.2-22.el7_3.x86_64.rpm</span><br><span class="line">docker-ce-18.06.3.ce-3.el7.x86_64.rpm      policycoreutils-2.5-29.el7_6.1.x86_64.rpm</span><br><span class="line">libcgroup-0.41-20.el7.x86_64.rpm           policycoreutils-python-2.5-29.el7_6.1.x86_64.rpm</span><br><span class="line">libseccomp-2.3.1-3.el7.x86_64.rpm          python-IPy-0.75-6.el7.noarch.rpm</span><br><span class="line">libselinux-2.5-14.1.el7.x86_64.rpm         setools-libs-3.3.8-4.el7.x86_64.rpm</span><br><span class="line">libselinux-python-2.5-14.1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure></p>
-<p>Note that the required components may be changed in later version, such as <code>18.09.2</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/docker-18.09.2-rpms</span><br><span class="line">yum install --downloadonly --downloaddir=/root/docker-18.09.2-rpms docker-ce-18.09.2 docker-ce-cli-18.09.2 containerd.io</span><br></pre></td></tr></table></figure></p>
-<h4 id="Install-docker-rpms"><a href="#Install-docker-rpms" class="headerlink" title="Install docker rpms"></a>Install docker rpms</h4><p>now install docker <code>18.06.3</code> offline by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* -y install /root/docker-18.06.3-rpms/*.rpm</span><br></pre></td></tr></table></figure></p>
+        <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>I want to offline install some rpms for an application, I put all dependencies for that application in a dedicated directory. The problem is it will cause conflicts with the old installed ones, I also want to <strong>keep old existing</strong> rpms because they may needed by other packages. For example, I offline install <code>bind-utils</code> use command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* install -y ./<span class="built_in">bind</span>-utils/*.rpm</span><br></pre></td></tr></table></figure></p>
+<p>Error output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Error: Package: 1:openssl-1.0.2k-12.el7.x86_64 (@anaconda/7.5)</span><br><span class="line">           Requires: openssl-libs(x86-64) = 1:1.0.2k-12.el7</span><br><span class="line">           Removing: 1:openssl-libs-1.0.2k-12.el7.x86_64 (@anaconda/7.5)</span><br><span class="line">               openssl-libs(x86-64) = 1:1.0.2k-12.el7</span><br><span class="line">           Updated By: 1:openssl-libs-1.0.2k-16.el7.x86_64 (/openssl-libs-1.0.2k-16.el7.x86_64)</span><br><span class="line">               openssl-libs(x86-64) = 1:1.0.2k-16.el7</span><br><span class="line">...</span><br><span class="line">You could try using --skip-broken to work around the problem</span><br><span class="line">** Found 1 pre-existing rpmdb problem(s), <span class="string">'yum check'</span> output follows:</span><br><span class="line">mokutil-15-1.el7.x86_64 is a duplicate with mokutil-12-1.el7.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>This error shows that <code>yum</code> try to update old rpm with new one but this breaks the dependency chain. Option <code>--skip-broken</code> won’t work here, it will skip the dependency-problem rpm which include exactly what I need:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># skipped</span><br><span class="line">bind-utils.x86_64 32:9.9.4-73.el7_6</span><br></pre></td></tr></table></figure></p>
+<p>Then I try to use:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh ./<span class="built_in">bind</span>-utils/*.rpm</span><br></pre></td></tr></table></figure></p>
+<p>still bad with conflicts:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">file /usr/lib64/openssl/engines/libcapi.so from install of openssl-libs-1:1.0.2k-16.el7.x86_64 conflicts with file from package openssl-libs-1:1.0.2k-12.el7.x86_64</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>After doing research I find some <code>rpm</code> options may help:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">rpm &#123;-i|--install&#125; [install-options] PACKAGE_FILE ...</span><br><span class="line"></span><br><span class="line">       This installs a new package.</span><br><span class="line"></span><br><span class="line">       The general form of an rpm upgrade command is</span><br><span class="line"></span><br><span class="line">rpm &#123;-U|--upgrade&#125; [install-options] PACKAGE_FILE ...</span><br><span class="line"></span><br><span class="line">       This upgrades or installs the package currently installed to a newer version.  This is the same as  install,</span><br><span class="line">       except all other version(s) of the package are removed after the new package is installed.</span><br><span class="line"></span><br><span class="line">rpm &#123;-F|--freshen&#125; [install-options] PACKAGE_FILE ...</span><br><span class="line"></span><br><span class="line">       This will upgrade packages, but only ones for which an earlier version is installed.</span><br><span class="line">...</span><br><span class="line">--force</span><br><span class="line">              Same as using --replacepkgs, --replacefiles, and --oldpackage.</span><br><span class="line">--replacepkgs</span><br><span class="line">              Install the packages even if some of them are already installed on this system.</span><br><span class="line">--replacefiles</span><br><span class="line">              Install the packages even if they replace files from other, already installed, packages.</span><br><span class="line">--oldpackage</span><br><span class="line">              Allow an upgrade to replace a newer package with an older one.</span><br></pre></td></tr></table></figure></p>
+<p>Let’s add <code>--force</code> flag and try again, this works and the old rpms are still there:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --force -ivh ./<span class="built_in">bind</span>-utils/*.rpm</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep openssl-libs</span><br><span class="line">openssl-libs-1.0.2k-12.el7.x86_64</span><br><span class="line">openssl-libs-1.0.2k-16.el7.x86_64</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -502,11 +480,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/yum/" rel="tag"># yum</a>
-          
             <a href="/tags/rpm/" rel="tag"># rpm</a>
-          
-            <a href="/tags/docker/" rel="tag"># docker</a>
           
         </div>
       
@@ -519,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/25/offline-package-install-1/" rel="next" title="Offline Package Installation I">
-                <i class="fa fa-chevron-left"></i> Offline Package Installation I
+              <a href="/2019/03/02/yum-rpm-summary/" rel="next" title="Yum and Rpm Daily Work Summary">
+                <i class="fa fa-chevron-left"></i> Yum and Rpm Daily Work Summary
               </a>
             
           </div>
@@ -528,10 +502,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/28/yum-pending/" rel="prev" title="Yum Pending Transaction">
-                Yum Pending Transaction <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -717,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Uninstall-old-version"><span class="nav-number">1.1.</span> <span class="nav-text">Uninstall old version</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-up-docker-repository"><span class="nav-number">1.2.</span> <span class="nav-text">Set up docker repository</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List-docker-version"><span class="nav-number">1.3.</span> <span class="nav-text">List docker version</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-docker-rpms"><span class="nav-number">1.4.</span> <span class="nav-text">Download docker rpms</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-docker-rpms"><span class="nav-number">1.5.</span> <span class="nav-text">Install docker rpms</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>
