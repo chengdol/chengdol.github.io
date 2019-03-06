@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;em">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T18:19:25.851Z">
+<meta property="og:updated_time" content="2019-03-06T06:25:38.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yum and Rpm Daily Work Summary">
 <meta name="twitter:description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;em">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">20</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-03 10:19:25" itemprop="dateModified" datetime="2019-03-03T10:19:25-08:00">2019-03-03</time>
+                <time title="Modified: 2019-03-05 22:25:38" itemprop="dateModified" datetime="2019-03-05T22:25:38-08:00">2019-03-05</time>
               
             
           </span>
@@ -462,7 +462,7 @@
 
       
         <p>This article used to walk you through some commonly <code>yum</code> and <code>rpm</code> usages , based on a real life scenario.</p>
-<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 03/02/2019 &emsp; &emsp; upgrade rpm<br>#  &emsp; 03/01/2019 &emsp; &emsp; list rpm dependencies<br>#  &emsp; 02/27/2019 &emsp; &emsp; yum provides<br>#  &emsp; 02/25/2019 &emsp; &emsp; search rpm installed<br>#  &emsp; 02/24/2019 &emsp; &emsp; install rpm<br>#  &emsp; 01/19/2019 &emsp; &emsp; remove package<br>#<br>################################################################</p>
+<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 03/05/2019 &emsp; &emsp; yum autoremove<br>#  &emsp; 03/02/2019 &emsp; &emsp; upgrade rpm<br>#  &emsp; 03/01/2019 &emsp; &emsp; list rpm dependencies<br>#  &emsp; 02/27/2019 &emsp; &emsp; yum provides<br>#  &emsp; 02/25/2019 &emsp; &emsp; search rpm installed<br>#  &emsp; 02/24/2019 &emsp; &emsp; install rpm<br>#  &emsp; 01/19/2019 &emsp; &emsp; remove package<br>#<br>################################################################</p>
 <p>Yum command <a href="https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf" target="_blank" rel="noopener">cheat sheet</a></p>
 <h3 id="01-19-2019"><a href="#01-19-2019" class="headerlink" title="01/19/2019"></a>01/19/2019</h3><p>Remove or erase a installed package with its dependencies:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev &lt;package name&gt;</span><br><span class="line">yum erase &lt;package name&gt;</span><br></pre></td></tr></table></figure></p>
 <p>if it is needed, remove fail, or you can use <code>yum erase</code> to delete them all<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev containerd.io</span><br><span class="line"></span><br><span class="line">error: Failed dependencies:</span><br><span class="line">        containerd.io &gt;= 1.2.2-3 is needed by (installed) docker-ce-3:18.09.2-3.el7.x86_64</span><br></pre></td></tr></table></figure></p>
@@ -484,6 +484,10 @@
 <p>But for upgrading the previously installed package you can use any of <code>rpm -Fvh</code> or <code>rpm -Uvh</code>.</p>
 <p><code>rpm -Fvh</code> is used for upgrading the existing package (installed package).<br><code>rpm -Uvh</code> is used for installing the package and upgrading the package both.</p>
 <p>For example, upgrade <code>ansible</code> from <code>2.4.6.0</code> to <code>2.7.8</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -Fvh ansible-2.7.8-1.el7.ans.noarch.rpm</span><br><span class="line"></span><br><span class="line">warning: ansible-2.7.8-1.el7.ans.noarch.rpm: Header V4 RSA/SHA1 Signature, key ID 442667a9: NOKEY</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating / installing...</span><br><span class="line">   1:ansible-2.7.8-1.el7.ans          ################################# [ 50%]</span><br><span class="line">Cleaning up / removing...</span><br><span class="line">   2:ansible-2.4.6.0-1.el7.ans        ################################# [100%]</span><br></pre></td></tr></table></figure></p>
+<h3 id="03-05-2019"><a href="#03-05-2019" class="headerlink" title="03/05/2019"></a>03/05/2019</h3><p>Remove dependencies which are not in use, any unneeded dependencies from your system, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum autoremove docker-ce</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Dependencies Resolved</span><br><span class="line"></span><br><span class="line">=========================================================================================================================</span><br><span class="line"> Package                            Arch               Version                      Repository                      Size</span><br><span class="line">=========================================================================================================================</span><br><span class="line">Removing:</span><br><span class="line"> docker-ce                          x86_64             18.06.1.ce-3.el7             @docker-local.repo             168 M</span><br><span class="line">Removing for dependencies:</span><br><span class="line"> container-selinux                  noarch             2:2.68-1.el7                 @Local-Extras                   36 k</span><br><span class="line"> libcgroup                          x86_64             0.41-20.el7                  @Local-Base                    134 k</span><br><span class="line"> libseccomp                         x86_64             2.3.1-3.el7                  @Local-Base                    297 k</span><br><span class="line"> libtool-ltdl                       x86_64             2.4.2-22.el7_3               @Local-Base                     66 k</span><br><span class="line"> policycoreutils-python             x86_64             2.5-29.el7_6.1               @Local-Base                    1.2 M</span><br><span class="line"></span><br><span class="line">Transaction Summary</span><br><span class="line">=========================================================================================================================</span><br><span class="line">Remove  1 Package (+5 Dependent packages)</span><br></pre></td></tr></table></figure>
+<p>You also can add <code>clean_requirements_on_remove=1</code> in <code>/etc/yum.conf</code> file, then run<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker-ce</span><br></pre></td></tr></table></figure></p>
+<p>the same effect as using <code>autoremove</code>.</p>
 
       
     </div>
@@ -606,7 +610,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -724,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-19-2019"><span class="nav-number">1.</span> <span class="nav-text">01/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-24-2019"><span class="nav-number">2.</span> <span class="nav-text">02/24/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-25-2019"><span class="nav-number">3.</span> <span class="nav-text">02/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">4.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-01-2019"><span class="nav-number">5.</span> <span class="nav-text">03/01/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-02-2019"><span class="nav-number">6.</span> <span class="nav-text">03/02/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-19-2019"><span class="nav-number">1.</span> <span class="nav-text">01/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-24-2019"><span class="nav-number">2.</span> <span class="nav-text">02/24/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-25-2019"><span class="nav-number">3.</span> <span class="nav-text">02/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">4.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-01-2019"><span class="nav-number">5.</span> <span class="nav-text">03/01/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-02-2019"><span class="nav-number">6.</span> <span class="nav-text">03/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-05-2019"><span class="nav-number">7.</span> <span class="nav-text">03/05/2019</span></a></li></ol></div>
             
 
           </div>

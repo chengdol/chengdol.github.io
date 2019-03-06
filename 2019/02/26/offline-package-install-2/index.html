@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
+  <meta name="description" content="Now, let’s practice what we have learned from Offline package Installation I. For example, I want to install docker and kubeadm etc offline in the target machine. Docker Note: here we only download ac">
 <meta name="keywords" content="yum,rpm,docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Offline Package Installation II">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/offline-package-install-2/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
+<meta property="og:description" content="Now, let’s practice what we have learned from Offline package Installation I. For example, I want to install docker and kubeadm etc offline in the target machine. Docker Note: here we only download ac">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-28T07:02:44.731Z">
+<meta property="og:updated_time" content="2019-03-06T05:14:38.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Offline Package Installation II">
-<meta name="twitter:description" content="Now, let’s practice what we have learned from series I. For example, I want to create a self-contained k8s cluster installer, that means I need to install docker and kubeadm etc offline in the target">
+<meta name="twitter:description" content="Now, let’s practice what we have learned from Offline package Installation I. For example, I want to install docker and kubeadm etc offline in the target machine. Docker Note: here we only download ac">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">20</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-27 23:02:44" itemprop="dateModified" datetime="2019-02-27T23:02:44-08:00">2019-02-27</time>
+                <time title="Modified: 2019-03-05 21:14:38" itemprop="dateModified" datetime="2019-03-05T21:14:38-08:00">2019-03-05</time>
               
             
           </span>
@@ -461,24 +461,27 @@
       
 
       
-        <p>Now, let’s practice what we have learned from series <code>I</code>. For example, I want to create a self-contained k8s cluster installer, that means I need to install <code>docker</code> and <code>kubeadm</code> etc offline in the target machine.</p>
+        <p>Now, let’s practice what we have learned from <code>Offline package Installation I</code>. For example, I want to install <code>docker</code> and <code>kubeadm</code> etc offline in the target machine.</p>
 <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><blockquote>
 <p>Note: here we only download actual dependencies need for installation, not all rpms if we use <code>--installroot</code> option</p>
 </blockquote>
-<p>I want to install <code>Docker 18.06.3</code> (currently kubeadm now properly recognizes <code>Docker 18.09.0</code> and newer, but still treats <code>18.06</code> as the default supported version). You should perform below steps on a machine that hasn’t install docker yet.</p>
+<p>I want to install <code>Docker 18.06.3</code> (currently kubeadm now properly recognizes <code>Docker 18.09.0</code> and newer, but still treats <code>18.06</code> as the default supported version). You should perform below steps on a machine that hasn’t installed docker yet.</p>
 <blockquote>
 <p>Note: <a href="https://docs.docker.com/install/linux/docker-ce/centos/#install-from-a-package" target="_blank" rel="noopener">install from a package</a>, rpms list in this link are not complete, they are in top level but can be used to upgrade version.</p>
 </blockquote>
 <h4 id="Uninstall-old-version"><a href="#Uninstall-old-version" class="headerlink" title="Uninstall old version"></a>Uninstall old version</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">           docker-client \</span><br><span class="line">           docker-client-latest \</span><br><span class="line">           docker-common \</span><br><span class="line">           docker-latest \</span><br><span class="line">           docker-latest-logrotate \</span><br><span class="line">           docker-logrotate \</span><br><span class="line">           docker-engine</span><br></pre></td></tr></table></figure>
 <p>The contents of <code>/var/lib/docker/</code>, including images, containers, volumes, and networks, are preserved. The Docker CE package is now called <code>docker-ce</code>.</p>
 <h4 id="Set-up-docker-repository"><a href="#Set-up-docker-repository" class="headerlink" title="Set up docker repository"></a>Set up docker repository</h4><p>Before you install Docker CE for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils \</span><br><span class="line">  device-mapper-persistent-data \</span><br><span class="line">  lvm2</span><br></pre></td></tr></table></figure></p>
-<p>Use the following command to set up the stable repository.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure></p>
+<p>Use the following command to set up the stable repository, <code>yum-utils</code> contains <code>yum-config-manager</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure></p>
 <h4 id="List-docker-version"><a href="#List-docker-version" class="headerlink" title="List docker version"></a>List docker version</h4><p>List and sort the versions available in your repo. This example sorts results by version number, highest to lowest, and is truncated:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: product-id, search-disabled-repos</span><br><span class="line">docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <h4 id="Download-docker-rpms"><a href="#Download-docker-rpms" class="headerlink" title="Download docker rpms"></a>Download docker rpms</h4><p>Install a specific version by its fully qualified package name, which is the package name (<code>docker-ce</code>) plus the version string (2nd column) starting at the first colon (:), up to the first hyphen, separated by a hyphen (-). For example, <code>docker-ce-18.06.3.ce</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/docker-18.06.3-rpms</span><br><span class="line">yum install --downloadonly --downloaddir=/root/docker-18.06.3-rpms docker-ce-18.06.3.ce</span><br></pre></td></tr></table></figure></p>
 <p>list the rpms in the target folder:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">audit-2.8.4-4.el7.x86_64.rpm               libselinux-utils-2.5-14.1.el7.x86_64.rpm</span><br><span class="line">audit-libs-2.8.4-4.el7.x86_64.rpm          libsemanage-2.5-14.el7.x86_64.rpm</span><br><span class="line">audit-libs-python-2.8.4-4.el7.x86_64.rpm   libsemanage-python-2.5-14.el7.x86_64.rpm</span><br><span class="line">checkpolicy-2.5-8.el7.x86_64.rpm           libsepol-2.5-10.el7.x86_64.rpm</span><br><span class="line">container-selinux-2.68-1.el7.noarch.rpm    libtool-ltdl-2.4.2-22.el7_3.x86_64.rpm</span><br><span class="line">docker-ce-18.06.3.ce-3.el7.x86_64.rpm      policycoreutils-2.5-29.el7_6.1.x86_64.rpm</span><br><span class="line">libcgroup-0.41-20.el7.x86_64.rpm           policycoreutils-python-2.5-29.el7_6.1.x86_64.rpm</span><br><span class="line">libseccomp-2.3.1-3.el7.x86_64.rpm          python-IPy-0.75-6.el7.noarch.rpm</span><br><span class="line">libselinux-2.5-14.1.el7.x86_64.rpm         setools-libs-3.3.8-4.el7.x86_64.rpm</span><br><span class="line">libselinux-python-2.5-14.1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure></p>
-<p>Note that the required components may be changed in later version, such as <code>18.09.2</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/docker-18.09.2-rpms</span><br><span class="line">yum install --downloadonly --downloaddir=/root/docker-18.09.2-rpms docker-ce-18.09.2 docker-ce-cli-18.09.2 containerd.io</span><br></pre></td></tr></table></figure></p>
+<p>Note that the required components may be changed in later version, such as <code>18.09.2</code>, there are 2 more packages <code>docker-ce-cli-18.09.2</code> and <code>containerd.io</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/docker-18.09.2-rpms</span><br><span class="line">yum install --downloadonly --downloaddir=/root/docker-18.09.2-rpms docker-ce-18.09.2 docker-ce-cli-18.09.2 containerd.io</span><br></pre></td></tr></table></figure></p>
 <h4 id="Install-docker-rpms"><a href="#Install-docker-rpms" class="headerlink" title="Install docker rpms"></a>Install docker rpms</h4><p>now install docker <code>18.06.3</code> offline by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* -y install /root/docker-18.06.3-rpms/*.rpm</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note: please refer my blog <code>Set up and Use Local Yum Repository</code> if you want to create and use local yum repository</p>
+</blockquote>
 
       
     </div>
@@ -603,7 +606,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

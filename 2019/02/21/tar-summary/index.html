@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T18:18:59.539Z">
+<meta property="og:updated_time" content="2019-03-06T04:27:33.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tar Command Daily Work Summary">
 <meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">20</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-03 10:18:59" itemprop="dateModified" datetime="2019-03-03T10:18:59-08:00">2019-03-03</time>
+                <time title="Modified: 2019-03-05 20:27:33" itemprop="dateModified" datetime="2019-03-05T20:27:33-08:00">2019-03-05</time>
               
             
           </span>
@@ -471,6 +471,7 @@
 <p>If you don’t exclude target.tar.gz, it will tar itself again.</p>
 <h3 id="02-22-2019"><a href="#02-22-2019" class="headerlink" title="02/22/2019"></a>02/22/2019</h3><p>List tar.gz file content, flag <code>z</code>  is used to distinguish tar and tar.gz<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar ztvf target.tar.gz</span><br></pre></td></tr></table></figure></p>
 <h3 id="02-27-2019"><a href="#02-27-2019" class="headerlink" title="02/27/2019"></a>02/27/2019</h3><p>If you don’t specify target folder, untar will put things in current directory, use <code>-C</code> option to specify it. For example, I want to untar source.tar.gz file to <code>/etc/yum.repos.d/</code> folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf /tmp/source.tar.gz -C /etc/yum.repos.d/</span><br></pre></td></tr></table></figure></p>
+<p>For <code>-C</code> option, in <code>c</code> and <code>r</code> mode, this changes the directory before adding the following files.  In <code>x</code> mode, change directories after opening the archive but before extracting entries from the archive.</p>
 <h3 id="02-28-2019"><a href="#02-28-2019" class="headerlink" title="02/28/2019"></a>02/28/2019</h3><p>Sometimes I see people use <code>-czf</code> but sometimes <code>czf</code>, dash or not to pass flags?</p>
 <p>Historical and compatible reason, <strong>no</strong> dash version is probably more portable.</p>
 <p><code>tar</code> is one of those ancient commands from the days when option syntax hadn’t been standardized. Because all useful invocations of <code>tar</code> require specifying an operation before providing any file name, most <code>tar</code> implementations interpret their first argument as an option even if it doesn’t begin with a <code>-</code>. Most current implementations accept a <code>-</code>.</p>
@@ -594,7 +595,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
