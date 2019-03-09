@@ -96,25 +96,28 @@
 
 
 
-  <meta name="description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
-<meta name="keywords" content="kubernetes,RBAC,service account">
+  <meta name="description" content="We want to use systemd as cgroup driver for docker and kubelet, let’s see how to achieve that. Configure dockerAfter you install and start docker, by default it will use cgroupfs as the cgroup driver,">
+<meta name="keywords" content="systemd,cgroup driver">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RBAC Authorization for K8s API Access">
-<meta property="og:url" content="http://yoursite.com/2019/01/27/role-rbac-k8s/index.html">
+<meta property="og:title" content="Set systemd as Cgroup Driver">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/systemd-cgroup-driver/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
+<meta property="og:description" content="We want to use systemd as cgroup driver for docker and kubelet, let’s see how to achieve that. Configure dockerAfter you install and start docker, by default it will use cgroupfs as the cgroup driver,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T18:15:45.169Z">
+<meta property="og:image" content="https://drive.google.com/uc?id=1Wn2J8wk_7e36Z-W_x5lgM93nFBkGJ7EV">
+<meta property="og:image" content="https://drive.google.com/uc?id=1AiZ-y12HevZivQm5TwIYYzY-OX7lfzho">
+<meta property="og:updated_time" content="2019-03-09T21:39:17.948Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RBAC Authorization for K8s API Access">
-<meta name="twitter:description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
+<meta name="twitter:title" content="Set systemd as Cgroup Driver">
+<meta name="twitter:description" content="We want to use systemd as cgroup driver for docker and kubelet, let’s see how to achieve that. Configure dockerAfter you install and start docker, by default it will use cgroupfs as the cgroup driver,">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1Wn2J8wk_7e36Z-W_x5lgM93nFBkGJ7EV">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/27/role-rbac-k8s/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/09/systemd-cgroup-driver/">
 
 
 
@@ -124,7 +127,7 @@
   };
 </script>
 
-  <title>RBAC Authorization for K8s API Access | 海胆阶段's Blog</title>
+  <title>Set systemd as Cgroup Driver | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/27/role-rbac-k8s/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/systemd-cgroup-driver/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RBAC Authorization for K8s API Access
+          <h1 class="post-title" itemprop="name headline">Set systemd as Cgroup Driver
 
               
             
@@ -393,24 +396,12 @@
                 
               
 
-              <time title="Created: 2019-01-27 12:16:10" itemprop="dateCreated datePublished" datetime="2019-01-27T12:16:10-08:00">2019-01-27</time>
+              <time title="Created: 2019-03-09 13:38:30 / Modified: 13:39:17" itemprop="dateCreated datePublished" datetime="2019-03-09T13:38:30-08:00">2019-03-09</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-03 10:15:45" itemprop="dateModified" datetime="2019-03-03T10:15:45-08:00">2019-03-03</time>
               
             
           </span>
@@ -461,35 +452,20 @@
       
 
       
-        <p>We want to <strong>scale the compute pods by calling k8s API from inside the engine conductor container</strong>, this definitely need to be authorized and we need to grant privilege for this action.</p>
-<p>There are some concepts you need to know in order to achieve the goal.</p>
-<h2 id="Service-Account"><a href="#Service-Account" class="headerlink" title="Service Account"></a>Service Account</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/" target="_blank" rel="noopener">what is Service Account</a></p>
-</blockquote>
-<p>Processes in containers inside pods can contact the apiserver. When they do, they are authenticated as a particular service account (for example, <code>default</code>).</p>
-<p>Once you create a namespace, for example <code>test-1</code>, there is a <code>default</code> service account automatically generated.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get sa -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME      SECRETS   AGE</span><br><span class="line">default   1         139m</span><br></pre></td></tr></table></figure>
-<p>let’s see what is inside the service account<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe sa default -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Name:                default</span><br><span class="line">Namespace:           <span class="built_in">test</span>-1</span><br><span class="line">Labels:              &lt;none&gt;</span><br><span class="line">Annotations:         &lt;none&gt;</span><br><span class="line">Image pull secrets:  &lt;none&gt;</span><br><span class="line">Mountable secrets:   default-token-mtv4n</span><br><span class="line">Tokens:              default-token-mtv4n</span><br><span class="line">Events:              &lt;none&gt;</span><br></pre></td></tr></table></figure>
-<p>here we see there is a mountable secret <code>default-token-mtv4n</code>, that is the credentials to access the apiserver.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe secret default-token-mtv4n -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Name:         default-token-mtv4n</span><br><span class="line">Namespace:    <span class="built_in">test</span>-1</span><br><span class="line">Labels:       &lt;none&gt;</span><br><span class="line">Annotations:  kubernetes.io/service-account.name: default</span><br><span class="line">              kubernetes.io/service-account.uid: 387381d3-2272-11e9-91a2-00163e0196e7</span><br><span class="line"></span><br><span class="line">Type:  kubernetes.io/service-account-token</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">====</span><br><span class="line">ca.crt:     1025 bytes</span><br><span class="line">namespace:  6 bytes</span><br><span class="line">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrd...</span><br></pre></td></tr></table></figure>
-<h2 id="ClusterRole"><a href="#ClusterRole" class="headerlink" title="ClusterRole"></a>ClusterRole</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole" target="_blank" rel="noopener">what is Role and ClusterRole</a></p>
-</blockquote>
-<p>A <code>ClusterRole</code> can be used to grant the same permissions as a <code>Role</code>, but because they are cluster-scoped, they can also be used to grant access to</p>
-<ul>
-<li>cluster-scoped resources (like nodes)</li>
-<li>non-resource endpoints (like “/healthz”)</li>
-<li>namespaced resources (like pods) across all namespaces</li>
-</ul>
-<p>Here we use a cluster role called <code>cluster-admin</code>, it’s generated by default<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get clusterrole | grep cluster-admin</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cluster-admin                        174m</span><br></pre></td></tr></table></figure>
-<h2 id="ClusterRole-Binding"><a href="#ClusterRole-Binding" class="headerlink" title="ClusterRole Binding"></a>ClusterRole Binding</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding" target="_blank" rel="noopener">what is RoleBinding and ClusterRole Binding</a></p>
-</blockquote>
-<p>A role binding grants the permissions defined in a role to a user or set of users. It holds a list of subjects (users, groups, or service accounts), and a reference to the role being granted. Permissions can be granted within a namespace with a <code>RoleBinding</code>, or cluster-wide with a <code>ClusterRoleBinding</code>.</p>
-<p>below we grant service account <code>default</code> in namespace <code>test-1</code> the cluster admin level privilege.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">ClusterRoleBinding</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">rbac.authorization.k8s.io/v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"> <span class="attr">name:</span> <span class="string">&lt;cluster</span> <span class="string">role</span> <span class="string">name&gt;</span></span><br><span class="line"><span class="attr">subjects:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr"> name:</span> <span class="string">default</span></span><br><span class="line"><span class="attr"> namespace:</span> <span class="string">test-1</span></span><br><span class="line"><span class="attr">roleRef:</span></span><br><span class="line"> <span class="attr">kind:</span> <span class="string">ClusterRole</span></span><br><span class="line"> <span class="attr">name:</span> <span class="string">cluster-admin</span></span><br><span class="line"> <span class="attr">apiGroup:</span> <span class="attr">http://rbac.authorization.k8s.io</span></span><br></pre></td></tr></table></figure></p>
-<p>then we can write a script, using <code>curl</code> to call k8s API, for example, to scale the number of compute pods<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http_code=$(curl -w <span class="string">"%&#123;http_code&#125;"</span> -sS  --cacert <span class="variable">$CACERT</span>  -XPATCH -H <span class="string">"Content-Type: application/strategic-merge-patch+json"</span> -H <span class="string">"Accept: application/json"</span> -H <span class="string">"Authorization: Bearer <span class="variable">$TOKEN</span>"</span> <span class="string">"https://kubernetes.default/apis/apps/v1/namespaces/<span class="variable">$NAMESPACE</span>/statefulsets/is-engine-compute"</span> --data <span class="string">"&#123;\"spec\":&#123;\"replicas\":<span class="variable">$REP</span>&#125;&#125;"</span> -o <span class="variable">$OUT_FILE</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$http_code</span> -ne 200 ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="variable">$&#123;JQ&#125;</span> <span class="string">'&#123; result:.status, code: .code,  message: .message &#125;'</span> <span class="variable">$OUT_FILE</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+        <p>We want to use <code>systemd</code> as cgroup driver for docker and kubelet, let’s see how to achieve that.</p>
+<h3 id="Configure-docker"><a href="#Configure-docker" class="headerlink" title="Configure docker"></a>Configure docker</h3><p>After you install and start docker, by default it will use <code>cgroupfs</code> as the cgroup driver, check by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker info | grep Cgroup</span><br><span class="line"></span><br><span class="line">Cgroup Driver: cgroupfs</span><br></pre></td></tr></table></figure></p>
+<p>Edit <code>/usr/lib/systemd/system/docker.service</code> file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd --exec-opt native.cgroupdriver=systemd</span><br></pre></td></tr></table></figure></p>
+<p>Then reload daemon and restart docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
+<p>Verify the change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker info | grep Cgroup</span><br><span class="line"></span><br><span class="line">Cgroup Driver: systemd</span><br></pre></td></tr></table></figure></p>
+<h3 id="Configure-kubelet"><a href="#Configure-kubelet" class="headerlink" title="Configure kubelet"></a>Configure kubelet</h3><p>Currently, the kubelet cannot automatically detects the cgroup driver used by the CRI runtime, but the value of <code>--cgroup-driver</code> must match the cgroup driver used by the CRI runtime to ensure the health of the kubelet.</p>
+<p><strong>Note</strong>: interesting thing is <code>kubeadm init</code> now can automatically detect and set kubelet with the same cgroup driver as docker (I use version <code>1.13.x</code>). </p>
+<p>There is a file:  <code>/var/lib/kubelet/kubeadm-flags.env</code>, that <code>kubeadm init</code> and <code>kubeadm join</code> generates at runtime, populating the <code>KUBELET_KUBEADM_ARGS</code> variable dynamically, in <code>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</code> you can see it:<br><img src="https://drive.google.com/uc?id=1Wn2J8wk_7e36Z-W_x5lgM93nFBkGJ7EV" alt=""></p>
+<p>you will see <code>systemd</code> resides in <code>/var/lib/kubelet/kubeadm-flags.env</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KUBELET_KUBEADM_ARGS=--cgroup-driver=systemd --network-plugin=cni --pod-infra-container-image=k8s.gcr.io/pause:3.1</span><br></pre></td></tr></table></figure></p>
+<p>Anyway let’s see how to do the configuration manually. After install kubelet, go to edit <code>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</code> file, add this line:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Environment=&quot;KUBELET_CGROUP_ARGS=--cgroup-driver=systemd&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Append <code>$KUBELET_CGROUP_ARGS</code> at end of <code>ExecStart=/usr/bin/kubelet</code> statement:</p>
+<p><img src="https://drive.google.com/uc?id=1AiZ-y12HevZivQm5TwIYYzY-OX7lfzho" alt=""></p>
+<p>Then when you complete <code>kubeadm init</code>,  verify the change:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep kubelet</span><br><span class="line"></span><br><span class="line">root     19864  4.5  0.6 2326996 104192 ?      Ssl  01:21  32:49 /usr/bin/kubelet</span><br><span class="line">--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf </span><br><span class="line">--kubeconfig=/etc/kubernetes/kubelet.conf </span><br><span class="line">--config=/var/lib/kubelet/config.yaml </span><br><span class="line">--cgroup-driver=systemd </span><br><span class="line">--network-plugin=cni </span><br><span class="line">--pod-infra-container-image=k8s.gcr.io/pause:3.1 </span><br><span class="line">--cgroup-driver=systemd</span><br></pre></td></tr></table></figure></p>
+<p>You see, there are 2 <code>--cgroup-driver=systemd</code> options, so I think manually configure kubelet service file is needless.</p>
 
       
     </div>
@@ -513,11 +489,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+            <a href="/tags/systemd/" rel="tag"># systemd</a>
           
-            <a href="/tags/RBAC/" rel="tag"># RBAC</a>
-          
-            <a href="/tags/service-account/" rel="tag"># service account</a>
+            <a href="/tags/cgroup-driver/" rel="tag"># cgroup driver</a>
           
         </div>
       
@@ -530,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/27/copy-paste-Mac/" rel="next" title="Copy & Paste in Terminal">
-                <i class="fa fa-chevron-left"></i> Copy & Paste in Terminal
+              <a href="/2019/03/05/yum-local-repo/" rel="next" title="Set up and Use Local Yum Repository">
+                <i class="fa fa-chevron-left"></i> Set up and Use Local Yum Repository
               </a>
             
           </div>
@@ -539,10 +513,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/27/set-up-hexo/" rel="prev" title="Set up Blog with GitHub Pages and Hexo">
-                Set up Blog with GitHub Pages and Hexo <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -736,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Account"><span class="nav-number">1.</span> <span class="nav-text">Service Account</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClusterRole"><span class="nav-number">2.</span> <span class="nav-text">ClusterRole</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClusterRole-Binding"><span class="nav-number">3.</span> <span class="nav-text">ClusterRole Binding</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-docker"><span class="nav-number">1.</span> <span class="nav-text">Configure docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-kubelet"><span class="nav-number">2.</span> <span class="nav-text">Configure kubelet</span></a></li></ol></div>
             
 
           </div>

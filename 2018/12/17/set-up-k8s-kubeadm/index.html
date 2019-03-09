@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1pl6EV9YwD604U1ItoMKnqlAp0cjwEOAd">
 <meta property="og:image" content="https://drive.google.com/uc?id=11R3h2G2oknDcN3sY1cTdwUHQCnxwRysn">
 <meta property="og:image" content="https://drive.google.com/uc?id=1bPLxrrlLLyFvNn6cBdSIJbWpANy-ht4h">
-<meta property="og:updated_time" content="2019-03-03T18:15:49.706Z">
+<meta property="og:updated_time" content="2019-03-09T20:10:27.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set Up K8s Cluster by Kubeadm">
 <meta name="twitter:description" content="This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or configurations change. Later I will revisit and  upgrade the installa">
@@ -264,7 +264,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">23</span></a>
 
   </li>
         
@@ -302,7 +302,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">21</span></a>
 
   </li>
 
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-03 10:15:49" itemprop="dateModified" datetime="2019-03-03T10:15:49-08:00">2019-03-03</time>
+                <time title="Modified: 2019-03-09 12:10:27" itemprop="dateModified" datetime="2019-03-09T12:10:27-08:00">2019-03-09</time>
               
             
           </span>
@@ -502,6 +502,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@myk8s3 ~] free -h</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           7.6G        189M        5.7G        136M        1.8G        7.0G</span><br><span class="line">Swap:            0B          0B          0B</span><br></pre></td></tr></table></figure>
 <p>========== for <code>worker</code> nodes in cluster, done. Continue to do following in <code>master</code> node ==========</p>
 <h2 id="Initialize-kubernetes-cluster"><a href="#Initialize-kubernetes-cluster" class="headerlink" title="Initialize kubernetes cluster"></a>Initialize kubernetes cluster</h2><p>I will use <code>Calico</code> as the container network solution, in master node, run<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --pod-network-cidr=192.168.0.0/16</span><br></pre></td></tr></table></figure></p>
+<p>you can specify the version by using <code>--kubernetes-version v1.13.3</code>, otherwise it will pull latest version from Internet.</p>
 <p>you can see the output like this<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[kubeconfig] Using kubeconfig folder <span class="string">"/etc/kubernetes"</span></span><br><span class="line">[kubeconfig] Writing <span class="string">"admin.conf"</span> kubeconfig file</span><br><span class="line">[kubeconfig] Writing <span class="string">"kubelet.conf"</span> kubeconfig file</span><br><span class="line">[kubeconfig] Writing <span class="string">"controller-manager.conf"</span> kubeconfig file</span><br><span class="line">[kubeconfig] Writing <span class="string">"scheduler.conf"</span> kubeconfig file</span><br><span class="line">[control-plane] Using manifest folder <span class="string">"/etc/kubernetes/manifests"</span></span><br><span class="line">[control-plane] Creating static Pod manifest <span class="keyword">for</span> <span class="string">"kube-apiserver"</span></span><br><span class="line">[control-plane] Creating static Pod manifest <span class="keyword">for</span> <span class="string">"kube-controller-manager"</span></span><br><span class="line">[control-plane] Creating static Pod manifest <span class="keyword">for</span> <span class="string">"kube-scheduler"</span></span><br><span class="line">[etcd] Creating static Pod manifest <span class="keyword">for</span> <span class="built_in">local</span> etcd <span class="keyword">in</span> <span class="string">"/etc/kubernetes/manifests"</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">Your Kubernetes master has initialized successfully!</span><br><span class="line"></span><br><span class="line">To start using your cluster, you need to run the following as a regular user:</span><br><span class="line"></span><br><span class="line">  mkdir -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">  sudo cp -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">  sudo chown $(id -u):$(id -g) <span class="variable">$HOME</span>/.kube/config</span><br><span class="line"></span><br><span class="line">You should now deploy a pod network to the cluster.</span><br><span class="line">Run <span class="string">"kubectl apply -f [podnetwork].yaml"</span> with one of the options listed at:</span><br><span class="line">  https://kubernetes.io/docs/concepts/cluster-administration/addons/</span><br><span class="line"></span><br><span class="line">You can now join any number of machines by running the following on each node</span><br><span class="line">as root:</span><br><span class="line"></span><br><span class="line">  kubeadm join 9.30.97.218:6443 --token jjkiw2.n478eree0wrr3bmc --discovery-token-ca-cert-hash sha256:79659fb0b3fb0044f382ab5a5e317d4f775e821a61d0df4a401a4cbd8d8c5a7f</span><br></pre></td></tr></table></figure></p>
 <p>keep the last command for joining worker node later<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm join 9.30.97.218:6443 --token jjkiw2.n478eree0wrr3bmc --discovery-token-ca-cert-hash sha256:79659fb0b3fb0044f382ab5a5e317d4f775e821a61d0df4a401a4cbd8d8c5a7f</span><br></pre></td></tr></table></figure></p>
 <p>then run following command in master node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">cp -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">chown $(id -u):$(id -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure></p>
@@ -645,7 +646,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -727,7 +728,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

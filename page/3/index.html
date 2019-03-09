@@ -96,25 +96,23 @@
 
 
 
-  <meta name="description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
-<meta name="keywords" content="kubernetes,RBAC,service account">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RBAC Authorization for K8s API Access">
-<meta property="og:url" content="http://yoursite.com/2019/01/27/role-rbac-k8s/index.html">
+  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:type" content="website">
+<meta property="og:title" content="海胆阶段&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
+<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T18:15:45.169Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RBAC Authorization for K8s API Access">
-<meta name="twitter:description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
+<meta name="twitter:title" content="海胆阶段&#39;s Blog">
+<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/27/role-rbac-k8s/">
+  <link rel="canonical" href="http://yoursite.com/page/3/">
 
 
 
@@ -124,7 +122,7 @@
   };
 </script>
 
-  <title>RBAC Authorization for K8s API Access | 海胆阶段's Blog</title>
+  <title>海胆阶段's Blog</title>
   
 
 
@@ -172,7 +170,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -333,9 +332,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -350,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/27/role-rbac-k8s/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/set-up-k8s-kubeadm/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,8 +366,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RBAC Authorization for K8s API Access
-
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/17/set-up-k8s-kubeadm/" class="post-title-link" itemprop="url">Set Up K8s Cluster by Kubeadm</a>
               
             
           </h1>
@@ -393,7 +394,7 @@
                 
               
 
-              <time title="Created: 2019-01-27 12:16:10" itemprop="dateCreated datePublished" datetime="2019-01-27T12:16:10-08:00">2019-01-27</time>
+              <time title="Created: 2018-12-17 14:30:00" itemprop="dateCreated datePublished" datetime="2018-12-17T14:30:00-08:00">2018-12-17</time>
             
 
             
@@ -410,7 +411,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-03 10:15:45" itemprop="dateModified" datetime="2019-03-03T10:15:45-08:00">2019-03-03</time>
+                <time title="Modified: 2019-03-09 12:10:27" itemprop="dateModified" datetime="2019-03-09T12:10:27-08:00">2019-03-09</time>
               
             
           </span>
@@ -461,36 +462,22 @@
       
 
       
-        <p>We want to <strong>scale the compute pods by calling k8s API from inside the engine conductor container</strong>, this definitely need to be authorized and we need to grant privilege for this action.</p>
-<p>There are some concepts you need to know in order to achieve the goal.</p>
-<h2 id="Service-Account"><a href="#Service-Account" class="headerlink" title="Service Account"></a>Service Account</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/" target="_blank" rel="noopener">what is Service Account</a></p>
-</blockquote>
-<p>Processes in containers inside pods can contact the apiserver. When they do, they are authenticated as a particular service account (for example, <code>default</code>).</p>
-<p>Once you create a namespace, for example <code>test-1</code>, there is a <code>default</code> service account automatically generated.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get sa -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME      SECRETS   AGE</span><br><span class="line">default   1         139m</span><br></pre></td></tr></table></figure>
-<p>let’s see what is inside the service account<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe sa default -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Name:                default</span><br><span class="line">Namespace:           <span class="built_in">test</span>-1</span><br><span class="line">Labels:              &lt;none&gt;</span><br><span class="line">Annotations:         &lt;none&gt;</span><br><span class="line">Image pull secrets:  &lt;none&gt;</span><br><span class="line">Mountable secrets:   default-token-mtv4n</span><br><span class="line">Tokens:              default-token-mtv4n</span><br><span class="line">Events:              &lt;none&gt;</span><br></pre></td></tr></table></figure>
-<p>here we see there is a mountable secret <code>default-token-mtv4n</code>, that is the credentials to access the apiserver.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe secret default-token-mtv4n -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Name:         default-token-mtv4n</span><br><span class="line">Namespace:    <span class="built_in">test</span>-1</span><br><span class="line">Labels:       &lt;none&gt;</span><br><span class="line">Annotations:  kubernetes.io/service-account.name: default</span><br><span class="line">              kubernetes.io/service-account.uid: 387381d3-2272-11e9-91a2-00163e0196e7</span><br><span class="line"></span><br><span class="line">Type:  kubernetes.io/service-account-token</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">====</span><br><span class="line">ca.crt:     1025 bytes</span><br><span class="line">namespace:  6 bytes</span><br><span class="line">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrd...</span><br></pre></td></tr></table></figure>
-<h2 id="ClusterRole"><a href="#ClusterRole" class="headerlink" title="ClusterRole"></a>ClusterRole</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole" target="_blank" rel="noopener">what is Role and ClusterRole</a></p>
-</blockquote>
-<p>A <code>ClusterRole</code> can be used to grant the same permissions as a <code>Role</code>, but because they are cluster-scoped, they can also be used to grant access to</p>
-<ul>
-<li>cluster-scoped resources (like nodes)</li>
-<li>non-resource endpoints (like “/healthz”)</li>
-<li>namespaced resources (like pods) across all namespaces</li>
-</ul>
-<p>Here we use a cluster role called <code>cluster-admin</code>, it’s generated by default<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get clusterrole | grep cluster-admin</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cluster-admin                        174m</span><br></pre></td></tr></table></figure>
-<h2 id="ClusterRole-Binding"><a href="#ClusterRole-Binding" class="headerlink" title="ClusterRole Binding"></a>ClusterRole Binding</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding" target="_blank" rel="noopener">what is RoleBinding and ClusterRole Binding</a></p>
-</blockquote>
-<p>A role binding grants the permissions defined in a role to a user or set of users. It holds a list of subjects (users, groups, or service accounts), and a reference to the role being granted. Permissions can be granted within a namespace with a <code>RoleBinding</code>, or cluster-wide with a <code>ClusterRoleBinding</code>.</p>
-<p>below we grant service account <code>default</code> in namespace <code>test-1</code> the cluster admin level privilege.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">ClusterRoleBinding</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">rbac.authorization.k8s.io/v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"> <span class="attr">name:</span> <span class="string">&lt;cluster</span> <span class="string">role</span> <span class="string">name&gt;</span></span><br><span class="line"><span class="attr">subjects:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr"> name:</span> <span class="string">default</span></span><br><span class="line"><span class="attr"> namespace:</span> <span class="string">test-1</span></span><br><span class="line"><span class="attr">roleRef:</span></span><br><span class="line"> <span class="attr">kind:</span> <span class="string">ClusterRole</span></span><br><span class="line"> <span class="attr">name:</span> <span class="string">cluster-admin</span></span><br><span class="line"> <span class="attr">apiGroup:</span> <span class="attr">http://rbac.authorization.k8s.io</span></span><br></pre></td></tr></table></figure></p>
-<p>then we can write a script, using <code>curl</code> to call k8s API, for example, to scale the number of compute pods<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http_code=$(curl -w <span class="string">"%&#123;http_code&#125;"</span> -sS  --cacert <span class="variable">$CACERT</span>  -XPATCH -H <span class="string">"Content-Type: application/strategic-merge-patch+json"</span> -H <span class="string">"Accept: application/json"</span> -H <span class="string">"Authorization: Bearer <span class="variable">$TOKEN</span>"</span> <span class="string">"https://kubernetes.default/apis/apps/v1/namespaces/<span class="variable">$NAMESPACE</span>/statefulsets/is-engine-compute"</span> --data <span class="string">"&#123;\"spec\":&#123;\"replicas\":<span class="variable">$REP</span>&#125;&#125;"</span> -o <span class="variable">$OUT_FILE</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$http_code</span> -ne 200 ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="variable">$&#123;JQ&#125;</span> <span class="string">'&#123; result:.status, code: .code,  message: .message &#125;'</span> <span class="variable">$OUT_FILE</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
-
+        
+          
+            <p>
+              This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/12/17/set-up-k8s-kubeadm/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
       
     </div>
 
@@ -511,44 +498,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
-          
-            <a href="/tags/RBAC/" rel="tag"># RBAC</a>
-          
-            <a href="/tags/service-account/" rel="tag"># service account</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/01/27/copy-paste-Mac/" rel="next" title="Copy & Paste in Terminal">
-                <i class="fa fa-chevron-left"></i> Copy & Paste in Terminal
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/27/set-up-hexo/" rel="prev" title="Set up Blog with GitHub Pages and Hexo">
-                Set up Blog with GitHub Pages and Hexo <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -558,15 +515,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -587,17 +547,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -726,23 +677,6 @@
       </div>
 
       
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Account"><span class="nav-number">1.</span> <span class="nav-text">Service Account</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClusterRole"><span class="nav-number">2.</span> <span class="nav-text">ClusterRole</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClusterRole-Binding"><span class="nav-number">3.</span> <span class="nav-text">ClusterRole Binding</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
       
 
@@ -866,10 +800,6 @@
   
 
   
-  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
-<script src="/js/src/post-details.js?v=6.7.0"></script>
-
-
 
   
 
