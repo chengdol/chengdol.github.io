@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Wn2J8wk_7e36Z-W_x5lgM93nFBkGJ7EV">
 <meta property="og:image" content="https://drive.google.com/uc?id=1AiZ-y12HevZivQm5TwIYYzY-OX7lfzho">
-<meta property="og:updated_time" content="2019-03-09T21:39:17.948Z">
+<meta property="og:updated_time" content="2019-03-10T07:27:43.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set systemd as Cgroup Driver">
 <meta name="twitter:description" content="We want to use systemd as cgroup driver for docker and kubelet, let’s see how to achieve that. Configure dockerAfter you install and start docker, by default it will use cgroupfs as the cgroup driver,">
@@ -282,7 +282,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">7</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">8</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">22</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
                 
               
 
-              <time title="Created: 2019-03-09 13:38:30 / Modified: 13:39:17" itemprop="dateCreated datePublished" datetime="2019-03-09T13:38:30-08:00">2019-03-09</time>
+              <time title="Created: 2019-03-09 13:38:30 / Modified: 23:27:43" itemprop="dateCreated datePublished" datetime="2019-03-09T13:38:30-08:00">2019-03-09</time>
             
 
             
@@ -464,6 +464,9 @@
 <p>Anyway let’s see how to do the configuration manually. After install kubelet, go to edit <code>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</code> file, add this line:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Environment=&quot;KUBELET_CGROUP_ARGS=--cgroup-driver=systemd&quot;</span><br></pre></td></tr></table></figure></p>
 <p>Append <code>$KUBELET_CGROUP_ARGS</code> at end of <code>ExecStart=/usr/bin/kubelet</code> statement:</p>
 <p><img src="https://drive.google.com/uc?id=1AiZ-y12HevZivQm5TwIYYzY-OX7lfzho" alt=""></p>
+<blockquote>
+<p>Note: in the file <code>/etc/systemd/system/kubelet.service</code>, it seems you can also configure here: <code>ExecStart=/usr/bin/kubelet --cgroup-driver=systemd</code>, not very clear the difference.</p>
+</blockquote>
 <p>Then when you complete <code>kubeadm init</code>,  verify the change:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep kubelet</span><br><span class="line"></span><br><span class="line">root     19864  4.5  0.6 2326996 104192 ?      Ssl  01:21  32:49 /usr/bin/kubelet</span><br><span class="line">--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf </span><br><span class="line">--kubeconfig=/etc/kubernetes/kubelet.conf </span><br><span class="line">--config=/var/lib/kubelet/config.yaml </span><br><span class="line">--cgroup-driver=systemd </span><br><span class="line">--network-plugin=cni </span><br><span class="line">--pod-infra-container-image=k8s.gcr.io/pause:3.1 </span><br><span class="line">--cgroup-driver=systemd</span><br></pre></td></tr></table></figure></p>
 <p>You see, there are 2 <code>--cgroup-driver=systemd</code> options, so I think manually configure kubelet service file is needless.</p>
 
@@ -513,6 +516,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/09/awesome-resource/" rel="prev" title="Awesome Resources">
+                Awesome Resources <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -584,7 +591,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -611,7 +618,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
