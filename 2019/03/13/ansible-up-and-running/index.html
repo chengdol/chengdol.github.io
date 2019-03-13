@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Note: This is a fat synopsis of the book Ansible: Up and Running, 2nd Edition, just for quick revisit and review.  Could we remove major architectural components from the IT automation stack? Elimina">
+<meta name="keywords" content="ansible,book">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ansible Up and Running, 2nd Edition">
+<meta property="og:url" content="http://yoursite.com/2019/03/13/ansible-up-and-running/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="Note: This is a fat synopsis of the book Ansible: Up and Running, 2nd Edition, just for quick revisit and review.  Could we remove major architectural components from the IT automation stack? Elimina">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-13T07:09:20.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ansible Up and Running, 2nd Edition">
+<meta name="twitter:description" content="Note: This is a fat synopsis of the book Ansible: Up and Running, 2nd Edition, just for quick revisit and review.  Could we remove major architectural components from the IT automation stack? Elimina">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/13/ansible-up-and-running/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Ansible Up and Running, 2nd Edition | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">25</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">9</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">23</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/ansible-up-and-running/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ansible Up and Running, 2nd Edition
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-13 00:04:25 / Modified: 00:09:20" itemprop="dateCreated datePublished" datetime="2019-03-13T00:04:25-07:00">2019-03-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Ansible/" itemprop="url" rel="index"><span itemprop="name">Ansible</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Note: This is a fat synopsis of the book <code>Ansible: Up and Running, 2nd Edition</code>, just for quick revisit and review.</p>
+</blockquote>
+<p>Could we remove major architectural components from the IT automation stack? Eliminating management daemons and relying instead on OpenSSH meant the system could start managing a computer fleet immediately, without having to set up anything on the managed machines.</p>
+<p>the“Making Ansible Go Even Faster” chapter now covers asynchronous tasks, and the“Debugging Ansible Playbooks” chapter now covers the debugger that was introduced in version 2.1.</p>
+<p>we are all slowly turning into system engineers.</p>
+<h3 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1. Introduction"></a>Chapter 1. Introduction</h3><p>We also need to make sure we have the appropriate redundancies in place, so that when failures happen (and they will), our software systems will handle these failures gracefully. Then there are the secondary services that we also need to deploy and maintain, such as logging, monitoring, and analytics, as well as third-party services we need to interact with, such as infrastructure-as-a-service (IaaS) endpoints for managing virtual machine instances.</p>
+<p>When we talk about configuration management, we are typically talking about writing some kind of state description for our servers, and then using a tool to enforce that the servers are, indeed, in that state: the right packages are installed, configuration files contain the expected values and have the expected permissions, the right services are running, and so on.</p>
+<p>Ansible is a great tool for deployment as well as configuration management. Using a single tool for both configuration management and deployment makes life simpler for the folks responsible for operations.</p>
+<p>Some people talk about the need for <em>orchestration</em> of deployment. This is where multiple remote servers are involved, and things have to happen in a specific order.</p>
+<h4 id="How-Ansible-works"><a href="#How-Ansible-works" class="headerlink" title="How Ansible works"></a>How Ansible works</h4><p>In Ansible, a script is called a playbook. A playbook describes which hosts (what Ansible calls remote servers) to configure, and an ordered list of tasks to perform on those hosts.</p>
+<p>Ansible will make SSH connections in parallel to web1, web2, and web3. It will execute the first task on the list on all three hosts simultaneously</p>
+<p>To manage a remote server with Ansible, the server needs to have SSH and Python 2.5 or later installed, or Python 2.4 with the Python <code>simplejsonlibrary</code> installed. There’s no need to preinstall an agent or anyother software on the host.</p>
+<p>The control machine (the one that you use to control remote machines) needs tohave Python 2.6 or later installed.</p>
+<p>Ansible is <strong>push based</strong>, and has been used successfully in production with thousands of nodes, and has excellent support for environments where servers are dynamically added and removed.</p>
+<p>Ansible modules are declarative; you use them to describe the state you want the server to be in. Modules are also idempotent.</p>
+<p>Ansible has excellent support for templating, as well as defining variables at different scopes. Anybody who thinks Ansible is equivalent to working with shell scripts has never had to maintain a nontrivial program written in shell. I’ll always choose Ansible over shell scripts for config management tasks if given a choice.</p>
+<p>To be productive with Ansible, you need to be familiar with basic Linux system administration tasks. Ansible makes it easy to automate your tasks, but it’s not the kind of tool that “automagically” does things that you otherwise wouldn’t know how to do.</p>
+<p>Ansible uses the YAML file format and the Jinja2 templating languages, so you’ll need to learn some YAML and Jinja2 to use Ansible, but both technologies are easy to pick up.</p>
+<p>If you prefer not to spend the money on a public cloud, I recommend you install Vagrant on your machine. Vagrant is an excellent open source tool for managing virtual machines. You can use Vagrant to boot a Linux virtual machine inside your laptop, and you can use that as a test server.</p>
+<p>Vagrant needs the VirtualBox virtualizer to be installed on your machine. Download <a href="http://www.virtualbox.org/" target="_blank" rel="noopener">VirtualBox</a> and then download <a href="http://www.vagrantup.com/" target="_blank" rel="noopener">Vagrant</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir playbooks</span><br><span class="line">cd playbooks</span><br><span class="line">vagrant init ubuntu/trusty64</span><br><span class="line">vagrant up</span><br></pre></td></tr></table></figure>
+<p>The first time you use vagrant up, it will download the virtual machine image file, which might take a while, depending on your internet connection.</p>
+<p>You should be able to SSH into your new Ubuntu 14.04 virtual machine by running the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant ssh</span><br></pre></td></tr></table></figure></p>
+<p>This approach lets us interact with the shell, but Ansible needs to connect to the virtual machine by using the regular SSH client, not the vagrant ssh command.</p>
+<p>Tell Vagrant to output the SSH connection details by typing the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant ssh-config</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh vagrant@127.0.0.1 -p 2222 -i /Users/lorin/dev/ansiblebook/ch01/</span><br><span class="line">playbooks/.vagrant/machines/default/virtualbox/private_key</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testserver ansible_host=127.0.0.1 ansible_port=2222 ansible_user=vagrant ansible_private_key_file=.vagrant/machines/default/virtualbox/private_key</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.ansible.cfg</span><br></pre></td></tr></table></figure>
+<p>Ansible supports the ssh-agent program, so you don’t need to explicitly specify SSH key files in your inventory files. See <a href="https://learning.oreilly.com/library/view/Ansible:+Up+and+Running,+2nd+Edition/9781491979792/app01.html#SSH_AGENT" target="_blank" rel="noopener">“SSH Agent”</a> for more details if you haven’t used ssh-agent before</p>
+<p>If Ansible did not succeed, add the <code>-vvvv</code> flag to see more details about the error:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible testserver -i hosts -m ping -vvvv</span><br></pre></td></tr></table></figure></p>
+<h4 id="Simplify-by-ansible-cfg-file"><a href="#Simplify-by-ansible-cfg-file" class="headerlink" title="Simplify by ansible.cfg file"></a>Simplify by <em>ansible.cfg</em> file</h4><p>we’ll use one such mechanism, the <code>ansible.cfg</code> file, to set some defaults so we don’t need to type as much.</p>
+<p>Ansible looks for an <code>ansible.cfg</code> file in the following places, in this order:</p>
+<ul>
+<li>File specified by the ANSIBLE_CONFIG environment variable</li>
+<li>./ansible.cfg (ansible.cfg in the current directory)</li>
+<li>~/.ansible.cfg (.ansible.cfg in your home directory)</li>
+<li>/etc/ansible/ansible.cfg</li>
+</ul>
+<p>I typically put <em>ansible.cfg</em> in the current directory, alongside my playbooks. That way, I can check it into the same version-control repository that my playbooks are in.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[defaults]</span><br><span class="line">inventory = hosts</span><br><span class="line">remote_user = vagrant</span><br><span class="line">private_key_file = .vagrant/machines/default/virtualbox/private_key</span><br><span class="line">host_key_checking = False</span><br></pre></td></tr></table></figure>
+<p>Disables SSH host-key checking. Otherwise, we need to edit our <em>~/.ssh/known_hosts</em> file every time we destroy and re-create a nodes.</p>
+<p>Ansible uses <code>/etc/ansible/hosts</code> as the default location for the inventory file. However, I never use this because I like to keep my inventory files version-controlled alongside my playbooks.</p>
+<p>The <code>command</code> module is so commonly used that it’s the default module, so we can omit it<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ansible testserver -a uptime</span><br><span class="line">## spaces in command use quotes</span><br><span class="line">ansible testserver -a &quot;tail /var/log/dmesg&quot;</span><br><span class="line">## -b becomes root user</span><br><span class="line">ansible testserver -b -a &quot;tail /var/log/syslog&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Chapter-2-Playbooks-A-Beginning"><a href="#Chapter-2-Playbooks-A-Beginning" class="headerlink" title="Chapter 2. Playbooks: A Beginning"></a>Chapter 2. Playbooks: A Beginning</h3><p>Most of your time in Ansible will be spent writing <em>playbooks</em>. A playbook is the term that Ansible uses for a configuration management script.</p>
+<p>vargant virtual machine ports mapping in <em>vagrantfile</em>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">VAGRANTFILE_API_VERSION = &quot;2&quot;</span><br><span class="line"></span><br><span class="line">Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|</span><br><span class="line">  config.vm.box = &quot;ubuntu/trusty64&quot;</span><br><span class="line">  config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080</span><br><span class="line">  config.vm.network &quot;forwarded_port&quot;, guest: 443, host: 8443</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vagrant reload</span><br><span class="line"></span><br><span class="line">==&gt; default: Forwarding ports...</span><br><span class="line">    default: 80 =&gt; 8080 (adapter 1)</span><br><span class="line">    default: 443 =&gt; 8443 (adapter 1)</span><br><span class="line">    default: 22 =&gt; 2222 (adapter 1)</span><br></pre></td></tr></table></figure>
+<h4 id="TLS-VERSUS-SSL"><a href="#TLS-VERSUS-SSL" class="headerlink" title="TLS VERSUS SSL"></a>TLS VERSUS SSL</h4><p>You might be familiar with the term <em>SSL</em> rather than <em>TLS</em>(Transport Layer Security) in the context of secure web servers. SSL is an older protocol that was used to secure communications between browsers and web servers, and it has been superseded by a newer protocol named TLS. Although many continue to use the term <em>SSL</em> to refer to the current secure protocol, in this book, I use the more accurate <em>TLS</em>.</p>
+<h4 id="WHY-DO-YOU-USE-TRUE-IN-ONE-PLACE-AND-YES-IN-ANOTHER"><a href="#WHY-DO-YOU-USE-TRUE-IN-ONE-PLACE-AND-YES-IN-ANOTHER" class="headerlink" title="WHY DO YOU USE TRUE IN ONE PLACE AND YES IN ANOTHER?"></a>WHY DO YOU USE TRUE IN ONE PLACE AND YES IN ANOTHER?</h4><p>Strictly speaking, module arguments (for example, update_cache=yes) are treated differently from values elsewhere in playbooks (for example, sudo: True). Values elsewhere are handled by the YAML parser and so use the YAML conventions of truthiness:</p>
+<p>YAML truthy</p>
+<blockquote>
+<p>true, True, TRUE, yes, Yes, YES, on, On, ON, y, Y</p>
+</blockquote>
+<p>YAML falsey</p>
+<blockquote>
+<p>false, False, FALSE, no, No, NO, off, Off, OFF, n, N</p>
+</blockquote>
+<p>Module arguments are passed as strings and use Ansible’s internal conventions:</p>
+<p>module arg truthy</p>
+<blockquote>
+<p>yes, on, 1, true</p>
+</blockquote>
+<p>module arg falsey</p>
+<blockquote>
+<p>no, off, 0, false</p>
+</blockquote>
+<p>I tend to follow the examples in the official Ansible documentation. These typically use yes and no when passing arguments to modules (since that’s consistent with the module documentation), and True and False elsewhere in playbooks.</p>
+<h4 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h4><p>An Ansible convention is to keep files in a subdirectory named <em>files</em>, and Jinja2 templates in a subdirectory named <em>templates</em>. I follow this convention throughout the book.</p>
+<p>For <code>.j2</code> file, when Ansible renders this template, it will replace this variable with the real value.</p>
+<p>Inventory files are in the <code>.ini</code> file format.</p>
+<h4 id="COWSAY"><a href="#COWSAY" class="headerlink" title="COWSAY"></a><a href="https://michaelheap.com/cowsay-and-ansible/" target="_blank" rel="noopener">COWSAY</a></h4><p>If you have the <em>cowsay</em> program installed on your local machine, Ansible output will look like this instead:</p>
+<p>you can download <em>cowsay</em> rpm and install it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cowsay -l</span><br><span class="line"></span><br><span class="line">Cow files in /usr/share/cowsay:</span><br><span class="line">beavis.zen blowfish bong bud-frogs bunny cheese cower default dragon</span><br><span class="line">dragon-and-cow elephant elephant-in-snake eyes flaming-sheep ghostbusters</span><br><span class="line">head-in hellokitty kiss kitty koala kosh luke-koala mech-and-cow meow milk</span><br><span class="line">moofasa moose mutilated ren satanic sheep skeleton small sodomized</span><br><span class="line">stegosaurus stimpy supermilker surgery telebears three-eyes turkey turtle</span><br><span class="line">tux udder vader vader-koala www</span><br></pre></td></tr></table></figure></p>
+<p>set what animal you like:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export ANSIBLE_COW_SELECTION=tux</span><br></pre></td></tr></table></figure></p>
+<p>enable cowsay:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export ANSIBLE_NOCOWS=0</span><br></pre></td></tr></table></figure></p>
+<p>then if you run playbook:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt; PLAY [Configure webserver with nginx] &gt;</span><br><span class="line"> ---------------------------------------</span><br><span class="line">        \   ^__^</span><br><span class="line">         \  (oo)\_______</span><br><span class="line">            (__)\       )\/\</span><br><span class="line">                ||----w |</span><br><span class="line">                ||     ||</span><br></pre></td></tr></table></figure></p>
+<p>If you don’t want to see the cows, you can disable cowsay by setting the <code>ANSIBLE_NOCOWS</code> environment variable like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export ANSIBLE_NOCOWS=1</span><br></pre></td></tr></table></figure>
+<p>You can also disable cowsay by adding the following to your <em>ansible.cfg</em> file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[defaults]</span><br><span class="line">nocows = 1</span><br></pre></td></tr></table></figure></p>
+<h4 id="TIP"><a href="#TIP" class="headerlink" title="TIP"></a>TIP</h4><p>If your playbook file is marked as executable and starts with a line that looks like this<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env ansible-playbook</span><br></pre></td></tr></table></figure></p>
+<p>then you can execute it by invoking it directly, like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./playbook-file.yml</span><br></pre></td></tr></table></figure></p>
+<h4 id="YAML-syntax"><a href="#YAML-syntax" class="headerlink" title="YAML syntax"></a>YAML syntax</h4><h5 id="Start-of-file"><a href="#Start-of-file" class="headerlink" title="Start of file"></a>Start of file</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>However, if you forget to put those three dashes at the top of your playbook files, Ansible won’t complain.</p>
+<h5 id="String"><a href="#String" class="headerlink" title="String"></a>String</h5><p>In general, YAML strings don’t have to be quoted, although you can quote them if you prefer. Even if there are spaces, you don’t need to quote them.</p>
+<p>In some scenarios in Ansible, you will need to quote strings. These typically involve the use of  for variable substitution. </p>
+<h5 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h5><p>YAML has a native Boolean type, and provides you with a wide variety of strings that can be interpreted as true or false.</p>
+<h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- My Fair Lady</span><br><span class="line">- Oklahoma</span><br><span class="line">- The Pirates of Penzance</span><br></pre></td></tr></table></figure>
+<h5 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">address: 742 Evergreen Terrace</span><br><span class="line">city: Springfield</span><br><span class="line">state: North Takoma</span><br></pre></td></tr></table></figure>
+<h5 id="Line-folding"><a href="#Line-folding" class="headerlink" title="Line folding"></a>Line folding</h5><p>When writing playbooks, you’ll often encounter situations where you’re passing many arguments to a module. For aesthetics, you might want to break this up across multiple lines in your file, but you want Ansible to treat the string as if it were a single line.</p>
+<p>You can do this with YAML by using line folding with the greater than (<code>&gt;</code>) character. The YAML parser will replace line breaks with spaces. For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">address: &gt;</span><br><span class="line">    Department of Computer Science,</span><br><span class="line">    A.V. Williams Building,</span><br><span class="line">    University of Maryland</span><br><span class="line">city: College Park</span><br><span class="line">state: Maryland</span><br></pre></td></tr></table></figure></p>
+<h4 id="Anatomy-of-a-Playbook"><a href="#Anatomy-of-a-Playbook" class="headerlink" title="Anatomy of a Playbook"></a><a href="https://learning.oreilly.com/library/view/ansible-up-and/9781491979792/ch02.html#playbooks_a_beginning" target="_blank" rel="noopener">Anatomy of a Playbook</a></h4><p>A playbook is a list of plays:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">- name: Configure webserver with nginx</span><br><span class="line">  hosts: webservers</span><br><span class="line">  become: True</span><br><span class="line">  tasks:</span><br><span class="line">  - name: install nginx</span><br><span class="line">      apt: name=nginx update_cache=yes</span><br><span class="line"></span><br><span class="line">  - name: copy nginx config file</span><br><span class="line">    copy: src=files/nginx.conf dest=/etc/nginx/sites-available/default</span><br><span class="line"></span><br><span class="line">  - name: enable configuration</span><br><span class="line">    file: &gt;</span><br><span class="line">      dest=/etc/nginx/sites-enabled/default</span><br><span class="line">      src=/etc/nginx/sites-available/default</span><br><span class="line">      state=link</span><br><span class="line"></span><br><span class="line">  - name: copy index.html</span><br><span class="line">    template: src=templates/index.html.j2  dest=/usr/share/nginx/html/index.html mode=0644</span><br><span class="line"></span><br><span class="line">  - name: restart nginx</span><br><span class="line">    service: name=nginx state=restarted</span><br></pre></td></tr></table></figure></p>
+<p>you’ll see in <a href="https://learning.oreilly.com/library/view/ansible-up-and/9781491979792/ch16.html#DEBUGGING" target="_blank" rel="noopener">Chapter 16</a>, you can use the <code>--start-at-task &lt;task name&gt;</code> flag to tell <code>ansible-playbook</code> to start a playbook in the middle of a play, but you need to reference the task by name.</p>
+<p>Every task must contain a key with the name of a module and a value with the arguments to that module. In the preceding example, the module name is <code>apt</code> and the arguments are <code>name=nginx update_cache=yes</code>.</p>
+<p>The arguments are treated as a string, not as a dictionary. This means that if you want to break arguments into multiple lines, you need to use the YAML folding syntax, like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- name: install nginx</span><br><span class="line">  apt: &gt;</span><br><span class="line">      name=nginx</span><br><span class="line">      update_cache=yes</span><br></pre></td></tr></table></figure></p>
+<p>Ansible also supports a task syntax that will let you specify module arguments as a YAML dictionary, which is helpful when using modules that support complex arguments. For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- name: Install docker</span><br><span class="line">  any_errors_fatal: true</span><br><span class="line">  yum:</span><br><span class="line">    name: docker-ce</span><br><span class="line">    state: present</span><br><span class="line">    enablerepo: docker-local</span><br></pre></td></tr></table></figure></p>
+<h4 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h4><p>Modules are scripts that come packaged with Ansible and perform some kind of action on a host.</p>
+<p>commonly used modules:<br><code>yum</code><br><code>copy</code><br><code>file</code><br><code>service</code><br><code>template</code></p>
+<h5 id="VIEWING-ANSIBLE-MODULE-DOCUMENTATION"><a href="#VIEWING-ANSIBLE-MODULE-DOCUMENTATION" class="headerlink" title="VIEWING ANSIBLE MODULE DOCUMENTATION"></a>VIEWING ANSIBLE MODULE DOCUMENTATION</h5><p>Ansible ships with the <code>ansible-doc</code> command-line tool, which shows documentation about modules. Think of it as man pages for Ansible modules.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-doc yum</span><br></pre></td></tr></table></figure></p>
+<p>Recall from the first chapter that Ansible executes a task on a host by generating a custom script based on the module name and arguments, and then copies this script to the host and runs it.</p>
+<p>More than 200 modules ship with Ansible, and this number grows with every release. You can also find third-party Ansible modules out there, or write your own.</p>
+<h4 id="Putting-It-All-Together"><a href="#Putting-It-All-Together" class="headerlink" title="Putting It All Together"></a>Putting It All Together</h4><p>To sum up, a playbook contains one or more plays. A play associates an unordered set of hosts with an ordered list of tasks. Each task is associated with exactly one module.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+-------------+         +------------+          +-------------+</span><br><span class="line">|             |     +---&gt;            |      +---&gt;             |</span><br><span class="line">|  playbook   +---------&gt;    play    +----------&gt;    hosts    |</span><br><span class="line">|             |     +---&gt;            |      +---&gt;             |</span><br><span class="line">+-------------+         +------+-----+          +-------------+</span><br><span class="line">                               |</span><br><span class="line">                               |</span><br><span class="line">                               |</span><br><span class="line">                             +---+</span><br><span class="line">                             | | |</span><br><span class="line">                        +----v-v-v----+         +-------------+</span><br><span class="line">                        |             |         |             |</span><br><span class="line">                        |   task      +--------&gt;+   module    |</span><br><span class="line">                        |             |         |             |</span><br><span class="line">                        +-------------+         +-------------+</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ansible/" rel="tag"># ansible</a>
+          
+            <a href="/tags/book/" rel="tag"># book</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/09/awesome-resource/" rel="next" title="Awesome Resources">
+                <i class="fa fa-chevron-left"></i> Awesome Resources
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-Ansible-works"><span class="nav-number">1.1.</span> <span class="nav-text">How Ansible works</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Simplify-by-ansible-cfg-file"><span class="nav-number">1.2.</span> <span class="nav-text">Simplify by ansible.cfg file</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chapter-2-Playbooks-A-Beginning"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2. Playbooks: A Beginning</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TLS-VERSUS-SSL"><span class="nav-number">2.1.</span> <span class="nav-text">TLS VERSUS SSL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHY-DO-YOU-USE-TRUE-IN-ONE-PLACE-AND-YES-IN-ANOTHER"><span class="nav-number">2.2.</span> <span class="nav-text">WHY DO YOU USE TRUE IN ONE PLACE AND YES IN ANOTHER?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NOTE"><span class="nav-number">2.3.</span> <span class="nav-text">NOTE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#COWSAY"><span class="nav-number">2.4.</span> <span class="nav-text">COWSAY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TIP"><span class="nav-number">2.5.</span> <span class="nav-text">TIP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#YAML-syntax"><span class="nav-number">2.6.</span> <span class="nav-text">YAML syntax</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Start-of-file"><span class="nav-number">2.6.1.</span> <span class="nav-text">Start of file</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#String"><span class="nav-number">2.6.2.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Boolean"><span class="nav-number">2.6.3.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#List"><span class="nav-number">2.6.4.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dictionary"><span class="nav-number">2.6.5.</span> <span class="nav-text">Dictionary</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Line-folding"><span class="nav-number">2.6.6.</span> <span class="nav-text">Line folding</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anatomy-of-a-Playbook"><span class="nav-number">2.7.</span> <span class="nav-text">Anatomy of a Playbook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Modules"><span class="nav-number">2.8.</span> <span class="nav-text">Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#VIEWING-ANSIBLE-MODULE-DOCUMENTATION"><span class="nav-number">2.8.1.</span> <span class="nav-text">VIEWING ANSIBLE MODULE DOCUMENTATION</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Putting-It-All-Together"><span class="nav-number">2.9.</span> <span class="nav-text">Putting It All Together</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
