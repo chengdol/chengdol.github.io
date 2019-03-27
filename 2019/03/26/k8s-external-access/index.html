@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transactions from? Sometimes th">
-<meta name="keywords" content="yum">
+  <meta name="description" content="This blog talks about the ways that provide external access to kubernetes cluster and their difference. This blog is about NGINX ingress controller. I need to do further demo and research on them.">
+<meta name="keywords" content="kubernetes,ingress">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yum Pending Transaction">
-<meta property="og:url" content="http://yoursite.com/2019/02/28/yum-pending/index.html">
+<meta property="og:title" content="Kubernetes NodePort vs LoadBalancer vs Ingress">
+<meta property="og:url" content="http://yoursite.com/2019/03/26/k8s-external-access/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transactions from? Sometimes th">
+<meta property="og:description" content="This blog talks about the ways that provide external access to kubernetes cluster and their difference. This blog is about NGINX ingress controller. I need to do further demo and research on them.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-06T05:16:18.916Z">
+<meta property="og:updated_time" content="2019-03-27T05:49:54.636Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yum Pending Transaction">
-<meta name="twitter:description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transactions from? Sometimes th">
+<meta name="twitter:title" content="Kubernetes NodePort vs LoadBalancer vs Ingress">
+<meta name="twitter:description" content="This blog talks about the ways that provide external access to kubernetes cluster and their difference. This blog is about NGINX ingress controller. I need to do further demo and research on them.">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/28/yum-pending/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/26/k8s-external-access/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Yum Pending Transaction | 海胆阶段's Blog</title>
+  <title>Kubernetes NodePort vs LoadBalancer vs Ingress | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/yum-pending/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/k8s-external-access/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Yum Pending Transaction
+          <h1 class="post-title" itemprop="name headline">Kubernetes NodePort vs LoadBalancer vs Ingress
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-02-28 22:13:00" itemprop="dateCreated datePublished" datetime="2019-02-28T22:13:00-08:00">2019-02-28</time>
+              <time title="Created: 2019-03-26 22:39:26 / Modified: 22:49:54" itemprop="dateCreated datePublished" datetime="2019-03-26T22:39:26-07:00">2019-03-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-05 21:16:18" itemprop="dateModified" datetime="2019-03-05T21:16:18-08:00">2019-03-05</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a></span>
 
                 
                 
@@ -461,13 +449,9 @@
       
 
       
-        <p>I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the <code>yum update</code> or <code>yum install</code> may fail. But where are these pending transactions from? Sometimes the machine is down or unexpected thing happens, the yum installation process failed.</p>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>you may see error like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">There are unfinished transactions remaining. You might consider running yum-complete-transaction first to finish them.</span><br><span class="line">The program yum-complete-transaction is found in the yum-utils package.</span><br></pre></td></tr></table></figure></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>According to the prompt, we need first install <code>yum-utils</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure></p>
-<p><code>yum-complete-transaction</code> is a program which finds incomplete or aborted yum transactions on a system and attempts to complete them. It looks at the transaction-all<em> and transaction-done</em> files which can normally be found in /var/lib/yum if a yum transaction aborted in the middle of execution.</p>
-<p>If it finds more than one unfinished transaction it will attempt to complete the most recent one first. You can run it more than once to clean up all unfinished transactions.</p>
-<p>Then just issue the following command to do a cleanup:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-complete-transaction --cleanup-only</span><br></pre></td></tr></table></figure></p>
-<p>You can also check how many pending transactions exist:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/lib/yum -maxdepth 1 -<span class="built_in">type</span> f -name <span class="string">'transaction-all*'</span> -not -name <span class="string">'*disabled'</span> -<span class="built_in">printf</span> . | wc -c</span><br></pre></td></tr></table></figure></p>
+        <p>This <a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0" target="_blank" rel="noopener">blog</a> talks about the ways that provide external access to kubernetes cluster and their difference.</p>
+<p>This <a href="https://www.nginx.com/blog/wait-which-nginx-ingress-controller-kubernetes-am-i-using/" target="_blank" rel="noopener">blog</a> is about <code>NGINX</code> ingress controller.</p>
+<p>I need to do further demo and research on them.</p>
 
       
     </div>
@@ -491,7 +475,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/yum/" rel="tag"># yum</a>
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+          
+            <a href="/tags/ingress/" rel="tag"># ingress</a>
           
         </div>
       
@@ -504,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/26/offline-package-install-2/" rel="next" title="Offline Package Installation II">
-                <i class="fa fa-chevron-left"></i> Offline Package Installation II
+              <a href="/2019/03/22/ansible-code-snippet/" rel="next" title="Ansible Module Reference">
+                <i class="fa fa-chevron-left"></i> Ansible Module Reference
               </a>
             
           </div>
@@ -514,8 +500,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/28/awk-summary/" rel="prev" title="Awk Command Daily Work Summary">
-                Awk Command Daily Work Summary <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/26/yum-rpm-management/" rel="prev" title="Yum and Rpm Management 101">
+                Yum and Rpm Management 101 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,17 +547,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -709,23 +686,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
