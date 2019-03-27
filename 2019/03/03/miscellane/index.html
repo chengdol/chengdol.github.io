@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-27T19:05:15.397Z">
+<meta property="og:updated_time" content="2019-03-27T22:18:14.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea">
 <meta name="twitter:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-27 12:05:15" itemprop="dateModified" datetime="2019-03-27T12:05:15-07:00">2019-03-27</time>
+                <time title="Modified: 2019-03-27 15:18:14" itemprop="dateModified" datetime="2019-03-27T15:18:14-07:00">2019-03-27</time>
               
             
           </span>
@@ -552,6 +552,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/data example1.com(rw,insecure,async,no_root_squash)</span><br><span class="line">/data example1.com(rw,insecure,async,no_root_squash)</span><br><span class="line">/data example1.com(rw,insecure,async,no_root_squash)</span><br></pre></td></tr></table></figure>
 <p>Here in ansible template, it uses <code>lookup</code>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for host in &#123;&#123; lookup(&apos;env&apos;,&apos;nfsclienthosts&apos;) &#125;&#125;; do</span><br><span class="line">  echo &quot;&#123;&#123; dfsDataDir &#125;&#125; &quot;$host&quot;(rw,insecure,async,no_root_squash)&quot; &gt;&gt; /etc/exports</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>I want to say be careful with the space in exports file, from <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/nfs-serverconfig" target="_blank" rel="noopener">RHEL NFS exports</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Important</span><br><span class="line"></span><br><span class="line">The format of the /etc/exports file is very precise, particularly in </span><br><span class="line">regards to use of the space character. Remember to always separate exported</span><br><span class="line">file systems from hosts and hosts from one another with a space character. </span><br><span class="line">However, there should be no other space characters in the file except on </span><br><span class="line">comment lines.</span><br><span class="line"></span><br><span class="line">For example, the following two lines do not mean the same thing:</span><br><span class="line"></span><br><span class="line">/home bob.example.com(rw)</span><br><span class="line">/home bob.example.com (rw)</span><br><span class="line"></span><br><span class="line">The first line allows only users from bob.example.com read and write access </span><br><span class="line">to the /home directory. The second line allows users from bob.example.com </span><br><span class="line">to mount the directory as read-only (the default), while the rest of the </span><br><span class="line">world can mount it read/write.</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
