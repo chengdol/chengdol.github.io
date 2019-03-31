@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T01:06:15.278Z">
+<meta property="og:updated_time" content="2019-03-31T06:57:07.676Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea">
 <meta name="twitter:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-30 18:06:15" itemprop="dateModified" datetime="2019-03-30T18:06:15-07:00">2019-03-30</time>
+                <time title="Modified: 2019-03-30 23:57:07" itemprop="dateModified" datetime="2019-03-30T23:57:07-07:00">2019-03-30</time>
               
             
           </span>
@@ -571,7 +571,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -h</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>clean swap space</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.nagios.org/about/overview/" target="_blank" rel="noopener">Nagios</a>: open source Industry Standard In IT Infrastructure Monitoring</p>
+</li>
+<li><p><a href="http://www.haproxy.org/" target="_blank" rel="noopener">HAProxy</a>:The Reliable, High Performance TCP/HTTP Load Balancer</p>
+</li>
+<li><p><code>/bin/false</code> is a system command that is used anytime you need to pass a command to a program that should do nothing more than exit with an error. It’s the companion to <code>/bin/true</code>. Both of these are very old and standard POSIX utilities and neither produce any output by definition. true is sometimes used for a shell script that should loop indefinitely, like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while true; do</span><br><span class="line">    ...</span><br><span class="line">    # Waste time</span><br><span class="line">    if [ $wasted_time -gt 100000 ]; then</span><br><span class="line">        exit 0</span><br><span class="line">    fi</span><br><span class="line">    ...</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p><code>/usr/sbin/nologin</code> is specifically designed to replace a shell and produces output complaining you can’t log-in. Before it existed, it was common to use <code>/bin/false</code> for dummy users, but could be confusing since the user doesn’t know why they’re kicked off.</p>
+</li>
 </ul>
 
       
