@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T06:57:07.676Z">
+<meta property="og:updated_time" content="2019-04-02T06:35:13.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea">
 <meta name="twitter:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
@@ -259,7 +259,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">28</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">29</span></a>
 
   </li>
         
@@ -297,7 +297,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">29</span></a>
 
   </li>
 
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-30 23:57:07" itemprop="dateModified" datetime="2019-03-30T23:57:07-07:00">2019-03-30</time>
+                <time title="Modified: 2019-04-01 23:35:13" itemprop="dateModified" datetime="2019-04-01T23:35:13-07:00">2019-04-01</time>
               
             
           </span>
@@ -577,9 +577,17 @@
 </li>
 <li><p><a href="http://www.haproxy.org/" target="_blank" rel="noopener">HAProxy</a>:The Reliable, High Performance TCP/HTTP Load Balancer</p>
 </li>
-<li><p><code>/bin/false</code> is a system command that is used anytime you need to pass a command to a program that should do nothing more than exit with an error. It’s the companion to <code>/bin/true</code>. Both of these are very old and standard POSIX utilities and neither produce any output by definition. true is sometimes used for a shell script that should loop indefinitely, like:</p>
+<li><p><code>/bin/false</code> is a system command that is used anytime you need to pass a command to a program that should do nothing more than exit with an error. It’s the companion to <code>/bin/true</code>. Both of these are very old and standard POSIX utilities and neither produce any output by definition. <code>true</code> is sometimes used for a shell script that should loop indefinitely, like:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while true; do</span><br><span class="line">    ...</span><br><span class="line">    # Waste time</span><br><span class="line">    if [ $wasted_time -gt 100000 ]; then</span><br><span class="line">        exit 0</span><br><span class="line">    fi</span><br><span class="line">    ...</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <p><code>/usr/sbin/nologin</code> is specifically designed to replace a shell and produces output complaining you can’t log-in. Before it existed, it was common to use <code>/bin/false</code> for dummy users, but could be confusing since the user doesn’t know why they’re kicked off.</p>
+</li>
+</ul>
+<h3 id="04-01-2019"><a href="#04-01-2019" class="headerlink" title="04/01/2019"></a>04/01/2019</h3><ul>
+<li><p>Sometimes when I login to a user home, the prompt is like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2$</span><br></pre></td></tr></table></figure>
+<p>instead of </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[demo@myk8s1 ~]$</span><br></pre></td></tr></table></figure>
+<p>the reason is <code>.bash_history  .bash_logout  .bash_profile  .bashrc</code> under <code>/home/demo</code> are missing!</p>
 </li>
 </ul>
 
@@ -696,7 +704,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -796,7 +804,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -832,7 +842,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-25-2019"><span class="nav-number">1.</span> <span class="nav-text">02/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">2.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">3.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-02-2019"><span class="nav-number">4.</span> <span class="nav-text">03/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-04-2019"><span class="nav-number">5.</span> <span class="nav-text">03/04/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-05-2019"><span class="nav-number">6.</span> <span class="nav-text">03/05/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-13-2019"><span class="nav-number">7.</span> <span class="nav-text">03/13/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-16-2019"><span class="nav-number">8.</span> <span class="nav-text">03/16/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-17-2019"><span class="nav-number">9.</span> <span class="nav-text">03/17/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-18-2019"><span class="nav-number">10.</span> <span class="nav-text">03/18/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-22-2019"><span class="nav-number">11.</span> <span class="nav-text">03/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-23-2019"><span class="nav-number">12.</span> <span class="nav-text">03/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-25-2019"><span class="nav-number">13.</span> <span class="nav-text">03/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-27-2019"><span class="nav-number">14.</span> <span class="nav-text">03/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-28-2019"><span class="nav-number">15.</span> <span class="nav-text">03/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-29-2019"><span class="nav-number">16.</span> <span class="nav-text">03/29/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-30-2019"><span class="nav-number">17.</span> <span class="nav-text">03/30/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-25-2019"><span class="nav-number">1.</span> <span class="nav-text">02/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">2.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">3.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-02-2019"><span class="nav-number">4.</span> <span class="nav-text">03/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-04-2019"><span class="nav-number">5.</span> <span class="nav-text">03/04/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-05-2019"><span class="nav-number">6.</span> <span class="nav-text">03/05/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-13-2019"><span class="nav-number">7.</span> <span class="nav-text">03/13/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-16-2019"><span class="nav-number">8.</span> <span class="nav-text">03/16/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-17-2019"><span class="nav-number">9.</span> <span class="nav-text">03/17/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-18-2019"><span class="nav-number">10.</span> <span class="nav-text">03/18/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-22-2019"><span class="nav-number">11.</span> <span class="nav-text">03/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-23-2019"><span class="nav-number">12.</span> <span class="nav-text">03/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-25-2019"><span class="nav-number">13.</span> <span class="nav-text">03/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-27-2019"><span class="nav-number">14.</span> <span class="nav-text">03/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-28-2019"><span class="nav-number">15.</span> <span class="nav-text">03/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-29-2019"><span class="nav-number">16.</span> <span class="nav-text">03/29/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-30-2019"><span class="nav-number">17.</span> <span class="nav-text">03/30/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-01-2019"><span class="nav-number">18.</span> <span class="nav-text">04/01/2019</span></a></li></ol></div>
             
 
           </div>

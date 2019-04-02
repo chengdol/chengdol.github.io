@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
-<meta name="keywords" content="kubernetes,RBAC,service account">
+  <meta name="description" content="When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it. Plugg">
+<meta name="keywords" content="linux,pam">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RBAC Authorization for K8s API Access">
-<meta property="og:url" content="http://yoursite.com/2019/01/27/role-rbac-k8s/index.html">
+<meta property="og:title" content="Linux PAM Module Configuration">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/linux-pam/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
+<meta property="og:description" content="When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it. Plugg">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T18:15:45.169Z">
+<meta property="og:updated_time" content="2019-04-02T06:35:06.200Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RBAC Authorization for K8s API Access">
-<meta name="twitter:description" content="We want to scale the compute pods by calling k8s API from inside the engine conductor container, this definitely need to be authorized and we need to grant privilege for this action. There are some co">
+<meta name="twitter:title" content="Linux PAM Module Configuration">
+<meta name="twitter:description" content="When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it. Plugg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/27/role-rbac-k8s/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/01/linux-pam/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>RBAC Authorization for K8s API Access | 海胆阶段's Blog</title>
+  <title>Linux PAM Module Configuration | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/27/role-rbac-k8s/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/linux-pam/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RBAC Authorization for K8s API Access
+          <h1 class="post-title" itemprop="name headline">Linux PAM Module Configuration
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-01-27 12:16:10" itemprop="dateCreated datePublished" datetime="2019-01-27T12:16:10-08:00">2019-01-27</time>
+              <time title="Created: 2019-04-01 23:34:18 / Modified: 23:35:06" itemprop="dateCreated datePublished" datetime="2019-04-01T23:34:18-07:00">2019-04-01</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-03 10:15:45" itemprop="dateModified" datetime="2019-03-03T10:15:45-08:00">2019-03-03</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -461,35 +449,54 @@
       
 
       
-        <p>We want to <strong>scale the compute pods by calling k8s API from inside the engine conductor container</strong>, this definitely need to be authorized and we need to grant privilege for this action.</p>
-<p>There are some concepts you need to know in order to achieve the goal.</p>
-<h2 id="Service-Account"><a href="#Service-Account" class="headerlink" title="Service Account"></a>Service Account</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/" target="_blank" rel="noopener">what is Service Account</a></p>
+        <p>When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it.</p>
+<p><strong>Pluggable authentication modules (PAMs)</strong> are a common framework for <strong>authentication</strong> and <strong>authorization</strong>. </p>
+<p>There are many programs on your system that use PAM modules like su, passwd, ssh and login and other services. PAM main focus is to authenticate your users.</p>
+<p>PAM or Pluggable Authentication Modules are the management layer that sits between Linux applications and the Linux native authentication system.</p>
+<blockquote>
+<p>For full details, please refer:<br><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system-level_authentication_guide/pluggable_authentication_modules" target="_blank" rel="noopener">USING PLUGGABLE AUTHENTICATION MODULES (PAM)</a><br><a href="https://www.cnblogs.com/kevingrace/p/8671964.html" target="_blank" rel="noopener">CHINESE VERSION</a></p>
 </blockquote>
-<p>Processes in containers inside pods can contact the apiserver. When they do, they are authenticated as a particular service account (for example, <code>default</code>).</p>
-<p>Once you create a namespace, for example <code>test-1</code>, there is a <code>default</code> service account automatically generated.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get sa -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME      SECRETS   AGE</span><br><span class="line">default   1         139m</span><br></pre></td></tr></table></figure>
-<p>let’s see what is inside the service account<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe sa default -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Name:                default</span><br><span class="line">Namespace:           <span class="built_in">test</span>-1</span><br><span class="line">Labels:              &lt;none&gt;</span><br><span class="line">Annotations:         &lt;none&gt;</span><br><span class="line">Image pull secrets:  &lt;none&gt;</span><br><span class="line">Mountable secrets:   default-token-mtv4n</span><br><span class="line">Tokens:              default-token-mtv4n</span><br><span class="line">Events:              &lt;none&gt;</span><br></pre></td></tr></table></figure>
-<p>here we see there is a mountable secret <code>default-token-mtv4n</code>, that is the credentials to access the apiserver.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe secret default-token-mtv4n -n <span class="built_in">test</span>-1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Name:         default-token-mtv4n</span><br><span class="line">Namespace:    <span class="built_in">test</span>-1</span><br><span class="line">Labels:       &lt;none&gt;</span><br><span class="line">Annotations:  kubernetes.io/service-account.name: default</span><br><span class="line">              kubernetes.io/service-account.uid: 387381d3-2272-11e9-91a2-00163e0196e7</span><br><span class="line"></span><br><span class="line">Type:  kubernetes.io/service-account-token</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">====</span><br><span class="line">ca.crt:     1025 bytes</span><br><span class="line">namespace:  6 bytes</span><br><span class="line">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrd...</span><br></pre></td></tr></table></figure>
-<h2 id="ClusterRole"><a href="#ClusterRole" class="headerlink" title="ClusterRole"></a>ClusterRole</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole" target="_blank" rel="noopener">what is Role and ClusterRole</a></p>
+<p>Each PAM-aware application or service has a file in the <code>/etc/pam.d/</code> directory. Each file in this directory has the same name as the service to which it controls access. For example, the <code>login</code> program defines its service name as login and installs the <code>/etc/pam.d/login</code> PAM configuration file.</p>
+<p>What I have done is add a non-root user, for example <code>demo</code>, to <code>wheel</code> group (usually <code>wheel</code> group is pre-existing), operate this as root user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -a -G wheel demo</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Why <code>wheel</code> group? What is <code>wheel</code> stand for in computing?</p>
+<p>In computing, the term <code>wheel</code> refers to a user account with a wheel bit, a system setting that provides additional special system privileges that empower a user to execute restricted commands that ordinary user accounts cannot access.</p>
+<p>Modern Unix systems generally use user groups as a security protocol to control access privileges. The <code>wheel</code> group is a special user group used on some Unix systems to control access to the su or sudo command, which allows a user to masquerade as another user (usually the super user).</p>
+<p>By default it permits root access to the system if the applicant user is a member of the <code>wheel</code> group.</p>
 </blockquote>
-<p>A <code>ClusterRole</code> can be used to grant the same permissions as a <code>Role</code>, but because they are cluster-scoped, they can also be used to grant access to</p>
+<p>check <code>demo</code> group information:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id demo</span><br><span class="line"></span><br><span class="line">uid=1010(demo) gid=1010(demo) groups=1010(demo),10(wheel)</span><br></pre></td></tr></table></figure></p>
+<p>you can also go to <code>/etc/group</code> file to check group members of <code>wheel</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wheel:x:10:demo</span><br></pre></td></tr></table></figure></p>
+<p>Then go to edit <code>/etc/pam.d/su</code> file to uncomment this directive:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Uncomment the following line to implicitly trust users in the &quot;wheel&quot; group.</span><br><span class="line">auth           sufficient      pam_wheel.so trust use_uid</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>What is <code>pam_wheel.so</code>?</p>
+<p>The <code>pam_wheel</code> PAM module is used to enforce the so-called <code>wheel</code> group. By default it permits root access(su - ) to the system if the applicant user is a member of the wheel group. If no group with this name exist, the module is using the group with the group-ID 0.</p>
+</blockquote>
+<p>Now the user <code>demo</code> can su to other users (include root) without password. You can run command as another user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - &lt;another&gt; -c &quot;&lt;command&gt;&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="PAM-file-format"><a href="#PAM-file-format" class="headerlink" title="PAM file format"></a>PAM file format</h3><p>Each PAM configuration file, such as <code>/etc/pam.d/su</code> contains a group of directives that define the module (the authentication configuration area) and any controls or arguments with it.</p>
+<p>The directives all have a simple syntax that identifies the module purpose (interface) and the configuration settings for the module.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module_interface	control_flag	module_name module_arguments</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>cluster-scoped resources (like nodes)</li>
-<li>non-resource endpoints (like “/healthz”)</li>
-<li>namespaced resources (like pods) across all namespaces</li>
+<li><strong>module_name</strong> — such as <code>pam_wheel.so</code></li>
+<li><strong>auth</strong> — This module interface authenticates users. For example, it requests and verifies the validity of a password. Modules with this interface can also set credentials, such as group memberships.</li>
 </ul>
-<p>Here we use a cluster role called <code>cluster-admin</code>, it’s generated by default<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get clusterrole | grep cluster-admin</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cluster-admin                        174m</span><br></pre></td></tr></table></figure>
-<h2 id="ClusterRole-Binding"><a href="#ClusterRole-Binding" class="headerlink" title="ClusterRole Binding"></a>ClusterRole Binding</h2><blockquote>
-<p><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding" target="_blank" rel="noopener">what is RoleBinding and ClusterRole Binding</a></p>
-</blockquote>
-<p>A role binding grants the permissions defined in a role to a user or set of users. It holds a list of subjects (users, groups, or service accounts), and a reference to the role being granted. Permissions can be granted within a namespace with a <code>RoleBinding</code>, or cluster-wide with a <code>ClusterRoleBinding</code>.</p>
-<p>below we grant service account <code>default</code> in namespace <code>test-1</code> the cluster admin level privilege.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">ClusterRoleBinding</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">rbac.authorization.k8s.io/v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"> <span class="attr">name:</span> <span class="string">&lt;cluster</span> <span class="string">role</span> <span class="string">name&gt;</span></span><br><span class="line"><span class="attr">subjects:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr"> name:</span> <span class="string">default</span></span><br><span class="line"><span class="attr"> namespace:</span> <span class="string">test-1</span></span><br><span class="line"><span class="attr">roleRef:</span></span><br><span class="line"> <span class="attr">kind:</span> <span class="string">ClusterRole</span></span><br><span class="line"> <span class="attr">name:</span> <span class="string">cluster-admin</span></span><br><span class="line"> <span class="attr">apiGroup:</span> <span class="attr">http://rbac.authorization.k8s.io</span></span><br></pre></td></tr></table></figure></p>
-<p>then we can write a script, using <code>curl</code> to call k8s API, for example, to scale the number of compute pods<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http_code=$(curl -w <span class="string">"%&#123;http_code&#125;"</span> -sS  --cacert <span class="variable">$CACERT</span>  -XPATCH -H <span class="string">"Content-Type: application/strategic-merge-patch+json"</span> -H <span class="string">"Accept: application/json"</span> -H <span class="string">"Authorization: Bearer <span class="variable">$TOKEN</span>"</span> <span class="string">"https://kubernetes.default/apis/apps/v1/namespaces/<span class="variable">$NAMESPACE</span>/statefulsets/is-engine-compute"</span> --data <span class="string">"&#123;\"spec\":&#123;\"replicas\":<span class="variable">$REP</span>&#125;&#125;"</span> -o <span class="variable">$OUT_FILE</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$http_code</span> -ne 200 ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="variable">$&#123;JQ&#125;</span> <span class="string">'&#123; result:.status, code: .code,  message: .message &#125;'</span> <span class="variable">$OUT_FILE</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+<p>All PAM modules generate a success or failure result when called. <code>Control flags</code> tell PAM what to do with the result. Modules can be listed (stacked) in a particular order, and the control flags determine how important the success or failure of a particular module is to the overall goal of authenticating the user to the service.</p>
+<ul>
+<li><strong>sufficient</strong> — The module result is ignored if it fails. However, if the result of a module flagged sufficient is successful and no previous modules flagged required have failed, then no other results are required and the user is authenticated to the service.</li>
+</ul>
+<p>Let’s see an example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@MyServer ~]# cat /etc/pam.d/setup</span><br><span class="line"></span><br><span class="line">auth       sufficient	pam_rootok.so</span><br><span class="line">auth       include	system-auth</span><br><span class="line">account    required	pam_permit.so</span><br><span class="line">session	   required	pam_permit.so</span><br></pre></td></tr></table></figure></p>
+<p>Here the modules are stacking, from up to bottom, verify each directive one by one,</p>
+<ul>
+<li><p><em>auth sufficient pam_rootok.so</em> — This line uses the <code>pam_rootok.so</code> module to check whether the current user is root, by verifying that their UID is 0. If this test succeeds, no other modules are consulted and the command is executed. If this test fails, the next module is consulted.</p>
+</li>
+<li><p><em>auth include system-auth</em> — This line includes the content of the /etc/pam.d/system-auth module and processes this content for authentication.</p>
+</li>
+</ul>
+<p>PAM uses <code>arguments</code> to pass information to a pluggable module during authentication for some modules.</p>
+<ul>
+<li><p><strong>trust</strong>: The <code>pam_wheel</code> module will return PAM_SUCCESS instead of PAM_IGNORE if the user is a member of the wheel group</p>
+</li>
+<li><p><strong>use_uid</strong>: The check for wheel membership will be done against the current uid instead of the original one</p>
+</li>
+</ul>
 
       
     </div>
@@ -513,11 +520,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
-            <a href="/tags/RBAC/" rel="tag"># RBAC</a>
-          
-            <a href="/tags/service-account/" rel="tag"># service account</a>
+            <a href="/tags/pam/" rel="tag"># pam</a>
           
         </div>
       
@@ -530,8 +535,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/27/copy-paste-Mac/" rel="next" title="Copy & Paste in Terminal">
-                <i class="fa fa-chevron-left"></i> Copy & Paste in Terminal
+              <a href="/2019/03/30/linux-clean-memory/" rel="next" title="Linux Clean Memory Cache">
+                <i class="fa fa-chevron-left"></i> Linux Clean Memory Cache
               </a>
             
           </div>
@@ -539,10 +544,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/27/set-up-hexo/" rel="prev" title="Set up Blog with GitHub Pages and Hexo">
-                Set up Blog with GitHub Pages and Hexo <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -752,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Account"><span class="nav-number">1.</span> <span class="nav-text">Service Account</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClusterRole"><span class="nav-number">2.</span> <span class="nav-text">ClusterRole</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClusterRole-Binding"><span class="nav-number">3.</span> <span class="nav-text">ClusterRole Binding</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PAM-file-format"><span class="nav-number">1.</span> <span class="nav-text">PAM file format</span></a></li></ol></div>
             
 
           </div>
