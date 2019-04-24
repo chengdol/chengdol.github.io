@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Great book for all Linux developers and administrators! Just note for future quick revisit! Chapter1. The Big pictureThe most effective way to understand how an operating system works is through abstr">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-22T03:56:38.587Z">
+<meta property="og:updated_time" content="2019-04-22T17:02:19.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Linux Works, 2nd Edition">
 <meta name="twitter:description" content="Great book for all Linux developers and administrators! Just note for future quick revisit! Chapter1. The Big pictureThe most effective way to understand how an operating system works is through abstr">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-21 20:56:38" itemprop="dateModified" datetime="2019-04-21T20:56:38-07:00">2019-04-21</time>
+                <time title="Modified: 2019-04-22 10:02:19" itemprop="dateModified" datetime="2019-04-22T10:02:19-07:00">2019-04-22</time>
               
             
           </span>
@@ -553,7 +553,9 @@
 </li>
 <li><p><code>/sbin</code> The place for system executables. Programs in /sbin directories relate to system management.</p>
 </li>
-<li><p><code>/tmp</code> A storage area for smaller, temporary files that you don’t care much about. Many of the directory names in /usr are the same as those in the root directory (like /usr/bin and /usr/lib), and they hold the same type of files. (The reason that the root directory does not contain the complete system is primarily historic—in the past, it was to keep space requirements low for the root.)</p>
+<li><p><code>/tmp</code> A storage area for smaller, temporary files that you don’t care much about. If something is extremely important, don’t put it in /tmp because most distributions clear /tmp when the machine boots and some even remove its old files periodically. Also, don’t let /tmp fill up with garbage because its space is usually shared with something critical  </p>
+</li>
+<li><p><code>/usr</code> Although pronounced “user,” this subdirectory has no user files. Instead, it contains a large directory hierarchy, including the bulk of the Linux system. Many of the directory names in /usr are the same as those in the root directory (like /usr/bin and /usr/lib), and they hold the same type of files. (The reason that the root directory does not contain the complete system is primarily historic—in the past, it was to keep space requirements low for the root.)</p>
 </li>
 <li><p><code>/var</code> The variable subdirectory, where programs record runtime information. System logging, user tracking, caches, and other files that system programs create and manage are here.</p>
 </li>
