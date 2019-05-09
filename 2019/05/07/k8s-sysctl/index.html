@@ -96,18 +96,24 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+  <meta name="description" content="In my article &amp;quot;Linux IPC&amp;quot;, I mentioned that there is a workaround to set IPC kernel parameters using sysctl in Kubernetes cluster if SYS_RESOURCE is not allowed. ClarificationFrom the Kubern">
 <meta name="keywords" content="kubernetes,sysctl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes sysctl">
 <meta property="og:url" content="http://yoursite.com/2019/05/07/k8s-sysctl/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="In my article &amp;quot;Linux IPC&amp;quot;, I mentioned that there is a workaround to set IPC kernel parameters using sysctl in Kubernetes cluster if SYS_RESOURCE is not allowed. ClarificationFrom the Kubern">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T23:48:46.044Z">
+<meta property="og:image" content="https://drive.google.com/uc?id=1ROz7A1kQPzeaBtpLiYPyFHjii0jIvJ52">
+<meta property="og:image" content="https://drive.google.com/uc?id=1T7tUI4jIgGXt_qURYSNME-Qtz2RZc-XI">
+<meta property="og:image" content="https://drive.google.com/uc?id=11mDU4EZv5p6MJJYahaRblXICFBUY52aD">
+<meta property="og:image" content="https://drive.google.com/uc?id=122vY73xveFwkFrtsipVJb50WTCiwgjUq">
+<meta property="og:image" content="https://drive.google.com/uc?id=1s1sLiMy_FCCu_ClNJlX9r8C3k_Kw6c_E">
+<meta property="og:updated_time" content="2019-05-09T07:13:04.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes sysctl">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:description" content="In my article &amp;quot;Linux IPC&amp;quot;, I mentioned that there is a workaround to set IPC kernel parameters using sysctl in Kubernetes cluster if SYS_RESOURCE is not allowed. ClarificationFrom the Kubern">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1ROz7A1kQPzeaBtpLiYPyFHjii0jIvJ52">
 
 
 
@@ -393,12 +399,24 @@
                 
               
 
-              <time title="Created: 2019-05-07 10:56:02 / Modified: 16:48:46" itemprop="dateCreated datePublished" datetime="2019-05-07T10:56:02-07:00">2019-05-07</time>
+              <time title="Created: 2019-05-07 10:56:02" itemprop="dateCreated datePublished" datetime="2019-05-07T10:56:02-07:00">2019-05-07</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-09 00:13:04" itemprop="dateModified" datetime="2019-05-09T00:13:04-07:00">2019-05-09</time>
               
             
           </span>
@@ -449,7 +467,52 @@
       
 
       
-        
+        <p>In my article <code>&quot;Linux IPC&quot;</code>, I mentioned that there is a workaround to set IPC kernel parameters using <code>sysctl</code> in Kubernetes cluster if <code>SYS_RESOURCE</code> is not allowed.</p>
+<h3 id="Clarification"><a href="#Clarification" class="headerlink" title="Clarification"></a>Clarification</h3><p>From the Kubernetes <a href="https://v1-14.docs.kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/" target="_blank" rel="noopener">document</a>, we see:</p>
+<p>Sysctls are grouped into safe and unsafe sysctls. This means that setting a safe sysctl for one pod:</p>
+<ul>
+<li>must not have any influence on any other pod on the node</li>
+<li>must not allow to harm the node’s health</li>
+<li>must not allow to gain CPU or memory resources outside of the resource limits of a pod.</li>
+</ul>
+<p>By far, most of the namespaced sysctls are not necessarily considered safe (please check latest Kubernetes document to figure out), now it supports:</p>
+<ul>
+<li>kernel.shm_rmid_forced,</li>
+<li>net.ipv4.ip_local_port_range,</li>
+<li>net.ipv4.tcp_syncookies.</li>
+</ul>
+<p>This list will be extended in future Kubernetes versions when the kubelet supports better isolation mechanisms.</p>
+<p>All <code>safe</code> sysctls are enabled by default (you can use it directly without additional configuration in kubelet).</p>
+<p>All <code>unsafe</code> sysctls are disabled by default and must be allowed manually by the cluster admin on a per-node basis. Pods with disabled unsafe sysctls will be scheduled, but will fail to launch:</p>
+<p><img src="https://drive.google.com/uc?id=1ROz7A1kQPzeaBtpLiYPyFHjii0jIvJ52" alt=""></p>
+<p>If you describe the failed pod, you get:<br><img src="https://drive.google.com/uc?id=1T7tUI4jIgGXt_qURYSNME-Qtz2RZc-XI" alt=""></p>
+<p>A number of sysctls are <code>namespaced</code> in today’s Linux kernels. This means that they can be set independently for each pod on a node. <strong>Only</strong> namespaced sysctls are configurable via the pod securityContext within Kubernetes.</p>
+<p>The following sysctls are known to be namespaced. This list could change in future versions of the Linux kernel.</p>
+<ul>
+<li>kernel.shm*</li>
+<li>kernel.msg*</li>
+<li>kernel.sem</li>
+<li>fs.mqueue.*</li>
+<li>net.*</li>
+</ul>
+<p>Sysctls with no namespace are called <code>node-level</code> sysctls. If you need to set them, you must manually configure them on each node’s operating system, or by using a DaemonSet with privileged containers.</p>
+<p>As with node-level sysctls it is recommended to use taints and toleration feature or taints on nodes to schedule those pods onto the right nodes.</p>
+<p>Use the pod securityContext to configure namespaced sysctls. The securityContext applies to <strong>all</strong> containers in the same pod.</p>
+<h3 id="Configure-kubelet"><a href="#Configure-kubelet" class="headerlink" title="Configure kubelet"></a>Configure kubelet</h3><p>If you need to use <strong>unsafe</strong> sysctls, configure kubelet in target node (configure the node that the unsafe sysctls pod will reside) is a must. Go to edit <code>10-kubeadm.conf</code> file in <code>/etc/systemd/system/kubelet.service.d/</code>, add<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Environment=&quot;KUBELET_UNSAFE_SYSCTLS=--allowed-unsafe-sysctls=&apos;kernel.shm*,kernel.sem,kernel.msg*&apos;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Here I need <code>kernel.shm*</code>, <code>kernel.sem</code> and <code>kernel.msg*</code>.</p>
+<p><img src="https://drive.google.com/uc?id=11mDU4EZv5p6MJJYahaRblXICFBUY52aD" alt=""></p>
+<p>then run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart kubelet</span><br></pre></td></tr></table></figure></p>
+<p>verify changes, you can see <code>--allowed-unsafe-sysctls</code> is there:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep kubelet</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>A brief digress: the kubelet service unit file is in <code>/etc/systemd/system/kubelet.service</code>.</p>
+</blockquote>
+<p>Then you can edit YAML file to add <code>sysctls</code> option:</p>
+<p><img src="https://drive.google.com/uc?id=122vY73xveFwkFrtsipVJb50WTCiwgjUq" alt=""></p>
+<p>Sometimes you need to disable <code>hostIPC</code>, if not you will get this problem:</p>
+<p><img src="https://drive.google.com/uc?id=1s1sLiMy_FCCu_ClNJlX9r8C3k_Kw6c_E" alt=""></p>
+<p>After things done, get into the container to check the kernel parameter vaule, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -a | grep -i kernel.sem</span><br></pre></td></tr></table></figure></p>
+<h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><p><a href="https://blog.csdn.net/horsefoot/article/details/53007177?utm_source=blogxgwz5" target="_blank" rel="noopener">kubernetes 1.4 new feature: support sysctls</a><br><a href="https://yq.aliyun.com/articles/603745?utm_content=m_1000003747" target="_blank" rel="noopener">configure kernel parameters in k8s cluster</a></p>
+
       
     </div>
 
@@ -544,8 +607,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -707,6 +779,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clarification"><span class="nav-number">1.</span> <span class="nav-text">Clarification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-kubelet"><span class="nav-number">2.</span> <span class="nav-text">Configure kubelet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">3.</span> <span class="nav-text">Resources</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

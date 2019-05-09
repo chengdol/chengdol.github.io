@@ -96,25 +96,28 @@
 
 
 
-  <meta name="description" content="Issue descriptionI encountered the problem that when delete statefulset the execution hangs, for example:1kubectl delete statefulset is-en-conductor it cannot delete the statefulset and associated pod">
-<meta name="keywords" content="kubernetes,statefulset">
+  <meta name="description" content="We want to use systemd as cgroup driver for docker and kubelet, let’s see how to achieve that. First you need to understand what is systemd and cgroup?You can refer to this article.  systemd is a suit">
+<meta name="keywords" content="systemd,cgroup driver">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Force Delete StatefulSet and Pods">
-<meta property="og:url" content="http://yoursite.com/2019/02/16/force-delete-statefulset/index.html">
+<meta property="og:title" content="Set systemd as Cgroup Driver">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/k8s-systemd-cgroup-driver/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Issue descriptionI encountered the problem that when delete statefulset the execution hangs, for example:1kubectl delete statefulset is-en-conductor it cannot delete the statefulset and associated pod">
+<meta property="og:description" content="We want to use systemd as cgroup driver for docker and kubelet, let’s see how to achieve that. First you need to understand what is systemd and cgroup?You can refer to this article.  systemd is a suit">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T18:14:06.833Z">
+<meta property="og:image" content="https://drive.google.com/uc?id=1Wn2J8wk_7e36Z-W_x5lgM93nFBkGJ7EV">
+<meta property="og:image" content="https://drive.google.com/uc?id=1AiZ-y12HevZivQm5TwIYYzY-OX7lfzho">
+<meta property="og:updated_time" content="2019-05-08T21:55:24.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Force Delete StatefulSet and Pods">
-<meta name="twitter:description" content="Issue descriptionI encountered the problem that when delete statefulset the execution hangs, for example:1kubectl delete statefulset is-en-conductor it cannot delete the statefulset and associated pod">
+<meta name="twitter:title" content="Set systemd as Cgroup Driver">
+<meta name="twitter:description" content="We want to use systemd as cgroup driver for docker and kubelet, let’s see how to achieve that. First you need to understand what is systemd and cgroup?You can refer to this article.  systemd is a suit">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1Wn2J8wk_7e36Z-W_x5lgM93nFBkGJ7EV">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/16/force-delete-statefulset/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/09/k8s-systemd-cgroup-driver/">
 
 
 
@@ -124,7 +127,7 @@
   };
 </script>
 
-  <title>Force Delete StatefulSet and Pods | 海胆阶段's Blog</title>
+  <title>Set systemd as Cgroup Driver | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/force-delete-statefulset/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/k8s-systemd-cgroup-driver/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Force Delete StatefulSet and Pods
+          <h1 class="post-title" itemprop="name headline">Set systemd as Cgroup Driver
 
               
             
@@ -393,7 +396,7 @@
                 
               
 
-              <time title="Created: 2019-02-16 09:37:43" itemprop="dateCreated datePublished" datetime="2019-02-16T09:37:43-08:00">2019-02-16</time>
+              <time title="Created: 2019-03-09 13:38:30" itemprop="dateCreated datePublished" datetime="2019-03-09T13:38:30-08:00">2019-03-09</time>
             
 
             
@@ -410,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-03 10:14:06" itemprop="dateModified" datetime="2019-03-03T10:14:06-08:00">2019-03-03</time>
+                <time title="Modified: 2019-05-08 14:55:24" itemprop="dateModified" datetime="2019-05-08T14:55:24-07:00">2019-05-08</time>
               
             
           </span>
@@ -461,11 +464,27 @@
       
 
       
-        <h2 id="Issue-description"><a href="#Issue-description" class="headerlink" title="Issue description"></a>Issue description</h2><p>I encountered the problem that when delete <code>statefulset</code> the execution hangs, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete statefulset is-en-conductor</span><br></pre></td></tr></table></figure></p>
-<p>it cannot delete the <code>statefulset</code> and associated <code>pods</code> at all<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@opsft-lb-1 OpenShift] oc get all</span><br><span class="line">NAME                             DESIRED   CURRENT   AGE</span><br><span class="line">statefulsets/is-en-conductor     0         1         5h</span><br><span class="line">statefulsets/is-engine-compute   0         2         5h</span><br><span class="line"></span><br><span class="line">NAME                     READY     STATUS        RESTARTS   AGE</span><br><span class="line">po/is-en-conductor-0     0/1       Terminating   2          1h</span><br><span class="line">po/is-engine-compute-0   1/1       Running       0          5h</span><br><span class="line">po/is-engine-compute-1   0/1       Terminating   0          5h</span><br></pre></td></tr></table></figure></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete statefulsets &lt;statefulset name&gt; --force --grace-period=0 --cascade=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p>now we only have hanging pods, force delete them<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NAME                     READY     STATUS        RESTARTS   AGE</span><br><span class="line">po/is-en-conductor-0     0/1       Terminating   2          1h</span><br><span class="line">po/is-engine-compute-0   1/1       Running       0          5h</span><br><span class="line">po/is-engine-compute-1   0/1       Terminating   0          5h</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete pod &lt;pod name&gt; --force --grace-period=0</span><br></pre></td></tr></table></figure>
+        <p>We want to use <code>systemd</code> as cgroup driver for docker and kubelet, let’s see how to achieve that.</p>
+<p>First you need to understand what is <code>systemd</code> and <code>cgroup</code>?<br>You can refer to <a href="https://linuxaria.com/article/how-to-manage-processes-with-cgroup-on-systemd" target="_blank" rel="noopener">this article</a>. </p>
+<p><code>systemd</code> is a suite of system management daemons, libraries, and utilities designed as a central management and configuration platform for the GNU/Linux computer operating system. It provides a system and service manager that runs as PID <code>1</code> and starts the rest of the system as alternative to the traditional sysVinit.</p>
+<p>systemd organizes processes with <code>cgroups</code>, this is a Linux kernel feature to limit, police and account the resource usage of certain processes (actually process groups).</p>
+<h3 id="Configure-docker"><a href="#Configure-docker" class="headerlink" title="Configure docker"></a>Configure docker</h3><p>After you install and start docker, by default it will use <code>cgroupfs</code> as the cgroup driver, check by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker info | grep Cgroup</span><br><span class="line"></span><br><span class="line">Cgroup Driver: cgroupfs</span><br></pre></td></tr></table></figure></p>
+<p>Edit <code>/usr/lib/systemd/system/docker.service</code> file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd --exec-opt native.cgroupdriver=systemd</span><br></pre></td></tr></table></figure></p>
+<p>Then reload daemon and restart docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
+<p>Verify the change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker info | grep Cgroup</span><br><span class="line"></span><br><span class="line">Cgroup Driver: systemd</span><br></pre></td></tr></table></figure></p>
+<h3 id="Configure-kubelet"><a href="#Configure-kubelet" class="headerlink" title="Configure kubelet"></a>Configure kubelet</h3><p>Currently, the kubelet cannot automatically detects the cgroup driver used by the CRI runtime, but the value of <code>--cgroup-driver</code> must match the cgroup driver used by the CRI runtime to ensure the health of the kubelet.</p>
+<p><strong>Note</strong>: interesting thing is <code>kubeadm init</code> now can automatically detect and set kubelet with the same cgroup driver as docker (I use version <code>1.13.x</code>). </p>
+<p>There is a file:  <code>/var/lib/kubelet/kubeadm-flags.env</code>, that <code>kubeadm init</code> and <code>kubeadm join</code> generates at runtime, populating the <code>KUBELET_KUBEADM_ARGS</code> variable dynamically, in <code>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</code> you can see it:<br><img src="https://drive.google.com/uc?id=1Wn2J8wk_7e36Z-W_x5lgM93nFBkGJ7EV" alt=""></p>
+<p>you will see <code>systemd</code> resides in <code>/var/lib/kubelet/kubeadm-flags.env</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KUBELET_KUBEADM_ARGS=--cgroup-driver=systemd --network-plugin=cni --pod-infra-container-image=k8s.gcr.io/pause:3.1</span><br></pre></td></tr></table></figure></p>
+<p>Anyway let’s see how to do the configuration manually. After install kubelet, go to edit <code>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</code> file, add this line:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Environment=&quot;KUBELET_CGROUP_ARGS=--cgroup-driver=systemd&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Append <code>$KUBELET_CGROUP_ARGS</code> at end of <code>ExecStart=/usr/bin/kubelet</code> statement:</p>
+<p><img src="https://drive.google.com/uc?id=1AiZ-y12HevZivQm5TwIYYzY-OX7lfzho" alt=""></p>
+<blockquote>
+<p>Note: in the file <code>/etc/systemd/system/kubelet.service</code>, it seems you can also configure here: <code>ExecStart=/usr/bin/kubelet --cgroup-driver=systemd</code>, not very clear the difference.</p>
+</blockquote>
+<p>Then when you complete <code>kubeadm init</code>,  verify the change:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep kubelet</span><br><span class="line"></span><br><span class="line">root     19864  4.5  0.6 2326996 104192 ?      Ssl  01:21  32:49 /usr/bin/kubelet</span><br><span class="line">--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf </span><br><span class="line">--kubeconfig=/etc/kubernetes/kubelet.conf </span><br><span class="line">--config=/var/lib/kubelet/config.yaml </span><br><span class="line">--cgroup-driver=systemd </span><br><span class="line">--network-plugin=cni </span><br><span class="line">--pod-infra-container-image=k8s.gcr.io/pause:3.1 </span><br><span class="line">--cgroup-driver=systemd</span><br></pre></td></tr></table></figure></p>
+<p>You see, there are 2 <code>--cgroup-driver=systemd</code> options, so I think manually configure kubelet service file is needless.</p>
+
       
     </div>
 
@@ -488,9 +507,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+            <a href="/tags/systemd/" rel="tag"># systemd</a>
           
-            <a href="/tags/statefulset/" rel="tag"># statefulset</a>
+            <a href="/tags/cgroup-driver/" rel="tag"># cgroup driver</a>
           
         </div>
       
@@ -503,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/27/set-up-hexo/" rel="next" title="Set up Blog with GitHub Pages and Hexo">
-                <i class="fa fa-chevron-left"></i> Set up Blog with GitHub Pages and Hexo
+              <a href="/2019/03/05/yum-local-repo/" rel="next" title="Set up and Use Local Yum Repository">
+                <i class="fa fa-chevron-left"></i> Set up and Use Local Yum Repository
               </a>
             
           </div>
@@ -513,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/17/kubectx-kubens/" rel="prev" title="Kubectx and Kubens">
-                Kubectx and Kubens <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/09/awesome-resource/" rel="prev" title="Awesome Resources">
+                Awesome Resources <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -743,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Issue-description"><span class="nav-number">1.</span> <span class="nav-text">Issue description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-docker"><span class="nav-number">1.</span> <span class="nav-text">Configure docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-kubelet"><span class="nav-number">2.</span> <span class="nav-text">Configure kubelet</span></a></li></ol></div>
             
 
           </div>
