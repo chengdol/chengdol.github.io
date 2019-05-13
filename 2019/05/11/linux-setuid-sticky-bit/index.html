@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="I haven’t seen something like this:1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllibdrwxr-x--T 1 wasadmin dstage    21 Mar 21 03:5">
+<meta name="keywords" content="linux,setuid,setgid,sticky">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Special Permission Bits">
+<meta property="og:url" content="http://yoursite.com/2019/05/11/linux-setuid-sticky-bit/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="I haven’t seen something like this:1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllibdrwxr-x--T 1 wasadmin dstage    21 Mar 21 03:5">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-13T06:46:03.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Special Permission Bits">
+<meta name="twitter:description" content="I haven’t seen something like this:1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllibdrwxr-x--T 1 wasadmin dstage    21 Mar 21 03:5">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/11/linux-setuid-sticky-bit/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Special Permission Bits | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">39</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">45</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/11/linux-setuid-sticky-bit/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Special Permission Bits
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-11 22:57:58" itemprop="dateCreated datePublished" datetime="2019-05-11T22:57:58-07:00">2019-05-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-12 23:46:03" itemprop="dateModified" datetime="2019-05-12T23:46:03-07:00">2019-05-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>I haven’t seen something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllib</span><br><span class="line">drwxr-x--T 1 wasadmin dstage    21 Mar 21 03:56 usr</span><br></pre></td></tr></table></figure>
+<p>What are these <code>s</code> (sometimes <code>S</code>) and <code>t/T</code> for? I only know <code>rwx</code> before, I realize that I am too young too simple T_T, this should be some basic things…</p>
+<h3 id="Basic-Permissions"><a href="#Basic-Permissions" class="headerlink" title="Basic Permissions"></a>Basic Permissions</h3><ul>
+<li><p><code>Read</code> - a readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.</p>
+</li>
+<li><p><code>Write</code> - a write permission on a file allows you to modify the contents of that file. For a directory, the write permission allows you to edit the contents of a directory (e.g. add/delete files).</p>
+</li>
+<li><p><code>Execute</code> - for a file, the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory.</p>
+</li>
+</ul>
+<h3 id="Setuid-and-Setgid-Bit"><a href="#Setuid-and-Setgid-Bit" class="headerlink" title="Setuid and Setgid Bit"></a>Setuid and Setgid Bit</h3><h4 id="apply-on-file"><a href="#apply-on-file" class="headerlink" title="apply on file"></a>apply on file</h4><p>When the <code>setuid</code> or <code>setgid</code> attributes are set on an executable file, then any users able to execute the file will automatically execute the file with the privileges of the file’s owner (commonly root) and/or the file’s group, depending upon the flags set</p>
+<p>This may pose potential security risks in some cases and executables should be properly evaluated before set.</p>
+<p>For example the <code>passwd</code> file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwsr-xr-x. 1 root root 27832 Jan 29  2014 /usr/bin/passwd</span><br></pre></td></tr></table></figure></p>
+<p>set setuid on file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+s script.sh</span><br></pre></td></tr></table></figure></p>
+<p>remove setuid on file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u-s script.sh</span><br></pre></td></tr></table></figure></p>
+<h4 id="apply-on-directory"><a href="#apply-on-directory" class="headerlink" title="apply on directory"></a>apply on directory</h4><p>Setting the <code>setgid</code> permission on a directory causes new files and subdirectories created within it to inherit its <code>group ID</code>, rather than the primary group ID of the user who created the file (the owner ID is <strong>never</strong> affected, only the group ID).</p>
+<p>set setgid on directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod g+s dir</span><br></pre></td></tr></table></figure></p>
+<p>remove setgid on directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod g-s dir</span><br></pre></td></tr></table></figure></p>
+<p>The <code>setuid</code> permission set on a directory is ignored on most UNIX and Linux systems.However FreeBSD can be configured to interpret <code>setuid</code> in a manner similar to setgid, in which case it forces all files and sub-directories created in a directory to be owned by that directory’s owner - a simple form of inheritance.</p>
+<p>Note that both the <code>setuid</code> and <code>setgit</code> bits have <strong>no effect</strong> if the executable bit is not set. if executable bit is not set, <code>s</code> changes to <code>S</code>.</p>
+<h4 id="chown-removes-setuid"><a href="#chown-removes-setuid" class="headerlink" title="chown removes setuid"></a>chown removes setuid</h4><p>If you run <code>chown</code> on a <code>setuid</code> script, you will find that the <code>s</code> is gone. This is a reasonable design, otherwise the <code>s</code> will apply to the new owner, a big security hole.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">The `chown&apos; command sometimes clears the set-user-ID or set-group-ID</span><br><span class="line">permission bits.  This behavior depends on the policy and functionality</span><br><span class="line">of the underlying `chown&apos; system call, which may make system-dependent</span><br><span class="line">file mode modifications outside the control of the `chown&apos; command.</span><br><span class="line">For example, the `chown&apos; command might not affect those bits when</span><br><span class="line">invoked by a user with appropriate privileges, or when the bits signify</span><br><span class="line">some function other than executable permission (e.g., mandatory</span><br><span class="line">locking).  When in doubt, check the underlying system behavior.</span><br></pre></td></tr></table></figure>
+<h3 id="Sticky-Bit"><a href="#Sticky-Bit" class="headerlink" title="Sticky Bit"></a>Sticky Bit</h3><p>When set on a file or directory, the <code>sticky bit</code>, or <code>+t</code> mode, means that only the <code>owner</code> (or <code>root</code>) can delete the file (or files under the directory), <strong>regardless of</strong> which users have write access to this file or directory by way of group membership or ownership! </p>
+<p>This is useful when a file or directory is owned by a group through which a number of users share write access to a given set of files.</p>
+<p>set sticky bit:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +t script.sh</span><br></pre></td></tr></table></figure></p>
+<p>remove sticky bit, note that to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -t script.sh</span><br></pre></td></tr></table></figure></p>
+<p>Sometimes you see <code>T</code> instead of <code>t</code>, usually <code>t</code> sits with execute <code>x</code>, but if the execute bit is not set then the <code>t</code> is flagged up as a capital, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch file</span><br><span class="line">chmod u=rwx,go=rx file    # &quot;-rwxr-xr-x 1 roaima 0 Sep 10 23:13 file&quot;</span><br><span class="line">chmod +t file             # &quot;-rwxr-xr-t 1 roaima 0 Sep 10 23:13 file&quot;</span><br><span class="line">chmod o-x file            # &quot;-rwxr-xr-T 1 roaima 0 Sep 10 23:13 file&quot;</span><br><span class="line">chmod u=rwx,go=,+t file   # &quot;-rwx-----T 1 roaima 0 Sep 10 23:13 file&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Now if a user is not in that group, it cannot even enter the directory.</p>
+<h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><p><a href="https://en.wikipedia.org/wiki/Setuid#SGID" target="_blank" rel="noopener">wiki setuid and setgid</a><br><a href="https://unix.stackexchange.com/questions/228925/how-do-you-set-the-t-bit" target="_blank" rel="noopener">how to set <code>T</code> bit</a><br><a href="https://unix.stackexchange.com/questions/53665/chown-removes-setuid-bit-bug-or-feature" target="_blank" rel="noopener">chown remove setuid</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/setuid/" rel="tag"># setuid</a>
+          
+            <a href="/tags/setgid/" rel="tag"># setgid</a>
+          
+            <a href="/tags/sticky/" rel="tag"># sticky</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/09/music-river-flows-in-you/" rel="next" title="River Flows in You">
+                <i class="fa fa-chevron-left"></i> River Flows in You
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Permissions"><span class="nav-number">1.</span> <span class="nav-text">Basic Permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setuid-and-Setgid-Bit"><span class="nav-number">2.</span> <span class="nav-text">Setuid and Setgid Bit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-on-file"><span class="nav-number">2.1.</span> <span class="nav-text">apply on file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-on-directory"><span class="nav-number">2.2.</span> <span class="nav-text">apply on directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chown-removes-setuid"><span class="nav-number">2.3.</span> <span class="nav-text">chown removes setuid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Bit"><span class="nav-number">3.</span> <span class="nav-text">Sticky Bit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">4.</span> <span class="nav-text">Resources</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
