@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="PrequelRecently I was dealing with Linux kernel parameters, which are new to me and in my case they are the key to performance of the Database (DB2). The source of the story is from removing SYS_ADMIN">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-15T18:40:32.389Z">
+<meta property="og:updated_time" content="2019-05-15T20:31:49.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux IPC">
 <meta name="twitter:description" content="PrequelRecently I was dealing with Linux kernel parameters, which are new to me and in my case they are the key to performance of the Database (DB2). The source of the story is from removing SYS_ADMIN">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-15 11:40:32" itemprop="dateModified" datetime="2019-05-15T11:40:32-07:00">2019-05-15</time>
+                <time title="Modified: 2019-05-15 13:31:49" itemprop="dateModified" datetime="2019-05-15T13:31:49-07:00">2019-05-15</time>
               
             
           </span>
@@ -461,7 +461,10 @@
       
 
       
-        <h2 id="Prequel"><a href="#Prequel" class="headerlink" title="Prequel"></a>Prequel</h2><p>Recently I was dealing with Linux kernel parameters, which are new to me and in my case they are the key to performance of the Database (DB2). The source of the story is from removing <code>SYS_ADMIN</code> and <code>SYS_RESOURCE</code> Linux capabilities in K8s container (Let’s talk about <code>Linux Capability</code> later…)</p>
+        <h2 id="Prequel"><a href="#Prequel" class="headerlink" title="Prequel"></a>Prequel</h2><p>Recently I was dealing with Linux kernel parameters, which are new to me and in my case they are the key to performance of the Database (DB2). The source of the story is from removing <code>SYS_ADMIN</code> and <code>SYS_RESOURCE</code> Linux capabilities in K8s container </p>
+<blockquote>
+<p>See my blog about <a href="https://chengdol.github.io/2019/05/13/linux-capability/" target="_blank" rel="noopener"><code>&lt;&lt;Linux Capability</code>&gt;&gt;</a></p>
+</blockquote>
 <p>In <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/c0057140.html" target="_blank" rel="noopener">Db2 IPC kernel parameters doc</a>, the database manager uses a formula to automatically adjust kernel parameter settings and eliminate the need for manual updates to these settings.</p>
 <p>When instances are started, if an <code>interprocess communication (IPC)</code> kernel parameter is below the enforced minimum value, the database manager updates it to the enforced minimum value. The IPC kernel parameter values change when a Db2 instance is started.</p>
 <p>There are severl Linux interprocess communication kernel parameters need to be adjusted for Db2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kernel.shmmni (SHMMNI)</span><br><span class="line">kernel.shmmax (SHMMAX)</span><br><span class="line">kernel.shmall (SHMALL)</span><br><span class="line">kernel.sem (SEMMNI)</span><br><span class="line">kernel.sem (SEMMSL)</span><br><span class="line">kernel.sem (SEMMNS)</span><br><span class="line">kernel.sem (SEMOPM)</span><br><span class="line">kernel.msgmni (MSGMNI)</span><br><span class="line">kernel.msgmax (MSGMAX)</span><br><span class="line">kernel.msgmnb (MSGMNB)</span><br></pre></td></tr></table></figure></p>
