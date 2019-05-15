@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="In my post &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, I mentioned Linux Capability, so what is it? Why we use it? How and when to use this feature? For the purpose of performing permission checks, traditional UNIX im">
+<meta name="keywords" content="linux,capability">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux Capability">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/linux-capability/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="In my post &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, I mentioned Linux Capability, so what is it? Why we use it? How and when to use this feature? For the purpose of performing permission checks, traditional UNIX im">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-15T20:22:39.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux Capability">
+<meta name="twitter:description" content="In my post &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, I mentioned Linux Capability, so what is it? Why we use it? How and when to use this feature? For the purpose of performing permission checks, traditional UNIX im">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/13/linux-capability/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Linux Capability | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">40</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">46</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/linux-capability/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux Capability
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-13 09:48:14" itemprop="dateCreated datePublished" datetime="2019-05-13T09:48:14-07:00">2019-05-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-15 13:22:39" itemprop="dateModified" datetime="2019-05-15T13:22:39-07:00">2019-05-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In my post <a href="https://chengdol.github.io/2019/05/01/linux-ipcs/" target="_blank" rel="noopener"><code>&lt;&lt;Linux IPC&gt;&gt;</code></a>, I mentioned <code>Linux Capability</code>, so what is it? Why we use it? How and when to use this feature?</p>
+<p>For the purpose of performing permission checks, traditional UNIX implementations distinguish two categories of processes: <code>privileged</code> processes (whose effective user ID is 0, referred to as superuser or root), and <code>unprivileged</code> processes (whose effective UID is nonzero).</p>
+<p>Privileged processes bypass all kernel permission checks, while unprivileged processes are subject to full permission checking based on the process’s credentials (usually: effective UID, effective GID, and supplementary group list).</p>
+<blockquote>
+<p>Note again, privilege process (root user) bypass all kernel permission checks, but in K8s or docker container, it depends on the configuration you made.</p>
+</blockquote>
+<p>Starting with kernel 2.2, Linux divides the privileges traditionally associated with superuser into distinct units, known as <code>capabilities</code>, which can be independently enabled and disabled. This way the full set of privileges is reduced and decreasing the risks of exploitation.</p>
+<h2 id="Basic-Capability-Thing"><a href="#Basic-Capability-Thing" class="headerlink" title="Basic Capability Thing"></a>Basic Capability Thing</h2><h3 id="Header-File"><a href="#Header-File" class="headerlink" title="Header File"></a>Header File</h3><p>Linux capabilities are defined in a header file with the non-surprising name <code>capability.h</code>, in <code>/usr/include/linux/capability.h</code>. They’re pretty self-explanatory and well commented</p>
+<h3 id="Capability-Number"><a href="#Capability-Number" class="headerlink" title="Capability Number"></a>Capability Number</h3><p>To see the highest capability number for your kernel, use the data from the <code>/proc</code> file system.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cat /proc/sys/kernel/cap_last_cap</span><br><span class="line"></span><br><span class="line">36</span><br></pre></td></tr></table></figure></p>
+<h3 id="Current-Capabilities"><a href="#Current-Capabilities" class="headerlink" title="Current Capabilities"></a>Current Capabilities</h3><p>To see the current capabilities list, run <code>capsh --print</code>, for example, normal user <code>dsadm</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ capsh --print</span><br><span class="line"></span><br><span class="line">Current: =</span><br><span class="line">Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,35,36</span><br><span class="line">Securebits: 00/0x0/1&apos;b0</span><br><span class="line"> secure-noroot: no (unlocked)</span><br><span class="line"> secure-no-suid-fixup: no (unlocked)</span><br><span class="line"> secure-keep-caps: no (unlocked)</span><br><span class="line">uid=1002(dsadm)</span><br><span class="line">gid=1002(dsadm)</span><br><span class="line">groups=1002(dsadm)</span><br></pre></td></tr></table></figure></p>
+<p>you see the <code>Current: =</code> is empty, but if you run as root user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ capsh --print</span><br><span class="line"></span><br><span class="line">Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,35,36+ep</span><br><span class="line">Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,35,36</span><br><span class="line">Securebits: 00/0x0/1&apos;b0</span><br><span class="line"> secure-noroot: no (unlocked)</span><br><span class="line"> secure-no-suid-fixup: no (unlocked)</span><br><span class="line"> secure-keep-caps: no (unlocked)</span><br><span class="line">uid=0(root)</span><br><span class="line">gid=0(root)</span><br><span class="line">groups=0(root)</span><br></pre></td></tr></table></figure></p>
+<p>To see the capabilities for a particular process, run <code>cat /proc/&lt;PID&gt;/status | grep -i cap</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># cat /proc/1/status | grep -i cap</span><br><span class="line"></span><br><span class="line">CapInh: 00000000a884a5fb</span><br><span class="line">CapPrm: 00000000a884a5fb</span><br><span class="line">CapEff: 00000000a884a5fb</span><br><span class="line">CapBnd: 00000000a884a5fb</span><br><span class="line">CapAmb: 0000000000000000</span><br></pre></td></tr></table></figure></p>
+<p>This is the bit map for capabilities, the meaning for each is:</p>
+<ul>
+<li>CapInh = Inherited capabilities</li>
+<li>CapPrm – Permitted capabilities</li>
+<li>CapEff = Effective capabilities</li>
+<li>CapBnd = Bounding set</li>
+<li>CapAmb = Ambient capabilities set</li>
+</ul>
+<blockquote>
+<p>The <code>CapBnd</code> defines the upper level of available capabilities. During the time a process runs, no capabilities can be added to this list. Only the capabilities in the bounding set can be added to the inheritable set, which uses the capset() system call. If a capability is dropped from the boundary set, that process or its children can no longer have access to it.</p>
+</blockquote>
+<p>Using the <code>capsh</code> utility we can decode them into the capabilities name:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># capsh --decode=00000000a884a5fb</span><br><span class="line"></span><br><span class="line">0x00000000a884a5fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap</span><br></pre></td></tr></table></figure></p>
+<p>The another easy way is use <code>getpcaps</code> utility:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># getpcaps 1965</span><br><span class="line"></span><br><span class="line">Capabilities for `1965&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span><br></pre></td></tr></table></figure></p>
+<p>It is also interesting to see the capabilities of a set of processes that have a relationship.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># getpcaps $(pgrep db2)</span><br><span class="line"></span><br><span class="line">Capabilities for `1965&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span><br><span class="line">Capabilities for `2151&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities for `2245&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span><br><span class="line">Capabilities for `2246&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span><br><span class="line">Capabilities for `2247&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span><br><span class="line">Capabilities for `2249&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities for `2614&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities for `4213&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities for `4238&apos;: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br></pre></td></tr></table></figure></p>
+<h3 id="Limit-Capability"><a href="#Limit-Capability" class="headerlink" title="Limit Capability"></a>Limit Capability</h3><p>You can test what happens when a particular capability is dropped by using the <code>capsh</code> utility. This is a way to see what capabilities a particular program may need to function correctly. The <code>capsh</code> command can run a particular process and restrict the set of available capabilities.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capsh --print -- -c &quot;/bin/ping -c 1 localhost&quot;</span><br></pre></td></tr></table></figure></p>
+<p>After dropping <code>cap_net_raw</code>, <code>ping</code> not permitted.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capsh --drop=cap_net_raw --print -- -c &quot;/bin/ping -c 1 localhost&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Capability-Meet"><a href="#Capability-Meet" class="headerlink" title="Capability Meet"></a>Capability Meet</h3><p>List the capabilities I have seen so far:</p>
+<ul>
+<li><p>CAP_SYS_ADMIN<br>Without it, I cannot perform <code>hostname</code> command for docker container in K8s.</p>
+</li>
+<li><p>CAP_SYS_RESOURCE<br>This is for adjust <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/c0057140.html" target="_blank" rel="noopener">Db2 kernel parameters</a></p>
+</li>
+</ul>
+<p>These 3 are for Db2:</p>
+<ul>
+<li><p>CAP_SETFCAP<br>Set arbitrary capabilities on a file. So what? I don’t know.</p>
+</li>
+<li><p>CAP_SYS_NICE</p>
+</li>
+<li><p>CAP_IPC_OWNER<br>Bypass permission checks for operations on System V IPC objects.</p>
+</li>
+</ul>
+<h3 id="My-Questions"><a href="#My-Questions" class="headerlink" title="My Questions"></a>My Questions</h3><ol>
+<li><p>Privileges grant to user or process?<br>I think for the process run by normal user.</p>
+</li>
+<li><p>Privilege process bypass all kernel permission check? Does that mean linux capabilities are only for non-privilege user or process?<br>I think there is a global or default capability set in system to determine what ever processes on system is allowed to do. Then you can fine-tune for unprivileged process.</p>
+</li>
+<li><p>If we have root and normal user both in docker container, so capabilities are applied on root or normal user or both?<br>After testing and comparing by <code>capsh --print</code> with different user in xmeta container, I think capabilities are applied on all users in K8s environment.</p>
+</li>
+</ol>
+<p>Later I post blogs to talk about <code>&lt;&lt;Capability in Docker&gt;&gt;</code> and <code>&lt;&lt;Capability in K8s&gt;&gt;</code>.</p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p><a href="http://man7.org/linux/man-pages/man7/capabilities.7.html" target="_blank" rel="noopener">Linux Programmer’s Manual</a><br><a href="https://linux-audit.com/linux-capabilities-101/" target="_blank" rel="noopener">Linux capabilities 101</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/capability/" rel="tag"># capability</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/11/linux-setuid-sticky-bit/" rel="next" title="Special Permission Bits">
+                <i class="fa fa-chevron-left"></i> Special Permission Bits
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Capability-Thing"><span class="nav-number">1.</span> <span class="nav-text">Basic Capability Thing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Header-File"><span class="nav-number">1.1.</span> <span class="nav-text">Header File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Capability-Number"><span class="nav-number">1.2.</span> <span class="nav-text">Capability Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Current-Capabilities"><span class="nav-number">1.3.</span> <span class="nav-text">Current Capabilities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limit-Capability"><span class="nav-number">1.4.</span> <span class="nav-text">Limit Capability</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Capability-Meet"><span class="nav-number">1.5.</span> <span class="nav-text">Capability Meet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#My-Questions"><span class="nav-number">1.6.</span> <span class="nav-text">My Questions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">2.</span> <span class="nav-text">Resources</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

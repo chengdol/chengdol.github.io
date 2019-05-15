@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I haven’t seen something like this:1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllibdrwxr-x--T 1 wasadmin dstage    21 Mar 21 03:5">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-13T06:46:03.946Z">
+<meta property="og:updated_time" content="2019-05-15T17:41:03.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Special Permission Bits">
 <meta name="twitter:description" content="I haven’t seen something like this:1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllibdrwxr-x--T 1 wasadmin dstage    21 Mar 21 03:5">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">39</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">40</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">45</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">46</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-12 23:46:03" itemprop="dateModified" datetime="2019-05-12T23:46:03-07:00">2019-05-12</time>
+                <time title="Modified: 2019-05-15 10:41:03" itemprop="dateModified" datetime="2019-05-15T10:41:03-07:00">2019-05-15</time>
               
             
           </span>
@@ -463,7 +463,7 @@
       
         <p>I haven’t seen something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllib</span><br><span class="line">drwxr-x--T 1 wasadmin dstage    21 Mar 21 03:56 usr</span><br></pre></td></tr></table></figure>
-<p>What are these <code>s</code> (sometimes <code>S</code>) and <code>t/T</code> for? I only know <code>rwx</code> before, I realize that I am too young too simple T_T, this should be some basic things…</p>
+<p>What are these <code>s</code> (sometimes <code>S</code>) and <code>t/T</code> for? I only know <code>rwx</code> before (too young too simple T_T), these should be some basic things…</p>
 <h3 id="Basic-Permissions"><a href="#Basic-Permissions" class="headerlink" title="Basic Permissions"></a>Basic Permissions</h3><ul>
 <li><p><code>Read</code> - a readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.</p>
 </li>
@@ -472,17 +472,22 @@
 <li><p><code>Execute</code> - for a file, the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory.</p>
 </li>
 </ul>
-<h3 id="Setuid-and-Setgid-Bit"><a href="#Setuid-and-Setgid-Bit" class="headerlink" title="Setuid and Setgid Bit"></a>Setuid and Setgid Bit</h3><h4 id="apply-on-file"><a href="#apply-on-file" class="headerlink" title="apply on file"></a>apply on file</h4><p>When the <code>setuid</code> or <code>setgid</code> attributes are set on an executable file, then any users able to execute the file will automatically execute the file with the privileges of the file’s owner (commonly root) and/or the file’s group, depending upon the flags set</p>
+<h3 id="Setuid-and-Setgid-Bit"><a href="#Setuid-and-Setgid-Bit" class="headerlink" title="Setuid and Setgid Bit"></a>Setuid and Setgid Bit</h3><p>Assigning the <code>setuid</code> bit to binaries is a common way to give programs root permissions. <code>Linux capabilities</code> is a great alternative to reduce the usage of setuid.</p>
+<blockquote>
+<p>Capabilities break up root privileges in smaller units, so root access is no longer needed. Most of the binaries that have a setuid flag, can be changed to use capabilities instead.</p>
+</blockquote>
+<p><a href="https://linux-audit.com/linux-capabilities-hardening-linux-binaries-by-removing-setuid/" target="_blank" rel="noopener">Harden Linux Binaries by Removing setuid</a></p>
+<h4 id="Apply-on-File"><a href="#Apply-on-File" class="headerlink" title="Apply on File"></a>Apply on File</h4><p>When the <code>setuid</code> or <code>setgid</code> attributes are set on an executable file, then any users able to execute the file will automatically execute the file with the privileges of the file’s owner (commonly root) and/or the file’s group, depending upon the flags set</p>
 <p>This may pose potential security risks in some cases and executables should be properly evaluated before set.</p>
 <p>For example the <code>passwd</code> file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwsr-xr-x. 1 root root 27832 Jan 29  2014 /usr/bin/passwd</span><br></pre></td></tr></table></figure></p>
 <p>set setuid on file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+s script.sh</span><br></pre></td></tr></table></figure></p>
 <p>remove setuid on file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u-s script.sh</span><br></pre></td></tr></table></figure></p>
-<h4 id="apply-on-directory"><a href="#apply-on-directory" class="headerlink" title="apply on directory"></a>apply on directory</h4><p>Setting the <code>setgid</code> permission on a directory causes new files and subdirectories created within it to inherit its <code>group ID</code>, rather than the primary group ID of the user who created the file (the owner ID is <strong>never</strong> affected, only the group ID).</p>
+<h4 id="Apply-on-Directory"><a href="#Apply-on-Directory" class="headerlink" title="Apply on Directory"></a>Apply on Directory</h4><p>Setting the <code>setgid</code> permission on a directory causes new files and subdirectories created within it to inherit its <code>group ID</code>, rather than the primary group ID of the user who created the file (the owner ID is <strong>never</strong> affected, only the group ID).</p>
 <p>set setgid on directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod g+s dir</span><br></pre></td></tr></table></figure></p>
 <p>remove setgid on directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod g-s dir</span><br></pre></td></tr></table></figure></p>
 <p>The <code>setuid</code> permission set on a directory is ignored on most UNIX and Linux systems.However FreeBSD can be configured to interpret <code>setuid</code> in a manner similar to setgid, in which case it forces all files and sub-directories created in a directory to be owned by that directory’s owner - a simple form of inheritance.</p>
 <p>Note that both the <code>setuid</code> and <code>setgit</code> bits have <strong>no effect</strong> if the executable bit is not set. if executable bit is not set, <code>s</code> changes to <code>S</code>.</p>
-<h4 id="chown-removes-setuid"><a href="#chown-removes-setuid" class="headerlink" title="chown removes setuid"></a>chown removes setuid</h4><p>If you run <code>chown</code> on a <code>setuid</code> script, you will find that the <code>s</code> is gone. This is a reasonable design, otherwise the <code>s</code> will apply to the new owner, a big security hole.</p>
+<h4 id="Chown-Removes-Setuid"><a href="#Chown-Removes-Setuid" class="headerlink" title="Chown Removes Setuid"></a>Chown Removes Setuid</h4><p>If you run <code>chown</code> on a <code>setuid</code> script, you will find that the <code>s</code> is gone. This is a reasonable design, otherwise the <code>s</code> will apply to the new owner, a big security hole.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">The `chown&apos; command sometimes clears the set-user-ID or set-group-ID</span><br><span class="line">permission bits.  This behavior depends on the policy and functionality</span><br><span class="line">of the underlying `chown&apos; system call, which may make system-dependent</span><br><span class="line">file mode modifications outside the control of the `chown&apos; command.</span><br><span class="line">For example, the `chown&apos; command might not affect those bits when</span><br><span class="line">invoked by a user with appropriate privileges, or when the bits signify</span><br><span class="line">some function other than executable permission (e.g., mandatory</span><br><span class="line">locking).  When in doubt, check the underlying system behavior.</span><br></pre></td></tr></table></figure>
 <h3 id="Sticky-Bit"><a href="#Sticky-Bit" class="headerlink" title="Sticky Bit"></a>Sticky Bit</h3><p>When set on a file or directory, the <code>sticky bit</code>, or <code>+t</code> mode, means that only the <code>owner</code> (or <code>root</code>) can delete the file (or files under the directory), <strong>regardless of</strong> which users have write access to this file or directory by way of group membership or ownership! </p>
 <p>This is useful when a file or directory is owned by a group through which a number of users share write access to a given set of files.</p>
@@ -542,6 +547,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/13/linux-capability/" rel="prev" title="Linux Capability">
+                Linux Capability <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -613,7 +622,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -739,7 +748,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -775,7 +786,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Permissions"><span class="nav-number">1.</span> <span class="nav-text">Basic Permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setuid-and-Setgid-Bit"><span class="nav-number">2.</span> <span class="nav-text">Setuid and Setgid Bit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-on-file"><span class="nav-number">2.1.</span> <span class="nav-text">apply on file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-on-directory"><span class="nav-number">2.2.</span> <span class="nav-text">apply on directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chown-removes-setuid"><span class="nav-number">2.3.</span> <span class="nav-text">chown removes setuid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Bit"><span class="nav-number">3.</span> <span class="nav-text">Sticky Bit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">4.</span> <span class="nav-text">Resources</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Permissions"><span class="nav-number">1.</span> <span class="nav-text">Basic Permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setuid-and-Setgid-Bit"><span class="nav-number">2.</span> <span class="nav-text">Setuid and Setgid Bit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Apply-on-File"><span class="nav-number">2.1.</span> <span class="nav-text">Apply on File</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Apply-on-Directory"><span class="nav-number">2.2.</span> <span class="nav-text">Apply on Directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Chown-Removes-Setuid"><span class="nav-number">2.3.</span> <span class="nav-text">Chown Removes Setuid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Bit"><span class="nav-number">3.</span> <span class="nav-text">Sticky Bit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">4.</span> <span class="nav-text">Resources</span></a></li></ol></div>
             
 
           </div>
