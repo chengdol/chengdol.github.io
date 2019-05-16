@@ -96,24 +96,25 @@
 
 
 
-  <meta name="description" content="入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。  Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。  Automate tedious work，如果你发现某一件事会">
+  <meta name="description" content="In my blog &amp;lt;&amp;lt;Linux Capability&amp;gt;&amp;gt;. I talk the basic and general knowlwdge about Capability. This blog will focus on Capability in Docker container. In docker run command, there are some flag">
+<meta name="keywords" content="capability,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gain from People">
-<meta property="og:url" content="http://yoursite.com/2019/04/30/mis-gain-from-people/index.html">
+<meta property="og:title" content="Docker Capability">
+<meta property="og:url" content="http://yoursite.com/2019/05/15/docker-capability/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。  Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。  Automate tedious work，如果你发现某一件事会">
+<meta property="og:description" content="In my blog &amp;lt;&amp;lt;Linux Capability&amp;gt;&amp;gt;. I talk the basic and general knowlwdge about Capability. This blog will focus on Capability in Docker container. In docker run command, there are some flag">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T05:46:29.805Z">
+<meta property="og:updated_time" content="2019-05-16T06:12:39.444Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gain from People">
-<meta name="twitter:description" content="入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。  Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。  Automate tedious work，如果你发现某一件事会">
+<meta name="twitter:title" content="Docker Capability">
+<meta name="twitter:description" content="In my blog &amp;lt;&amp;lt;Linux Capability&amp;gt;&amp;gt;. I talk the basic and general knowlwdge about Capability. This blog will focus on Capability in Docker container. In docker run command, there are some flag">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/30/mis-gain-from-people/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/15/docker-capability/">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title>Gain from People | 海胆阶段's Blog</title>
+  <title>Docker Capability | 海胆阶段's Blog</title>
   
 
 
@@ -349,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/30/mis-gain-from-people/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/docker-capability/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -366,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Gain from People
+          <h1 class="post-title" itemprop="name headline">Docker Capability
 
               
             
@@ -392,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-04-30 20:18:09" itemprop="dateCreated datePublished" datetime="2019-04-30T20:18:09-07:00">2019-04-30</time>
+              <time title="Created: 2019-05-15 16:12:12 / Modified: 23:12:39" itemprop="dateCreated datePublished" datetime="2019-05-15T16:12:12-07:00">2019-05-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-13 22:46:29" itemprop="dateModified" datetime="2019-05-13T22:46:29-07:00">2019-05-13</time>
               
             
           </span>
@@ -426,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Miscellanea/" itemprop="url" rel="index"><span itemprop="name">Miscellanea</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
 
                 
                 
@@ -460,21 +449,33 @@
       
 
       
-        <p>入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。</p>
+        <p>In my blog <a href="https://chengdol.github.io/2019/05/13/linux-capability/" target="_blank" rel="noopener"><code>&lt;&lt;Linux Capability&gt;&gt;</code></a>. I talk the basic and general knowlwdge about <code>Capability</code>. This blog will focus on Capability in Docker container.</p>
+<p>In <code>docker run</code> command, there are some flags about runtime privilege and capabilities:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--cap-add: Add Linux capabilities</span><br><span class="line">--cap-drop: Drop Linux capabilities</span><br><span class="line">--privileged=false: Give extended privileges to this container</span><br><span class="line">--device=[]: Allows you to run devices inside the container without the --privileged flag.</span><br></pre></td></tr></table></figure></p>
+<p>By default, Docker containers are <strong>unprivileged</strong> and cannot, for example, run a Docker daemon inside a Docker container. This is because by default a container is not allowed to access any devices (<code>/dev</code>) on host, but a “privileged” container is given access to all devices on host.</p>
+<p>The <code>--privileged</code> flag gives <strong>all</strong> capabilities to the container, and it also lifts all the limitations enforced by the device cgroup controller. In other words, the container can then do almost everything that the host can do. This flag exists to allow special use-cases, like running Docker within Docker.</p>
+<p>How to verify? you can run a busybox with <code>--privileged</code> enabled or not, first try enable it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it --privileged busybox sh</span><br></pre></td></tr></table></figure></p>
+<p>then let’s check init process capabilities (busybox doesn’t have <code>getpcaps</code>):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># cat /proc/1/status | grep -i cap</span><br><span class="line"></span><br><span class="line">CapInh: 0000001fffffffff</span><br><span class="line">CapPrm: 0000001fffffffff</span><br><span class="line">CapEff: 0000001fffffffff</span><br><span class="line">CapBnd: 0000001fffffffff</span><br><span class="line">CapAmb: 0000000000000000</span><br></pre></td></tr></table></figure></p>
+<p>then decode in another machine, we can see full capabilities here:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># capsh --decode=0000001fffffffff</span><br><span class="line"></span><br><span class="line">0x0000001fffffffff=cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,</span><br><span class="line">cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,</span><br><span class="line">cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,</span><br><span class="line">cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,</span><br><span class="line">cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,</span><br><span class="line">cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,</span><br><span class="line">35,36</span><br></pre></td></tr></table></figure></p>
+<p>if not enabled, only see default ones:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># capsh --decode=00000000a80425fb</span><br><span class="line"></span><br><span class="line">0x00000000a80425fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,</span><br><span class="line">cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,</span><br><span class="line">cap_audit_write,cap_setfcap</span><br></pre></td></tr></table></figure></p>
+<p>By default, Docker has a default list of capabilities that are kept. The following table lists the Linux capability options which are allowed by default and can be dropped.</p>
 <ol>
-<li><p>Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。</p>
-</li>
-<li><p>Automate tedious work，如果你发现某一件事会重复发生至少3次以上，请立马想想能不能自动化一下，至少来点alias简化一下敲击键盘的数量。</p>
-</li>
-<li><p>At least half day. 以前太honest了，每次manager 问我 how much time do you think you can finish it，我都给自己的buffer很少。</p>
-</li>
-<li><p>Back up daily work. 始于一次internal cloud maintenance后，自己的中控机文件系统受到损害无法修复壮烈牺牲（我总觉得可以修复，可能那人觉得没必要），后来又遇到laptop无故反复重启的险情，遂领悟高级备份技能。</p>
-</li>
-<li><p>Learning is an endless process. 以前还在想是不是经过一个陡峭的learning curve，工作将手到擒来（或者游刃有余），后来发现想多了T_T。我几乎每天都能遇到以前不会的新东西，honestly，我还是很高兴的，否则博客该写啥呢。也不是说领域完全没有尽头，只是它太大了，由点到面，融会贯通还需要时间。keep learning, all of these will pay off in the end.</p>
-</li>
-<li><p>Try, do try. 实践是检验真理的唯一标准。别太相信查找到解答，但其中很多内容已经失效，过时，并不是最佳方案（虽然能用），有的还是错的。一定要上手试一下，验证一下是否自己已经正确理解。几次遇到和2位组里大佬探讨时发现实际运行结果和期待的东西完全不一样。知其然，更知其所以然，否则心里不踏实。</p>
-</li>
+<li>SETPCAP: Modify process capabilities.</li>
+<li>MKNOD: Create special files using mknod(2).</li>
+<li>AUDIT_WRITE: Write records to kernel auditing log.</li>
+<li>CHOWN: Make arbitrary changes to file UIDs and GIDs (see chown(2)).</li>
+<li>NET_RAW: Use RAW and PACKET sockets.</li>
+<li>DAC_OVERRIDE: Bypass file read, write, and execute permission checks.</li>
+<li>FOWNER    Bypass: permission checks on operations that normally require the file system UID of the process to match the UID of the file.</li>
+<li>FSETID: Don’t clear set-user-ID and set-group-ID permission bits when a file is modified.</li>
+<li>KILL: Bypass permission checks for sending signals.</li>
+<li>SETGID: Make arbitrary manipulations of process GIDs and supplementary GID list.</li>
+<li>SETUID: Make arbitrary manipulations of process UIDs.</li>
+<li>NET_BIND_SERVICE: Bind a socket to internet domain privileged ports (port numbers less than 1024).</li>
+<li>SYS_CHROOT: Use chroot(2), change root directory.</li>
+<li>SETFCAP: Set file capabilities.</li>
 </ol>
+<p>Further reference information is available on the <a href="http://man7.org/linux/man-pages/man7/capabilities.7.html" target="_blank" rel="noopener">capabilities(7) - Linux man page</a></p>
+<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p><a href="https://docs.docker.com/engine/reference/run/" target="_blank" rel="noopener">Docker run reference</a><br><a href="https://docs.docker.com/engine/security/security/" target="_blank" rel="noopener">Docker security</a></p>
 
       
     </div>
@@ -496,6 +497,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/capability/" rel="tag"># capability</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
 
       
       
@@ -505,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/27/music-渴望光荣/" rel="next" title="渴望光荣">
-                <i class="fa fa-chevron-left"></i> 渴望光荣
+              <a href="/2019/05/13/linux-capability/" rel="next" title="Linux Capability">
+                <i class="fa fa-chevron-left"></i> Linux Capability
               </a>
             
           </div>
@@ -515,8 +524,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/01/linux-ipcs/" rel="prev" title="Linux IPC">
-                Linux IPC <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/15/docker-run/" rel="prev" title="Docker Run Reference">
+                Docker Run Reference <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -562,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -733,6 +751,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource"><span class="nav-number">1.</span> <span class="nav-text">Resource</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

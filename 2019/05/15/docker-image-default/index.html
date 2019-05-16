@@ -96,24 +96,25 @@
 
 
 
-  <meta name="description" content="入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。  Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。  Automate tedious work，如果你发现某一件事会">
+  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gain from People">
-<meta property="og:url" content="http://yoursite.com/2019/04/30/mis-gain-from-people/index.html">
+<meta property="og:title" content="Docker Image Defaults">
+<meta property="og:url" content="http://yoursite.com/2019/05/15/docker-image-default/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。  Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。  Automate tedious work，如果你发现某一件事会">
+<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T05:46:29.805Z">
+<meta property="og:updated_time" content="2019-05-16T06:22:44.788Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gain from People">
-<meta name="twitter:description" content="入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。  Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。  Automate tedious work，如果你发现某一件事会">
+<meta name="twitter:title" content="Docker Image Defaults">
+<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/30/mis-gain-from-people/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/15/docker-image-default/">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title>Gain from People | 海胆阶段's Blog</title>
+  <title>Docker Image Defaults | 海胆阶段's Blog</title>
   
 
 
@@ -349,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/30/mis-gain-from-people/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/docker-image-default/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -366,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Gain from People
+          <h1 class="post-title" itemprop="name headline">Docker Image Defaults
 
               
             
@@ -392,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-04-30 20:18:09" itemprop="dateCreated datePublished" datetime="2019-04-30T20:18:09-07:00">2019-04-30</time>
+              <time title="Created: 2019-05-15 23:11:54 / Modified: 23:22:44" itemprop="dateCreated datePublished" datetime="2019-05-15T23:11:54-07:00">2019-05-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-13 22:46:29" itemprop="dateModified" datetime="2019-05-13T22:46:29-07:00">2019-05-13</time>
               
             
           </span>
@@ -426,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Miscellanea/" itemprop="url" rel="index"><span itemprop="name">Miscellanea</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
 
                 
                 
@@ -460,22 +449,7 @@
       
 
       
-        <p>入职IBM接近一年了，除了记录在博客中的东西，还有很多所学所得。目前觉得很实用的几个过来人的建议，一直贯彻落实在平时工作中。</p>
-<ol>
-<li><p>Document everything，能多详细多详细：时间，链接，上下文，切换原因，做了什么，目前得到了什么，接下来做什么, 能上图片上图片，能上语音上与语音, etc. 千万不要觉得记性好，那是幻觉。</p>
-</li>
-<li><p>Automate tedious work，如果你发现某一件事会重复发生至少3次以上，请立马想想能不能自动化一下，至少来点alias简化一下敲击键盘的数量。</p>
-</li>
-<li><p>At least half day. 以前太honest了，每次manager 问我 how much time do you think you can finish it，我都给自己的buffer很少。</p>
-</li>
-<li><p>Back up daily work. 始于一次internal cloud maintenance后，自己的中控机文件系统受到损害无法修复壮烈牺牲（我总觉得可以修复，可能那人觉得没必要），后来又遇到laptop无故反复重启的险情，遂领悟高级备份技能。</p>
-</li>
-<li><p>Learning is an endless process. 以前还在想是不是经过一个陡峭的learning curve，工作将手到擒来（或者游刃有余），后来发现想多了T_T。我几乎每天都能遇到以前不会的新东西，honestly，我还是很高兴的，否则博客该写啥呢。也不是说领域完全没有尽头，只是它太大了，由点到面，融会贯通还需要时间。keep learning, all of these will pay off in the end.</p>
-</li>
-<li><p>Try, do try. 实践是检验真理的唯一标准。别太相信查找到解答，但其中很多内容已经失效，过时，并不是最佳方案（虽然能用），有的还是错的。一定要上手试一下，验证一下是否自己已经正确理解。几次遇到和2位组里大佬探讨时发现实际运行结果和期待的东西完全不一样。知其然，更知其所以然，否则心里不踏实。</p>
-</li>
-</ol>
-
+        
       
     </div>
 
@@ -496,6 +470,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
 
       
       
@@ -505,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/27/music-渴望光荣/" rel="next" title="渴望光荣">
-                <i class="fa fa-chevron-left"></i> 渴望光荣
+              <a href="/2019/05/15/docker-run/" rel="next" title="Docker Run Reference">
+                <i class="fa fa-chevron-left"></i> Docker Run Reference
               </a>
             
           </div>
@@ -514,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/01/linux-ipcs/" rel="prev" title="Linux IPC">
-                Linux IPC <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

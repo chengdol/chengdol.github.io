@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="A symbolic link, also known as a symlink or a soft link, is a special kind of file (entry) that points to the actual file or directory on a disk (like a shortcut in Windows). Symbolic links are used a">
-<meta name="keywords" content="linux,soft link">
+  <meta name="description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Symbolic Link Operations">
-<meta property="og:url" content="http://yoursite.com/2019/04/13/linux-soft-link/index.html">
+<meta property="og:title" content="Docker Run Reference">
+<meta property="og:url" content="http://yoursite.com/2019/05/15/docker-run/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="A symbolic link, also known as a symlink or a soft link, is a special kind of file (entry) that points to the actual file or directory on a disk (like a shortcut in Windows). Symbolic links are used a">
+<meta property="og:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-13T16:51:01.556Z">
+<meta property="og:updated_time" content="2019-05-16T06:22:46.756Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Symbolic Link Operations">
-<meta name="twitter:description" content="A symbolic link, also known as a symlink or a soft link, is a special kind of file (entry) that points to the actual file or directory on a disk (like a shortcut in Windows). Symbolic links are used a">
+<meta name="twitter:title" content="Docker Run Reference">
+<meta name="twitter:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/13/linux-soft-link/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/15/docker-run/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Symbolic Link Operations | 海胆阶段's Blog</title>
+  <title>Docker Run Reference | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/13/linux-soft-link/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/docker-run/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Symbolic Link Operations
+          <h1 class="post-title" itemprop="name headline">Docker Run Reference
 
               
             
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-04-13 09:50:07 / Modified: 09:51:01" itemprop="dateCreated datePublished" datetime="2019-04-13T09:50:07-07:00">2019-04-13</time>
+              <time title="Created: 2019-05-15 20:10:26 / Modified: 23:22:46" itemprop="dateCreated datePublished" datetime="2019-05-15T20:10:26-07:00">2019-05-15</time>
             
 
             
@@ -415,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
 
                 
                 
@@ -449,25 +449,45 @@
       
 
       
-        <p>A symbolic link, also known as a <strong>symlink</strong> or a <strong>soft link</strong>, is a special kind of file (entry) that points to the actual file or directory on a disk (like a shortcut in Windows).</p>
-<p>Symbolic links are used all the time to link libraries and often used to link files and folders on mounted NFS (Network File System) shares.</p>
-<p>The <code>ln</code> command is a standard Linux utility for creation links:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &lt;source&gt; &lt;link name&gt;</span><br></pre></td></tr></table></figure></p>
+        <p>This is a summary from <a href="https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime" target="_blank" rel="noopener">Docker run reference</a></p>
+<p>Docker runs processes in isolated containers. <strong>A container is a process</strong> which runs on a host. The host may be local or remote. When an operator executes <code>docker run</code>, the container process that runs is isolated in that it has its own file system, its own networking, and its own isolated process tree separate from the host.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+<p>The <code>docker run</code> command can override nearly all the defaults set by the Docker runtime itself.</p>
+<p>Let’s first see the <code>docker run</code> command I encountered:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">      --name=$&#123;DB2_XMETA_HOST&#125; \</span><br><span class="line">      --restart=always \</span><br><span class="line">      --privileged=false \</span><br><span class="line">      --cap-add=SYS_NICE --cap-add=IPC_OWNER --cap-add=SETFCAP  \</span><br><span class="line">      --user 1000 \</span><br><span class="line">      -e MY_POD_NAMESPACE=$&#123;MY_POD_NAMESPACE&#125; \</span><br><span class="line">      -e SHARED_VOL=$&#123;SHARED_REPOS_VOLPATH&#125; \</span><br><span class="line">      --hostname=$&#123;DB2_XMETA_HOST&#125; \</span><br><span class="line">      -p $&#123;DB2_XMETA_PORT&#125;:$&#123;DB2_XMETA_PORT&#125; \</span><br><span class="line">      -v $&#123;SHARED_VOL&#125;:$&#123;SHARED_VOL&#125; \</span><br><span class="line">      is-xmetadocker:11.7.1 \</span><br></pre></td></tr></table></figure></p>
+<h2 id="Detched-d"><a href="#Detched-d" class="headerlink" title="Detched [-d]"></a>Detched [-d]</h2><p>To start a container in detached mode, you use <code>-d=true</code> or just <code>-d</code> option. By design, containers started in detached mode exit when the root process used to run the container exits, unless you also specify the <code>--rm</code> option. If you use <code>-d</code> with <code>--rm</code>, the container is removed when it exits or when the daemon exits, whichever happens first.</p>
 <blockquote>
-<p>Generally, the <code>ln</code> syntax is similar to the <code>cp</code> or <code>mv</code> syntax, e.g. <source> <destination>.</destination></p>
+<p>This is why we specify <code>tail -f /dev/null</code> at end of start script in container.</p>
 </blockquote>
-<p>According to the <code>man</code> page, by default, each destination (<link name="">) should <strong>not</strong> already exist. </p>
-<p>If the path to the <link name=""> exists and it is a file, you will get an error like “ln: failed to create symbolic link ‘<link name="">’: File exists”.</p>
-<p>But if the path to the <link name=""> is an existent directory, link will be created inside that directory.</p>
-<h3 id="Create-Soft-Link"><a href="#Create-Soft-Link" class="headerlink" title="Create Soft Link"></a>Create Soft Link</h3><p>For example, create a symbolic link to a file and directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &lt;path to file&gt; &lt;path to link&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &lt;path to dir&gt; &lt;path to link&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Delete-Soft-Link"><a href="#Delete-Soft-Link" class="headerlink" title="Delete Soft Link"></a>Delete Soft Link</h3><p>There are 2 ways to undo or delete the soft link:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unlink &lt;link name&gt;</span><br><span class="line">rm [-rf] &lt;link name&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>Note that, the <code>rm</code> command just removes the link. It will not delete the target directory.</p>
-</blockquote>
-<h3 id="Broken-Soft-Link"><a href="#Broken-Soft-Link" class="headerlink" title="Broken Soft Link"></a>Broken Soft Link</h3><p>Find broken symbolic link:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -xtype l</span><br></pre></td></tr></table></figure></p>
-<p>If you want to delete in one go:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -xtype l -delete</span><br></pre></td></tr></table></figure></p>
-<p>A bit of explanation:<br><code>-xtype l</code> tests for links that are broken (it is the opposite of <code>-type</code>)<br><code>-delete</code> deletes the files directly, no need for further bothering with <code>xargs</code> or <code>-exec</code></p>
-<h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources:"></a>Resources:</h3><p><a href="https://www.shellhacks.com/symlink-create-symbolic-link-linux/" target="_blank" rel="noopener">SymLink – HowTo: Create a Symbolic Link – Linux</a><br><a href="https://unix.stackexchange.com/questions/34248/how-can-i-find-broken-symlinks" target="_blank" rel="noopener">How can I find broken symlinks</a><br><a href="https://unix.stackexchange.com/questions/314974/how-to-delete-broken-symlinks-in-one-go" target="_blank" rel="noopener">How to delete broken symlinks in one go?</a></p>
+<h2 id="Foreground"><a href="#Foreground" class="headerlink" title="Foreground"></a>Foreground</h2><p>In foreground mode (the default when <code>-d</code> is not specified), docker run can start the process in the container and attach the console to the process’s standard input, output, and standard error. It can even pretend to be a TTY (this is what most command line executables expect) and pass along signals.</p>
+<p>For interactive processes (like a shell), you must use <code>-it</code> together in order to allocate a tty for the container process. </p>
+<p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm busybox /bin/sh</span><br></pre></td></tr></table></figure></p>
+<p>This will directly open a shell to operate on container, once exit, container will be removed.</p>
+<h2 id="Name-name"><a href="#Name-name" class="headerlink" title="Name [--name]"></a>Name [<code>--name</code>]</h2><p>Specify container name. If you do not assign a container name with the <code>--name</code> option, then the daemon generates a random string name for you. Defining a name can be a handy way to add meaning to a container.</p>
+<h3 id="IPC-settings-ipc"><a href="#IPC-settings-ipc" class="headerlink" title="IPC settings [--ipc]"></a>IPC settings [<code>--ipc</code>]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--ipc=&quot;MODE&quot;  : Set the IPC mode for the container</span><br></pre></td></tr></table></figure>
+<p>IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues.</p>
+<p>Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--ipc=&lt;Value&gt;</span><br></pre></td></tr></table></figure>
+<p>Value    Description</p>
+<ul>
+<li>“”:    Use daemon’s default.</li>
+<li>“none”:    Own private IPC namespace, with /dev/shm not mounted.</li>
+<li>“private”:    Own private IPC namespace.</li>
+<li>“shareable”:Own private IPC namespace, with a possibility to share it with other containers.</li>
+<li>“container: &lt;<em>name-or-ID</em>&gt;”: Join another (“shareable”) container’s IPC namespace.</li>
+<li>“*host”: Use the host system’s IPC namespace.</li>
+</ul>
+<p>If not specified, daemon default is used, which can either be <code>private</code> or <code>shareable</code>, depending on the daemon version and configuration.</p>
+<p>If these types of applications are broken into multiple containers, you might need to share the IPC mechanisms of the containers, using “shareable” mode for the main container, and <code>container:&lt;donor-name-or-ID&gt;</code> for other containers.</p>
+<h2 id="Network-settings"><a href="#Network-settings" class="headerlink" title="Network settings"></a>Network settings</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--dns=[]           : Set custom dns servers for the container</span><br><span class="line">--network=&quot;bridge&quot; : Connect a container to a network</span><br><span class="line">                      &apos;bridge&apos;: create a network stack on the default Docker bridge</span><br><span class="line">                      &apos;none&apos;: no networking</span><br><span class="line">                      &apos;container:&lt;name|id&gt;&apos;: reuse another container&apos;s network stack</span><br><span class="line">                      &apos;host&apos;: use the Docker host network stack</span><br><span class="line">                      &apos;&lt;network-name&gt;|&lt;network-id&gt;&apos;: connect to a user-defined network</span><br><span class="line">--network-alias=[] : Add network-scoped alias for the container</span><br><span class="line">--add-host=&quot;&quot;      : Add a line to /etc/hosts (host:IP)</span><br><span class="line">--mac-address=&quot;&quot;   : Sets the container&apos;s Ethernet device&apos;s MAC address</span><br><span class="line">--ip=&quot;&quot;            : Sets the container&apos;s Ethernet device&apos;s IPv4 address</span><br><span class="line">--ip6=&quot;&quot;           : Sets the container&apos;s Ethernet device&apos;s IPv6 address</span><br><span class="line">--link-local-ip=[] : Sets one or more container&apos;s Ethernet device&apos;s link local IPv4/IPv6 addresses</span><br></pre></td></tr></table></figure>
+<p>I meet <code>--add-host</code> flag in service docker:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;SERVICES_HOST_IP&#125; \</span><br></pre></td></tr></table></figure></p>
+<h2 id="Restart-policies-restart"><a href="#Restart-policies-restart" class="headerlink" title="Restart policies (--restart)"></a>Restart policies (<code>--restart</code>)</h2><p>Using the <code>--restart</code> flag on Docker run you can specify a restart policy for how a container should or should not be restarted on exit.</p>
+<p>When a restart policy is active on a container, it will be shown as either <code>Up</code> or <code>Restarting</code> in <code>docker ps</code>.</p>
+<h2 id="Exit-Status"><a href="#Exit-Status" class="headerlink" title="Exit Status"></a>Exit Status</h2><p>The exit code from <code>docker run</code> gives information about why the container failed to run or why it exited. When <code>docker run</code> exits with a non-zero code, the exit codes follow the chroot standard.</p>
+<h2 id="Clean-up-rm"><a href="#Clean-up-rm" class="headerlink" title="Clean up [--rm]"></a>Clean up [<code>--rm</code>]</h2><p>By default a container’s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running <strong>short-term</strong> foreground processes, these container file systems can really pile up. If instead you’d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the <code>--rm</code> flag.</p>
+<h2 id="Runtime-privilege-and-Linux-capabilities"><a href="#Runtime-privilege-and-Linux-capabilities" class="headerlink" title="Runtime privilege and Linux capabilities"></a>Runtime privilege and Linux capabilities</h2><p>I separate this section to the blog <a href="https://chengdol.github.io/2019/05/15/docker-capability/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Capability&gt;&gt;</code></a> since it’s important to me.</p>
+<h2 id="Logging-drivers-log-driver"><a href="#Logging-drivers-log-driver" class="headerlink" title="Logging drivers [--log-driver]"></a>Logging drivers [<code>--log-driver</code>]</h2><p>The container can have a different logging driver than the Docker daemon. Use the <code>--log-driver=VALUE</code> with the <code>docker run</code> command to configure the container’s logging driver.</p>
+<p>Default logging driver is json format. The <code>docker logs</code> command is available only for the <code>json-file</code> and <code>journald</code> logging drivers.</p>
+<h2 id="Overriding-Dockerfile-image-defaults"><a href="#Overriding-Dockerfile-image-defaults" class="headerlink" title="Overriding Dockerfile image defaults"></a>Overriding Dockerfile image defaults</h2><p>I separate this section to the blog <a href="https://chengdol.github.io/2019/05/15/docker-image-default/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Image Defaults&gt;&gt;</code></a> since it’s important to me.</p>
 
       
     </div>
@@ -491,9 +511,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/soft-link/" rel="tag"># soft link</a>
+            <a href="/tags/docker/" rel="tag"># docker</a>
           
         </div>
       
@@ -506,8 +524,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/11/mis-daily-scrum/" rel="next" title="Daily Scrum">
-                <i class="fa fa-chevron-left"></i> Daily Scrum
+              <a href="/2019/05/15/docker-capability/" rel="next" title="Docker Capability">
+                <i class="fa fa-chevron-left"></i> Docker Capability
               </a>
             
           </div>
@@ -516,8 +534,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/19/how-linux-works/" rel="prev" title="How Linux Works, 2nd Edition">
-                How Linux Works, 2nd Edition <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/15/docker-image-default/" rel="prev" title="Docker Image Defaults">
+                Docker Image Defaults <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -754,7 +772,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Soft-Link"><span class="nav-number">1.</span> <span class="nav-text">Create Soft Link</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Soft-Link"><span class="nav-number">2.</span> <span class="nav-text">Delete Soft Link</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Broken-Soft-Link"><span class="nav-number">3.</span> <span class="nav-text">Broken Soft Link</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources"><span class="nav-number">4.</span> <span class="nav-text">Resources:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Detched-d"><span class="nav-number">1.</span> <span class="nav-text">Detched [-d]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreground"><span class="nav-number">2.</span> <span class="nav-text">Foreground</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Name-name"><span class="nav-number">3.</span> <span class="nav-text">Name [--name]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC-settings-ipc"><span class="nav-number">3.1.</span> <span class="nav-text">IPC settings [--ipc]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-settings"><span class="nav-number">4.</span> <span class="nav-text">Network settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restart-policies-restart"><span class="nav-number">5.</span> <span class="nav-text">Restart policies (--restart)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exit-Status"><span class="nav-number">6.</span> <span class="nav-text">Exit Status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clean-up-rm"><span class="nav-number">7.</span> <span class="nav-text">Clean up [--rm]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime-privilege-and-Linux-capabilities"><span class="nav-number">8.</span> <span class="nav-text">Runtime privilege and Linux capabilities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logging-drivers-log-driver"><span class="nav-number">9.</span> <span class="nav-text">Logging drivers [--log-driver]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Overriding-Dockerfile-image-defaults"><span class="nav-number">10.</span> <span class="nav-text">Overriding Dockerfile image defaults</span></a></li></ol></div>
             
 
           </div>

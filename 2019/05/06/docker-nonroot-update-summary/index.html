@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from own by root to noon-r">
+  <meta name="description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
 <meta name="keywords" content="docker,entry point,docker commit,docker save">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Non-Root Docker Update Summary">
 <meta property="og:url" content="http://yoursite.com/2019/05/06/docker-nonroot-update-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from own by root to noon-r">
+<meta property="og:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-06T18:41:58.568Z">
+<meta property="og:updated_time" content="2019-05-15T23:17:04.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Non-Root Docker Update Summary">
-<meta name="twitter:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from own by root to noon-r">
+<meta name="twitter:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">46</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">49</span></a>
 
   </li>
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-05-06 11:32:03 / Modified: 11:41:58" itemprop="dateCreated datePublished" datetime="2019-05-06T11:32:03-07:00">2019-05-06</time>
+              <time title="Created: 2019-05-06 11:32:03" itemprop="dateCreated datePublished" datetime="2019-05-06T11:32:03-07:00">2019-05-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-15 16:17:04" itemprop="dateModified" datetime="2019-05-15T16:17:04-07:00">2019-05-15</time>
               
             
           </span>
@@ -449,14 +461,14 @@
       
 
       
-        <p>I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from own by root to noon-root for security reason required by our customers.</p>
+        <p>I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon-root for security reason required by our customers.</p>
 <p>I will talk the development workflow instead of the detail about how to set and modify the configurations inside the container:</p>
 <p>I have a base image at beginning, let’s say <code>root_is_engine.tar.gz</code>, load it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i root_is_engine.tar.gz</span><br></pre></td></tr></table></figure></p>
 <p>you can check the loaded image by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
 <p>Now I am going to create the container from this template, but wait, I don’t want it to run any script or program when I initialize it, what I need is it just hangs there like a fresh new white paper and I will draw something step by step on it.</p>
 <p>That means I need to override the default <code>entry point</code> (entry point sets the command and parameters that will be executed first when a container is run) in docker run command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">         --cap-add=SYS_ADMIN \</span><br><span class="line">         --privileged=false --name=$&#123;ENGINE_HOST&#125; --hostname=$&#123;ENGINE_HOST&#125; \</span><br><span class="line">         --restart=always --add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;ENGINE_HOST_IP&#125; \</span><br><span class="line">         -p 8449:8449 \</span><br><span class="line">         -v $&#123;DEDICATED_ENGINE_VOLPATH&#125;/$&#123;ENGINE_HOST&#125;/EngineClients/db2_client/dsadm:/home/dsadm \</span><br><span class="line">         --entrypoint=/bin/sh \</span><br><span class="line">         $&#123;DOCKER_IMAGE_TAG_ENGINE&#125;:$&#123;DOCKER_IMAGE_VERSION&#125; \</span><br><span class="line">         -c &apos;tail -f /dev/null&apos;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>Note that place the arguments to your entrypoint at the end of your docker command , here is <code>-c &#39;tail -f /dev/null&#39;</code></p>
+<p>Note that place the arguments to your entrypoint at the end of your docker command <code>-c &#39;tail -f /dev/null&#39;</code></p>
 </blockquote>
 <p>Run <code>docker ps</code> command, you can see under <code>COMMAND</code> column the entry point is what we specified:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">b462f6123684        is-engine-image:1       &quot;/bin/sh -c &apos;tail -f...&quot;   2 days ago          Up 2 days           0.0.0.0:8449-&gt;8449/tcp   is-en-conductor-0.en-cond</span><br></pre></td></tr></table></figure></p>
 <p>Then get into the container by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it &lt;container id or container name&gt; bash</span><br></pre></td></tr></table></figure></p>
@@ -602,7 +614,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
