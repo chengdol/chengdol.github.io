@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-16T06:22:46.756Z">
+<meta property="og:updated_time" content="2019-05-17T00:02:07.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Run Reference">
 <meta name="twitter:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-05-15 20:10:26 / Modified: 23:22:46" itemprop="dateCreated datePublished" datetime="2019-05-15T20:10:26-07:00">2019-05-15</time>
+              <time title="Created: 2019-05-15 20:10:26" itemprop="dateCreated datePublished" datetime="2019-05-15T20:10:26-07:00">2019-05-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-16 17:02:07" itemprop="dateModified" datetime="2019-05-16T17:02:07-07:00">2019-05-16</time>
               
             
           </span>
@@ -484,6 +496,8 @@
 <p>When a restart policy is active on a container, it will be shown as either <code>Up</code> or <code>Restarting</code> in <code>docker ps</code>.</p>
 <h2 id="Exit-Status"><a href="#Exit-Status" class="headerlink" title="Exit Status"></a>Exit Status</h2><p>The exit code from <code>docker run</code> gives information about why the container failed to run or why it exited. When <code>docker run</code> exits with a non-zero code, the exit codes follow the chroot standard.</p>
 <h2 id="Clean-up-rm"><a href="#Clean-up-rm" class="headerlink" title="Clean up [--rm]"></a>Clean up [<code>--rm</code>]</h2><p>By default a container’s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running <strong>short-term</strong> foreground processes, these container file systems can really pile up. If instead you’d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the <code>--rm</code> flag.</p>
+<h2 id="HOSTNAME-hostname"><a href="#HOSTNAME-hostname" class="headerlink" title="HOSTNAME [--hostname]"></a>HOSTNAME [<code>--hostname</code>]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--hostname=&quot;xxx&quot;		Container host name</span><br></pre></td></tr></table></figure>
+<p>Set the hostname of the container.</p>
 <h2 id="Runtime-privilege-and-Linux-capabilities"><a href="#Runtime-privilege-and-Linux-capabilities" class="headerlink" title="Runtime privilege and Linux capabilities"></a>Runtime privilege and Linux capabilities</h2><p>I separate this section to the blog <a href="https://chengdol.github.io/2019/05/15/docker-capability/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Capability&gt;&gt;</code></a> since it’s important to me.</p>
 <h2 id="Logging-drivers-log-driver"><a href="#Logging-drivers-log-driver" class="headerlink" title="Logging drivers [--log-driver]"></a>Logging drivers [<code>--log-driver</code>]</h2><p>The container can have a different logging driver than the Docker daemon. Use the <code>--log-driver=VALUE</code> with the <code>docker run</code> command to configure the container’s logging driver.</p>
 <p>Default logging driver is json format. The <code>docker logs</code> command is available only for the <code>json-file</code> and <code>journald</code> logging drivers.</p>
@@ -772,7 +786,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Detched-d"><span class="nav-number">1.</span> <span class="nav-text">Detched [-d]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreground"><span class="nav-number">2.</span> <span class="nav-text">Foreground</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Name-name"><span class="nav-number">3.</span> <span class="nav-text">Name [--name]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC-settings-ipc"><span class="nav-number">3.1.</span> <span class="nav-text">IPC settings [--ipc]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-settings"><span class="nav-number">4.</span> <span class="nav-text">Network settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restart-policies-restart"><span class="nav-number">5.</span> <span class="nav-text">Restart policies (--restart)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exit-Status"><span class="nav-number">6.</span> <span class="nav-text">Exit Status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clean-up-rm"><span class="nav-number">7.</span> <span class="nav-text">Clean up [--rm]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime-privilege-and-Linux-capabilities"><span class="nav-number">8.</span> <span class="nav-text">Runtime privilege and Linux capabilities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logging-drivers-log-driver"><span class="nav-number">9.</span> <span class="nav-text">Logging drivers [--log-driver]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Overriding-Dockerfile-image-defaults"><span class="nav-number">10.</span> <span class="nav-text">Overriding Dockerfile image defaults</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Detched-d"><span class="nav-number">1.</span> <span class="nav-text">Detched [-d]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreground"><span class="nav-number">2.</span> <span class="nav-text">Foreground</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Name-name"><span class="nav-number">3.</span> <span class="nav-text">Name [--name]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC-settings-ipc"><span class="nav-number">3.1.</span> <span class="nav-text">IPC settings [--ipc]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-settings"><span class="nav-number">4.</span> <span class="nav-text">Network settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restart-policies-restart"><span class="nav-number">5.</span> <span class="nav-text">Restart policies (--restart)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exit-Status"><span class="nav-number">6.</span> <span class="nav-text">Exit Status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clean-up-rm"><span class="nav-number">7.</span> <span class="nav-text">Clean up [--rm]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HOSTNAME-hostname"><span class="nav-number">8.</span> <span class="nav-text">HOSTNAME [--hostname]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime-privilege-and-Linux-capabilities"><span class="nav-number">9.</span> <span class="nav-text">Runtime privilege and Linux capabilities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logging-drivers-log-driver"><span class="nav-number">10.</span> <span class="nav-text">Logging drivers [--log-driver]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Overriding-Dockerfile-image-defaults"><span class="nav-number">11.</span> <span class="nav-text">Overriding Dockerfile image defaults</span></a></li></ol></div>
             
 
           </div>

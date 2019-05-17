@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+  <meta name="description" content="This blog is a subsection from &amp;lt;&amp;lt;Docker Run Reference&amp;gt;&amp;gt;. When a developer builds an image from a Dockerfile or when commits it, the developer can set a number of default parameters that ta">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Image Defaults">
 <meta property="og:url" content="http://yoursite.com/2019/05/15/docker-image-default/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="This blog is a subsection from &amp;lt;&amp;lt;Docker Run Reference&amp;gt;&amp;gt;. When a developer builds an image from a Dockerfile or when commits it, the developer can set a number of default parameters that ta">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-16T06:22:44.788Z">
+<meta property="og:updated_time" content="2019-05-17T00:24:19.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Image Defaults">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:description" content="This blog is a subsection from &amp;lt;&amp;lt;Docker Run Reference&amp;gt;&amp;gt;. When a developer builds an image from a Dockerfile or when commits it, the developer can set a number of default parameters that ta">
 
 
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-05-15 23:11:54 / Modified: 23:22:44" itemprop="dateCreated datePublished" datetime="2019-05-15T23:11:54-07:00">2019-05-15</time>
+              <time title="Created: 2019-05-15 23:11:54" itemprop="dateCreated datePublished" datetime="2019-05-15T23:11:54-07:00">2019-05-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-16 17:24:19" itemprop="dateModified" datetime="2019-05-16T17:24:19-07:00">2019-05-16</time>
               
             
           </span>
@@ -449,7 +461,49 @@
       
 
       
-        
+        <p>This blog is a subsection from <a href="https://chengdol.github.io/2019/05/15/docker-run/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Run Reference&gt;&gt;</code></a>.</p>
+<p>When a developer builds an image from a Dockerfile or when commits it, the developer can set a number of default parameters that take effect when the image starts up as a container.</p>
+<p>Four of the Dockerfile commands cannot be overridden at runtime: <code>FROM</code>, <code>MAINTAINER</code>, <code>RUN</code>, and <code>ADD</code>. Everything else has a corresponding override in <code>docker run</code>.</p>
+<h2 id="CMD-default-command-or-options"><a href="#CMD-default-command-or-options" class="headerlink" title="CMD [default command or options]"></a>CMD [default command or options]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+<p>This command is optional because the person who created the IMAGE may have already provided a default <code>COMMAND</code> using the Dockerfile <code>CMD</code> instruction. </p>
+<p>If the image also specifies an <code>ENTRYPOINT</code> then the <code>CMD</code> or <code>COMMAND</code> get appended as arguments to the <code>ENTRYPOINT</code>(see nect section).</p>
+<p>For example, we override the <code>CMD</code> in busybox by <code>/bin/sh -c ls -ltr</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm  busybox /bin/sh -c ls -ltr</span><br></pre></td></tr></table></figure></p>
+<p>You can use<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f &quot;&#123;&#123;.Config.Cmd&#125;&#125;&quot; busybox</span><br></pre></td></tr></table></figure></p>
+<p>to check the default <code>CMD</code> in image, it shows the default <code>CMD</code> for busybox is <code>[sh]</code>. If you override it by <code>/bin/sh -c ls -ltr</code> like above example, then you run<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a --no-trunc</span><br></pre></td></tr></table></figure></p>
+<p>You can see under the <code>COMMAND</code> column, it changes to <code>/bin/sh -c ls -ltr</code>, easy to verify.</p>
+<h2 id="ENTRYPOINT-default-command-to-execute-at-runtime"><a href="#ENTRYPOINT-default-command-to-execute-at-runtime" class="headerlink" title="ENTRYPOINT [default command to execute at runtime]"></a>ENTRYPOINT [default command to execute at runtime]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--entrypoint=&quot;&quot;: Overwrite the default entrypoint set by the image</span><br></pre></td></tr></table></figure>
+<p>The <code>ENTRYPOINT</code> of an image is similar to a <code>COMMAND</code> because it specifies what executable to run when the container starts, but it is (purposely) more difficult to override. The <code>ENTRYPOINT</code> gives a container its default nature or behavior, so that when you set an ENTRYPOINT you can run the container as if it was that binary, complete with default options, and you can pass in more options via the <code>COMMAND</code>.</p>
+<p>you can check the default entrypoint of a image by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f &quot;&#123;&#123;.Config.Entrypoint&#125;&#125;&quot; is-services-image:1</span><br></pre></td></tr></table></figure></p>
+<p>If I want to override the default one and pass parameters <code>tail -f /dev/null</code> to entrypoint <code>/bin/bash</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --entrypoint=/bin/bash is-services-image:1 -c &quot;tail -f /dev/null&quot;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note: Passing <code>--entrypoint</code> will clear out any default command set on the image</p>
+</blockquote>
+<h2 id="EXPOSE-incoming-ports"><a href="#EXPOSE-incoming-ports" class="headerlink" title="EXPOSE [incoming ports]"></a>EXPOSE [incoming ports]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">--expose=[]: Expose a port or a range of ports inside the container.</span><br><span class="line">             These are additional to those exposed by the `EXPOSE` instruction</span><br><span class="line">-P         : Publish all exposed ports to the host interfaces</span><br><span class="line">-p=[]      : Publish a container&apos;s port or a range of ports to the host</span><br><span class="line">               format: ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort</span><br><span class="line">               Both hostPort and containerPort can be specified as a</span><br><span class="line">               range of ports. When specifying ranges for both, the</span><br><span class="line">               number of container ports in the range must match the</span><br><span class="line">               number of host ports in the range, for example:</span><br><span class="line">                   -p 1234-1236:1234-1236/tcp</span><br><span class="line"></span><br><span class="line">               When specifying a range for hostPort only, the</span><br><span class="line">               containerPort must not be a range.  In this case the</span><br><span class="line">               container port is published somewhere within the</span><br><span class="line">               specified hostPort range. (e.g., `-p 1234-1236:1234/tcp`)</span><br><span class="line"></span><br><span class="line">               (use &apos;docker port&apos; to see the actual mapping)</span><br><span class="line"></span><br><span class="line">--link=&quot;&quot;  : Add link to another container (&lt;name or id&gt;:alias or &lt;name or id&gt;)</span><br></pre></td></tr></table></figure>
+<p>With the exception of the <code>EXPOSE</code> directive, an image developer hasn’t got much control over networking. The <code>EXPOSE</code> instruction defines the initial <strong>incoming</strong> ports (listens on specific network ports) that provide services. These ports are available to processes inside the container. An operator can use the –expose option to add to the exposed ports.</p>
+<blockquote>
+<p><code>EXPOSE</code> will not allow communication via the defined ports to containers outside of the same network or to the host machine. To allow this to happen you need to publish the ports.</p>
+</blockquote>
+<p>To expose a container’s internal port, an operator can start the container with the <code>-P</code> or <code>-p</code> flag. The exposed port is accessible on the host and the ports are available to any client that can reach the host.</p>
+<blockquote>
+<p>Note that in K8s, if the pods in the same namespace, the pods can communicate with each others if the ports are running, no additional setting needed except you want to access the applications from outside the cluster.</p>
+</blockquote>
+<h2 id="USER"><a href="#USER" class="headerlink" title="USER"></a>USER</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-u=&quot;&quot;, --user=&quot;&quot;: Sets the username or UID used and optionally the groupname or GID for the specified command.</span><br><span class="line"></span><br><span class="line">The followings examples are all valid:</span><br><span class="line">--user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]</span><br></pre></td></tr></table></figure>
+<p>root (id = 0) is the <strong>default</strong> user within a container. The image developer can create additional users. Those users are accessible by name. When passing a numeric ID, the user does not have to exist in the container.</p>
+<h2 id="ENV-environment-variables"><a href="#ENV-environment-variables" class="headerlink" title="ENV [environment variables]"></a>ENV [environment variables]</h2><p>Docker automatically sets some environment variables when creating a Linux container. Docker does not set any environment variables when creating a Windows container.</p>
+<p>The following environment variables are set for Linux containers:</p>
+<ul>
+<li>HOME: Set based on the value of USER</li>
+<li>HOSTNAME: The hostname associated with the container</li>
+<li>PATH: Includes popular directories, for example:<br><code>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code></li>
+<li>TERM: xterm if the container is allocated a pseudo-TTY</li>
+</ul>
+<p>Additionally, the operator can set any environment variable in the container by using one or more <code>-e</code> flags, even overriding those mentioned above, or already defined by the developer with a Dockerfile <code>ENV</code>. If the operator names an environment variable without specifying a value, then the current value of the named variable is propagated into the container’s environment.</p>
+<h2 id="VOLUME-shared-filesystems"><a href="#VOLUME-shared-filesystems" class="headerlink" title="VOLUME [shared filesystems]"></a>VOLUME [shared filesystems]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-v, --volume=[host-src:]container-dest[:&lt;options&gt;]: Bind mount a volume.</span><br><span class="line">The comma-delimited `options` are [rw|ro], [z|Z],</span><br><span class="line">[[r]shared|[r]slave|[r]private], and [nocopy].</span><br><span class="line">The &apos;host-src&apos; is an absolute path or a name value.</span><br><span class="line"></span><br><span class="line">If neither &apos;rw&apos; or &apos;ro&apos; is specified then the volume is mounted in</span><br><span class="line">read-write mode.</span><br><span class="line"></span><br><span class="line">The `nocopy` mode is used to disable automatically copying the requested volume</span><br><span class="line">path in the container to the volume storage location.</span><br><span class="line">For named volumes, `copy` is the default mode. Copy modes are not supported</span><br><span class="line">for bind-mounted volumes.</span><br><span class="line"></span><br><span class="line">--volumes-from=&quot;&quot;: Mount all volumes from the given container(s)</span><br></pre></td></tr></table></figure>
+<p>The volumes commands are complex enough to have their own <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">documentation</a>. </p>
+<p>he <code>container-dest</code> must always be an absolute path such as <code>/src/docs</code>. The <code>host-src</code> can either be an absolute path or a name value. If you supply an absolute path for the <code>host-src</code>, Docker bind-mounts to the path you specify. If you supply a name, Docker creates a named volume by that name.</p>
+<p>For example, you can specify either <code>/foo</code> or <code>foo</code> for a <code>host-src</code> value. If you supply the <code>/foo</code> value, Docker creates a bind mount. If you supply the <code>foo</code> specification, Docker creates a named volume.</p>
+<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p><a href="https://docs.docker.com/engine/reference/run/" target="_blank" rel="noopener">Docker run reference</a><br><a href="https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact" target="_blank" rel="noopener">Dockerfile reference</a><br><a href="https://medium.freecodecamp.org/expose-vs-publish-docker-port-commands-explained-simply-434593dbc9a3" target="_blank" rel="noopener">Expose vs publish: Docker port commands explained simply</a></p>
+
       
     </div>
 
@@ -538,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -709,6 +772,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD-default-command-or-options"><span class="nav-number">1.</span> <span class="nav-text">CMD [default command or options]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENTRYPOINT-default-command-to-execute-at-runtime"><span class="nav-number">2.</span> <span class="nav-text">ENTRYPOINT [default command to execute at runtime]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EXPOSE-incoming-ports"><span class="nav-number">3.</span> <span class="nav-text">EXPOSE [incoming ports]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USER"><span class="nav-number">4.</span> <span class="nav-text">USER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENV-environment-variables"><span class="nav-number">5.</span> <span class="nav-text">ENV [environment variables]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VOLUME-shared-filesystems"><span class="nav-number">6.</span> <span class="nav-text">VOLUME [shared filesystems]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource"><span class="nav-number">7.</span> <span class="nav-text">Resource</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
