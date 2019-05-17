@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it. Plugg">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T05:25:24.029Z">
+<meta property="og:updated_time" content="2019-05-17T06:30:26.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux PAM Module Configuration">
 <meta name="twitter:description" content="When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it. Plugg">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-13 22:25:24" itemprop="dateModified" datetime="2019-05-13T22:25:24-07:00">2019-05-13</time>
+                <time title="Modified: 2019-05-16 23:30:26" itemprop="dateModified" datetime="2019-05-16T23:30:26-07:00">2019-05-16</time>
               
             
           </span>
@@ -484,6 +484,7 @@
 <p>The <code>pam_wheel</code> PAM module is used to enforce the so-called <code>wheel</code> group. By default it permits root access(su - ) to the system if the applicant user is a member of the wheel group. If no group with this name exist, the module is using the group with the group-ID 0.</p>
 </blockquote>
 <p>Now the user <code>demo</code> can su to other users (include root) without password. You can run command as another user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - &lt;another&gt; -c &quot;&lt;command&gt;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>If you also want to have <code>sudo</code> password-less privilege for <code>wheel</code> group user, you need to edit <code>/etc/sudoers</code> file by <code>visudo</code> as root like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Allows people in group wheel to run all commands</span><br><span class="line">#%wheel  ALL=(ALL)       ALL</span><br><span class="line"></span><br><span class="line">## Same thing without a password</span><br><span class="line">%wheel        ALL=(ALL)       NOPASSWD: ALL</span><br></pre></td></tr></table></figure></p>
 <h3 id="PAM-file-format"><a href="#PAM-file-format" class="headerlink" title="PAM file format"></a>PAM file format</h3><p>Each PAM configuration file, such as <code>/etc/pam.d/su</code> contains a group of directives that define the module (the authentication configuration area) and any controls or arguments with it.</p>
 <p>The directives all have a simple syntax that identifies the module purpose (interface) and the configuration settings for the module.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module_interface	control_flag	module_name module_arguments</span><br></pre></td></tr></table></figure></p>
 <ul>
