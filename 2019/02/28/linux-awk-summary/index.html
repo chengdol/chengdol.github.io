@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
-<meta name="keywords" content="tar">
+  <meta name="description" content="This article used to walk you through some commonly awk usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
+<meta name="keywords" content="awk">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tar Command Daily Work Summary">
-<meta property="og:url" content="http://yoursite.com/2019/02/21/tar-summary/index.html">
+<meta property="og:title" content="Awk Command Daily Work Summary">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/linux-awk-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
+<meta property="og:description" content="This article used to walk you through some commonly awk usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-02T05:47:22.144Z">
+<meta property="og:updated_time" content="2019-05-21T00:22:34.133Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tar Command Daily Work Summary">
-<meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
+<meta name="twitter:title" content="Awk Command Daily Work Summary">
+<meta name="twitter:description" content="This article used to walk you through some commonly awk usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/21/tar-summary/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/linux-awk-summary/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Tar Command Daily Work Summary | 海胆阶段's Blog</title>
+  <title>Awk Command Daily Work Summary | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/tar-summary/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/linux-awk-summary/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tar Command Daily Work Summary
+          <h1 class="post-title" itemprop="name headline">Awk Command Daily Work Summary
 
               
             
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-02-21 21:28:51" itemprop="dateCreated datePublished" datetime="2019-02-21T21:28:51-08:00">2019-02-21</time>
+              <time title="Created: 2019-02-28 22:46:08" itemprop="dateCreated datePublished" datetime="2019-02-28T22:46:08-08:00">2019-02-28</time>
             
 
             
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-01 22:47:22" itemprop="dateModified" datetime="2019-05-01T22:47:22-07:00">2019-05-01</time>
+                <time title="Modified: 2019-05-20 17:22:34" itemprop="dateModified" datetime="2019-05-20T17:22:34-07:00">2019-05-20</time>
               
             
           </span>
@@ -461,22 +461,12 @@
       
 
       
-        <p>This article used to walk you through some commonly <code>tar</code> usages , based on a real life scenario.</p>
-<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 04/21/2019 &emsp; &emsp; untar keep permission<br>#  &emsp; 02/28/2019 &emsp; &emsp; dash or not<br>#  &emsp; 02/27/2019 &emsp; &emsp; untar to specified folder<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar multiple files<br>#<br>################################################################</p>
-<h3 id="02-19-2019"><a href="#02-19-2019" class="headerlink" title="02/19/2019"></a>02/19/2019</h3><p>Basic operation: tar multiple files into <code>example.tar.gz</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf example.tar.gz file1 file2 file3 …</span><br></pre></td></tr></table></figure></p>
-<h3 id="02-20-2019"><a href="#02-20-2019" class="headerlink" title="02/20/2019"></a>02/20/2019</h3><p>When untar multiple files, you cannot do this, it will fail<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf file1.tar.gz file2.tar.gz file3.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>The reason please see this <a href="https://stackoverflow.com/questions/583889/how-can-you-untar-more-than-one-file-at-a-time" target="_blank" rel="noopener">link</a>, the solution is to use <code>xargs</code> instead:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.tar.gz | xargs -i tar xzf &#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Or you can use <code>find</code> with <code>-exec</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -name <span class="string">"*.tar.gz"</span> -<span class="built_in">exec</span> tar zxf <span class="string">'&#123;&#125;'</span> \;</span><br></pre></td></tr></table></figure></p>
-<h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>For example, if you want to tar things inside a folder but exclude some files<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf target.tar.gz ./* --exclude=<span class="string">'createInstallerTar.sh'</span> --exclude=<span class="string">"target.tar.gz"</span> --exclude=<span class="string">'pushBIPayload.sh'</span></span><br></pre></td></tr></table></figure></p>
-<p>If you don’t exclude target.tar.gz, it will tar itself again.</p>
-<h3 id="02-22-2019"><a href="#02-22-2019" class="headerlink" title="02/22/2019"></a>02/22/2019</h3><p>List tar.gz file content, flag <code>z</code>  is used to distinguish tar and tar.gz<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar ztvf target.tar.gz</span><br></pre></td></tr></table></figure></p>
-<h3 id="02-27-2019"><a href="#02-27-2019" class="headerlink" title="02/27/2019"></a>02/27/2019</h3><p>If you don’t specify target folder, untar will put things in current directory, use <code>-C</code> option to specify it. For example, I want to untar source.tar.gz file to <code>/etc/yum.repos.d/</code> folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf /tmp/source.tar.gz -C /etc/yum.repos.d/</span><br></pre></td></tr></table></figure></p>
-<p>For <code>-C</code> option, in <code>c</code> and <code>r</code> mode, this changes the directory before adding the following files.  In <code>x</code> mode, change directories after opening the archive but before extracting entries from the archive.</p>
-<h3 id="02-28-2019"><a href="#02-28-2019" class="headerlink" title="02/28/2019"></a>02/28/2019</h3><p>Sometimes I see people use <code>-czf</code> but sometimes <code>czf</code>, dash or not to pass flags?</p>
-<p>Historical and compatible reason, <strong>no</strong> dash version is probably more portable.</p>
-<p><code>tar</code> is one of those ancient commands from the days when option syntax hadn’t been standardized. Because all useful invocations of <code>tar</code> require specifying an operation before providing any file name, most <code>tar</code> implementations interpret their first argument as an option even if it doesn’t begin with a <code>-</code>. Most current implementations accept a <code>-</code>.</p>
-<h3 id="04-21-2019"><a href="#04-21-2019" class="headerlink" title="04/21/2019"></a>04/21/2019</h3><p>When unpacking, consider using <code>p</code> option to perserve permissions. Use this in extract mode to override your <code>umask</code> and get the exact permissions specified in the archive.. The <code>p</code> option is the default when working as the <strong>superuser</strong>, it will get what it has. If you are a <strong>regular user</strong>, add <code>p</code> to keep permissions.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxpf target.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>It seems umask ignores execute bit? When I untar the file with <code>rwxrwxrwx</code> permission inside by regular user with umask <code>0002</code>, the final permission is <code>rwxrwxr-x</code>.</p>
+        <p>This article used to walk you through some commonly <code>awk</code> usages , based on a real life scenario.</p>
+<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 02/28/2019 &emsp; &emsp; print last column<br>#  &emsp; 02/26/2019 &emsp; &emsp; awk remote execution<br>#<br>################################################################</p>
+<h3 id="02-26-2019"><a href="#02-26-2019" class="headerlink" title="02/26/2019"></a>02/26/2019</h3><p>When use <code>awk</code> in script, may suffer shell unexpected expanding:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o StrictHostKeyChecking=no sshrm1 <span class="string">"ifconfig eth0 | grep \"inet\" | awk '&#123;print <span class="variable">$2</span>&#125;'"</span></span><br></pre></td></tr></table></figure></p>
+<p>Above will not get right data, instead preceding <code>\</code> before <code>$</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o StrictHostKeyChecking=no sshrm1 <span class="string">"ifconfig eth0 | grep \"inet\" | awk '&#123;print \$2&#125;'"</span></span><br></pre></td></tr></table></figure></p>
+<p>Another method is <code>awk</code> the return value from <code>ssh</code> rather than wrap it in <code>ssh</code> command.</p>
+<h3 id="02-28-2019"><a href="#02-28-2019" class="headerlink" title="02/28/2019"></a>02/28/2019</h3><p>Print last column separated by space<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'&#123;print $NF&#125;'</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -500,7 +490,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/tar/" rel="tag"># tar</a>
+            <a href="/tags/awk/" rel="tag"># awk</a>
           
         </div>
       
@@ -513,8 +503,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/21/ssh-scp-summary/" rel="next" title="Ssh and Scp Daily Work Summary">
-                <i class="fa fa-chevron-left"></i> Ssh and Scp Daily Work Summary
+              <a href="/2019/02/28/yum-pending/" rel="next" title="Yum Pending Transaction">
+                <i class="fa fa-chevron-left"></i> Yum Pending Transaction
               </a>
             
           </div>
@@ -523,8 +513,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/24/git-lfs/" rel="prev" title="Versioning Large File in Git">
-                Versioning Large File in Git <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/02/yum-rpm-summary/" rel="prev" title="Yum and Rpm Daily Work Summary">
+                Yum and Rpm Daily Work Summary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -761,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-19-2019"><span class="nav-number">1.</span> <span class="nav-text">02/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-20-2019"><span class="nav-number">2.</span> <span class="nav-text">02/20/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">3.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-22-2019"><span class="nav-number">4.</span> <span class="nav-text">02/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">5.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">6.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-21-2019"><span class="nav-number">7.</span> <span class="nav-text">04/21/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-26-2019"><span class="nav-number">1.</span> <span class="nav-text">02/26/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">2.</span> <span class="nav-text">02/28/2019</span></a></li></ol></div>
             
 
           </div>

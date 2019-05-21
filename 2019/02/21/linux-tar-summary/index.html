@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. ProblemLet’s say the command conky stopped responding on my desktop, and I want to kill i">
-<meta name="keywords" content="pipeline">
+  <meta name="description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
+<meta name="keywords" content="tar">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BASH Pipeline Demo">
-<meta property="og:url" content="http://yoursite.com/2019/02/24/bash-pipeline-demo/index.html">
+<meta property="og:title" content="Tar Command Daily Work Summary">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/linux-tar-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. ProblemLet’s say the command conky stopped responding on my desktop, and I want to kill i">
+<meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T18:17:52.993Z">
+<meta property="og:updated_time" content="2019-05-21T00:24:57.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BASH Pipeline Demo">
-<meta name="twitter:description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. ProblemLet’s say the command conky stopped responding on my desktop, and I want to kill i">
+<meta name="twitter:title" content="Tar Command Daily Work Summary">
+<meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/24/bash-pipeline-demo/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/21/linux-tar-summary/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>BASH Pipeline Demo | 海胆阶段's Blog</title>
+  <title>Tar Command Daily Work Summary | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/bash-pipeline-demo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/linux-tar-summary/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BASH Pipeline Demo
+          <h1 class="post-title" itemprop="name headline">Tar Command Daily Work Summary
 
               
             
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-02-24 18:25:09" itemprop="dateCreated datePublished" datetime="2019-02-24T18:25:09-08:00">2019-02-24</time>
+              <time title="Created: 2019-02-21 21:28:51" itemprop="dateCreated datePublished" datetime="2019-02-21T21:28:51-08:00">2019-02-21</time>
             
 
             
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-03 10:17:52" itemprop="dateModified" datetime="2019-03-03T10:17:52-08:00">2019-03-03</time>
+                <time title="Modified: 2019-05-20 17:24:57" itemprop="dateModified" datetime="2019-05-20T17:24:57-07:00">2019-05-20</time>
               
             
           </span>
@@ -427,7 +427,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell-Script/" itemprop="url" rel="index"><span itemprop="name">Shell Script</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -461,34 +461,23 @@
       
 
       
-        <p>This blog reformats and builds on top of this <em>stackoverflow</em> <a href="https://unix.stackexchange.com/questions/30759/whats-a-good-example-of-piping-commands-together" target="_blank" rel="noopener">topic</a>. Big thanks to <strong>rahmu</strong> and people contributed.</p>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Let’s say the command <code>conky</code> stopped responding on my desktop, and I want to kill it manually. I know a little bit of Unix, so I know that what I need to do is execute the command <code>kill &lt;PID&gt;</code>. In order to retrieve the PID, I can use <code>ps</code> or <code>top</code> or whatever tool my Unix distribution has given me. But how can I do this in one command?</p>
-<h3 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep conky | grep -v grep | awk <span class="string">'&#123;print $2&#125;'</span> | xargs <span class="built_in">kill</span></span><br></pre></td></tr></table></figure>
-<p><em>DISCLAIMER</em>: This command only works in certain cases. Don’t copy/paste it in your terminal and start using it, it could kill processes unsuspectingly. Rather learn <strong>how to build it</strong>.</p>
-<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><ul>
-<li><strong><code>ps aux</code></strong></li>
-</ul>
-<p>This command will output the list of running processes and some info about them. The interesting info is that it’ll output the PID of each process in its 2nd column. Here’s an extract from the output of the command on my box:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux</span><br><span class="line"> rahmu     1925  0.0  0.1 129328  6112 ?        S    11:55   0:06 tint2</span><br><span class="line"> rahmu     1931  0.0  0.3 154992 12108 ?        S    11:55   0:00 volumeicon</span><br><span class="line"> rahmu     1933  0.1  0.2 134716  9460 ?        S    11:55   0:24 parcellite</span><br><span class="line"> rahmu     1940  0.0  0.0  30416  3008 ?        S    11:55   0:10 xcompmgr -cC -t-5 -l-5 -r4.2 -o.55 -D6</span><br><span class="line"> rahmu     1941  0.0  0.2 160336  8928 ?        Ss   11:55   0:00 xfce4-power-manager</span><br><span class="line"> rahmu     1943  0.0  0.0  32792  1964 ?        S    11:55   0:00 /usr/lib/xfconf/xfconfd</span><br><span class="line"> rahmu     1945  0.0  0.0  17584  1292 ?        S    11:55   0:00 /usr/lib/gamin/gam_server</span><br><span class="line"> rahmu     1946  0.0  0.5 203016 19552 ?        S    11:55   0:00 python /usr/bin/system-config-printer-applet</span><br><span class="line"> rahmu     1947  0.0  0.3 171840 12872 ?        S    11:55   0:00 nm-applet --sm-disable</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:38 conky -q</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>grep conky</code></strong></li>
-</ul>
-<p>I’m only interested in one process, so I use <code>grep</code> to find the entry corresponding to my program <code>conky</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:39 conky -q</span><br><span class="line"> rahmu     3233  0.0  0.0   7592   840 pts/1    S+   16:55   0:00 grep conky</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>grep -v grep</code></strong></li>
-</ul>
-<p>As you can see in step 2, the command ps outputs the <code>grep conky</code> process in its list (it’s a running process after all). In order to filter it, I can run <code>grep -v grep</code>. The option<code>-v</code> tells grep to match all the lines excluding the ones containing the pattern.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky | grep -v grep</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:39 conky -q</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>awk &#39;{print $2}&#39;</code></strong></li>
-</ul>
-<p>Now that I have isolated my target process. I want to retrieve its PID. In other words I want to retrieve the 2nd word of the output. Lucky for me, most (all?) modern unices will provide some version of <code>awk</code>, a scripting language that does wonders with tabular data. Our task becomes as easy as <code>print $2</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky | grep -v grep | awk <span class="string">'&#123;print $2&#125;'</span></span><br><span class="line"> 1948</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong><code>xargs kill</code></strong></li>
-</ul>
-<p>I have the PID. All I need is to pass it to <code>kill</code>. To do this, I will use <code>xargs</code>.</p>
-<p><code>xargs kill</code> will read from the input (in our case from the pipe), form a command consisting of <code>kill &lt;items&gt;</code> (<code>&lt;items&gt;</code> are whatever it read from the input), and then execute the command created. In our case it will execute <code>kill 1948</code>. Mission accomplished.</p>
-<h3 id="Final-words"><a href="#Final-words" class="headerlink" title="Final words"></a>Final words</h3><p>Note that depending on what version of unix you’re using, certain programs may behave a little differently (for example, <code>ps</code> might output the PID in column $3). If something seems wrong or different, read your vendor’s documentation (or better, the man pages). Also be careful as <strong>long pipes can be dangerous</strong>. Don’t make any assumptions especially when using commands like <code>kill</code> or <code>rm</code>. For example, if there was another user named ‘conky’ (or ‘Aconkyous’) my command may kill all his running processes too!</p>
-<h3 id="Complement"><a href="#Complement" class="headerlink" title="Complement"></a>Complement</h3><p>actually you can simplify the pipeline further to<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill conky</span><br></pre></td></tr></table></figure></p>
-<p>or<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> $(pgrep conky)</span><br></pre></td></tr></table></figure></p>
+        <p>This article used to walk you through some commonly <code>tar</code> usages , based on a real life scenario.</p>
+<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 05/20/2019 &emsp; &emsp; tar keep owner<br>#  &emsp; 04/21/2019 &emsp; &emsp; untar keep permission<br>#  &emsp; 02/28/2019 &emsp; &emsp; dash or not<br>#  &emsp; 02/27/2019 &emsp; &emsp; untar to specified folder<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar multiple files<br>#<br>################################################################</p>
+<h3 id="02-19-2019"><a href="#02-19-2019" class="headerlink" title="02/19/2019"></a>02/19/2019</h3><p>Basic operation: tar multiple files into <code>example.tar.gz</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf example.tar.gz file1 file2 file3 …</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-20-2019"><a href="#02-20-2019" class="headerlink" title="02/20/2019"></a>02/20/2019</h3><p>When untar multiple files, you cannot do this, it will fail<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf file1.tar.gz file2.tar.gz file3.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>The reason please see this <a href="https://stackoverflow.com/questions/583889/how-can-you-untar-more-than-one-file-at-a-time" target="_blank" rel="noopener">link</a>, the solution is to use <code>xargs</code> instead:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.tar.gz | xargs -i tar xzf &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Or you can use <code>find</code> with <code>-exec</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -name <span class="string">"*.tar.gz"</span> -<span class="built_in">exec</span> tar zxf <span class="string">'&#123;&#125;'</span> \;</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>For example, if you want to tar things inside a folder but exclude some files<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf target.tar.gz ./* --exclude=<span class="string">'createInstallerTar.sh'</span> --exclude=<span class="string">"target.tar.gz"</span> --exclude=<span class="string">'pushBIPayload.sh'</span></span><br></pre></td></tr></table></figure></p>
+<p>If you don’t exclude target.tar.gz, it will tar itself again.</p>
+<h3 id="02-22-2019"><a href="#02-22-2019" class="headerlink" title="02/22/2019"></a>02/22/2019</h3><p>List tar.gz file content, flag <code>z</code>  is used to distinguish tar and tar.gz<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar ztvf target.tar.gz</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-27-2019"><a href="#02-27-2019" class="headerlink" title="02/27/2019"></a>02/27/2019</h3><p>If you don’t specify target folder, untar will put things in current directory, use <code>-C</code> option to specify it. For example, I want to untar source.tar.gz file to <code>/etc/yum.repos.d/</code> folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf /tmp/source.tar.gz -C /etc/yum.repos.d/</span><br></pre></td></tr></table></figure></p>
+<p>For <code>-C</code> option, in <code>c</code> and <code>r</code> mode, this changes the directory before adding the following files.  In <code>x</code> mode, change directories after opening the archive but before extracting entries from the archive.</p>
+<h3 id="02-28-2019"><a href="#02-28-2019" class="headerlink" title="02/28/2019"></a>02/28/2019</h3><p>Sometimes I see people use <code>-czf</code> but sometimes <code>czf</code>, dash or not to pass flags?</p>
+<p>Historical and compatible reason, <strong>no</strong> dash version is probably more portable.</p>
+<p><code>tar</code> is one of those ancient commands from the days when option syntax hadn’t been standardized. Because all useful invocations of <code>tar</code> require specifying an operation before providing any file name, most <code>tar</code> implementations interpret their first argument as an option even if it doesn’t begin with a <code>-</code>. Most current implementations accept a <code>-</code>.</p>
+<h3 id="04-21-2019"><a href="#04-21-2019" class="headerlink" title="04/21/2019"></a>04/21/2019</h3><p>When unpacking, consider using <code>p</code> option to perserve permissions. Use this in extract mode to override your <code>umask</code> and get the exact permissions specified in the archive.. The <code>p</code> option is the default when working as the <strong>superuser</strong>, it will get what it has. If you are a <strong>regular user</strong>, add <code>p</code> to keep permissions.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxpf target.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>It seems umask ignores execute bit? When I untar the file with <code>rwxrwxrwx</code> permission inside by regular user with umask <code>0002</code>, the final permission is <code>rwxrwxr-x</code>.</p>
+<h3 id="05-20-2019"><a href="#05-20-2019" class="headerlink" title="05/20/2019"></a>05/20/2019</h3><p>You can keep original owner and permission when tar by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar --same-owner -pzcf target.tar.gz &lt;source&gt;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -512,7 +501,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/pipeline/" rel="tag"># pipeline</a>
+            <a href="/tags/tar/" rel="tag"># tar</a>
           
         </div>
       
@@ -525,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/24/script-code-snippet/" rel="next" title="Commonly Used Code Snippets">
-                <i class="fa fa-chevron-left"></i> Commonly Used Code Snippets
+              <a href="/2019/02/21/linux-ssh-scp-summary/" rel="next" title="Ssh and Scp Daily Work Summary">
+                <i class="fa fa-chevron-left"></i> Ssh and Scp Daily Work Summary
               </a>
             
           </div>
@@ -535,8 +524,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/25/offline-package-install-1/" rel="prev" title="Offline Package Installation I">
-                Offline Package Installation I <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/24/git-lfs/" rel="prev" title="Versioning Large File in Git">
+                Versioning Large File in Git <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -773,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Answer"><span class="nav-number">2.</span> <span class="nav-text">Answer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-it-works"><span class="nav-number">3.</span> <span class="nav-text">How it works</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Final-words"><span class="nav-number">4.</span> <span class="nav-text">Final words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complement"><span class="nav-number">5.</span> <span class="nav-text">Complement</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-19-2019"><span class="nav-number">1.</span> <span class="nav-text">02/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-20-2019"><span class="nav-number">2.</span> <span class="nav-text">02/20/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">3.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-22-2019"><span class="nav-number">4.</span> <span class="nav-text">02/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">5.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">6.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-21-2019"><span class="nav-number">7.</span> <span class="nav-text">04/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-20-2019"><span class="nav-number">8.</span> <span class="nav-text">05/20/2019</span></a></li></ol></div>
             
 
           </div>
