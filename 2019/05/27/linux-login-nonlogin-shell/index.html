@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="In the non-root development for DataStage, in order to execute services as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are th">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-27T22:34:24.002Z">
+<meta property="og:updated_time" content="2019-05-27T23:31:47.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Login and Nonlogin Shell">
 <meta name="twitter:description" content="In the non-root development for DataStage, in order to execute services as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are th">
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-05-27 15:22:42 / Modified: 15:34:24" itemprop="dateCreated datePublished" datetime="2019-05-27T15:22:42-07:00">2019-05-27</time>
+              <time title="Created: 2019-05-27 15:22:42 / Modified: 16:31:47" itemprop="dateCreated datePublished" datetime="2019-05-27T15:22:42-07:00">2019-05-27</time>
             
 
             
@@ -461,9 +461,6 @@
 <li><code>/etc/profile</code> calls the scripts in <code>/etc/profile.d/</code></li>
 <li>Login process calls <code>~/.bash_profile</code>, <code>~/.bash_login</code> and <code>~/.profile</code>. running only the first one that it sees.</li>
 </ol>
-<blockquote>
-<p>Of course you can call <code>~/.bashrc</code> in above files</p>
-</blockquote>
 <p>Login Shells created by explicitly telling to login.<br>examples: <code># su - | # su -l | # su --login | # su USERNAME - | # su -l USERNAME | # su --login USERNAME | # sudo -i</code></p>
 <h2 id="Nonlogin-Shell"><a href="#Nonlogin-Shell" class="headerlink" title="Nonlogin Shell"></a>Nonlogin Shell</h2><p>When bash is invoked as a <code>Non-login</code> shell;</p>
 <ol>
@@ -472,9 +469,13 @@
 </ol>
 <p><code>Non-Login</code> shells created using the below command syntax:<br>examples: <code># su | # su USERNAME</code></p>
 <blockquote>
+<p>Of course you can source <code>~/.bashrc</code> in <code>~/.bash_profile</code> files to satisfy both login and non-login shell, for example: <code>. $HOME/.bashrc</code>.</p>
+</blockquote>
+<p>The reasoning behind the two different startup filesystems is that in the old days, users logged in through a traditional terminal with a <code>login shell</code>, then started <code>non-login</code> subshells with windowing systems or the screen program. For the <code>non-login</code> subshells, it was deemed a waste to repeatedly set the user environment and run a bunch of programs that had already been run. With login shells, you could run fancy startup commands in a file such as .bash_profile, leaving only aliases and other “lightweight” things to your .bashrc.</p>
+<p>This can explain that if you use non-login like <code>su dsadm</code>, the export env vars are still there in <code>env</code> scope, I think the reason is it’s not login and still use current environment. But if you run <code>su - dsadm</code>, it is gone.</p>
+<blockquote>
 <p>Note that I can run <code>bash</code> or <code>sh</code> or <code>csh</code> in terminal, it will give me a new simple prompt without user profile or setting…</p>
 </blockquote>
-<p>It seems if you use non-login like <code>su dsadm</code>, the export env vars are still there in <code>env</code> scope, I think the reason is it’s not login and still use current environment. But if you run <code>su - dsadm</code>, it is gone.</p>
 <p>I also notice that in <code>/etc/passwd</code>, there are some non-login user, I guess they cannot run command such as <code>su - xxx</code>, of course no home directory for them.</p>
 
       
