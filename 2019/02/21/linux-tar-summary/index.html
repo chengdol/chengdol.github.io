@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-24T17:48:40.648Z">
+<meta property="og:updated_time" content="2019-05-28T16:51:55.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tar Command Daily Work Summary">
 <meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-24 10:48:40" itemprop="dateModified" datetime="2019-05-24T10:48:40-07:00">2019-05-24</time>
+                <time title="Modified: 2019-05-28 09:51:55" itemprop="dateModified" datetime="2019-05-28T09:51:55-07:00">2019-05-28</time>
               
             
           </span>
@@ -462,7 +462,7 @@
 
       
         <p>This article used to walk you through some commonly <code>tar</code> usages , based on a real life scenario.</p>
-<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 05/23/2019 &emsp; &emsp; extract single file from tarball<br>#  &emsp; 04/21/2019 &emsp; &emsp; untar keep owner and permission<br>#  &emsp; 02/28/2019 &emsp; &emsp; dash or not<br>#  &emsp; 02/27/2019 &emsp; &emsp; untar to specified folder<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar multiple files<br>#<br>################################################################</p>
+<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 05/29/2019 &emsp; &emsp; extract single file to another directory<br>#  &emsp; 05/28/2019 &emsp; &emsp; extract file to another directory<br>#  &emsp; 05/23/2019 &emsp; &emsp; extract single file from archive<br>#  &emsp; 04/21/2019 &emsp; &emsp; untar keep owner and permission<br>#  &emsp; 02/28/2019 &emsp; &emsp; dash or not<br>#  &emsp; 02/27/2019 &emsp; &emsp; untar to specified folder<br>#  &emsp; 02/22/2019 &emsp; &emsp; list tar content<br>#  &emsp; 02/21/2019 &emsp; &emsp; tar exclude<br>#  &emsp; 02/20/2019 &emsp; &emsp; untar multiple files<br>#  &emsp; 02/19/2019 &emsp; &emsp; tar multiple files<br>#<br>################################################################</p>
 <h3 id="02-19-2019"><a href="#02-19-2019" class="headerlink" title="02/19/2019"></a>02/19/2019</h3><p>Basic operation: tar multiple files into <code>example.tar.gz</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar czf example.tar.gz file1 file2 file3 …</span><br></pre></td></tr></table></figure></p>
 <h3 id="02-20-2019"><a href="#02-20-2019" class="headerlink" title="02/20/2019"></a>02/20/2019</h3><p>When untar multiple files, you cannot do this, it will fail<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf file1.tar.gz file2.tar.gz file3.tar.gz</span><br></pre></td></tr></table></figure></p>
 <p>The reason please see this <a href="https://stackoverflow.com/questions/583889/how-can-you-untar-more-than-one-file-at-a-time" target="_blank" rel="noopener">link</a>, the solution is to use <code>xargs</code> instead:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.tar.gz | xargs -i tar xzf &#123;&#125;</span><br></pre></td></tr></table></figure></p>
@@ -481,10 +481,15 @@
 <blockquote>
 <p>Note that there is a <code>-</code> before <code>zxpf</code>.</p>
 </blockquote>
-<h3 id="05-23-2019"><a href="#05-23-2019" class="headerlink" title="05/23/2019"></a>05/23/2019</h3><p>Extract single file from tarball:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzf target.tar.gz &lt;etc/path/to/file&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="05-23-2019"><a href="#05-23-2019" class="headerlink" title="05/23/2019"></a>05/23/2019</h3><p>Extract single file from tarball to current directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzf target.tar.gz installer/xxx.json</span><br></pre></td></tr></table></figure></p>
+<p>Then you will see <code>./installer/xxx.json</code> in current directory.</p>
 <blockquote>
-<p>Note that no leading <code>/</code> in the path.</p>
+<p>Note that no leading <code>/</code> in the path, you can use <code>tar xtvf target.tar.gz</code> to check the path.</p>
 </blockquote>
+<h3 id="05-28-2019"><a href="#05-28-2019" class="headerlink" title="05/28/2019"></a>05/28/2019</h3><p><code>tar</code> by default extracts file to current directory, if you want to place the untar files to another directory, run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf target.tar.gz -C /target/directory</span><br></pre></td></tr></table></figure></p>
+<p>Note that the target directory has to <strong>exist</strong> before running that command.</p>
+<h3 id="05-29-2019"><a href="#05-29-2019" class="headerlink" title="05/29/2019"></a>05/29/2019</h3><p>If you want to extact single file to another directory, note the options order<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzf target.tar.gz -C /target/directory installer/xxx.json</span><br></pre></td></tr></table></figure></p>
+<p>The single file must be at last</p>
 
       
     </div>
@@ -777,7 +782,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-19-2019"><span class="nav-number">1.</span> <span class="nav-text">02/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-20-2019"><span class="nav-number">2.</span> <span class="nav-text">02/20/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">3.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-22-2019"><span class="nav-number">4.</span> <span class="nav-text">02/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">5.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">6.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-21-2019"><span class="nav-number">7.</span> <span class="nav-text">04/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-23-2019"><span class="nav-number">8.</span> <span class="nav-text">05/23/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-19-2019"><span class="nav-number">1.</span> <span class="nav-text">02/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-20-2019"><span class="nav-number">2.</span> <span class="nav-text">02/20/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">3.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-22-2019"><span class="nav-number">4.</span> <span class="nav-text">02/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">5.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">6.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-21-2019"><span class="nav-number">7.</span> <span class="nav-text">04/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-23-2019"><span class="nav-number">8.</span> <span class="nav-text">05/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-28-2019"><span class="nav-number">9.</span> <span class="nav-text">05/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-29-2019"><span class="nav-number">10.</span> <span class="nav-text">05/29/2019</span></a></li></ol></div>
             
 
           </div>
