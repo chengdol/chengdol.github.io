@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
-<meta name="keywords" content="docker,entry point,docker commit,docker save">
+  <meta name="description" content="Let’s first see what does cron represent from wiki:  The software utility cron is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environmen">
+<meta name="keywords" content="linux,cronjob">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Non-Root Docker Update Summary">
-<meta property="og:url" content="http://yoursite.com/2019/05/06/docker-nonroot-update-summary/index.html">
+<meta property="og:title" content="Scheduling Recurring Tasks with cron">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/linux-cronjob/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
+<meta property="og:description" content="Let’s first see what does cron represent from wiki:  The software utility cron is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environmen">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-15T23:17:04.125Z">
+<meta property="og:updated_time" content="2019-05-29T04:36:27.952Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Non-Root Docker Update Summary">
-<meta name="twitter:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
+<meta name="twitter:title" content="Scheduling Recurring Tasks with cron">
+<meta name="twitter:description" content="Let’s first see what does cron represent from wiki:  The software utility cron is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environmen">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/06/docker-nonroot-update-summary/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/28/linux-cronjob/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Non-Root Docker Update Summary | 海胆阶段's Blog</title>
+  <title>Scheduling Recurring Tasks with cron | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/docker-nonroot-update-summary/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/linux-cronjob/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Non-Root Docker Update Summary
+          <h1 class="post-title" itemprop="name headline">Scheduling Recurring Tasks with cron
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-05-06 11:32:03" itemprop="dateCreated datePublished" datetime="2019-05-06T11:32:03-07:00">2019-05-06</time>
+              <time title="Created: 2019-05-28 13:30:22 / Modified: 21:36:27" itemprop="dateCreated datePublished" datetime="2019-05-28T13:30:22-07:00">2019-05-28</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-15 16:17:04" itemprop="dateModified" datetime="2019-05-15T16:17:04-07:00">2019-05-15</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -461,42 +449,38 @@
       
 
       
-        <p>I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon-root for security reason required by our customers.</p>
-<p>I will talk the development workflow instead of the detail about how to set and modify the configurations inside the container:</p>
-<p>I have a base image at beginning, let’s say <code>root_is_engine.tar.gz</code>, load it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i root_is_engine.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>you can check the loaded image by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
-<p>Now I am going to create the container from this template, but wait, I don’t want it to run any script or program when I initialize it, what I need is it just hangs there like a fresh new white paper and I will draw something step by step on it.</p>
-<p>That means I need to override the default <code>entry point</code> (entry point sets the command and parameters that will be executed first when a container is run) in docker run command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">         --cap-add=SYS_ADMIN \</span><br><span class="line">         --privileged=false --name=$&#123;ENGINE_HOST&#125; --hostname=$&#123;ENGINE_HOST&#125; \</span><br><span class="line">         --restart=always --add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;ENGINE_HOST_IP&#125; \</span><br><span class="line">         -p 8449:8449 \</span><br><span class="line">         -v $&#123;DEDICATED_ENGINE_VOLPATH&#125;/$&#123;ENGINE_HOST&#125;/EngineClients/db2_client/dsadm:/home/dsadm \</span><br><span class="line">         --entrypoint=/bin/sh \</span><br><span class="line">         $&#123;DOCKER_IMAGE_TAG_ENGINE&#125;:$&#123;DOCKER_IMAGE_VERSION&#125; \</span><br><span class="line">         -c &apos;tail -f /dev/null&apos;</span><br></pre></td></tr></table></figure></p>
+        <p>Let’s first see what does <code>cron</code> represent from <a href="https://en.wikipedia.org/wiki/Cron" target="_blank" rel="noopener">wiki</a>:</p>
 <blockquote>
-<p>Note that place the arguments to your entrypoint at the end of your docker command <code>-c &#39;tail -f /dev/null&#39;</code></p>
+<p>The software utility <code>cron</code> is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environments use <code>cron</code> to schedule jobs (commands or shell scripts) to run periodically at fixed times, dates, or intervals. </p>
 </blockquote>
-<p>Run <code>docker ps</code> command, you can see under <code>COMMAND</code> column the entry point is what we specified:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">b462f6123684        is-engine-image:1       &quot;/bin/sh -c &apos;tail -f...&quot;   2 days ago          Up 2 days           0.0.0.0:8449-&gt;8449/tcp   is-en-conductor-0.en-cond</span><br></pre></td></tr></table></figure></p>
-<p>Then get into the container by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it &lt;container id or container name&gt; bash</span><br></pre></td></tr></table></figure></p>
-<p>Also if you check the process status, you can see the init process with PID #1 is running <code>tail</code> command to track <code>/dev/null</code> device file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br><span class="line"></span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         1  0.0  0.0   5968   616 ?        Ss   16:47   0:00 tail -f /dev/null</span><br><span class="line">root        27  1.5  0.0  13420  1992 pts/0    Ss   16:50   0:00 bash</span><br><span class="line">root        45  0.0  0.0  53340  1864 pts/0    R+   16:50   0:00 ps aux</span><br></pre></td></tr></table></figure></p>
-<p>OK, now I can make changes inside container like create and switch to ordinary user with specified user id and group id, grant them privileges, modify the owner and permission of some files, run startup script line by line to see if the applications setup correctly with non-root.</p>
+<p><code>cron</code> is most suitable for scheduling repetitive tasks. For example, it runs log file rotation utilities to ensure that your hard drive doesn’t fill up with old log files. You should know how to use cron because it’s just plain useful.</p>
 <blockquote>
-<p>Note if you have mount path with host machine, you may need to <code>chown</code> correct uid and gid in that path in host, otherwise ordinary user in container cannot access these directories. </p>
+<p>Also see <a href="https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/" target="_blank" rel="noopener">cronjob</a> in K8s.</p>
 </blockquote>
-<p>After verification with simple tests, I need to <strong>commit</strong> the changes into a new image. </p>
+<h2 id="Install-crontab"><a href="#Install-crontab" class="headerlink" title="Install crontab"></a>Install crontab</h2><p>In CentOS or RedHat, you can run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install cronie</span><br></pre></td></tr></table></figure></p>
+<p>If you are not sure, try <code>yum provides crontab</code> to see which package will provide this service.</p>
+<p>To check if <code>cron</code> service is running or not:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status crond</span><br></pre></td></tr></table></figure></p>
+<p>If inactive, enable and restart it. </p>
+<h2 id="crontab-File"><a href="#crontab-File" class="headerlink" title="crontab File"></a>crontab File</h2><p>Cron is driven by a <code>crontab(cron table)</code> file, a configuration file that specifies shell commands to run periodically on a given schedule. </p>
+<p>The program running through cron is called a <code>cron job</code>. To install a <code>cron job</code>, you’ll create an entry line in your <code>crontab</code> file, usually by running the <code>crontab</code> command.</p>
+<p>Each user can have his or her own crontab file, which means that every system may have multiple crontabs, usually found in <code>/var/spool/cron/</code> folder. the crontab command installs, lists, edits, and removes a user’s crontab.</p>
+<h2 id="crontab-Commands"><a href="#crontab-Commands" class="headerlink" title="crontab Commands"></a>crontab Commands</h2><p>For example, run as <code>root</code>, I want to set a recurring task for user <code>dsadm</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -e</span><br></pre></td></tr></table></figure></p>
+<p>Then edit like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 21 * * * /home/dsadm/test.sh &gt; /tmp/cron-log 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
+<p>This means on everyday at 9:00PM, user <code>dsadm</code> will run <code>test.sh</code> and redirect output to <code>/tmp/cron-log</code> file. You can also put the entries into a file and run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm &lt;entry file&gt;</span><br></pre></td></tr></table></figure></p>
+<p>The meaning of the entry is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ┌───────────── minute (0 - 59)</span><br><span class="line"># │ ┌───────────── hour (0 - 23)</span><br><span class="line"># │ │ ┌───────────── day of the month (1 - 31)</span><br><span class="line"># │ │ │ ┌───────────── month (1 - 12)</span><br><span class="line"># │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;</span><br><span class="line"># │ │ │ │ │                                   7 is also Sunday on some systems)</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># * * * * * command to execute</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>A <code>*</code> in any field means to match every value.</p>
+</blockquote>
+<p>Now, if you check <code>/var/spool/cron</code> directory, the <code>dsadm</code> crontab file is created there.</p>
+<p>To list the <code>dsadm</code> cron job:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -l</span><br></pre></td></tr></table></figure></p>
+<p>To remove <code>dsadm</code> cron job:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -r</span><br></pre></td></tr></table></figure></p>
+<h2 id="Run-as-Non-Root"><a href="#Run-as-Non-Root" class="headerlink" title="Run as Non-Root"></a>Run as Non-Root</h2><p>If you want to run <code>crontab</code> as <code>dsadm</code>, you must set the cron permission:</p>
 <ul>
-<li><p>First understand how does <code>docker commit</code> work? what will be committed into new image?</p>
-<p>The container has a writable layer that stacks on top of the image layers. This writable layer allows you to <em>make changes</em> to the container since the lower layers in the image are read-only.</p>
-<p>From the docker documentation, it said: It can be useful to commit a container’s <strong>file</strong> changes or <strong>settings</strong> into a new image.</p>
-<p>The commit operation will <strong>not</strong> include any data contained in volumes mounted inside the container.</p>
-<p>By default, the container being committed and its processes will be paused while the image is committed. This reduces the likelihood of encountering data corruption during the process of creating the commit. If this behavior is undesired, set the <code>--pause</code> option to false.</p>
-<p>The <code>--change</code> option will apply Dockerfile instructions to the image that is created. Supported Dockerfile instructions: <code>CMD|ENTRYPOINT|ENV|EXPOSE|LABEL|ONBUILD|USER|VOLUME|WORKDIR</code></p>
-</li>
-<li><p>How about processes inside the container?</p>
-<p>When you start container from image then process will start here - processes exists <strong>only</strong> in executing container, when container stops there are no processes anymore - only files from container’s filesystem.</p>
-</li>
+<li><code>/etc/cron.allow</code> - If this file exists, it must contain your username for you to use cron jobs.</li>
+<li><code>/etc/cron.deny</code> - If the cron.allow file does not exist but the <code>/etc/cron.deny</code> file does exist then, to use cron jobs, you must not be listed in the <code>/etc/cron.deny</code> file. </li>
 </ul>
-<blockquote>
-<p>Note: Before committing, you need to quiesce the services and remove the mount path content, unlink any other broken symbolic links.</p>
-</blockquote>
-<p>When commit, remember to restore the old entry point:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit --change &apos;ENTRYPOINT [&quot;/opt/xx/initScripts/startcontainer.sh&quot;]&apos; &lt;container ID&gt; is-engine-image:1</span><br></pre></td></tr></table></figure></p>
-<p>OK, now start to run the new image with non-root user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">         --user 1000 \</span><br><span class="line">         --cap-add=SYS_ADMIN \</span><br><span class="line">         --privileged=false --name=$&#123;ENGINE_HOST&#125; --hostname=$&#123;ENGINE_HOST&#125; \</span><br><span class="line">         --restart=always --add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;ENGINE_HOST_IP&#125; \</span><br><span class="line">         -p 8449:8449 \</span><br><span class="line">         -v $&#123;DEDICATED_ENGINE_VOLPATH&#125;/$&#123;ENGINE_HOST&#125;/EngineClients/db2_client/dsadm:/home/dsadm \</span><br><span class="line">         $&#123;DOCKER_IMAGE_TAG_ENGINE&#125;:$&#123;DOCKER_IMAGE_VERSION&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Let’s see the processes in the non-root container:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">dsadm        1  0.0  0.0  13288  1604 ?        Ss   18:29   0:00 /bin/bash /opt/xx/initScripts/startcontainer.sh</span><br><span class="line">dsadm      540  0.0  0.0   5968   620 ?        S    18:29   0:00 tail -f /dev/null</span><br><span class="line">dsadm      568  0.1  0.3 2309632 24792 ?       Sl   18:29   0:00 /opt/xx/../../jdk</span><br><span class="line">dsadm      589  2.5  0.0  13420  2012 pts/0    Ss   18:36   0:00 bash</span><br><span class="line">dsadm      610  0.0  0.0  53340  1868 pts/0    R+   18:36   0:00 ps aux</span><br></pre></td></tr></table></figure></p>
-<p>If  all things work good, save the image into tar.gz format, of course you can use a new tag before saving:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save is-engine-image:1 &gt; ~/nonroot_is_engine.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>So, if you put <code>dsadm</code> in <code>/etc/cron.allow</code> file, then you can use <code>crontab</code> directly.</p>
+<h2 id="System-crontab-File"><a href="#System-crontab-File" class="headerlink" title="System crontab File"></a>System crontab File</h2><p>Linux distributions normally have an <code>/etc/crontab</code> file. You can also edit here, but the format is a little bit difference:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name  command to be executed</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -520,13 +504,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
-            <a href="/tags/entry-point/" rel="tag"># entry point</a>
-          
-            <a href="/tags/docker-commit/" rel="tag"># docker commit</a>
-          
-            <a href="/tags/docker-save/" rel="tag"># docker save</a>
+            <a href="/tags/cronjob/" rel="tag"># cronjob</a>
           
         </div>
       
@@ -539,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/01/linux-ipcs/" rel="next" title="Linux IPC">
-                <i class="fa fa-chevron-left"></i> Linux IPC
+              <a href="/2019/05/27/linux-nfs-setup/" rel="next" title="NFS Server and Client Setup">
+                <i class="fa fa-chevron-left"></i> NFS Server and Client Setup
               </a>
             
           </div>
@@ -549,8 +529,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/07/k8s-sysctl/" rel="prev" title="Kubernetes sysctl">
-                Kubernetes sysctl <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/28/linux-rsync/" rel="prev" title="linux-rsync">
+                linux-rsync <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,8 +576,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -775,6 +764,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-crontab"><span class="nav-number">1.</span> <span class="nav-text">Install crontab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab-File"><span class="nav-number">2.</span> <span class="nav-text">crontab File</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab-Commands"><span class="nav-number">3.</span> <span class="nav-text">crontab Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-as-Non-Root"><span class="nav-number">4.</span> <span class="nav-text">Run as Non-Root</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-crontab-File"><span class="nav-number">5.</span> <span class="nav-text">System crontab File</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
