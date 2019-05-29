@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+  <meta name="description" content="This command is awesome! I said I should do backup periodically and it suits the demands. It’s more elegant and smart than using portable storage or scp to transfer the files. IntroductionLet’s see wh">
+<meta name="keywords" content="linux,rsync">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux-rsync">
+<meta property="og:title" content="Sync Up Files with rsync">
 <meta property="og:url" content="http://yoursite.com/2019/05/28/linux-rsync/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="This command is awesome! I said I should do backup periodically and it suits the demands. It’s more elegant and smart than using portable storage or scp to transfer the files. IntroductionLet’s see wh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T03:10:13.513Z">
+<meta property="og:updated_time" content="2019-05-29T05:30:24.026Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux-rsync">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:title" content="Sync Up Files with rsync">
+<meta name="twitter:description" content="This command is awesome! I said I should do backup periodically and it suits the demands. It’s more elegant and smart than using portable storage or scp to transfer the files. IntroductionLet’s see wh">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title>linux-rsync | 海胆阶段's Blog</title>
+  <title>Sync Up Files with rsync | 海胆阶段's Blog</title>
   
 
 
@@ -259,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">44</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">45</span></a>
 
   </li>
         
@@ -366,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">linux-rsync
+          <h1 class="post-title" itemprop="name headline">Sync Up Files with rsync
 
               
             
@@ -392,12 +393,34 @@
                 
               
 
-              <time title="Created: 2019-05-28 20:10:13" itemprop="dateCreated datePublished" datetime="2019-05-28T20:10:13-07:00">2019-05-28</time>
+              <time title="Created: 2019-05-28 20:10:13 / Modified: 22:30:24" itemprop="dateCreated datePublished" datetime="2019-05-28T20:10:13-07:00">2019-05-28</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -426,7 +449,37 @@
       
 
       
-        
+        <p>This command is awesome! I said I should do backup periodically and it suits the demands. It’s more elegant and smart than using portable storage or <code>scp</code> to transfer the files.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Let’s see what is <code>rsync</code> from <a href="https://en.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener">wiki</a>:<br><code>rsync</code> is a utility for efficiently transferring and synchronizing files between a computer and an external hard drive and across networked computers by comparing the modification times and sizes of files.</p>
+<p><code>rsync</code> will use <strong>SSH</strong> to connect. Once connected, it will invoke the remote host’s <code>rsync</code> and then the two programs will determine what parts of the local file need to be transferred so that the remote file matches the local one.</p>
+<p><code>rsync</code> can also operate in a daemon mode, serving and receiving files in the native rsync protocol (using the <code>rsync://</code> syntax). Here I only talks SSH way.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>To get <code>rsync</code> working between two hosts, the <code>rsync</code> program must be installed on both the source and destination, and you’ll need a way to access one machine from the other.</p>
+<p>Copy files to remote home or from remote to local<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync files remote:</span><br><span class="line">rsync files user@remote:</span><br><span class="line">rsync user@remote:source dest</span><br></pre></td></tr></table></figure></p>
+<p>If <code>rsync</code> isn’t in the remote path but is on the system, use <code>--rsync-path=path</code> to manually specify its location.</p>
+<p>Unless you supply extra options, <code>rsync</code> copies <strong>only</strong> files. You will see:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skipping directory xxx</span><br></pre></td></tr></table></figure></p>
+<p>To transfer entire directory hierarchies, complete with symbolic links, permissions, modes, and devices, use the <code>-a</code> option.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -nv files -a dir user@remote:</span><br></pre></td></tr></table></figure></p>
+<p><code>-n</code>: dry-run, this is vital when you are not sure.<br><code>-vv</code>: verbose mode</p>
+<p>To make an exact replica of the source directory, you must delete files in the destination directory that do not exist in the source directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -vv --delete -a dir user@remote:</span><br></pre></td></tr></table></figure></p>
+<p>Please use <code>-n</code> dry-run to see what will be deleted before performing command.</p>
+<p>Be particular careful with tailing slash after dir:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a dir/ user@remote:dest</span><br></pre></td></tr></table></figure></p>
+<p>This will copy all files under dir to dest folder in remote instead of copy dir into dest.</p>
+<p>You can also <code>--exclude=</code>, <code>--exclude-from=</code> and <code>--include=</code> in command.</p>
+<p>To speed operation, <code>rsync</code> uses a quick check to determine whether any files on the transfer source are already on the destination. The quick check uses a combination of the file size and its last-modified date.</p>
+<p>When the files on the source side are not identical to the files on the destination side, <code>rsync</code> transfers the source files and overwrites any files that exist on the remote side. The default behavior may be inadequate, though, because you may need additional reassurance that files are indeed the same before skipping over them in transfers, or you may want to put in some extra safeguards:</p>
+<ul>
+<li><p><code>--checksum</code>(abbreviation: <code>-c</code>) Compute checksums (mostly unique signatures) of the files to see if they’re the same. This consumes additional I/O and CPU resources during transfers, but if you’re dealing with sensitive data or files that often have uniform sizes, this option is a must. (This will focus on file content, not date stamp)</p>
+</li>
+<li><p><code>--ignore-existing</code> Doesn’t clobber files already on the target side.</p>
+</li>
+<li><p><code>--backup</code> (abbreviation: <code>-b</code>) Doesn’t clobber files already on the target but rather renames these existing files by adding a ~ suffix to their names before transferring the new files.</p>
+</li>
+<li><p><code>--suffix=s</code> Changes the suffix used with –backup from <code>~</code> to <code>s</code>.</p>
+</li>
+<li><p><code>--update</code> (abbreviation: <code>-u</code>) Doesn’t clobber any file on the target that has a later date than the corresponding file on the source.</p>
+</li>
+</ul>
+<p>You can also compress the dir when transfer:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -az dir user@remote:</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -446,6 +499,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/rsync/" rel="tag"># rsync</a>
+          
+        </div>
       
 
       
@@ -509,8 +570,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -663,7 +733,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">44</span>
+                      
+                    
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -688,6 +760,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
