@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="In computing, Virtual Network Computing (VNC) is a graphical desktop-sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. It transmits the keyboard and">
-<meta name="keywords" content="linux,vnc">
+  <meta name="description" content="I feel terrible today since I find a bug in the script I wrote several months ago!  Sometimes when I run some time consuming tasks I want to make them be executed parallelly so to improve the CPU util">
+<meta name="keywords" content="shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VNC Set up">
-<meta property="og:url" content="http://yoursite.com/2019/05/29/linux-vnc/index.html">
+<meta property="og:title" content="Processes Synchronization">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/shell-parallel-exec/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="In computing, Virtual Network Computing (VNC) is a graphical desktop-sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. It transmits the keyboard and">
+<meta property="og:description" content="I feel terrible today since I find a bug in the script I wrote several months ago!  Sometimes when I run some time consuming tasks I want to make them be executed parallelly so to improve the CPU util">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T16:13:52.259Z">
+<meta property="og:updated_time" content="2019-05-30T05:04:08.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VNC Set up">
-<meta name="twitter:description" content="In computing, Virtual Network Computing (VNC) is a graphical desktop-sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. It transmits the keyboard and">
+<meta name="twitter:title" content="Processes Synchronization">
+<meta name="twitter:description" content="I feel terrible today since I find a bug in the script I wrote several months ago!  Sometimes when I run some time consuming tasks I want to make them be executed parallelly so to improve the CPU util">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/29/linux-vnc/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/29/shell-parallel-exec/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>VNC Set up | 海胆阶段's Blog</title>
+  <title>Processes Synchronization | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/linux-vnc/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/shell-parallel-exec/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">VNC Set up
+          <h1 class="post-title" itemprop="name headline">Processes Synchronization
 
               
             
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-05-29 08:34:44 / Modified: 09:13:52" itemprop="dateCreated datePublished" datetime="2019-05-29T08:34:44-07:00">2019-05-29</time>
+              <time title="Created: 2019-05-29 19:54:09 / Modified: 22:04:08" itemprop="dateCreated datePublished" datetime="2019-05-29T19:54:09-07:00">2019-05-29</time>
             
 
             
@@ -415,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell-Script/" itemprop="url" rel="index"><span itemprop="name">Shell Script</span></a></span>
 
                 
                 
@@ -449,21 +449,21 @@
       
 
       
-        <p>In computing, <code>Virtual Network Computing (VNC)</code> is a graphical desktop-sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. It transmits the keyboard and mouse events from one computer to another, relaying the graphical-screen updates back in the other direction, over a network.</p>
-<p>Popular uses for this technology include remote technical support and accessing files on one’s work computer from one’s home computer, or vice versa.</p>
-<p>I usually use it to do remote development in Fyre, I have a central control machine with VNC set, then use it to SSH to others within the same internal network, you can also install IDE in VNC to do programming work rather than developing locally.</p>
-<h2 id="Install-VNC-Server"><a href="#Install-VNC-Server" class="headerlink" title="Install VNC Server"></a>Install VNC Server</h2><p>Not sure if the configurations are the same, actually the settings are varies.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">yum update -y</span><br><span class="line"></span><br><span class="line">## seems no need this:</span><br><span class="line">yum install open-vm-tools</span><br><span class="line"></span><br><span class="line">## if you don’t have desktop installed, note linux has many different desktop system themes, only install core packages of KDE or GNOME, KDE is better</span><br><span class="line">yum groupinstall &apos;X Window System&apos; &apos;KDE&apos;</span><br><span class="line">yum groupinstall &apos;X Window System&apos; &apos;GNOME&apos;</span><br><span class="line"></span><br><span class="line">yum list |grep tiger</span><br><span class="line">yum -y install tigervnc-server </span><br><span class="line"></span><br><span class="line">## Fyre firewalld default is inactive, no need to deal with firewall here</span><br><span class="line">## if it’s enable, may need to config</span><br><span class="line">systemctl status firewalld</span><br><span class="line">firewall-cmd --permanent --zone=public --add-service vnc-server </span><br><span class="line">firewall-cmd --reload</span><br><span class="line"></span><br><span class="line">## start vnc</span><br><span class="line">## select yes then create password: 123456</span><br><span class="line">## first time it will open port 1</span><br><span class="line">## then you will get the address and port to login:</span><br><span class="line">## centctl1.fyre.ibm.com:1</span><br><span class="line">vncserver</span><br></pre></td></tr></table></figure></p>
-<p>Note if you will get new vnc session everytime you run <code>vncserver</code>, check with<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep vnc</span><br><span class="line"></span><br><span class="line">root      2682  0.0  3.0 284860 116840 ?       Sl   May27   1:38 /usr/bin/Xvnc :1 -auth /root/.Xauthority -desktop mycentctl1.fyre.ibm.com:1 (root) -fp catalogue:/etc/X11/fontpath.d -geometry 1024x768 -pn -rfbauth /root/.vnc/passwd -rfbport 5901 -rfbwait 30000</span><br><span class="line">root      9199  1.4  1.6 231660 62388 pts/3    Sl   08:59   0:00 /usr/bin/Xvnc :2 -auth /root/.Xauthority -desktop mycentctl1.fyre.ibm.com:2 (root) -fp catalogue:/etc/X11/fontpath.d -geometry 1024x768 -pn -rfbauth /root/.vnc/passwd -rfbport 5902 -rfbwait 30000</span><br></pre></td></tr></table></figure></p>
-<p>yuu can kill it by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :2</span><br></pre></td></tr></table></figure></p>
-<p>If the VNC is broken due to maintenance, open a new session again by <code>vncserver</code>.</p>
-<h2 id="Install-VNC-viewer"><a href="#Install-VNC-viewer" class="headerlink" title="Install VNC viewer"></a>Install VNC viewer</h2><p>Install VNC viewer on your local laptop, then connect by<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">centctl1.fyre.ibm.com:1</span><br></pre></td></tr></table></figure></p>
-<h2 id="Copy-and-Paste"><a href="#Copy-and-Paste" class="headerlink" title="Copy and Paste"></a>Copy and Paste</h2><p>If you want to copy from local to viewer, sometimes it’s malfunction, kill the <code>klipper</code> process:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep klipper</span><br><span class="line">kill -9 &lt;PID of klipper&gt;</span><br></pre></td></tr></table></figure></p>
-<p>You can adjust shortcuts in VNC viewer for copy and paste:<br>Settings -&gt; Configure Shortcuts -&gt; copy / paste</p>
-<h2 id="Other-Settings"><a href="#Other-Settings" class="headerlink" title="Other Settings"></a>Other Settings</h2><p>Other settings useful:<br>Settings -&gt; Edit Current Profile -&gt; Mouse -&gt; copy on select / Trim trailing space</p>
-<p>Adjust font size the themes:<br>Settings -&gt; Manage Profiles -&gt; Edit Profile -&gt; Appearabce -&gt; Black on Random Light<br>-&gt; check Vary the background color for each tab</p>
-<p>Also change the text size under Appearance.</p>
-<h2 id="Screen-resolution"><a href="#Screen-resolution" class="headerlink" title="Screen resolution"></a>Screen resolution</h2><p>If the screen open by VNC viewer is small, you can change the resolution, run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xrandr -s 1920x1080</span><br></pre></td></tr></table></figure></p>
-<p>on the terminal in your remote machine.</p>
+        <p>I feel terrible today since I find a bug in the script I wrote several months ago! </p>
+<p>Sometimes when I run some time consuming tasks I want to make them be executed parallelly so to improve the CPU utilization.</p>
+<p>Let’s talk about different patterns, for example, I have scripts:<br><code>back.sh</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">tail -f /dev/null</span><br></pre></td></tr></table></figure></p>
+<p><code>hello.sh</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;====== hello&quot;</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure></p>
+<h2 id="Wait-for-all-background-tasks"><a href="#Wait-for-all-background-tasks" class="headerlink" title="Wait for all background tasks"></a>Wait for all background tasks</h2><p>In <code>main.sh</code>, if:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for i in 1 2 3</span><br><span class="line">do</span><br><span class="line">  ./hello.sh &amp;</span><br><span class="line">  echo &quot;###### PID is $!&quot;</span><br><span class="line">done</span><br><span class="line">wait</span><br><span class="line"></span><br><span class="line">echo &quot;done!&quot;</span><br></pre></td></tr></table></figure></p>
+<p>you will get the result like this, only get <code>done!</code> after all background processes finished:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">###### PID is 11649</span><br><span class="line">###### PID is 11650</span><br><span class="line">###### PID is 11651</span><br><span class="line">====== hello</span><br><span class="line">====== hello</span><br><span class="line">====== hello</span><br><span class="line">done!</span><br></pre></td></tr></table></figure></p>
+<p>But if the <code>main.sh</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">./back.sh &amp;</span><br><span class="line">for i in 1 2 3</span><br><span class="line">do</span><br><span class="line">  ./hello.sh &amp;</span><br><span class="line">  echo &quot;###### PID is $!&quot;</span><br><span class="line">done</span><br><span class="line">wait</span><br><span class="line"></span><br><span class="line">echo &quot;done!&quot;</span><br></pre></td></tr></table></figure></p>
+<p>The <code>wait</code> will hang until all background tasks complete, you will never see <code>done!</code> here. Have to use <code>kill</code> command to kill the background <code>tail</code> command.</p>
+<p>The improvement way is to only pass related PIDs to wait, so it will not care unrelated background task <code>back.sh</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pids=</span><br><span class="line">./back.sh &amp;</span><br><span class="line">for i in 1 2 3</span><br><span class="line">do</span><br><span class="line">  ./hello.sh &amp;</span><br><span class="line">  echo &quot;###### PID is $!&quot;</span><br><span class="line">  pids+=($!)</span><br><span class="line">done</span><br><span class="line">wait $&#123;pids[@]&#125;</span><br><span class="line"></span><br><span class="line">echo &quot;done!&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Wait-background-task-in-arbitrary-order"><a href="#Wait-background-task-in-arbitrary-order" class="headerlink" title="Wait background task in arbitrary order"></a>Wait background task in arbitrary order</h2><p>This way is very similar to above example, but we wait individually.</p>
+<p>In <code>main.sh</code>, write:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">n=0</span><br><span class="line">pids=</span><br><span class="line">for i in 1 2 3</span><br><span class="line">do</span><br><span class="line"> ./hello.sh &amp;</span><br><span class="line"> echo &quot;###### PID is $!&quot;</span><br><span class="line"> pids[n]=$!</span><br><span class="line"> let n+=1</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">for pid in &quot;$&#123;pids[@]&#125;&quot;</span><br><span class="line">do</span><br><span class="line">  wait $&#123;pid&#125;</span><br><span class="line">  ## can do something here</span><br><span class="line">done</span><br><span class="line">echo &quot;done!&quot;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note that don’t forget the <code>let n+=1</code></p>
+</blockquote>
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>Acutally there is a <code>jobs</code> command can deal with the background processes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># ./back.sh  &amp;</span><br><span class="line">[1] 15405</span><br><span class="line"># jobs</span><br><span class="line">[1]+  Running                 ./back.sh &amp;</span><br><span class="line"># jobs -p</span><br><span class="line">15405</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -487,9 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/vnc/" rel="tag"># vnc</a>
+            <a href="/tags/shell/" rel="tag"># shell</a>
           
         </div>
       
@@ -502,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/28/linux-rsync/" rel="next" title="Sync Up Files with rsync">
-                <i class="fa fa-chevron-left"></i> Sync Up Files with rsync
+              <a href="/2019/05/29/linux-vnc/" rel="next" title="VNC Set up">
+                <i class="fa fa-chevron-left"></i> VNC Set up
               </a>
             
           </div>
@@ -511,10 +509,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/29/shell-parallel-exec/" rel="prev" title="Processes Synchronization">
-                Processes Synchronization <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -760,7 +754,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-VNC-Server"><span class="nav-number">1.</span> <span class="nav-text">Install VNC Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-VNC-viewer"><span class="nav-number">2.</span> <span class="nav-text">Install VNC viewer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copy-and-Paste"><span class="nav-number">3.</span> <span class="nav-text">Copy and Paste</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Settings"><span class="nav-number">4.</span> <span class="nav-text">Other Settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Screen-resolution"><span class="nav-number">5.</span> <span class="nav-text">Screen resolution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Wait-for-all-background-tasks"><span class="nav-number">1.</span> <span class="nav-text">Wait for all background tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wait-background-task-in-arbitrary-order"><span class="nav-number">2.</span> <span class="nav-text">Wait background task in arbitrary order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Others"><span class="nav-number">3.</span> <span class="nav-text">Others</span></a></li></ol></div>
             
 
           </div>
