@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. SourceThe file need not to be a executable but shoul">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-30T03:28:16.600Z">
+<meta property="og:updated_time" content="2019-06-03T15:57:04.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Source vs Execute Script">
 <meta name="twitter:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. SourceThe file need not to be a executable but shoul">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">51</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-29 20:28:16" itemprop="dateModified" datetime="2019-05-29T20:28:16-07:00">2019-05-29</time>
+                <time title="Modified: 2019-06-03 08:57:04" itemprop="dateModified" datetime="2019-06-03T08:57:04-07:00">2019-06-03</time>
               
             
           </span>
@@ -461,12 +461,18 @@
       
 
       
-        <p>Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect.</p>
+        <p>Understand the difference between <code>source</code> and execute a script is important, otherwise you will be confused why something doesn’t run as you expect.</p>
 <h2 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h2><p>The file need <strong>not</strong> to be a executable but should be valid shell script. We usually use <code>source</code> to load shell functions and export environment variables into current shell process.</p>
-<p>For example, both syntax are the same:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source ./xx.env</span><br><span class="line">. ./xx.env</span><br></pre></td></tr></table></figure></p>
+<p>For example, both syntax are good:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source ./xx.env</span><br><span class="line">. ./xx.env</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note that <code>.</code> is not an alias for <code>source</code>, but rather the other way around. <code>source</code> is a bash extension, while <code>.</code> works in any POSIX compatible shell.</p>
+</blockquote>
 <p>You can also put the file path in <code>$PATH</code> so that you don’t need to specify the path in command.</p>
 <h2 id="Execute"><a href="#Execute" class="headerlink" title="Execute"></a>Execute</h2><p>The file need to be <strong>executable</strong> and you are in right permission to run it. And you need to specify the path even in current directory, or put path in <code>$PATH</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xx.sh</span><br></pre></td></tr></table></figure></p>
 <p>The current shell spawned a new shell to run the script. The script is running in the new shell and all changes to the environment take effect only in the new shell. After the script is done all changes to the environment in the new shell are destroyed.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Use execution will run the script as another process, so variables and functions in calling script will not be accessible in parent process. </p>
+<p>The <code>source</code> method executes the script in the parent script’s process, and pulls in variables and functions from the other script so they are usable from the calling script.</p>
+<p>If you are using <code>exit</code> in script, it will exit the parent script as well. Which will not happen in execution method.</p>
 
       
     </div>
@@ -587,7 +593,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -763,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source"><span class="nav-number">1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Execute"><span class="nav-number">2.</span> <span class="nav-text">Execute</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source"><span class="nav-number">1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Execute"><span class="nav-number">2.</span> <span class="nav-text">Execute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
             
 
           </div>
