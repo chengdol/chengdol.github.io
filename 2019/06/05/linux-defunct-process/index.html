@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. SourceThe file need not to be a executable but shoul">
-<meta name="keywords" content="source">
+  <meta name="description" content="Today after I killed a running process, it didn’t disappear but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s going on? Processes marked &amp;lt;defunct&amp;gt; are dead processes (so-called zombi">
+<meta name="keywords" content="linux,defunct">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Source vs Execute Script">
-<meta property="og:url" content="http://yoursite.com/2019/05/07/shell-script-source-vs-execute/index.html">
+<meta property="og:title" content="Kill defunct Process">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/linux-defunct-process/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. SourceThe file need not to be a executable but shoul">
+<meta property="og:description" content="Today after I killed a running process, it didn’t disappear but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s going on? Processes marked &amp;lt;defunct&amp;gt; are dead processes (so-called zombi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-03T15:57:04.860Z">
+<meta property="og:updated_time" content="2019-06-06T05:13:41.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Source vs Execute Script">
-<meta name="twitter:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. SourceThe file need not to be a executable but shoul">
+<meta name="twitter:title" content="Kill defunct Process">
+<meta name="twitter:description" content="Today after I killed a running process, it didn’t disappear but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s going on? Processes marked &amp;lt;defunct&amp;gt; are dead processes (so-called zombi">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/07/shell-script-source-vs-execute/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/05/linux-defunct-process/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Source vs Execute Script | 海胆阶段's Blog</title>
+  <title>Kill defunct Process | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/shell-script-source-vs-execute/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/linux-defunct-process/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Source vs Execute Script
+          <h1 class="post-title" itemprop="name headline">Kill defunct Process
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-05-07 16:15:13" itemprop="dateCreated datePublished" datetime="2019-05-07T16:15:13-07:00">2019-05-07</time>
+              <time title="Created: 2019-06-05 21:31:14 / Modified: 22:13:41" itemprop="dateCreated datePublished" datetime="2019-06-05T21:31:14-07:00">2019-06-05</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-03 08:57:04" itemprop="dateModified" datetime="2019-06-03T08:57:04-07:00">2019-06-03</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell-Script/" itemprop="url" rel="index"><span itemprop="name">Shell Script</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -461,18 +449,12 @@
       
 
       
-        <p>Understand the difference between <code>source</code> and execute a script is important, otherwise you will be confused why something doesn’t run as you expect.</p>
-<h2 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h2><p>The file need <strong>not</strong> to be a executable but should be valid shell script. We usually use <code>source</code> to load shell functions and export environment variables into current shell process.</p>
-<p>For example, both syntax are good:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source ./xx.env</span><br><span class="line">. ./xx.env</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>Note that <code>.</code> is not an alias for <code>source</code>, but rather the other way around. <code>source</code> is a bash extension, while <code>.</code> works in any POSIX compatible shell.</p>
-</blockquote>
-<p>You can also put the file path in <code>$PATH</code> so that you don’t need to specify the path in command.</p>
-<h2 id="Execute"><a href="#Execute" class="headerlink" title="Execute"></a>Execute</h2><p>The file need to be <strong>executable</strong> and you are in right permission to run it. And you need to specify the path even in current directory, or put path in <code>$PATH</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xx.sh</span><br></pre></td></tr></table></figure></p>
-<p>The current shell spawned a new shell to run the script. The script is running in the new shell and all changes to the environment take effect only in the new shell. After the script is done all changes to the environment in the new shell are destroyed.</p>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Use execution will run the script as another process, so variables and functions in calling script will not be accessible in parent process. </p>
-<p>The <code>source</code> method executes the script in the parent script’s process, and pulls in variables and functions from the other script so they are usable from the calling script.</p>
-<p>If you are using <code>exit</code> in script, it will exit the parent script as well. Which will not happen in execution method.</p>
+        <p>Today after I killed a running process, it didn’t disappear but was marked as <code>&lt;defunct&gt;</code> (run <code>ps</code> can see it). What’s going on?</p>
+<p>Processes marked <code>&lt;defunct&gt;</code> are dead processes (so-called <code>zombies</code>) that remain because their parent has not destroyed them properly. These processes will be destroyed by <code>init(8)</code> if the parent process exits.</p>
+<p>On Unix and Unix-like computer operating systems, a <code>zombie process</code> or <code>defunct process</code> is a process that has completed execution but still has an entry in the process table. This entry is still needed to allow the parent process to read its child’s exit status.</p>
+<p>There is no harm in letting such processes be unless there are many of them. <code>Zombie</code> is eventually reaped by its parent (by calling wait(2)). If original parent hasn’t reaped it before its own exit then init process (PID == <code>1</code>) does it at some later time.</p>
+<p>I checked the PPID of that <code>defunct</code> process, it’s not PID 1 but other shell process. By killing its parent process, the zombie is gone. Determine which is the parent process of this defunct process and kill it. To know this run the command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep defunct</span><br></pre></td></tr></table></figure></p>
+<p>You can also use this command to verify defunct process is gone.</p>
 
       
     </div>
@@ -496,7 +478,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/source/" rel="tag"># source</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/defunct/" rel="tag"># defunct</a>
           
         </div>
       
@@ -509,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/07/k8s-sysctl/" rel="next" title="Kubernetes sysctl">
-                <i class="fa fa-chevron-left"></i> Kubernetes sysctl
+              <a href="/2019/06/02/shell-subshell/" rel="next" title="Shell Process Demystify">
+                <i class="fa fa-chevron-left"></i> Shell Process Demystify
               </a>
             
           </div>
@@ -518,10 +502,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/11/linux-setuid-sticky-bit/" rel="prev" title="Special Permission Bits">
-                Special Permission Bits <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,17 +546,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -760,23 +731,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source"><span class="nav-number">1.</span> <span class="nav-text">Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Execute"><span class="nav-number">2.</span> <span class="nav-text">Execute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

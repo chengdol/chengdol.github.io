@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Ok, need to figure it out, which pattern or syctax is shubsell?google linux subshell it’s tightly related with process sync https://unix.stackexchange.com/questions/442692/is-a-subshell https://unix.s">
+  <meta name="description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Subshell Demystify">
+<meta property="og:title" content="Shell Process Demystify">
 <meta property="og:url" content="http://yoursite.com/2019/06/02/shell-subshell/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Ok, need to figure it out, which pattern or syctax is shubsell?google linux subshell it’s tightly related with process sync https://unix.stackexchange.com/questions/442692/is-a-subshell https://unix.s">
+<meta property="og:description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-04T06:42:00.432Z">
+<meta property="og:updated_time" content="2019-06-06T05:13:44.255Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Subshell Demystify">
-<meta name="twitter:description" content="Ok, need to figure it out, which pattern or syctax is shubsell?google linux subshell it’s tightly related with process sync https://unix.stackexchange.com/questions/442692/is-a-subshell https://unix.s">
+<meta name="twitter:title" content="Shell Process Demystify">
+<meta name="twitter:description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Subshell Demystify | 海胆阶段's Blog</title>
+  <title>Shell Process Demystify | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">46</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">47</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">54</span></a>
 
   </li>
 
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Subshell Demystify
+          <h1 class="post-title" itemprop="name headline">Shell Process Demystify
 
               
             
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-03 23:42:00" itemprop="dateModified" datetime="2019-06-03T23:42:00-07:00">2019-06-03</time>
+                <time title="Modified: 2019-06-05 22:13:44" itemprop="dateModified" datetime="2019-06-05T22:13:44-07:00">2019-06-05</time>
               
             
           </span>
@@ -461,7 +461,15 @@
       
 
       
-        <p>Ok, need to figure it out, which pattern or syctax is shubsell?<br>google <code>linux subshell</code></p>
+        <p>Understanding how <code>SHELL</code> works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about <code>SHELL</code>. Let’s dive deeply into shell process and its relationships to explore how subshells are created and their relationship to the parent shell; The varied commands that create child processes are explored as well as built-in commands.</p>
+<h2 id="Shell-Type"><a href="#Shell-Type" class="headerlink" title="Shell Type"></a>Shell Type</h2><p>Due to the <code>bash</code> shell’s popularity, it’s rare to use any other shell as a default shell.</p>
+<p>The <code>default interactive shell</code> starts whenever a user logs into a virtual console terminal or starts a terminal emulator in the GUI. Another default shell, <code>/bin/sh</code>, is the <code>default system shell</code>. The <code>default system shell</code> is used for system shell scripts, such as those needed at startup.</p>
+<p>In my Redhat and CentOS system, actually they are the same:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx. 1 root root 4 Apr 13  2018 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure></p>
+<p>Of course, there various shells, to see the default user login shell, go to see <code>/etc/passwd</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fyre:x:1000:1000::/home/fyre:/bin/bash</span><br><span class="line">demo:x:1001:1001::/home/demo:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<h2 id="Shell-Relationships"><a href="#Shell-Relationships" class="headerlink" title="Shell Relationships"></a>Shell Relationships</h2><p>You can use <code>ps -f</code> to see difference before you run <code>bash</code>(child) in a shell(parent):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root      7762  7758  0 Jun03 pts/0    00:00:00 -bash</span><br><span class="line">root     14957  7762  0 17:12 pts/0    00:00:00 bash</span><br><span class="line">root     15028 14957  0 17:13 pts/0    00:00:00 ps -f</span><br></pre></td></tr></table></figure></p>
+<p>Here PID <code>14957</code> has parent <code>7762</code>.</p>
+<p>sudo /bin/cp -f /etc/hosts /etc/hosts.org<br>sudo /bin/cp -f /etc/hosts /etc/hosts.tmp<br>sudo sed -i -e ‘s/^9..<em>//‘ -e ‘s/.</em>is-servicesdocker.<em>//‘  -e ‘s/.</em>is-xmetadocker.<em>//‘ -e ‘s/.</em>is-en-conductor-0.en-cond.*//‘ /etc/hosts.tmp<br>sudo cat /etc/hosts.tmp /tmp/hh |awk ‘!a[$0]++’ &gt; /tmp/aa<br>sudo /bin/cp /tmp/aa /etc/hosts</p>
+<p>Ok, need to figure it out, which pattern or syctax is shubsell?<br>google <code>linux subshell</code></p>
 <p>it’s tightly related with process sync</p>
 <p><a href="https://unix.stackexchange.com/questions/442692/is-a-subshell" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/442692/is-a-subshell</a></p>
 <p><a href="https://unix.stackexchange.com/questions/421020/what-is-the-exact-difference-between-a-subshell-and-a-child-process" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/421020/what-is-the-exact-difference-between-a-subshell-and-a-child-process</a></p>
@@ -512,6 +520,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/06/05/linux-defunct-process/" rel="prev" title="Kill defunct Process">
+                Kill defunct Process <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -555,8 +567,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -573,7 +594,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -713,7 +734,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -738,6 +761,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-Type"><span class="nav-number">1.</span> <span class="nav-text">Shell Type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-Relationships"><span class="nav-number">2.</span> <span class="nav-text">Shell Relationships</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
