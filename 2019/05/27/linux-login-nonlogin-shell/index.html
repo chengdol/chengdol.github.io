@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="In the non-root development for DataStage, in order to execute services as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are th">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T05:34:54.231Z">
+<meta property="og:updated_time" content="2019-06-09T19:11:12.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Login and Nonlogin Shell">
 <meta name="twitter:description" content="In the non-root development for DataStage, in order to execute services as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are th">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-28 22:34:54" itemprop="dateModified" datetime="2019-05-28T22:34:54-07:00">2019-05-28</time>
+                <time title="Modified: 2019-06-09 12:11:12" itemprop="dateModified" datetime="2019-06-09T12:11:12-07:00">2019-06-09</time>
               
             
           </span>
@@ -481,12 +481,12 @@
 </ol>
 <p><code>Non-Login</code> shells created using the below command syntax:<br>examples: <code># su | # su USERNAME</code></p>
 <blockquote>
-<p>Of course you can source <code>~/.bashrc</code> in <code>~/.bash_profile</code> files to satisfy both login and non-login shell, for example: <code>. $HOME/.bashrc</code>.</p>
+<p>Of course you can source <code>~/.bashrc</code> in <code>~/.bash_profile</code> files to satisfy both login and non-login shell, for example: add <code>. $HOME/.bashrc</code> in <code>~/.bash_profile</code>.</p>
 </blockquote>
-<p>The reasoning behind the two different startup filesystems is that in the old days, users logged in through a traditional terminal with a <code>login shell</code>, then started <code>non-login</code> subshells with windowing systems or the screen program. For the <code>non-login</code> subshells, it was deemed a waste to repeatedly set the user environment and run a bunch of programs that had already been run. With login shells, you could run fancy startup commands in a file such as .bash_profile, leaving only aliases and other “lightweight” things to your .bashrc.</p>
-<p>This can explain that if you use non-login like <code>su dsadm</code>, the export env vars are still there in <code>env</code> scope, I think the reason is it’s not login and still use current environment. But if you run <code>su - dsadm</code>, it is gone.</p>
+<p>The reasoning behind the two different startup filesystems is that in the old days, users logged in through a traditional terminal with a <code>login shell</code>, then started <code>non-login</code> subshells with windowing systems or the screen program. For the <code>non-login</code> subshells, it was deemed a waste to repeatedly set the user environment and run a bunch of programs that had already been run. With login shells, you could run fancy startup commands in a file such as <code>.bash_profile</code>, leaving only aliases and other “lightweight” things to your <code>.bashrc</code>.</p>
+<p>This can explain that if you use non-login like <code>su dsadm</code>, the exported environment variables are still there in <code>env</code> scope. But if you run <code>su - dsadm</code>, the previous exported environment variables are gone.</p>
 <blockquote>
-<p>Note that I can run <code>bash</code> or <code>sh</code> or <code>csh</code> in terminal, it will give me a new simple prompt without user profile or setting…</p>
+<p>Note that I can run <code>bash</code> or <code>sh</code> or <code>csh</code> in terminal, it will give me a new simple prompt without user profile or setting, it is a new program called <code>bash</code>, <code>sh</code> or <code>csh</code>.</p>
 </blockquote>
 
       
