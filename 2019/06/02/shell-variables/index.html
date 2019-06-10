@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV Variablesshell maintains environment variables to track specific system in">
+  <meta name="description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Variables in Shell">
 <meta property="og:url" content="http://yoursite.com/2019/06/02/shell-variables/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV Variablesshell maintains environment variables to track specific system in">
+<meta property="og:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-04T06:41:57.918Z">
+<meta property="og:updated_time" content="2019-06-10T04:18:37.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Variables in Shell">
-<meta name="twitter:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV Variablesshell maintains environment variables to track specific system in">
+<meta name="twitter:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-03 23:41:57" itemprop="dateModified" datetime="2019-06-03T23:41:57-07:00">2019-06-03</time>
+                <time title="Modified: 2019-06-09 21:18:37" itemprop="dateModified" datetime="2019-06-09T21:18:37-07:00">2019-06-09</time>
               
             
           </span>
@@ -462,8 +462,15 @@
 
       
         <p>The article mainly talks about the <code>variable scope</code> in shell. especially how to access variables in one scrpt from another.</p>
-<h2 id="ENV-Variables"><a href="#ENV-Variables" class="headerlink" title="ENV Variables"></a>ENV Variables</h2><p>shell maintains environment variables to track specific system information, you can use <code>set</code> command to explore them, it shows the list of current active environment variables:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set</span><br></pre></td></tr></table></figure></p>
-<h2 id="User-Variables"><a href="#User-Variables" class="headerlink" title="User Variables"></a>User Variables</h2><p><strong>No</strong> space can appear between the variable, the equal sign, and the value:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1=value</span><br></pre></td></tr></table></figure></p>
+<h2 id="ENV-Variables"><a href="#ENV-Variables" class="headerlink" title="ENV Variables"></a>ENV Variables</h2><p>The <code>set</code> command displays all variables defined for a specific process, including both <code>local</code> and <code>global</code> environment variables and user-defined variables:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set</span><br></pre></td></tr></table></figure></p>
+<p>It also sorts the display alphabetically.</p>
+<h3 id="Global-ENV-Variables"><a href="#Global-ENV-Variables" class="headerlink" title="Global ENV Variables"></a>Global ENV Variables</h3><p>Global environment variables are visible from the shell session and from <strong>any</strong> spawned child subshells. This makes global environment variables useful in applications that create child subshells, which require parent shell information.</p>
+<p>To view global environment variables, use the <code>env</code> or the <code>printenv</code> command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># printenv HOME</span><br><span class="line"></span><br><span class="line">/root</span><br></pre></td></tr></table></figure></p>
+<p>You can use <code>export</code> to create global environment variable.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export demo=&apos;hello world&apos;</span><br></pre></td></tr></table></figure></p>
+<p>You can use <code>unset</code> to remove an existing environment variable.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset demo</span><br></pre></td></tr></table></figure></p>
+<p>A common trick for programmers is to include the <code>single dot</code> symbol in their <code>PATH</code> environment variable. The single dot symbol represents the current directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=$PATH:.</span><br></pre></td></tr></table></figure></p>
+<h3 id="Local-ENV-Variables"><a href="#Local-ENV-Variables" class="headerlink" title="Local ENV Variables"></a>Local ENV Variables</h3><p>Local variables are available <strong>only</strong> in the shell that creates them. In fact, the Linux system also defines standard local environment variables for you by default. </p>
+<p>How to define a local environment variable:<br><strong>No</strong> space can appear between the variable, the equal sign, and the value:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1=value</span><br></pre></td></tr></table></figure></p>
 <p>Variables defined within the shell script maintain their values throughtout the life of the shell script but are delted when the shell script completes.</p>
 <p>If you want to assign the value of one variable to another, must use <code>$</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=$&#123;var1&#125;</span><br></pre></td></tr></table></figure></p>
 <p>otherwise, <code>var1</code> will be interpreted as text string.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=var1</span><br></pre></td></tr></table></figure></p>
@@ -474,7 +481,7 @@
 <li><p><code>source</code> the second script and it will run in the same shell, This would let you share more complex variables like arrays easily, but also means that the other script could modify variables in the caller shell.</p>
 </li>
 </ol>
-<h2 id="Preserve-ENV-variables"><a href="#Preserve-ENV-variables" class="headerlink" title="Preserve ENV variables"></a>Preserve ENV variables</h2><p>Refer to <a href="https://unix.stackexchange.com/questions/188144/why-is-a-variable-passed-to-the-su-command-but-not-an-array-from-the-same-scope" target="_blank" rel="noopener">this</a> question.<br>This is interesting and easy to make mistake, if I want to preserve ENV variable with switch user from parent shell, use <code>su xxx</code> instead of <code>su - xxx</code>, <code>-</code> option will do:</p>
+<h2 id="Preserve-ENV-variables"><a href="#Preserve-ENV-variables" class="headerlink" title="Preserve ENV variables"></a>Preserve ENV variables</h2><p>Refer to <a href="https://unix.stackexchange.com/questions/188144/why-is-a-variable-passed-to-the-su-command-but-not-an-array-from-the-same-scope" target="_blank" rel="noopener">this</a> question. This is interesting and easy to make mistake, if I want to preserve ENV variable with switch user from parent shell, use <code>su xxx</code> instead of <code>su - xxx</code>, <code>-</code> option will do:</p>
 <ol>
 <li>clears all environment variables except for TERM</li>
 <li>initializes the environment variables HOME, SHELL, USER, LOGNAME, PATH</li>
@@ -781,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ENV-Variables"><span class="nav-number">1.</span> <span class="nav-text">ENV Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#User-Variables"><span class="nav-number">2.</span> <span class="nav-text">User Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-Scope"><span class="nav-number">3.</span> <span class="nav-text">Variable Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preserve-ENV-variables"><span class="nav-number">4.</span> <span class="nav-text">Preserve ENV variables</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ENV-Variables"><span class="nav-number">1.</span> <span class="nav-text">ENV Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-ENV-Variables"><span class="nav-number">1.1.</span> <span class="nav-text">Global ENV Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-ENV-Variables"><span class="nav-number">1.2.</span> <span class="nav-text">Local ENV Variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-Scope"><span class="nav-number">2.</span> <span class="nav-text">Variable Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preserve-ENV-variables"><span class="nav-number">3.</span> <span class="nav-text">Preserve ENV variables</span></a></li></ol></div>
             
 
           </div>
