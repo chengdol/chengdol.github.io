@@ -96,29 +96,25 @@
 
 
 
-  <meta name="description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
-<meta name="keywords" content="yum,rpm">
+  <meta name="description" content="In ICP4D non-root development, I see in each tier the pod contains init container, what is this and what is it for? Let’s take a look. Haven’t got a chance to dig deeply:https://kubernetes.io/docs/con">
+<meta name="keywords" content="kubernetes,initContainer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Offline Package Installation I">
-<meta property="og:url" content="http://yoursite.com/2019/02/25/offline-package-install-1/index.html">
+<meta property="og:title" content="Init Container">
+<meta property="og:url" content="http://yoursite.com/2019/06/10/k8s-initContainer/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
+<meta property="og:description" content="In ICP4D non-root development, I see in each tier the pod contains init container, what is this and what is it for? Let’s take a look. Haven’t got a chance to dig deeply:https://kubernetes.io/docs/con">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
-<meta property="og:image" content="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B">
-<meta property="og:image" content="https://drive.google.com/uc?id=1I_QfnLAWpj-CNKnfZAvF4yKjZ6U8xHET">
-<meta property="og:updated_time" content="2019-03-06T05:07:15.101Z">
+<meta property="og:updated_time" content="2019-06-11T17:45:34.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Offline Package Installation I">
-<meta name="twitter:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
-<meta name="twitter:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
+<meta name="twitter:title" content="Init Container">
+<meta name="twitter:description" content="In ICP4D non-root development, I see in each tier the pod contains init container, what is this and what is it for? Let’s take a look. Haven’t got a chance to dig deeply:https://kubernetes.io/docs/con">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/25/offline-package-install-1/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/10/k8s-initContainer/">
 
 
 
@@ -128,7 +124,7 @@
   };
 </script>
 
-  <title>Offline Package Installation I | 海胆阶段's Blog</title>
+  <title>Init Container | 海胆阶段's Blog</title>
   
 
 
@@ -264,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">47</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">48</span></a>
 
   </li>
         
@@ -302,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">54</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">57</span></a>
 
   </li>
 
@@ -354,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/offline-package-install-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/k8s-initContainer/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -371,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Offline Package Installation I
+          <h1 class="post-title" itemprop="name headline">Init Container
 
               
             
@@ -397,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-02-25 23:10:18" itemprop="dateCreated datePublished" datetime="2019-02-25T23:10:18-08:00">2019-02-25</time>
+              <time title="Created: 2019-06-10 09:43:20" itemprop="dateCreated datePublished" datetime="2019-06-10T09:43:20-07:00">2019-06-10</time>
             
 
             
@@ -414,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-05 21:07:15" itemprop="dateModified" datetime="2019-03-05T21:07:15-08:00">2019-03-05</time>
+                <time title="Modified: 2019-06-11 10:45:34" itemprop="dateModified" datetime="2019-06-11T10:45:34-07:00">2019-06-11</time>
               
             
           </span>
@@ -431,7 +427,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a></span>
 
                 
                 
@@ -465,31 +461,8 @@
       
 
       
-        <p>When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install <code>ansible</code>, <code>docker</code> and <code>kubeadm</code> offline. In the production environment, we may not have internet access, that means we need to prepare the rpms and dependencies needed and create a self-contained installer.</p>
-<h3 id="Download-missing-rpms-without-installing"><a href="#Download-missing-rpms-without-installing" class="headerlink" title="Download missing rpms without installing"></a>Download missing rpms without installing</h3><blockquote>
-<p>Note: This method is (by-design) sensitive to the existence of already-installed packages. It will <strong>only</strong> download actual dependencies you need for that particular box, not all rpms.</p>
-</blockquote>
-<p>First let’s install the <code>yum-plugin-downloadonly</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-plugin-downloadonly</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly --downloaddir=&lt;directory&gt; &lt;package:version&gt;</span><br></pre></td></tr></table></figure>
-<p>For example, I want to get missing rpms for <em>vim</em> editor, reside them in <code>/root/vim</code> folder<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">yum install --downloadonly --downloaddir=/root/vim vim</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl" alt=""></p>
-<p>List the target folder:</p>
-<p><img src="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B" alt=""></p>
-<p>Another way is using <code>yumdownloader</code> that is from <code>yum-utils</code>. The difference is if the package is already installed completely, <code>yumdownloader</code> will download the outermost level rpm but <code>--downloadonly</code> will do nothing.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yumdownloader --resolve --destdir=/root/vim vim</span><br></pre></td></tr></table></figure>
-<p><img src="https://drive.google.com/uc?id=1I_QfnLAWpj-CNKnfZAvF4yKjZ6U8xHET" alt=""></p>
-<h3 id="Download-all-rpms-without-installing"><a href="#Download-all-rpms-without-installing" class="headerlink" title="Download all rpms without installing"></a>Download all rpms without installing</h3><h4 id="yum-amp-yumdownloader"><a href="#yum-amp-yumdownloader" class="headerlink" title="yum &amp; yumdownloader"></a>yum &amp; yumdownloader</h4><p>Usually what we really want is to resolve all dependencies and download them, even though some required rpms have already installed in box, <code>yumdownloader</code> or <code>yum --downloadonly</code> with <code>--installroot</code> option is the solution.</p>
-<p>Keep in mind that <code>yumdownloader</code> will use your yum database when resolving dependencies.</p>
-<p>For example if you download bash, which needs glibc, it will resolve glibc and skip it, since it is installed. If you want to download all dependencies, use a different <code>installroot</code> instead.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">mkdir -p /root/new_root</span><br><span class="line">yumdownloader --installroot=/root/new_root --destdir=/root/vim/ --resolve vim</span><br></pre></td></tr></table></figure></p>
-<p>Let’s check how many <code>vim</code> related rpms are here, way too many then what we get from the first section.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -ltr /root/vim | wc -l</span><br><span class="line">57</span><br></pre></td></tr></table></figure></p>
-<h4 id="repotrack"><a href="#repotrack" class="headerlink" title="repotrack"></a>repotrack</h4><p>This method can also resolve and download all dependencies, <code>repotrack</code> is from <code>yum-utils</code>, it will down all the dependencies for any architecture by default if it doesn’t appear you specified the architecture.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">repotrack -p /root/vim vim-enhanced</span><br></pre></td></tr></table></figure></p>
-<p>if you check <code>/root/vim</code>, there are some <code>i686</code> rpms, once you delete them and count again, <code>57</code> the same as we use <code>yumdownloader</code> above.</p>
-<blockquote>
-<p>Note: actually <code>repotrack</code> has <code>-a</code> option to specify arch, but I am not able to use it, when I specify <code>x86_64</code>, it still downloads <code>i686</code>.</p>
-</blockquote>
-<h3 id="Install-local-rpms"><a href="#Install-local-rpms" class="headerlink" title="Install local rpms"></a>Install local rpms</h3><p>Now the problem is how to install these rpms in correct order, install them one by one is obviously infeasible, the method that can resolve their dependencies and install automatically is welcome, both command like:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum --disablerepo=* --skip-broken install -y /root/vim/*.rpm</span><br></pre></td></tr></table></figure></p>
-<p>and<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --force -ivh /root/vim/*.rpm</span><br></pre></td></tr></table></figure></p>
-<p>may work but it’s not a good way, you may encounter rpm version upgrade issue and duplicate problem. Now from my knowledge create a local yum repository is clean and elegant, please refer my blog <code>Set up and Use Local Yum Repository</code>.</p>
+        <p>In ICP4D non-root development, I see in each tier the pod contains init container, what is this and what is it for? Let’s take a look.</p>
+<p>Haven’t got a chance to dig deeply:<br><a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/pods/init-containers/</a><br><a href="https://blog.csdn.net/dkfajsldfsdfsd/article/details/81094883" target="_blank" rel="noopener">https://blog.csdn.net/dkfajsldfsdfsd/article/details/81094883</a></p>
 
       
     </div>
@@ -513,9 +486,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/yum/" rel="tag"># yum</a>
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
           
-            <a href="/tags/rpm/" rel="tag"># rpm</a>
+            <a href="/tags/initContainer/" rel="tag"># initContainer</a>
           
         </div>
       
@@ -528,8 +501,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/24/shell-bash-pipeline-demo/" rel="next" title="BASH Pipeline Demo">
-                <i class="fa fa-chevron-left"></i> BASH Pipeline Demo
+              <a href="/2019/06/05/linux-defunct-process/" rel="next" title="Kill defunct Process">
+                <i class="fa fa-chevron-left"></i> Kill defunct Process
               </a>
             
           </div>
@@ -538,8 +511,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/26/offline-package-install-2/" rel="prev" title="Offline Package Installation II">
-                Offline Package Installation II <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/10/docker-api/" rel="prev" title="Docker Server API Access">
+                Docker Server API Access <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,17 +558,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -612,7 +576,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -754,7 +718,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -779,23 +745,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-missing-rpms-without-installing"><span class="nav-number">1.</span> <span class="nav-text">Download missing rpms without installing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-all-rpms-without-installing"><span class="nav-number">2.</span> <span class="nav-text">Download all rpms without installing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#yum-amp-yumdownloader"><span class="nav-number">2.1.</span> <span class="nav-text">yum &amp; yumdownloader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repotrack"><span class="nav-number">2.2.</span> <span class="nav-text">repotrack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-local-rpms"><span class="nav-number">3.</span> <span class="nav-text">Install local rpms</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
