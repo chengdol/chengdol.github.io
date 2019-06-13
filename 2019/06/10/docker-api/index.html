@@ -99,15 +99,17 @@
   <meta name="description" content="How to list the images and the tags in the docker registory? How to delete the images in docker registory? These are the common demands in daily work, let’s figure them out. A brife digression: The Op">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker Server API Access">
+<meta property="og:title" content="Docker Registry API">
 <meta property="og:url" content="http://yoursite.com/2019/06/10/docker-api/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="How to list the images and the tags in the docker registory? How to delete the images in docker registory? These are the common demands in daily work, let’s figure them out. A brife digression: The Op">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-11T23:48:45.775Z">
+<meta property="og:image" content="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl">
+<meta property="og:updated_time" content="2019-06-12T16:20:06.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker Server API Access">
+<meta name="twitter:title" content="Docker Registry API">
 <meta name="twitter:description" content="How to list the images and the tags in the docker registory? How to delete the images in docker registory? These are the common demands in daily work, let’s figure them out. A brife digression: The Op">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>Docker Server API Access | 海胆阶段's Blog</title>
+  <title>Docker Registry API | 海胆阶段's Blog</title>
   
 
 
@@ -367,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker Server API Access
+          <h1 class="post-title" itemprop="name headline">Docker Registry API
 
               
             
@@ -410,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 16:48:45" itemprop="dateModified" datetime="2019-06-11T16:48:45-07:00">2019-06-11</time>
+                <time title="Modified: 2019-06-12 09:20:06" itemprop="dateModified" datetime="2019-06-12T09:20:06-07:00">2019-06-12</time>
               
             
           </span>
@@ -463,9 +465,11 @@
       
         <p>How to list the images and the tags in the docker registory? How to delete the images in docker registory? These are the common demands in daily work, let’s figure them out.</p>
 <p>A brife digression: The <code>Openshift</code> platform has web UI to deal with images in docker registry (it is called <code>imagestream</code> in OpenShift), usually after you login to terminal, run <code>oc version</code> will show you the web address. You can list and delete imagestream there.</p>
-<p>For example, I use <code>OpenShift</code> integrated docker registry and push my docker images to a project called <code>datastage</code> (I configuring the setting so other project can pull images from this project):<br><img src="" alt=""><a href="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl" target="_blank" rel="noopener">https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl</a></p>
-<p>Refer:<br><a href="https://github.com/docker/distribution/blob/master/docs/spec/auth/token.md" target="_blank" rel="noopener">https://github.com/docker/distribution/blob/master/docs/spec/auth/token.md</a></p>
-<h2 id="Insecure-Docker-Registry"><a href="#Insecure-Docker-Registry" class="headerlink" title="Insecure Docker Registry"></a>Insecure Docker Registry</h2><p>Currently we use insecure docker registry (means no need login docker and use <code>http</code> to access)in DataStage cluster.</p>
+<p>For example, I use <code>OpenShift</code> integrated docker registry and push my docker images to a project called <code>datastage</code> (I configuring the setting so other project can pull images from this project):<br><img src="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl" alt=""></p>
+<h2 id="Resurces"><a href="#Resurces" class="headerlink" title="Resurces"></a>Resurces</h2><p><a href="https://github.com/docker/distribution/blob/master/docs/spec/auth/token.md" target="_blank" rel="noopener">v2 Docker registry authentication</a></p>
+<p>I can contribute to this git <a href="https://github.com/byrnedo/docker-reg-tool" target="_blank" rel="noopener">project</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -k -X GET http://localhost:5000/v2/_catalog</span><br><span class="line"></span><br><span class="line">curl -k  -H &quot;Accept: application/vnd.docker.distribution.manifest.v2+json&quot; -X DELETE http://localhost:5000/v2/busybox/manifests/sha256:ff5eadacfa0b06f7e97ed8f9c9c9cdc291bfddce6a827045065db3fd554f8445</span><br><span class="line">&#123;&quot;errors&quot;:[&#123;&quot;code&quot;:&quot;UNSUPPORTED&quot;,&quot;message&quot;:&quot;The operation is unsupported.&quot;&#125;]&#125;</span><br></pre></td></tr></table></figure></p>
+<p>enable deletion<br><a href="https://stackoverflow.com/questions/43666910/remove-docker-repository-on-remote-docker-registry" target="_blank" rel="noopener">https://stackoverflow.com/questions/43666910/remove-docker-repository-on-remote-docker-registry</a><br>configuration docker registry:<br><a href="https://docs.docker.com/registry/configuration/" target="_blank" rel="noopener">https://docs.docker.com/registry/configuration/</a></p>
+<h2 id="Insecure-Docker-Registry"><a href="#Insecure-Docker-Registry" class="headerlink" title="Insecure Docker Registry"></a>Insecure Docker Registry</h2><p>Currently we use insecure <em>local</em> docker registry (means no need login docker and use <code>http</code> to access)in DataStage cluster.</p>
 <ul>
 <li><p>List Images</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -k -X GET http://&lt;IP&gt;:&lt;Port&gt;/v2/_catalog</span><br></pre></td></tr></table></figure>
@@ -473,7 +477,7 @@
 <li><p>List Tags</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -k -X GET http://&lt;IP&gt;:&lt;Port&gt;/v2/&lt;image name&gt;/tags/list</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Remove Images: <a href="https://github.com/byrnedo/docker-reg-tool" target="_blank" rel="noopener">https://github.com/byrnedo/docker-reg-tool</a></p>
+<li><p>Remove Images:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -791,7 +795,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Insecure-Docker-Registry"><span class="nav-number">1.</span> <span class="nav-text">Insecure Docker Registry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Secure-Docker-Registry"><span class="nav-number">2.</span> <span class="nav-text">Secure Docker Registry</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resurces"><span class="nav-number">1.</span> <span class="nav-text">Resurces</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insecure-Docker-Registry"><span class="nav-number">2.</span> <span class="nav-text">Insecure Docker Registry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Secure-Docker-Registry"><span class="nav-number">3.</span> <span class="nav-text">Secure Docker Registry</span></a></li></ol></div>
             
 
           </div>
