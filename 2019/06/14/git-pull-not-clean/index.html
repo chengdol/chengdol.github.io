@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Sometimes after I git pull to sync up with the master branch, if run:1git status It will show some files(for me it’s xxx.dsx) was modified that need to be added and committed, that’s weird. It should">
+  <meta name="description" content="Sometimes after I git pull from the master branch, if check git status, there are some files (for me it’s xxx.dsx) are modified that need to be added and committed, that’s weird. It should be some for">
 <meta name="keywords" content="gitattributes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Pull Not Clean">
 <meta property="og:url" content="http://yoursite.com/2019/06/14/git-pull-not-clean/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Sometimes after I git pull to sync up with the master branch, if run:1git status It will show some files(for me it’s xxx.dsx) was modified that need to be added and committed, that’s weird. It should">
+<meta property="og:description" content="Sometimes after I git pull from the master branch, if check git status, there are some files (for me it’s xxx.dsx) are modified that need to be added and committed, that’s weird. It should be some for">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-14T17:07:18.622Z">
+<meta property="og:updated_time" content="2019-06-15T21:50:11.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Pull Not Clean">
-<meta name="twitter:description" content="Sometimes after I git pull to sync up with the master branch, if run:1git status It will show some files(for me it’s xxx.dsx) was modified that need to be added and committed, that’s weird. It should">
+<meta name="twitter:description" content="Sometimes after I git pull from the master branch, if check git status, there are some files (for me it’s xxx.dsx) are modified that need to be added and committed, that’s weird. It should be some for">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">59</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">60</span></a>
 
   </li>
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-06-14 09:43:04 / Modified: 10:07:18" itemprop="dateCreated datePublished" datetime="2019-06-14T09:43:04-07:00">2019-06-14</time>
+              <time title="Created: 2019-06-14 09:43:04" itemprop="dateCreated datePublished" datetime="2019-06-14T09:43:04-07:00">2019-06-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-15 14:50:11" itemprop="dateModified" datetime="2019-06-15T14:50:11-07:00">2019-06-15</time>
               
             
           </span>
@@ -449,13 +461,10 @@
       
 
       
-        <p>Sometimes after I git pull to sync up with the master branch, if run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
-<p>It will show some files(for me it’s <code>xxx.dsx</code>) was modified that need to be added and committed, that’s weird.</p>
-<p>It should be some format issues that can be solved by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .gitattributes</span><br></pre></td></tr></table></figure></p>
-<p>comment out the filter patterns:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#* text=auto</span><br></pre></td></tr></table></figure></p>
-<p>Now if run <code>git status</code> again, you will see the mess is gone and only the<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modified:   .gitattributes</span><br></pre></td></tr></table></figure></p>
-<p>Then revert back to origin content of <code>.gitattributes</code>.</p>
-<p>Then if run <code>git status</code>, you are clean now.</p>
+        <p>Sometimes after I <code>git pull</code> from the master branch, if check <code>git status</code>, there are some files (for me it’s <code>xxx.dsx</code>) are modified that need to be added and committed, that’s weird.</p>
+<p>It should be some format issues that can be solved by editting top level <code>.gitattributes</code> in your local repository. Open <code>.gitattributes</code>, comment out the filter patterns, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#* text=auto</span><br></pre></td></tr></table></figure></p>
+<p>Now if run <code>git status</code> again, you will see the chaos is gone and only appear<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modified:   .gitattributes</span><br></pre></td></tr></table></figure></p>
+<p>Then revert back to origin of <code>.gitattributes</code> and run <code>git status</code>, the branch is clean now.</p>
 
       
     </div>
@@ -501,6 +510,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/15/k8s-alias/" rel="prev" title="Kubernetes Commands Alias">
+                Kubernetes Commands Alias <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -563,7 +576,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
