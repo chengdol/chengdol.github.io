@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The Openshi">
+  <meta name="description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The OpenShi">
 <meta name="keywords" content="docker,docker registry">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Registry API">
 <meta property="og:url" content="http://yoursite.com/2019/06/10/docker-registry-api/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The Openshi">
+<meta property="og:description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The OpenShi">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl">
-<meta property="og:updated_time" content="2019-06-17T00:49:59.106Z">
+<meta property="og:updated_time" content="2019-06-18T00:12:22.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Registry API">
-<meta name="twitter:description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The Openshi">
+<meta name="twitter:description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The OpenShi">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl">
 
 
@@ -412,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-16 17:49:59" itemprop="dateModified" datetime="2019-06-16T17:49:59-07:00">2019-06-16</time>
+                <time title="Modified: 2019-06-17 17:12:22" itemprop="dateModified" datetime="2019-06-17T17:12:22-07:00">2019-06-17</time>
               
             
           </span>
@@ -464,7 +464,7 @@
 
       
         <p>How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out.</p>
-<p>A brife digression: The <code>Openshift</code> platform has web UI to deal with images in integrated docker registry (it is called <code>imagestream</code> in OpenShift), usually after you login to terminal, run <code>oc version</code> will show you the web address. You can list and delete imagestream there.</p>
+<p>A brife digression: The <code>OpenShift</code> platform has web UI to deal with images in integrated docker registry (it is called <code>imagestream</code> in OpenShift), usually after you login to terminal, run <code>oc version</code> will show you the web address. You can list and delete imagestream there.</p>
 <p>For example, I use <code>OpenShift</code> integrated docker registry and push my docker images to a project called <code>datastage</code> (I configuring the setting so other project can pull images from this project):<br><img src="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl" alt=""></p>
 <h2 id="Resurces"><a href="#Resurces" class="headerlink" title="Resurces"></a>Resurces</h2><p><a href="https://docs.docker.com/registry/spec/api/" target="_blank" rel="noopener">Docker Registry HTTP API V2</a><br><a href="https://blog.csdn.net/qq_35904833/article/details/80807592" target="_blank" rel="noopener">Registry 清理镜像</a><br><a href="https://github.com/docker/distribution/blob/master/docs/spec/auth/token.md" target="_blank" rel="noopener">v2 Docker registry authentication</a><br><a href="https://github.com/byrnedo/docker-reg-tool" target="_blank" rel="noopener">Registry tool Git project</a></p>
 <h2 id="Quick-Set-up"><a href="#Quick-Set-up" class="headerlink" title="Quick Set up"></a>Quick Set up</h2><p>After installing docker, get and run docker registry from <a href="https://hub.docker.com/_/registry" target="_blank" rel="noopener">Docker Offical Images - registry</a>.</p>
@@ -472,24 +472,24 @@
 <p>you will get:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br><span class="line"></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">registry            latest              f32a97de94e1        3 months ago        25.8MB</span><br></pre></td></tr></table></figure></p>
 <p>then run it locally with image deletion enabled:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:5000 -e REGISTRY_STORAGE_DELETE_ENABLED=true --restart always --name registry registry</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>To remove images, you need to configure docker registry with <strong>delete enabled</strong> first, see my blog <a href="https://chengdol.github.io/2019/06/16/docker-registry-config/" target="_blank" rel="noopener">Docker Registry Configure</a></p>
+<p>To remove images, you need to setup docker registry with <strong>delete enabled</strong>(by default it’s off), see my blog <a href="https://chengdol.github.io/2019/06/16/docker-registry-config/" target="_blank" rel="noopener">Docker Registry Configure</a></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line"></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">3021266dca1f        registry            &quot;/entrypoint.sh /etc...&quot;   2 seconds ago       Up 1 second         0.0.0.0:5000-&gt;5000/tcp   registry</span><br></pre></td></tr></table></figure>
-<p>Next, let’s use busybox to run the demo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull busybox</span><br><span class="line">docker tag busybox localhost:5000/busybox:v1</span><br><span class="line">docker push localhost:5000/busybox:v1</span><br></pre></td></tr></table></figure></p>
-<h2 id="Insecure-Docker-Registry"><a href="#Insecure-Docker-Registry" class="headerlink" title="Insecure Docker Registry"></a>Insecure Docker Registry</h2><p>Quick set up will give you a insecure <em>local</em> docker registry (means no need to <code>docker login</code> and we use <code>http</code> to access API).</p>
+<p>Next, let’s use busybox to illustrate:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull busybox</span><br><span class="line">docker tag busybox localhost:5000/busybox:v1</span><br><span class="line">docker push localhost:5000/busybox:v1</span><br></pre></td></tr></table></figure></p>
+<h2 id="Insecure-Docker-Registry"><a href="#Insecure-Docker-Registry" class="headerlink" title="Insecure Docker Registry"></a>Insecure Docker Registry</h2><p>Quick set up will give you a insecure private docker registry (means no <code>docker login</code> and use <code>http</code> to access API).</p>
 <blockquote>
-<p>Note that you can use <code>-v</code> option in <code>curl</code> to get verbose message such as HEADER information.</p>
+<p>Note that you can use <code>-v</code> option in <code>curl</code> command to get verbose message such as HEADER information.</p>
 </blockquote>
 <h3 id="List-Images"><a href="#List-Images" class="headerlink" title="List Images"></a>List Images</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -k -X GET http://localhost:5000/v2/_catalog</span><br><span class="line"></span><br><span class="line">&#123;&quot;repositories&quot;:[&quot;busybox&quot;]&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="List-Image-Tags"><a href="#List-Image-Tags" class="headerlink" title="List Image Tags"></a>List Image Tags</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -k -X GET http://localhost:5000/v2/busybox/tags/list</span><br><span class="line"></span><br><span class="line">&#123;&quot;name&quot;:&quot;busybox&quot;,&quot;tags&quot;:[&quot;v1&quot;]&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Remove-Images"><a href="#Remove-Images" class="headerlink" title="Remove Images"></a>Remove Images</h3><p>Deletion is more complicated than list, from <a href="https://docs.docker.com/registry/spec/api/#deleting-an-image" target="_blank" rel="noopener">Deleting an Image API</a>, there are 2 steps:</p>
+<h3 id="Remove-Images"><a href="#Remove-Images" class="headerlink" title="Remove Images"></a>Remove Images</h3><p>Deletion is more complicated than list, from <a href="https://docs.docker.com/registry/spec/api/#deleting-an-image" target="_blank" rel="noopener">Deleting an Image API</a>, there are 2 main steps:</p>
 <ol>
 <li>Get the <code>digest</code> of the image with tag <code>v1</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl -k --head -H &quot;Accept: application/vnd.docker.distribution.manifest.v2+json&quot; -X GET http://localhost:5000/v2/busybox/manifests/v1</span><br><span class="line"></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Length: 527</span><br><span class="line">Content-Type: application/vnd.docker.distribution.manifest.v2+json</span><br><span class="line">Docker-Content-Digest: sha256:bf510723d2cd2d4e3f5ce7e93bf1e52c8fd76831995ac3bd3f90ecc866643aff</span><br><span class="line">Docker-Distribution-Api-Version: registry/2.0</span><br><span class="line">Etag: &quot;sha256:bf510723d2cd2d4e3f5ce7e93bf1e52c8fd76831995ac3bd3f90ecc866643aff&quot;</span><br><span class="line">X-Content-Type-Options: nosniff</span><br><span class="line">Date: Sun, 16 Jun 2019 20:12:07 GMT</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <blockquote>
 <p>Note when deleting a manifest from a registry version 2.3 or later, the following header must be used when HEAD or GET-ing the manifest to obtain the correct digest to delete: <code>Accept: application/vnd.docker.distribution.manifest.v2+json</code>.</p>
-<p>You can refer this <a href="https://docs.docker.com/registry/spec/manifest-v2-2/" target="_blank" rel="noopener">Image Manifest V 2, Schema 2</a> to get more header details</p>
+<p>You can refer this <a href="https://docs.docker.com/registry/spec/manifest-v2-2/" target="_blank" rel="noopener">Image Manifest V 2, Schema 2</a> to get more header details.</p>
 </blockquote>
 <p>Here, we use the digest from <code>Docker-Content-Digest</code> field in the header, the vaule is <code>sha256:bf510723d2cd2d4e3f5ce7e93bf1e52c8fd76831995ac3bd3f90ecc866643aff</code>.</p>
 <ol start="2">
@@ -498,14 +498,17 @@
 </ol>
 <p>The response <code>HTTP/1.1 202 Accepted</code> means the deletion succeeds, let’s check the tag again:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -k -X GET http://localhost:5000/v2/busybox/tags/list</span><br><span class="line"></span><br><span class="line">&#123;&quot;name&quot;:&quot;busybox&quot;,&quot;tags&quot;:null&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>Note that if the docker registry delete function is not enabled, you will get response<br><code>{&quot;errors&quot;:[{&quot;code&quot;:&quot;UNSUPPORTED&quot;,&quot;message&quot;:&quot;The operation is unsupported.&quot;}]}</code>.</p>
+<p>Note that if the docker registry deletion is not enabled, you will get response<br><code>{&quot;errors&quot;:[{&quot;code&quot;:&quot;UNSUPPORTED&quot;,&quot;message&quot;:&quot;The operation is unsupported.&quot;}]}</code>.</p>
 </blockquote>
-<p>However, the deletion API only remove the <strong>metadata</strong> or dereference the connection between manifest with real data in disk, we need to run <strong>garbage collection</strong> in docker registry to remove data from disk.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it registry sh</span><br></pre></td></tr></table></figure></p>
+<p>However, the deletion API only remove the <strong>metadata</strong> or dereference the connection between manifest with layers data in disk, we need to run <strong>garbage collection</strong> in docker registry to remove layers:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it registry sh</span><br></pre></td></tr></table></figure></p>
 <p>check space used before clean:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">du -sch /var/lib/registry/docker/</span><br><span class="line"></span><br><span class="line">764.0K  /var/lib/registry/docker/</span><br><span class="line">764.0K  total</span><br></pre></td></tr></table></figure></p>
-<p>then run garbage collect:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/registry garbage-collect /etc/docker/registry/config.yml</span><br></pre></td></tr></table></figure></p>
+<p>then run garbage collection:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/registry garbage-collect /etc/docker/registry/config.yml</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note that <code>/etc/docker/registry/config.yml</code> is the configuration file for docker registry.</p>
+</blockquote>
 <p>then if you check space used again<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">du -sch /var/lib/registry/docker/</span><br><span class="line"></span><br><span class="line">8.0K    /var/lib/registry/docker/</span><br><span class="line">8.0K    total</span><br></pre></td></tr></table></figure></p>
 <h4 id="Other-Notice"><a href="#Other-Notice" class="headerlink" title="Other Notice"></a>Other Notice</h4><p>If you have one image with multiple tags and the digests are the same, delete one of them will remove them all.</p>
-<p>If you have one image with multiple tags and the digests are different for each tag, deletion is separate.</p>
+<p>If you have one image with multiple tags and the digests are different for each tag, deletion is tag-separate.</p>
 <h2 id="Secure-Docker-Registry"><a href="#Secure-Docker-Registry" class="headerlink" title="Secure Docker Registry"></a>Secure Docker Registry</h2><p>In ICP4D cluster, we use secure docker registry with <code>https</code>.</p>
 <p>login, see .docker/config</p>
 <p>curl no work?</p>

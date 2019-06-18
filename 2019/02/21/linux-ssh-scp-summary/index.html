@@ -99,7 +99,7 @@
   <meta name="description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
 <meta name="keywords" content="linux,ssh,scp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ssh and Scp Daily Work Summary">
+<meta property="og:title" content="SSH and SCP Daily Work Summary">
 <meta property="og:url" content="http://yoursite.com/2019/02/21/linux-ssh-scp-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
@@ -112,9 +112,9 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2019-05-23T23:21:10.004Z">
+<meta property="og:updated_time" content="2019-06-17T21:56:18.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ssh and Scp Daily Work Summary">
+<meta name="twitter:title" content="SSH and SCP Daily Work Summary">
 <meta name="twitter:description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>Ssh and Scp Daily Work Summary | 海胆阶段's Blog</title>
+  <title>SSH and SCP Daily Work Summary | 海胆阶段's Blog</title>
   
 
 
@@ -376,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ssh and Scp Daily Work Summary
+          <h1 class="post-title" itemprop="name headline">SSH and SCP Daily Work Summary
 
               
             
@@ -419,7 +419,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-23 16:21:10" itemprop="dateModified" datetime="2019-05-23T16:21:10-07:00">2019-05-23</time>
+                <time title="Modified: 2019-06-17 14:56:18" itemprop="dateModified" datetime="2019-06-17T14:56:18-07:00">2019-06-17</time>
               
             
           </span>
@@ -484,6 +484,7 @@
 <p>if you don’t want to add the host name, <code>-o UserKnownHostsFile=/dev/null</code> option can save you.</p>
 <h3 id="01-23-2019"><a href="#01-23-2019" class="headerlink" title="01/23/2019"></a>01/23/2019</h3><p>scp or ssh without prompt input password<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sshpass</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; scp/ssh ...</span><br></pre></td></tr></table></figure>
+<p>It’s useful to set password-less at first time, combine all of these, no prompt will show up:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no ...</span><br></pre></td></tr></table></figure></p>
 <h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>scp <code>source</code> directory and it’s content recursively to <code>root</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ~/<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure></p>
 <p>scp all files in <code>source</code> directory to <code>target</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no ./<span class="built_in">source</span>/* root@example.com:~/target</span><br></pre></td></tr></table></figure></p>
 <h3 id="03-11-2019"><a href="#03-11-2019" class="headerlink" title="03/11/2019"></a>03/11/2019</h3><p>The <code>ssh</code> command has <code>-i</code> option, you associate private key with this flags:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa xxx</span><br></pre></td></tr></table></figure></p>
