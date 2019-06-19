@@ -105,7 +105,7 @@
 <meta property="og:description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The OpenShi">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1T55Gro5-_WZDTkP3lNuIrDUk6C7f8qWl">
-<meta property="og:updated_time" content="2019-06-18T00:12:22.552Z">
+<meta property="og:updated_time" content="2019-06-19T20:33:49.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Registry API">
 <meta name="twitter:description" content="How to list images and tags in the docker registory? How to delete image(layers) in docker registory? These are general demands in my daily work, let’s figure them out. A brife digression: The OpenShi">
@@ -412,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 17:12:22" itemprop="dateModified" datetime="2019-06-17T17:12:22-07:00">2019-06-17</time>
+                <time title="Modified: 2019-06-19 13:33:49" itemprop="dateModified" datetime="2019-06-19T13:33:49-07:00">2019-06-19</time>
               
             
           </span>
@@ -509,7 +509,7 @@
 <p>then if you check space used again<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">du -sch /var/lib/registry/docker/</span><br><span class="line"></span><br><span class="line">8.0K    /var/lib/registry/docker/</span><br><span class="line">8.0K    total</span><br></pre></td></tr></table></figure></p>
 <h4 id="Other-Notice"><a href="#Other-Notice" class="headerlink" title="Other Notice"></a>Other Notice</h4><p>If you have one image with multiple tags and the digests are the same, delete one of them will remove them all.</p>
 <p>If you have one image with multiple tags and the digests are different for each tag, deletion is tag-separate.</p>
-<h2 id="Secure-Docker-Registry"><a href="#Secure-Docker-Registry" class="headerlink" title="Secure Docker Registry"></a>Secure Docker Registry</h2><p>In ICP4D cluster, we use secure docker registry with <code>https</code>.</p>
+<h2 id="Secure-Docker-Registry"><a href="#Secure-Docker-Registry" class="headerlink" title="Secure Docker Registry"></a>Secure Docker Registry</h2><p>In ICP4D cluster, we use secure docker registry with <code>https</code> and login credentials. But first let’s understand how to set up secure docker registry, see my blog.</p>
 <p>login, see .docker/config</p>
 <p>curl no work?</p>
 <ul>
