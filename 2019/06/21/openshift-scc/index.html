@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="I have some doubts about Security Context Constraint (SCC) in OpenShift, for example, I give privileged scc to user, but some containers are still running as non-root. Set upSpin up a fresh OpenShift">
+<meta name="keywords" content="openshift,scc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenShift Security Context Constraint">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/openshift-scc/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="I have some doubts about Security Context Constraint (SCC) in OpenShift, for example, I give privileged scc to user, but some containers are still running as non-root. Set upSpin up a fresh OpenShift">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-23T05:31:49.683Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenShift Security Context Constraint">
+<meta name="twitter:description" content="I have some doubts about Security Context Constraint (SCC) in OpenShift, for example, I give privileged scc to user, but some containers are still running as non-root. Set upSpin up a fresh OpenShift">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/openshift-scc/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>OpenShift Security Context Constraint | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">53</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">12</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">65</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/openshift-scc/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenShift Security Context Constraint
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-21 14:24:25" itemprop="dateCreated datePublished" datetime="2019-06-21T14:24:25-07:00">2019-06-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-22 22:31:49" itemprop="dateModified" datetime="2019-06-22T22:31:49-07:00">2019-06-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenShift/" itemprop="url" rel="index"><span itemprop="name">OpenShift</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>I have some doubts about <code>Security Context Constraint (SCC)</code> in OpenShift, for example, I give privileged scc to user, but some containers are still running as non-root.</p>
+<h2 id="Set-up"><a href="#Set-up" class="headerlink" title="Set up"></a>Set up</h2><p>Spin up a fresh OpenShift Enterprise cluster with version:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openshift v3.9.31</span><br><span class="line">kubernetes v1.9.1+a0ce1bc657</span><br></pre></td></tr></table></figure></p>
+<p>Create 2 regular users <code>demo1</code> and <code>demo2</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">htpasswd -b /etc/origin/master/htpasswd demo1 demo1</span><br><span class="line">htpasswd -b /etc/origin/master/htpasswd demo2 demo2</span><br></pre></td></tr></table></figure></p>
+<p>After log in with both user, you have their records in cluster, run as <code>system:admin</code> user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oc get user</span><br><span class="line">oc get identity</span><br></pre></td></tr></table></figure></p>
+<p>Fetch the integrated docker registry address and port as <code>system:admin</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oc get svc -n default | grep -E &quot;^docker-registry&quot;</span><br><span class="line"></span><br><span class="line">docker-registry                     ClusterIP   172.30.159.11    &lt;none&gt;        5000/TCP                  1h</span><br></pre></td></tr></table></figure></p>
+<h2 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h2><p>This experiment will show you:</p>
+<ol>
+<li>How to enable pulling image from other project.</li>
+<li>How to run container as root user.</li>
+</ol>
+<p>Start with <code>demo1</code>, login by <code>oc login -u demo1</code> and create 2 projects:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">oc new-project demo1-proj ## this one is for deploying app</span><br><span class="line">oc new-project demo1-ds  ## this one is for storing imagestream</span><br></pre></td></tr></table></figure></p>
+<p>Pull <code>busybox</code> and run with <code>entrypoint</code> changed:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull busybox</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name mybb \</span><br><span class="line">  --entrypoint=/bin/sh \</span><br><span class="line">  busybox \</span><br><span class="line">  -c &apos;tail -f /dev/null&apos;</span><br></pre></td></tr></table></figure>
+<p>Then commit:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit &lt;container id&gt; busybox</span><br></pre></td></tr></table></figure></p>
+<p>Then docker retag:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag docker.io/busybox 172.30.159.11:5000/demo1-ds/busybox:v1</span><br></pre></td></tr></table></figure></p>
+<p>Login to integrated docker registry and push:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login -u openshift -p `oc whoami -t` 172.30.159.11:5000</span><br><span class="line">docker push 172.30.159.11:5000/demo1-ds/busybox:v1</span><br></pre></td></tr></table></figure></p>
+<p>Go back to <code>demo1-proj</code> project by <code>oc project demo1-proj</code>, write a simple deployment yaml <code>bb-deploy.yml</code>:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">bb-deployment</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    matchLabels:</span></span><br><span class="line"><span class="attr">      app:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        app:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">        image:</span> <span class="number">172.30</span><span class="number">.159</span><span class="number">.11</span><span class="string">:5000/demo1-ds/busybox:v1</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="system-image-puller-Role"><a href="#system-image-puller-Role" class="headerlink" title="system:image-puller Role"></a>system:image-puller Role</h3><p>If now run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oc apply -f bb-deploy.yml</span><br></pre></td></tr></table></figure></p>
+<p>it will fail to pull the image from <code>demo1-ds</code> (describe pod can see) because <code>demo1</code> don’t have the permission to pull image from other project, let’s enable it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oc policy add-role-to-user \</span><br><span class="line">    system:image-puller system:serviceaccount:demo1-proj:default \</span><br><span class="line">    --namespace=demo1-ds</span><br></pre></td></tr></table></figure></p>
+<p>Then if you check <code>rolebindings</code> in <code>demo1-ds</code>, you see there is a new binding <code>system:image-puller</code> with service account <code>demo1-proj/default</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">oc get rolebindings -n demo1-ds</span><br><span class="line"></span><br><span class="line">NAME                    ROLE                    USERS     GROUPS                            SERVICE ACCOUNTS     SUBJECTS</span><br><span class="line">admin                   /admin                  demo1</span><br><span class="line">system:deployers        /system:deployer                                                    deployer</span><br><span class="line">system:image-builders   /system:image-builder                                               builder</span><br><span class="line">system:image-puller     /system:image-puller                                                demo1-proj/default</span><br><span class="line">system:image-pullers    /system:image-puller              system:serviceaccounts:demo1-ds</span><br></pre></td></tr></table></figure></p>
+<p>Ok, then we can deploy the busubox in <code>demo1-proj</code> project:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME                            READY     STATUS    RESTARTS   AGE</span><br><span class="line">bb-deployment-78bdb8c4f-lzqfj   1/1       Running   0          6s</span><br></pre></td></tr></table></figure></p>
+<p>Let’s next see the uid:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kbc exec -it bb-deployment-78bdb8c4f-lzqfj sh</span><br><span class="line"></span><br><span class="line">/ $ id</span><br><span class="line">uid=1000130000 gid=0(root) groups=1000130000</span><br></pre></td></tr></table></figure></p>
+<h3 id="Security-Context-Constraint"><a href="#Security-Context-Constraint" class="headerlink" title="Security Context Constraint"></a>Security Context Constraint</h3><p>Correct, OpenShift by default doesn’t allow container run as root user due to security issue. Acutally this is about <code>SCC</code>, let dig deeper:</p>
+<p><a href="https://docs.openshift.com/container-platform/3.9/admin_guide/manage_scc.html#enable-images-to-run-with-user-in-the-dockerfile" target="_blank" rel="noopener">Managing Security Context Constraints</a><br><a href="https://docs.openshift.com/container-platform/3.9/admin_guide/service_accounts.html" target="_blank" rel="noopener">Configuring Service Accounts</a></p>
+<p>you must have <code>cluster-admin</code> privilege to manage SCCs, there are 7 SCCs:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">oc get scc</span><br><span class="line"></span><br><span class="line">NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP     SUPGROUP    PRIORITY   READONLYROOTFS   VOLUMES</span><br><span class="line">anyuid             false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    10         false            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">hostaccess         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir hostPath persistentVolumeClaim projected secret]</span><br><span class="line">hostmount-anyuid   false     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir hostPath nfs persistentVolumeClaim projected secret]</span><br><span class="line">hostnetwork        false     []        MustRunAs   MustRunAsRange     MustRunAs   MustRunAs   &lt;none&gt;     false            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">nonroot            false     []        MustRunAs   MustRunAsNonRoot   RunAsAny    RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     false            [*]</span><br><span class="line">restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     false            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br></pre></td></tr></table></figure></p>
+<p>By default, when a container or pod does not request a user ID under which it should be run, the effective UID depends on the SCC that emits this pod. Because <code>restricted</code> SCC is granted to all authenticated users by default, it will be available to all users and service accounts and used in most cases.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">oc</span> <span class="string">describe</span> <span class="string">scc</span> <span class="string">restricted</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Name:</span>                                           <span class="string">restricted</span></span><br><span class="line"><span class="attr">Priority:</span>                                       <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Access:</span></span><br><span class="line"><span class="attr">  Users:</span>                                        <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">  Groups:</span>                                       <span class="attr">system:authenticated</span></span><br><span class="line"><span class="attr">Settings:</span></span><br><span class="line">  <span class="string">Allow</span> <span class="attr">Privileged:</span>                             <span class="literal">false</span></span><br><span class="line">  <span class="string">Default</span> <span class="string">Add</span> <span class="attr">Capabilities:</span>                     <span class="string">&lt;none&gt;</span></span><br><span class="line">  <span class="string">Required</span> <span class="string">Drop</span> <span class="attr">Capabilities:</span>                   <span class="string">KILL,MKNOD,SETUID,SETGID</span></span><br><span class="line">  <span class="string">Allowed</span> <span class="attr">Capabilities:</span>                         <span class="string">&lt;none&gt;</span></span><br><span class="line">  <span class="string">Allowed</span> <span class="string">Seccomp</span> <span class="attr">Profiles:</span>                     <span class="string">&lt;none&gt;</span></span><br><span class="line">  <span class="string">Allowed</span> <span class="string">Volume</span> <span class="attr">Types:</span>                         <span class="string">configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret</span></span><br><span class="line">  <span class="string">Allowed</span> <span class="attr">Flexvolumes:</span>                          <span class="string">&lt;all&gt;</span></span><br><span class="line">  <span class="string">Allow</span> <span class="string">Host</span> <span class="attr">Network:</span>                           <span class="literal">false</span></span><br><span class="line">  <span class="string">Allow</span> <span class="string">Host</span> <span class="attr">Ports:</span>                             <span class="literal">false</span></span><br><span class="line">  <span class="string">Allow</span> <span class="string">Host</span> <span class="attr">PID:</span>                               <span class="literal">false</span></span><br><span class="line">  <span class="string">Allow</span> <span class="string">Host</span> <span class="attr">IPC:</span>                               <span class="literal">false</span></span><br><span class="line">  <span class="string">Read</span> <span class="string">Only</span> <span class="string">Root</span> <span class="attr">Filesystem:</span>                    <span class="literal">false</span></span><br><span class="line">  <span class="string">Run</span> <span class="string">As</span> <span class="string">User</span> <span class="attr">Strategy:</span> <span class="string">MustRunAsRange</span></span><br><span class="line"><span class="attr">    UID:</span>                                        <span class="string">&lt;none&gt;</span></span><br><span class="line">    <span class="string">UID</span> <span class="string">Range</span> <span class="attr">Min:</span>                              <span class="string">&lt;none&gt;</span></span><br><span class="line">    <span class="string">UID</span> <span class="string">Range</span> <span class="attr">Max:</span>                              <span class="string">&lt;none&gt;</span></span><br><span class="line">  <span class="string">SELinux</span> <span class="string">Context</span> <span class="attr">Strategy:</span> <span class="string">MustRunAs</span></span><br><span class="line"><span class="attr">    User:</span>                                       <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">    Role:</span>                                       <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">    Type:</span>                                       <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">    Level:</span>                                      <span class="string">&lt;none&gt;</span></span><br><span class="line">  <span class="string">FSGroup</span> <span class="attr">Strategy:</span> <span class="string">MustRunAs</span></span><br><span class="line"><span class="attr">    Ranges:</span>                                     <span class="string">&lt;none&gt;</span></span><br><span class="line">  <span class="string">Supplemental</span> <span class="string">Groups</span> <span class="attr">Strategy:</span> <span class="string">RunAsAny</span></span><br><span class="line"><span class="attr">    Ranges:</span>                                     <span class="string">&lt;none&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>The <code>restricted</code> SCC uses <code>MustRunAsRange</code> strategy for constraining and defaulting the possible values of the securityContext.runAsUser field. The admission plug-in will look for the <code>openshift.io/sa.scc.uid-range</code> annotation on the current project to populate range fields, as it does not provide this range. In the end, a container will have runAsUser equal to the first value of the range that is hard to predict because every project has different ranges. </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">oc</span> <span class="string">describe</span> <span class="string">project</span> <span class="string">demo1-proj</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Name:</span>                   <span class="string">demo1-proj</span></span><br><span class="line"><span class="attr">Created:</span>                <span class="number">3</span> <span class="string">hours</span> <span class="string">ago</span></span><br><span class="line"><span class="attr">Labels:</span>                 <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Annotations:</span>            <span class="string">openshift.io/description=</span></span><br><span class="line">                        <span class="string">openshift.io/display-name=</span></span><br><span class="line">                        <span class="string">openshift.io/requester=demo1</span></span><br><span class="line">                        <span class="string">openshift.io/sa.scc.mcs=s0:c11,c10</span></span><br><span class="line">                        <span class="string">openshift.io/sa.scc.supplemental-groups=1000130000/10000</span></span><br><span class="line">                        <span class="string">openshift.io/sa.scc.uid-range=1000130000/10000</span></span><br><span class="line"><span class="string">Display</span> <span class="attr">Name:</span>           <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Description:</span>            <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Status:</span>                 <span class="string">Active</span></span><br><span class="line"><span class="string">Node</span> <span class="attr">Selector:</span>          <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Quota:</span>                  <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="string">Resource</span> <span class="attr">limits:</span>        <span class="string">&lt;none&gt;</span></span><br></pre></td></tr></table></figure>
+<p>You see, here <code>openshift.io/sa.scc.uid-range</code> start from <code>1000130000</code>, is the UID of our <code>busybox</code> container.</p>
+<p>怎么检验user,或者sa用的哪个scc?呢?</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/openshift/" rel="tag"># openshift</a>
+          
+            <a href="/tags/scc/" rel="tag"># scc</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/19/openshift-start-sts-wrong-user/" rel="next" title="OpenShift Container Init User">
+                <i class="fa fa-chevron-left"></i> OpenShift Container Init User
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/22/docker-concept/" rel="prev" title="Docker Concept">
+                Docker Concept <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-up"><span class="nav-number">1.</span> <span class="nav-text">Set up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment"><span class="nav-number">2.</span> <span class="nav-text">Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#system-image-puller-Role"><span class="nav-number">2.1.</span> <span class="nav-text">system:image-puller Role</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Context-Constraint"><span class="nav-number">2.2.</span> <span class="nav-text">Security Context Constraint</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
