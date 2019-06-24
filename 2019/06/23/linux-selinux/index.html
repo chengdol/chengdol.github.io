@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="This is weird and embarrassing, run and get different init user inside container with the same settings. DescriptionFor Datastage, deployment is good, start and run as root user. But when I test with">
-<meta name="keywords" content="openshift">
+  <meta name="description" content="I have got chance to learn something about SELinux, I have heard about it but didn’t get into it. This is a online training from O’REILLY. The Linux operating system was never designed with overall se">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenShift Container Init User">
-<meta property="og:url" content="http://yoursite.com/2019/06/19/openshift-start-sts-wrong-user/index.html">
+<meta property="og:title" content="SELinux">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/linux-selinux/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This is weird and embarrassing, run and get different init user inside container with the same settings. DescriptionFor Datastage, deployment is good, start and run as root user. But when I test with">
+<meta property="og:description" content="I have got chance to learn something about SELinux, I have heard about it but didn’t get into it. This is a online training from O’REILLY. The Linux operating system was never designed with overall se">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T17:55:23.791Z">
+<meta property="og:updated_time" content="2019-06-24T05:34:12.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenShift Container Init User">
-<meta name="twitter:description" content="This is weird and embarrassing, run and get different init user inside container with the same settings. DescriptionFor Datastage, deployment is good, start and run as root user. But when I test with">
+<meta name="twitter:title" content="SELinux">
+<meta name="twitter:description" content="I have got chance to learn something about SELinux, I have heard about it but didn’t get into it. This is a online training from O’REILLY. The Linux operating system was never designed with overall se">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/19/openshift-start-sts-wrong-user/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/23/linux-selinux/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>OpenShift Container Init User | 海胆阶段's Blog</title>
+  <title>SELinux | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/19/openshift-start-sts-wrong-user/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/linux-selinux/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OpenShift Container Init User
+          <h1 class="post-title" itemprop="name headline">SELinux
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-06-19 16:57:03" itemprop="dateCreated datePublished" datetime="2019-06-19T16:57:03-07:00">2019-06-19</time>
+              <time title="Created: 2019-06-23 21:35:32 / Modified: 22:34:12" itemprop="dateCreated datePublished" datetime="2019-06-23T21:35:32-07:00">2019-06-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-21 10:55:23" itemprop="dateModified" datetime="2019-06-21T10:55:23-07:00">2019-06-21</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenShift/" itemprop="url" rel="index"><span itemprop="name">OpenShift</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -461,9 +449,19 @@
       
 
       
-        <p>This is weird and embarrassing, run and get different init user inside container with the same settings.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>For Datastage, deployment is good, start and run as root user. But when I test with busybox, it start as uid 1000140000…</p>
-
+        <p>I have got chance to learn something about <code>SELinux</code>, I have heard about it but didn’t get into it. This is a online training from O’REILLY.</p>
+<p>The Linux operating system was never designed with overall security in mind, and that’s exactly where <code>SELinux</code> comes in. Using SELinux adds 21st century security to the Linux operating system. It is key to providing access control and is also an important topic in the Red Hat RHCSA, CompTIA Linux+ and Linux Foundation LFCS exams.</p>
+<p><a href="https://en.wikipedia.org/wiki/Security-Enhanced_Linux" target="_blank" rel="noopener">Security-Enhanced Linux</a><br>I am using a <code>CentOS</code> machine in this training.</p>
+<p>SELinux implements Mandatory Security. All syscalls are <strong>denied</strong> by default,<br>unless specifically enabled</p>
+<ul>
+<li>All objects (files, ports, processes) are provided with a security label (the<br>context)</li>
+<li>User, role and type part in the context</li>
+<li>Type part is the most important</li>
+<li>The SELinux policy contains rules where you can see which source context<br>has access to which target context</li>
+</ul>
+<p>To check if SELinux status, dsiabled or enforcing<br><a href="https://howto.lintel.in/enable-disable-selinux-centos/" target="_blank" rel="noopener">Enable SELinux</a></p>
+<p><code>Z</code> flag is the magic to show SELinux information<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -Z /boot</span><br><span class="line">netstat -Ztunlp</span><br><span class="line">ps auxZ</span><br></pre></td></tr></table></figure></p>
+<h2 id="22-00"><a href="#22-00" class="headerlink" title="22:00"></a>22:00</h2>
       
     </div>
 
@@ -486,7 +484,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/openshift/" rel="tag"># openshift</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -499,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/16/docker-secure-registry/" rel="next" title="Secure Docker Registry">
-                <i class="fa fa-chevron-left"></i> Secure Docker Registry
+              <a href="/2019/06/22/docker-concept/" rel="next" title="Docker Concept">
+                <i class="fa fa-chevron-left"></i> Docker Concept
               </a>
             
           </div>
@@ -508,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/21/openshift-scc/" rel="prev" title="OpenShift Security Context Constraint">
-                OpenShift Security Context Constraint <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -775,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#22-00"><span class="nav-number">1.</span> <span class="nav-text">22:00</span></a></li></ol></div>
             
 
           </div>

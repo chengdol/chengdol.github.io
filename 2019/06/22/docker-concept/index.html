@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="最近看了一本书，书名是&amp;lt;&amp;lt;Docker进阶与实战&amp;gt;&amp;gt;， 这里并不是讲一些基础入门，而是在已经掌握和应用的基础上，告诉你背后的原理和技术细节。平时留意到的很多现象都在这里得到了解释，还是很值得记一下要点的。 Chapter 3 镜像主要介绍 Docker Image，其实就是启动容器的只读模板，是容器启动所需的rootfs。 Image 表示方法：1dockerhub-web">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T05:31:41.709Z">
+<meta property="og:updated_time" content="2019-06-24T21:25:09.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Concept">
 <meta name="twitter:description" content="最近看了一本书，书名是&amp;lt;&amp;lt;Docker进阶与实战&amp;gt;&amp;gt;， 这里并不是讲一些基础入门，而是在已经掌握和应用的基础上，告诉你背后的原理和技术细节。平时留意到的很多现象都在这里得到了解释，还是很值得记一下要点的。 Chapter 3 镜像主要介绍 Docker Image，其实就是启动容器的只读模板，是容器启动所需的rootfs。 Image 表示方法：1dockerhub-web">
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-06-22 00:14:29 / Modified: 22:31:41" itemprop="dateCreated datePublished" datetime="2019-06-22T00:14:29-07:00">2019-06-22</time>
+              <time title="Created: 2019-06-22 00:14:29" itemprop="dateCreated datePublished" datetime="2019-06-22T00:14:29-07:00">2019-06-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-24 14:25:09" itemprop="dateModified" datetime="2019-06-24T14:25:09-07:00">2019-06-24</time>
               
             
           </span>
@@ -471,8 +483,21 @@
 <h3 id="镜像扩展知识"><a href="#镜像扩展知识" class="headerlink" title="镜像扩展知识"></a>镜像扩展知识</h3><p>Docker引入了联合挂载<code>Union mount</code>技术，使镜像分层成为可能：<br>发展路径:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unionfs -&gt; aufs -&gt; overlayfs</span><br></pre></td></tr></table></figure></p>
 <p><code>写时复制 (copy-on-write)</code> 是Docker image强大的一个重要原因，操作系统中也广泛用到了，比如<code>fork</code>.当父进程fork子进程时，并没有真正分配内存给子进程，而是共享，当2者之一修改共享内存时，触发缺页异常才导致真正的内存分配。这样加速了子进程的创建，也减少了内存消耗。</p>
 <p>联合文件系统是实现写时复制的基础，Ubuntu自带<code>aufs</code>, Red Hat和Suse采用<code>deivcemapper</code>方案（在<code>/var/lib/docker/image</code>下就是这个东西），作为Docker的存储驱动，它们的存储结构和性能都有显著差异，要根据实际情况选用。</p>
-<h2 id="Chapter-4-仓库进阶"><a href="#Chapter-4-仓库进阶" class="headerlink" title="Chapter 4 仓库进阶"></a>Chapter 4 仓库进阶</h2><p>对Docker registry的API访问，传输对象主要包括镜像layer的块数据(<code>blob</code>)和表单(<code>manifest</code>)。layer数据以二进制方式存放于registry中。可以参考我这篇博客<a href="https://chengdol.github.io/2019/06/10/docker-registry-api/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Registry API&gt;&gt;</code></a>。</p>
-<p>主要讲了一下用API进行pull, push的过程，步骤。其实都划分了很多步。</p>
+<h2 id="Chapter-4-仓库进阶"><a href="#Chapter-4-仓库进阶" class="headerlink" title="Chapter 4 仓库进阶"></a>Chapter 4 仓库进阶</h2><p>对Docker registry的API访问，传输对象主要包括镜像layer的块数据(<code>blob</code>)和表单(<code>manifest</code>)。layer数据以二进制方式存放于registry中。主要讲了一下用API进行pull, push的过程，步骤。其实都划分了很多步。</p>
+<p>List和Dlete可以参考我这篇博客<a href="https://chengdol.github.io/2019/06/10/docker-registry-api/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Registry API&gt;&gt;</code></a>。</p>
+<p>鉴权机制，这里使用的是Docker Engine, Registry和Auth Server写作完成。Auth Server由Registry开发者部署搭建，Registry完全信任Auth Server.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">+---------------+               +-------------------------+</span><br><span class="line">|               +-------+       |                         |</span><br><span class="line">|  Registry     |       |       | Authorization Service   |</span><br><span class="line">|               +&lt;--+   |       |                         |</span><br><span class="line">+-+--+----------+   |   |       +---------------+--+------+</span><br><span class="line">  ^  |              |   |                       ^  |</span><br><span class="line">  |  |            5 |   | 6                     |  |</span><br><span class="line">  |  |              |   |                       |  |</span><br><span class="line">1 |  | 2            |   |                     3 |  | 4</span><br><span class="line">  |  |          +---+---v---------+             |  |</span><br><span class="line">  |  +---------&gt;+                 +-------------+  |</span><br><span class="line">  |             |  Docker Daemon  |                |</span><br><span class="line">  +-------------+                 +&lt;---------------+</span><br><span class="line">                |                 |</span><br><span class="line">                +--------+--------+</span><br><span class="line">                         ^</span><br><span class="line">                         |</span><br><span class="line">           +-------------+-----------------+</span><br><span class="line">           |      Docker Client            |</span><br><span class="line">           | $docker pull busybox          |</span><br><span class="line">           |                               |</span><br><span class="line">           +-------------------------------+</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Docker Engine试图赋予HTTP请求一个鉴权的token，如果没有，Daemon会试图fetch/refresh一个新的token。</li>
+<li>如果请求没有做过认证且不含token则Registry会返回401 Unauthorized状态</li>
+<li>用户带着Registry返回的信息以及证书去访问Auth Server申请token （<strong>这里具体怎么操作？</strong>）</li>
+<li>Auth Server后端账户记录着用户名和密码，获取用户请求后，会将鉴权信息的token返回给用户</li>
+<li><p>用户带着token再次访问Regisrty, HEADER中包含:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Bearer &lt;token content&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Registry检验token，如通过，开始工作</p>
+</li>
+</ol>
 
       
     </div>
@@ -518,6 +543,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/23/linux-selinux/" rel="prev" title="SELinux">
+                SELinux <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
