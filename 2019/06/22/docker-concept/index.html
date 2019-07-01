@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="最近看了一本书，书名是&amp;lt;&amp;lt;Docker进阶与实战&amp;gt;&amp;gt;， 这里并不是讲一些基础入门，而是在已经掌握和应用的基础上，告诉你背后的原理和技术细节。平时留意到的很多现象都在这里得到了解释，还是很值得记一下要点的。 Chapter 3 镜像主要介绍 Docker Image，其实就是启动容器的只读模板，是容器启动所需的rootfs。 Image 表示方法：1dockerhub-web">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T05:51:26.741Z">
+<meta property="og:updated_time" content="2019-07-01T20:12:54.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Concept">
 <meta name="twitter:description" content="最近看了一本书，书名是&amp;lt;&amp;lt;Docker进阶与实战&amp;gt;&amp;gt;， 这里并不是讲一些基础入门，而是在已经掌握和应用的基础上，告诉你背后的原理和技术细节。平时留意到的很多现象都在这里得到了解释，还是很值得记一下要点的。 Chapter 3 镜像主要介绍 Docker Image，其实就是启动容器的只读模板，是容器启动所需的rootfs。 Image 表示方法：1dockerhub-web">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">56</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">55</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">68</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">69</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-26 22:51:26" itemprop="dateModified" datetime="2019-06-26T22:51:26-07:00">2019-06-26</time>
+                <time title="Modified: 2019-07-01 13:12:54" itemprop="dateModified" datetime="2019-07-01T13:12:54-07:00">2019-07-01</time>
               
             
           </span>
@@ -484,21 +484,25 @@
 <p><code>写时复制 (copy-on-write)</code> 是Docker image强大的一个重要原因，操作系统中也广泛用到了，比如<code>fork</code>.当父进程fork子进程时，并没有真正分配内存给子进程，而是共享，当2者之一修改共享内存时，触发缺页异常才导致真正的内存分配。这样加速了子进程的创建，也减少了内存消耗。</p>
 <p>联合文件系统是实现写时复制的基础，Ubuntu自带<code>aufs</code>, Red Hat和Suse采用<code>deivcemapper</code>方案（在<code>/var/lib/docker/image</code>下就是这个东西），作为Docker的存储驱动，它们的存储结构和性能都有显著差异，要根据实际情况选用。</p>
 <h2 id="Chapter-4-仓库进阶"><a href="#Chapter-4-仓库进阶" class="headerlink" title="Chapter 4 仓库进阶"></a>Chapter 4 仓库进阶</h2><p>对Docker registry的API访问，传输对象主要包括镜像layer的块数据(<code>blob</code>)和表单(<code>manifest</code>)。layer数据以二进制方式存放于registry中。主要讲了一下用API进行pull, push的过程，步骤。其实都划分了很多步。</p>
-<p>List和Dlete可以参考我这篇博客<a href="https://chengdol.github.io/2019/06/10/docker-registry-api/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Registry API&gt;&gt;</code></a>。</p>
-<p>鉴权机制，这里使用的是Docker Engine, Registry和Auth Server写作完成。Auth Server由Registry开发者部署搭建，Registry完全信任Auth Server.</p>
+<p>List and Dlete Image 可以参考我这篇博客<a href="https://chengdol.github.io/2019/06/10/docker-registry-api/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Registry API&gt;&gt;</code></a>。</p>
+<p>鉴权机制，这里使用的是Docker Engine, Registry和Auth Server协作完成。Auth Server由Registry开发者部署搭建，Registry完全信任Auth Server.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+---------------+               +------------------------+</span><br><span class="line">|               +-------+       |                        |</span><br><span class="line">|  Registry     |       |       | Authorization Service  |</span><br><span class="line">|               +&lt;--+   |       |                        |</span><br><span class="line">+-+--+----------+   |   |       +---------------+--+-----+</span><br><span class="line">  ^  |              |   |                       ^  |</span><br><span class="line">  |  |            5 |   | 6                     |  |</span><br><span class="line">  |  |              |   |                       |  |</span><br><span class="line">1 |  | 2            |   |                     3 |  | 4</span><br><span class="line">  |  |          +---+---v---------+             |  |</span><br><span class="line">  |  +---------&gt;+                 +-------------+  |</span><br><span class="line">  |             |  Docker Daemon  |                |</span><br><span class="line">  +-------------+                 +&lt;---------------+</span><br><span class="line">                +--------+--------+</span><br><span class="line">                         ^</span><br><span class="line">                         |</span><br><span class="line">           +-------------+----------------+</span><br><span class="line">           |      Docker Client           |</span><br><span class="line">           |    $docker pull busybox      |</span><br><span class="line">           |                              |</span><br><span class="line">           +------------------------------+</span><br></pre></td></tr></table></figure>
 <ol>
 <li>Docker Engine试图赋予HTTP请求一个鉴权的token，如果没有，Daemon会试图fetch/refresh一个新的token。</li>
 <li>如果请求没有做过认证且不含token则Registry会返回401 Unauthorized状态</li>
-<li>用户带着Registry返回的信息以及证书去访问Auth Server申请token （<strong>这里具体怎么操作？</strong>）</li>
+<li>用户带着Registry返回的信息以及证书去访问Auth Server申请token （<strong>这里具体怎么操作？证书在哪里？</strong>）</li>
 <li>Auth Server后端账户记录着用户名和密码，获取用户请求后，会将鉴权信息的token返回给用户</li>
 <li><p>用户带着token再次访问Regisrty, HEADER中包含:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Bearer &lt;token content&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Registry检验token，如通过，开始工作</p>
+<li><p>Registry检验token，如通过则开始工作</p>
 </li>
 </ol>
-
+<h3 id="构建私有仓库"><a href="#构建私有仓库" class="headerlink" title="构建私有仓库"></a>构建私有仓库</h3><p>In general, we can simply run a private docker registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --hostname localhost \</span><br><span class="line">  --name registry-v2 \</span><br><span class="line">  -v /opt/data:/var/lib/registry \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  registry:2.0</span><br></pre></td></tr></table></figure></p>
+<p>这里将本地目录<code>/opt/data</code>挂载到容器镜像存储目录<code>/var/lib/registry</code>，方便查看和管理镜像数据，在DataStage Installer中也是如此。这时的registry是不安全的，能访问本机5000端口的人都可以上传和下载镜像。</p>
+<p>需要为其加上HTTPS反向代理，这里以Nginx来实现。然后代理服务器会接受HTTPS请求，然后将请求转发给内部网络上的registry服务器，并将registry访问结果返回给用户。</p>
+<p>可以参考我的这篇blog关于如何搭建<a href=""><code>Secure Docker Registry</code></a>.</p>
+<h2 id="Chapter-5-Docker网络"><a href="#Chapter-5-Docker网络" class="headerlink" title="Chapter 5 Docker网络"></a>Chapter 5 Docker网络</h2>
       
     </div>
 
@@ -618,7 +622,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">68</span>
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -778,9 +782,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -816,7 +818,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-镜像"><span class="nav-number">1.</span> <span class="nav-text">Chapter 3 镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Docker镜像"><span class="nav-number">1.1.</span> <span class="nav-text">使用Docker镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像的组织结构"><span class="nav-number">1.2.</span> <span class="nav-text">镜像的组织结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像扩展知识"><span class="nav-number">1.3.</span> <span class="nav-text">镜像扩展知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4-仓库进阶"><span class="nav-number">2.</span> <span class="nav-text">Chapter 4 仓库进阶</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-镜像"><span class="nav-number">1.</span> <span class="nav-text">Chapter 3 镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Docker镜像"><span class="nav-number">1.1.</span> <span class="nav-text">使用Docker镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像的组织结构"><span class="nav-number">1.2.</span> <span class="nav-text">镜像的组织结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像扩展知识"><span class="nav-number">1.3.</span> <span class="nav-text">镜像扩展知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4-仓库进阶"><span class="nav-number">2.</span> <span class="nav-text">Chapter 4 仓库进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建私有仓库"><span class="nav-number">2.1.</span> <span class="nav-text">构建私有仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5-Docker网络"><span class="nav-number">3.</span> <span class="nav-text">Chapter 5 Docker网络</span></a></li></ol></div>
             
 
           </div>
