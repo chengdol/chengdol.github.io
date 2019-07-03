@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-28T16:51:55.412Z">
+<meta property="og:updated_time" content="2019-07-03T22:37:23.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tar Command Daily Work Summary">
 <meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">69</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">70</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-28 09:51:55" itemprop="dateModified" datetime="2019-05-28T09:51:55-07:00">2019-05-28</time>
+                <time title="Modified: 2019-07-03 15:37:23" itemprop="dateModified" datetime="2019-07-03T15:37:23-07:00">2019-07-03</time>
               
             
           </span>
@@ -482,14 +482,14 @@
 <p>Note that there is a <code>-</code> before <code>zxpf</code>.</p>
 </blockquote>
 <h3 id="05-23-2019"><a href="#05-23-2019" class="headerlink" title="05/23/2019"></a>05/23/2019</h3><p>Extract single file from tarball to current directory:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzf target.tar.gz installer/xxx.json</span><br></pre></td></tr></table></figure></p>
-<p>Then you will see <code>./installer/xxx.json</code> in current directory.</p>
 <blockquote>
-<p>Note that no leading <code>/</code> in the path, you can use <code>tar xtvf target.tar.gz</code> to check the path.</p>
+<p>Note that no leading <code>/</code> in the path (it uses relative path in tar file!), you can use <code>tar xtvf target.tar.gz</code> to check the path.</p>
 </blockquote>
+<p>Then you will see <code>&lt;current directory&gt;/installer/xxx.json</code> in current directory.</p>
 <h3 id="05-28-2019"><a href="#05-28-2019" class="headerlink" title="05/28/2019"></a>05/28/2019</h3><p><code>tar</code> by default extracts file to current directory, if you want to place the untar files to another directory, run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf target.tar.gz -C /target/directory</span><br></pre></td></tr></table></figure></p>
 <p>Note that the target directory has to <strong>exist</strong> before running that command.</p>
 <h3 id="05-29-2019"><a href="#05-29-2019" class="headerlink" title="05/29/2019"></a>05/29/2019</h3><p>If you want to extact single file to another directory, note the options order<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzf target.tar.gz -C /target/directory installer/xxx.json</span><br></pre></td></tr></table></figure></p>
-<p>The single file must be at last</p>
+<p>The single file must be in the command end.</p>
 
       
     </div>
@@ -612,7 +612,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-count">70</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
