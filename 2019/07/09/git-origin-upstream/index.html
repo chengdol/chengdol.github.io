@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github https://stackoverflow.com/questions/2739376/definition-of-downstream-and-upstream/2749166#27491">
+  <meta name="description" content="Using Git everyday and pull push everyday, let’s spend time to undestand the concept origin and upstream fully.  ResourceDifference Upstream and Origin  upstream generally refers to the original repo">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Origin Vs Upstream">
 <meta property="og:url" content="http://yoursite.com/2019/07/09/git-origin-upstream/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github https://stackoverflow.com/questions/2739376/definition-of-downstream-and-upstream/2749166#27491">
+<meta property="og:description" content="Using Git everyday and pull push everyday, let’s spend time to undestand the concept origin and upstream fully.  ResourceDifference Upstream and Origin  upstream generally refers to the original repo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T21:56:50.183Z">
+<meta property="og:updated_time" content="2019-07-13T00:01:31.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Origin Vs Upstream">
-<meta name="twitter:description" content="https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github https://stackoverflow.com/questions/2739376/definition-of-downstream-and-upstream/2749166#27491">
+<meta name="twitter:description" content="Using Git everyday and pull push everyday, let’s spend time to undestand the concept origin and upstream fully.  ResourceDifference Upstream and Origin  upstream generally refers to the original repo">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 14:56:50" itemprop="dateModified" datetime="2019-07-12T14:56:50-07:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 17:01:31" itemprop="dateModified" datetime="2019-07-12T17:01:31-07:00">2019-07-12</time>
               
             
           </span>
@@ -461,8 +461,16 @@
       
 
       
-        <p><a href="https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github" target="_blank" rel="noopener">https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github</a></p>
-<p><a href="https://stackoverflow.com/questions/2739376/definition-of-downstream-and-upstream/2749166#2749166" target="_blank" rel="noopener">https://stackoverflow.com/questions/2739376/definition-of-downstream-and-upstream/2749166#2749166</a></p>
+        <p>Using Git everyday and pull push everyday, let’s spend time to undestand the concept <code>origin</code> and <code>upstream</code> fully. </p>
+<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p><a href="https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github" target="_blank" rel="noopener">Difference Upstream and Origin</a></p>
+<ul>
+<li><code>upstream</code> generally refers to the original repo that you have forked</li>
+<li><code>origin</code> is your fork: your own repo on GitHub, clone of the original repo of GitHub</li>
+</ul>
+<h2 id="My-Case"><a href="#My-Case" class="headerlink" title="My Case"></a>My Case</h2><p>I don’t have <code>upstream</code> because I don’t fork the original repo, I <code>git clone</code> the original repo to local, then <code>git checkout</code> a develop branch from the master branch, work on it. </p>
+<p>If I run <code>git remote -v</code>, I get:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin  git@github.xxxx.com:InformationServer/cognitive-designer-api.git (fetch)</span><br><span class="line">origin  git@github.xxxx.com:InformationServer/cognitive-designer-api.git (push)</span><br></pre></td></tr></table></figure></p>
+<p>Then I run <code>git push origin develop</code> to that original repo, this will create a pull request, then I can check and merge to master branch on remote.</p>
+<p>Because there is no fork, so run <code>git pull origin master</code> to get sync up with latest updates.</p>
 
       
     </div>
@@ -556,8 +564,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -759,6 +776,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource"><span class="nav-number">1.</span> <span class="nav-text">Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-Case"><span class="nav-number">2.</span> <span class="nav-text">My Case</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
