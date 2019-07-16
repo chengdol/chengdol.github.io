@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I have some doubts about Security Context Constraint (SCC) in OpenShift, for example, I give privileged SCC to service account, but some containers are still running as non-root user. PrerequisiteSpin">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-25T16:49:47.899Z">
+<meta property="og:updated_time" content="2019-07-16T16:56:34.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenShift Security Context Constraint">
 <meta name="twitter:description" content="I have some doubts about Security Context Constraint (SCC) in OpenShift, for example, I give privileged SCC to service account, but some containers are still running as non-root user. PrerequisiteSpin">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">78</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">77</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-25 09:49:47" itemprop="dateModified" datetime="2019-06-25T09:49:47-07:00">2019-06-25</time>
+                <time title="Modified: 2019-07-16 09:56:34" itemprop="dateModified" datetime="2019-07-16T09:56:34-07:00">2019-07-16</time>
               
             
           </span>
@@ -480,7 +480,10 @@
 <p>Docker login to integrated docker registry and push:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login -u openshift -p `oc whoami -t` 172.30.159.11:5000</span><br><span class="line">docker push 172.30.159.11:5000/demo1-ds/busybox:v1</span><br></pre></td></tr></table></figure></p>
 <p>Go back to <code>demo1-proj</code> project by <code>oc project demo1-proj</code>, write a simple deployment yaml <code>bb-deploy.yml</code>:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">bb-deployment</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    matchLabels:</span></span><br><span class="line"><span class="attr">      app:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        app:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">bb</span></span><br><span class="line"><span class="attr">        image:</span> <span class="number">172.30</span><span class="number">.159</span><span class="number">.11</span><span class="string">:5000/demo1-ds/busybox:v1</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Enable-Pull-from-Other-Projects"><a href="#Enable-Pull-from-Other-Projects" class="headerlink" title="Enable Pull from Other Projects"></a>Enable Pull from Other Projects</h3><p>If now run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oc apply -f bb-deploy.yml</span><br></pre></td></tr></table></figure></p>
-<p>It will fail to pull the image from <code>demo1-ds</code> (describe pod can see) because <code>demo1</code> don’t have the permission to pull image from other project, let’s enable it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oc policy add-role-to-user \</span><br><span class="line">    system:image-puller system:serviceaccount:demo1-proj:default \</span><br><span class="line">    --namespace=demo1-ds</span><br></pre></td></tr></table></figure></p>
+<p>It will fail to pull the image from <code>demo1-ds</code> (describe pod can see) because we deploy objects on project <code>demo1-proj</code>, it doesn’t have the permission to pull image from other project, let’s enable it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oc policy add-role-to-user \</span><br><span class="line">    system:image-puller system:serviceaccount:demo1-proj:default \</span><br><span class="line">    --namespace=demo1-ds</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note that if you run this several times, it will create severl deplicates.</p>
+</blockquote>
 <p>Then if you check <code>rolebindings</code> in <code>demo1-ds</code>, you see there is a new binding <code>system:image-puller</code> with service account <code>demo1-proj/default</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">oc get rolebindings -n demo1-ds</span><br><span class="line"></span><br><span class="line">NAME                    ROLE                    USERS     GROUPS                            SERVICE ACCOUNTS     SUBJECTS</span><br><span class="line">admin                   /admin                  demo1</span><br><span class="line">system:deployers        /system:deployer                                                    deployer</span><br><span class="line">system:image-builders   /system:image-builder                                               builder</span><br><span class="line">system:image-puller     /system:image-puller                                                demo1-proj/default</span><br><span class="line">system:image-pullers    /system:image-puller              system:serviceaccounts:demo1-ds</span><br></pre></td></tr></table></figure></p>
 <p>Ok, then we can deploy the busubox in <code>demo1-proj</code> project:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME                            READY     STATUS    RESTARTS   AGE</span><br><span class="line">bb-deployment-78bdb8c4f-lzqfj   1/1       Running   0          6s</span><br></pre></td></tr></table></figure></p>
 <p>Let’s next see the container UID:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kbc exec -it bb-deployment-78bdb8c4f-lzqfj sh</span><br><span class="line"></span><br><span class="line">/ $ id</span><br><span class="line">uid=1000130000 gid=0(root) groups=1000130000</span><br></pre></td></tr></table></figure></p>
@@ -627,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
