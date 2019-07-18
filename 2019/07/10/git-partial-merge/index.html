@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I was previously working on a separate branch branch-tmp(remote and local), now I want to merge some files in that branch into master. ResourceGit tip: How to “merge” specific files from another branc">
+  <meta name="description" content="I was previously working on a separate branch branch-tmp, now I want to merge some files in that branch into my main personal branch chengdol_master, and finally create a pull request to merge int mas">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Partial Merge">
 <meta property="og:url" content="http://yoursite.com/2019/07/10/git-partial-merge/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I was previously working on a separate branch branch-tmp(remote and local), now I want to merge some files in that branch into master. ResourceGit tip: How to “merge” specific files from another branc">
+<meta property="og:description" content="I was previously working on a separate branch branch-tmp, now I want to merge some files in that branch into my main personal branch chengdol_master, and finally create a pull request to merge int mas">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-11T00:23:53.808Z">
+<meta property="og:updated_time" content="2019-07-18T21:14:52.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Partial Merge">
-<meta name="twitter:description" content="I was previously working on a separate branch branch-tmp(remote and local), now I want to merge some files in that branch into master. ResourceGit tip: How to “merge” specific files from another branc">
+<meta name="twitter:description" content="I was previously working on a separate branch branch-tmp, now I want to merge some files in that branch into my main personal branch chengdol_master, and finally create a pull request to merge int mas">
 
 
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-07-10 17:02:19 / Modified: 17:23:53" itemprop="dateCreated datePublished" datetime="2019-07-10T17:02:19-07:00">2019-07-10</time>
+              <time title="Created: 2019-07-10 17:02:19" itemprop="dateCreated datePublished" datetime="2019-07-10T17:02:19-07:00">2019-07-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-18 14:14:52" itemprop="dateModified" datetime="2019-07-18T14:14:52-07:00">2019-07-18</time>
               
             
           </span>
@@ -449,15 +461,15 @@
       
 
       
-        <p>I was previously working on a separate branch <code>branch-tmp</code>(remote and local), now I want to merge some files in that branch into <code>master</code>.</p>
+        <p>I was previously working on a separate branch <code>branch-tmp</code>, now I want to merge some files in that branch into my main personal branch <code>chengdol_master</code>, and finally create a pull request to merge int <code>master</code>.</p>
 <h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p><a href="https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" target="_blank" rel="noopener">Git tip: How to “merge” specific files from another branch</a><br><a href="https://stackoverflow.com/questions/18115411/how-to-merge-specific-files-from-git-branches" target="_blank" rel="noopener">Interactive merge</a></p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><blockquote>
-<p>Notice that in my case, the target files in <code>branch-tmp</code> are completely applicable for <code>master</code>, so I just want to overwrite corresponding files in <code>master</code>. If we need to pick some changes and leave others in the file, do an <code>interactive merge</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --patch brach-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Notice that in my case, the target files in <code>branch-tmp</code> are completely applicable for <code>chengdol_master</code>, so I just want to overwrite corresponding files in <code>chengdol_master</code>. If we need to pick some changes and leave others in the file, do an <code>interactive merge</code>, run this from <code>chengdol_master</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --patch brach-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>First check if you have <code>origin/branch-tmp</code> locally<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | grep branch-tmp</span><br></pre></td></tr></table></figure></p>
 <p>If not, you need to fetch it alone or fetch all origin branches:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin branch-tmp</span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure></p>
-<p>Then go to your target branch <code>master</code>, use <code>git checkout</code> command to do the job:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout origin/branch-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
-<p>then the merged files from <code>branch-tmp</code> are in staging phase, you can directly commit or unstage them in the <code>master</code> branch.</p>
+<p>Then go to your target branch <code>chengdol_master</code>, use <code>git checkout</code> command to do the job:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout origin/branch-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
+<p>then the merged files from <code>branch-tmp</code> are in staging phase, you can directly commit or unstage them in the <code>chengdol_master</code> branch, then push and handle the pull request.</p>
 
       
     </div>
