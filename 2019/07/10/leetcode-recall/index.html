@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T07:38:51.441Z">
+<meta property="og:updated_time" content="2019-07-19T06:18:17.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sigh, Recall!">
 <meta name="twitter:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
@@ -259,7 +259,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">55</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">57</span></a>
 
   </li>
         
@@ -297,7 +297,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">77</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">78</span></a>
 
   </li>
 
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-18 00:38:51" itemprop="dateModified" datetime="2019-07-18T00:38:51-07:00">2019-07-18</time>
+                <time title="Modified: 2019-07-18 23:18:17" itemprop="dateModified" datetime="2019-07-18T23:18:17-07:00">2019-07-18</time>
               
             
           </span>
@@ -468,7 +468,7 @@
 <h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// one dimension</span></span><br><span class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>]; <span class="comment">// default value is 0</span></span><br><span class="line"><span class="comment">// tow dimensions</span></span><br><span class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][<span class="number">4</span>]; <span class="comment">// 3 rows 4 columns</span></span><br><span class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][]; <span class="comment">// still ok, you can init one dimension array later</span></span><br><span class="line"><span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;, &#123;<span class="number">4</span>,<span class="number">5</span>&#125;, &#123;<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;&#125;; <span class="comment">// each one dimension array can have different length!</span></span><br></pre></td></tr></table></figure>
 <p>Let’s see char array<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>[] arr = <span class="keyword">new</span> <span class="keyword">char</span>[str.length()];</span><br><span class="line">arr = str.toCharArray();</span><br></pre></td></tr></table></figure></p>
 <p>Use sort static method, if you want to use comparator, see my <strong>lambda</strong> section<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(E[] e);</span><br><span class="line"><span class="comment">// also for collections</span></span><br><span class="line">Collections.sort(List&lt;xx&gt; l);</span><br></pre></td></tr></table></figure></p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// provide value for new key which is absent </span></span><br><span class="line">map.put(key, map.computeIfAbsent(key, k -&gt; <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line"><span class="comment">// this one is good</span></span><br><span class="line">map.put(key, map.getOrDefault(key, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// remove current key if it's value is val</span></span><br><span class="line">map.remove(key, val)</span><br></pre></td></tr></table></figure>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// provide value for new key which is absent </span></span><br><span class="line">map.put(key, map.computeIfAbsent(key, k -&gt; <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line"><span class="comment">// this one is good</span></span><br><span class="line">map.put(key, map.getOrDefault(key, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line"><span class="comment">// for object can use:</span></span><br><span class="line">map.computeIfAbsent(key, k -&gt; <span class="keyword">new</span> ArrayList&lt;Stone&gt;()).add(<span class="keyword">new</span> Stone(x,y));</span><br><span class="line"><span class="comment">// remove current key if it's value is val</span></span><br><span class="line">map.remove(key, val)</span><br></pre></td></tr></table></figure>
 <h2 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"xxx"</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="random-generate"><a href="#random-generate" class="headerlink" title="random generate"></a>random generate</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line">Random rand = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="keyword">int</span> randomNum = rand.nextInt((max - min) + <span class="number">1</span>) + min;</span><br><span class="line"><span class="comment">// simply can use this:</span></span><br><span class="line"><span class="comment">// return double, need to force convert to int maybe</span></span><br><span class="line">Math.random(): [<span class="number">0.00</span>,<span class="number">1.00</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="lambda-function"><a href="#lambda-function" class="headerlink" title="lambda function"></a>lambda function</h2><p>for comparator and comparable, let’s see how to wirte it, <a href="https://www.mkyong.com/java8/java-8-lambda-comparator-example/" target="_blank" rel="noopener">this post</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">5</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">3</span>&#125;&#125;;</span><br><span class="line"><span class="comment">// sort by the first element of one dimenstional array</span></span><br><span class="line">Arrays.sort(arr, (<span class="keyword">int</span>[] a, <span class="keyword">int</span>[]b) -&gt; a[<span class="number">0</span>] - b[<span class="number">0</span>]);</span><br><span class="line">System.out.println(<span class="string">"result= "</span> + Arrays.deepToString(arr));</span><br></pre></td></tr></table></figure></p>
@@ -608,7 +608,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -768,7 +768,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -96,23 +96,25 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
-<meta property="og:type" content="website">
-<meta property="og:title" content="海胆阶段&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/Ansible/index.html">
+  <meta name="description" content="This blog primarily talks about Tiller server install, especially creating service account and cluster role binding for it. Zen uses Helm to install in ICP4D cluster. Helm is a tool for managing Kuber">
+<meta name="keywords" content="Kubernetes,helm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Helm Tiller Server Deploy">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/k8s-helm-tiller/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="This blog primarily talks about Tiller server install, especially creating service account and cluster role binding for it. Zen uses Helm to install in ICP4D cluster. Helm is a tool for managing Kuber">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-19T20:40:31.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="海胆阶段&#39;s Blog">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:title" content="Helm Tiller Server Deploy">
+<meta name="twitter:description" content="This blog primarily talks about Tiller server install, especially creating service account and cluster role binding for it. Zen uses Helm to install in ICP4D cluster. Helm is a tool for managing Kuber">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Ansible/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/19/k8s-helm-tiller/">
 
 
 
@@ -122,7 +124,7 @@
   };
 </script>
 
-  <title>Category: Ansible | 海胆阶段's Blog</title>
+  <title>Helm Tiller Server Deploy | 海胆阶段's Blog</title>
   
 
 
@@ -170,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -265,7 +267,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -308,28 +310,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -354,83 +334,208 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Ansible<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/k8s-helm-tiller/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/03/22/ansible-code-snippet/" itemprop="url">
-            
-              <span itemprop="name">Ansible Module Reference</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Helm Tiller Server Deploy
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-22T20:58:34-07:00" content="2019-03-22">
-          03-22
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-19 13:01:13 / Modified: 13:40:31" itemprop="dateCreated datePublished" datetime="2019-07-19T13:01:13-07:00">2019-07-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/13/ansible-up-and-running/" itemprop="url">
-            
-              <span itemprop="name">Ansible Up and Running, 2nd Edition</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T00:04:25-07:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>This blog primarily talks about <code>Tiller</code> server install, especially creating service account and cluster role binding for it.</p>
+<p>Zen uses <code>Helm</code> to install in ICP4D cluster. <code>Helm</code> is a tool for managing Kubernetes charts. <code>Charts</code> are packages of pre-configured Kubernetes resources. Think of <code>Helm</code> like apt/yum/homebrew for Kubernetes.</p>
+<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p><a href="https://github.com/helm/helm" target="_blank" rel="noopener">Helm Git Repos</a></p>
+<h2 id="Download-Helm-Installer"><a href="#Download-Helm-Installer" class="headerlink" title="Download Helm Installer"></a>Download Helm Installer</h2><p>Download the Latest release from <a href="https://github.com/helm/helm/releases" target="_blank" rel="noopener">Helm Release</a>. For example in Linux, we use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux amd64 (checksum / 9f50e69cf5cfa7268b28686728ad0227507a169e52bf59c99ada872ddd9679f0)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>Helm</code> needs to be put in the control node that already configured with <code>kubectl</code>.</p>
+</blockquote>
+<p>Untar the file and you can move <code>helm</code> binary to one of the exectuable path, such as <code>/usr/local/bin</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># which helm</span><br><span class="line"></span><br><span class="line">/usr/local/bin/helm</span><br></pre></td></tr></table></figure></p>
+<h2 id="Deploy-Tiller-Server"><a href="#Deploy-Tiller-Server" class="headerlink" title="Deploy Tiller Server"></a>Deploy Tiller Server</h2><p>Helm client needs to talk to <code>Tiller</code> server, which will be deploied in the K8s cluster.</p>
+<p>Most cloud providers enable a feature called Role-Based Access Control - RBAC for short. If your cloud provider enables this feature, you will need to create a service account for Tiller with the right roles and permissions to access resources.</p>
+<p>From <a href="https://helm.sh/docs/using_helm/#tiller-and-role-based-access-control" target="_blank" rel="noopener">here</a>, you need to create a <code>cluster role binding</code> which specifies a role and a <code>service account</code> name that have been set up in advance <code>rbac-config.yaml</code>:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">tiller</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">kube-system</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">rbac.authorization.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ClusterRoleBinding</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">tiller</span></span><br><span class="line"><span class="attr">roleRef:</span></span><br><span class="line"><span class="attr">  apiGroup:</span> <span class="string">rbac.authorization.k8s.io</span></span><br><span class="line"><span class="attr">  kind:</span> <span class="string">ClusterRole</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">cluster-admin</span></span><br><span class="line"><span class="attr">subjects:</span></span><br><span class="line"><span class="attr">  - kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">tiller</span></span><br><span class="line"><span class="attr">    namespace:</span> <span class="string">kube-system</span></span><br></pre></td></tr></table></figure></p>
+<p>Then install <code>Helm</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># kubectl create -f rbac-config.yaml</span><br><span class="line">serviceaccount &quot;tiller&quot; created</span><br><span class="line">clusterrolebinding &quot;tiller&quot; created</span><br><span class="line"></span><br><span class="line"># helm init --service-account tiller --history-max 200</span><br></pre></td></tr></table></figure></p>
+<p>If you forget to create <code>service account</code> and <code>cluster role binding</code> before you initiate <code>Helm</code>, no worries, create <code>rbac-config.yaml</code> objects and patch it by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl patch deploy --namespace kube-system tiller-deploy -p &apos;&#123;&quot;spec&quot;:&#123;&quot;template&quot;:&#123;&quot;spec&quot;:&#123;&quot;serviceAccount&quot;:&quot;tiller&quot;&#125;&#125;&#125;&#125;&apos;</span><br></pre></td></tr></table></figure></p>
+<p>Then check <code>Tiller</code> pod is running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># kubectl get pods -n kube-system -l app=helm</span><br><span class="line"></span><br><span class="line">NAME                             READY   STATUS    RESTARTS   AGE</span><br><span class="line">tiller-deploy-845fb7cfc6-rn4nq   1/1     Running   0          20h</span><br></pre></td></tr></table></figure></p>
+<p>Now, we are in good shape, actually I can config <code>SSL/TLS</code> between <code>Helm</code> and <code>Tiller</code>, not covered in this blog.</p>
+<h2 id="Uninstall-Tiller-Server"><a href="#Uninstall-Tiller-Server" class="headerlink" title="Uninstall Tiller Server"></a>Uninstall Tiller Server</h2><p>There are 2 ways to uninstall:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">helm reset</span><br><span class="line">helm delete deploy tiller-deploy -n kube-system</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+          
+            <a href="/tags/helm/" rel="tag"># helm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/openshift-scc-customized/" rel="next" title="OpenShift SCC Customized">
+                <i class="fa fa-chevron-left"></i> OpenShift SCC Customized
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -451,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -659,6 +773,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource"><span class="nav-number">1.</span> <span class="nav-text">Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Download-Helm-Installer"><span class="nav-number">2.</span> <span class="nav-text">Download Helm Installer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deploy-Tiller-Server"><span class="nav-number">3.</span> <span class="nav-text">Deploy Tiller Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Uninstall-Tiller-Server"><span class="nav-number">4.</span> <span class="nav-text">Uninstall Tiller Server</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -782,6 +913,10 @@
   
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
