@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1e0ziORmoEx6zPk6J6qEid26aWl-zw21G">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Hy8vWUIBuo33oH976PNEkVzvAOzCuyKJ">
-<meta property="og:updated_time" content="2019-05-27T22:34:46.559Z">
+<meta property="og:updated_time" content="2019-08-05T18:24:47.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Linux Works, 2nd Edition">
 <meta name="twitter:description" content="Great book for all Linux developers and administrators! Just note for future quick revisit! Chapter1. The Big pictureThe most effective way to understand how an operating system works is through abstr">
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">58</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">57</span></a>
 
   </li>
         
@@ -282,7 +282,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">14</span></a>
 
   </li>
         
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-27 15:34:46" itemprop="dateModified" datetime="2019-05-27T15:34:46-07:00">2019-05-27</time>
+                <time title="Modified: 2019-08-05 11:24:47" itemprop="dateModified" datetime="2019-08-05T11:24:47-07:00">2019-08-05</time>
               
             
           </span>
@@ -430,7 +430,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Book/" itemprop="url" rel="index"><span itemprop="name">Book</span></a></span>
 
                 
                 
@@ -479,7 +479,7 @@
 <p><strong>Memory</strong>. The kernel needs to keep track of all memory—what is currently allocated to a particular process, what might be shared between processes, and what is free.</p>
 <p><strong>Device drivers</strong>. The kernel acts as an interface between hardware (such as a disk) and processes. It’s usually the kernel’s job to operate the hardware.</p>
 <p><strong>System calls and support</strong>. Processes normally use system calls to communicate with the kernel.</p>
-<p>The act of one process giving up control of the CPU to another process is called a context switch.</p>
+<p>The act of one process giving up control of the CPU to another process is called a <strong>context switch</strong>.</p>
 <p>The kernel is responsible for context switching. To understand how this works, let’s think about a situation in which a process is running in user mode but its time slice is up. Here’s what happens:</p>
 <ol>
 <li>The CPU (the actual hardware) interrupts the current process based on an internal timer, switches into kernel mode, and hands control back to the kernel.</li>
@@ -490,20 +490,20 @@
 <li>The kernel tells the CPU how long the time slice for the new process will last.</li>
 <li>The kernel switches the CPU into user mode and hands control of the CPU to the process.</li>
 </ol>
-<p>The context switch answers the important question of <em>when</em> the kernel runs. The answer is that it runs <em>between</em> process time slices during a context switch.</p>
+<p>The context switch answers the important question of <strong>when</strong> the kernel runs. The answer is that it runs <strong>between</strong> process time slices during a context switch.</p>
 <p>Modern CPUs include a <code>memory management unit (MMU)</code> that enables a memory access scheme called <code>virtual memory</code>. When using virtual memory, a process does not directly access the memory by its physical location in the hardware. Instead, the kernel sets up each process to act as if it had an entire machine to itself. When the process accesses some of its memory, the MMU intercepts the access and uses a memory address map to translate the memory location from the process into an actual physical memory location on the machine. The kernel must still initialize and continuously maintain and alter this memory address map. For example, during a context switch, the kernel has to change the map from the outgoing process to the incoming process.</p>
 <blockquote>
 <p>The implementation of a memory address map is called a page table.</p>
 </blockquote>
 <p>The kernel’s role with devices is pretty simple. A device is typically accessible only in kernel mode because improper access (such as a user process asking to turn off the power) could crash the machine. Another problem is that different devices rarely have the same programming interface, even if the devices do the same thing, such as two different network cards. Therefore, device drivers have traditionally been part of the kernel.</p>
 <p>There are several other kinds of kernel features available to user processes. For example, <code>system calls</code> (or syscalls) perform specific tasks that a user process alone cannot do well or at all. For example, the acts of opening, reading, and writing files all involve system calls.</p>
-<p>Other than init, <em>all</em> user processes on a Linux system start as a result of <code>fork()</code>, and most of the time, you also run <code>exec()</code> to start a new program instead of running a copy of an existing process.</p>
+<p>Other than init, <strong>all</strong> user processes on a Linux system start as a result of <code>fork()</code>, and most of the time, you also run <code>exec()</code> to start a new program instead of running a copy of an existing process.</p>
 <h3 id="User-Space"><a href="#User-Space" class="headerlink" title="User Space"></a>User Space</h3><p>As mentioned earlier, the main memory that the kernel allocates for user processes is called <code>user space</code>. Because a process is simply a state (or image) in memory, user space also refers to the memory for the entire collection of running processes. </p>
 <h3 id="Users"><a href="#Users" class="headerlink" title="Users"></a>Users</h3><p>A <code>user</code> is an entity that can run processes and own files. A user is associated with a username. For example, a system could have a user named billyjoe. However, the kernel does not manage the usernames; instead, it identifies users by simple numeric identifiers called userids.</p>
 <p>Users exist primarily to support permissions and boundaries.</p>
 <p>In addition, as powerful as the root user is, it still runs in the operating system’s user mode, not kernel mode.</p>
 <p><code>Groups</code> are sets of users. The primary purpose of groups is to allow a user to share file access to other users in a group.</p>
-<h2 id="Chapter-2-Basic-Commands-and-Directory-Hierarchy"><a href="#Chapter-2-Basic-Commands-and-Directory-Hierarchy" class="headerlink" title="Chapter 2. Basic Commands and Directory Hierarchy"></a>Chapter 2. Basic Commands and Directory Hierarchy</h2><p>Some resources:<br><em>UNIX for the Impatient</em><br><em>Learning the UNIX Operating System</em></p>
+<h2 id="Chapter-2-Basic-Commands-and-Directory-Hierarchy"><a href="#Chapter-2-Basic-Commands-and-Directory-Hierarchy" class="headerlink" title="Chapter 2. Basic Commands and Directory Hierarchy"></a>Chapter 2. Basic Commands and Directory Hierarchy</h2><p>Some resources:<br>&lt;<unix for="" the="" impatient="">&gt;<br>&lt;<learning the="" unix="" operating="" system="">&gt;</learning></unix></p>
 <p>The <code>shell</code> is one of the most important parts of a Unix system. A shell is a program that runs commands. The shell also serves as a small programming environment.</p>
 <p>Many important parts of the system are actually <code>shell scripts</code>—text files that contain a sequence of shell commands. </p>
 <p>There are many different Unix shells, but all derive several of their features from the <code>Bourne shell</code> (/bin/sh), a standard shell developed at Bell Labs for early versions of Unix. Every Unix system needs the Bourne shell in order to function correctly, as you will see throughout this book.</p>
@@ -523,7 +523,7 @@
 <p>An <code>environment variable</code> is like a shell variable, but it’s not specific to the shell. All processes on Unix systems have environment variable storage. The main difference between environment and shell variables is that the operating system passes all of your shell’s <code>environment variables</code> to programs that the shell runs (for example, the sub-script), whereas shell variables cannot be accessed in the commands that you run.</p>
 <p>Assign an environment variable with the shell’s <code>export</code> command. For example, if you’d like to make the <code>$STUFF</code> shell variable into an environment variable, use the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STUFF=123</span><br><span class="line">export STUFF</span><br></pre></td></tr></table></figure></p>
 <p><code>PATH</code> is a special environment variable that contains the <code>command path</code> (or path for short). A command path is a list of system directories that the shell searches when trying to locate a command.</p>
-<p>resource:<br><em>Learning the vi and Vim Editorstm</em></p>
+<p>resource:<br>&lt;<learning the="" vi="" and="" vim="" editorstm="">&gt;</learning></p>
 <p>Some <code>kill process</code> ways.There are many types of signals. The default is <code>TERM</code>, or terminate.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -STOP pid</span><br><span class="line">kill -CONT pid</span><br><span class="line">kill -KILL pid  # the same as kill -9 pid</span><br></pre></td></tr></table></figure></p>
 <p>To see if you’ve accidentally suspended any processes on your current terminal, run the <code>jobs</code> command.</p>
 <p>You can detach a process from the shell and put it in the “background” with the ampersand <code>&amp;</code>. The best way to make sure that a background process doesn’t bother you is to redirect its output (and possibly input).</p>
@@ -1363,7 +1363,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1490,9 +1492,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

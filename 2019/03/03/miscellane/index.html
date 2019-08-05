@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-24T22:15:33.849Z">
+<meta property="og:updated_time" content="2019-08-05T18:24:35.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea">
 <meta name="twitter:description" content="This post contains some stuffs that hard to and not worth to categorize, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in">
@@ -259,7 +259,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">58</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">57</span></a>
 
   </li>
         
@@ -278,7 +278,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">14</span></a>
 
   </li>
         
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-24 15:15:33" itemprop="dateModified" datetime="2019-07-24T15:15:33-07:00">2019-07-24</time>
+                <time title="Modified: 2019-08-05 11:24:35" itemprop="dateModified" datetime="2019-08-05T11:24:35-07:00">2019-08-05</time>
               
             
           </span>
@@ -722,6 +722,17 @@
 <p>then every command in scipt is executed with sudo.</p>
 </li>
 </ul>
+<h3 id="08-05-2019"><a href="#08-05-2019" class="headerlink" title="08/05/2019"></a>08/05/2019</h3><ul>
+<li><p>find file owned by a particular user or group</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; -user &lt;dsadm&gt; -group &lt;dstage&gt;</span><br></pre></td></tr></table></figure>
+<p>find file by case-insensitive name and use <code>-ls</code> format</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; -iname &lt;name&gt; -type f -ls</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>find particular files and change the chown or chmod</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; -user &lt;dsadm&gt; -group &lt;dstage&gt; -exec chmod 755 &#123;&#125; /;</span><br></pre></td></tr></table></figure>
+<p>explain:<br><code>chmod 755 {} \;</code> specifies the command that will be executed by find for each file. <code>{}</code> is replaced by the file path, and the <code>semicolon(;)</code> denotes the end of the command (escaped, otherwise it would be interpreted by the shell instead of find).</p>
+</li>
+</ul>
 
       
     </div>
@@ -875,7 +886,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1002,9 +1015,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1040,7 +1051,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-25-2019"><span class="nav-number">1.</span> <span class="nav-text">02/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">2.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">3.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-02-2019"><span class="nav-number">4.</span> <span class="nav-text">03/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-04-2019"><span class="nav-number">5.</span> <span class="nav-text">03/04/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-05-2019"><span class="nav-number">6.</span> <span class="nav-text">03/05/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-13-2019"><span class="nav-number">7.</span> <span class="nav-text">03/13/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-16-2019"><span class="nav-number">8.</span> <span class="nav-text">03/16/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-17-2019"><span class="nav-number">9.</span> <span class="nav-text">03/17/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-18-2019"><span class="nav-number">10.</span> <span class="nav-text">03/18/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-22-2019"><span class="nav-number">11.</span> <span class="nav-text">03/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-23-2019"><span class="nav-number">12.</span> <span class="nav-text">03/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-25-2019"><span class="nav-number">13.</span> <span class="nav-text">03/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-27-2019"><span class="nav-number">14.</span> <span class="nav-text">03/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-28-2019"><span class="nav-number">15.</span> <span class="nav-text">03/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-29-2019"><span class="nav-number">16.</span> <span class="nav-text">03/29/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-30-2019"><span class="nav-number">17.</span> <span class="nav-text">03/30/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-01-2019"><span class="nav-number">18.</span> <span class="nav-text">04/01/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-02-2019"><span class="nav-number">19.</span> <span class="nav-text">04/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-03-2019"><span class="nav-number">20.</span> <span class="nav-text">04/03/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-04-2019"><span class="nav-number">21.</span> <span class="nav-text">04/04/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-09-2019"><span class="nav-number">22.</span> <span class="nav-text">04/09/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-11-2019"><span class="nav-number">23.</span> <span class="nav-text">04/11/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-21-2019"><span class="nav-number">24.</span> <span class="nav-text">04/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-24-2019"><span class="nav-number">25.</span> <span class="nav-text">04/24/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-10-2019"><span class="nav-number">26.</span> <span class="nav-text">05/10/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-19-2019"><span class="nav-number">27.</span> <span class="nav-text">06/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-01-2019"><span class="nav-number">28.</span> <span class="nav-text">07/01/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-02-2019"><span class="nav-number">29.</span> <span class="nav-text">07/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-12-2019"><span class="nav-number">30.</span> <span class="nav-text">07/12/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-15-2019"><span class="nav-number">31.</span> <span class="nav-text">07/15/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-24-2019"><span class="nav-number">32.</span> <span class="nav-text">07/24/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#02-25-2019"><span class="nav-number">1.</span> <span class="nav-text">02/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-27-2019"><span class="nav-number">2.</span> <span class="nav-text">02/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-28-2019"><span class="nav-number">3.</span> <span class="nav-text">02/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-02-2019"><span class="nav-number">4.</span> <span class="nav-text">03/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-04-2019"><span class="nav-number">5.</span> <span class="nav-text">03/04/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-05-2019"><span class="nav-number">6.</span> <span class="nav-text">03/05/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-13-2019"><span class="nav-number">7.</span> <span class="nav-text">03/13/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-16-2019"><span class="nav-number">8.</span> <span class="nav-text">03/16/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-17-2019"><span class="nav-number">9.</span> <span class="nav-text">03/17/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-18-2019"><span class="nav-number">10.</span> <span class="nav-text">03/18/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-22-2019"><span class="nav-number">11.</span> <span class="nav-text">03/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-23-2019"><span class="nav-number">12.</span> <span class="nav-text">03/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-25-2019"><span class="nav-number">13.</span> <span class="nav-text">03/25/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-27-2019"><span class="nav-number">14.</span> <span class="nav-text">03/27/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-28-2019"><span class="nav-number">15.</span> <span class="nav-text">03/28/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-29-2019"><span class="nav-number">16.</span> <span class="nav-text">03/29/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-30-2019"><span class="nav-number">17.</span> <span class="nav-text">03/30/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-01-2019"><span class="nav-number">18.</span> <span class="nav-text">04/01/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-02-2019"><span class="nav-number">19.</span> <span class="nav-text">04/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-03-2019"><span class="nav-number">20.</span> <span class="nav-text">04/03/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-04-2019"><span class="nav-number">21.</span> <span class="nav-text">04/04/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-09-2019"><span class="nav-number">22.</span> <span class="nav-text">04/09/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-11-2019"><span class="nav-number">23.</span> <span class="nav-text">04/11/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-21-2019"><span class="nav-number">24.</span> <span class="nav-text">04/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-24-2019"><span class="nav-number">25.</span> <span class="nav-text">04/24/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-10-2019"><span class="nav-number">26.</span> <span class="nav-text">05/10/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-19-2019"><span class="nav-number">27.</span> <span class="nav-text">06/19/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-01-2019"><span class="nav-number">28.</span> <span class="nav-text">07/01/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-02-2019"><span class="nav-number">29.</span> <span class="nav-text">07/02/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-12-2019"><span class="nav-number">30.</span> <span class="nav-text">07/12/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-15-2019"><span class="nav-number">31.</span> <span class="nav-text">07/15/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-24-2019"><span class="nav-number">32.</span> <span class="nav-text">07/24/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-05-2019"><span class="nav-number">33.</span> <span class="nav-text">08/05/2019</span></a></li></ol></div>
             
 
           </div>
