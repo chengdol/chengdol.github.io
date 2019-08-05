@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1FMc1eRf_FCG2TI1TRWeLLKE2GJ6qysBf">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WPt2oBzL0bvq1_vCzF9eUqZXiwNfNzOX">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Y8nbhUAR0BBbdEcFeNqSG9g2xk8UjyEo">
-<meta property="og:updated_time" content="2019-08-01T16:36:57.835Z">
+<meta property="og:updated_time" content="2019-08-05T18:36:25.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Calico Bandwidth Explore">
 <meta name="twitter:description" content="I have talked about setting up pod network in Kubernetes cluster using Calico network add-on in this post &amp;lt;&amp;lt;Set Up K8s Cluster by Kubeadm&amp;gt;&amp;gt;. Recenly I was involved in one issue from perfor">
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-01 09:36:57" itemprop="dateModified" datetime="2019-08-01T09:36:57-07:00">2019-08-01</time>
+                <time title="Modified: 2019-08-05 11:36:25" itemprop="dateModified" datetime="2019-08-05T11:36:25-07:00">2019-08-05</time>
               
             
           </span>
@@ -486,6 +486,7 @@
 </li>
 <li><p>Which Network Interface is Used<br>Another question I have is which network interface is used for <code>node-to-node</code> and <code>pod-to-pod</code> test?</p>
 <p>There are several network interfaces in host machine, one is for public IP with <code>MTU 9000</code> and in K8s we use private IP interface with <code>MTU 1500</code>. This will have impact on <code>iperf3</code> testing.</p>
+<p>It shows that <code>pod-to-pod</code> test uses <code>MTU 1500</code> but <code>node-to-node</code> uses <code>MTU 9000</code>.</p>
 <p>Need to test after enlarging MTU size to see if that change improves network throughput, also remember to update <code>Calico</code> manifest yaml, refer this <a href="https://docs.projectcalico.org/v3.3/usage/configuration/mtu" target="_blank" rel="noopener">document</a></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configure the MTU to use</span></span><br><span class="line"><span class="attr">veth_mtu:</span> <span class="string">"9000"</span></span><br></pre></td></tr></table></figure>
 </li>
