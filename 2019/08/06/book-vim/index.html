@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Actually you can learn Vim by run command1vimtutor in your machine terminal. Brief Summaryusing hjkl or arrow keys to move around.:q! quit without saving:wq quit with saving A append at end of the lin">
+  <meta name="description" content="Actually you can learn Vim by run command vimtutor in your machine terminal, that is a simple and quick tutorial. For a quick review, just see summary after each lesson. Brief Summary vimtutorUsing hj">
 <meta name="keywords" content="vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Practical Vim, 2nd Edition">
 <meta property="og:url" content="http://yoursite.com/2019/08/06/book-vim/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Actually you can learn Vim by run command1vimtutor in your machine terminal. Brief Summaryusing hjkl or arrow keys to move around.:q! quit without saving:wq quit with saving A append at end of the lin">
+<meta property="og:description" content="Actually you can learn Vim by run command vimtutor in your machine terminal, that is a simple and quick tutorial. For a quick review, just see summary after each lesson. Brief Summary vimtutorUsing hj">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-06T23:09:03.042Z">
+<meta property="og:updated_time" content="2019-08-08T20:43:29.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practical Vim, 2nd Edition">
-<meta name="twitter:description" content="Actually you can learn Vim by run command1vimtutor in your machine terminal. Brief Summaryusing hjkl or arrow keys to move around.:q! quit without saving:wq quit with saving A append at end of the lin">
+<meta name="twitter:description" content="Actually you can learn Vim by run command vimtutor in your machine terminal, that is a simple and quick tutorial. For a quick review, just see summary after each lesson. Brief Summary vimtutorUsing hj">
 
 
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-08-06 14:06:29 / Modified: 16:09:03" itemprop="dateCreated datePublished" datetime="2019-08-06T14:06:29-07:00">2019-08-06</time>
+              <time title="Created: 2019-08-06 14:06:29" itemprop="dateCreated datePublished" datetime="2019-08-06T14:06:29-07:00">2019-08-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-08 13:43:29" itemprop="dateModified" datetime="2019-08-08T13:43:29-07:00">2019-08-08</time>
               
             
           </span>
@@ -449,21 +461,34 @@
       
 
       
-        <p>Actually you can learn <code>Vim</code> by run command<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vimtutor</span><br></pre></td></tr></table></figure></p>
-<p>in your machine terminal.</p>
-<h1 id="Brief-Summary"><a href="#Brief-Summary" class="headerlink" title="Brief Summary"></a>Brief Summary</h1><p>using <code>hjkl</code> or arrow keys to move around.<br><code>:q!</code> quit without saving<br><code>:wq</code> quit with saving</p>
-<p><code>A</code> append at end of the line</p>
-<p><code>d</code> is the delete operator, use motion to specify the action, for example <code>dw</code>, <code>de</code>, <code>d$</code>, without <code>d</code>, vim just move the cursor: <code>w</code>, <code>e</code>, <code>$</code>.</p>
+        <p>Actually you can learn <code>Vim</code> by run command <code>vimtutor</code> in your machine terminal, that is a simple and quick tutorial. For a quick review, just see summary after each lesson.</p>
+<h1 id="Brief-Summary-vimtutor"><a href="#Brief-Summary-vimtutor" class="headerlink" title="Brief Summary vimtutor"></a>Brief Summary vimtutor</h1><p>Using <code>hjkl</code> or <code>arrow</code> keys to move around.</p>
+<p><code>:q!</code> quit without saving.<br><code>:wq</code> quit with saving.</p>
+<p><code>A</code> append at end of the line, <code>a</code> appends after cursor.</p>
+<p><code>d</code> is the <strong>delete operator</strong>, use <strong>motion</strong> to specify the action, for example <code>dw</code>, <code>de</code>, <code>d$</code>. Without <code>d</code>, vim just move the cursor: <code>w</code>, <code>e</code>, <code>$</code>.</p>
 <p><code>3w</code> move 3 words forward, <code>0</code> move to the start of the line.</p>
 <p><code>d2w</code> delete 2 words ahead.</p>
 <p><code>4dd</code> delete 4 lines in a row.</p>
 <p>Press <code>u</code> to undo the last commands, <code>U</code> to undo all the changes in a line.</p>
-<p>Type <code>p</code> to put previously deleted text after the cursor. for example, you delete a line and replace it in other place.</p>
-<p>Type <code>rx</code> to replace the character at the cursor with  <code>x</code>.</p>
-<p><code>ce</code> deletes the word and places you in Insert mode, so you can type new word.</p>
-<p><code>c</code> is also an operator like <code>d</code>, the same usage.</p>
-<p><code>CTRL-G</code> will show location cursor in the file and the file status.</p>
-<p>Lesson 4.1: CURSOR LOCATION AND FILE STATUS</p>
+<p>Type <code>p</code> to put previously deleted text after the cursor. for example, you delete a line and replace it in another place.</p>
+<p>Type <code>rx</code> to replace the one character at the cursor with  <code>x</code>. <code>R</code> is used to replace more then one chars.</p>
+<p><code>ce</code> deletes the word and places you in Insert mode, so you can type new word. <code>c</code> is <strong>change operator</strong>, just like <code>d</code>.</p>
+<p><code>CTRL+g</code> will show cursor location in the file and the file status, also the file name.</p>
+<p>Press <code>G</code> to move you to the bottom of the file.<br>Type <code>gg</code> to move you to the start of the file.</p>
+<p><code>line number + G</code> will go to the line specified.</p>
+<p><code>/</code> search forward, <code>?</code> search backword. when hit the search, <code>n</code> go forward, <code>N</code> go backword.</p>
+<p>To go back to where you came from press <code>CTRL-O</code> (Keep <code>Ctrl</code> down while pressing the letter <code>o</code>).  Repeat to go back further. <code>CTRL-I</code> goes forward.</p>
+<p><code>%</code> is used tp match another part of (, [ or {. This is very useful in debugging a program with unmatched parentheses!</p>
+<p><code>:s/old/new/g</code> to substitute <code>old</code> by <code>new</code> in a line for all occrurences. you must place the cursor in that line.</p>
+<p>To change every occurrence of a character string between two lines,<br><code>:#,#s/old/new/g</code>  where <code>#,#</code> are the line numbers of the range of lines where the substitution is to be done.<br><code>:%s/old/new/g</code>    to change every occurrence in the whole file.<br><code>:%s/old/new/gc</code>   to find every occurrence in the whole file, with a prompt whether to substitute or not, <code>c</code> is confirmation.</p>
+<p><code>:!&lt;commands&gt;</code> is used to execute external commands, for example <code>:!ls -ltr /tmp</code>.</p>
+<p><code>w filename</code> used to save file to <code>filename</code>.</p>
+<p><code>v</code> and then you move the cursor to select the text you want, if you want to delete them next, type <code>d</code>, if you want to save the selected text, press <code>:</code>, then type <code>w filename</code>.</p>
+<p><code>:r filename</code> will retrive the file placed under the cursor. you can also read the output of an external command, <code>:r !ls -ltr</code>.</p>
+<p><code>o</code> will open a line below cursor, <code>O</code> open above.</p>
+<p><code>y</code> is copy operator, for example, <code>yw</code> copy one word, <code>y$</code> copy to end of the line. then you can paste through <code>p</code>. you can use <code>v</code> to select and copy.</p>
+<p>Typing <code>:set xxx</code> sets the option <code>xxx</code>.  Some options are:<br><code>ic</code> <code>ignorecase</code>       ignore upper/lower case when searching<br><code>is</code> <code>incsearch</code>        show partial matches for a search phrase<br><code>hls</code> <code>hlsearch</code>        highlight all matching phrases<br>You can either use the long or the short option name.<br>for example: <code>:set hls ic is</code> <code>:set nohls noic nois</code></p>
+<p><code>.vimrc</code> is just like <code>.bashrc</code>. you create a <code>.vimrc</code> (even it’s empty) to tell vim use vim not vi-compatiable mode!</p>
 
       
     </div>
@@ -786,7 +811,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Brief-Summary"><span class="nav-number">1.</span> <span class="nav-text">Brief Summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Brief-Summary-vimtutor"><span class="nav-number">1.</span> <span class="nav-text">Brief Summary vimtutor</span></a></li></ol></div>
             
 
           </div>
