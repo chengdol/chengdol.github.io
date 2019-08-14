@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Signals are software interrupts sent to a program to indicate that an important event has occurred. The events can vary from user requests to illegal memory access errors. To list the signal supported">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-14T00:09:40.483Z">
+<meta property="og:updated_time" content="2019-08-14T16:55:30.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Signals and Trap">
 <meta name="twitter:description" content="Signals are software interrupts sent to a program to indicate that an important event has occurred. The events can vary from user requests to illegal memory access errors. To list the signal supported">
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-08-13 16:18:44 / Modified: 17:09:40" itemprop="dateCreated datePublished" datetime="2019-08-13T16:18:44-07:00">2019-08-13</time>
+              <time title="Created: 2019-08-13 16:18:44" itemprop="dateCreated datePublished" datetime="2019-08-13T16:18:44-07:00">2019-08-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-14 09:55:30" itemprop="dateModified" datetime="2019-08-14T09:55:30-07:00">2019-08-14</time>
               
             
           </span>
@@ -452,7 +464,7 @@
         <p>Signals are software interrupts sent to a program to indicate that an important event has occurred. The events can vary from user requests to illegal memory access errors.</p>
 <p>To list the signal supported in system:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -l</span><br></pre></td></tr></table></figure></p>
 <p>Some common signals:<br><strong>SIGHUP</strong>: Hang up detected on controlling terminal or death of controlling process<br><strong>SIGINT</strong>: Issued if the user sends an interrupt signal (Ctrl + C)<br><strong>SIGQUIT</strong>: Issued if the user sends a quit signal (Ctrl + D)<br><strong>SIGKILL</strong>: If a process gets this signal it must quit immediately and will not perform any clean-up operations<br><strong>SIGTERM</strong>: Software termination signal (sent by kill by default)<br><strong>SIGSTOP</strong>: Stop process<br><strong>SIGSTP</strong>: Stop typed at terminal<br><strong>SIGCONT</strong>: Continue if stopped</p>
-<p>About trap the signals in script, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Set a Trap for Signals for graceful shutdown</span></span><br><span class="line"><span class="built_in">declare</span> -a SIGNALS_TRAPPED=(INT HUP QUIT TERM STOP)</span><br><span class="line"><span class="function"><span class="title">shudown_hook</span></span>() &#123;</span><br><span class="line">  ...</span><br><span class="line">  (<span class="built_in">cd</span> /opt/IBM/InformationServer/wlp/usr/servers/iis; ../../../bin/server stop iis)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Shutdown and Cleanup Successful..."</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> <span class="string">'shudown_hook'</span> <span class="string">"<span class="variable">$&#123;SIGNALS_TRAPPED[@]&#125;</span>"</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>About trap the signals in script, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Set a Trap for Signals for graceful shutdown</span></span><br><span class="line"><span class="built_in">declare</span> -a SIGNALS_TRAPPED=(INT HUP QUIT TERM STOP)</span><br><span class="line"><span class="function"><span class="title">shudown_hook</span></span>() &#123;</span><br><span class="line">  ...</span><br><span class="line">  (/opt/servers/stop.sh)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Shutdown and Cleanup Successful..."</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> <span class="string">'shudown_hook'</span> <span class="string">"<span class="variable">$&#123;SIGNALS_TRAPPED[@]&#125;</span>"</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
 <p>The general format is <code>trap command signals</code>, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trap &quot;rm -rf /tmp/peek.txt; exit 0&quot; 1 2</span><br></pre></td></tr></table></figure></p>
 <p>Ignore signal:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trap &quot;&quot; 2 3 15</span><br></pre></td></tr></table></figure></p>
 <p>If you ignore a signal, all subshells also ignore that signal. However, if you specify an action to be taken on the receipt of a signal, all subshells will still take the default action on receipt of that signal.</p>
