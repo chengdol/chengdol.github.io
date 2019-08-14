@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. set builtinUsually I use set -x for debugging purpose, today I see a new s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-11T23:50:21.751Z">
+<meta property="og:updated_time" content="2019-08-13T21:38:49.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Commonly Used Code Snippets">
 <meta name="twitter:description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. set builtinUsually I use set -x for debugging purpose, today I see a new s">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">59</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">60</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">90</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">91</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-11 16:50:21" itemprop="dateModified" datetime="2019-06-11T16:50:21-07:00">2019-06-11</time>
+                <time title="Modified: 2019-08-13 14:38:49" itemprop="dateModified" datetime="2019-08-13T14:38:49-07:00">2019-08-13</time>
               
             
           </span>
@@ -466,6 +466,7 @@
 <p><a href="https://www.gnu.org/software/bash//manual/html_node/The-Set-Builtin.html" target="_blank" rel="noopener">The Set Builtin</a>, in short, <code>set</code> allows you to change the values of shell options and set the positional parameters, or to display the names and values of shell variables.</p>
 <p><code>set -e</code>, causes the shell to exit if any subcommand or pipeline returns a non-zero status. This tells bash that it should exit the script if any statement returns a non-true return value. The benefit of using -e is that it prevents errors snowballing into serious issues when they could have been caught earlier. </p>
 <p>But sometimes <code>set -e</code> may not be good, see these two posts:<br><a href="https://serverfault.com/questions/143445/what-does-set-e-do-and-why-might-it-be-considered-dangerous" target="_blank" rel="noopener">What does ‘set -e’ do, and why might it be considered dangerous?</a><br><a href="https://www.cnblogs.com/YatHo/p/7682344.html" target="_blank" rel="noopener">“set -e” usage</a></p>
+<h2 id="run-script-in-it’s-driectory"><a href="#run-script-in-it’s-driectory" class="headerlink" title="run script in it’s driectory"></a>run script in it’s driectory</h2><p>Sometimes we want to run script in it’s folder by <code>./xxx.sh</code>. we can check that:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SCRIPT_PATH=$(dirname <span class="variable">$0</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"X"</span><span class="string">"<span class="variable">$&#123;SCRIPT_PATH&#125;</span>"</span> != <span class="string">"X."</span> ]]; <span class="keyword">then</span></span><br><span class="line">  LogMsg <span class="string">"###### ERROR: Please run this script in it's directory!"</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="if-condition"><a href="#if-condition" class="headerlink" title="if condition"></a>if condition</h2><p>List of <a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html" target="_blank" rel="noopener">bash condition statements</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sth does not exist?</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$&#123;sth&#125;</span>"</span><span class="string">"X"</span> == <span class="string">"X"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  LogMsg <span class="string">"###### INFO: ..."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># directory does not exist?</span></span><br><span class="line"><span class="keyword">if</span> [[ ! -d <span class="string">"<span class="variable">$&#123;folder_path&#125;</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">   LogMsg <span class="string">"###### ERROR: <span class="variable">$&#123;folder_path&#125;</span> directory doesn't exist!"</span></span><br><span class="line">   <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 <p>Acutally the key is the test command <code>[]</code> or <code>[[ ]]</code>.</p>
@@ -617,7 +618,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">90</span>
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -791,7 +792,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">59</span>
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -827,7 +830,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#set-builtin"><span class="nav-number">1.</span> <span class="nav-text">set builtin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-condition"><span class="nav-number">2.</span> <span class="nav-text">if condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#script-input-parameters"><span class="nav-number">3.</span> <span class="nav-text">script input parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-function-inputs"><span class="nav-number">4.</span> <span class="nav-text">bash function inputs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log-message"><span class="nav-number">5.</span> <span class="nav-text">log message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check-last-command-result"><span class="nav-number">6.</span> <span class="nav-text">check last command result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-as-root"><span class="nav-number">7.</span> <span class="nav-text">run as root</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delimited-string-to-array"><span class="nav-number">8.</span> <span class="nav-text">delimited string to array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop-array"><span class="nav-number">9.</span> <span class="nav-text">loop array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chmod"><span class="nav-number">10.</span> <span class="nav-text">chmod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pass-parameters-to-script"><span class="nav-number">11.</span> <span class="nav-text">pass parameters to script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup-ssh-password-less"><span class="nav-number">12.</span> <span class="nav-text">setup ssh password-less</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recursive-call"><span class="nav-number">13.</span> <span class="nav-text">recursive call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tee-command"><span class="nav-number">14.</span> <span class="nav-text">tee command</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#set-builtin"><span class="nav-number">1.</span> <span class="nav-text">set builtin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-script-in-it’s-driectory"><span class="nav-number">2.</span> <span class="nav-text">run script in it’s driectory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-condition"><span class="nav-number">3.</span> <span class="nav-text">if condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#script-input-parameters"><span class="nav-number">4.</span> <span class="nav-text">script input parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-function-inputs"><span class="nav-number">5.</span> <span class="nav-text">bash function inputs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log-message"><span class="nav-number">6.</span> <span class="nav-text">log message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check-last-command-result"><span class="nav-number">7.</span> <span class="nav-text">check last command result</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-as-root"><span class="nav-number">8.</span> <span class="nav-text">run as root</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delimited-string-to-array"><span class="nav-number">9.</span> <span class="nav-text">delimited string to array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop-array"><span class="nav-number">10.</span> <span class="nav-text">loop array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chmod"><span class="nav-number">11.</span> <span class="nav-text">chmod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pass-parameters-to-script"><span class="nav-number">12.</span> <span class="nav-text">pass parameters to script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup-ssh-password-less"><span class="nav-number">13.</span> <span class="nav-text">setup ssh password-less</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recursive-call"><span class="nav-number">14.</span> <span class="nav-text">recursive call</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tee-command"><span class="nav-number">15.</span> <span class="nav-text">tee command</span></a></li></ol></div>
             
 
           </div>
