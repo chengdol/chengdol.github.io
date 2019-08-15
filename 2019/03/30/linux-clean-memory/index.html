@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When deploying DS, I find the compute pod that assigned to the second node is always in CreateContainer status and hangs there. I ssh into that node and find its memory is occupied heavily by some oth">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T01:10:04.445Z">
+<meta property="og:updated_time" content="2019-08-15T16:45:33.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Clean Memory Cache">
 <meta name="twitter:description" content="When deploying DS, I find the compute pod that assigned to the second node is always in CreateContainer status and hangs there. I ssh into that node and find its memory is occupied heavily by some oth">
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-03-30 18:08:04 / Modified: 18:10:04" itemprop="dateCreated datePublished" datetime="2019-03-30T18:08:04-07:00">2019-03-30</time>
+              <time title="Created: 2019-03-30 18:08:04" itemprop="dateCreated datePublished" datetime="2019-03-30T18:08:04-07:00">2019-03-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-15 09:45:33" itemprop="dateModified" datetime="2019-08-15T09:45:33-07:00">2019-08-15</time>
               
             
           </span>
@@ -456,7 +468,8 @@
 <p>Note: <code>free -h</code> is more readable</p>
 </blockquote>
 <p>If you have to clear the disk cache, this command is safest in enterprise and production, will clear the <code>PageCache</code> only:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; echo 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
-<p>It is not recommended to use this in production until you know what you are doing, as it will clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>. Because just after your run drop_caches, your server will get busy re-populating memory with <code>inodes</code> and <code>dentries</code>, original Kernel documentation recommends not to run this command outside of a testing or debugging environment. But what if you are a home user or your server is getting too busy and almost filling up it’s memory. You need to be able trade the benefits with the risk.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; echo 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>More aggressively:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; echo 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>It is not recommended to use this in production until you know what you are doing, as it will clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>. Because just after your run drop_caches, your server will get busy re-populating memory with <code>inodes</code> and <code>dentries</code>, original Kernel documentation recommends not to run this command outside of a testing or debugging environment. But what if you are a home user or your server is getting too busy and almost filling up it’s memory. You need to be able trade the benefits with the risk.</p>
 <blockquote>
 <p>What is <code>sync</code> command?<br>writes any data buffered in memory out to disk.</p>
 </blockquote>
