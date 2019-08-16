@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1e0ziORmoEx6zPk6J6qEid26aWl-zw21G">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Hy8vWUIBuo33oH976PNEkVzvAOzCuyKJ">
-<meta property="og:updated_time" content="2019-08-06T21:05:39.283Z">
+<meta property="og:updated_time" content="2019-08-15T23:03:25.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Linux Works, 2nd Edition">
 <meta name="twitter:description" content="Great book for all Linux developers and administrators! Just note for future quick revisit! Chapter1. The Big pictureThe most effective way to understand how an operating system works is through abstr">
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">60</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">61</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">91</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">92</span></a>
 
   </li>
 
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-06 14:05:39" itemprop="dateModified" datetime="2019-08-06T14:05:39-07:00">2019-08-06</time>
+                <time title="Modified: 2019-08-15 16:03:25" itemprop="dateModified" datetime="2019-08-15T16:03:25-07:00">2019-08-15</time>
               
             
           </span>
@@ -497,13 +497,13 @@
 </blockquote>
 <p>The kernel’s role with devices is pretty simple. A device is typically accessible only in kernel mode because improper access (such as a user process asking to turn off the power) could crash the machine. Another problem is that different devices rarely have the same programming interface, even if the devices do the same thing, such as two different network cards. Therefore, device drivers have traditionally been part of the kernel.</p>
 <p>There are several other kinds of kernel features available to user processes. For example, <code>system calls</code> (or syscalls) perform specific tasks that a user process alone cannot do well or at all. For example, the acts of opening, reading, and writing files all involve system calls.</p>
-<p>Other than init, <strong>all</strong> user processes on a Linux system start as a result of <code>fork()</code>, and most of the time, you also run <code>exec()</code> to start a new program instead of running a copy of an existing process.</p>
+<p>Other than <code>init</code>, <strong>all</strong> user processes on a Linux system start as a result of <code>fork()</code>, and most of the time, you also run <code>exec()</code> to start a new program instead of running a copy of an existing process.</p>
 <h3 id="User-Space"><a href="#User-Space" class="headerlink" title="User Space"></a>User Space</h3><p>As mentioned earlier, the main memory that the kernel allocates for user processes is called <code>user space</code>. Because a process is simply a state (or image) in memory, user space also refers to the memory for the entire collection of running processes. </p>
 <h3 id="Users"><a href="#Users" class="headerlink" title="Users"></a>Users</h3><p>A <code>user</code> is an entity that can run processes and own files. A user is associated with a username. For example, a system could have a user named billyjoe. However, the kernel does not manage the usernames; instead, it identifies users by simple numeric identifiers called userids.</p>
 <p>Users exist primarily to support permissions and boundaries.</p>
-<p>In addition, as powerful as the root user is, it still runs in the operating system’s user mode, not kernel mode.</p>
+<p>In addition, as powerful as the <strong>root</strong> user is, it still runs in the operating system’s user mode, not kernel mode.</p>
 <p><code>Groups</code> are sets of users. The primary purpose of groups is to allow a user to share file access to other users in a group.</p>
-<h2 id="Chapter-2-Basic-Commands-and-Directory-Hierarchy"><a href="#Chapter-2-Basic-Commands-and-Directory-Hierarchy" class="headerlink" title="Chapter 2. Basic Commands and Directory Hierarchy"></a>Chapter 2. Basic Commands and Directory Hierarchy</h2><p>Some resources:<br>&lt;<unix for="" the="" impatient="">&gt;<br>&lt;<learning the="" unix="" operating="" system="">&gt;</learning></unix></p>
+<h2 id="Chapter-2-Basic-Commands-and-Directory-Hierarchy"><a href="#Chapter-2-Basic-Commands-and-Directory-Hierarchy" class="headerlink" title="Chapter 2. Basic Commands and Directory Hierarchy"></a>Chapter 2. Basic Commands and Directory Hierarchy</h2><p>Some resources:<br><code>&lt;&lt;UNIX for the Impatient&gt;&gt;</code><br><code>&lt;&lt;Learning the UNIX Operating System&gt;&gt;</code></p>
 <p>The <code>shell</code> is one of the most important parts of a Unix system. A shell is a program that runs commands. The shell also serves as a small programming environment.</p>
 <p>Many important parts of the system are actually <code>shell scripts</code>—text files that contain a sequence of shell commands. </p>
 <p>There are many different Unix shells, but all derive several of their features from the <code>Bourne shell</code> (/bin/sh), a standard shell developed at Bell Labs for early versions of Unix. Every Unix system needs the Bourne shell in order to function correctly, as you will see throughout this book.</p>
@@ -523,7 +523,7 @@
 <p>An <code>environment variable</code> is like a shell variable, but it’s not specific to the shell. All processes on Unix systems have environment variable storage. The main difference between environment and shell variables is that the operating system passes all of your shell’s <code>environment variables</code> to programs that the shell runs (for example, the sub-script), whereas shell variables cannot be accessed in the commands that you run.</p>
 <p>Assign an environment variable with the shell’s <code>export</code> command. For example, if you’d like to make the <code>$STUFF</code> shell variable into an environment variable, use the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STUFF=123</span><br><span class="line">export STUFF</span><br></pre></td></tr></table></figure></p>
 <p><code>PATH</code> is a special environment variable that contains the <code>command path</code> (or path for short). A command path is a list of system directories that the shell searches when trying to locate a command.</p>
-<p>resource:<br>&lt;<learning the="" vi="" and="" vim="" editorstm="">&gt;</learning></p>
+<p>resource:<br><code>&lt;&lt;Learning the vi and Vim Editor&gt;&gt;</code></p>
 <p>Some <code>kill process</code> ways.There are many types of signals. The default is <code>TERM</code>, or terminate.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -STOP pid</span><br><span class="line">kill -CONT pid</span><br><span class="line">kill -KILL pid  # the same as kill -9 pid</span><br></pre></td></tr></table></figure></p>
 <p>To see if you’ve accidentally suspended any processes on your current terminal, run the <code>jobs</code> command.</p>
 <p>You can detach a process from the shell and put it in the “background” with the ampersand <code>&amp;</code>. The best way to make sure that a background process doesn’t bother you is to redirect its output (and possibly input).</p>
@@ -580,10 +580,10 @@
 <p>if run<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls -l</span><br><span class="line">brw-rw----     1 root disk 8, 1 Sep  6 08:37 sda1</span><br><span class="line">crw-rw-rw-     1 root root 1, 3 Sep  6 08:37 null</span><br><span class="line">prw-r--r--     1 root root    0 Mar  3 19:17 fdata</span><br><span class="line">srw-rw-rw-     1 root root    0 Dec 18 07:43 log</span><br></pre></td></tr></table></figure></p>
 <p>if the first char in file mode is <code>b</code>, <code>c</code>, <code>p</code>, or <code>s</code>, the file is a device. These letters stand for block, character, pipe, and socket, respectively.</p>
 <p>The numbers before the dates in the first two lines are the <code>major</code> and <code>minor</code> device numbers that help the kernel identify the device. Similar devices usually have the same major number.</p>
-<h4 id="Block-device"><a href="#Block-device" class="headerlink" title="Block device"></a>Block device</h4><p>Programs access data from a block device in fixed chunks. The sad1 in the preceding example is a disk device, a type of block device.</p>
+<h4 id="Block-device"><a href="#Block-device" class="headerlink" title="Block device"></a>Block device</h4><p>Programs access data from a block device in fixed chunks. The sda1 in the preceding example is a disk device, a type of block device.</p>
 <h4 id="Character-device"><a href="#Character-device" class="headerlink" title="Character device"></a>Character device</h4><p>Character devices work with data streams. Printers directly attached to your computer are represented by character devices. It’s important to note that during character device interaction, the kernel cannot back up and reexamine the data stream after it has passed data to a device or process.</p>
 <h4 id="Pipe-device"><a href="#Pipe-device" class="headerlink" title="Pipe device"></a>Pipe device</h4><p>Named pipes are like character devices, with another process at the other end of the I/O stream instead of a kernel driver.</p>
-<h3 id="Socket-device"><a href="#Socket-device" class="headerlink" title="Socket device"></a>Socket device</h3><p>Sockets are special-purpose interfaces that are frequently used for interprocess communication. </p>
+<h3 id="Socket-device"><a href="#Socket-device" class="headerlink" title="Socket device"></a>Socket device</h3><p>Sockets are special-purpose interfaces that are frequently used for <code>interprocess communication</code>. </p>
 <blockquote>
 <p>Not all devices have device files because the block and character device I/O interfaces are not appropriate in all cases. For example, <code>network interfaces</code> don’t have device files. It is theoretically possible to interact with a network interface using a single character device, but because it would be exceptionally difficult, the kernel uses other I/O interfaces.</p>
 </blockquote>
@@ -1324,7 +1324,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">91</span>
+                    <span class="site-state-item-count">92</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1500,7 +1500,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">60</span>
+                      
+                    
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
