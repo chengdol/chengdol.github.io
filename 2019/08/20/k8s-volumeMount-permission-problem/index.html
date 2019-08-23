@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="I have a post talks about IPC &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, it’s about IPC resource requirements for DB2 and how to adjust the ipc parameters permanently or temporarily. This time we faced different ipc">
-<meta name="keywords" content="docker,linux,ipc">
+  <meta name="description" content="This is an interesting issue which involved 4 topices: Volume, Security Context, NFS and initContainer. The issue comes from the permission denied error.">
+<meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker Container IPC Share">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/docker-ipc/index.html">
+<meta property="og:title" content="K8s Volume Permission">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/k8s-volumeMount-permission-problem/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I have a post talks about IPC &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, it’s about IPC resource requirements for DB2 and how to adjust the ipc parameters permanently or temporarily. This time we faced different ipc">
+<meta property="og:description" content="This is an interesting issue which involved 4 topices: Volume, Security Context, NFS and initContainer. The issue comes from the permission denied error.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-06T16:27:16.913Z">
+<meta property="og:updated_time" content="2019-08-21T06:36:02.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker Container IPC Share">
-<meta name="twitter:description" content="I have a post talks about IPC &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, it’s about IPC resource requirements for DB2 and how to adjust the ipc parameters permanently or temporarily. This time we faced different ipc">
+<meta name="twitter:title" content="K8s Volume Permission">
+<meta name="twitter:description" content="This is an interesting issue which involved 4 topices: Volume, Security Context, NFS and initContainer. The issue comes from the permission denied error.">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/docker-ipc/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/20/k8s-volumeMount-permission-problem/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Docker Container IPC Share | 海胆阶段's Blog</title>
+  <title>K8s Volume Permission | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/docker-ipc/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/k8s-volumeMount-permission-problem/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker Container IPC Share
+          <h1 class="post-title" itemprop="name headline">K8s Volume Permission
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-07-31 17:08:44" itemprop="dateCreated datePublished" datetime="2019-07-31T17:08:44-07:00">2019-07-31</time>
+              <time title="Created: 2019-08-20 17:09:59 / Modified: 23:36:02" itemprop="dateCreated datePublished" datetime="2019-08-20T17:09:59-07:00">2019-08-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-08-06 09:27:16" itemprop="dateModified" datetime="2019-08-06T09:27:16-07:00">2019-08-06</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a></span>
 
                 
                 
@@ -461,15 +449,8 @@
       
 
       
-        <p>I have a post talks about IPC <a href="https://chengdol.github.io/2019/05/01/linux-ipc/" target="_blank" rel="noopener"><code>&lt;&lt;Linux IPC&gt;&gt;</code></a>, it’s about IPC resource requirements for DB2 and how to adjust the ipc parameters permanently or temporarily. This time we faced different ipc issue, interesting.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>We bring up DataStage container in particular order to make them function correctly, but when Engine is running, Xmeta DB2 went down silently whihout any warning or error messages. unquiesce will make DB2 up again, but it’s not stable.</p>
-<p>This did not happen in K8s cluster, things get weired.</p>
-<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>We update docker run command for Xmeta and Engine with <code>--ipc=host</code>, so they will share the ipc resouces with host machine (They reside on the same machine) and each other. </p>
-<p>The trick is there are some <code>ipcrm -a</code> in the Engine start and quiesce scripts. So when Engine is up, it cleans host ipc resource and DB2 goes down.</p>
-<p>we remove all <code>ipcrm -a</code> commands inside container and things get work.</p>
-<p>Another thing is before start up the containers, <strong>make sure the ipc is clean</strong>, we encountered the problem that the old non-used ipc overstep in new containers, so run <code>ipcrm -a</code> in host machine to clean them.</p>
-<p><strong>Why K8s does not have this problem?</strong> Because we schedule Xmeta and Engine in different nodes, the <code>ipcrm -a</code> will not affect each other, but docker we hold all containers in one node.</p>
-<p>Some usefully commands<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ipcs -l      <span class="comment">## list ipc configuration</span></span><br><span class="line"></span><br><span class="line">ipcrm -a     <span class="comment">## remove all ipc resources</span></span><br><span class="line">ipcs -a      <span class="comment">## list ipc in use</span></span><br></pre></td></tr></table></figure></p>
+        <p>This is an interesting issue which involved 4 topices: <code>Volume</code>, <code>Security Context</code>, <code>NFS</code> and <code>initContainer</code>.</p>
+<p>The issue comes from the <code>permission denied</code> error.</p>
 
       
     </div>
@@ -493,11 +474,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/ipc/" rel="tag"># ipc</a>
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
           
         </div>
       
@@ -510,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/30/k8s-calico-bandwidth/" rel="next" title="Calico Bandwidth Explore">
-                <i class="fa fa-chevron-left"></i> Calico Bandwidth Explore
+              <a href="/2019/08/19/k8s-no-route-to-host/" rel="next" title="K8s No Route to Host">
+                <i class="fa fa-chevron-left"></i> K8s No Route to Host
               </a>
             
           </div>
@@ -519,10 +496,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/06/book-vim/" rel="prev" title="Practical Vim, 2nd Edition">
-                Practical Vim, 2nd Edition <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,17 +540,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -797,23 +761,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reason"><span class="nav-number">2.</span> <span class="nav-text">Reason</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
