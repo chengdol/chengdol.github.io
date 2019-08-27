@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC: true    initContainers:">
+  <meta name="description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
 <meta name="keywords" content="kubernetes,initContainer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Init Container">
 <meta property="og:url" content="http://yoursite.com/2019/06/10/k8s-initContainer/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC: true    initContainers:">
+<meta property="og:description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-13T16:23:07.016Z">
+<meta property="og:updated_time" content="2019-08-27T07:19:31.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Init Container">
-<meta name="twitter:description" content="In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC: true    initContainers:">
+<meta name="twitter:description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
 
 
 
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">15</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">94</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">95</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-13 09:23:07" itemprop="dateModified" datetime="2019-06-13T09:23:07-07:00">2019-06-13</time>
+                <time title="Modified: 2019-08-27 00:19:31" itemprop="dateModified" datetime="2019-08-27T00:19:31-07:00">2019-08-27</time>
               
             
           </span>
@@ -461,7 +461,8 @@
       
 
       
-        <p>In ICP4D non-root development, I see in each tier the pod contains init container, for example:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">is-xmetadocker</span></span><br><span class="line"><span class="attr">    hostIPC:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    initContainers:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">load-data</span></span><br><span class="line"><span class="attr">      image:</span> <span class="string">"mycluster.icp:8500/zen/is-db2xmeta-image:11.7.1-1.0"</span></span><br><span class="line"><span class="attr">      imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line"><span class="attr">      securityContext:</span></span><br><span class="line"><span class="attr">        capabilities:</span></span><br><span class="line"><span class="attr">         add:</span> <span class="string">["SETFCAP",</span> <span class="string">"SYS_NICE"</span><span class="string">,</span> <span class="string">"IPC_OWNER"</span><span class="string">]</span></span><br><span class="line"><span class="attr">      command:</span> <span class="string">['/bin/bash',</span> <span class="string">'-c'</span><span class="string">,</span> <span class="string">'--'</span><span class="string">]</span></span><br><span class="line"><span class="attr">      args:</span> <span class="string">[</span> <span class="string">" set -x;</span></span><br><span class="line"><span class="string">              ...</span></span><br><span class="line"><span class="string">              "</span></span><br><span class="line">             <span class="string">]</span></span><br><span class="line"><span class="attr">      env:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">DEDICATED_REPOS_VOLPATH</span></span><br><span class="line"><span class="attr">        value:</span> <span class="string">/mnt/dedicated_vol/Repository</span></span><br><span class="line"><span class="attr">      volumeMounts:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">xmeta-pv-volume</span></span><br><span class="line"><span class="attr">        mountPath:</span> <span class="string">"/mnt/dedicated_vol/Repository"</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure></p>
+        <p><strong>Kubernetes version 1.13.2</strong></p>
+<p>In ICP4D non-root development, I see in each tier the pod contains init container, for example:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">is-xmetadocker</span></span><br><span class="line"><span class="attr">    hostIPC:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    initContainers:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">load-data</span></span><br><span class="line"><span class="attr">      image:</span> <span class="string">"mycluster.icp:8500/zen/is-db2xmeta-image:11.7.1-1.0"</span></span><br><span class="line"><span class="attr">      imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line"><span class="attr">      securityContext:</span></span><br><span class="line"><span class="attr">        capabilities:</span></span><br><span class="line"><span class="attr">         add:</span> <span class="string">["SETFCAP",</span> <span class="string">"SYS_NICE"</span><span class="string">,</span> <span class="string">"IPC_OWNER"</span><span class="string">]</span></span><br><span class="line"><span class="attr">      command:</span> <span class="string">['/bin/bash',</span> <span class="string">'-c'</span><span class="string">,</span> <span class="string">'--'</span><span class="string">]</span></span><br><span class="line"><span class="attr">      args:</span> <span class="string">[</span> <span class="string">" set -x;</span></span><br><span class="line"><span class="string">              ...</span></span><br><span class="line"><span class="string">              "</span></span><br><span class="line">             <span class="string">]</span></span><br><span class="line"><span class="attr">      env:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">DEDICATED_REPOS_VOLPATH</span></span><br><span class="line"><span class="attr">        value:</span> <span class="string">/mnt/dedicated_vol/Repository</span></span><br><span class="line"><span class="attr">      volumeMounts:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">xmeta-pv-volume</span></span><br><span class="line"><span class="attr">        mountPath:</span> <span class="string">"/mnt/dedicated_vol/Repository"</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Understanding"><a href="#Understanding" class="headerlink" title="Understanding"></a>Understanding</h2><p>What is this and what is it for? Let’s take a look. First reference to <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/" target="_blank" rel="noopener">official documentation</a>.</p>
 <p>Init Containers, which are <strong>specialized</strong> Containers that run <strong>before</strong> app Containers and can <strong>contain</strong> utilities or setup scripts not present in an app image.</p>
 <p>A Pod can have multiple Containers running apps within it, but it can also have one or more Init Containers, which are run before the app Containers are started.</p>
@@ -606,7 +607,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">94</span>
+                    <span class="site-state-item-count">95</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -649,7 +650,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

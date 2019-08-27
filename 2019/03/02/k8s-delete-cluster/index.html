@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Today I spend some time to investigate how to remove nodes from the k8s cluster that built by kubeadm. For example, I have a 3 nodes cluster called k8stest, I deploy the application in namespace test-">
+  <meta name="description" content="Kubernetes version 1.13.2 Today I spend some time to investigate how to remove nodes from the k8s cluster that built by kubeadm. For example, I have a 3 nodes cluster called k8stest, I deploy the appl">
 <meta name="keywords" content="kubernetes,kubeadm,drain">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Completely Delete K8s Cluster">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/k8s-delete-cluster/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Today I spend some time to investigate how to remove nodes from the k8s cluster that built by kubeadm. For example, I have a 3 nodes cluster called k8stest, I deploy the application in namespace test-">
+<meta property="og:description" content="Kubernetes version 1.13.2 Today I spend some time to investigate how to remove nodes from the k8s cluster that built by kubeadm. For example, I have a 3 nodes cluster called k8stest, I deploy the appl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T21:56:26.216Z">
+<meta property="og:updated_time" content="2019-08-27T07:18:04.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Completely Delete K8s Cluster">
-<meta name="twitter:description" content="Today I spend some time to investigate how to remove nodes from the k8s cluster that built by kubeadm. For example, I have a 3 nodes cluster called k8stest, I deploy the application in namespace test-">
+<meta name="twitter:description" content="Kubernetes version 1.13.2 Today I spend some time to investigate how to remove nodes from the k8s cluster that built by kubeadm. For example, I have a 3 nodes cluster called k8stest, I deploy the appl">
 
 
 
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">15</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">94</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">95</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-08 14:56:26" itemprop="dateModified" datetime="2019-05-08T14:56:26-07:00">2019-05-08</time>
+                <time title="Modified: 2019-08-27 00:18:04" itemprop="dateModified" datetime="2019-08-27T00:18:04-07:00">2019-08-27</time>
               
             
           </span>
@@ -461,7 +461,8 @@
       
 
       
-        <p>Today I spend some time to investigate how to remove nodes from the k8s cluster that built by <code>kubeadm</code>.</p>
+        <p><strong>Kubernetes version 1.13.2</strong></p>
+<p>Today I spend some time to investigate how to remove nodes from the k8s cluster that built by <code>kubeadm</code>.</p>
 <p>For example, I have a 3 nodes cluster called <code>k8stest</code>, I deploy the application in <code>namespace</code> <code>test-1</code>, each worker node (<code>k8stest2</code> and <code>k8stest3</code>) holds some pods:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods -n <span class="built_in">test</span>-1 -o wide</span><br><span class="line"></span><br><span class="line">NAME                                     READY   STATUS    RESTARTS   AGE     IP            NODE                    NOMINATED NODE   READINESS GATES</span><br><span class="line">is-en-conductor-0                        1/1     Running   0          5h40m   192.168.1.2   k8stest3.fyre.ibm.com   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">is-engine-compute-0                      1/1     Running   0          5h39m   192.168.1.3   k8stest3.fyre.ibm.com   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">is-engine-compute-1                      1/1     Running   0          5h38m   192.168.2.4   k8stest2.fyre.ibm.com   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">is-servicesdocker-pod-7b4d9d5c48-vvfn6   1/1     Running   0          5h41m   192.168.2.3   k8stest2.fyre.ibm.com   &lt;none&gt;           &lt;none&gt;</span><br><span class="line">is-xmetadocker-pod-5ff59fff46-tkmqn      1/1     Running   0          5h42m   192.168.2.2   k8stest2.fyre.ibm.com   &lt;none&gt;           &lt;none&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Drain-and-delete-worker-nodes"><a href="#Drain-and-delete-worker-nodes" class="headerlink" title="Drain and delete worker nodes"></a>Drain and delete worker nodes</h3><p>You can use <code>kubectl drain</code> to safely evict all of your pods from a node before you perform maintenance on the node (e.g. kernel upgrade, hardware maintenance, etc.). Safe evictions allow the pod’s containers to <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod/#termination-of-pods" target="_blank" rel="noopener">gracefully terminate</a> and will respect the <code>PodDisruptionBudgets</code> you have specified.</p>
 <p>The <code>drain</code> evicts or deletes all pods except mirror pods (which cannot be deleted through the API server). If there are DaemonSet-managed pods, drain will not proceed without <code>--ignore-daemonsets</code>, and regardless it will not delete any DaemonSet-managed pods, because those pods would be immediately replaced by the DaemonSet controller, which ignores unschedulable markings. If there are any pods that are neither mirror pods nor managed by <code>ReplicationController</code>, <code>ReplicaSet</code>, <code>DaemonSet</code>, <code>StatefulSet</code> or <code>Job</code>, then drain will not delete any pods unless you use <code>--force</code>. <code>--force</code> will also allow deletion to proceed if the managing resource of one or more pods is missing.</p>
@@ -605,7 +606,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">94</span>
+                    <span class="site-state-item-count">95</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -648,7 +649,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

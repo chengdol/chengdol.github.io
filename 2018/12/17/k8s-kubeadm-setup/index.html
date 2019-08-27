@@ -96,21 +96,21 @@
 
 
 
-  <meta name="description" content="This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or configurations change. Later I will revisit and  upgrade the installa">
+  <meta name="description" content="Kubernetes version 1.13.2 This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or configurations change. Later I will revisit">
 <meta name="keywords" content="kubernetes,calico,kubeadm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Set Up K8s Cluster by Kubeadm">
 <meta property="og:url" content="http://yoursite.com/2018/12/17/k8s-kubeadm-setup/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or configurations change. Later I will revisit and  upgrade the installa">
+<meta property="og:description" content="Kubernetes version 1.13.2 This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or configurations change. Later I will revisit">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1pl6EV9YwD604U1ItoMKnqlAp0cjwEOAd">
 <meta property="og:image" content="https://drive.google.com/uc?id=11R3h2G2oknDcN3sY1cTdwUHQCnxwRysn">
 <meta property="og:image" content="https://drive.google.com/uc?id=1bPLxrrlLLyFvNn6cBdSIJbWpANy-ht4h">
-<meta property="og:updated_time" content="2019-05-08T21:54:56.278Z">
+<meta property="og:updated_time" content="2019-08-27T07:19:15.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set Up K8s Cluster by Kubeadm">
-<meta name="twitter:description" content="This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or configurations change. Later I will revisit and  upgrade the installa">
+<meta name="twitter:description" content="Kubernetes version 1.13.2 This article mainly talks about setting up k8s cluster by kubeadm manually, I will continue to update once new version released or configurations change. Later I will revisit">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1pl6EV9YwD604U1ItoMKnqlAp0cjwEOAd">
 
 
@@ -283,7 +283,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">15</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
 
   </li>
         
@@ -302,7 +302,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">94</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">95</span></a>
 
   </li>
 
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-08 14:54:56" itemprop="dateModified" datetime="2019-05-08T14:54:56-07:00">2019-05-08</time>
+                <time title="Modified: 2019-08-27 00:19:15" itemprop="dateModified" datetime="2019-08-27T00:19:15-07:00">2019-08-27</time>
               
             
           </span>
@@ -465,7 +465,8 @@
       
 
       
-        <p>This article mainly talks about setting up k8s cluster by <code>kubeadm</code> manually, I will continue to update once new version released or configurations change. Later I will revisit and  upgrade the installation through <code>Ansible</code>.</p>
+        <p><strong>Kubernetes version 1.13.2</strong></p>
+<p>This article mainly talks about setting up k8s cluster by <code>kubeadm</code> manually, I will continue to update once new version released or configurations change. Later I will revisit and  upgrade the installation through <code>Ansible</code>.</p>
 <h2 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h2><p>I have a 3 nodes bare metal cluster called <code>myk8s</code> with <strong><code>CentOS</code></strong> version 7.5 operating system, their <code>/etc/hosts</code> file in each node is like this, actually this is the internal IP used inside cluster, the master node <code>myk8s1</code> has public IP, used for providing services to external world.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.16.158.44    myk8s1.fyre.ibm.com myk8s1</span><br><span class="line">172.16.171.110   myk8s2.fyre.ibm.com myk8s2</span><br><span class="line">172.16.171.227   myk8s3.fyre.ibm.com myk8s3</span><br></pre></td></tr></table></figure></p>
 <p>make sure every node has IP<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config -a</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.16.158.44  netmask 255.255.0.0  broadcast 172.16.255.255</span><br><span class="line">        ether 00:16:3e:01:9e:2c  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 1617615790  bytes 203050237209 (189.1 GiB)</span><br><span class="line">        RX errors 0  dropped 1  overruns 0  frame 0</span><br><span class="line">        TX packets 436  bytes 50037 (48.8 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">eth1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 9.30.97.218  netmask 255.255.254.0  broadcast 9.30.97.255</span><br><span class="line">        ether 00:20:09:1e:61:da  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 13350021  bytes 1424223654 (1.3 GiB)</span><br><span class="line">        RX errors 0  dropped 5  overruns 0  frame 0</span><br><span class="line">        TX packets 246436  bytes 45433438 (43.3 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
@@ -650,7 +651,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">94</span>
+                    <span class="site-state-item-count">95</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -693,7 +694,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
