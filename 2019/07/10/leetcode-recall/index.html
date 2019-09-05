@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-27T07:21:02.672Z">
+<meta property="og:updated_time" content="2019-09-05T16:06:20.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sigh, Recall!">
 <meta name="twitter:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
@@ -297,7 +297,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">97</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">98</span></a>
 
   </li>
 
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-27 00:21:02" itemprop="dateModified" datetime="2019-08-27T00:21:02-07:00">2019-08-27</time>
+                <time title="Modified: 2019-09-05 09:06:20" itemprop="dateModified" datetime="2019-09-05T09:06:20-07:00">2019-09-05</time>
               
             
           </span>
@@ -494,7 +494,7 @@
 <h2 id="Tries"><a href="#Tries" class="headerlink" title="Tries"></a>Tries</h2><p><code>string symbol table</code>: specialized to string key. Faster than hashing, flexible then BST<br>recall the structure of tries, very simple! put value in last node (character).<br>put and search method for tries can be recursion implementations.<br><code>3-way tries</code>: 这里注意，当前char的值和node char比较，less then go left, larger then go right, then compare, if not match, miss hit. Using recursion to do put and search operation. <code>TST</code> is as fast as hashing (for string key) and space efficient. support in-order traverse (obey BST rule)</p>
 <p>implementation: prefix matching, wildcard match, longest prefix.</p>
 <h1 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h1><p><a href="https://www.youtube.com/user/tusharroy2525/playlists" target="_blank" rel="noopener">3 brother youtube channel</a><br>princeton algorithms</p>
-<h2 id="sliding-window"><a href="#sliding-window" class="headerlink" title="sliding window"></a>sliding window</h2><p>summary:<br><a href="https://leetcode.com/problems/minimum-window-substring/discuss/26808/here-is-a-10-line-template-that-can-solve-most-substring-problems" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-window-substring/discuss/26808/here-is-a-10-line-template-that-can-solve-most-substring-problems</a><br><a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem" target="_blank" rel="noopener">https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem</a>.</p>
+<h2 id="sliding-window"><a href="#sliding-window" class="headerlink" title="sliding window"></a>sliding window</h2><p>summary:<br><a href="https://leetcode.com/problems/minimum-window-substring/discuss/26808/here-is-a-10-line-template-that-can-solve-most-substring-problems" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-window-substring/discuss/26808/here-is-a-10-line-template-that-can-solve-most-substring-problems</a><br><a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem" target="_blank" rel="noopener">https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem</a>.<br>good sliding window demo:<br><a href="https://www.geeksforgeeks.org/window-sliding-technique/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/window-sliding-technique/</a></p>
 <h2 id="quick-select"><a href="#quick-select" class="headerlink" title="quick select"></a>quick select</h2><p>average <code>O(n)</code>, worst case <code>O(n^2)</code>, need to shuffle.<br>if quick select Kth element, then in the range [0, K] is guarantee the K smallest elemets in unsorted array.<br>this is the summary of top k problem:<br><a href="https://leetcode.com/problems/k-closest-points-to-origin/discuss/220235/Java-Three-solutions-to-this-classical-K-th-problem" target="_blank" rel="noopener">https://leetcode.com/problems/k-closest-points-to-origin/discuss/220235/Java-Three-solutions-to-this-classical-K-th-problem</a>.</p>
 <h2 id="Binary-search"><a href="#Binary-search" class="headerlink" title="Binary search"></a>Binary search</h2><p>when target exists, use<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (lo &lt;= hi)</span><br></pre></td></tr></table></figure></p>
 <p>when target doesn’t exist, use<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (lo &lt; hi)</span><br><span class="line">&#123;</span><br><span class="line">  mid = lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">if</span> (n[mid] &gt; target)</span><br><span class="line">  &#123;</span><br><span class="line">    hi = mid</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// skip equal elements</span></span><br><span class="line">    lo = mid + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -672,7 +672,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-count">98</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
