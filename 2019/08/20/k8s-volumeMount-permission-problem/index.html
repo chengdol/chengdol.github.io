@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Kubernetes version 1.13.2 This is an interesting issue which involves 4 topices: Volume, Security Context, NFS and initContainer. The issue comes from the permission denied error. The process fail to">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-27T07:17:43.497Z">
+<meta property="og:updated_time" content="2019-09-11T06:36:45.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K8s NFS Mount Volume Permission">
 <meta name="twitter:description" content="Kubernetes version 1.13.2 This is an interesting issue which involves 4 topices: Volume, Security Context, NFS and initContainer. The issue comes from the permission denied error. The process fail to">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">100</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">101</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-27 00:17:43" itemprop="dateModified" datetime="2019-08-27T00:17:43-07:00">2019-08-27</time>
+                <time title="Modified: 2019-09-10 23:36:45" itemprop="dateModified" datetime="2019-09-10T23:36:45-07:00">2019-09-10</time>
               
             
           </span>
@@ -468,6 +468,9 @@
 <p>so the owner of the volume should be <code>9092</code>, but they don’t.</p>
 <p>I searched online and met the same issue from others:<br><a href="https://github.com/kubernetes/examples/issues/260" target="_blank" rel="noopener">https://github.com/kubernetes/examples/issues/260</a></p>
 <p>It seems <code>fsGroup</code> securityContext <strong>does not</strong> apply to nfs mount especially we run the containers as non-root user we cannot access the mount. This issue may be solved in later version, need to take care.</p>
+<blockquote>
+<p>!!! Why this happens? Because we use <code>hostPath</code>, it by default will create root owned path if <code>path</code> does not exist. Here the <code>NFS</code> is not the <code>NFS</code> way kubernetes use, we use <code>hostPath</code> then manually nfs the nodes externally, not by the setting of K8s(need to do experiment).</p>
+</blockquote>
 <p>The workaround is using <code>initContainers</code> with <code>busybox</code> run as root and <code>chown</code> to the nfs mount with expected id, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">initContainers:</span><br><span class="line">  - name: busybox</span><br><span class="line">    image: xxx.com:5000/busybox:latest</span><br><span class="line">    imagePullPolicy: IfNotPresent</span><br><span class="line">    command: [&quot;sh&quot;, &quot;-c&quot;, &quot;chown 9092:9092 /mnt&quot;]</span><br><span class="line">    securityContext:</span><br><span class="line">      runAsUser: 0</span><br><span class="line">    volumeMounts:</span><br><span class="line">    - name: &lt;volume name from Volumes&gt;</span><br><span class="line">      mountPath: /mnt</span><br></pre></td></tr></table></figure></p>
 <p>then we are good.</p>
 
@@ -581,7 +584,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-count">101</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
