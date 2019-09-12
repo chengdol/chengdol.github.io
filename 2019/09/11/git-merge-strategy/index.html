@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="I was previously working on a separate branch branch-tmp, now I want to merge some files in that branch into my main personal branch chengdol_master, and finally create a pull request to merge int mas">
+  <meta name="description" content="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits https://help.github.com/en/articles/merging-a-pull-request https://help.github.com/en/articles/configurin">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Partial Merge">
-<meta property="og:url" content="http://yoursite.com/2019/07/10/git-partial-merge/index.html">
+<meta property="og:title" content="Pull Request Merge Strategy">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/git-merge-strategy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I was previously working on a separate branch branch-tmp, now I want to merge some files in that branch into my main personal branch chengdol_master, and finally create a pull request to merge int mas">
+<meta property="og:description" content="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits https://help.github.com/en/articles/merging-a-pull-request https://help.github.com/en/articles/configurin">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T21:14:52.121Z">
+<meta property="og:updated_time" content="2019-09-12T00:39:43.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git Partial Merge">
-<meta name="twitter:description" content="I was previously working on a separate branch branch-tmp, now I want to merge some files in that branch into my main personal branch chengdol_master, and finally create a pull request to merge int mas">
+<meta name="twitter:title" content="Pull Request Merge Strategy">
+<meta name="twitter:description" content="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits https://help.github.com/en/articles/merging-a-pull-request https://help.github.com/en/articles/configurin">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/10/git-partial-merge/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/11/git-merge-strategy/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Git Partial Merge | 海胆阶段's Blog</title>
+  <title>Pull Request Merge Strategy | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/git-partial-merge/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/git-merge-strategy/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git Partial Merge
+          <h1 class="post-title" itemprop="name headline">Pull Request Merge Strategy
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-07-10 17:02:19" itemprop="dateCreated datePublished" datetime="2019-07-10T17:02:19-07:00">2019-07-10</time>
+              <time title="Created: 2019-09-11 09:38:32 / Modified: 17:39:43" itemprop="dateCreated datePublished" datetime="2019-09-11T09:38:32-07:00">2019-09-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-18 14:14:52" itemprop="dateModified" datetime="2019-07-18T14:14:52-07:00">2019-07-18</time>
               
             
           </span>
@@ -461,15 +449,13 @@
       
 
       
-        <p>I was previously working on a separate branch <code>branch-tmp</code>, now I want to merge some files in that branch into my main personal branch <code>chengdol_master</code>, and finally create a pull request to merge int <code>master</code>.</p>
-<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p><a href="https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" target="_blank" rel="noopener">Git tip: How to “merge” specific files from another branch</a><br><a href="https://stackoverflow.com/questions/18115411/how-to-merge-specific-files-from-git-branches" target="_blank" rel="noopener">Interactive merge</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><blockquote>
-<p>Notice that in my case, the target files in <code>branch-tmp</code> are completely applicable for <code>chengdol_master</code>, so I just want to overwrite corresponding files in <code>chengdol_master</code>. If we need to pick some changes and leave others in the file, do an <code>interactive merge</code>, run this from <code>chengdol_master</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --patch brach-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>First check if you have <code>origin/branch-tmp</code> locally<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | grep branch-tmp</span><br></pre></td></tr></table></figure></p>
-<p>If not, you need to fetch it alone or fetch all origin branches:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin branch-tmp</span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure></p>
-<p>Then go to your target branch <code>chengdol_master</code>, use <code>git checkout</code> command to do the job:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout origin/branch-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
-<p>then the merged files from <code>branch-tmp</code> are in staging phase, you can directly commit or unstage them in the <code>chengdol_master</code> branch, then push and handle the pull request.</p>
+        <p><a href="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits" target="_blank" rel="noopener">https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits</a></p>
+<p><a href="https://help.github.com/en/articles/merging-a-pull-request" target="_blank" rel="noopener">https://help.github.com/en/articles/merging-a-pull-request</a></p>
+<p><a href="https://help.github.com/en/articles/configuring-commit-squashing-for-pull-requests" target="_blank" rel="noopener">https://help.github.com/en/articles/configuring-commit-squashing-for-pull-requests</a></p>
+<p><a href="https://github.com/ros-planning/moveit_tutorials/issues/280" target="_blank" rel="noopener">https://github.com/ros-planning/moveit_tutorials/issues/280</a></p>
+<p><a href="https://github.blog/2016-04-01-squash-your-commits/" target="_blank" rel="noopener">https://github.blog/2016-04-01-squash-your-commits/</a></p>
+<p>delete my branch remote in git web<br><a href="https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository" target="_blank" rel="noopener">https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository</a></p>
+<p>rm -rf will not delete git hidden files !!</p>
 
       
     </div>
@@ -506,8 +492,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/10/leetcode-recall/" rel="next" title="Sigh, Recall!">
-                <i class="fa fa-chevron-left"></i> Sigh, Recall!
+              <a href="/2019/09/10/k8s-entrypoint/" rel="next" title="Command and Args Format">
+                <i class="fa fa-chevron-left"></i> Command and Args Format
               </a>
             
           </div>
@@ -515,10 +501,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/15/linux-sudo-privilege/" rel="prev" title="Grant User sudo Privilege">
-                Grant User sudo Privilege <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,17 +545,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -799,23 +772,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource"><span class="nav-number">1.</span> <span class="nav-text">Resource</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
