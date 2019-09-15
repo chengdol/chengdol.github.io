@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="This blog was written several months ago locally when I was a child, no, when I first dealt with OpenShift, we use external node as NFS server to serve the cluster. NFS lets you leverage storage space">
-<meta name="keywords" content="linux,nfs">
+  <meta name="description" content="I think this is a good script template, it has exit hook, logs and json response. I will continuously update it if I find good patterns. 123456789101112131415161718192021222324252627282930313233343536">
+<meta name="keywords" content="shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NFS Server and Client Setup">
-<meta property="og:url" content="http://yoursite.com/2019/05/27/linux-nfs-setup/index.html">
+<meta property="og:title" content="Shell Script Template">
+<meta property="og:url" content="http://yoursite.com/2019/09/14/shell-script-template/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog was written several months ago locally when I was a child, no, when I first dealt with OpenShift, we use external node as NFS server to serve the cluster. NFS lets you leverage storage space">
+<meta property="og:description" content="I think this is a good script template, it has exit hook, logs and json response. I will continuously update it if I find good patterns. 123456789101112131415161718192021222324252627282930313233343536">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-13T00:28:42.260Z">
+<meta property="og:updated_time" content="2019-09-15T00:24:07.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NFS Server and Client Setup">
-<meta name="twitter:description" content="This blog was written several months ago locally when I was a child, no, when I first dealt with OpenShift, we use external node as NFS server to serve the cluster. NFS lets you leverage storage space">
+<meta name="twitter:title" content="Shell Script Template">
+<meta name="twitter:description" content="I think this is a good script template, it has exit hook, logs and json response. I will continuously update it if I find good patterns. 123456789101112131415161718192021222324252627282930313233343536">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/27/linux-nfs-setup/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/14/shell-script-template/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>NFS Server and Client Setup | 海胆阶段's Blog</title>
+  <title>Shell Script Template | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/linux-nfs-setup/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/shell-script-template/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NFS Server and Client Setup
+          <h1 class="post-title" itemprop="name headline">Shell Script Template
 
               
             
@@ -393,24 +393,12 @@
                 
               
 
-              <time title="Created: 2019-05-27 21:56:01" itemprop="dateCreated datePublished" datetime="2019-05-27T21:56:01-07:00">2019-05-27</time>
+              <time title="Created: 2019-09-14 16:56:18 / Modified: 17:24:07" itemprop="dateCreated datePublished" datetime="2019-09-14T16:56:18-07:00">2019-09-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-12 17:28:42" itemprop="dateModified" datetime="2019-06-12T17:28:42-07:00">2019-06-12</time>
               
             
           </span>
@@ -427,7 +415,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a></span>
 
                 
                 
@@ -461,23 +449,8 @@
       
 
       
-        <p>This blog was written several months ago locally when I was a child, no, when I first dealt with OpenShift, we use external node as NFS server to serve the cluster.</p>
-<p>NFS lets you leverage storage space in a different location and allows you to write onto the same space from multiple servers or clients in an effortless manner. It, thus, works fairly well for directories that users need to access frequently.</p>
-<h2 id="Server-Setup"><a href="#Server-Setup" class="headerlink" title="Server Setup"></a>Server Setup</h2><p>Acutally there are many other package may needed, this <a href="https://www.youtube.com/watch?v=MBqZe5d9BNQ" target="_blank" rel="noopener">video</a> may give you more details.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nfs-utils</span><br></pre></td></tr></table></figure></p>
-<p>Then enable and start nfs server:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable nfs-server.service</span><br><span class="line">systemctl start nfs-server.service</span><br></pre></td></tr></table></figure></p>
-<p>Create shared folder to store all data here:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir –p /data</span><br><span class="line">chmod –R 755 /data</span><br></pre></td></tr></table></figure></p>
-<p>Edit <code>/etc/exports</code> file to expose shared folder<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/exports </span><br><span class="line"></span><br><span class="line"># any client can access this folder</span><br><span class="line">/data *(rw,insecure,async,no_root_squash)   </span><br><span class="line"># or specific client can access this folder</span><br><span class="line">/data &lt;client ip&gt;(rw,insecure,async,no_root_squash)</span><br></pre></td></tr></table></figure></p>
-<p>Then export the shared folder:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exportfs -a</span><br><span class="line">systemctl restart nfs-server.service</span><br></pre></td></tr></table></figure></p>
-<p>Check shard folder is up <code>showmount -e &lt;server ip&gt;</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showmount -e localhost</span><br></pre></td></tr></table></figure></p>
-<p>If you change the content in <code>/etc/exports</code>, need to issue:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportfs -ra</span><br></pre></td></tr></table></figure></p>
-<h2 id="Client-Setup"><a href="#Client-Setup" class="headerlink" title="Client Setup"></a>Client Setup</h2><p>First create or using existing folder as folder to mount, here I use <code>/mntiis</code> folder in client machine<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nfs-utils</span><br></pre></td></tr></table></figure></p>
-<p>Then enable and start nfs server:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable nfs-server.service</span><br><span class="line">systemctl start nfs-server.service</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /mntiis</span><br><span class="line">chmod -R 0755 /mntiis</span><br></pre></td></tr></table></figure>
-<p>If you use non-persistent mount in command line, disappear after rebooting:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount &lt;server ip&gt;:/data     /mntiis</span><br></pre></td></tr></table></figure></p>
-<p>For persistent mount, go to <code>/etc/fstab</code> file, add this line<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;server ip&gt;:/data /mntiis nfs defaults 0 0</span><br></pre></td></tr></table></figure></p>
-<p>Enable mount:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mount /mntiis</span><br><span class="line"># or</span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure></p>
-<p>Verify all set, you can see the <code>/mntiis</code> in the output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -hk</span><br></pre></td></tr></table></figure></p>
-<p>You can alos unmount the folder:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mntiis</span><br></pre></td></tr></table></figure></p>
+        <p>I think this is a good script template, it has exit hook, logs and json response. I will continuously update it if I find good patterns.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#########################################################################</span></span><br><span class="line"><span class="comment"># Please insert the update at top of the logs</span></span><br><span class="line"><span class="comment"># Date           Author           Description</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#########################################################################</span></span><br><span class="line"><span class="comment">#set -x</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## find canonical file path</span></span><br><span class="line"><span class="comment">## or you can restrict run script in it's current directory</span></span><br><span class="line">CUR_PATH=$(dirname $(readlink -f <span class="variable">$0</span>))</span><br><span class="line"><span class="built_in">source</span> <span class="variable">$CUR_PATH</span>/&lt;env file&gt;</span><br><span class="line">JQ=<span class="string">"<span class="variable">$CUR_PATH</span>/jq"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## create log file for this script</span></span><br><span class="line">OUT_FILE=$(mktemp /tmp/log.XXXX)</span><br><span class="line"><span class="comment">#OUT_FILE=/tmp/log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">########################### function #########################</span></span><br><span class="line"><span class="keyword">function</span> exitHook &#123;</span><br><span class="line">  rm -f <span class="variable">$OUT_FILE</span></span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.out</span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.err</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">## clean job for log file, you can add other signals</span></span><br><span class="line"><span class="built_in">trap</span> exitHook EXIT</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">usage</span></span>() &#123;</span><br><span class="line"> <span class="built_in">echo</span> <span class="string">"<span class="variable">$0</span>  xxx"</span></span><br><span class="line"> <span class="built_in">echo</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## this is for return json format messages</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">returnError</span></span>() &#123;</span><br><span class="line">  msg=<span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"&#123;\"result\": \"Failure\", \"message\": \"<span class="variable">$msg</span>\"&#125;"</span> |<span class="variable">$&#123;JQ&#125;</span> <span class="string">'.'</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">returnInfo</span></span>() &#123;</span><br><span class="line">  msg=<span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"&#123;\"result\": \"Success\", \"message\": \"<span class="variable">$msg</span>\"&#125;"</span> |<span class="variable">$&#123;JQ&#125;</span> <span class="string">'.'</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">########################## main ##############################</span></span><br><span class="line"><span class="comment">## declare input parameters</span></span><br><span class="line">P1=<span class="string">""</span></span><br><span class="line">P2=<span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## check script parameters</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -eq 0 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  msg=<span class="string">"No command-line arguments were specified..."</span></span><br><span class="line">  returnError <span class="string">"<span class="variable">$msg</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$#</span> -gt 0 ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">    -p1)</span><br><span class="line">       <span class="built_in">shift</span></span><br><span class="line">       P1=<span class="variable">$1</span></span><br><span class="line">       <span class="built_in">shift</span>;;</span><br><span class="line"></span><br><span class="line">    -p2)</span><br><span class="line">       <span class="built_in">shift</span></span><br><span class="line">       P2=<span class="variable">$1</span></span><br><span class="line">       <span class="built_in">shift</span>;;</span><br><span class="line"></span><br><span class="line">    *) msg=<span class="string">"<span class="variable">$0</span>: Bad Usage..."</span></span><br><span class="line">       returnError <span class="string">"<span class="variable">$msg</span>"</span></span><br><span class="line">  <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## double check or restrict parameters</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"X<span class="variable">$&#123;P1&#125;</span>"</span> = <span class="string">"X"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  msg=<span class="string">"-p1 was not specified"</span></span><br><span class="line">  returnError <span class="string">"<span class="variable">$msg</span>"</span></span><br><span class="line"><span class="keyword">elif</span> [[ <span class="string">"X<span class="variable">$&#123;P2&#125;</span>"</span> = <span class="string">"X"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  msg=<span class="string">"-p2 was not specified"</span></span><br><span class="line">  returnError <span class="string">"<span class="variable">$msg</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## then do the job, when you run some commands in script </span></span><br><span class="line"><span class="comment">## you can redirect the normal output to $&#123;OUT_FILE&#125;.out</span></span><br><span class="line"><span class="comment">## and error output to $&#123;OUT_FILE&#125;.err</span></span><br><span class="line"><span class="built_in">command</span> 1&gt;&gt;<span class="variable">$&#123;OUT_FILE&#125;</span>.out 2&gt;&gt;<span class="variable">$&#123;OUT_FILE&#125;</span>.err</span><br><span class="line"><span class="keyword">if</span> [[ $? = 0 ]]; <span class="keyword">then</span></span><br><span class="line">    msg=<span class="string">"Run command successfully..."</span></span><br><span class="line">    returnInfo <span class="string">"<span class="variable">$msg</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">## parse err log file and return message</span></span><br><span class="line">    msg=$(cat <span class="variable">$&#123;OUT_FILE&#125;</span>.err|sed -e <span class="string">'s/"/\\"/g'</span>)</span><br><span class="line">    returnError <span class="string">"<span class="variable">$msg</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -501,9 +474,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/nfs/" rel="tag"># nfs</a>
+            <a href="/tags/shell/" rel="tag"># shell</a>
           
         </div>
       
@@ -516,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/27/music-list/" rel="next" title="Music in My Life">
-                <i class="fa fa-chevron-left"></i> Music in My Life
+              <a href="/2019/09/12/git-create-working-branch/" rel="next" title="Create Working Branch">
+                <i class="fa fa-chevron-left"></i> Create Working Branch
               </a>
             
           </div>
@@ -525,10 +496,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/28/linux-cronjob/" rel="prev" title="Scheduling Recurring Tasks with cron">
-                Scheduling Recurring Tasks with cron <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -573,17 +540,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -809,23 +767,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Server-Setup"><span class="nav-number">1.</span> <span class="nav-text">Server Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Client-Setup"><span class="nav-number">2.</span> <span class="nav-text">Client Setup</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

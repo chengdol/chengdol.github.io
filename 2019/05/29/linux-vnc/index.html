@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="In computing, Virtual Network Computing (VNC) is a graphical desktop-sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. It transmits the keyboard and">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-30T16:26:01.997Z">
+<meta property="og:updated_time" content="2019-09-14T23:21:49.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VNC Set up">
 <meta name="twitter:description" content="In computing, Virtual Network Computing (VNC) is a graphical desktop-sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. It transmits the keyboard and">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">103</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">104</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-30 09:26:01" itemprop="dateModified" datetime="2019-05-30T09:26:01-07:00">2019-05-30</time>
+                <time title="Modified: 2019-09-14 16:21:49" itemprop="dateModified" datetime="2019-09-14T16:21:49-07:00">2019-09-14</time>
               
             
           </span>
@@ -469,7 +469,7 @@
 </blockquote>
 <h2 id="Install-VNC-Server"><a href="#Install-VNC-Server" class="headerlink" title="Install VNC Server"></a>Install VNC Server</h2><p>Not sure if the configurations are the same, actually the settings are varies.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">yum update -y</span><br><span class="line"></span><br><span class="line">## seems no need this:</span><br><span class="line">yum install open-vm-tools</span><br><span class="line"></span><br><span class="line">## if you don’t have desktop installed, note linux has many different desktop system themes, only install core packages of KDE or GNOME, KDE is better</span><br><span class="line">yum groupinstall &apos;X Window System&apos; &apos;KDE&apos;</span><br><span class="line">yum groupinstall &apos;X Window System&apos; &apos;GNOME&apos;</span><br><span class="line"></span><br><span class="line">yum list |grep tiger</span><br><span class="line">yum -y install tigervnc-server </span><br><span class="line"></span><br><span class="line">## Fyre firewalld default is inactive, no need to deal with firewall here</span><br><span class="line">## if it’s enable, may need to config</span><br><span class="line">systemctl status firewalld</span><br><span class="line">firewall-cmd --permanent --zone=public --add-service vnc-server </span><br><span class="line">firewall-cmd --reload</span><br><span class="line"></span><br><span class="line">## start vnc</span><br><span class="line">## select yes then create password: 123456</span><br><span class="line">## first time it will open port 1</span><br><span class="line">## then you will get the address and port to login:</span><br><span class="line">## centctl1.fyre.ibm.com:1</span><br><span class="line">vncserver</span><br></pre></td></tr></table></figure></p>
 <p>Note if you will get new vnc session everytime you run <code>vncserver</code>, check with<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep vnc</span><br><span class="line"></span><br><span class="line">root      2682  0.0  3.0 284860 116840 ?       Sl   May27   1:38 /usr/bin/Xvnc :1 -auth /root/.Xauthority -desktop mycentctl1.fyre.ibm.com:1 (root) -fp catalogue:/etc/X11/fontpath.d -geometry 1024x768 -pn -rfbauth /root/.vnc/passwd -rfbport 5901 -rfbwait 30000</span><br><span class="line">root      9199  1.4  1.6 231660 62388 pts/3    Sl   08:59   0:00 /usr/bin/Xvnc :2 -auth /root/.Xauthority -desktop mycentctl1.fyre.ibm.com:2 (root) -fp catalogue:/etc/X11/fontpath.d -geometry 1024x768 -pn -rfbauth /root/.vnc/passwd -rfbport 5902 -rfbwait 30000</span><br></pre></td></tr></table></figure></p>
-<p>yuu can kill it by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :2</span><br></pre></td></tr></table></figure></p>
+<p>you can kill it by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :2</span><br></pre></td></tr></table></figure></p>
 <p>If the VNC is broken due to maintenance, open a new session again by <code>vncserver</code>.</p>
 <h2 id="Install-VNC-viewer"><a href="#Install-VNC-viewer" class="headerlink" title="Install VNC viewer"></a>Install VNC viewer</h2><p>Install VNC viewer on your local laptop, then connect by<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">centctl1.fyre.ibm.com:1</span><br></pre></td></tr></table></figure></p>
 <h2 id="Copy-and-Paste"><a href="#Copy-and-Paste" class="headerlink" title="Copy and Paste"></a>Copy and Paste</h2><p>If you want to copy from local to viewer, sometimes it’s malfunction, kill the <code>klipper</code> process:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep klipper</span><br><span class="line">kill -9 &lt;PID of klipper&gt;</span><br></pre></td></tr></table></figure></p>
@@ -601,7 +601,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">103</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
