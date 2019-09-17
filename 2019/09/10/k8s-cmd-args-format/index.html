@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="The format of command and args in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:1234567891011121314api">
+  <meta name="description" content="The format of command and args in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:1234567891011121314151">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Command and Args Format">
-<meta property="og:url" content="http://yoursite.com/2019/09/10/k8s-entrypoint/index.html">
+<meta property="og:title" content="Yaml Command and Args Format">
+<meta property="og:url" content="http://yoursite.com/2019/09/10/k8s-cmd-args-format/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="The format of command and args in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:1234567891011121314api">
+<meta property="og:description" content="The format of command and args in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:1234567891011121314151">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-11T06:37:44.035Z">
+<meta property="og:updated_time" content="2019-09-17T22:26:57.969Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Command and Args Format">
-<meta name="twitter:description" content="The format of command and args in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:1234567891011121314api">
+<meta name="twitter:title" content="Yaml Command and Args Format">
+<meta name="twitter:description" content="The format of command and args in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:1234567891011121314151">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/10/k8s-entrypoint/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/10/k8s-cmd-args-format/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Command and Args Format | 海胆阶段's Blog</title>
+  <title>Yaml Command and Args Format | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/k8s-entrypoint/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/k8s-cmd-args-format/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Command and Args Format
+          <h1 class="post-title" itemprop="name headline">Yaml Command and Args Format
 
               
             
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-09-10 22:27:36 / Modified: 23:37:44" itemprop="dateCreated datePublished" datetime="2019-09-10T22:27:36-07:00">2019-09-10</time>
+              <time title="Created: 2019-09-10 22:27:36" itemprop="dateCreated datePublished" datetime="2019-09-10T22:27:36-07:00">2019-09-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-17 15:26:57" itemprop="dateModified" datetime="2019-09-17T15:26:57-07:00">2019-09-17</time>
               
             
           </span>
@@ -449,7 +461,11 @@
       
 
       
-        <p>The format of <code>command</code> and <code>args</code> in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"><span class="attr">  container:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">busybox</span></span><br><span class="line"><span class="attr">    command:</span> <span class="string">["/bin/bash",</span> <span class="string">"-c"</span><span class="string">]</span></span><br><span class="line"><span class="attr">    args:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">while</span> <span class="literal">true</span><span class="string">;</span> <span class="string">do</span></span><br><span class="line">        <span class="string">echo</span> <span class="string">$(hostname)</span> <span class="string">$(date)</span> <span class="string">&gt;&gt;</span> <span class="string">/html/index.html;</span></span><br><span class="line">        <span class="string">sleep</span> <span class="number">10</span><span class="string">;</span></span><br><span class="line">      <span class="string">done</span></span><br></pre></td></tr></table></figure></p>
+        <p>The format of <code>command</code> and <code>args</code> in kubernetes is somehow annoy me, when the entrypoint has long or multiple commands, can be wrote like this in multiple lines instead of one line:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"><span class="attr">  container:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">busybox</span></span><br><span class="line"><span class="attr">    command:</span> <span class="string">["/bin/bash",</span> <span class="string">"-c"</span><span class="string">,</span> <span class="string">"--"</span><span class="string">]</span></span><br><span class="line"><span class="attr">    args:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">echo</span> <span class="string">"start"</span><span class="string">;</span></span><br><span class="line">      <span class="string">while</span> <span class="literal">true</span><span class="string">;</span> <span class="string">do</span></span><br><span class="line">        <span class="string">echo</span> <span class="string">$(hostname)</span> <span class="string">$(date)</span> <span class="string">&gt;&gt;</span> <span class="string">/html/index.html;</span></span><br><span class="line">        <span class="string">sleep</span> <span class="number">10</span><span class="string">;</span></span><br><span class="line">      <span class="string">done;</span></span><br><span class="line">      <span class="string">echo</span> <span class="string">"done!"</span><span class="string">;</span></span><br></pre></td></tr></table></figure></p>
+<p>or<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  containers:</span></span><br><span class="line"><span class="attr">  - name:</span> <span class="string">myapp-container</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">busybox</span></span><br><span class="line"><span class="attr">    command:</span> <span class="string">["/bin/bash",</span> <span class="string">"-c"</span><span class="string">,</span> <span class="string">"--"</span><span class="string">]</span></span><br><span class="line"><span class="attr">    args:</span></span><br><span class="line">       <span class="string">["echo</span> <span class="string">\"check</span> <span class="string">something...\";</span></span><br><span class="line">        <span class="string">if</span> <span class="string">[[</span> <span class="string">!</span> <span class="bullet">-f</span> <span class="string">/root/.link</span> <span class="string">]];</span> <span class="string">then</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">\"file</span> <span class="string">does</span> <span class="string">not</span> <span class="string">exist!\";</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">\"no!\";</span></span><br><span class="line">        <span class="string">else</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">\"file</span> <span class="string">is</span> <span class="string">there!\";</span></span><br><span class="line">        <span class="string">fi;</span></span><br><span class="line">        <span class="string">echo</span> <span class="string">\"done!\""]</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note that the format is error-prone, every command should end with <code>;</code>, for example the <code>while</code> and <code>if</code> above. I separate them into several lines for good looking, but they actually are one line command.</p>
+</blockquote>
 
       
     </div>
