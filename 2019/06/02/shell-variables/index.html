@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T23:42:37.046Z">
+<meta property="og:updated_time" content="2019-09-17T17:02:12.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Variables in Shell">
 <meta name="twitter:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-09 16:42:37" itemprop="dateModified" datetime="2019-09-09T16:42:37-07:00">2019-09-09</time>
+                <time title="Modified: 2019-09-17 10:02:12" itemprop="dateModified" datetime="2019-09-17T10:02:12-07:00">2019-09-17</time>
               
             
           </span>
@@ -490,6 +490,7 @@
 </ol>
 <p>But be very careful not let shell do variable expanding in command option:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">"... echo <span class="variable">$a</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>Here <code>$a</code> will be expanded before executing, use single quote or escape the <code>$</code> sign:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">'... echo $a'</span></span><br><span class="line">su xxx -c <span class="string">"... echo \$a"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Double-substitution"><a href="#Double-substitution" class="headerlink" title="Double substitution"></a>Double substitution</h2><p>For example, it not <code>${${first2}}</code>!<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">first=<span class="string">"real value"</span></span><br><span class="line">first2=<span class="string">"first"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;!first2&#125;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -830,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ENV-Variables"><span class="nav-number">1.</span> <span class="nav-text">ENV Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-ENV-Variables"><span class="nav-number">1.1.</span> <span class="nav-text">Global ENV Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-ENV-Variables"><span class="nav-number">1.2.</span> <span class="nav-text">Local ENV Variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-Scope"><span class="nav-number">2.</span> <span class="nav-text">Variable Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preserve-ENV-variables"><span class="nav-number">3.</span> <span class="nav-text">Preserve ENV variables</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ENV-Variables"><span class="nav-number">1.</span> <span class="nav-text">ENV Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-ENV-Variables"><span class="nav-number">1.1.</span> <span class="nav-text">Global ENV Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-ENV-Variables"><span class="nav-number">1.2.</span> <span class="nav-text">Local ENV Variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-Scope"><span class="nav-number">2.</span> <span class="nav-text">Variable Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preserve-ENV-variables"><span class="nav-number">3.</span> <span class="nav-text">Preserve ENV variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Double-substitution"><span class="nav-number">4.</span> <span class="nav-text">Double substitution</span></a></li></ol></div>
             
 
           </div>
