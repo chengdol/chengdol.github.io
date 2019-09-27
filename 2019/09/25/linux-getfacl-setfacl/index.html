@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Today I learn a new method to operate on permission of files and directories, usually I use chmod and chown, but they are not fit in some situations. One thing you need to be clear is if for example /">
+  <meta name="description" content="Today I learn a new method to operate on permission of files and directories, usually I use chmod and chown. One thing you need to be clear is if for example /etc is owned by root, and /etc/xxx is own">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux getfacl and setfacl Commands">
 <meta property="og:url" content="http://yoursite.com/2019/09/25/linux-getfacl-setfacl/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Today I learn a new method to operate on permission of files and directories, usually I use chmod and chown, but they are not fit in some situations. One thing you need to be clear is if for example /">
+<meta property="og:description" content="Today I learn a new method to operate on permission of files and directories, usually I use chmod and chown. One thing you need to be clear is if for example /etc is owned by root, and /etc/xxx is own">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-25T23:30:40.948Z">
+<meta property="og:updated_time" content="2019-09-27T03:00:55.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux getfacl and setfacl Commands">
-<meta name="twitter:description" content="Today I learn a new method to operate on permission of files and directories, usually I use chmod and chown, but they are not fit in some situations. One thing you need to be clear is if for example /">
+<meta name="twitter:description" content="Today I learn a new method to operate on permission of files and directories, usually I use chmod and chown. One thing you need to be clear is if for example /etc is owned by root, and /etc/xxx is own">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">109</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">111</span></a>
 
   </li>
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-09-25 15:28:58 / Modified: 16:30:40" itemprop="dateCreated datePublished" datetime="2019-09-25T15:28:58-07:00">2019-09-25</time>
+              <time title="Created: 2019-09-25 15:28:58" itemprop="dateCreated datePublished" datetime="2019-09-25T15:28:58-07:00">2019-09-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-26 20:00:55" itemprop="dateModified" datetime="2019-09-26T20:00:55-07:00">2019-09-26</time>
               
             
           </span>
@@ -449,9 +461,12 @@
       
 
       
-        <p>Today I learn a new method to operate on permission of files and directories, usually I use <code>chmod</code> and <code>chown</code>, but they are not fit in some situations.</p>
+        <p>Today I learn a new method to operate on permission of files and directories, usually I use <code>chmod</code> and <code>chown</code>.</p>
 <p>One thing you need to be clear is if for example <code>/etc</code> is owned by root, and <code>/etc/xxx</code> is owned by <code>demo</code> (non-root) user, <code>demo</code> cannot remove <code>/etc/xxx</code> because of permission deny, but <code>demo</code> can create soft link from <code>/etc/xxx</code> and do all other operations inside <code>/etc/xxx</code>.</p>
-<p>What if <code>demo</code> want to remove <code>/etc/xxx</code> without changing permissiond of <code>/etc</code> by <code>chmod</code> or <code>chown</code> and without <code>sudo</code>? <code>setfal</code> is a good choice.</p>
+<p>What if <code>demo</code> want to remove <code>/etc/xxx</code> without changing permissiond of <code>/etc</code> by <code>chmod</code> or <code>chown</code> and without <code>sudo</code>? <code>setfacl</code> is a good choice.</p>
+<blockquote>
+<p>Note that docker will not allow commit the change of any permission of <code>/</code> directory into image.</p>
+</blockquote>
 <p>Each file and directory in a Linux filesystem is created with <code>Access Control Lists (ACLs)</code>. The permissions can be set using the <code>setfacl</code> utility. In order to know the access permissions of a file or directory we use <code>getfacl</code>.</p>
 <p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># getfacl /etc</span><br><span class="line"></span><br><span class="line">getfacl: Removing leading &apos;/&apos; from absolute path names</span><br><span class="line"># file: etc/</span><br><span class="line"># owner: root</span><br><span class="line"># group: root</span><br><span class="line">user::rwx</span><br><span class="line">group::r-x</span><br><span class="line">other::r-x</span><br></pre></td></tr></table></figure></p>
 <p>then we add <code>demo</code> full permission to <code>/etc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## run as root</span></span><br><span class="line">setfacl -m u:demo:rwx /etc</span><br></pre></td></tr></table></figure></p>
@@ -503,6 +518,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/26/docker-skopeo/" rel="prev" title="Skopeo Utility">
+                Skopeo Utility <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -565,7 +584,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">109</span>
+                    <span class="site-state-item-count">111</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
