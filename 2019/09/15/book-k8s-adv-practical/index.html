@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="这是最近几周看的书（中文），年初从国内带过来的。 最近的项目涉及到很多微服务架构设计的问题，和组里大佬讨论的时候发现自己有的地方理解得不太正确甚至一张白纸，给不出一个完善的设计方案和想法，赶紧更新和归纳一下自己之前学到的知识点。 其实接触Kubernetes也快一年了，但一直是对之前项目的维护和更新操作，这次难得机会要集成一个新组件到已有的集群里，从头开始设计这些功能组件的各种配置，结构，生命周期">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-15T19:05:26.817Z">
+<meta property="og:updated_time" content="2019-10-02T19:52:19.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 进阶实战">
 <meta name="twitter:description" content="这是最近几周看的书（中文），年初从国内带过来的。 最近的项目涉及到很多微服务架构设计的问题，和组里大佬讨论的时候发现自己有的地方理解得不太正确甚至一张白纸，给不出一个完善的设计方案和想法，赶紧更新和归纳一下自己之前学到的知识点。 其实接触Kubernetes也快一年了，但一直是对之前项目的维护和更新操作，这次难得机会要集成一个新组件到已有的集群里，从头开始设计这些功能组件的各种配置，结构，生命周期">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">111</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">112</span></a>
 
   </li>
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-09-15 11:17:41 / Modified: 12:05:26" itemprop="dateCreated datePublished" datetime="2019-09-15T11:17:41-07:00">2019-09-15</time>
+              <time title="Created: 2019-09-15 11:17:41" itemprop="dateCreated datePublished" datetime="2019-09-15T11:17:41-07:00">2019-09-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-10-02 12:52:19" itemprop="dateModified" datetime="2019-10-02T12:52:19-07:00">2019-10-02</time>
               
             
           </span>
@@ -452,8 +464,18 @@
         <p>这是最近几周看的书（中文），年初从国内带过来的。</p>
 <p>最近的项目涉及到很多微服务架构设计的问题，和组里大佬讨论的时候发现自己有的地方理解得不太正确甚至一张白纸，给不出一个完善的设计方案和想法，赶紧更新和归纳一下自己之前学到的知识点。</p>
 <p>其实接触Kubernetes也快一年了，但一直是对之前项目的维护和更新操作，这次难得机会要集成一个新组件到已有的集群里，从头开始设计这些功能组件的各种配置，结构，生命周期，存储卷，依赖等。这本书算是一个由点到面的总结，提供了不少的帮助。</p>
-<p>概念不牢，地动山摇，不系统学习还是不行。最近逐渐体会到一个好的，完善的，充分考虑的顶层设计是多么重要，否则每次设计改动对应到底层可能耗时耗力，甚至积重难返，不得不相互妥协。</p>
+<p>最近逐渐体会到一个好的，完善的，充分考虑的顶层设计是多么重要，否则每次设计改动对应到底层可能耗时耗力，甚至积重难返，不得不相互妥协。</p>
 <p>这本书不打算做细致的笔记，但会记录一些以前没意识到或没见过的概念和工具。之后打算更细致的看一看<code>&lt;&lt;Kubernetes in Action&gt;&gt;</code>。我看最近<code>O&#39;REILLY</code>出版了或即将出版很多关于Kubernetes的新书，其中比较吸引我的是<code>pattern</code>，<code>best practices</code>, <code>Operator</code>以及一些<code>cloud native devops</code>相关的知识点，当然还包括一些重要系统组件和插件，比如<code>SSL/TLS</code>, <code>CoreDNS</code>和<code>etcd</code>等。看来2019剩下的日子是真的会很忙了。</p>
+<h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><p>按照计划在2019年10月之前把这本书看完了第一遍，在书中做了不少标记和勾画，接下来快速记录一下其中的我比较注意的地方：</p>
+<hr>
+<p>Kubernetes通过其附加组件之一的CoreDNS为系统内置了服务注册和服务发现功能，为每个Service配置了DNS名称，允许客户端通过此名称发出访问，并且Service通过kube-proxy creates iptabls or ipvs内建了负载均衡机制。Service本质上讲是一个四层代理服务，也可将外部流量引入集群内部。</p>
+<p>网络存储系统，诸如：NFS, GlusterFS, Ceph, Cinder…目前项目里面其实用的是本地存储，只不过额外设置了NFS将本地存储连接了起来，并没有直接只用K8s中的NFS配置。</p>
+<p>API Server是整个集群的网关。</p>
+<p>etcd是由CoreOS基于raft协议开发的分布式键值存储，可用于服务发现，共享配置以及一致性保障，它是独立的服务组件，并不隶属于K8s。etcd中键值发生变化时会通知API Server，并通过watch API向客户端输出，实现高效协同。</p>
+<p>K8s supports container runtime: Docker, cri-o, RKT, Fraki<br>cri-o use gRPC(Remote procedure call)</p>
+<p>K8s Dashborad<br>Prometheus and it’s add-ons<br>Ingress controller: 应用层负载均衡机制: Nginx, HAProxy…</p>
+<p>Pod网络由网络插件实现(for example: fannel, calico, weave…), Service网络由K8s指定。</p>
+<hr>
 
       
     </div>
@@ -547,8 +569,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -565,7 +596,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -778,6 +809,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#笔记"><span class="nav-number">1.</span> <span class="nav-text">笔记</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

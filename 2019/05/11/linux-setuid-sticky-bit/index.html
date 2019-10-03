@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I haven’t seen something like this:1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllibdrwxr-x--T 1 wasadmin dstage    21 Mar 21 03:5">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-15T17:41:03.172Z">
+<meta property="og:updated_time" content="2019-09-29T01:05:39.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Special Permission Bits">
 <meta name="twitter:description" content="I haven’t seen something like this:1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllibdrwxr-x--T 1 wasadmin dstage    21 Mar 21 03:5">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">111</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">112</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-15 10:41:03" itemprop="dateModified" datetime="2019-05-15T10:41:03-07:00">2019-05-15</time>
+                <time title="Modified: 2019-09-28 18:05:39" itemprop="dateModified" datetime="2019-09-28T18:05:39-07:00">2019-09-28</time>
               
             
           </span>
@@ -489,6 +489,9 @@
 <p>Note that both the <code>setuid</code> and <code>setgit</code> bits have <strong>no effect</strong> if the executable bit is not set. if executable bit is not set, <code>s</code> changes to <code>S</code>.</p>
 <h4 id="Chown-Removes-Setuid"><a href="#Chown-Removes-Setuid" class="headerlink" title="Chown Removes Setuid"></a>Chown Removes Setuid</h4><p>If you run <code>chown</code> on a <code>setuid</code> script, you will find that the <code>s</code> is gone. This is a reasonable design, otherwise the <code>s</code> will apply to the new owner, a big security hole.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">The `chown&apos; command sometimes clears the set-user-ID or set-group-ID</span><br><span class="line">permission bits.  This behavior depends on the policy and functionality</span><br><span class="line">of the underlying `chown&apos; system call, which may make system-dependent</span><br><span class="line">file mode modifications outside the control of the `chown&apos; command.</span><br><span class="line">For example, the `chown&apos; command might not affect those bits when</span><br><span class="line">invoked by a user with appropriate privileges, or when the bits signify</span><br><span class="line">some function other than executable permission (e.g., mandatory</span><br><span class="line">locking).  When in doubt, check the underlying system behavior.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note that is you want to keep setuid and owner no change, for example last time deal with <code>sqllib</code>, please perserve when you do copy like: <code>/bin/cp -rfp /home/dfdcdc/sqllib /tmp</code></p>
+</blockquote>
 <h3 id="Sticky-Bit"><a href="#Sticky-Bit" class="headerlink" title="Sticky Bit"></a>Sticky Bit</h3><p>When set on a file or directory, the <code>sticky bit</code>, or <code>+t</code> mode, means that only the <code>owner</code> (or <code>root</code>) can delete the file (or files under the directory), <strong>regardless of</strong> which users have write access to this file or directory by way of group membership or ownership! </p>
 <p>This is useful when a file or directory is owned by a group through which a number of users share write access to a given set of files.</p>
 <p>set sticky bit:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +t script.sh</span><br></pre></td></tr></table></figure></p>
@@ -622,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
