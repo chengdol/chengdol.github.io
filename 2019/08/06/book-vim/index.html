@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Recently I am reading the book about Vim, I have used it for one year in daily work but haven’t got a chance to learn it systematically. Actually you can learn Vim by run command vimtutor in your term">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-03T03:53:54.944Z">
+<meta property="og:updated_time" content="2019-10-03T17:25:30.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practical Vim, 2nd Edition">
 <meta name="twitter:description" content="Recently I am reading the book about Vim, I have used it for one year in daily work but haven’t got a chance to learn it systematically. Actually you can learn Vim by run command vimtutor in your term">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-02 20:53:54" itemprop="dateModified" datetime="2019-10-02T20:53:54-07:00">2019-10-02</time>
+                <time title="Modified: 2019-10-03 10:25:30" itemprop="dateModified" datetime="2019-10-03T10:25:30-07:00">2019-10-03</time>
               
             
           </span>
@@ -482,8 +482,8 @@
 <p><code>%</code> is used tp match another part of (, [ or {. This is very useful in debugging a program with unmatched parentheses.</p>
 <p><code>:s/old/new/g</code> to substitute <code>old</code> by <code>new</code> in a line for all occrurences. you must place the cursor in that line.</p>
 <p>To change every occurrence of a character string between two lines,<br><code>:#,#s/old/new/g</code>  where <code>#,#</code> are the line numbers of the range of lines where the substitution is to be done.<br><code>:%s/old/new/g</code>    to change every occurrence in the whole file.<br><code>:%s/old/new/gc</code>   to find every occurrence in the whole file, with a prompt whether to substitute or not, <code>c</code> is confirmation.</p>
-<p><code>:!&lt;commands&gt;</code> is used to execute external commands, for example <code>:!ls -ltr /tmp</code>.</p>
-<p><code>w filename</code> used to save file to <code>filename</code>.</p>
+<p><code>:!&lt;commands&gt;</code> is used to execute external commands, for example <code>:!ls -ltr /tmp</code>. (the same as IPython)</p>
+<p><code>:w filename</code> used to save file to <code>filename</code>.</p>
 <p><code>v</code> and then you move the cursor to select the text you want, if you want to delete them next, type <code>d</code>, if you want to save the selected text, press <code>:</code>, then type <code>w filename</code>.</p>
 <p><code>:r filename</code> will retrive the file placed under the cursor. you can also read the output of an external command, <code>:r !ls -ltr</code>.</p>
 <p><code>o</code> will open a line below cursor, <code>O</code> open above.</p>
