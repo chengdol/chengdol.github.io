@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master:123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribute">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-24T23:05:42.733Z">
+<meta property="og:updated_time" content="2019-10-28T18:42:41.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Rename Limit">
 <meta name="twitter:description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master:123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribute">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-24 16:05:42" itemprop="dateModified" datetime="2019-10-24T16:05:42-07:00">2019-10-24</time>
+                <time title="Modified: 2019-10-28 11:42:41" itemprop="dateModified" datetime="2019-10-28T11:42:41-07:00">2019-10-28</time>
               
             
           </span>
@@ -464,7 +464,7 @@
         <p>I encounter a git issue when I run these commands, they are used to sync up with origin/master:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">git_clean</span></span>() &#123;</span><br><span class="line">  git reset --hard HEAD</span><br><span class="line">  sed -i -e <span class="string">'s/^\(\*[ ][ ]*text.*\)/#\1/'</span> .gitattributes</span><br><span class="line">  git status</span><br><span class="line">  git clean -fdx</span><br><span class="line">  git checkout -- .</span><br><span class="line">  sed -i -e <span class="string">'s/^#\(\*[ ][ ]*text.*\)/\1/'</span> .gitattributes</span><br><span class="line">  git status</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>I get errors:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">warning: inexact rename detection was skipped due to too many files.</span><br><span class="line">warning: you may want to set your merge.renamelimit variable to at least 12454 and retry the command.</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure></p>
 <p>Try to set <code>rename.limit</code> to larger value and run commands again but that does not help, <a href="https://stackoverflow.com/questions/4722423/how-to-merge-two-branches-with-different-directory-hierarchies-in-git" target="_blank" rel="noopener">https://stackoverflow.com/questions/4722423/how-to-merge-two-branches-with-different-directory-hierarchies-in-git</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config merge.renameLimit 999999</span><br><span class="line">git merge --abort</span><br><span class="line">git config --unset merge.renameLimit</span><br></pre></td></tr></table></figure></p>
-<p>So far these commands help:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard origin/master</span><br><span class="line">git fetch -p</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
+<p>So far these commands help:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard origin/master</span><br><span class="line">git fetch -p</span><br><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line"><span class="comment">## if failed again, run</span></span><br><span class="line">git merge --abort</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
