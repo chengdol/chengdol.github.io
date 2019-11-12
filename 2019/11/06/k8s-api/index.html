@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="In the situation that issue k8s instructions from inside the container, usually we use curl command to do that (if you have kubectl binary in container’s execution path, you can use kubectl command as">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-07T21:58:50.183Z">
+<meta property="og:updated_time" content="2019-11-07T22:01:07.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes API curl Access">
 <meta name="twitter:description" content="In the situation that issue k8s instructions from inside the container, usually we use curl command to do that (if you have kubectl binary in container’s execution path, you can use kubectl command as">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-07 13:58:50" itemprop="dateModified" datetime="2019-11-07T13:58:50-08:00">2019-11-07</time>
+                <time title="Modified: 2019-11-07 14:01:07" itemprop="dateModified" datetime="2019-11-07T14:01:07-08:00">2019-11-07</time>
               
             
           </span>
@@ -469,6 +469,7 @@
 <p>How do I know the curl path to request?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod -v 10</span><br></pre></td></tr></table></figure></p>
 <p>this will show you verbose message (curl under the hood), then you can get the path and use it in your curl command.</p>
 <p>Not all kubectl commands are clearly with curl, for example <code>kubectl exec</code>, still need some efforts to know.</p>
+<p>references:<br><a href="https://blog.openshift.com/executing-commands-in-pods-using-k8s-api/" target="_blank" rel="noopener">https://blog.openshift.com/executing-commands-in-pods-using-k8s-api/</a><br><a href="https://docs.okd.io/latest/rest_api/api/v1.Pod.html#Post-api-v1-namespaces-namespace-pods-name-exec" target="_blank" rel="noopener">https://docs.okd.io/latest/rest_api/api/v1.Pod.html#Post-api-v1-namespaces-namespace-pods-name-exec</a></p>
 
       
     </div>
