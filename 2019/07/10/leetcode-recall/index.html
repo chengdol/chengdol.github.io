@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-11T22:35:56.869Z">
+<meta property="og:updated_time" content="2019-11-24T01:49:56.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sigh, Recall!">
 <meta name="twitter:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-11 14:35:56" itemprop="dateModified" datetime="2019-11-11T14:35:56-08:00">2019-11-11</time>
+                <time title="Modified: 2019-11-23 17:49:56" itemprop="dateModified" datetime="2019-11-23T17:49:56-08:00">2019-11-23</time>
               
             
           </span>
@@ -478,6 +478,7 @@
 <h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br></pre></td></tr></table></figure>
 <p>HashMap&lt;&gt;() thread safe no need<br>HashTable&lt;&gt;(), thread safe but ConcurrentHash…</p>
 <p>有时用char[26]（c - ‘a’） 或者 int[256] (直接用c即可) 可以用来代替hashmap</p>
+<p>如果要返回map中的任意一个key，比如key是string类型<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (String)map.keySet().iterator().next();</span><br></pre></td></tr></table></figure></p>
 <p>this is java <strong>syntax</strong>, I encounter it in leetcode<br><a href="https://stackoverflow.com/questions/1958636/what-is-double-brace-initialization-in-java" target="_blank" rel="noopener">https://stackoverflow.com/questions/1958636/what-is-double-brace-initialization-in-java</a></p>
 <h2 id="3-items-if-expression"><a href="#3-items-if-expression" class="headerlink" title="3 items if expression"></a>3 items if expression</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// I forget the precedence</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span> + <span class="number">3</span> == <span class="number">3</span>? <span class="keyword">true</span>: <span class="keyword">false</span></span><br><span class="line"><span class="comment">// this will first 1 + 2 + 3 then compare with 3!</span></span><br><span class="line"><span class="number">1</span> + <span class="number">2</span> + (<span class="number">3</span> == <span class="number">3</span>? <span class="keyword">true</span>: <span class="keyword">false</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="for-loop"><a href="#for-loop" class="headerlink" title="for loop"></a>for loop</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// enhance for loop</span></span><br><span class="line"><span class="keyword">for</span> (Character ch : str.toCharArray())</span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
