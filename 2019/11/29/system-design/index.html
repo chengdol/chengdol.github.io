@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This blog is for system design topic, please revisit frequently to refresh. Fields I need to know这里的笔记主要根据以下几点展开:  Database (7 weeks 7 databases) Cache system Message queue (kafka / zookeeper or other">
+  <meta name="description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Crucial Components这里的笔记主要根据以下几点展开:  Database">
 <meta name="keywords" content="system design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="System Design Summary">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/system-design/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog is for system design topic, please revisit frequently to refresh. Fields I need to know这里的笔记主要根据以下几点展开:  Database (7 weeks 7 databases) Cache system Message queue (kafka / zookeeper or other">
+<meta property="og:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Crucial Components这里的笔记主要根据以下几点展开:  Database">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-30T00:46:14.101Z">
+<meta property="og:updated_time" content="2019-12-01T06:36:33.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="System Design Summary">
-<meta name="twitter:description" content="This blog is for system design topic, please revisit frequently to refresh. Fields I need to know这里的笔记主要根据以下几点展开:  Database (7 weeks 7 databases) Cache system Message queue (kafka / zookeeper or other">
+<meta name="twitter:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Crucial Components这里的笔记主要根据以下几点展开:  Database">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">66</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">68</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">21</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">22</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">126</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">128</span></a>
 
   </li>
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-11-29 10:15:58 / Modified: 16:46:14" itemprop="dateCreated datePublished" datetime="2019-11-29T10:15:58-08:00">2019-11-29</time>
+              <time title="Created: 2019-11-29 10:15:58" itemprop="dateCreated datePublished" datetime="2019-11-29T10:15:58-08:00">2019-11-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-30 22:36:33" itemprop="dateModified" datetime="2019-11-30T22:36:33-08:00">2019-11-30</time>
               
             
           </span>
@@ -449,8 +461,8 @@
       
 
       
-        <p>This blog is for system design topic, please revisit frequently to refresh.</p>
-<h1 id="Fields-I-need-to-know"><a href="#Fields-I-need-to-know" class="headerlink" title="Fields I need to know"></a>Fields I need to know</h1><p>这里的笔记主要根据以下几点展开:</p>
+        <p>This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from <code>https://www.educative.io/</code>.</p>
+<h1 id="Other-System-Design-Videos"><a href="#Other-System-Design-Videos" class="headerlink" title="Other System Design Videos:"></a>Other System Design Videos:</h1><h1 id="Crucial-Components"><a href="#Crucial-Components" class="headerlink" title="Crucial Components"></a>Crucial Components</h1><p>这里的笔记主要根据以下几点展开:</p>
 <ol>
 <li>Database (7 weeks 7 databases)</li>
 <li>Cache system</li>
@@ -459,27 +471,31 @@
 <li>Log systems</li>
 <li>My domain knowledge k8s, docker, shell, micro-services</li>
 </ol>
-<h2 id="备份的说法"><a href="#备份的说法" class="headerlink" title="备份的说法:"></a>备份的说法:</h2><p>Standby replicas<br>Failover to other healthy copies<br>Duplicates<br>Backup (spare)<br>Redundancy (redundant secondary copy)</p>
-<h2 id="NoSQL-database的种类，特点和典型应用"><a href="#NoSQL-database的种类，特点和典型应用" class="headerlink" title="NoSQL database的种类，特点和典型应用:"></a>NoSQL database的种类，特点和典型应用:</h2><p><a href="https://www.youtube.com/watch?v=uD3p_rZPBUQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=uD3p_rZPBUQ</a></p>
+<h1 id="备份的说法"><a href="#备份的说法" class="headerlink" title="备份的说法:"></a>备份的说法:</h1><p>Standby replicas<br>Failover to other healthy copies<br>Duplicates<br>Backup (spare)<br>Redundancy (redundant secondary copy)</p>
+<h1 id="NoSQL-database的种类，特点和典型应用"><a href="#NoSQL-database的种类，特点和典型应用" class="headerlink" title="NoSQL database的种类，特点和典型应用:"></a>NoSQL database的种类，特点和典型应用:</h1><p><a href="https://www.youtube.com/watch?v=uD3p_rZPBUQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=uD3p_rZPBUQ</a></p>
 <ol>
 <li>Key-value stores: Redis, Dynamo (redis can also be cache)</li>
 <li>Document database: MongoDB</li>
 <li>Wide-column database: Cassandra, HBase<br><a href="https://www.youtube.com/watch?v=8KGVFB3kVHQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=8KGVFB3kVHQ</a></li>
 <li>Graph database: Neo4J</li>
 </ol>
-<h2 id="常用技术"><a href="#常用技术" class="headerlink" title="常用技术"></a>常用技术</h2><ol>
-<li>consistent hashing (with virtual replicas)<br><a href="https://www.youtube.com/watch?v=ffE1mQWxyKM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ffE1mQWxyKM</a><br>Using hash mod strategy is not efficient, think about that add a new server, then original 20 % 3 = 2 now is 20 % 4 = 0. We have to re-organize all the mappings.</li>
-</ol>
+<p>Advantage of NOSQL database：<br>unstructed, easy to scale up and down (data sharding), high performance with big data.</p>
+<h1 id="常用技术知识"><a href="#常用技术知识" class="headerlink" title="常用技术知识"></a>常用技术知识</h1><h2 id="Consistent-Hashing-with-virtual-replicas"><a href="#Consistent-Hashing-with-virtual-replicas" class="headerlink" title="Consistent Hashing (with virtual replicas)"></a>Consistent Hashing (with virtual replicas)</h2><p><a href="https://www.youtube.com/watch?v=ffE1mQWxyKM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ffE1mQWxyKM</a><br>Using hash mod strategy is not efficient, think about that add a new server, then original 20 % 3 = 2 now is 20 % 4 = 0. We have to re-organize all the mappings.</p>
 <p><a href="https://www.youtube.com/watch?v=zaRkONvyGr8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=zaRkONvyGr8</a><br>Consistent hashing can be used in many situations, like distributed cahce, loal balancing, database, etc.</p>
 <p>For example, we have <code>n</code> servers.<br>Hash the request and get the location of it in the <code>ring</code>, find the server with hash value equal or larger than it and send this request to that server (clockwise move). But server may not distributed in ring evenly or the requests is not uniformly (thus server load facor is not <code>1/n</code>), so we can use virtual replicas, this can implement by other hash function.</p>
 <p>With contsistent hashing, add or remove servers will not cause much overhead operations. The new added server will grab objects from its near servers and removed server, all original objects will move to next server after removed one.</p>
-<ol start="2">
-<li>long polling (轮询)<br><a href="https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0</a><br>和一般的polling都属于pull(拉模式)。</li>
-</ol>
-<p>This is a variation of the traditional polling technique that allows the server to push information to a client whenever the data is available. With Long-Polling, the client requests information from the server exactly as in normal polling, but with the expectation that the server may not respond immediately. That’s why this technique is sometimes referred to as a <code>Hanging GET</code>.</p>
-<p>Each Long-Poll request has a timeout. The client has to reconnect periodically after the connection is closed due to timeouts.</p>
-<ol start="3">
-<li>data sharding<br><a href="https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6" target="_blank" rel="noopener">https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6</a><br>Horizontal partitioning is also called as Data Sharding</li>
+<h2 id="Long-Polling-轮询"><a href="#Long-Polling-轮询" class="headerlink" title="Long Polling (轮询)"></a>Long Polling (轮询)</h2><p><a href="https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0</a><br>和一般的polling都属于pull(拉模式)。</p>
+<blockquote>
+<p>题外话: push模式其实也是建立了一个持久的connection，但server一旦新的信息就会push给client，而不会去在乎client的处理能力，这是一个缺点, long polling对于client要更灵活一些。</p>
+</blockquote>
+<p>This is a variation of the traditional polling technique that allows the server to push information to a client whenever the data is available. With Long-Polling, the client requests information from the server exactly as in normal polling, but with the expectation that the server may not respond immediately (keep the connection open). That’s why this technique is sometimes referred to as a <code>Hanging GET</code>.</p>
+<p>Each Long-Poll request has a <code>timeout</code>. The client has to reconnect periodically after the connection is closed due to timeouts or receive the disconnect from server.</p>
+<p>如果client突然unavailable了，如何检测呢？这个connection是如何保持的？我猜想的是connection保持期间，并不需要额外的保持message通知server client是否健在(我记得TCP有一个机制会检测这个connection是否健康？)。如果server 发送了message未收到acknowledge则说明client不在了，则connection中断。</p>
+<h2 id="Data-Sharding"><a href="#Data-Sharding" class="headerlink" title="Data Sharding"></a>Data Sharding</h2><p><a href="https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6" target="_blank" rel="noopener">https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6</a><br><code>Horizontal partitioning</code> is also called as Data Sharding</p>
+<h1 id="Some-Design-details"><a href="#Some-Design-details" class="headerlink" title="Some Design details"></a>Some Design details</h1><ol>
+<li>data compression 需要吗， 如何选择？</li>
+<li>capacity estimation: metadata + content 两方面都要考虑，high level estimations 主要包括: storage for each day, storage for xx years, incoming bandwidth, outgoing bandwidth.</li>
+<li>database需要有哪些符合场景的特点? 比如quick small updates, ACID, range based search, etc.</li>
 </ol>
 
       
@@ -526,6 +542,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/29/linux-networking-tools/" rel="prev" title="Linux Networking Tools">
+                Linux Networking Tools <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -597,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">126</span>
+                    <span class="site-state-item-count">128</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -652,7 +672,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -797,7 +819,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">66</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">68</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -833,7 +859,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fields-I-need-to-know"><span class="nav-number">1.</span> <span class="nav-text">Fields I need to know</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#备份的说法"><span class="nav-number">1.1.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSQL-database的种类，特点和典型应用"><span class="nav-number">1.2.</span> <span class="nav-text">NoSQL database的种类，特点和典型应用:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用技术"><span class="nav-number">1.3.</span> <span class="nav-text">常用技术</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-System-Design-Videos"><span class="nav-number">1.</span> <span class="nav-text">Other System Design Videos:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Crucial-Components"><span class="nav-number">2.</span> <span class="nav-text">Crucial Components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备份的说法"><span class="nav-number">3.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL-database的种类，特点和典型应用"><span class="nav-number">4.</span> <span class="nav-text">NoSQL database的种类，特点和典型应用:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用技术知识"><span class="nav-number">5.</span> <span class="nav-text">常用技术知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-Hashing-with-virtual-replicas"><span class="nav-number">5.1.</span> <span class="nav-text">Consistent Hashing (with virtual replicas)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Polling-轮询"><span class="nav-number">5.2.</span> <span class="nav-text">Long Polling (轮询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Sharding"><span class="nav-number">5.3.</span> <span class="nav-text">Data Sharding</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Design-details"><span class="nav-number">6.</span> <span class="nav-text">Some Design details</span></a></li></ol></div>
             
 
           </div>
