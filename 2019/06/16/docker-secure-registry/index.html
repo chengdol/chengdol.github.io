@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Since securing access to your hosted images is paramount, the Registry natively supports TLS and basic authentication. The Registry GitHub repository includes additional information about advanced aut">
+  <meta name="description" content="Securing access to your hosted images is paramount, the registry natively supports TLS and basic authentication, let’s do it. The Registry GitHub repository includes additional information about advan">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Secure Docker Registry">
 <meta property="og:url" content="http://yoursite.com/2019/06/16/docker-secure-registry/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Since securing access to your hosted images is paramount, the Registry natively supports TLS and basic authentication. The Registry GitHub repository includes additional information about advanced aut">
+<meta property="og:description" content="Securing access to your hosted images is paramount, the registry natively supports TLS and basic authentication, let’s do it. The Registry GitHub repository includes additional information about advan">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-03T07:22:24.423Z">
+<meta property="og:updated_time" content="2019-12-03T23:37:15.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Secure Docker Registry">
-<meta name="twitter:description" content="Since securing access to your hosted images is paramount, the Registry natively supports TLS and basic authentication. The Registry GitHub repository includes additional information about advanced aut">
+<meta name="twitter:description" content="Securing access to your hosted images is paramount, the registry natively supports TLS and basic authentication, let’s do it. The Registry GitHub repository includes additional information about advan">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">68</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">69</span></a>
 
   </li>
         
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-02 23:22:24" itemprop="dateModified" datetime="2019-12-02T23:22:24-08:00">2019-12-02</time>
+                <time title="Modified: 2019-12-03 15:37:15" itemprop="dateModified" datetime="2019-12-03T15:37:15-08:00">2019-12-03</time>
               
             
           </span>
@@ -461,15 +461,38 @@
       
 
       
-        <p>Since securing access to your hosted images is paramount, the Registry natively supports <code>TLS</code> and <code>basic authentication</code>.</p>
+        <p>Securing access to your hosted images is paramount, the registry natively supports <code>TLS</code> and <code>basic authentication</code>, let’s do it.</p>
 <p>The Registry GitHub repository includes additional information about advanced authentication and authorization methods. Only very large or public deployments are expected to extend the Registry in this way.</p>
 <p>Finally, the Registry ships with a robust notification system, calling webhooks in response to activity, and both extensive logging and reporting, mostly useful for large installations that want to collect metrics.</p>
-<h2 id=""><a href="#" class="headerlink" title="========================================================"></a>========================================================</h2><p>go through this section:<br><a href="https://docs.docker.com/registry/" target="_blank" rel="noopener">https://docs.docker.com/registry/</a></p>
-<p>secure private docker registry<br><a href="https://www.cnblogs.com/justmine/p/8666907.html" target="_blank" rel="noopener">https://www.cnblogs.com/justmine/p/8666907.html</a><br><a href="https://www.cnblogs.com/dingyingsi/p/9560906.html" target="_blank" rel="noopener">https://www.cnblogs.com/dingyingsi/p/9560906.html</a></p>
-<p>this is a workaround, seems good:<br><a href="https://stackoverflow.com/questions/24990784/docker-what-is-the-simplest-way-to-secure-a-private-registry" target="_blank" rel="noopener">https://stackoverflow.com/questions/24990784/docker-what-is-the-simplest-way-to-secure-a-private-registry</a></p>
-<p>how about docker login? docker login is for auth server. then we get token to access docker registry.<br><a href="https://stackoverflow.com/questions/50033624/how-to-set-username-and-password-for-our-own-docker-private-registry" target="_blank" rel="noopener">https://stackoverflow.com/questions/50033624/how-to-set-username-and-password-for-our-own-docker-private-registry</a><br><a href="https://www.ctl.io/developers/blog/post/how-to-secure-your-private-docker-registry/" target="_blank" rel="noopener">https://www.ctl.io/developers/blog/post/how-to-secure-your-private-docker-registry/</a><br>book use:<br><a href="https://github.com/opendns/nginx-auth-proxy" target="_blank" rel="noopener">https://github.com/opendns/nginx-auth-proxy</a></p>
-<p>how about docker registry web UI?<br>there are some open sources… need to do research</p>
-<p>account management for docker registry?<br>in book it uses docker index?</p>
+<h2 id="Generate-Self-signed-Certificate"><a href="#Generate-Self-signed-Certificate" class="headerlink" title="Generate Self-signed Certificate"></a>Generate Self-signed Certificate</h2><p><a href="https://docs.docker.com/registry/insecure/" target="_blank" rel="noopener">https://docs.docker.com/registry/insecure/</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/certs</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate domain.key and domain.crt</span></span><br><span class="line"><span class="comment">## I use -days 3650</span></span><br><span class="line">openssl req \</span><br><span class="line">  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \</span><br><span class="line">  -x509 -days 3650 -out certs/domain.crt</span><br></pre></td></tr></table></figure></p>
+<p>During the generate process, input this field using your docker registry domain:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## for example: chengdol.registry.com</span></span><br><span class="line">Common Name (eg, your name or your server<span class="string">'s hostname) []:chengdol.registry.com</span></span><br></pre></td></tr></table></figure></p>
+<p>Also follow the instruction in above url, instruct <code>every</code> Docker daemon to trust that certificate. The way to do this depends on your OS, for Linux:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/docker/certs.d/&lt;docker registry domain&gt;/</span><br><span class="line"><span class="comment">## copy domain.crt (generate by openssl) to this folder on every Docker host</span></span><br><span class="line">cp /root/certs/domain.crt /etc/docker/certs.d/&lt;docker registry domain&gt;/</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意，Docker官方文档中用的是<code>&lt;docker registry domain&gt;:5000/</code>文件夹名，但如果你配置的是443端口,则会出错，通过Docker daemon中的log，发现对于443端口，这里不需要<code>:5000</code>. 但如果设置了basic authentication且用的是5000端口，则需要了。</p>
+</blockquote>
+<p>Otherwise when push and pull you will get this error:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error response from daemon: Get https://chengdol.registry.com/v2/: x509: certificate signed by unknown authority</span><br></pre></td></tr></table></figure></p>
+<p>这时候可以去docker daemon log中看看到底是在哪个文件夹下检查的cert.</p>
+<p>If docker still complains about the certificate when using authentication?<br>When using authentication, some versions of Docker also require you to trust the certificate at the OS level.</p>
+<p>For RedHat, do:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp certs/domain.crt /etc/pki/ca-trust/<span class="built_in">source</span>/anchors/myregistrydomain.com.crt</span><br><span class="line">update-ca-trust</span><br></pre></td></tr></table></figure></p>
+<h2 id="Setup-Secure-Docker-Registry"><a href="#Setup-Secure-Docker-Registry" class="headerlink" title="Setup Secure Docker Registry"></a>Setup Secure Docker Registry</h2><p><a href="https://docs.docker.com/registry/deploying/#run-the-registry-as-a-service" target="_blank" rel="noopener">https://docs.docker.com/registry/deploying/#run-the-registry-as-a-service</a></p>
+<p>We have the <code>certs</code> folder with crt and key created by openssl.</p>
+<p>Start the docker registry container, using TLS certificate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /root/certs:/certs \</span><br><span class="line">  -e REGISTRY_HTTP_ADDR=0.0.0.0:443 \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  -p 443:443 \</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这里很奇怪，如果不用443而是默认5000端口，则其他主机不需要cert也可以对registry进行push操作。</p>
+</blockquote>
+<blockquote>
+<p>For K8s use, can build a certificate pre-installed docker registry image, but still need domain.crt for each host.</p>
+</blockquote>
+<p>Now you can push and pull like, no need to specify port number, it will use 443 port:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu</span><br><span class="line">docker tag ubuntu chengdol.registry.com/ubuntu:v1</span><br><span class="line">docker push chengdol.registry.com/ubuntu:v1</span><br><span class="line">docker pull chengdol.registry.com/ubuntu:v1</span><br></pre></td></tr></table></figure></p>
+<p>So far, secure configuration is done, now the docker registry will use <code>HTTPS</code> in <code>443</code> port to communciate with docker client. If you want to also setup basic authentication, see below:</p>
+<h2 id="Setup-Basic-Authrntication"><a href="#Setup-Basic-Authrntication" class="headerlink" title="Setup Basic Authrntication"></a>Setup Basic Authrntication</h2><blockquote>
+<p>Warning: You cannot use authentication with authentication schemes that send credentials as clear text. You <strong>must</strong> configure <code>TLS</code> first for authentication to work.</p>
+</blockquote>
+<p>Use <code>htpasswd</code> to create the user info:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/auth</span><br><span class="line">htpasswd -b -c /root/auth/htpasswd demo demo</span><br></pre></td></tr></table></figure></p>
+<p>then, we switch back to <code>5000</code> port: (注意这里没用443端口)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /root/auth:/auth \</span><br><span class="line">  -e &quot;REGISTRY_AUTH=htpasswd&quot; \</span><br><span class="line">  -e &quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot; \</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  -v /root/certs:/certs \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure></p>
+<p>One thing need to change is in <code>every</code> docker host, under <code>/etc/docker/certs.d/</code> directory, we create a folder <code>&lt;docker registry domain&gt;:5000</code> and put domain.crt in it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/docker/certs.d/&lt;docker registry domain&gt;:5000/</span><br><span class="line"><span class="comment">## copy domain.crt (generate by openssl) to this folder on every Docker host</span></span><br><span class="line">cp domain.crt /etc/docker/certs.d/&lt;docker registry domain&gt;:5000/</span><br></pre></td></tr></table></figure></p>
+<p>Then, you need to first login to push or pull<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login &lt;docker registry domain&gt;:5000 -u demo -p demo</span><br></pre></td></tr></table></figure></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>OK, now a secure docker registry and basic authentication is up and running. in every node, first docker login, then you can do push and pull operations.</p>
 
       
     </div>
@@ -796,7 +819,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">68</span>
+                      
+                    
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -832,7 +857,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">========================================================</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Generate-Self-signed-Certificate"><span class="nav-number">1.</span> <span class="nav-text">Generate Self-signed Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-Secure-Docker-Registry"><span class="nav-number">2.</span> <span class="nav-text">Setup Secure Docker Registry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-Basic-Authrntication"><span class="nav-number">3.</span> <span class="nav-text">Setup Basic Authrntication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
             
 
           </div>

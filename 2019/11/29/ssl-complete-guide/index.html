@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-03T04:48:37.446Z">
+<meta property="og:updated_time" content="2019-12-03T18:45:52.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL Complete guide">
 <meta name="twitter:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">68</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">69</span></a>
 
   </li>
         
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-02 20:48:37" itemprop="dateModified" datetime="2019-12-02T20:48:37-08:00">2019-12-02</time>
+                <time title="Modified: 2019-12-03 10:45:52" itemprop="dateModified" datetime="2019-12-03T10:45:52-08:00">2019-12-03</time>
               
             
           </span>
@@ -518,6 +518,10 @@
 <p>self-signed certificate: issued and signed by the owner.</p>
 </blockquote>
 <p>more reads:<br><a href="https://stackoverflow.com/questions/18257185/how-does-a-public-key-verify-a-signature" target="_blank" rel="noopener">How does a public key verify a signature?</a></p>
+<h2 id="Why-we-need-intermediary-CAs"><a href="#Why-we-need-intermediary-CAs" class="headerlink" title="Why we need intermediary CAs?"></a>Why we need intermediary CAs?</h2><p>There are not so much public root CAs because of problem of trust. Actually anybody can create own root CA but nobody will trust it. That’s why there is limited set of global root CAs that are trusted worldwide by operating systems and browsers. You can view list of such global CAs with their root certificates in any browser or OS.</p>
+<p>Such root CAs have certificates with long period of validity and their main responsibility is simple create “source of trust”. That’s why they don’t issue certificates to end users to avoid additional work and minimize risk that their private keys will be compromised. Intermediate CAs certificates don’t necessarily need to be in the list of trusted certificates in the OS or browser. They need simply be issued by trusted root CA.</p>
+<h1 id="Chain-of-Trust"><a href="#Chain-of-Trust" class="headerlink" title="Chain of Trust"></a>Chain of Trust</h1><p><code>openssl</code> command:</p>
+<p>Generate RSA private key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"><span class="comment"># generate private.pem file private key with aes256 encryption method</span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -844,7 +848,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">68</span>
+                      
+                    
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -880,7 +886,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">1.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">2.</span> <span class="nav-text">Chain of Trust</span></a></li></ol></div>
             
 
           </div>
