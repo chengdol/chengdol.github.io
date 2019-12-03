@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+  <meta name="description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
 <meta name="keywords" content="ssl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSL Complete guide">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/ssl-complete-guide/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-01T00:12:09.911Z">
+<meta property="og:updated_time" content="2019-12-03T04:48:37.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL Complete guide">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">128</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">129</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-30 16:12:09" itemprop="dateModified" datetime="2019-11-30T16:12:09-08:00">2019-11-30</time>
+                <time title="Modified: 2019-12-02 20:48:37" itemprop="dateModified" datetime="2019-12-02T20:48:37-08:00">2019-12-02</time>
               
             
           </span>
@@ -461,7 +461,64 @@
       
 
       
-        
+        <p>This course is all about securing websites with SSL/TLS certificates.<br>Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates.</p>
+<p><a href="https://www.ssllabs.com/index.html" target="_blank" rel="noopener">https://www.ssllabs.com/index.html</a>:<br>The quality of SSL varies, you have SSL setup doesn’t mean your site is secured good. The HTTPS may not working correctly, sub-optimal.</p>
+<p>If you click the <code>lock</code> icon at left of the website address, it will show you if the connection is secured or not, it’s certificates, cookies and so on.</p>
+<blockquote>
+<p>Install wireshark on Mac, go to download the <code>stable</code> version dmg package and double click to install.</p>
+</blockquote>
+<blockquote>
+<p>You can use chrome inspect -&gt; Network to see traffic details or use wireshark</p>
+</blockquote>
+<p>for example, from <code>Network</code> section, check HEADER information you can get IP address of source website, or just use <code>host</code>, <code>nslookup</code> commands to get IP address.</p>
+<blockquote>
+<p>Interesting, from <code>Network</code> I see the the chrome browser actually uses IPV6 address talk to server, for example facebook and some other sites. see this <a href="https://superuser.com/questions/1199129/how-web-browser-determines-when-to-use-ipv4-or-ipv6-to-connect-to-the-destinatio" target="_blank" rel="noopener">question</a></p>
+</blockquote>
+<h1 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h1><ul>
+<li><p>symmetric encryption, the same key is used by both sides, for example: <code>AES</code>. this algorithm is embedded in SSL while HTTPS protocol.</p>
+</li>
+<li><p>asymmetric encryption, for example: <code>RSA</code>.</p>
+</li>
+</ul>
+<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>How does hash work to verify data integrity:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data + hash(data)  ---------&gt; data + hash(data)</span><br><span class="line">                                |         |</span><br><span class="line">                                |--hash--&gt;| (compare if they are the same)</span><br></pre></td></tr></table></figure></p>
+<p>Also, in database the password is also hashed, not plain text.</p>
+<p>algorithms like: <code>MD5</code>, <code>SHA</code>…</p>
+<ul>
+<li>MD5: 128 bits, <code>echo 123 | md5</code></li>
+</ul>
+<p>for <code>SHA</code>, use <code>shasum</code> command in linux or use inline tool.</p>
+<ul>
+<li>SHA-1: 160 bits</li>
+<li>SHA-256: 256 bits</li>
+<li><p>SHA-512: 512 bits</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shasum -a 256 -t test.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HMAC: can be used with md5 or sha. In cryptography, an HMAC (sometimes expanded as either keyed-hash message authentication code or hash-based message authentication code) is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic <code>key</code>. It may be used to simultaneously verify <code>both</code> the data integrity and the authenticity of a message, as with any MAC. Any cryptographic hash function, such as SHA-256 or SHA-3, may be used in the calculation of an HMAC.</p>
+</li>
+</ul>
+<h2 id="Asymmetric-Keys"><a href="#Asymmetric-Keys" class="headerlink" title="Asymmetric Keys"></a>Asymmetric Keys</h2><ul>
+<li>encryption<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data -------------&gt; code =========&gt;  code -------------&gt; data  (owner side)</span><br><span class="line">      public key                          private key</span><br><span class="line">      encryption                          decryption</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>requently (but not necessarily), the keys are <code>interchangeable</code>, in the sense that if key A encrypts a message, then B can decrypt it, and if key B encrypts a message, then key A can decrypt it. While common, this property is not essential to asymmetric encryption.</p>
+<ul>
+<li>signing<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">           data                          |----------&gt; hash value</span><br><span class="line">            | (hash)     ==========&gt;     |  compare       |</span><br><span class="line">            |                            |                |</span><br><span class="line">        private key encrypt              |           public key decrypte</span><br><span class="line">            |                            | (hash)         |</span><br><span class="line">data   +   encrypted hash              data    +   encrypted hash</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>this make sure the data is sent by the <code>owner of private key</code> and not been modified inbetween.</p>
+<h2 id="PKI"><a href="#PKI" class="headerlink" title="PKI"></a>PKI</h2><p><code>public key infrastructure</code> is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. The purpose of a PKI is to facilitate the secure electronic transfer of information for a range of network activities such as e-commerce, internet banking and confidential email.</p>
+<h2 id="Certificate"><a href="#Certificate" class="headerlink" title="Certificate"></a>Certificate</h2><p>a file with some contents:</p>
+<ol>
+<li>certificate owner</li>
+<li>certificate issuer</li>
+<li>signature (RSA created, made by issuer)</li>
+<li>public key (from owner, we then use this public key to HTTPS)<br>we trust the CA (the issuer) so on the certificate owner.</li>
+</ol>
+<blockquote>
+<p>self-signed certificate: issued and signed by the owner.</p>
+</blockquote>
+<p>more reads:<br><a href="https://stackoverflow.com/questions/18257185/how-does-a-public-key-verify-a-signature" target="_blank" rel="noopener">How does a public key verify a signature?</a></p>
+
       
     </div>
 
@@ -507,6 +564,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/12/02/docker-daemon-log/" rel="prev" title="Docker Deamon Log">
+                Docker Deamon Log <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -550,8 +611,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -568,7 +638,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-count">129</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -799,6 +869,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

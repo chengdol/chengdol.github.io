@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Now stop your registry and remove all data1docker container stop registry &amp;amp;&amp;amp; docker container rm -v registry -v in docker container rm. Since securing access to your hosted images is paramount">
+  <meta name="description" content="Since securing access to your hosted images is paramount, the Registry natively supports TLS and basic authentication. The Registry GitHub repository includes additional information about advanced aut">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Secure Docker Registry">
 <meta property="og:url" content="http://yoursite.com/2019/06/16/docker-secure-registry/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Now stop your registry and remove all data1docker container stop registry &amp;amp;&amp;amp; docker container rm -v registry -v in docker container rm. Since securing access to your hosted images is paramount">
+<meta property="og:description" content="Since securing access to your hosted images is paramount, the Registry natively supports TLS and basic authentication. The Registry GitHub repository includes additional information about advanced aut">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T00:10:42.762Z">
+<meta property="og:updated_time" content="2019-12-03T07:22:24.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Secure Docker Registry">
-<meta name="twitter:description" content="Now stop your registry and remove all data1docker container stop registry &amp;amp;&amp;amp; docker container rm -v registry -v in docker container rm. Since securing access to your hosted images is paramount">
+<meta name="twitter:description" content="Since securing access to your hosted images is paramount, the Registry natively supports TLS and basic authentication. The Registry GitHub repository includes additional information about advanced aut">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">128</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">129</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-15 17:10:42" itemprop="dateModified" datetime="2019-07-15T17:10:42-07:00">2019-07-15</time>
+                <time title="Modified: 2019-12-02 23:22:24" itemprop="dateModified" datetime="2019-12-02T23:22:24-08:00">2019-12-02</time>
               
             
           </span>
@@ -461,11 +461,10 @@
       
 
       
-        <p>Now stop your registry and remove all data<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container stop registry &amp;&amp; docker container rm -v registry</span><br></pre></td></tr></table></figure></p>
-<p><code>-v</code> in docker container rm.</p>
-<p>Since securing access to your hosted images is paramount, the Registry natively supports <code>TLS</code> and <code>basic authentication</code>.</p>
+        <p>Since securing access to your hosted images is paramount, the Registry natively supports <code>TLS</code> and <code>basic authentication</code>.</p>
 <p>The Registry GitHub repository includes additional information about advanced authentication and authorization methods. Only very large or public deployments are expected to extend the Registry in this way.</p>
-<p>go through this section:<br><a href="https://docs.docker.com/registry/" target="_blank" rel="noopener">https://docs.docker.com/registry/</a></p>
+<p>Finally, the Registry ships with a robust notification system, calling webhooks in response to activity, and both extensive logging and reporting, mostly useful for large installations that want to collect metrics.</p>
+<h2 id=""><a href="#" class="headerlink" title="========================================================"></a>========================================================</h2><p>go through this section:<br><a href="https://docs.docker.com/registry/" target="_blank" rel="noopener">https://docs.docker.com/registry/</a></p>
 <p>secure private docker registry<br><a href="https://www.cnblogs.com/justmine/p/8666907.html" target="_blank" rel="noopener">https://www.cnblogs.com/justmine/p/8666907.html</a><br><a href="https://www.cnblogs.com/dingyingsi/p/9560906.html" target="_blank" rel="noopener">https://www.cnblogs.com/dingyingsi/p/9560906.html</a></p>
 <p>this is a workaround, seems good:<br><a href="https://stackoverflow.com/questions/24990784/docker-what-is-the-simplest-way-to-secure-a-private-registry" target="_blank" rel="noopener">https://stackoverflow.com/questions/24990784/docker-what-is-the-simplest-way-to-secure-a-private-registry</a></p>
 <p>how about docker login? docker login is for auth server. then we get token to access docker registry.<br><a href="https://stackoverflow.com/questions/50033624/how-to-set-username-and-password-for-our-own-docker-private-registry" target="_blank" rel="noopener">https://stackoverflow.com/questions/50033624/how-to-set-username-and-password-for-our-own-docker-private-registry</a><br><a href="https://www.ctl.io/developers/blog/post/how-to-secure-your-private-docker-registry/" target="_blank" rel="noopener">https://www.ctl.io/developers/blog/post/how-to-secure-your-private-docker-registry/</a><br>book use:<br><a href="https://github.com/opendns/nginx-auth-proxy" target="_blank" rel="noopener">https://github.com/opendns/nginx-auth-proxy</a></p>
@@ -564,8 +563,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -582,7 +590,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-count">129</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -813,6 +821,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">========================================================</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

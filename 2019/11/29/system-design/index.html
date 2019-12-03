@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Crucial Components这里的笔记主要根据以下几点展开:  Database">
+  <meta name="description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Thinking process requirements clarification">
 <meta name="keywords" content="system design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="System Design Summary">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/system-design/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Crucial Components这里的笔记主要根据以下几点展开:  Database">
+<meta property="og:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Thinking process requirements clarification">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-01T06:36:33.776Z">
+<meta property="og:updated_time" content="2019-12-01T23:58:06.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="System Design Summary">
-<meta name="twitter:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Crucial Components这里的笔记主要根据以下几点展开:  Database">
+<meta name="twitter:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. Other System Design Videos:Thinking process requirements clarification">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">128</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">129</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-30 22:36:33" itemprop="dateModified" datetime="2019-11-30T22:36:33-08:00">2019-11-30</time>
+                <time title="Modified: 2019-12-01 15:58:06" itemprop="dateModified" datetime="2019-12-01T15:58:06-08:00">2019-12-01</time>
               
             
           </span>
@@ -462,13 +462,23 @@
 
       
         <p>This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from <code>https://www.educative.io/</code>.</p>
-<h1 id="Other-System-Design-Videos"><a href="#Other-System-Design-Videos" class="headerlink" title="Other System Design Videos:"></a>Other System Design Videos:</h1><h1 id="Crucial-Components"><a href="#Crucial-Components" class="headerlink" title="Crucial Components"></a>Crucial Components</h1><p>这里的笔记主要根据以下几点展开:</p>
+<h1 id="Other-System-Design-Videos"><a href="#Other-System-Design-Videos" class="headerlink" title="Other System Design Videos:"></a>Other System Design Videos:</h1><h1 id="Thinking-process"><a href="#Thinking-process" class="headerlink" title="Thinking process"></a>Thinking process</h1><ol>
+<li>requirements clarification</li>
+<li>back of the envelope estimation: scale, storate, bandwidth.</li>
+<li>system interface definition</li>
+<li>defining data model</li>
+<li>high level design</li>
+<li>detailed design</li>
+<li>identifying and resolving bottlenecks</li>
+</ol>
+<h1 id="Crucial-Components"><a href="#Crucial-Components" class="headerlink" title="Crucial Components"></a>Crucial Components</h1><p>这里的笔记主要根据以下几点展开:</p>
 <ol>
 <li>Database (7 weeks 7 databases)</li>
 <li>Cache system</li>
 <li>Message queue (kafka / zookeeper or others)</li>
 <li>Load balancer</li>
 <li>Log systems</li>
+<li>monitor system</li>
 <li>My domain knowledge k8s, docker, shell, micro-services</li>
 </ol>
 <h1 id="备份的说法"><a href="#备份的说法" class="headerlink" title="备份的说法:"></a>备份的说法:</h1><p>Standby replicas<br>Failover to other healthy copies<br>Duplicates<br>Backup (spare)<br>Redundancy (redundant secondary copy)</p>
@@ -492,10 +502,15 @@
 <p>Each Long-Poll request has a <code>timeout</code>. The client has to reconnect periodically after the connection is closed due to timeouts or receive the disconnect from server.</p>
 <p>如果client突然unavailable了，如何检测呢？这个connection是如何保持的？我猜想的是connection保持期间，并不需要额外的保持message通知server client是否健在(我记得TCP有一个机制会检测这个connection是否健康？)。如果server 发送了message未收到acknowledge则说明client不在了，则connection中断。</p>
 <h2 id="Data-Sharding"><a href="#Data-Sharding" class="headerlink" title="Data Sharding"></a>Data Sharding</h2><p><a href="https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6" target="_blank" rel="noopener">https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6</a><br><code>Horizontal partitioning</code> is also called as Data Sharding</p>
-<h1 id="Some-Design-details"><a href="#Some-Design-details" class="headerlink" title="Some Design details"></a>Some Design details</h1><ol>
+<h1 id="Some-Design-Bottlenecks"><a href="#Some-Design-Bottlenecks" class="headerlink" title="Some Design Bottlenecks"></a>Some Design Bottlenecks</h1><ol>
 <li>data compression 需要吗， 如何选择？</li>
-<li>capacity estimation: metadata + content 两方面都要考虑，high level estimations 主要包括: storage for each day, storage for xx years, incoming bandwidth, outgoing bandwidth.</li>
+<li>capacity estimation: metadata + content 两方面都要考虑，high level estimations 主要包括: storage for each day, storage for xx years, incoming bandwidth, outgoing bandwidth. 这些主要来自于: Daily active user (DAU)</li>
+<li>bandwidth, ingress: 每日新增数据总量/秒; egress: 用户浏览或下载总量/秒</li>
 <li>database需要有哪些符合场景的特点? 比如quick small updates, ACID, range based search, etc.</li>
+<li>how about consider the peak time read and wirte throughput.</li>
+<li>hot user in database handle, 怎么设计database去减轻这个问题.</li>
+<li>we may need aggregator server for fetching and process data from different DB or caches.</li>
+<li>monitoring system, collect metrics: daily peak, latency</li>
 </ol>
 
       
@@ -617,7 +632,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-count">129</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -859,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-System-Design-Videos"><span class="nav-number">1.</span> <span class="nav-text">Other System Design Videos:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Crucial-Components"><span class="nav-number">2.</span> <span class="nav-text">Crucial Components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备份的说法"><span class="nav-number">3.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL-database的种类，特点和典型应用"><span class="nav-number">4.</span> <span class="nav-text">NoSQL database的种类，特点和典型应用:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用技术知识"><span class="nav-number">5.</span> <span class="nav-text">常用技术知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-Hashing-with-virtual-replicas"><span class="nav-number">5.1.</span> <span class="nav-text">Consistent Hashing (with virtual replicas)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Polling-轮询"><span class="nav-number">5.2.</span> <span class="nav-text">Long Polling (轮询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Sharding"><span class="nav-number">5.3.</span> <span class="nav-text">Data Sharding</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Design-details"><span class="nav-number">6.</span> <span class="nav-text">Some Design details</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-System-Design-Videos"><span class="nav-number">1.</span> <span class="nav-text">Other System Design Videos:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thinking-process"><span class="nav-number">2.</span> <span class="nav-text">Thinking process</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Crucial-Components"><span class="nav-number">3.</span> <span class="nav-text">Crucial Components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备份的说法"><span class="nav-number">4.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL-database的种类，特点和典型应用"><span class="nav-number">5.</span> <span class="nav-text">NoSQL database的种类，特点和典型应用:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用技术知识"><span class="nav-number">6.</span> <span class="nav-text">常用技术知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-Hashing-with-virtual-replicas"><span class="nav-number">6.1.</span> <span class="nav-text">Consistent Hashing (with virtual replicas)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Polling-轮询"><span class="nav-number">6.2.</span> <span class="nav-text">Long Polling (轮询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Sharding"><span class="nav-number">6.3.</span> <span class="nav-text">Data Sharding</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Design-Bottlenecks"><span class="nav-number">7.</span> <span class="nav-text">Some Design Bottlenecks</span></a></li></ol></div>
             
 
           </div>
