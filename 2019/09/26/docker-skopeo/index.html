@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-03T22:33:25.280Z">
+<meta property="og:updated_time" content="2019-12-04T00:18:47.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Skopeo">
 <meta name="twitter:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-03 14:33:25" itemprop="dateModified" datetime="2019-12-03T14:33:25-08:00">2019-12-03</time>
+                <time title="Modified: 2019-12-03 16:18:47" itemprop="dateModified" datetime="2019-12-03T16:18:47-08:00">2019-12-03</time>
               
             
           </span>
@@ -464,7 +464,7 @@
         <p><code>skopeo</code> is a command line utility that performs various operations on container images and image repositories. see it’s <a href="https://github.com/containers/skopeo" target="_blank" rel="noopener">git repos</a>. This is really a fantastic tool! Other two complementaries are <code>buildah</code> and <code>podman</code>.</p>
 <p>Previously the deployment process is load, tag and push images to docker registry but <code>skopeo</code> can directly copy image tar archive to docker registry and copy image directly from docker registry to docker daemon for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo docker-archive:&lt;path&gt;/&lt;image&gt;.tar docker://&lt;registry&gt;:5000</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>Note the docker registry should be secured.</p>
+<p>Note the docker registry should be secured by SSL/TLS.</p>
 </blockquote>
 <p>Check these articles:<br><a href="https://www.redhat.com/en/blog/skopeo-copy-rescue" target="_blank" rel="noopener">Skopeo Copy to the Rescue</a></p>
 

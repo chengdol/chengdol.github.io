@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-03T18:45:52.622Z">
+<meta property="og:updated_time" content="2019-12-04T19:04:50.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL Complete guide">
 <meta name="twitter:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-03 10:45:52" itemprop="dateModified" datetime="2019-12-03T10:45:52-08:00">2019-12-03</time>
+                <time title="Modified: 2019-12-04 11:04:50" itemprop="dateModified" datetime="2019-12-04T11:04:50-08:00">2019-12-04</time>
               
             
           </span>
@@ -462,8 +462,8 @@
 
       
         <p>This course is all about securing websites with SSL/TLS certificates.<br>Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates.</p>
-<p><a href="https://www.ssllabs.com/index.html" target="_blank" rel="noopener">https://www.ssllabs.com/index.html</a>:<br>The quality of SSL varies, you have SSL setup doesn’t mean your site is secured good. The HTTPS may not working correctly, sub-optimal.</p>
-<p>If you click the <code>lock</code> icon at left of the website address, it will show you if the connection is secured or not, it’s certificates, cookies and so on.</p>
+<p><a href="https://www.ssllabs.com/index.html" target="_blank" rel="noopener">https://www.ssllabs.com/index.html</a>:<br>The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may not working correctly, sub-optimal.</p>
+<p>If you click the <code>lock</code> icon at left of the website address, it will show you if the connection is secured or not, it’s certificates, cookies and so on. further click the certificate icon, you will see <code>root CA</code>, <code>intermediate CA</code> and <code>certificate</code>.</p>
 <blockquote>
 <p>Install wireshark on Mac, go to download the <code>stable</code> version dmg package and double click to install.</p>
 </blockquote>
@@ -515,14 +515,22 @@
 <li>public key (from owner, we then use this public key to HTTPS)<br>we trust the CA (the issuer) so on the certificate owner.</li>
 </ol>
 <blockquote>
-<p>self-signed certificate: issued and signed by the owner.</p>
+<p>self-signed certificate: issued and signed by the owner. (when setup secure docker registry, self-signed certificate apply)</p>
 </blockquote>
 <p>more reads:<br><a href="https://stackoverflow.com/questions/18257185/how-does-a-public-key-verify-a-signature" target="_blank" rel="noopener">How does a public key verify a signature?</a></p>
 <h2 id="Why-we-need-intermediary-CAs"><a href="#Why-we-need-intermediary-CAs" class="headerlink" title="Why we need intermediary CAs?"></a>Why we need intermediary CAs?</h2><p>There are not so much public root CAs because of problem of trust. Actually anybody can create own root CA but nobody will trust it. That’s why there is limited set of global root CAs that are trusted worldwide by operating systems and browsers. You can view list of such global CAs with their root certificates in any browser or OS.</p>
 <p>Such root CAs have certificates with long period of validity and their main responsibility is simple create “source of trust”. That’s why they don’t issue certificates to end users to avoid additional work and minimize risk that their private keys will be compromised. Intermediate CAs certificates don’t necessarily need to be in the list of trusted certificates in the OS or browser. They need simply be issued by trusted root CA.</p>
 <h1 id="Chain-of-Trust"><a href="#Chain-of-Trust" class="headerlink" title="Chain of Trust"></a>Chain of Trust</h1><p><code>openssl</code> command:</p>
-<p>Generate RSA private key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"><span class="comment"># generate private.pem file private key with aes256 encryption method</span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br></pre></td></tr></table></figure></p>
-
+<p>Generate RSA private key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate private.pem file private key with aes256 encryption method</span></span><br><span class="line"><span class="comment">## will ask you input pass phrase </span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate public key from above private key</span></span><br><span class="line"><span class="comment">## will ask you pass phrase from private key</span></span><br><span class="line">openssopenssl rsa -<span class="keyword">in</span> private.pem -outform PEM -pubout -out public.pem</span><br></pre></td></tr></table></figure></p>
+<h2 id="Root-CAs-in-OS"><a href="#Root-CAs-in-OS" class="headerlink" title="Root CAs in OS"></a>Root CAs in OS</h2><ul>
+<li>How does web browser trust the root CAs and certificates?<br>The OS ships a list of trusted certificates, in Mac search <code>Keychain Access</code>. </li>
+</ul>
+<p>In Linux, see this <a href="https://blog.confirm.ch/adding-a-new-trusted-certificate-authority/" target="_blank" rel="noopener">link</a>: On Red Hat/Centos, It includes all trusted certificate authorities under <code>/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt</code>. Just add your new certificate authority file(s) to the directory <code>/etc/pki/ca-trust/source/anchors</code>, then run <code>/bin/update-ca-trust</code> for update the certificate authority file.</p>
+<h2 id="Verify-chain-of-trust"><a href="#Verify-chain-of-trust" class="headerlink" title="Verify chain of trust"></a>Verify chain of trust</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           root CA         |     intermediate CA       |        end user</span><br><span class="line">----------------------------------------------------------------------------------------</span><br><span class="line">  self-singed certificate  |     signed by root CA     |   signed by intermediate CA</span><br><span class="line">----------------------------------------------------------------------------------------</span><br><span class="line">   signature: encrpty      |    signature: encrpty     |       signature: encrpty</span><br><span class="line"> by private key of root CA | by private key of root CA |  by private key of intermediate</span><br><span class="line">                           |                           |  CA</span><br></pre></td></tr></table></figure>
+<p><code>CSR</code>: certificate signing request</p>
+<p>Web server sends you its certificate and all intermediate certificates. Then on your side start the verification process from end user certificates back to top intermediate certificate then root certificate.</p>
+<p>There is a online tool to check the certificates chain: <a href="https://www.geocerts.com/ssl-checker" target="_blank" rel="noopener">https://www.geocerts.com/ssl-checker</a>.</p>
+<h1 id="SSL-TLS-and-HTTPS"><a href="#SSL-TLS-and-HTTPS" class="headerlink" title="SSL/TLS and HTTPS"></a>SSL/TLS and HTTPS</h1>
       
     </div>
 
@@ -568,8 +576,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/02/docker-daemon-log/" rel="prev" title="Docker Deamon Log">
-                Docker Deamon Log <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/02/docker-daemon-log/" rel="prev" title="Docker Daemon Log">
+                Docker Daemon Log <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -886,7 +894,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">1.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">2.</span> <span class="nav-text">Chain of Trust</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">1.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">2.</span> <span class="nav-text">Chain of Trust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-CAs-in-OS"><span class="nav-number">2.1.</span> <span class="nav-text">Root CAs in OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify-chain-of-trust"><span class="nav-number">2.2.</span> <span class="nav-text">Verify chain of trust</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-TLS-and-HTTPS"><span class="nav-number">3.</span> <span class="nav-text">SSL/TLS and HTTPS</span></a></li></ol></div>
             
 
           </div>
