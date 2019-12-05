@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Securing access to your hosted images is paramount, the registry natively supports TLS and basic authentication, let’s do it. The Registry GitHub repository includes additional information about advan">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-04T21:52:06.841Z">
+<meta property="og:updated_time" content="2019-12-05T08:57:36.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Secure Docker Registry">
 <meta name="twitter:description" content="Securing access to your hosted images is paramount, the registry natively supports TLS and basic authentication, let’s do it. The Registry GitHub repository includes additional information about advan">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">69</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">72</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">22</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">23</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">129</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">130</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-04 13:52:06" itemprop="dateModified" datetime="2019-12-04T13:52:06-08:00">2019-12-04</time>
+                <time title="Modified: 2019-12-05 00:57:36" itemprop="dateModified" datetime="2019-12-05T00:57:36-08:00">2019-12-05</time>
               
             
           </span>
@@ -465,6 +465,9 @@
 <p>The Registry GitHub repository includes additional information about advanced authentication and authorization methods. Only very large or public deployments are expected to extend the Registry in this way.</p>
 <p>Finally, the Registry ships with a robust notification system, calling webhooks in response to activity, and both extensive logging and reporting, mostly useful for large installations that want to collect metrics.</p>
 <h2 id="Generate-Self-signed-Certificate"><a href="#Generate-Self-signed-Certificate" class="headerlink" title="Generate Self-signed Certificate"></a>Generate Self-signed Certificate</h2><p><a href="https://docs.docker.com/registry/insecure/" target="_blank" rel="noopener">https://docs.docker.com/registry/insecure/</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/certs</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate domain.key and domain.crt</span></span><br><span class="line"><span class="comment">## I use -days 3650</span></span><br><span class="line">openssl req \</span><br><span class="line">  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \</span><br><span class="line">  -x509 -days 3650 -out certs/domain.crt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>More about SSL please check my blog <code>[SSL Demystify](https://chengdol.github.io/2019/11/29/ssl-demystify/)</code>.</p>
+</blockquote>
 <p>During the generate process, input this field using your docker registry domain:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## for example: chengdol.registry.com</span></span><br><span class="line">Common Name (eg, your name or your server<span class="string">'s hostname) []:chengdol.registry.com</span></span><br></pre></td></tr></table></figure></p>
 <p>Also follow the instruction in above url, instruct <code>every</code> Docker daemon to trust that certificate. The way to do this depends on your OS, for Linux:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/docker/certs.d/&lt;docker registry domain&gt;/</span><br><span class="line"><span class="comment">## copy domain.crt (generate by openssl) to this folder on every Docker host</span></span><br><span class="line">cp /root/certs/domain.crt /etc/docker/certs.d/&lt;docker registry domain&gt;/</span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -613,7 +616,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">129</span>
+                    <span class="site-state-item-count">130</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -670,7 +673,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -821,7 +826,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">69</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">72</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
