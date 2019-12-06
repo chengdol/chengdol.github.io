@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
+  <meta name="description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
 <meta name="keywords" content="ssl,tls">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSL Demystify">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/ssl-demystify/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
+<meta property="og:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-05T09:04:30.956Z">
+<meta property="og:updated_time" content="2019-12-06T00:03:28.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL Demystify">
-<meta name="twitter:description" content="This course is all about securing websites with SSL/TLS certificates.Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates. https://www.ssllabs.com/index.html:The quality">
+<meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">72</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">74</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">130</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">131</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-05 01:04:30" itemprop="dateModified" datetime="2019-12-05T01:04:30-08:00">2019-12-05</time>
+                <time title="Modified: 2019-12-05 16:03:28" itemprop="dateModified" datetime="2019-12-05T16:03:28-08:00">2019-12-05</time>
               
             
           </span>
@@ -461,7 +461,7 @@
       
 
       
-        <p>This course is all about securing websites with SSL/TLS certificates.<br>Become a master of HTTPS, Let’s Encrypt, Cloudflare, NGINX and SSL/TLS Certificates.</p>
+        <p>This is all about securing servers with SSL/TLS certificates from udemy course <em>SSL complete guide</em>.</p>
 <p><a href="https://www.ssllabs.com/index.html" target="_blank" rel="noopener">https://www.ssllabs.com/index.html</a>:<br>The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may not working correctly, sub-optimal.</p>
 <p>If you click the <code>lock</code> icon at left of the website address, it will show you if the connection is secured or not, it’s certificates, cookies and so on. further click the certificate icon, you will see <code>root CA</code>, <code>intermediate CA</code> and <code>certificate</code>.</p>
 <blockquote>
@@ -500,7 +500,7 @@
 <li>encryption<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data -------------&gt; code =========&gt;  code -------------&gt; data  (owner side)</span><br><span class="line">      public key                          private key</span><br><span class="line">      encryption                          decryption</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>requently (but not necessarily), the keys are <code>interchangeable</code>, in the sense that if key A encrypts a message, then B can decrypt it, and if key B encrypts a message, then key A can decrypt it. While common, this property is not essential to asymmetric encryption.</p>
+<p>Usually(but not necessarily), the keys are <code>interchangeable</code>, in the sense that if key A encrypts a message, then B can decrypt it, and if key B encrypts a message, then key A can decrypt it. While common, this property is not essential to asymmetric encryption.</p>
 <ul>
 <li>signing<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">           data                          |----------&gt; hash value</span><br><span class="line">            | (hash)     ==========&gt;     |  compare       |</span><br><span class="line">            |                            |                |</span><br><span class="line">        private key encrypt              |           public key decrypte</span><br><span class="line">            |                            | (hash)         |</span><br><span class="line">data   +   encrypted hash              data    +   encrypted hash</span><br></pre></td></tr></table></figure>
 </li>
@@ -530,7 +530,7 @@
 <p><code>CSR</code>: certificate signing request (the root CA receive CSR from intermediate CA, the signature of intermediate CA is signed by root CA, the root CA also provide issuer info for intermediate CA. Similarly, end user is signed by intermediate CA)</p>
 <p>Web server sends you its certificate and all intermediate certificates. Then on your side start the verification process from end user certificates back to top intermediate certificate then root certificate.</p>
 <p>There is a online tool to check the certificates chain: <a href="https://www.geocerts.com/ssl-checker" target="_blank" rel="noopener">https://www.geocerts.com/ssl-checker</a>.</p>
-<h1 id="SSL-TLS-and-HTTPS"><a href="#SSL-TLS-and-HTTPS" class="headerlink" title="SSL/TLS and HTTPS"></a>SSL/TLS and HTTPS</h1><h1 id="Create-Self-signed-Certificate"><a href="#Create-Self-signed-Certificate" class="headerlink" title="Create Self-signed Certificate"></a>Create Self-signed Certificate</h1><p>Before create certificate, you need <code>CSR</code>, before <code>CSR</code>, you need first generate asymmetric keys. (Becuase certificate needs to include signature from upstream and also your public key)</p>
+<h1 id="Create-Self-signed-Certificate"><a href="#Create-Self-signed-Certificate" class="headerlink" title="Create Self-signed Certificate"></a>Create Self-signed Certificate</h1><p>Before create certificate, you need <code>CSR</code>, before <code>CSR</code>, you need first generate asymmetric keys. (Becuase certificate needs to include signature from upstream and also your public key)</p>
 <blockquote>
 <p>Choose common name (CN) according to the main domain where certificate will be used. (for example, in secure docker registry, CN is the registry address)</p>
 </blockquote>
@@ -544,7 +544,7 @@
 <li>For anyone else using this in automation, here’s all of the common parameters for the subject: <code>-subj &quot;/C=US/ST=CA/L=San Jose/O=Company Name/OU=Org/CN=&lt;domain&gt;&quot;</code></li>
 <li>Remember to use <code>-sha256</code> to generate SHA-256-based certificate.</li>
 </ul>
-
+<h1 id="SSL-TLS-and-HTTPS"><a href="#SSL-TLS-and-HTTPS" class="headerlink" title="SSL/TLS and HTTPS"></a>SSL/TLS and HTTPS</h1>
       
     </div>
 
@@ -666,7 +666,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-count">131</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -882,7 +882,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">72</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -918,7 +922,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">1.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">2.</span> <span class="nav-text">Chain of Trust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-CAs-in-OS"><span class="nav-number">2.1.</span> <span class="nav-text">Root CAs in OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify-chain-of-trust"><span class="nav-number">2.2.</span> <span class="nav-text">Verify chain of trust</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-TLS-and-HTTPS"><span class="nav-number">3.</span> <span class="nav-text">SSL/TLS and HTTPS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Self-signed-Certificate"><span class="nav-number">4.</span> <span class="nav-text">Create Self-signed Certificate</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">1.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">2.</span> <span class="nav-text">Chain of Trust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-CAs-in-OS"><span class="nav-number">2.1.</span> <span class="nav-text">Root CAs in OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify-chain-of-trust"><span class="nav-number">2.2.</span> <span class="nav-text">Verify chain of trust</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Self-signed-Certificate"><span class="nav-number">3.</span> <span class="nav-text">Create Self-signed Certificate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-TLS-and-HTTPS"><span class="nav-number">4.</span> <span class="nav-text">SSL/TLS and HTTPS</span></a></li></ol></div>
             
 
           </div>
