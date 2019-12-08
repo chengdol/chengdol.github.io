@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1BqEQwaHXUIBIJguBGifnGIc_AnHJtoBB">
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
-<meta property="og:updated_time" content="2019-12-07T07:35:26.557Z">
+<meta property="og:updated_time" content="2019-12-07T18:24:03.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL Demystify">
 <meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
@@ -264,7 +264,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">74</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">73</span></a>
 
   </li>
         
@@ -283,7 +283,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">24</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">23</span></a>
 
   </li>
         
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-06 23:35:26" itemprop="dateModified" datetime="2019-12-06T23:35:26-08:00">2019-12-06</time>
+                <time title="Modified: 2019-12-07 10:24:03" itemprop="dateModified" datetime="2019-12-07T10:24:03-08:00">2019-12-07</time>
               
             
           </span>
@@ -550,7 +550,7 @@
 </ul>
 <h1 id="SSL-TLS-and-HTTPS"><a href="#SSL-TLS-and-HTTPS" class="headerlink" title="SSL/TLS and HTTPS"></a>SSL/TLS and HTTPS</h1><p><code>SSL</code>: Secure Socket Layer; <code>TLS</code>: Transport Layer Security. Both are cryptographic protocols. Are used in HTTPS.</p>
 <p>Difference <code>SSL</code> vs <code>TLS</code>:  TLS was an update and secure version of SSL.<br><a href="https://www.globalsign.com/en/blog/ssl-vs-tls-difference/" target="_blank" rel="noopener">https://www.globalsign.com/en/blog/ssl-vs-tls-difference/</a><br>It’s important to note that certificates are not dependent on protocols. Sometimes you hear <code>SSL/TLS certificate</code>, it may be more accurate to call them <code>Certificates for use with SSL and TLS</code>, since the protocols are determined by your server configuration, not the certificates themselves.</p>
-<p>Go to <code>ssllab</code>(<a href="https://www.ssllabs.com/ssltest/)" target="_blank" rel="noopener">https://www.ssllabs.com/ssltest/)</a>, you can check which version of TLS the web server use, check input the web server address abd scan, the click IP to check.</p>
+<p>Go to <a href="https://www.ssllabs.com/ssltest/" target="_blank" rel="noopener"><code>ssllab</code></a>, you can check which version of TLS the web server use, check input the web server address abd scan, the click IP to check.</p>
 <p>Why <code>RSA</code> is not used in data encryption?</p>
 <ol>
 <li>too slow</li>
@@ -563,11 +563,11 @@
 <li>establish tcp session</li>
 <li>establish tls session (negotiate protocol)</li>
 <li>web server sends its certifiate (intermediate and others) to browser</li>
-<li>browser generate symmetic key secured by public key from server and send to server. Or use <code>[Diffie–Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)</code>.</li>
+<li>browser generate symmetic key secured by public key from server and send to server. Or use <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener"><code>Diffie–Hellman key exchange</code></a>.</li>
 </ol>
 <p>Let’s see wireshark for wikipedia connection:<br>The top 3 are TCP handshakes, then you see TLS client hello, then TLS server hello.<br><img src="https://drive.google.com/uc?id=1BqEQwaHXUIBIJguBGifnGIc_AnHJtoBB" alt=""></p>
 <p>In client hello, there are lots of information to negoitate with server, here you see some supported version of TLS, also cipher suites.<br><img src="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N" alt=""></p>
-<p>In server hello, you see the the server has selected one of cipher suites.<br><img src="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm" alt=""></p>
+<p>In server hello, you see the the server has selected one of cipher suites. The <code>TLS_ECDHE.._SHA256</code> means it uses Diffie–Hellman key exchange and sha256 as hash.<br><img src="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm" alt=""></p>
 
       
     </div>
@@ -749,9 +749,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -910,9 +908,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

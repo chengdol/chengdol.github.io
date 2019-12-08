@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-07T04:59:40.768Z">
+<meta property="og:updated_time" content="2019-12-08T07:34:23.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Summary">
 <meta name="twitter:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">74</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">73</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">24</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">23</span></a>
 
   </li>
         
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-06 20:59:40" itemprop="dateModified" datetime="2019-12-06T20:59:40-08:00">2019-12-06</time>
+                <time title="Modified: 2019-12-07 23:34:23" itemprop="dateModified" datetime="2019-12-07T23:34:23-08:00">2019-12-07</time>
               
             
           </span>
@@ -488,9 +488,10 @@
 <p>when do replace<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"a.b.c.d"</span>;</span><br><span class="line">str.replace(<span class="string">"."</span>, <span class="string">""</span>); <span class="comment">// get "abcd"</span></span><br><span class="line"><span class="comment">// don't use str.replace('.',''), cannot be empty char</span></span><br><span class="line"><span class="comment">// there is no regex, just CharSequence type</span></span><br></pre></td></tr></table></figure></p>
 <p>if just want to create a string using other type:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""</span> + other type</span><br></pre></td></tr></table></figure></p>
 <p>caution:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"1.2.3."</span>;</span><br><span class="line"><span class="comment">// a.split("\\.") will get length of 3, it will ignore last '.'</span></span><br><span class="line">String a = <span class="string">".1.2.3"</span>;</span><br><span class="line"><span class="comment">// a.split("\\.") will get length of 4, it will not ignore first '.'</span></span><br><span class="line">String b = <span class="string">"1..2.3"</span>;</span><br><span class="line"><span class="comment">// b.split("\\.") will get length of 4, it will not ignore consecutive '.'</span></span><br></pre></td></tr></table></figure></p>
+<p>Notice the parameters type<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">indexOf(<span class="keyword">int</span> ch, <span class="keyword">int</span> startIndex)</span><br><span class="line">split(String reg)</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Returns the index within this string of the last occurrence of the specified character.</span></span><br><span class="line"><span class="keyword">int</span>	lastIndexOf​(<span class="keyword">int</span> ch)</span><br></pre></td></tr></table></figure>
 <h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(String);</span><br><span class="line">sb.append(x);</span><br><span class="line">sb.toString();</span><br></pre></td></tr></table></figure>
-<p>more methods:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reverse()</span><br><span class="line"><span class="comment">// return String</span></span><br><span class="line"><span class="comment">// 这里只有一个参数的时候是start index!</span></span><br><span class="line">substring(<span class="keyword">int</span> startidx) </span><br><span class="line">substring(<span class="keyword">int</span> startidx, <span class="keyword">int</span> endidx) </span><br><span class="line">append()</span><br><span class="line">insert()</span><br></pre></td></tr></table></figure></p>
+<p>more methods:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">reverse()</span><br><span class="line"><span class="comment">// return String</span></span><br><span class="line"><span class="comment">// 这里只有一个参数的时候是start index!</span></span><br><span class="line">substring(<span class="keyword">int</span> startidx) </span><br><span class="line">substring(<span class="keyword">int</span> startidx, <span class="keyword">int</span> endidx) </span><br><span class="line">append(lot of types)</span><br><span class="line">insert(<span class="keyword">int</span> offset, type)</span><br></pre></td></tr></table></figure></p>
 <h2 id="Character-class"><a href="#Character-class" class="headerlink" title="Character class"></a>Character class</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// return Character</span></span><br><span class="line">Character.valueOf(<span class="keyword">char</span>)</span><br><span class="line"><span class="comment">//return char</span></span><br><span class="line">c.charValue()</span><br><span class="line"></span><br><span class="line"><span class="comment">// actually the convert is auto like int with Integer!</span></span><br><span class="line"><span class="keyword">char</span> c1 = <span class="keyword">new</span> Character(<span class="string">'a'</span>)</span><br><span class="line">Character c2 = <span class="string">'b'</span>;</span><br></pre></td></tr></table></figure>
 <p>char compare in <code>if</code> use <code>==</code><br>if use +- with char, such as <code>ch - &#39;a&#39;</code>, don’t forget <code>(char)(ch)</code></p>
 <p>check letter:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Character.toLowerCase(ch);</span><br><span class="line">Character.isLetterOrDigit(ch);</span><br></pre></td></tr></table></figure></p>
@@ -772,9 +773,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -933,9 +932,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
