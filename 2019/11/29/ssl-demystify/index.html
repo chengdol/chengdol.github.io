@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1BqEQwaHXUIBIJguBGifnGIc_AnHJtoBB">
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
-<meta property="og:updated_time" content="2019-12-09T04:12:56.861Z">
+<meta property="og:updated_time" content="2019-12-29T06:54:46.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL Demystify">
 <meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
@@ -264,7 +264,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">74</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">75</span></a>
 
   </li>
         
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-08 20:12:56" itemprop="dateModified" datetime="2019-12-08T20:12:56-08:00">2019-12-08</time>
+                <time title="Modified: 2019-12-28 22:54:46" itemprop="dateModified" datetime="2019-12-28T22:54:46-08:00">2019-12-28</time>
               
             
           </span>
@@ -465,7 +465,7 @@
       
 
       
-        <p>This is all about securing servers with SSL/TLS certificates from udemy course <em>SSL complete guide</em>.</p>
+        <p>This is all about securing servers with <code>SSL/TLS certificates</code> from udemy course <em>SSL complete guide</em>.</p>
 <p><a href="https://www.ssllabs.com/index.html" target="_blank" rel="noopener">https://www.ssllabs.com/index.html</a>:<br>The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may not working correctly, sub-optimal.</p>
 <p>If you click the <code>lock</code> icon at left of the website address, it will show you if the connection is secured or not, it’s certificates, cookies and so on. further click the certificate icon, you will see <code>root CA</code>, <code>intermediate CA</code> and <code>certificate</code>.</p>
 <blockquote>
@@ -543,7 +543,7 @@
 </blockquote>
 <p>Generate self-signed certificate, see this <a href="https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl" target="_blank" rel="noopener">post</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openssl req \</span><br><span class="line">        -newkey rsa:4096 -nodes -x509 -sha256\</span><br><span class="line">        -keyout key.pem -out cert.pem -days 365 \</span><br><span class="line">        -subj &quot;/C=US/ST=CA/L=San Jose/O=Company Name/OU=Org/CN=&lt;domain&gt;&quot;</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>-nodes: short for no DES, if you don’t want to protect your private key with a passphrase.</li>
+<li>-nodes: short for No DES, if you don’t want to protect your private key with a passphrase.</li>
 <li>Add <code>-subj &#39;/CN=localhost&#39;</code> to suppress questions about the contents of the certificate (replace localhost with your desired domain).</li>
 <li>For anyone else using this in automation, here’s all of the common parameters for the subject: <code>-subj &quot;/C=US/ST=CA/L=San Jose/O=Company Name/OU=Org/CN=&lt;domain&gt;&quot;</code></li>
 <li>Remember to use <code>-sha256</code> to generate SHA-256-based certificate.</li>
@@ -910,7 +910,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
