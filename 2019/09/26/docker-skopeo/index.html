@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-04T22:04:54.924Z">
+<meta property="og:updated_time" content="2020-01-02T23:00:42.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Skopeo">
 <meta name="twitter:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-04 14:04:54" itemprop="dateModified" datetime="2019-12-04T14:04:54-08:00">2019-12-04</time>
+                <time title="Modified: 2020-01-02 15:00:42" itemprop="dateModified" datetime="2020-01-02T15:00:42-08:00">2020-01-02</time>
               
             
           </span>
@@ -462,10 +462,10 @@
 
       
         <p><code>skopeo</code> is a command line utility that performs various operations on container images and image repositories. see it’s <a href="https://github.com/containers/skopeo" target="_blank" rel="noopener">git repos</a>. This is really a fantastic tool! Other two complementaries are <code>buildah</code> and <code>podman</code>.</p>
-<p>Previously our deployment process is docker load, tag and push images to docker registry, then will bring up pods kubelet will pull image from registry. <code>skopeo</code> can directly copy image tar to docker registry and copy image directly from docker registry to docker daemon for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy docker-archive:&lt;path&gt;/&lt;image&gt;.tar docker://&lt;registry&gt;:5000/image:tag</span><br><span class="line">skopeo copy docker://&lt;registry&gt;:5000/image:tag docker-daemon:image:tag</span><br></pre></td></tr></table></figure></p>
-<p>This is extremely efficient compare to old load/tag/push method. many other benefits like no docker daemon needed, rootless please see doc.</p>
-<p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect docker://&lt;registry&gt;:5000/image:tag</span><br></pre></td></tr></table></figure></p>
-<p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete docker://&lt;registry&gt;:5000/image:tag</span><br></pre></td></tr></table></figure></p>
+<p>Previously our deployment steps are docker load, tag and push images to docker registry, then kubelet will pull image from registry to bring up pods. <code>skopeo</code> can directly copy image tar (or gzip tar) to docker registry and copy image directly from docker registry to local docker daemon for example (can use docker hub to do test):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy docker-archive:&lt;path&gt;/&lt;image&gt;.tar.gz docker://&lt;registry&gt;[:5000]/image:tag</span><br><span class="line">skopeo copy docker://&lt;registry&gt;[:5000]/image:tag docker-daemon:image:tag</span><br></pre></td></tr></table></figure></p>
+<p>This is extremely efficient compare to old load/tag/push method. Many other benefits like no docker daemon needed, rootless please see doc.</p>
+<p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect docker://&lt;registry&gt;[:5000]/image:tag</span><br></pre></td></tr></table></figure></p>
+<p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete docker://&lt;registry&gt;[:5000]/image:tag</span><br></pre></td></tr></table></figure></p>
 <p>In Red Hat/Centos, you can use <code>yum</code> to install skopeo.</p>
 <blockquote>
 <p>Note the docker registry should be secured by SSL/TLS, basic authentication can also apply.</p>
@@ -845,7 +845,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
