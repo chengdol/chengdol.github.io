@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="We want to avoid manually setting PVs for PVCs, one way is to use kubernetes external provisioner. Read About:openshift dynamic NFS persistent volume using NFS-client-provisioner  setup nfs server ins">
+  <meta name="description" content="We want to avoid manually creating PVs for PVCs, one way is to use kubernetes external provisioner. Here use NFS as the PV external provisioer, read about:openshift dynamic NFS persistent volume using">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes NFS Provisioner">
 <meta property="og:url" content="http://yoursite.com/2019/12/10/k8s-nfs-provisioner/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="We want to avoid manually setting PVs for PVCs, one way is to use kubernetes external provisioner. Read About:openshift dynamic NFS persistent volume using NFS-client-provisioner  setup nfs server ins">
+<meta property="og:description" content="We want to avoid manually creating PVs for PVCs, one way is to use kubernetes external provisioner. Here use NFS as the PV external provisioer, read about:openshift dynamic NFS persistent volume using">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-13T04:36:54.922Z">
+<meta property="og:updated_time" content="2020-01-03T21:51:02.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes NFS Provisioner">
-<meta name="twitter:description" content="We want to avoid manually setting PVs for PVCs, one way is to use kubernetes external provisioner. Read About:openshift dynamic NFS persistent volume using NFS-client-provisioner  setup nfs server ins">
+<meta name="twitter:description" content="We want to avoid manually creating PVs for PVCs, one way is to use kubernetes external provisioner. Here use NFS as the PV external provisioer, read about:openshift dynamic NFS persistent volume using">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-12 20:36:54" itemprop="dateModified" datetime="2019-12-12T20:36:54-08:00">2019-12-12</time>
+                <time title="Modified: 2020-01-03 13:51:02" itemprop="dateModified" datetime="2020-01-03T13:51:02-08:00">2020-01-03</time>
               
             
           </span>
@@ -461,13 +461,14 @@
       
 
       
-        <p>We want to avoid manually setting PVs for PVCs, one way is to use kubernetes external provisioner.</p>
-<p>Read About:<br><a href="https://medium.com/faun/openshift-dynamic-nfs-persistent-volume-using-nfs-client-provisioner-fcbb8c9344e" target="_blank" rel="noopener">openshift dynamic NFS persistent volume using NFS-client-provisioner</a></p>
+        <p>We want to avoid manually creating PVs for PVCs, one way is to use kubernetes external provisioner.</p>
+<p>Here use NFS as the PV external provisioer, read about:<br><a href="https://medium.com/faun/openshift-dynamic-nfs-persistent-volume-using-nfs-client-provisioner-fcbb8c9344e" target="_blank" rel="noopener">openshift dynamic NFS persistent volume using NFS-client-provisioner</a></p>
 <ol>
 <li>setup nfs server</li>
 <li>install nfs-utils on all worker nodes</li>
 <li>setup nfs provisioner</li>
 </ol>
+<p>If several pods use the same PVC, they will share the same PV.</p>
 
       
     </div>
