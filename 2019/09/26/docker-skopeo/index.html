@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-02T23:00:42.365Z">
+<meta property="og:updated_time" content="2020-01-07T01:37:25.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Skopeo">
 <meta name="twitter:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">135</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">136</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-02 15:00:42" itemprop="dateModified" datetime="2020-01-02T15:00:42-08:00">2020-01-02</time>
+                <time title="Modified: 2020-01-06 17:37:25" itemprop="dateModified" datetime="2020-01-06T17:37:25-08:00">2020-01-06</time>
               
             
           </span>
@@ -462,13 +462,24 @@
 
       
         <p><code>skopeo</code> is a command line utility that performs various operations on container images and image repositories. see it’s <a href="https://github.com/containers/skopeo" target="_blank" rel="noopener">git repos</a>. This is really a fantastic tool! Other two complementaries are <code>buildah</code> and <code>podman</code>.</p>
-<p>Previously our deployment steps are docker load, tag and push images to docker registry, then kubelet will pull image from registry to bring up pods. <code>skopeo</code> can directly copy image tar (or gzip tar) to docker registry and copy image directly from docker registry to local docker daemon for example (can use docker hub to do test):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy docker-archive:&lt;path&gt;/&lt;image&gt;.tar.gz docker://&lt;registry&gt;[:5000]/image:tag</span><br><span class="line">skopeo copy docker://&lt;registry&gt;[:5000]/image:tag docker-daemon:image:tag</span><br></pre></td></tr></table></figure></p>
-<p>This is extremely efficient compare to old load/tag/push method. Many other benefits like no docker daemon needed, rootless please see doc.</p>
-<p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect docker://&lt;registry&gt;[:5000]/image:tag</span><br></pre></td></tr></table></figure></p>
-<p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete docker://&lt;registry&gt;[:5000]/image:tag</span><br></pre></td></tr></table></figure></p>
+<p>Command usage see <a href="https://github.com/containers/skopeo/tree/master/docs" target="_blank" rel="noopener">here</a>.</p>
 <p>In Red Hat/Centos, you can use <code>yum</code> to install skopeo.</p>
 <blockquote>
 <p>Note the docker registry should be secured by SSL/TLS, basic authentication can also apply.</p>
+</blockquote>
+<h2 id="Docker-Installed"><a href="#Docker-Installed" class="headerlink" title="Docker Installed"></a>Docker Installed</h2><p>In docker environmet, skopeo will check <code>$HOME/.docker/config.json</code> file for authentication (created by docker login command). If the auth file is there, you are good and you can directly copy image tar (or gzip tar) to docker registry and copy image directly from docker registry to local docker daemon for example (can use docker hub to do test):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line">skopeo copy docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<p>This is extremely efficient compare to old load/tag/push method. Many other benefits like no docker daemon needed, rootless please see doc.</p>
+<p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>You must enable deletion in docker registry <a href="https://docs.docker.com/registry/configuration/#override-specific-configuration-options" target="_blank" rel="noopener">configuration</a>: </p>
+</blockquote>
+<h2 id="No-Docker-Installed"><a href="#No-Docker-Installed" class="headerlink" title="No Docker Installed"></a>No Docker Installed</h2><p>If there is no docker daemon, skopeo will still work, but you need to explicitly give the auth creds and ssl/tls certificates path of the target registry, for example, the destination registry login user name and password are both <code>demo</code>, and the certificates path for ssl/tls is <code>/root/certs</code> (include *.key, *.crt and *.cert). </p>
+<p>One more interesting thing is in <code>/root/certs</code>, the suffix of certificate should be <code>.cert</code>, <code>.crt</code> does not attempt to use.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy --dest-creds demo:demo --dest-cert-dir /root/certs docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line"></span><br><span class="line">skopeo copy --src-creds demo:demo --src-cert-dir /root/certs docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect --creds demo:demo --cert-dir /root/certs docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete --creds demo:demo --cert-dir /root/certs docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>You must enable deletion in docker registry <a href="https://docs.docker.com/registry/configuration/#override-specific-configuration-options" target="_blank" rel="noopener">configuration</a>: </p>
 </blockquote>
 <p>Check these articles:<br><a href="https://www.redhat.com/en/blog/skopeo-copy-rescue" target="_blank" rel="noopener">Skopeo Copy to the Rescue</a></p>
 
@@ -566,8 +577,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -584,7 +604,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">135</span>
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -831,6 +851,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Installed"><span class="nav-number">1.</span> <span class="nav-text">Docker Installed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#No-Docker-Installed"><span class="nav-number">2.</span> <span class="nav-text">No Docker Installed</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
