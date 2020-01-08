@@ -99,14 +99,14 @@
   <meta name="description" content="This post is about setup secure docker registry as docker container, check this for setting up secure docker registry pod in K8s.  Securing access to your hosted images is paramount, the registry nati">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Secure Docker Registry">
+<meta property="og:title" content="Secure Docker Registry Container">
 <meta property="og:url" content="http://yoursite.com/2019/06/16/docker-secure-registry/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This post is about setup secure docker registry as docker container, check this for setting up secure docker registry pod in K8s.  Securing access to your hosted images is paramount, the registry nati">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-07T01:50:50.565Z">
+<meta property="og:updated_time" content="2020-01-07T22:31:18.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Secure Docker Registry">
+<meta name="twitter:title" content="Secure Docker Registry Container">
 <meta name="twitter:description" content="This post is about setup secure docker registry as docker container, check this for setting up secure docker registry pod in K8s.  Securing access to your hosted images is paramount, the registry nati">
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Secure Docker Registry | 海胆阶段's Blog</title>
+  <title>Secure Docker Registry Container | 海胆阶段's Blog</title>
   
 
 
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Secure Docker Registry
+          <h1 class="post-title" itemprop="name headline">Secure Docker Registry Container
 
               
             
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-06 17:50:50" itemprop="dateModified" datetime="2020-01-06T17:50:50-08:00">2020-01-06</time>
+                <time title="Modified: 2020-01-07 14:31:18" itemprop="dateModified" datetime="2020-01-07T14:31:18-08:00">2020-01-07</time>
               
             
           </span>
@@ -494,11 +494,11 @@
 <h2 id="Setup-Basic-Authrntication"><a href="#Setup-Basic-Authrntication" class="headerlink" title="Setup Basic Authrntication"></a>Setup Basic Authrntication</h2><blockquote>
 <p>Warning: You cannot use authentication with authentication schemes that send credentials as clear text. You <strong>must</strong> configure <code>TLS</code> first for authentication to work.</p>
 </blockquote>
-<p>Use <code>htpasswd</code> to create the user info:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/auth</span><br><span class="line">docker run \</span><br><span class="line">  --entrypoint htpasswd \</span><br><span class="line">  registry:2 -Bbn demo demo &gt; auth/htpasswd</span><br></pre></td></tr></table></figure></p>
+<p>Use <code>htpasswd</code> to create the user info:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/auth</span><br><span class="line">htpasswd -Bbn demo demo &gt; /root/auth/htpasswd</span><br></pre></td></tr></table></figure></p>
 <p>then, we switch back to <code>5000</code> port: (注意这里没用443端口)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /root/auth:/auth \</span><br><span class="line">  -e &quot;REGISTRY_AUTH=htpasswd&quot; \</span><br><span class="line">  -e &quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot; \</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  -v /root/certs:/certs \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure></p>
 <p>One thing need to change is in <code>every</code> docker host, under <code>/etc/docker/certs.d/</code> directory, we create a folder <code>&lt;docker registry domain&gt;:5000</code> and put domain.crt in it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/docker/certs.d/&lt;docker registry domain&gt;:5000/</span><br><span class="line"><span class="comment">## copy domain.crt (generate by openssl) to this folder on every Docker host</span></span><br><span class="line">cp domain.crt /etc/docker/certs.d/&lt;docker registry domain&gt;:5000/</span><br></pre></td></tr></table></figure></p>
-<p>Then, you need to first login to push or pull<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login &lt;docker registry domain&gt;:5000 -u demo -p demo</span><br></pre></td></tr></table></figure></p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>OK, now a secure docker registry and basic authentication is up and running. in every node, first docker login, then you can do push and pull operations.</p>
+<p>Then, you need to first login to push or pull:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login &lt;docker registry domain&gt;:5000 -u demo -p demo</span><br></pre></td></tr></table></figure></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>OK, now a secure docker registry container with basic authentication is up and running. You can do push and pull operations after docker login.</p>
 
       
     </div>

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-07T01:37:25.701Z">
+<meta property="og:updated_time" content="2020-01-08T07:51:26.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Skopeo">
 <meta name="twitter:description" content="skopeo is a command line utility that performs various operations on container images and image repositories. see it’s git repos. This is really a fantastic tool! Other two complementaries are buildah">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-06 17:37:25" itemprop="dateModified" datetime="2020-01-06T17:37:25-08:00">2020-01-06</time>
+                <time title="Modified: 2020-01-07 23:51:26" itemprop="dateModified" datetime="2020-01-07T23:51:26-08:00">2020-01-07</time>
               
             
           </span>
@@ -474,8 +474,7 @@
 <blockquote>
 <p>You must enable deletion in docker registry <a href="https://docs.docker.com/registry/configuration/#override-specific-configuration-options" target="_blank" rel="noopener">configuration</a>: </p>
 </blockquote>
-<h2 id="No-Docker-Installed"><a href="#No-Docker-Installed" class="headerlink" title="No Docker Installed"></a>No Docker Installed</h2><p>If there is no docker daemon, skopeo will still work, but you need to explicitly give the auth creds and ssl/tls certificates path of the target registry, for example, the destination registry login user name and password are both <code>demo</code>, and the certificates path for ssl/tls is <code>/root/certs</code> (include *.key, *.crt and *.cert). </p>
-<p>One more interesting thing is in <code>/root/certs</code>, the suffix of certificate should be <code>.cert</code>, <code>.crt</code> does not attempt to use.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy --dest-creds demo:demo --dest-cert-dir /root/certs docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line"></span><br><span class="line">skopeo copy --src-creds demo:demo --src-cert-dir /root/certs docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<h2 id="No-Docker-Installed"><a href="#No-Docker-Installed" class="headerlink" title="No Docker Installed"></a>No Docker Installed</h2><p>If there is no docker daemon, skopeo will still work, but you need to explicitly give the auth creds and ssl/tls certificates path of the target registry, for example, the destination registry login user name and password are both <code>demo</code>, and the certificates path for ssl/tls is <code>/root/certs</code> (<strong>must</strong> include *.key, *.crt and *.cert, the *.crt and *.cert could be the same content).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy --dest-creds demo:demo --dest-cert-dir /root/certs docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line"></span><br><span class="line">skopeo copy --src-creds demo:demo --src-cert-dir /root/certs docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
 <p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect --creds demo:demo --cert-dir /root/certs docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
 <p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete --creds demo:demo --cert-dir /root/certs docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
 <blockquote>
