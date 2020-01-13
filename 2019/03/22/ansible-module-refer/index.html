@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="There are some commonly used Ansible modules that I will reference frequently. More specific details please see Ansible document. ################################################################# &amp;ems">
+  <meta name="description" content="There are some commonly used Ansible modules that I will reference frequently. More specific details please see Ansible document. pausePauses playbook execution for a set amount of time, or until a pr">
 <meta name="keywords" content="ansible">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ansible Module Reference">
 <meta property="og:url" content="http://yoursite.com/2019/03/22/ansible-module-refer/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="There are some commonly used Ansible modules that I will reference frequently. More specific details please see Ansible document. ################################################################# &amp;ems">
+<meta property="og:description" content="There are some commonly used Ansible modules that I will reference frequently. More specific details please see Ansible document. pausePauses playbook execution for a set amount of time, or until a pr">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-06T00:49:48.594Z">
+<meta property="og:updated_time" content="2020-01-13T06:24:57.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Module Reference">
-<meta name="twitter:description" content="There are some commonly used Ansible modules that I will reference frequently. More specific details please see Ansible document. ################################################################# &amp;ems">
+<meta name="twitter:description" content="There are some commonly used Ansible modules that I will reference frequently. More specific details please see Ansible document. pausePauses playbook execution for a set amount of time, or until a pr">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-05 16:49:48" itemprop="dateModified" datetime="2019-12-05T16:49:48-08:00">2019-12-05</time>
+                <time title="Modified: 2020-01-12 22:24:57" itemprop="dateModified" datetime="2020-01-12T22:24:57-08:00">2020-01-12</time>
               
             
           </span>
@@ -462,7 +462,15 @@
 
       
         <p>There are some commonly used Ansible modules that I will reference frequently. More specific details please see Ansible document.</p>
-<p>################################################################<br># &emsp; Insert latest update at the top of the logs<br>#<br># &emsp; Module &emsp; &emsp; &emsp; &emsp; &emsp; Description<br># &emsp; <strong> &emsp; &emsp; </strong><br>#<br>################################################################</p>
+<h2 id="pause"><a href="#pause" class="headerlink" title="pause"></a>pause</h2><p>Pauses playbook execution for a set amount of time, or until a prompt is acknowledged. All parameters are optional. The default behavior is to pause with a prompt.</p>
+<p>Useful when debug certain task to see the execution result:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- pause:</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h2><h2 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h2><h2 id="template"><a href="#template" class="headerlink" title="template"></a>template</h2><h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><h2 id="command"><a href="#command" class="headerlink" title="command"></a>command</h2><h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><p><a href="https://docs.ansible.com/ansible/latest/modules/service_module.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/latest/modules/service_module.html</a></p>
+<h2 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h2><p>more dedicated then service module</p>
+<h2 id="file"><a href="#file" class="headerlink" title="file"></a>file</h2><p>touch, not use shell touch …</p>
+<h2 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h2><p>items</p>
+<h2 id="variables"><a href="#variables" class="headerlink" title="variables"></a>variables</h2><p>inventory_hostname<br>groups</p>
+<h1 id="operator"><a href="#operator" class="headerlink" title="operator:"></a>operator:</h1><p>in</p>
+<h2 id="lineinfile"><a href="#lineinfile" class="headerlink" title="lineinfile"></a>lineinfile</h2><p>can replace sed command</p>
 
       
     </div>
@@ -556,8 +564,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -821,6 +838,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pause"><span class="nav-number">1.</span> <span class="nav-text">pause</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">2.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch"><span class="nav-number">3.</span> <span class="nav-text">fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template"><span class="nav-number">4.</span> <span class="nav-text">template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">5.</span> <span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#command"><span class="nav-number">6.</span> <span class="nav-text">command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">7.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemd"><span class="nav-number">8.</span> <span class="nav-text">systemd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file"><span class="nav-number">9.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop"><span class="nav-number">10.</span> <span class="nav-text">loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variables"><span class="nav-number">11.</span> <span class="nav-text">variables</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#operator"><span class="nav-number"></span> <span class="nav-text">operator:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lineinfile"><span class="nav-number">1.</span> <span class="nav-text">lineinfile</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This post is about setup secure docker registry as docker container, check this for setting up secure docker registry pod in K8s.  Securing access to your hosted images is paramount, the registry nati">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-07T22:31:18.315Z">
+<meta property="og:updated_time" content="2020-01-13T06:03:10.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Secure Docker Registry Container">
 <meta name="twitter:description" content="This post is about setup secure docker registry as docker container, check this for setting up secure docker registry pod in K8s.  Securing access to your hosted images is paramount, the registry nati">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-07 14:31:18" itemprop="dateModified" datetime="2020-01-07T14:31:18-08:00">2020-01-07</time>
+                <time title="Modified: 2020-01-12 22:03:10" itemprop="dateModified" datetime="2020-01-12T22:03:10-08:00">2020-01-12</time>
               
             
           </span>
@@ -465,17 +465,14 @@
 <p>Securing access to your hosted images is paramount, the registry natively supports <code>TLS</code> and <code>basic authentication</code>, let’s do it.</p>
 <p>The Registry GitHub repository includes additional information about advanced authentication and authorization methods. Only very large or public deployments are expected to extend the Registry in this way.</p>
 <p>Finally, the Registry ships with a robust notification system, calling webhooks in response to activity, and both extensive logging and reporting, mostly useful for large installations that want to collect metrics.</p>
-<h2 id="Generate-Self-signed-Certificate"><a href="#Generate-Self-signed-Certificate" class="headerlink" title="Generate Self-signed Certificate"></a>Generate Self-signed Certificate</h2><p>see this link for <a href="https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry" target="_blank" rel="noopener">reference</a>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/certs</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate domain.key and domain.crt</span></span><br><span class="line"><span class="comment">## I use -days 3650</span></span><br><span class="line">openssl req \</span><br><span class="line">      -newkey rsa:4096 -nodes -x509 -sha256\</span><br><span class="line">      -keyout certs/domain.key -out certs/domain.crt -days 3650 \</span><br><span class="line">      -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=Company Name/OU=Org/CN=chengdol.registry.com"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Generate-Self-signed-Certificate"><a href="#Generate-Self-signed-Certificate" class="headerlink" title="Generate Self-signed Certificate"></a>Generate Self-signed Certificate</h2><p>see this link for <a href="https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry" target="_blank" rel="noopener">reference</a>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/certs</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate domain.key and domain.crt</span></span><br><span class="line"><span class="comment">## I use -days 3650</span></span><br><span class="line">openssl req \</span><br><span class="line">      -newkey rsa:4096 -nodes -x509 -sha256\</span><br><span class="line">      -keyout certs/domain.key -out certs/domain.crt -days 3650 \</span><br><span class="line">      -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=&lt;Company Name&gt;/OU=Org/CN=chengdol.registry.com"</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>More about SSL please check my blog <a href="https://chengdol.github.io/2019/11/29/ssl-demystify/" target="_blank" rel="noopener"><code>SSL Demystify</code></a>.</p>
 </blockquote>
-<p>Notice that the <code>CN=chengdol.registry.com</code> must be the registry url, no port suffix needed.</p>
+<p>Notice that the <code>CN=chengdol.registry.com</code> must be the registry access url, no port suffix needed.</p>
 <p>Also follow the instruction in above url, instruct <code>every</code> docker daemon to trust that certificate. The way to do this depends on your OS, for Linux:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/docker/certs.d/&lt;docker registry domain&gt;/</span><br><span class="line"><span class="comment">## copy domain.crt (generate by openssl) to this folder on every Docker host</span></span><br><span class="line">cp /root/certs/domain.crt /etc/docker/certs.d/&lt;docker registry domain&gt;/</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意，Docker官方文档中用的是<code>&lt;docker registry domain&gt;:5000/</code>文件夹名，但如果你配置的是443端口,则会出错，通过Docker daemon中的log，发现对于443端口，这里不需要<code>:5000</code>. 但如果设置了basic authentication且用的是5000端口，则需要了。</p>
-</blockquote>
-<blockquote>
-<p>Note, in K8s environment, don’t need do this for every docker daemon. I am not clear how does k8s daemon trust the self-signed certificate.</p>
 </blockquote>
 <p>Otherwise when run docker login you will get this error:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error response from daemon: Get https://chengdol.registry.com/v2/: x509: certificate signed by unknown authority</span><br></pre></td></tr></table></figure></p>
 <p>这时候可以去docker daemon log中看看到底是在哪个文件夹下检查的cert.</p>
