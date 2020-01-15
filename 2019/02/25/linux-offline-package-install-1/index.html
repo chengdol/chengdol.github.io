@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
 <meta property="og:image" content="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B">
 <meta property="og:image" content="https://drive.google.com/uc?id=1I_QfnLAWpj-CNKnfZAvF4yKjZ6U8xHET">
-<meta property="og:updated_time" content="2019-06-10T16:51:19.860Z">
+<meta property="og:updated_time" content="2020-01-15T02:20:08.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Offline Package Installation I">
 <meta name="twitter:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-10 09:51:19" itemprop="dateModified" datetime="2019-06-10T09:51:19-07:00">2019-06-10</time>
+                <time title="Modified: 2020-01-14 18:20:08" itemprop="dateModified" datetime="2020-01-14T18:20:08-08:00">2020-01-14</time>
               
             
           </span>
@@ -467,7 +467,7 @@
       
         <p>When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install <code>ansible</code>, <code>docker</code> and <code>kubeadm</code> offline. In the production environment, we may not have internet access, that means we need to prepare the rpms and dependencies needed and create a self-contained installer.</p>
 <h3 id="Download-missing-rpms-without-installing"><a href="#Download-missing-rpms-without-installing" class="headerlink" title="Download missing rpms without installing"></a>Download missing rpms without installing</h3><blockquote>
-<p>Note: This method is (by-design) sensitive to the existence of already-installed packages. It will <strong>only</strong> download actual dependencies you need for that particular box, not all rpms.</p>
+<p>Note: This method is (by-design) sensitive to the existence of already-installed packages. It will <strong>only</strong> download missing dependencies you need for that particular box, not all rpms.</p>
 </blockquote>
 <p>First let’s install the <code>yum-plugin-downloadonly</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-plugin-downloadonly</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly --downloaddir=&lt;directory&gt; &lt;package:version&gt;</span><br></pre></td></tr></table></figure>
@@ -482,7 +482,7 @@
 <p>Keep in mind that <code>yumdownloader</code> will use your yum database when resolving dependencies.</p>
 <p>For example if you download bash, which needs glibc, it will resolve glibc and skip it, since it is installed. If you want to download all dependencies, use a different <code>installroot</code> instead.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">mkdir -p /root/new_root</span><br><span class="line">yumdownloader --installroot=/root/new_root --destdir=/root/vim/ --resolve vim</span><br></pre></td></tr></table></figure></p>
 <p>Let’s check how many <code>vim</code> related rpms are here, way too many then what we get from the first section.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -ltr /root/vim | wc -l</span><br><span class="line">57</span><br></pre></td></tr></table></figure></p>
-<h4 id="repotrack"><a href="#repotrack" class="headerlink" title="repotrack"></a>repotrack</h4><p>This method can also resolve and download all dependencies, <code>repotrack</code> is from <code>yum-utils</code>, it will down all the dependencies for any architecture by default if it doesn’t appear you specified the architecture.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">repotrack -p /root/vim vim-enhanced</span><br></pre></td></tr></table></figure></p>
+<h4 id="repotrack"><a href="#repotrack" class="headerlink" title="repotrack"></a>repotrack</h4><p>This method can also resolve and download all dependencies, <code>repotrack</code> is from <code>yum-utils</code>, it will down all the dependencies for any architecture by default.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">repotrack -p /root/vim vim-enhanced</span><br></pre></td></tr></table></figure></p>
 <p>if you check <code>/root/vim</code>, there are some <code>i686</code> rpms, once you delete them and count again, <code>57</code> the same as we use <code>yumdownloader</code> above.</p>
 <blockquote>
 <p>Note: actually <code>repotrack</code> has <code>-a</code> option to specify arch, but I am not able to use it, when I specify <code>x86_64</code>, it still downloads <code>i686</code>.</p>
@@ -673,7 +673,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
