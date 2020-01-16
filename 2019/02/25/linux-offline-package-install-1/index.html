@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1l5sohiuz020QXowIfKddAtIlUyjJWmFl">
 <meta property="og:image" content="https://drive.google.com/uc?id=1o9fPX-boaTBYl7r6y2uzDFePAsLa9G9B">
 <meta property="og:image" content="https://drive.google.com/uc?id=1I_QfnLAWpj-CNKnfZAvF4yKjZ6U8xHET">
-<meta property="og:updated_time" content="2020-01-15T02:20:08.603Z">
+<meta property="og:updated_time" content="2020-01-16T00:09:34.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Offline Package Installation I">
 <meta name="twitter:description" content="When I was working on the upgrade DS k8s installer issue, I ran into the problem that I need to install ansible, docker and kubeadm offline. In the production environment, we may not have internet acc">
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-14 18:20:08" itemprop="dateModified" datetime="2020-01-14T18:20:08-08:00">2020-01-14</time>
+                <time title="Modified: 2020-01-15 16:09:34" itemprop="dateModified" datetime="2020-01-15T16:09:34-08:00">2020-01-15</time>
               
             
           </span>
@@ -480,7 +480,10 @@
 <p><img src="https://drive.google.com/uc?id=1I_QfnLAWpj-CNKnfZAvF4yKjZ6U8xHET" alt=""></p>
 <h3 id="Download-all-rpms-without-installing"><a href="#Download-all-rpms-without-installing" class="headerlink" title="Download all rpms without installing"></a>Download all rpms without installing</h3><h4 id="yum-amp-yumdownloader"><a href="#yum-amp-yumdownloader" class="headerlink" title="yum &amp; yumdownloader"></a>yum &amp; yumdownloader</h4><p>Usually what we really want is to resolve all dependencies and download them, even though some required rpms have already installed in box, <code>yumdownloader</code> or <code>yum --downloadonly</code> with <code>--installroot</code> option is the solution.</p>
 <p>Keep in mind that <code>yumdownloader</code> will use your yum database when resolving dependencies.</p>
-<p>For example if you download bash, which needs glibc, it will resolve glibc and skip it, since it is installed. If you want to download all dependencies, use a different <code>installroot</code> instead.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">mkdir -p /root/new_root</span><br><span class="line">yumdownloader --installroot=/root/new_root --destdir=/root/vim/ --resolve vim</span><br></pre></td></tr></table></figure></p>
+<p>For example if you download bash, which needs glibc, it will resolve glibc and skip it, since it is installed. <strong>If you want to download all dependencies</strong>, use a different <code>installroot</code> instead.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">mkdir -p /root/new_root</span><br><span class="line">yumdownloader --installroot=/root/new_root --destdir=/root/vim/ --resolve vim</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>This is what I need for a self-contained offline installer.</p>
+</blockquote>
 <p>Let’s check how many <code>vim</code> related rpms are here, way too many then what we get from the first section.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -ltr /root/vim | wc -l</span><br><span class="line">57</span><br></pre></td></tr></table></figure></p>
 <h4 id="repotrack"><a href="#repotrack" class="headerlink" title="repotrack"></a>repotrack</h4><p>This method can also resolve and download all dependencies, <code>repotrack</code> is from <code>yum-utils</code>, it will down all the dependencies for any architecture by default.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/vim</span><br><span class="line">repotrack -p /root/vim vim-enhanced</span><br></pre></td></tr></table></figure></p>
 <p>if you check <code>/root/vim</code>, there are some <code>i686</code> rpms, once you delete them and count again, <code>57</code> the same as we use <code>yumdownloader</code> above.</p>
