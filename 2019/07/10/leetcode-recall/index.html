@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-16T04:43:04.730Z">
+<meta property="og:updated_time" content="2020-01-19T23:27:24.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Summary">
 <meta name="twitter:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">75</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">79</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">23</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">24</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">137</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">139</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-15 20:43:04" itemprop="dateModified" datetime="2020-01-15T20:43:04-08:00">2020-01-15</time>
+                <time title="Modified: 2020-01-19 15:27:24" itemprop="dateModified" datetime="2020-01-19T15:27:24-08:00">2020-01-19</time>
               
             
           </span>
@@ -571,7 +571,7 @@
 </ul>
 <p>pre order list can build BST uniquely.<br>pre order + in order can build BT uniquely</p>
 <h2 id="Undirected-graph"><a href="#Undirected-graph" class="headerlink" title="Undirected graph"></a>Undirected graph</h2><p>vertex and edge matters<br>degree: num of edge connect to a vertex<br>graph API design:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">addEdge()</span><br><span class="line">Iterable adjacent nodes</span><br><span class="line">numEdge()</span><br><span class="line">numVertex()</span><br></pre></td></tr></table></figure></p>
-<p>how to repesent vertex and it’s edge, here use <code>adjacency list</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// generic array</span></span><br><span class="line">List&lt;Integer&gt;[] adj = (List&lt;Integer&gt;[]) <span class="keyword">new</span> List[n];</span><br><span class="line"><span class="comment">// it seems we can do now:</span></span><br><span class="line">List&lt;Integer&gt;[] adj =  <span class="keyword">new</span> List[n];</span><br><span class="line"><span class="comment">// init</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">  adj[i] = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>how to repesent vertex and it’s edge, here use <code>adjacency list</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// generic array</span></span><br><span class="line">List&lt;Integer&gt;[] adj = (List&lt;Integer&gt;[]) <span class="keyword">new</span> List[n];</span><br><span class="line"><span class="comment">// it seems we can do now:</span></span><br><span class="line">List&lt;Integer&gt;[] adj =  <span class="keyword">new</span> List[n];</span><br><span class="line">TreeMap&lt;Integer, Integer&gt;[] tmap = <span class="keyword">new</span> TreeMap[n];</span><br><span class="line"><span class="comment">// init</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">  adj[i] = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>actually we can use list of list instead of this format, but array is faster.<br><a href="https://stackoverflow.com/questions/8559092/create-an-array-of-arraylists" target="_blank" rel="noopener">how to create an array of list</a></p>
 <p>may contains:<br>self-loop<br>parallel edges</p>
 <h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><p>use <code>queue</code> to hold the vertices<br>add all unmarked vertices to queue adjacent to v and mark them<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span>[] marked;</span><br><span class="line"><span class="keyword">int</span>[] edgeTo;</span><br><span class="line"><span class="keyword">int</span>[] distTo;</span><br></pre></td></tr></table></figure></p>
@@ -718,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">137</span>
+                    <span class="site-state-item-count">139</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -777,7 +777,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -940,7 +942,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">75</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">79</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
