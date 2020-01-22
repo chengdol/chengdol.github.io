@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
-<meta name="keywords" content="shell">
+  <meta name="description" content="Entryhttps://kubernetes.io/docs/concepts/storage/volumes/#nfs 这个demo很有意思，从之前来看，如果需要为K8s设置NFS，则我们需要一个physical NFS server，然后create PV based on that NFS server then PVC claim from PV. 这样需要自己去维护NFS的健康保证hi">
+<meta name="keywords" content="kubernetes,nfs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Variables in Shell">
-<meta property="og:url" content="http://yoursite.com/2019/06/02/shell-variables/index.html">
+<meta property="og:title" content="Kubernetes Manages NFS">
+<meta property="og:url" content="http://yoursite.com/2020/01/21/k8s-nfs-example/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
+<meta property="og:description" content="Entryhttps://kubernetes.io/docs/concepts/storage/volumes/#nfs 这个demo很有意思，从之前来看，如果需要为K8s设置NFS，则我们需要一个physical NFS server，然后create PV based on that NFS server then PVC claim from PV. 这样需要自己去维护NFS的健康保证hi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-17T17:02:12.620Z">
+<meta property="og:updated_time" content="2020-01-22T23:06:17.887Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Variables in Shell">
-<meta name="twitter:description" content="The article mainly talks about the variable scope in shell. especially how to access variables in one scrpt from another. ENV VariablesThe set command displays all variables defined for a specific pro">
+<meta name="twitter:title" content="Kubernetes Manages NFS">
+<meta name="twitter:description" content="Entryhttps://kubernetes.io/docs/concepts/storage/volumes/#nfs 这个demo很有意思，从之前来看，如果需要为K8s设置NFS，则我们需要一个physical NFS server，然后create PV based on that NFS server then PVC claim from PV. 这样需要自己去维护NFS的健康保证hi">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/02/shell-variables/">
+  <link rel="canonical" href="http://yoursite.com/2020/01/21/k8s-nfs-example/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Variables in Shell | 海胆阶段's Blog</title>
+  <title>Kubernetes Manages NFS | 海胆阶段's Blog</title>
   
 
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/shell-variables/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/21/k8s-nfs-example/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Variables in Shell
+          <h1 class="post-title" itemprop="name headline">Kubernetes Manages NFS
 
               
             
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="Created: 2019-06-02 12:50:48" itemprop="dateCreated datePublished" datetime="2019-06-02T12:50:48-07:00">2019-06-02</time>
+              <time title="Created: 2020-01-21 14:39:46" itemprop="dateCreated datePublished" datetime="2020-01-21T14:39:46-08:00">2020-01-21</time>
             
 
             
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-17 10:02:12" itemprop="dateModified" datetime="2019-09-17T10:02:12-07:00">2019-09-17</time>
+                <time title="Modified: 2020-01-22 15:06:17" itemprop="dateModified" datetime="2020-01-22T15:06:17-08:00">2020-01-22</time>
               
             
           </span>
@@ -427,7 +427,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a></span>
 
                 
                 
@@ -461,36 +461,20 @@
       
 
       
-        <p>The article mainly talks about the <code>variable scope</code> in shell. especially how to access variables in one scrpt from another.</p>
-<h2 id="ENV-Variables"><a href="#ENV-Variables" class="headerlink" title="ENV Variables"></a>ENV Variables</h2><p>The <code>set</code> command displays all variables defined for a specific process, including both <code>local</code> and <code>global</code> environment variables and user-defined variables:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span></span><br></pre></td></tr></table></figure></p>
-<p>It also sorts the display alphabetically.</p>
-<h3 id="Global-ENV-Variables"><a href="#Global-ENV-Variables" class="headerlink" title="Global ENV Variables"></a>Global ENV Variables</h3><p>Global environment variables are visible from the shell session and from <strong>any</strong> spawned child subshells. This makes global environment variables useful in applications that create child subshells, which require parent shell information.</p>
-<p>To view global environment variables, use the <code>env</code> or the <code>printenv</code> command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># printenv HOME</span></span><br><span class="line"></span><br><span class="line">/root</span><br></pre></td></tr></table></figure></p>
-<p>You can use <code>export</code> to create global environment variable.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> demo=<span class="string">'hello world'</span></span><br></pre></td></tr></table></figure></p>
-<p>You can use <code>unset</code> to remove an existing environment variable.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> demo</span><br></pre></td></tr></table></figure></p>
-<p>A common trick for programmers is to include the <code>single dot</code> symbol in their <code>PATH</code> environment variable. The single dot symbol represents the current directory:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span>:.</span><br></pre></td></tr></table></figure></p>
-<h3 id="Local-ENV-Variables"><a href="#Local-ENV-Variables" class="headerlink" title="Local ENV Variables"></a>Local ENV Variables</h3><p>Local variables are available <strong>only</strong> in the shell that creates them. In fact, the Linux system also defines standard local environment variables for you by default. </p>
-<p>How to define a local environment variable:<br><strong>No</strong> space can appear between the variable, the equal sign, and the value:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1=value</span><br></pre></td></tr></table></figure></p>
-<p>Variables defined within the shell script maintain their values throughtout the life of the shell script but are delted when the shell script completes.</p>
-<p>If you want to assign the value of one variable to another, must use <code>$</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=<span class="variable">$&#123;var1&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>otherwise, <code>var1</code> will be interpreted as text string.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=var1</span><br></pre></td></tr></table></figure></p>
-<h2 id="Variable-Scope"><a href="#Variable-Scope" class="headerlink" title="Variable Scope"></a>Variable Scope</h2><p>My question is how to pass variables from one script to another?<br>Basically there are 2 options:</p>
-<ol>
-<li><p>Make the variable an environment variable (<code>export</code> it) before executing the 2nd script (<code>./script2</code>).</p>
-</li>
-<li><p><code>source</code> the second script and it will run in the same shell, This would let you share more complex variables like arrays easily, but also means that the other script could modify variables in the caller shell.</p>
-</li>
-</ol>
-<h2 id="Preserve-ENV-variables"><a href="#Preserve-ENV-variables" class="headerlink" title="Preserve ENV variables"></a>Preserve ENV variables</h2><p>Refer to <a href="https://unix.stackexchange.com/questions/188144/why-is-a-variable-passed-to-the-su-command-but-not-an-array-from-the-same-scope" target="_blank" rel="noopener">this</a> question. This is interesting and easy to make mistake, if I want to preserve ENV variable with switch user from parent shell, use <code>su xxx</code> instead of <code>su - xxx</code>, <code>-</code> option will do:</p>
-<ol>
-<li>clears all environment variables except for TERM</li>
-<li>initializes the environment variables HOME, SHELL, USER, LOGNAME, PATH</li>
-<li>changes to the target user’s home directory</li>
-<li>sets argv[0] of the shell to ‘-‘ in order to make the shell a login shell</li>
-</ol>
-<p>But be very careful not let shell do variable expanding in command option:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">"... echo <span class="variable">$a</span>"</span></span><br></pre></td></tr></table></figure></p>
-<p>Here <code>$a</code> will be expanded before executing, use single quote or escape the <code>$</code> sign:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">'... echo $a'</span></span><br><span class="line">su xxx -c <span class="string">"... echo \$a"</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="Double-substitution"><a href="#Double-substitution" class="headerlink" title="Double substitution"></a>Double substitution</h2><p>For example, it not <code>${${first2}}</code>!<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">first=<span class="string">"real value"</span></span><br><span class="line">first2=<span class="string">"first"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;!first2&#125;</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h2><p><a href="https://kubernetes.io/docs/concepts/storage/volumes/#nfs" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/storage/volumes/#nfs</a></p>
+<p>这个demo很有意思，从之前来看，如果需要为K8s设置NFS，则我们需要一个physical NFS server，然后create PV based on that NFS server then PVC claim from PV. 这样需要自己去维护NFS的健康保证high availability.</p>
+<p>这个例子完全将NFS交给了K8s来管理，它先提供一块存储去构造PVC(这块存储可能来自provisioner或者其他PV)，然后用这个PVC构造了一个NFS server pod以及给这个pod绑定了一个cluster IP，这样就相当于一个虚拟的physical NFS server node了。当我们需要PV的时候，就从这个NFS server pod中取(本质就是从一个PV中构造另一些PV)。</p>
+<p>当然为了满足NFS的特性，这个NFS server的镜像必须要特别的构造，安装了NFS的组件，暴露相关端口，以及在初始化启动程序中配置好<code>/etc/export</code>的相关参数。以及当NFS server pod被重新构造时，保证之前的share不受影响。</p>
+<p>这样的好处就是完全交给K8s去管理，不用担心NFS高可用性的问题，也不用自己去搭建物理的NFS cluster了，只要提供一块存储，就可以构造成NFS。</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>写这个blog的时候这个demo yaml中有一些错误参数，以我的blog准，这是demo git repository:<br><a href="https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs" target="_blank" rel="noopener">https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs</a></p>
+<p>Under provisioner folder, it uses storageclass (internal provisioner) to create a PV, for example, in GCE:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">nfs-pv-provisioning-demo</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    demo:</span> <span class="string">nfs-pv-provisioning</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  accessModes:</span> <span class="string">[</span> <span class="string">"ReadWriteOnce"</span> <span class="string">]</span></span><br><span class="line"><span class="attr">  resources:</span></span><br><span class="line"><span class="attr">    requests:</span></span><br><span class="line"><span class="attr">      storage:</span> <span class="number">20</span><span class="string">Gi</span></span><br></pre></td></tr></table></figure></p>
+<p>If no internal provisioner is available, you can create an external provisioner (for example: NFS), or just create a PV with hostPath:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolume</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">nfs-pv-provisioning-demo</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    demo:</span> <span class="string">nfs-pv-provisioning</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  capacity:</span></span><br><span class="line"><span class="attr">    storage:</span> <span class="string">"20Gi"</span></span><br><span class="line"><span class="attr">  accessModes:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ReadWriteOnce</span></span><br><span class="line"><span class="attr">  hostPath:</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">"/nfs-server-pv"</span></span><br></pre></td></tr></table></figure></p>
+<p>This <code>/nfs-server-pv</code> folder will be created on the host where nfs server pod reside. </p>
+<p>Then it creates a <code>replicationController</code> for <strong>NFS server</strong> (just like a physical NFS server):<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicationController</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">nfs-server</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    role:</span> <span class="string">nfs-server</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        role:</span> <span class="string">nfs-server</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">nfs-server</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">k8s.gcr.io/volume-nfs:0.8</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="attr">          - name:</span> <span class="string">nfs</span></span><br><span class="line"><span class="attr">            containerPort:</span> <span class="number">2049</span></span><br><span class="line"><span class="attr">          - name:</span> <span class="string">mountd</span></span><br><span class="line"><span class="attr">            containerPort:</span> <span class="number">20048</span></span><br><span class="line"><span class="attr">          - name:</span> <span class="string">rpcbind</span></span><br><span class="line"><span class="attr">            containerPort:</span> <span class="number">111</span></span><br><span class="line"><span class="attr">        securityContext:</span></span><br><span class="line"><span class="attr">          privileged:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        volumeMounts:</span></span><br><span class="line">            <span class="comment">## the nfs exports folder</span></span><br><span class="line"><span class="attr">          - mountPath:</span> <span class="string">/exports</span></span><br><span class="line"><span class="attr">            name:</span> <span class="string">mypvc</span></span><br><span class="line"><span class="attr">      volumes:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">mypvc</span></span><br><span class="line"><span class="attr">          persistentVolumeClaim:</span></span><br><span class="line">            <span class="comment">## mount the pvc from provisioner</span></span><br><span class="line"><span class="attr">            claimName:</span> <span class="string">nfs-pv-provisioning-demo</span></span><br></pre></td></tr></table></figure></p>
+<p>Notice that the image is dedicated with nfs-utils pre-installed, and it expose some nfs dedicated ports, see the dockerfile:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">FROM</span> <span class="string">centos</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">yum</span> <span class="bullet">-y</span> <span class="string">install</span> <span class="string">/usr/bin/ps</span> <span class="string">nfs-utils</span> <span class="string">&amp;&amp;</span> <span class="string">yum</span> <span class="string">clean</span> <span class="string">all</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">mkdir</span> <span class="bullet">-p</span> <span class="string">/exports</span></span><br><span class="line"><span class="string">ADD</span> <span class="string">run_nfs.sh</span> <span class="string">/usr/local/bin/</span></span><br><span class="line"><span class="string">ADD</span> <span class="string">index.html</span> <span class="string">/tmp/index.html</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">chmod</span> <span class="number">644</span> <span class="string">/tmp/index.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## expose mountd 20048/tcp and nfsd 2049/tcp and rpcbind 111/tcp</span></span><br><span class="line"><span class="string">EXPOSE</span> <span class="number">2049</span><span class="string">/tcp</span> <span class="number">20048</span><span class="string">/tcp</span> <span class="number">111</span><span class="string">/tcp</span> <span class="number">111</span><span class="string">/udp</span></span><br><span class="line"><span class="comment">## init script to set up this nfs server</span></span><br><span class="line"><span class="string">ENTRYPOINT</span> <span class="string">["/usr/local/bin/run_nfs.sh",</span> <span class="string">"/exports"</span><span class="string">]</span></span><br></pre></td></tr></table></figure></p>
+<p>Then create a service with cluster IP to expose the NFS server pod.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">nfs-server</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">nfs</span></span><br><span class="line"><span class="attr">      port:</span> <span class="number">2049</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">mountd</span></span><br><span class="line"><span class="attr">      port:</span> <span class="number">20048</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">rpcbind</span></span><br><span class="line"><span class="attr">      port:</span> <span class="number">111</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    role:</span> <span class="string">nfs-server</span></span><br></pre></td></tr></table></figure></p>
+<p>Then we can create application PV and PVC from this service:<br>refer to DNS for <a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/" target="_blank" rel="noopener">service and pod</a>.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolume</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">nfs</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  capacity:</span></span><br><span class="line"><span class="attr">    storage:</span> <span class="number">1</span><span class="string">Mi</span></span><br><span class="line"><span class="attr">  accessModes:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">ReadWriteMany</span></span><br><span class="line"><span class="attr">  nfs:</span></span><br><span class="line">    <span class="comment">## service name</span></span><br><span class="line">    <span class="comment">## 这里需要cluster IP，如果有其他DNS配置，可以直接用service name</span></span><br><span class="line"><span class="attr">    server:</span> <span class="string">&lt;nfs</span> <span class="string">server</span> <span class="string">service</span> <span class="string">cluster</span> <span class="string">IP&gt;</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">"/exports"</span></span><br></pre></td></tr></table></figure></p>
+<p>Then you can create PVC bind this PV for other use.</p>
 
       
     </div>
@@ -514,7 +498,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/shell/" rel="tag"># shell</a>
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+          
+            <a href="/tags/nfs/" rel="tag"># nfs</a>
           
         </div>
       
@@ -527,8 +513,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/30/linux-sed-summary/" rel="next" title="sed Command Daily Work Summary">
-                <i class="fa fa-chevron-left"></i> sed Command Daily Work Summary
+              <a href="/2020/01/20/fs-ceph/" rel="next" title="Ceph">
+                <i class="fa fa-chevron-left"></i> Ceph
               </a>
             
           </div>
@@ -536,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/02/shell-subshell/" rel="prev" title="Shell Process Demystify">
-                Shell Process Demystify <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -879,7 +861,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ENV-Variables"><span class="nav-number">1.</span> <span class="nav-text">ENV Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-ENV-Variables"><span class="nav-number">1.1.</span> <span class="nav-text">Global ENV Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-ENV-Variables"><span class="nav-number">1.2.</span> <span class="nav-text">Local ENV Variables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-Scope"><span class="nav-number">2.</span> <span class="nav-text">Variable Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Preserve-ENV-variables"><span class="nav-number">3.</span> <span class="nav-text">Preserve ENV variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Double-substitution"><span class="nav-number">4.</span> <span class="nav-text">Double substitution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Entry"><span class="nav-number">1.</span> <span class="nav-text">Entry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">2.</span> <span class="nav-text">Demo</span></a></li></ol></div>
             
 
           </div>
