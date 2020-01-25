@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="The external provisioner can provide many type of backend filesystem, here we Focus on NFS. We use NFS as the backend storage and we want to avoid manually creating PVs for PVCs, one way is to use kub">
+  <meta name="description" content="Github external provisioner. The external provisioner can be backed by  many type of filesystem, here we focus on nfs-client.  Notice that in this project, you will see nfs-client and nfs directories,">
 <meta name="keywords" content="kubernetes,external provisioner">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kubernetes External Provisioner">
+<meta property="og:title" content="External Provisioner">
 <meta property="og:url" content="http://yoursite.com/2019/12/10/k8s-external-provisioner/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="The external provisioner can provide many type of backend filesystem, here we Focus on NFS. We use NFS as the backend storage and we want to avoid manually creating PVs for PVCs, one way is to use kub">
+<meta property="og:description" content="Github external provisioner. The external provisioner can be backed by  many type of filesystem, here we focus on nfs-client.  Notice that in this project, you will see nfs-client and nfs directories,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-20T23:10:26.682Z">
+<meta property="og:updated_time" content="2020-01-25T01:14:22.381Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kubernetes External Provisioner">
-<meta name="twitter:description" content="The external provisioner can provide many type of backend filesystem, here we Focus on NFS. We use NFS as the backend storage and we want to avoid manually creating PVs for PVCs, one way is to use kub">
+<meta name="twitter:title" content="External Provisioner">
+<meta name="twitter:description" content="Github external provisioner. The external provisioner can be backed by  many type of filesystem, here we focus on nfs-client.  Notice that in this project, you will see nfs-client and nfs directories,">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Kubernetes External Provisioner | 海胆阶段's Blog</title>
+  <title>External Provisioner | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">79</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">81</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">140</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">143</span></a>
 
   </li>
 
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kubernetes External Provisioner
+          <h1 class="post-title" itemprop="name headline">External Provisioner
 
               
             
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-20 15:10:26" itemprop="dateModified" datetime="2020-01-20T15:10:26-08:00">2020-01-20</time>
+                <time title="Modified: 2020-01-24 17:14:22" itemprop="dateModified" datetime="2020-01-24T17:14:22-08:00">2020-01-24</time>
               
             
           </span>
@@ -461,15 +461,34 @@
       
 
       
-        <p>The external provisioner can provide many type of backend filesystem, here we Focus on NFS.</p>
-<p>We use NFS as the backend storage and we want to avoid manually creating PVs for PVCs, one way is to use kubernetes NFS provisioner. Read about:<br><a href="https://medium.com/faun/openshift-dynamic-nfs-persistent-volume-using-nfs-client-provisioner-fcbb8c9344e" target="_blank" rel="noopener">openshift dynamic NFS persistent volume using NFS-client-provisioner</a>.</p>
-<p>Another tool similar is <a href="https://rook.io/" target="_blank" rel="noopener">Rook</a>, see my blog <a href="https://chengdol.github.io/2020/01/20/k8s-rook/" target="_blank" rel="noopener"><code>Rook Storage Orchestrator</code></a>.</p>
+        <p>Github <a href="https://github.com/kubernetes-incubator/external-storage" target="_blank" rel="noopener">external provisioner</a>.</p>
+<p>The external provisioner can be backed by  many type of filesystem, here we focus on <code>nfs-client</code>.</p>
+<blockquote>
+<p>Notice that in this project, you will see <code>nfs-client</code> and <code>nfs</code> directories, <code>nfs-client</code> means we already has a nfs server and use it on client. <code>nfs</code> means we don’t have a nfs server, but we share other filesystem in nfs way.</p>
+</blockquote>
+<p>Another tool very similar is <a href="https://rook.io/" target="_blank" rel="noopener">Rook</a>, see my blog <a href="https://chengdol.github.io/2020/01/20/k8s-rook/" target="_blank" rel="noopener"><code>Rook Storage Orchestrator</code></a>.</p>
+<p>The <code>Rook</code> is more heavy and this project is lightweight.</p>
 <ol>
-<li>setup nfs server</li>
-<li>install nfs-utils on all worker nodes</li>
-<li>setup nfs provisioner</li>
+<li>Setup NFS server</li>
+<li><p>Install nfs-utils on all worker nodes<br>See my blog <a href="https://chengdol.github.io/2019/05/27/fs-nfs-setup/" target="_blank" rel="noopener">NFS Server and Client Setup</a>, this <code>Server Setup</code> chapter.</p>
+</li>
+<li><p>Setup NFS provisioner<br>This blog give me clear instruction on how to adopt the <code>nfs-client</code> provisioner: <a href="https://medium.com/faun/openshift-dynamic-nfs-persistent-volume-using-nfs-client-provisioner-fcbb8c9344e" target="_blank" rel="noopener">openshift dynamic NFS persistent volume using NFS-client-provisioner</a>.</p>
+</li>
 </ol>
-<p>If several pods use the same PVC, they will share the same PV.</p>
+<p><strong>Notces</strong>:</p>
+<ol>
+<li><p>I find a bug in this project, when set rbac, you need to specify <code>-n test-1</code>, otherwise the role was created in <code>test-1</code> but rolebinding is created in default namespace.</p>
+</li>
+<li><p>The NFS provisioner is global scoped.</p>
+</li>
+<li><p>The <code>NFS_SERVER</code> env in deployment.yaml can be hostname or IP address.</p>
+</li>
+<li><p>If several pods use the same PVC, they share the same PV.</p>
+</li>
+<li><p>you can customize the storage class if it’s available. For example, set the reclaim policy as <code>retain</code> instead of <code>delete</code>. see <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/" target="_blank" rel="noopener">doc</a>.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">storage.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StorageClass</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">standard</span></span><br><span class="line"><span class="attr">provisioner:</span> <span class="string">kubernetes.io/aws-ebs</span></span><br><span class="line"><span class="attr">parameters:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">gp2</span></span><br><span class="line"><span class="comment">## default is delete</span></span><br><span class="line"><span class="attr">reclaimPolicy:</span> <span class="string">Retain</span></span><br><span class="line"><span class="comment">## allow resize the volume by editing the corresponding PVC object</span></span><br><span class="line"><span class="comment">## cannot shrink</span></span><br><span class="line"><span class="attr">allowVolumeExpansion:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">volumeBindingMode:</span> <span class="string">Immediate</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -583,7 +602,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -815,7 +834,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">79</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">81</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
