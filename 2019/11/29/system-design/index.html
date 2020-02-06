@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. 有的系统设计主要是各功能部件合理组合:  Design Instagarm  Design Dropbox  Design Twitterpo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-04T21:21:16.013Z">
+<meta property="og:updated_time" content="2020-02-06T06:58:16.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="System Design Summary">
 <meta name="twitter:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. 有的系统设计主要是各功能部件合理组合:  Design Instagarm  Design Dropbox  Design Twitterpo">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-04 13:21:16" itemprop="dateModified" datetime="2020-02-04T13:21:16-08:00">2020-02-04</time>
+                <time title="Modified: 2020-02-05 22:58:16" itemprop="dateModified" datetime="2020-02-05T22:58:16-08:00">2020-02-05</time>
               
             
           </span>
@@ -476,8 +476,12 @@
 <p>cache for hot users and tweets</p>
 <ol start="4">
 <li>Designing Twitter Search</li>
-<li>Designing a Web Crawler (BFS, modular, url frontier, DNS, fetcher, DIS, content filter, extractor, url filter)</li>
+<li><p>Designing a Web Crawler (BFS, modular, url frontier, DNS, fetcher, DIS, content filter, extractor, url filter)</p>
+</li>
+<li><p>Designing Facebook Messenger<br>each chat server serves a group of user, LB maps user to it’s chat server, chat server commuicate with each other<br>message handling: user long polling to get message<br>hashtable keep track of online user, if offline, notify sender deliver failed<br>handle message order: 单独靠timestamp不行，use sequence number with every message for each user</p>
+</li>
 </ol>
+<p>database: support high frequence write/read row, quick small updates, range based search: HBase, column-oriented key-value NoSQL database<br>partition by UserID, low latency</p>
 <p>有的主要涉及到了数据结构和算法:</p>
 <ol>
 <li>Typeahead suggestion (trie, reference)</li>

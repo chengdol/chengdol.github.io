@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-03T22:41:39.047Z">
+<meta property="og:updated_time" content="2020-02-06T05:20:19.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Summary">
 <meta name="twitter:description" content="TO-DO hire season, internal refer position desire? Backend developer, DevOps, Infra? system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-03 14:41:39" itemprop="dateModified" datetime="2020-02-03T14:41:39-08:00">2020-02-03</time>
+                <time title="Modified: 2020-02-05 21:20:19" itemprop="dateModified" datetime="2020-02-05T21:20:19-08:00">2020-02-05</time>
               
             
           </span>
@@ -591,7 +591,7 @@
 <p><code>DFS</code>也可以，但要注意visited用2种记号表示, 0:没有访问，1:当前访问, 2:完全访问。如果在一次DFS中再次遇到了1，则说明有cycle.当完全访问后，再设置成2.</p>
 <h4 id="strongly-connected-component"><a href="#strongly-connected-component" class="headerlink" title="strongly connected component"></a>strongly connected component</h4><p>Strongly connected: there is a path from v to w and w to v as well.<br>skip this topic</p>
 <h3 id="Weighted"><a href="#Weighted" class="headerlink" title="Weighted"></a>Weighted</h3><p>API design:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class DirectedEdge: weight, from, to</span><br><span class="line">class EdgeWeightedDigraph: addEdge(new DirectedEdge(from, to, weight));</span><br><span class="line">distTo(<span class="keyword">int</span> w);</span><br><span class="line">pathTo(<span class="keyword">int</span> w);</span><br></pre></td></tr></table></figure></p>
-<p>we still use adjacency list representation:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;DirectedEdge&gt;[] adj = (List&lt;DirectedEdge&gt;[]) <span class="keyword">new</span> List[n];</span><br><span class="line"><span class="comment">// new init array</span></span><br></pre></td></tr></table></figure></p>
+<p>we still use adjacency list representation:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;DirectedEdge&gt;[] adj = (List&lt;DirectedEdge&gt;[]) <span class="keyword">new</span> List[n];</span><br><span class="line"><span class="comment">// new init array</span></span><br><span class="line">List&lt;DirectedEdge&gt;[] adj = <span class="keyword">new</span> List[n];</span><br></pre></td></tr></table></figure></p>
 <h4 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h4><p><code>nonnegative weight</code><br><code>SPT</code>: shortest path tree exist in graph from the source vertex</p>
 <p><strong>remember</strong>:<br>Use minium priority queue, to choose the next vertex cloest to the source vertex!<br>Then update the path accordingly if it’s shorter than before (如何实现这个degrade呢?)<br><a href="https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/" target="_blank" rel="noopener">implementation</a></p>
 <p>有几点需要注意：</p>
