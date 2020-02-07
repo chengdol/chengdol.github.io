@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. 有的系统设计主要是各功能部件合理组合:  Design Instagarm  Design Dropbox  Design Twitterpo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-06T06:58:16.444Z">
+<meta property="og:updated_time" content="2020-02-07T17:58:11.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="System Design Summary">
 <meta name="twitter:description" content="This blog is for system design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. 有的系统设计主要是各功能部件合理组合:  Design Instagarm  Design Dropbox  Design Twitterpo">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">81</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">82</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">146</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">147</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-05 22:58:16" itemprop="dateModified" datetime="2020-02-05T22:58:16-08:00">2020-02-05</time>
+                <time title="Modified: 2020-02-07 09:58:11" itemprop="dateModified" datetime="2020-02-07T09:58:11-08:00">2020-02-07</time>
               
             
           </span>
@@ -478,7 +478,7 @@
 <li>Designing Twitter Search</li>
 <li><p>Designing a Web Crawler (BFS, modular, url frontier, DNS, fetcher, DIS, content filter, extractor, url filter)</p>
 </li>
-<li><p>Designing Facebook Messenger<br>each chat server serves a group of user, LB maps user to it’s chat server, chat server commuicate with each other<br>message handling: user long polling to get message<br>hashtable keep track of online user, if offline, notify sender deliver failed<br>handle message order: 单独靠timestamp不行，use sequence number with every message for each user</p>
+<li><p>Designing Facebook Messenger<br>each chat server serves a bunch of user, LB maps user to it’s chat server, chat server commuicate with each other to send/receive message<br>message handling: long polling to receive message<br>hashtable keep track of online user, if offline, notify delivery failure to sender<br>handle message order: 单独靠timestamp不行，use sequence number with every message for each user</p>
 </li>
 </ol>
 <p>database: support high frequence write/read row, quick small updates, range based search: HBase, column-oriented key-value NoSQL database<br>partition by UserID, low latency</p>
@@ -487,6 +487,8 @@
 <li>Typeahead suggestion (trie, reference)</li>
 <li>API rate limiter (dynamic sliding window)</li>
 <li>Designing Facebook’s Newsfeed (offline feed generation)</li>
+</ol>
+<ol start="4">
 <li><p>Designing Yelp (querying, objects don’t change often, QuadTree)<br>解释一下我的理解，这里partition讲的是partition quadtree.<br>从DB中读location id, 通过hashing map to different quadtree server (这个mapping其实就是quadtree index，可以在quadtree server fail后用来重新构造它的数据)，然后各自构造自己的quadtree.这些quadtree servers有一个aggregator server（它有自己的copies）。于是每次request要去所有quadtree server查询，然后聚合返回的数据。对于每个quadtree server，它所包含的location id也有一个本地的mapping, to know which DB servers contains this locatio id info. 这个mapping也使用的hashing实现。</p>
 </li>
 <li><p>Designing Uber backend (requirements, objects do change often, QuadTree)</p>
@@ -688,7 +690,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">146</span>
+                    <span class="site-state-item-count">147</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -924,7 +926,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">81</span>
+                      
+                    
+                    <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
