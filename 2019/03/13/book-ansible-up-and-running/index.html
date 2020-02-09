@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Note: This is a fat summary of the book Ansible: Up and Running, 2nd Edition, just for quick revisit and review.  这本书其实挺不错的，我还总结了在工作中ansible的常用模块在另一个blog里面，然后有一个测试框架，主要用来验证和熟悉新模块的作用。 Could we remove">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-06T06:57:03.882Z">
+<meta property="og:updated_time" content="2020-02-07T23:45:09.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Up and Running, 2nd Edition">
 <meta name="twitter:description" content="Note: This is a fat summary of the book Ansible: Up and Running, 2nd Edition, just for quick revisit and review.  这本书其实挺不错的，我还总结了在工作中ansible的常用模块在另一个blog里面，然后有一个测试框架，主要用来验证和熟悉新模块的作用。 Could we remove">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">147</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">148</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-05 22:57:03" itemprop="dateModified" datetime="2020-02-05T22:57:03-08:00">2020-02-05</time>
+                <time title="Modified: 2020-02-07 15:45:09" itemprop="dateModified" datetime="2020-02-07T15:45:09-08:00">2020-02-07</time>
               
             
           </span>
@@ -466,16 +466,15 @@
 </blockquote>
 <p>这本书其实挺不错的，我还总结了在工作中ansible的常用模块在另一个blog里面，然后有一个测试框架，主要用来验证和熟悉新模块的作用。</p>
 <p>Could we remove major architectural components from the IT automation stack? Eliminating management daemons and relying instead on OpenSSH meant the system could start managing a computer fleet immediately, without having to set up anything on the managed machines.</p>
-<p>the“Making Ansible Go Even Faster” chapter now covers asynchronous tasks, and the“Debugging Ansible Playbooks” chapter now covers the debugger that was introduced in version 2.1.</p>
+<p>the “Making Ansible Go Even Faster” chapter now covers asynchronous tasks, and the “Debugging Ansible Playbooks” chapter now covers the debugger that was introduced in version 2.1.</p>
 <p>we are all slowly turning into system engineers.</p>
-<h3 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1. Introduction"></a>Chapter 1. Introduction</h3><p>We also need to make sure we have the appropriate redundancies in place, so that when failures happen (and they will), our software systems will handle these failures gracefully. Then there are the secondary services that we also need to deploy and maintain, such as logging, monitoring, and analytics, as well as third-party services we need to interact with, such as infrastructure-as-a-service (IaaS) endpoints for managing virtual machine instances.</p>
-<p>When we talk about configuration management, we are typically talking about writing some kind of state description for our servers, and then using a tool to enforce that the servers are, indeed, in that state: the right packages are installed, configuration files contain the expected values and have the expected permissions, the right services are running, and so on.</p>
+<h3 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1. Introduction"></a>Chapter 1. Introduction</h3><p>When we talk about configuration management, we are typically talking about writing some kind of state description for our servers, and then using a tool to enforce that the servers are, indeed, in that state: the right packages are installed, configuration files contain the expected values and have the expected permissions, the right services are running, and so on.</p>
 <p>Ansible is a great tool for deployment as well as configuration management. Using a single tool for both configuration management and deployment makes life simpler for the folks responsible for operations.</p>
 <p>Some people talk about the need for <em>orchestration</em> of deployment. This is where multiple remote servers are involved, and things have to happen in a specific order.</p>
 <h4 id="How-Ansible-works"><a href="#How-Ansible-works" class="headerlink" title="How Ansible works"></a>How Ansible works</h4><p>In Ansible, a script is called a playbook. A playbook describes which hosts (what Ansible calls remote servers) to configure, and an ordered list of tasks to perform on those hosts.</p>
 <p>Ansible will make SSH connections in parallel to web1, web2, and web3. It will execute the first task on the list on all three hosts simultaneously</p>
 <p>To manage a remote server with Ansible, the server needs to have SSH and Python 2.5 or later installed, or Python 2.4 with the Python <code>simplejsonlibrary</code> installed. There’s no need to preinstall an agent or anyother software on the host.</p>
-<p>The control machine (the one that you use to control remote machines) needs tohave Python 2.6 or later installed.</p>
+<p>The control machine (the one that you use to control remote machines) needs to have Python 2.6 or later installed.</p>
 <p>Ansible is <strong>push based</strong>, and has been used successfully in production with thousands of nodes, and has excellent support for environments where servers are dynamically added and removed.</p>
 <p>Ansible modules are declarative; you use them to describe the state you want the server to be in. Modules are also idempotent.</p>
 <p>Ansible has excellent support for templating, as well as defining variables at different scopes. Anybody who thinks Ansible is equivalent to working with shell scripts has never had to maintain a nontrivial program written in shell. I’ll always choose Ansible over shell scripts for config management tasks if given a choice.</p>
@@ -973,7 +972,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">147</span>
+                    <span class="site-state-item-count">148</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

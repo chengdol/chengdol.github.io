@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. pausehttps:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-31T00:49:09.947Z">
+<meta property="og:updated_time" content="2020-02-09T02:38:54.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Module Reference">
 <meta name="twitter:description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. pausehttps:">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">147</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">148</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-30 16:49:09" itemprop="dateModified" datetime="2020-01-30T16:49:09-08:00">2020-01-30</time>
+                <time title="Modified: 2020-02-08 18:38:54" itemprop="dateModified" datetime="2020-02-08T18:38:54-08:00">2020-02-08</time>
               
             
           </span>
@@ -506,10 +506,8 @@
 </blockquote>
 <h2 id="synchronize"><a href="#synchronize" class="headerlink" title="synchronize"></a>synchronize</h2><p>rsync wrapper</p>
 <h2 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h2><p><a href="https://docs.ansible.com/ansible/2.4/playbooks_loops.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/2.4/playbooks_loops.html</a><br>items</p>
-<h2 id="variables"><a href="#variables" class="headerlink" title="variables"></a>variables</h2><p>inventory_hostname<br>groups<br>jinjia2 template</p>
-<p>operator:<br>in</p>
-<h2 id="conditional"><a href="#conditional" class="headerlink" title="conditional"></a>conditional</h2><p>when clause</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 不是每个module都支持creates的</span></span><br><span class="line"><span class="attr">args:</span></span><br><span class="line"><span class="attr">  creates:</span> <span class="string">xxx</span></span><br></pre></td></tr></table></figure>
+<h2 id="variables"><a href="#variables" class="headerlink" title="variables"></a>variables</h2><p>inventory_hostname<br>groups<br>jinjia2 template <figure class="highlight plain"><figcaption><span>&#125;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">operator</span><br><span class="line">in</span><br><span class="line"></span><br><span class="line">## conditional</span><br><span class="line">when clause</span><br><span class="line"></span><br><span class="line">```yaml</span><br><span class="line">## 不是每个module都支持creates的</span><br><span class="line">args:</span><br><span class="line">  creates: xxx</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -629,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">147</span>
+                    <span class="site-state-item-count">148</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -903,7 +901,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pause"><span class="nav-number">1.</span> <span class="nav-text">pause</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skip"><span class="nav-number">2.</span> <span class="nav-text">skip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug"><span class="nav-number">3.</span> <span class="nav-text">debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">4.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch"><span class="nav-number">5.</span> <span class="nav-text">fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template"><span class="nav-number">6.</span> <span class="nav-text">template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">7.</span> <span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#command"><span class="nav-number">8.</span> <span class="nav-text">command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">9.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemd"><span class="nav-number">10.</span> <span class="nav-text">systemd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file"><span class="nav-number">11.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lineinfile"><span class="nav-number">12.</span> <span class="nav-text">lineinfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mount"><span class="nav-number">13.</span> <span class="nav-text">mount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asynchronous"><span class="nav-number">14.</span> <span class="nav-text">asynchronous</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronize"><span class="nav-number">15.</span> <span class="nav-text">synchronize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop"><span class="nav-number">16.</span> <span class="nav-text">loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variables"><span class="nav-number">17.</span> <span class="nav-text">variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conditional"><span class="nav-number">18.</span> <span class="nav-text">conditional</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pause"><span class="nav-number">1.</span> <span class="nav-text">pause</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skip"><span class="nav-number">2.</span> <span class="nav-text">skip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug"><span class="nav-number">3.</span> <span class="nav-text">debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">4.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch"><span class="nav-number">5.</span> <span class="nav-text">fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template"><span class="nav-number">6.</span> <span class="nav-text">template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">7.</span> <span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#command"><span class="nav-number">8.</span> <span class="nav-text">command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">9.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemd"><span class="nav-number">10.</span> <span class="nav-text">systemd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file"><span class="nav-number">11.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lineinfile"><span class="nav-number">12.</span> <span class="nav-text">lineinfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mount"><span class="nav-number">13.</span> <span class="nav-text">mount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asynchronous"><span class="nav-number">14.</span> <span class="nav-text">asynchronous</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronize"><span class="nav-number">15.</span> <span class="nav-text">synchronize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop"><span class="nav-number">16.</span> <span class="nav-text">loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variables"><span class="nav-number">17.</span> <span class="nav-text">variables</span></a></li></ol></div>
             
 
           </div>
