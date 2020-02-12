@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="ip command in Linux is present in the net-tools which is used for performing several network administration tasks. IP stands for Internet Protocol. It can perform several tasks like configuring and mo">
+  <meta name="description" content="ip command in Linux is present in the iproute package which is used for performing several network administration tasks. IP stands for Internet Protocol. ifconfig is deprecated. It can perform several">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ip Command">
 <meta property="og:url" content="http://yoursite.com/2020/02/04/linux-ip-command/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="ip command in Linux is present in the net-tools which is used for performing several network administration tasks. IP stands for Internet Protocol. It can perform several tasks like configuring and mo">
+<meta property="og:description" content="ip command in Linux is present in the iproute package which is used for performing several network administration tasks. IP stands for Internet Protocol. ifconfig is deprecated. It can perform several">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-04T21:23:47.880Z">
+<meta property="og:updated_time" content="2020-02-12T19:12:14.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ip Command">
-<meta name="twitter:description" content="ip command in Linux is present in the net-tools which is used for performing several network administration tasks. IP stands for Internet Protocol. It can perform several tasks like configuring and mo">
+<meta name="twitter:description" content="ip command in Linux is present in the iproute package which is used for performing several network administration tasks. IP stands for Internet Protocol. ifconfig is deprecated. It can perform several">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">82</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">81</span></a>
 
   </li>
         
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2020-02-04 09:21:49 / Modified: 13:23:47" itemprop="dateCreated datePublished" datetime="2020-02-04T09:21:49-08:00">2020-02-04</time>
+              <time title="Created: 2020-02-04 09:21:49" itemprop="dateCreated datePublished" datetime="2020-02-04T09:21:49-08:00">2020-02-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-12 11:12:14" itemprop="dateModified" datetime="2020-02-12T11:12:14-08:00">2020-02-12</time>
               
             
           </span>
@@ -449,10 +461,16 @@
       
 
       
-        <p><code>ip</code> command in Linux is present in the net-tools which is used for performing several network administration tasks. IP stands for Internet Protocol.</p>
+        <p><code>ip</code> command in Linux is present in the <code>iproute</code> package which is used for performing several network administration tasks. IP stands for Internet Protocol.</p>
+<p><code>ifconfig</code> is deprecated.</p>
 <p>It can perform several tasks like configuring and modifying the default and static routing, setting up tunnel over IP, listing IP addresses and property information, modifying the status of the interface, assigning, deleting and setting up IP addresses and routes.</p>
-<p><a href="https://www.geeksforgeeks.org/ip-command-in-linux-with-examples/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/ip-command-in-linux-with-examples/</a><br><a href="https://linuxize.com/post/linux-ip-command/" target="_blank" rel="noopener">https://linuxize.com/post/linux-ip-command/</a><br><a href="http://man7.org/linux/man-pages/man8/ip.8.html" target="_blank" rel="noopener">http://man7.org/linux/man-pages/man8/ip.8.html</a></p>
-
+<p><a href="https://linuxize.com/post/linux-ip-command/" target="_blank" rel="noopener">https://linuxize.com/post/linux-ip-command/</a><br><a href="http://man7.org/linux/man-pages/man8/ip.8.html" target="_blank" rel="noopener">http://man7.org/linux/man-pages/man8/ip.8.html</a></p>
+<p>Most frequently used subcommands:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">link (l) - Display and modify network interfaces.</span><br><span class="line">address (a) - Display and modify IP Addresses.</span><br><span class="line">route (r) - Display and alter the routing table.</span><br><span class="line">neigh (n) - Display and manipulate neighbor objects (ARP table).</span><br></pre></td></tr></table></figure></p>
+<p>The configurations set with the ip command are <strong>not</strong> persistent. After a system restart, all changes are lost. For permanent settings, you need to edit the distro-specific configuration files or add the commands to a startup script.</p>
+<h2 id="address"><a href="#address" class="headerlink" title="address"></a>address</h2><p>Show all IP address associated with all interfaces that are available<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br><span class="line"><span class="comment">## show specified device</span></span><br><span class="line">ip addr show eth0</span><br><span class="line"><span class="comment">## assign an IP address to an interface. (need append netmask)</span></span><br><span class="line"><span class="comment">## can assign multiple ip address to an interface</span></span><br><span class="line">ip addr add 192.168.1.50/24 dev eth0</span><br><span class="line"><span class="comment">## delete an assigned IP address to an interface. (need append netmask)</span></span><br><span class="line">ip addr del 192.168.1.50/24 dev eth0</span><br></pre></td></tr></table></figure></p>
+<h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><p>It is used to display <code>link layer</code> information, it will fetch characteristics of the link layer devices currently available. Any networking device which has a driver loaded can be classified as an available device.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ip link</span><br><span class="line"><span class="comment">## show statistic of device with human readable format</span></span><br><span class="line">ip -s -h link</span><br><span class="line">ip -s -h link show eth0</span><br><span class="line"><span class="comment">## bring up</span></span><br><span class="line">ip link <span class="built_in">set</span> eth0 up</span><br><span class="line"><span class="comment">## bring down</span></span><br><span class="line">ip link <span class="built_in">set</span> eth0 down</span><br></pre></td></tr></table></figure></p>
+<h2 id="route"><a href="#route" class="headerlink" title="route"></a>route</h2><p>没明白这个概念<br>This command helps you to see the route packets your network will take as set in your <strong>kernel routing table</strong>. The first entry is the default route.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ip route</span><br><span class="line"><span class="comment">## route for a specific network</span></span><br><span class="line">ip route list 9.30.204.0/22</span><br><span class="line"><span class="comment">## add a route to 192.168.121.0/24 via the gateway at 192.168.121.1</span></span><br><span class="line">ip route add 192.168.121.0/24 via 192.168.121.1</span><br><span class="line"><span class="comment">## add a route to 192.168.121.0/24 that can be reached on device eth0.</span></span><br><span class="line">ip route add 192.168.121.0/24 dev eth0</span><br></pre></td></tr></table></figure></p>
+<h2 id="neigh"><a href="#neigh" class="headerlink" title="neigh"></a>neigh</h2>
       
     </div>
 
@@ -545,8 +563,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -799,9 +826,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-count">81</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -826,6 +851,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#address"><span class="nav-number">1.</span> <span class="nav-text">address</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#link"><span class="nav-number">2.</span> <span class="nav-text">link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#route"><span class="nav-number">3.</span> <span class="nav-text">route</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#neigh"><span class="nav-number">4.</span> <span class="nav-text">neigh</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
