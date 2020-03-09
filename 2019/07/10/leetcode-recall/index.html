@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hire season, internal refer position: backend developer, DevOps, Infra system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo when co">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-27T00:44:45.479Z">
+<meta property="og:updated_time" content="2020-03-09T23:45:01.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Summary">
 <meta name="twitter:description" content="TO-DO hire season, internal refer position: backend developer, DevOps, Infra system design for x code in my laptop? baidu cloud? company series, buy x code or leetcode? project chat avoid typo when co">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-26 16:44:45" itemprop="dateModified" datetime="2020-02-26T16:44:45-08:00">2020-02-26</time>
+                <time title="Modified: 2020-03-09 16:45:01" itemprop="dateModified" datetime="2020-03-09T16:45:01-07:00">2020-03-09</time>
               
             
           </span>
@@ -470,7 +470,7 @@
 <li>avoid typo when code</li>
 <li>blog</li>
 </ol>
-<h1 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h1><p>java Integer notation, see this <a href="https://stackoverflow.com/questions/17636749/java-why-cant-i-declare-integer-types-using-scientific-notation" target="_blank" rel="noopener">post</a>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = (<span class="keyword">int</span>)<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">2_000_000_000</span>;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h1><p>java Integer notation, see this <a href="https://stackoverflow.com/questions/17636749/java-why-cant-i-declare-integer-types-using-scientific-notation" target="_blank" rel="noopener">post</a>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 10^9</span></span><br><span class="line"><span class="keyword">int</span> a = (<span class="keyword">int</span>)<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">int</span> a = (<span class="keyword">int</span>)Math.pow(<span class="number">10</span>, <span class="number">9</span>);</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">2_000_000_000</span>;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Class-features"><a href="#Class-features" class="headerlink" title="Class features"></a>Class features</h2><p>basic structure and syntax<br>nested class, inner class<br>static class<br>private<br>public<br>protected</p>
 <h2 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h2><p>LRU除了可以使用自定义的double linked list去实现，也可以用Java API <code>LinkedHashMap</code>，在constructor中指定参数:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置capacity</span></span><br><span class="line"><span class="keyword">int</span> CAPACITY = <span class="number">10</span>;</span><br><span class="line"><span class="comment">// true表示自动实现LRU功能</span></span><br><span class="line">LinkedHashMap&lt;String, Integer&gt; lru = <span class="keyword">new</span> LinkedHashMap&lt;&gt;(CAPACITY, <span class="number">0.75f</span>, <span class="keyword">true</span>)&#123;</span><br><span class="line">  <span class="comment">// override</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">boolean</span> removeEldestEntry​(Map.Entry&lt;String, Integer&gt; eldest)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> size() &gt; CAPACITY;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>如此一来，可以直接使用put(), get()即可，其他不用操心，当达新增的量超过capacity时会自动删除least recently used item.</p>
