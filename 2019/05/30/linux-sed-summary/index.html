@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Normally we use a interactive text editor, like vim. The command sed is one of the most commonly used command line editor in Linux world. sed stands for the stream editor, it uses the roles supplied t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-03T23:57:47.823Z">
+<meta property="og:updated_time" content="2020-03-11T00:14:59.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sed Command Daily Work Summary">
 <meta name="twitter:description" content="Normally we use a interactive text editor, like vim. The command sed is one of the most commonly used command line editor in Linux world. sed stands for the stream editor, it uses the roles supplied t">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-03 15:57:47" itemprop="dateModified" datetime="2019-11-03T15:57:47-08:00">2019-11-03</time>
+                <time title="Modified: 2020-03-10 17:14:59" itemprop="dateModified" datetime="2020-03-10T17:14:59-07:00">2020-03-10</time>
               
             
           </span>
@@ -465,10 +465,8 @@
 <blockquote>
 <p>Note: Be careful that <code>sed</code> will break the softlink and create a file with the same name! for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /tmp/source.txt /tmp/link.txt</span><br><span class="line">sed -i -e <span class="string">"s#aaa#bbb#"</span> /tmp/link.txt</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<blockquote>
-<p>then the softlink is gone, a new file named link.txt is created instead.</p>
-</blockquote>
-<p>First you need to understand how <code>sed</code> process the text:</p>
+<p>  then the softlink is gone, a new file named link.txt is created instead.<br>  so use <code>readlink</code> first to get resolved symbolic links, then use <code>sed</code> on it.</p>
+<p>First you need to understand how <code>sed</code> works with text:</p>
 <ol>
 <li>Reads <strong>one</strong> data line at a time from the input</li>
 <li>Matches that data with the supplied editor commands</li>
@@ -477,11 +475,11 @@
 </ol>
 <h2 id="Substitution"><a href="#Substitution" class="headerlink" title="Substitution"></a>Substitution</h2><p>I have a text file <code>sedtxt</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using Java print hello world and hello tree.</span><br><span class="line">Using Java print hello world and hello tree.</span><br><span class="line">Using Java print hello world and hello tree.</span><br><span class="line">Using Java print hello world and hello tree.</span><br></pre></td></tr></table></figure></p>
 <p>If I want to substite all <code>hello</code> with <code>hi</code> in-place:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i -e &apos;s/hello/hi/g&apos; sedtxt</span><br></pre></td></tr></table></figure></p>
-<p><code>-i</code>: does in-place substitution in file <code>sedtxt</code><br><code>-e</code>: followed by commands<br><code>s/x/y/flags</code>: substitute option, <code>/</code> is the delimiter, can be other signs; <code>g</code> represents that replace in all occurrences.</p>
+<p><code>-i</code>: does in-place substitution in file <code>sedtxt</code><br><code>-e</code>: followed by commands<br><code>s/x/y/flags</code>: substitute option, <code>/</code> is the delimiter, can be other chars; <code>g</code> represents that replace in all occurrences (global).</p>
 <blockquote>
 <p>Note that if not set <code>g</code>, it will only replace first occurrence in <strong>each</strong> line!<br>Note that <code>sed</code> can get input from STDIN or from pipe</p>
 </blockquote>
-<p>For the demo, I remove the <code>-i</code> option, if I want to substitute the second <code>hello</code> with <code>goodbye</code> in-place in each line:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e &apos;s/hello/goodbye/2&apos; sedtxt</span><br></pre></td></tr></table></figure></p>
+<p>If I want to substitute the <strong>second</strong> <code>hello</code> with <code>goodbye</code> in each line:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e &apos;s/hello/goodbye/2&apos; sedtxt</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using Java print hello world and goodbye tree.</span><br><span class="line">Using Java print hello world and goodbye tree.</span><br><span class="line">Using Java print hello world and goodbye tree.</span><br><span class="line">Using Java print hello world and goodbye tree.</span><br></pre></td></tr></table></figure>
 <p>If I want to substitute <code>hello</code> with <code>hi</code> and <code>Java</code> with <code>Python</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed -e &apos;s/hello/hi/g&apos; -e &apos;s/Java/Pyhton/g&apos; sedtxt</span><br><span class="line">sed -e &apos;s/hello/hi/g; s/Java/Python/g&apos; sedtxt</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using Pyhton print hi world and hi tree.</span><br><span class="line">Using Pyhton print hi world and hi tree.</span><br><span class="line">Using Pyhton print hi world and hi tree.</span><br><span class="line">Using Pyhton print hi world and hi tree.</span><br></pre></td></tr></table></figure>
@@ -522,7 +520,7 @@
 <p>The transform command performs a one-to-one mapping of the inchars and the outchars values.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e &apos;y/1234/5678/&apos; sedtrans</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The 5st line is 5</span><br><span class="line">The 6rd line is 6</span><br><span class="line">The 7rd line is 7</span><br><span class="line">The 8th line is 8</span><br></pre></td></tr></table></figure>
 <p>The transform command is a <strong>global</strong> command; that is, it performs the transformation on any character found in the text line automatically, without regard to the occurrence.<br>You can’t limit the transformation to a specific occurrence of the character.</p>
-<h2 id="sed-files-in-directory-and-subdirectories-recursively"><a href="#sed-files-in-directory-and-subdirectories-recursively" class="headerlink" title="sed files in directory and subdirectories recursively"></a>sed files in directory and subdirectories recursively</h2><p>Actually we can find all files by <code>find</code> then exec <code>sed</code>, see this <a href="https://stackoverflow.com/questions/6758963/find-and-replace-with-sed-in-directory-and-sub-directories" target="_blank" rel="noopener">post</a>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;dir&gt; -type f -name &quot;*sh&quot; -exec sed -i -e &quot;s|$&#123;old&#125;|$&#123;new&#125;|g&quot; &#123;&#125; \;</span><br></pre></td></tr></table></figure></p>
+<h2 id="sed-files-in-directory-and-subdirectories-recursively"><a href="#sed-files-in-directory-and-subdirectories-recursively" class="headerlink" title="sed files in directory and subdirectories recursively"></a>sed files in directory and subdirectories recursively</h2><p>Actually we can find all files by <code>find</code> then exec <code>sed</code>, see this <a href="https://stackoverflow.com/questions/6758963/find-and-replace-with-sed-in-directory-and-sub-directories" target="_blank" rel="noopener">post</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;dir&gt; -<span class="built_in">type</span> f -name <span class="string">"*sh"</span> -<span class="built_in">exec</span> sed -i -e <span class="string">"s|<span class="variable">$&#123;old&#125;</span>|<span class="variable">$&#123;new&#125;</span>|g"</span> &#123;&#125; \;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Note that <code>-type f</code> is necessary, otherwise will pass directory name to <code>sed</code>.</p>
 </blockquote>
