@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-27T20:49:11.859Z">
+<meta property="og:updated_time" content="2020-03-26T04:11:20.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Non-Root Docker Update Summary">
 <meta name="twitter:description" content="I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-27 13:49:11" itemprop="dateModified" datetime="2019-08-27T13:49:11-07:00">2019-08-27</time>
+                <time title="Modified: 2020-03-25 21:11:20" itemprop="dateModified" datetime="2020-03-25T21:11:20-07:00">2020-03-25</time>
               
             
           </span>
@@ -493,7 +493,10 @@
 <blockquote>
 <p>Note that before committing, you need to quiesce the services and remove the mount path content to unlink all broken symbolic links.</p>
 </blockquote>
-<p>Also remember to put the old entrypoint back:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker commit --change &apos;ENTRYPOINT [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;/opt/xx/initScripts/startcontainer.sh&quot;]&apos; &lt;container ID&gt; is-engine-image:1</span><br></pre></td></tr></table></figure></p>
+<p>Also remember to put the old entrypoint back:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker commit \</span><br><span class="line">       --change &apos;ENTRYPOINT [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;/opt/xx/initScripts/startcontainer.sh&quot;]&apos; \</span><br><span class="line">       &lt;container ID&gt; is-engine-image:1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Note that <code>podman</code> commit format is different.</p>
+</blockquote>
 <blockquote>
 <p>Note that you may use <code>bin/sh</code> instead of <code>/bin/bash</code>.</p>
 </blockquote>
