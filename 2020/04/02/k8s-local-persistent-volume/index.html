@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="IntroductionKubernetes 1.14: Local Persistent Volumes GARecap:A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin,">
+<meta name="keywords" content="kubernetes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Local Persistent Volume">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/k8s-local-persistent-volume/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="IntroductionKubernetes 1.14: Local Persistent Volumes GARecap:A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-04-09T18:22:07.958Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Local Persistent Volume">
+<meta name="twitter:description" content="IntroductionKubernetes 1.14: Local Persistent Volumes GARecap:A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin,">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/02/k8s-local-persistent-volume/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Local Persistent Volume | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">83</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">25</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">154</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/k8s-local-persistent-volume/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Local Persistent Volume
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-04-02 09:34:04" itemprop="dateCreated datePublished" datetime="2020-04-02T09:34:04-07:00">2020-04-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-04-09 11:22:07" itemprop="dateModified" datetime="2020-04-09T11:22:07-07:00">2020-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a href="https://kubernetes.io/blog/2019/04/04/kubernetes-1.14-local-persistent-volumes-ga/" target="_blank" rel="noopener">Kubernetes 1.14: Local Persistent Volumes GA</a><br><strong>Recap:</strong><br>A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin, Kubernetes workloads can now consume high performance local storage using the same volume APIs that app developers have become accustomed to.</p>
+<p>一个和hostPath的重要区别:<br>The biggest difference is that the Kubernetes scheduler understands which node a Local Persistent Volume belongs to. With HostPath volumes, a pod referencing a HostPath volume may be moved by the scheduler to a different node resulting in data loss. But with Local Persistent Volumes, the Kubernetes scheduler ensures that a pod using a Local Persistent Volume is <strong>always</strong> scheduled to the same node.</p>
+<p>While HostPath volumes may be referenced via a Persistent Volume Claim (PVC) or directly inline in a pod definition, Local Persistent Volumes can only be referenced via a PVC. This provides additional security benefits since Persistent Volume objects are managed by the administrator, preventing Pods from being able to access any path on the host.</p>
+<p>Additional benefits include support for formatting of block devices during mount, and volume ownership using fsGroup.</p>
+<p>注意: 实际上emptyDir + fsGroup也可以实现类似hostPath的效果，emptyDir用的是<code>/sysroot</code> (RedHat Linux), 比如多个pods 使用emptyDir在同一个Node, 我在各自的emptyDir中touch了一个file: compute-0 和compute-3, 进入Node使用find command就可以看到了:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sysroot/ostree/deploy/rhcos/var/lib/kubelet/pods/68e65ed4-4e62-4588-9269-8947dea9dd46/volumes/kubernetes.io~empty-dir/compute-dedicated-scratch/compute-0</span><br><span class="line"></span><br><span class="line">/sysroot/ostree/deploy/rhcos/var/lib/kubelet/pods/92b26b37-92f3-4609-83cb-da8cb8727ca2/volumes/kubernetes.io~empty-dir/compute-dedicated-scratch/compute-3</span><br></pre></td></tr></table></figure></p>
+<p>还需要注意的是，local storage provisioning 在每个node上只会provision attach的disk个数一样的PV，并且这个PV会被一个PVC占据，尽管PV大小是500G但是PVC只请求5G。（不知道这个以后是否会有改进）</p>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><blockquote>
+<p>Only test on OCP <code>4.3</code> version</p>
+</blockquote>
+<p><a href="https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html" target="_blank" rel="noopener">OpenShift persistent storage using local volumes</a><br><a href="https://github.com/openshift/local-storage-operator/blob/master/docs/deploy-with-olm.md" target="_blank" rel="noopener">Deploy local-storage Operator</a></p>
+<ol>
+<li>install local storage operator (it is by default set in <code>local-storage</code> namespace)</li>
+<li>provision the local storage</li>
+<li>create local volume persistentVolumeClaim and attach to pod</li>
+</ol>
+<p>After deploy the operator, then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## get hostname of each worker node</span></span><br><span class="line"><span class="comment">## can use label -l to filter worker node if needed</span></span><br><span class="line">kbc describe node | grep hostname</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">"local.storage.openshift.io/v1"</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">"LocalVolume"</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">"local-disks"</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">"local-storage"</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  nodeSelector:</span></span><br><span class="line"><span class="attr">    nodeSelectorTerms:</span></span><br><span class="line"><span class="attr">    - matchExpressions:</span></span><br><span class="line"><span class="attr">        - key:</span> <span class="string">kubernetes.io/hostname</span></span><br><span class="line"><span class="attr">          operator:</span> <span class="string">In</span></span><br><span class="line"><span class="attr">          values:</span></span><br><span class="line">          <span class="comment">## put hostname above here</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">worker0.jc-portworx.os.xx.com</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">worker1.jc-portworx.os.xx.com</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">worker2.jc-portworx.os.xx.com</span></span><br><span class="line"><span class="attr">  storageClassDevices:</span></span><br><span class="line"><span class="attr">    - storageClassName:</span> <span class="string">"local-sc"</span></span><br><span class="line"><span class="attr">      volumeMode:</span> <span class="string">Filesystem</span></span><br><span class="line">      <span class="comment">## The file system that will be formatted when the local volume is mounted</span></span><br><span class="line"><span class="attr">      fsType:</span> <span class="string">xfs</span></span><br><span class="line"><span class="attr">      devicePaths:</span></span><br><span class="line">        <span class="comment">## use blkid command to get this devicePath</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">/dev/vdc</span></span><br></pre></td></tr></table></figure>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blkid</span><br><span class="line"><span class="comment">## for clarity I remove unrelated output</span></span><br><span class="line"><span class="comment">## First colume is the device path</span></span><br><span class="line">/dev/vdc: LABEL=<span class="string">"mdvol"</span> UUID=<span class="string">"fdac344f-8d5f-48bd-9101-99cb416bb93d"</span> TYPE=<span class="string">"xfs"</span></span><br></pre></td></tr></table></figure></p>
+<p>let’s check <code>/dev/vdc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsblk /dev/vdc</span><br><span class="line"></span><br><span class="line">NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">vdc  252:32   0  500G  0 disk</span><br></pre></td></tr></table></figure></p>
+<p>After apply the CR <code>LocalVolume</code>, let’s check <code>local-storage</code> namespace status, you should see lcoal diskmaker and provisioner pods are up and running, corresponding PVs are ready as well.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">NAME                                          READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-6787r         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-jvwnq         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-lfzq9         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-fzgs2       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-mqd86       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-t2bvz       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-storage-operator-7f8dbfb95c-7brlv   1/1     Running   0          16h</span><br><span class="line"></span><br><span class="line"><span class="comment">## PV</span></span><br><span class="line"><span class="built_in">local</span>-pv-38162728                          500Gi      RWO            Delete           Available                                                     <span class="built_in">local</span>-sc                7m45s</span><br><span class="line"><span class="built_in">local</span>-pv-64bcf276                          500Gi      RWO            Delete           Available                                                     <span class="built_in">local</span>-sc                7m45s</span><br><span class="line"><span class="built_in">local</span>-pv-bd2d227                           500Gi      RWO            Delete           Available</span><br></pre></td></tr></table></figure></p>
+<p>If things are all set, we can consume the local storage provisioned by local-sc. Here I use <code>volumeClaimTemplates</code> instead of create separate PVC (这里应该不能使用分开的PVC，因为PVC的创建和pod位于的node有关，事先并不知道). </p>
+<blockquote>
+<p>Notice that one PV per node, and one pvc will comsume the whole PV. So if use statefulset, we will only have one pod per node.</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StatefulSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">test-local-sc</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    matchLabels:</span></span><br><span class="line"><span class="attr">      app:</span> <span class="string">nginx</span> <span class="comment"># has to match .spec.template.metadata.labels</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">3</span> <span class="comment"># by default is 1</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        app:</span> <span class="string">nginx</span> <span class="comment"># has to match .spec.selector.matchLabels</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      terminationGracePeriodSeconds:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">      securityContext:</span> <span class="string">&#123;&#125;</span></span><br><span class="line"><span class="attr">      serviceAccount:</span> <span class="string">wkc-iis-sa</span></span><br><span class="line"><span class="attr">      serviceAccountName:</span> <span class="string">wkc-iis-sa</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">xxx.swg.com/compute-image:b994-11_7_1_1-b191</span></span><br><span class="line"><span class="attr">        securityContext:</span></span><br><span class="line"><span class="attr">          allowPrivilegeEscalation:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">          privileged:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">          readOnlyRootFilesystem:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">          runAsNonRoot:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">          runAsUser:</span> <span class="number">10032</span></span><br><span class="line"><span class="attr">        command:</span> <span class="string">['/bin/sh',</span> <span class="string">'-c'</span><span class="string">,</span> <span class="string">'tail -f /dev/null'</span><span class="string">]</span></span><br><span class="line"><span class="attr">        volumeMounts:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">my-scratch</span></span><br><span class="line"><span class="attr">          mountPath:</span> <span class="string">/opt/xx/Scratch2</span></span><br><span class="line"><span class="attr">  volumeClaimTemplates:</span></span><br><span class="line"><span class="attr">  - metadata:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">my-scratch</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      accessModes:</span> <span class="string">[</span> <span class="string">"ReadWriteOnce"</span> <span class="string">]</span></span><br><span class="line"><span class="attr">      storageClassName:</span> <span class="string">local-sc</span></span><br><span class="line"><span class="attr">      resources:</span></span><br><span class="line"><span class="attr">        requests:</span></span><br><span class="line"><span class="attr">          storage:</span> <span class="number">5</span><span class="string">Gi</span></span><br></pre></td></tr></table></figure>
+<p>Now let’s check <code>/dev/vdc</code> again by <code>lsblk</code>, you will see it is associated with the pod.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/29/design-OOD/" rel="next" title="OOP Design">
+                <i class="fa fa-chevron-left"></i> OOP Design
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">154</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">83</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps"><span class="nav-number">2.</span> <span class="nav-text">Steps</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

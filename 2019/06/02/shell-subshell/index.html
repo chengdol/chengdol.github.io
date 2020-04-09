@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T23:42:46.459Z">
+<meta property="og:updated_time" content="2020-04-09T18:42:07.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell Process Demystify">
 <meta name="twitter:description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">82</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">83</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">24</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">25</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">152</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">154</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-09 16:42:46" itemprop="dateModified" datetime="2019-09-09T16:42:46-07:00">2019-09-09</time>
+                <time title="Modified: 2020-04-09 11:42:07" itemprop="dateModified" datetime="2020-04-09T11:42:07-07:00">2020-04-09</time>
               
             
           </span>
@@ -464,8 +464,8 @@
         <p>Understanding how <code>SHELL</code> works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about <code>SHELL</code>. Let’s dive deeply into shell process and its relationships to explore how subshells are created and their relationship to the parent shell; The varied commands that create child processes are explored as well as built-in commands.</p>
 <h2 id="Shell-Type"><a href="#Shell-Type" class="headerlink" title="Shell Type"></a>Shell Type</h2><p>Due to the <code>bash</code> shell’s popularity, it’s rare to use any other shell as a default shell.</p>
 <p>The <code>default interactive shell</code> starts whenever a user logs into a virtual console terminal or starts a terminal emulator in the GUI. Another default shell, <code>/bin/sh</code>, is the <code>default system shell</code>. The <code>default system shell</code> is used for system shell scripts, such as those needed at startup.</p>
-<p>In my Redhat and CentOS system, actually they are the same:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx. 1 root root 4 Apr 13  2018 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure></p>
-<p>Of course, there various shells, to see the default user login shell, go to see <code>/etc/passwd</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fyre:x:1000:1000::/home/fyre:/bin/bash</span><br><span class="line">demo:x:1001:1001::/home/demo:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>In my Redhat and CentOS system, actually they are the same:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx. 1 root root 4 Apr 13  2018 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure></p>
+<p>To see the default user login shell, go to see <code>/etc/passwd</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fyre:x:1000:1000::/home/fyre:/bin/bash</span><br><span class="line">demo:x:1001:1001::/home/demo:/bin/bash</span><br></pre></td></tr></table></figure></p>
 <h2 id="Shell-Relationships"><a href="#Shell-Relationships" class="headerlink" title="Shell Relationships"></a>Shell Relationships</h2><p>You can use <code>ps -f</code> to see difference before you run <code>bash</code>(child) in a shell(parent):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root      7762  7758  0 Jun03 pts/0    00:00:00 -bash</span><br><span class="line">root     14957  7762  0 17:12 pts/0    00:00:00 bash</span><br><span class="line">root     15028 14957  0 17:13 pts/0    00:00:00 ps -f</span><br></pre></td></tr></table></figure></p>
 <p>Here PID <code>14957</code> has parent <code>7762</code>.</p>
 <p>A child shell is also called a <strong>subshell</strong>. A subshell can be created from a parent shell, and a subshell can be created from another subshell:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps --forest</span><br></pre></td></tr></table></figure></p>
@@ -476,7 +476,7 @@
 </blockquote>
 <p>A subshell is typically implemented by <code>forking</code> a new process (but some shells may optimize this in some cases).</p>
 <ul>
-<li><p>Subshell for grouping: <code>(...)</code> does nothing but create a subshell and <strong>wait</strong> for it to terminate. Contrast with { … } which groups commands purely for syntactic purposes and does not create a subshell.</p>
+<li><p>Subshell for grouping: <code>(...)</code> does nothing but create a subshell and <strong>wait</strong> for it to terminate. Contrast with <code>{...}</code> which groups commands purely for syntactic purposes and does not create a subshell.</p>
 </li>
 <li><p>Background <code>&amp;</code>: creates a subshell and does not wait for it to terminate.</p>
 </li>
@@ -630,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">152</span>
+                    <span class="site-state-item-count">154</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -691,7 +691,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -868,7 +870,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">82</span>
+                      
+                    
+                    <span class="site-state-item-count">83</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
