@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="01/22/2020 NFS network file system, list nfs port:https://serverfault.com/questions/377170/which-ports-do-i-need-to-open-in-the-firewall-to-use-nfs 1rpcinfo -p | grep nfs It depends on the version of">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-09T18:51:49.213Z">
+<meta property="og:updated_time" content="2020-04-12T19:35:57.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea 2020">
 <meta name="twitter:description" content="01/22/2020 NFS network file system, list nfs port:https://serverfault.com/questions/377170/which-ports-do-i-need-to-open-in-the-firewall-to-use-nfs 1rpcinfo -p | grep nfs It depends on the version of">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-09 11:51:49" itemprop="dateModified" datetime="2020-04-09T11:51:49-07:00">2020-04-09</time>
+                <time title="Modified: 2020-04-12 12:35:57" itemprop="dateModified" datetime="2020-04-12T12:35:57-07:00">2020-04-12</time>
               
             
           </span>
@@ -484,7 +484,12 @@
 <p>or use <code>-L</code>, then the <code>-type</code> predicate will always match against the type of the file that  a  symbolic  link  points  to  rather  than  the link itself (unless the symbolic link is broken).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -L / type f -name dsenv</span><br></pre></td></tr></table></figure></p>
 <p>类似于<code>readlink</code>, 会去softlink directory里面寻找original file.</p>
 <h3 id="04-09-2020"><a href="#04-09-2020" class="headerlink" title="04/09/2020"></a>04/09/2020</h3><ul>
-<li><code>&gt; /dev/null 2&gt;&amp;1</code> can be written as <code>&amp;&gt; /dev/null</code></li>
+<li><p><code>&gt; /dev/null 2&gt;&amp;1</code> can be written as <code>&amp;&gt; /dev/null</code></p>
+</li>
+<li><p><code>su</code> vs <code>su -</code>. 都是login to another user, <code>-</code> 表示normal login，login后会完全变成当前user的初始环境，比如在当前user的home dir且$PATH也是当前user的。没有<code>-</code>, 则会继承上个user的环境，比如dir还是上次的。2个login都会执行~/.bashrc.</p>
+</li>
+<li><p><code>!$</code> the last word from last command in history list:<br><a href="https://unix.stackexchange.com/questions/88642/what-does-mean" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/88642/what-does-mean</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -i joe /some/long/directory/structure/user-lists/list-15</span><br><span class="line"><span class="comment">## expand as /some/long/directory/structure/user-lists/list-15</span></span><br><span class="line">vi !$</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       

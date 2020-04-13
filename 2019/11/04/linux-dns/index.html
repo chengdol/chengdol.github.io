@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="这个问题很有意思，最开始我并没有意识到这其实是个DNS问题，后来随着逐步深入排查，解决了一些有干扰的边边角角的错误，才发现。 问题的开始是当集群中docker registry 已经正常运行的时候，docker push 以及 docker pull不能正常工作，retry 超时。当时的push 路径是以hostname为主的，比如：1dal12-3m-3w-testcluster-03maste">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-05T01:32:27.519Z">
+<meta property="og:updated_time" content="2020-04-12T23:25:51.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux DNS Explore">
 <meta name="twitter:description" content="这个问题很有意思，最开始我并没有意识到这其实是个DNS问题，后来随着逐步深入排查，解决了一些有干扰的边边角角的错误，才发现。 问题的开始是当集群中docker registry 已经正常运行的时候，docker push 以及 docker pull不能正常工作，retry 超时。当时的push 路径是以hostname为主的，比如：1dal12-3m-3w-testcluster-03maste">
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-11-04 16:49:53 / Modified: 17:32:27" itemprop="dateCreated datePublished" datetime="2019-11-04T16:49:53-08:00">2019-11-04</time>
+              <time title="Created: 2019-11-04 16:49:53" itemprop="dateCreated datePublished" datetime="2019-11-04T16:49:53-08:00">2019-11-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-04-12 16:25:51" itemprop="dateModified" datetime="2020-04-12T16:25:51-07:00">2020-04-12</time>
               
             
           </span>
@@ -453,10 +465,11 @@
 <p>问题的开始是当集群中docker registry 已经正常运行的时候，docker push 以及 docker pull不能正常工作，retry 超时。当时的push 路径是以hostname为主的，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dal12-3m-3w-testcluster-03master-00.demo.ibmcloud.com:5000/is-realtime-busybox         latest              db8ee88ad75f        3 months ago        1.22MB</span><br></pre></td></tr></table></figure></p>
 <p>很奇怪的是docker push操作就在docker registry pod的宿主机上进行，居然还是不行，如果把地址改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:5000/is-realtime-busybox         latest              db8ee88ad75f        3 months ago        1.22MB</span><br></pre></td></tr></table></figure></p>
 <p>就可以，这让我首先意识到是域名解析的问题，我的第一反应是查看各个节点上的<code>/etc/hosts</code>文件，完全没问题, <code>ping</code>命令也OK，奇了怪了。</p>
-<p>让我们来再仔细的检查一下域名配置：<br>参考这篇文章：<br><a href="https://www.tecmint.com/setup-local-dns-using-etc-hosts-file-in-linux/" target="_blank" rel="noopener">https://www.tecmint.com/setup-local-dns-using-etc-hosts-file-in-linux/</a><br>查看<code>/etc/nsswitch.conf</code>可知域名查询时的顺序:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#hosts:     db files nisplus nis dns</span></span><br><span class="line">hosts:      files dns</span><br></pre></td></tr></table></figure></p>
+<p>让我们来再仔细的检查一下域名配置：<br>参考这篇文章：<br><a href="https://www.tecmint.com/setup-local-dns-using-etc-hosts-file-in-linux/" target="_blank" rel="noopener">https://www.tecmint.com/setup-local-dns-using-etc-hosts-file-in-linux/</a><br>查看<code>/etc/nsswitch.conf</code>可知域名查询时的顺序:<br>值得注意的是，有的malicious scripting或病毒可能会更改你的nsswitch.conf文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#hosts:     db files nisplus nis dns</span></span><br><span class="line">hosts:      files dns</span><br></pre></td></tr></table></figure></p>
 <p>files就是指<code>/etc/hosts</code>, dns指DNS server，说明确实是先看local file <code>/etc/hosts</code>的。</p>
 <p>查看<code>/etc/resolv.conf</code>，这个就是DNS server的地址了，貌似也没啥问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 10.0.80.11</span><br><span class="line">nameserver 10.0.80.12</span><br></pre></td></tr></table></figure></p>
-<p>我大胆猜测了一下有的命令可能不会使用local dns file <code>/etc/hosts</code>，我试了试<code>host</code> command，果然如此：<br><a href="https://serverfault.com/questions/498500/why-does-the-host-command-not-resolve-entries-in-etc-hosts" target="_blank" rel="noopener">https://serverfault.com/questions/498500/why-does-the-host-command-not-resolve-entries-in-etc-hosts</a><br>这个答案还告诉了我另一个命令<code>getent</code>，对于查询<code>/etc/hosts</code>挺方便的。</p>
+<p>我大胆猜测了一下有的命令可能不会使用local dns file <code>/etc/hosts</code>，我试了试<code>host</code> command，果然如此：<br><a href="https://serverfault.com/questions/498500/why-does-the-host-command-not-resolve-entries-in-etc-hosts" target="_blank" rel="noopener">Why does the host command not resolve entries in /etc/hosts?</a><br>这个答案还告诉了我另一个命令<code>getent</code>，对于查询<code>/etc/hosts</code>挺方便的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getent hosts halos1</span><br></pre></td></tr></table></figure></p>
+<p>You will find that <code>dig</code> and <code>nslookup</code> behave the same way as <code>host</code>, the purpose of all of these commands is to do DNS lookups, not to look in files.</p>
 <p>后来我让别人把master node的域名和IP加入到集群访问的DNS Server中，问题就解决了！</p>
 <p>所以，下次遇到类似问题，除了检查本地DNS配置和文件，还要用<code>host</code> command试一下，看看外部DNS Server是否工作正常，最重要的是，有的命令不会使用<code>/etc/hosts</code>去查询。</p>
 
