@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This blog is for Object Oriented Design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programming The four principles of object">
+  <meta name="description" content="OOD 可以看成是 System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programmingDesi">
 <meta name="keywords" content="OOP design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OOP Design">
 <meta property="og:url" content="http://yoursite.com/2020/03/29/design-OOD/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog is for Object Oriented Design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programming The four principles of object">
+<meta property="og:description" content="OOD 可以看成是 System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programmingDesi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-12T07:09:31.046Z">
+<meta property="og:updated_time" content="2020-04-20T16:30:33.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOP Design">
-<meta name="twitter:description" content="This blog is for Object Oriented Design topic, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programming The four principles of object">
+<meta name="twitter:description" content="OOD 可以看成是 System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programmingDesi">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">83</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">84</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">156</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">157</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-12 00:09:31" itemprop="dateModified" datetime="2020-04-12T00:09:31-07:00">2020-04-12</time>
+                <time title="Modified: 2020-04-20 09:30:33" itemprop="dateModified" datetime="2020-04-20T09:30:33-07:00">2020-04-20</time>
               
             
           </span>
@@ -461,8 +461,9 @@
       
 
       
-        <p>This blog is for <code>Object Oriented Design</code> topic, please revisit frequently to refresh. The notes are mainly from <code>https://www.educative.io/</code>.</p>
-<p><code>OOP</code>: <code>Object-oriented programming</code></p>
+        <p>OOD 可以看成是 System Design 后的具体实现。</p>
+<p>This blog is for <code>Object Oriented Design</code>, please revisit frequently to refresh. The notes are mainly from <code>https://www.educative.io/</code>.</p>
+<p><code>OOP</code>: <code>Object-oriented programming</code><br><code>Design pattern</code><br><code>Concurrency</code></p>
 <p>The four principles of object-oriented programming are encapsulation, abstraction, inheritance, and polymorphism.</p>
 <p>The process of OO analysis and design can be described as:</p>
 <ol>
@@ -471,36 +472,57 @@
 <li>Establishing the interface of each object;</li>
 <li>Making a design, which can be converted to executables using OO languages.</li>
 </ol>
+<p>要清楚如何定义enum, constants abstract class, interface. 如何选择他们.</p>
 <p><code>UML</code> stands for <code>Unified Modeling Language</code> and is used to model the Object-Oriented Analysis of a software system. UML is a way of visualizing and documenting a software system by using a collection of diagrams.</p>
 <p>Be familiar with:</p>
 <ol>
-<li>use case diagram (actors， 不是指所有的object，是指发起动作的东西)</li>
+<li>use case diagram (actors， 不是指所有的object: admin, customer, system…)</li>
 <li>class diagram (relationships)</li>
-<li>sequence diagram (emphasize on interaction between objects)</li>
+<li>sequence diagram (emphasize on interaction between objects, time series)</li>
 <li>activity diagram (emphasize on control of flow)</li>
 </ol>
-<h3 id="Design-a-Library-Management-System"><a href="#Design-a-Library-Management-System" class="headerlink" title="Design a Library Management System"></a>Design a Library Management System</h3><p> Library management systems help libraries keep track of the books and their checkouts, as well as members’ subscriptions and profiles.</p>
+<h3 id="Design-a-Library-Management-System"><a href="#Design-a-Library-Management-System" class="headerlink" title="Design a Library Management System"></a>Design a Library Management System</h3><p>Library management systems help libraries keep track of the books and their checkouts, as well as members’ subscriptions and profiles.</p>
 <ol>
 <li>get clarity of the requirements, Be sure to ask questions to find the exact scope of the system that the interviewer has in mind</li>
 </ol>
 <p>找到actors之后，围绕actors就可以提出具体要求，可以做什么事情:<br>member can search book by title, name, date, category, author.<br>book has unique id, rack number, etc.<br>member can checkout, reserve book copies.<br>days a member can keep the book.<br>numbers a member can checkout.<br>collect fine if after due date.<br>system can send notification to user.<br>…</p>
 <p>最后确认需具体要实现什么的功能？</p>
 <ol start="2">
-<li><p>user case diagram<br>这对具体的实现功能，画出具体的user case diagram</p>
+<li><p>use case diagram<br>这对具体的实现功能，画出具体的use case diagram</p>
 </li>
 <li><p>class diagram<br>有几个问题:<br>interface vs inheritace，什么时候谁合适? pluralsight中看看课程</p>
 </li>
 </ol>
 <p>在实现代码的时候，class diagram可以作为指导原则</p>
 <ol start="4">
-<li><p>activity diagram<br>画出具体实现功能的状态图</p>
+<li><p>activity diagram<br>画出具体实现<strong>某一</strong>功能的状态图</p>
 </li>
 <li><p>code<br>Since you are not required to write a fully executable code in an interview, you can assume parts of the code to interact with the database, payment system, etc..</p>
 </li>
 </ol>
 <p>主要写出基本的部分:<br>Enums and Constants:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// enums</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> BookStatus</span><br><span class="line">&#123;</span><br><span class="line">  AVAILABLE,</span><br><span class="line">  RESERVED,</span><br><span class="line">  LOANED,</span><br><span class="line">  LOST</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ReservationStatus</span><br><span class="line">&#123;</span><br><span class="line">  WAITING,</span><br><span class="line">  PENDING,</span><br><span class="line">  CANCELED,</span><br><span class="line">  NONE</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// constants</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_BOOKS_ISSUED_TO_A_USER = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_LENDING_DAYS = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后是abstrace class, interface 和其他继承，实现的类，根据class diagram去实现，举几个例子:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// For simplicity, we are not defining getter and setter functions. The reader can</span></span><br><span class="line"><span class="comment">// assume that all class attributes are private and accessed through their respective</span></span><br><span class="line"><span class="comment">// public getter methods and modified only through their public methods function.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String ISBN;</span><br><span class="line">  <span class="keyword">private</span> String title;</span><br><span class="line">  <span class="keyword">private</span> String subject;</span><br><span class="line">  <span class="keyword">private</span> String publisher;</span><br><span class="line">  <span class="keyword">private</span> String language;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> numberOfPages;</span><br><span class="line">  <span class="keyword">private</span> List&lt;Author&gt; authors;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookItem</span> <span class="keyword">extends</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String barcode;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> isReferenceOnly;</span><br><span class="line">  <span class="keyword">private</span> Date borrowed;</span><br><span class="line">  <span class="keyword">private</span> Date dueDate;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> price;</span><br><span class="line">  <span class="keyword">private</span> BookFormat format;</span><br><span class="line">  <span class="keyword">private</span> BookStatus status;</span><br><span class="line">  <span class="keyword">private</span> Date dateOfPurchase;</span><br><span class="line">  <span class="keyword">private</span> Date publicationDate;</span><br><span class="line">  <span class="keyword">private</span> Rack placedAt;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkout</span><span class="params">(String memberId)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(bookItem.getIsReferenceOnly()) &#123;</span><br><span class="line">      ShowError(<span class="string">"This book is Reference only and can't be issued"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!BookLending.lendBook(<span class="keyword">this</span>.getBarCode(), memberId))&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.updateBookItemStatus(BookStatus.LOANED);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rack</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> number;</span><br><span class="line">  <span class="keyword">private</span> String locationIdentifier;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// interface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Search</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">searchByTitle</span><span class="params">(String title)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">searchByAuthor</span><span class="params">(String author)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">searchBySubject</span><span class="params">(String subject)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">searchByPubDate</span><span class="params">(Date publishDate)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Catalog</span> <span class="keyword">implements</span> <span class="title">Search</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> HashMap&lt;String, List&lt;Book&gt;&gt; bookTitles;</span><br><span class="line">  <span class="keyword">private</span> HashMap&lt;String, List&lt;Book&gt;&gt; bookAuthors;</span><br><span class="line">  <span class="keyword">private</span> HashMap&lt;String, List&lt;Book&gt;&gt; bookSubjects;</span><br><span class="line">  <span class="keyword">private</span> HashMap&lt;String, List&lt;Book&gt;&gt; bookPublicationDates;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">searchByTitle</span><span class="params">(String query)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// return all books containing the string query in their title.</span></span><br><span class="line">    <span class="keyword">return</span> bookTitles.get(query);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">searchByAuthor</span><span class="params">(String query)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// return all books containing the string query in their author's name.</span></span><br><span class="line">    <span class="keyword">return</span> bookAuthors.get(query);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<h3 id="Design-parking-lot"><a href="#Design-parking-lot" class="headerlink" title="Design parking lot"></a>Design parking lot</h3><p><a href="https://www.youtube.com/watch?v=DSGsa0pu8-k&amp;t=814s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=DSGsa0pu8-k&amp;t=814s</a><br>评论里有一些批评意见，可以参考。</p>
+<ul>
+<li><p>Identify the problem scope:<br>do you want me to come up a system design, or class hierarchy?<br>or should we get into certain specific question and wirte some methods?</p>
+</li>
+<li><p>How you approach the problem:<br>show a clear and systematic approach how you tackle this problem<br>how is the parking lot designed? building? open space? free or pay?<br>how many spots are we talking about? floors?<br>are there mutliple entrances or exits?<br>should we first fill out floor from top?<br>prices strategy? premium, general customer?</p>
+</li>
+</ul>
+<p>进口的识别系统会识别plate number + vehicle type，然后再ticket上标明应该停放到哪个building，哪一层的哪个位置。(如果有多个entrance, 则有concurrency问题需要解决)</p>
+<p>code some part of the design? which part do you want me to implement?<br>We have database backend but here for Simplicity can we assume we store the data in memory?</p>
+<p>算法去实现spot -&gt; vehicle的分配。</p>
+<ol>
+<li><p>system requirements<br>multi-floors<br>multi-entries or exits<br>parking ticket<br>pay cash or credit card<br>pay at info panel or at exit<br>display message when full<br>different parking spots for different type car<br>electric car spots, charge station support<br>step price hourly</p>
+</li>
+<li><p>use case diagram<br>get clarity what functions we need to implement.</p>
+</li>
+<li><p>class diagram<br>ParkingLot<br>ParkingFloor<br>ParkingSpot<br>Account: admin and parking attendant<br>ParkingTicket<br>Vehicle: many types<br>Payment: credit card or cash<br>ParkingRate<br>ParkingDisplayBoard<br>ParkingAttendantPortal<br>CustomerInfoPortal<br>ElectricPanel</p>
+</li>
+<li><p>code<br>see: <a href="https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z" target="_blank" rel="noopener">https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z</a></p>
+</li>
+</ol>
+<h3 id="Design-Amazon-online-shopping-system"><a href="#Design-Amazon-online-shopping-system" class="headerlink" title="Design Amazon online shopping system"></a>Design Amazon online shopping system</h3>
       
     </div>
 
@@ -620,7 +642,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">156</span>
+                    <span class="site-state-item-count">157</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -862,7 +884,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">83</span>
+                      
+                    
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -898,7 +922,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Library-Management-System"><span class="nav-number">1.</span> <span class="nav-text">Design a Library Management System</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Library-Management-System"><span class="nav-number">1.</span> <span class="nav-text">Design a Library Management System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-parking-lot"><span class="nav-number">2.</span> <span class="nav-text">Design parking lot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-Amazon-online-shopping-system"><span class="nav-number">3.</span> <span class="nav-text">Design Amazon online shopping system</span></a></li></ol></div>
             
 
           </div>

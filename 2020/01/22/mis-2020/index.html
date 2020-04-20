@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="01/22/2020 NFS network file system, list nfs port:https://serverfault.com/questions/377170/which-ports-do-i-need-to-open-in-the-firewall-to-use-nfs 1rpcinfo -p | grep nfs It depends on the version of">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-12T19:35:57.638Z">
+<meta property="og:updated_time" content="2020-04-18T21:36:35.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea 2020">
 <meta name="twitter:description" content="01/22/2020 NFS network file system, list nfs port:https://serverfault.com/questions/377170/which-ports-do-i-need-to-open-in-the-firewall-to-use-nfs 1rpcinfo -p | grep nfs It depends on the version of">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">83</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">84</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">156</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">157</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-12 12:35:57" itemprop="dateModified" datetime="2020-04-12T12:35:57-07:00">2020-04-12</time>
+                <time title="Modified: 2020-04-18 14:36:35" itemprop="dateModified" datetime="2020-04-18T14:36:35-07:00">2020-04-18</time>
               
             
           </span>
@@ -489,7 +489,11 @@
 <li><p><code>su</code> vs <code>su -</code>. 都是login to another user, <code>-</code> 表示normal login，login后会完全变成当前user的初始环境，比如在当前user的home dir且$PATH也是当前user的。没有<code>-</code>, 则会继承上个user的环境，比如dir还是上次的。2个login都会执行~/.bashrc.</p>
 </li>
 <li><p><code>!$</code> the last word from last command in history list:<br><a href="https://unix.stackexchange.com/questions/88642/what-does-mean" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/88642/what-does-mean</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -i joe /some/long/directory/structure/user-lists/list-15</span><br><span class="line"><span class="comment">## expand as /some/long/directory/structure/user-lists/list-15</span></span><br><span class="line">vi !$</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -i joe /some/long/directory/structure/user-lists/list-15</span><br><span class="line"><span class="comment">## expand as /some/long/directory/structure/user-lists/list-15</span></span><br><span class="line">vi !$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="04-18-2020"><a href="#04-18-2020" class="headerlink" title="04/18/2020"></a>04/18/2020</h3><ul>
+<li>在pod container中，如果script process不是init process (pid 1)，那么script中的trap 内容不会被执行。 还不太清楚为什么。</li>
 </ul>
 
       
@@ -611,7 +615,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">156</span>
+                    <span class="site-state-item-count">157</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -853,7 +857,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">83</span>
+                      
+                    
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -889,7 +895,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-22-2020"><span class="nav-number">1.</span> <span class="nav-text">01/22/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-26-2020"><span class="nav-number">2.</span> <span class="nav-text">02/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-07-2020"><span class="nav-number">3.</span> <span class="nav-text">04/07/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-09-2020"><span class="nav-number">4.</span> <span class="nav-text">04/09/2020</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-22-2020"><span class="nav-number">1.</span> <span class="nav-text">01/22/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-26-2020"><span class="nav-number">2.</span> <span class="nav-text">02/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-07-2020"><span class="nav-number">3.</span> <span class="nav-text">04/07/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-09-2020"><span class="nav-number">4.</span> <span class="nav-text">04/09/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-18-2020"><span class="nav-number">5.</span> <span class="nav-text">04/18/2020</span></a></li></ol></div>
             
 
           </div>
