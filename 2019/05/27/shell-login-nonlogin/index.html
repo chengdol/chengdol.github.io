@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are">
+  <meta name="description" content="More information please see man bash (contains if condition syntax). In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following comman">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Login and Nonlogin Shell">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/shell-login-nonlogin/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are">
+<meta property="og:description" content="More information please see man bash (contains if condition syntax). In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following comman">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T23:43:28.579Z">
+<meta property="og:updated_time" content="2020-04-26T18:16:42.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Login and Nonlogin Shell">
-<meta name="twitter:description" content="In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are">
+<meta name="twitter:description" content="More information please see man bash (contains if condition syntax). In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following comman">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-09 16:43:28" itemprop="dateModified" datetime="2019-09-09T16:43:28-07:00">2019-09-09</time>
+                <time title="Modified: 2020-04-26 11:16:42" itemprop="dateModified" datetime="2020-04-26T11:16:42-07:00">2020-04-26</time>
               
             
           </span>
@@ -461,33 +461,33 @@
       
 
       
-        <p>In the non-root development for DataStage, in order to launch applications as non-root user, I use <code>su - dsadm</code> with following commands. Later I occassionally notice that badal use <code>su dsadm</code>… So what are the differences?</p>
-<p>Acutally this was mentioned in <code>&lt;&lt;How Linux Works&gt;&gt;</code> blog, but in the book it’s not that detail. The story is from <code>startup files</code>. The startup files that bash processes depend on the method you use to start the bash shell. You can start a bash shell in three ways:</p>
-<p>There are two main shell <code>instance types</code>: <code>interactive</code> and <code>noninteractive</code>, but of those, only interactive shells are of interest because noninteractive shells (such as those that run shell scripts) usually don’t read any startup files. </p>
-<p><code>Interactive shells</code> are the ones that you use to <strong>run commands from a terminal</strong>, they can be classified as <code>login</code> or <code>non-login</code>. I know there are lots of startup files under each user’s home directory or in other system folder, how do they take effect? In what order:</p>
-<h2 id="Login-Shell"><a href="#Login-Shell" class="headerlink" title="Login Shell"></a>Login Shell</h2><p>Logging in remotely with <code>SSH</code> also gives you a login shell.</p>
-<p>You can tell if a shell is a login shell by running <code>echo $0</code>; if the first character is a <code>-</code>, the shell’s a login shell.</p>
+        <p>More information please see <code>man bash</code> (contains <code>if</code> condition syntax).</p>
+<p>In the non-root development for DataStage, in order to launch applications as non-root user, I use <code>su - dsadm</code> with following commands. Later I occassionally notice that badal use <code>su dsadm</code>… So what are the differences?</p>
+<p>There are two main shell instance types: <code>interactive</code> and <code>noninteractive</code>, but of those, only interactive shells are of interest because noninteractive shells (such as those that run shell scripts) usually don’t read any startup files. </p>
+<p><code>Interactive shells</code> are the ones that you use to <strong>run commands from a terminal</strong>, they can be classified as <code>login</code> or <code>non-login</code>. I know there are lots of startup files under each user’s home directory, how do they be called and in what order?</p>
+<h2 id="Login-Shell"><a href="#Login-Shell" class="headerlink" title="Login Shell"></a>Login Shell</h2><p>Logging in remotely with <code>SSH</code> will give you a login shell.</p>
+<p>You can tell if a shell is a login shell by running <code>echo $0</code>; if the first character is a <code>-</code>, the shell’s a login shell.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## if not sure it's login or non-login, check it</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span></span><br><span class="line">-bash</span><br></pre></td></tr></table></figure></p>
 <p>When Bash is invoked as a <code>Login</code> shell:</p>
 <ol>
-<li>Login process calls <code>/etc/profile</code></li>
+<li>Login process calls <code>/etc/profile</code> (this is for all users)</li>
 <li><code>/etc/profile</code> calls the scripts in <code>/etc/profile.d/</code></li>
 <li>Login process calls <code>$HOME/.bash_profile</code>, <code>$HOME/.bash_login</code> and <code>$HOME/.profile</code> in order, the first found file is run and rest are ignored, most Linux distributions use only one or two of these four startup files. Notice that <code>$HOME/.bashrc</code> are not in the list, it typically run from one of these files.</li>
 </ol>
-<p>Login Shells created by explicitly telling to login.<br>examples: <code># su - | # su -l | # su --login | # su USERNAME - | # su -l USERNAME | # su --login USERNAME | # sudo -i</code></p>
-<h2 id="Non-login-Shell"><a href="#Non-login-Shell" class="headerlink" title="Non-login Shell"></a>Non-login Shell</h2><p>When bash is invoked as a <code>Non-login</code> shell (for example, you just run <code>bash</code> or <code>sh</code> without login):</p>
+<p>Login Shells created by explicitly telling to login, there is a <code>-</code> or <code>-l</code> flag:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">su -</span><br><span class="line">su -l</span><br><span class="line">su --login</span><br><span class="line">su USERNAME - </span><br><span class="line">su -l USERNAME</span><br><span class="line">su --login USERNAME</span><br><span class="line">sudo -i</span><br></pre></td></tr></table></figure></p>
+<h2 id="Non-login-Shell"><a href="#Non-login-Shell" class="headerlink" title="Non-login Shell"></a>Non-login Shell</h2><p>When bash is invoked as a <code>Non-login</code> shell (for example, you just run <code>bash</code> or <code>sh</code> without login):<br>如果先ssh进入系统，再运行<code>bash</code>，则就是non-login shell了。</p>
 <ol>
 <li>Non-login process(shell) calls <code>/etc/bashrc</code></li>
-<li>then calls <code>$HOME/.bashrc</code></li>
+<li>then calls <code>$HOME/.bashrc</code> (remember!)</li>
 </ol>
-<p><code>Non-Login</code> shells created using the below command syntax:<br>examples: <code># su | # su USERNAME</code></p>
+<p><code>Non-Login</code> shells created using the below commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">su USERNAME</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Of course you can source <code>$HOME/.bashrc</code> in <code>$HOME/.bash_profile</code> files to satisfy both login and non-login shell, for example: add <code>. $HOME/.bashrc</code> in <code>$HOME/.bash_profile</code> (it’s usually there by default setting).</p>
 </blockquote>
 <p>The reasoning behind the two different startup filesystems is that in the old days, users logged in through a traditional terminal with a <code>login shell</code>, then started <code>non-login</code> subshells with windowing systems or the screen program. For the <code>non-login</code> subshells, it was deemed a waste to repeatedly set the user environment and run a bunch of programs that had already been run. With login shells, you could run fancy startup commands in a file such as <code>.bash_profile</code>, leaving only aliases and other “lightweight” things to your <code>.bashrc</code>.</p>
-<p>This can explain that if you use non-login like <code>su dsadm</code>, the exported environment variables are still there in <code>env</code> scope. But if you run <code>su - dsadm</code>, the previous exported environment variables are gone.</p>
-<blockquote>
-<p>Note that I can run <code>bash</code> or <code>sh</code> or <code>csh</code> in terminal, it will give me a new simple prompt without user profile or setting, it is a new program called <code>bash</code>, <code>sh</code> or <code>csh</code>.</p>
-</blockquote>
+<p>This can explain that if you use non-login like <code>su dsadm</code>, the parent exported environment variables are still there in <code>env</code> scope. But if you run <code>su - dsadm</code>, the parent exported environment variables are gone.</p>
+<h2 id="Bash-Parameters"><a href="#Bash-Parameters" class="headerlink" title="Bash Parameters"></a>Bash Parameters</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Make bash act as if it had been invoked as a login shell</span></span><br><span class="line"><span class="comment">## 但实际上并不是真正的login shell, echo $0 可知</span></span><br><span class="line">bash --login</span><br><span class="line">bash -l</span><br><span class="line"></span><br><span class="line"><span class="comment">## -c: string If the -c option is present, then commands are read from string.</span></span><br><span class="line"><span class="comment">## If there are arguments after the string</span></span><br><span class="line"><span class="comment">## they are assigned to the positional parameters, starting with $0.</span></span><br><span class="line"><span class="comment">## 这就不是interactive shell了</span></span><br><span class="line">bash -c /tmp/test.sh hello world!</span><br><span class="line"></span><br><span class="line"><span class="comment">## do not run ~/.bashrc, by default same as `sh`</span></span><br><span class="line">bash --norc</span><br><span class="line"></span><br><span class="line"><span class="comment">## 这个只对login shell才有用，不进行任何初始化</span></span><br><span class="line">bash --noprofile</span><br><span class="line"></span><br><span class="line"><span class="comment">## specify other script to replace .bashrc</span></span><br><span class="line">bash --rcfile &lt;path to file&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## do syntax check only</span></span><br><span class="line">bash -n &lt;script&gt;</span><br></pre></td></tr></table></figure>
+<p>Interesting question:<br><a href="https://stackoverflow.com/questions/9357464/how-to-start-a-shell-without-any-user-configuration" target="_blank" rel="noopener">How to start a shell in clean</a></p>
+<p><code>~/.bash_logout</code> will be executed when exit login shell.</p>
 
       
     </div>
@@ -888,7 +888,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Login-Shell"><span class="nav-number">1.</span> <span class="nav-text">Login Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-login-Shell"><span class="nav-number">2.</span> <span class="nav-text">Non-login Shell</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Login-Shell"><span class="nav-number">1.</span> <span class="nav-text">Login Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-login-Shell"><span class="nav-number">2.</span> <span class="nav-text">Non-login Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash-Parameters"><span class="nav-number">3.</span> <span class="nav-text">Bash Parameters</span></a></li></ol></div>
             
 
           </div>

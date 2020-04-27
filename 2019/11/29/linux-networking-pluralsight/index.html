@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Network章节。2020年4月份pluralsight在搞活动，免费注册学习！感觉讲得还行！Linux都没系统学习过，这次lock down at home是个机会补补课。 Ip vs Ifconfigifconfig is obsolete, use ip instead.我专门有一篇写的ip command. ipv4: 32  b">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-23T00:42:29.340Z">
+<meta property="og:updated_time" content="2020-04-27T03:40:39.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Networking PluralSight">
 <meta name="twitter:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Network章节。2020年4月份pluralsight在搞活动，免费注册学习！感觉讲得还行！Linux都没系统学习过，这次lock down at home是个机会补补课。 Ip vs Ifconfigifconfig is obsolete, use ip instead.我专门有一篇写的ip command. ipv4: 32  b">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-22 17:42:29" itemprop="dateModified" datetime="2020-04-22T17:42:29-07:00">2020-04-22</time>
+                <time title="Modified: 2020-04-26 20:40:39" itemprop="dateModified" datetime="2020-04-26T20:40:39-07:00">2020-04-26</time>
               
             
           </span>
@@ -499,7 +499,7 @@
 <p><code>traceroute</code> vs <code>tracepath</code>:<br><a href="https://askubuntu.com/questions/114264/what-are-the-significant-differences-between-tracepath-and-traceroute" target="_blank" rel="noopener">https://askubuntu.com/questions/114264/what-are-the-significant-differences-between-tracepath-and-traceroute</a><br>some option of <code>traceroute</code> need root privilege, and has more features then <code>tracepath</code>.</p>
 <p>Display network status<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 显示有多少error, drop packets来看是不是网络由问题</span></span><br><span class="line">ip -s -h link</span><br><span class="line">ip -s -h link show eth0</span><br></pre></td></tr></table></figure></p>
 <p><code>netstate</code> command can also do the same thing.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">netstat -i</span><br><span class="line"></span><br><span class="line">Kernel Interface table</span><br><span class="line">Iface             MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg</span><br><span class="line">eth0             1500 16008695      0      5 0       8446165      0      0      0 BMRU</span><br><span class="line">eth1             1500   461914      0     12 0         35082      0      0      0 BMRU</span><br><span class="line">lo              65536   277761      0      0 0        277761      0      0      0 LRU</span><br></pre></td></tr></table></figure></p>
-<p>还介绍了一下<code>sysstat</code> command，需要yum安装，安装之后它会收集每日的系统历史数据供查看。<br>还有一个command <code>nmap</code>, 用来scan ports:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nmap</span><br><span class="line"><span class="comment">## check what ports in your system is opening</span></span><br><span class="line">nmap scanme.nmap.org</span><br><span class="line"><span class="comment">## list interface and routes information</span></span><br><span class="line">nmap -iflist</span><br></pre></td></tr></table></figure></p>
+<p>还介绍了一下<code>sysstat</code> command，需要yum安装，安装之后它会收集每日的系统历史数据供查看。这也是一个很重要的系统监控工具。<br>还有一个command <code>nmap</code>, 用来scan ports:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nmap</span><br><span class="line"><span class="comment">## check what ports in your system is opening</span></span><br><span class="line">nmap scanme.nmap.org</span><br><span class="line"><span class="comment">## list interface and routes information</span></span><br><span class="line">nmap -iflist</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

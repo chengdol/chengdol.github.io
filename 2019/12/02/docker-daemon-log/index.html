@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="When I was working on securing docker registry, I followed the instructions but when run docker push I always get x509: certificate signed by unknown authorit error, this means the self-signed certifi">
+  <meta name="description" content="When I was working on securing docker registry, I followed the instructions but when run docker push I always get x509: certificate signed by unknown authority error, this means the self-signed certif">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Daemon Log">
 <meta property="og:url" content="http://yoursite.com/2019/12/02/docker-daemon-log/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="When I was working on securing docker registry, I followed the instructions but when run docker push I always get x509: certificate signed by unknown authorit error, this means the self-signed certifi">
+<meta property="og:description" content="When I was working on securing docker registry, I followed the instructions but when run docker push I always get x509: certificate signed by unknown authority error, this means the self-signed certif">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-04T07:37:24.810Z">
+<meta property="og:updated_time" content="2020-04-25T03:31:43.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Daemon Log">
-<meta name="twitter:description" content="When I was working on securing docker registry, I followed the instructions but when run docker push I always get x509: certificate signed by unknown authorit error, this means the self-signed certifi">
+<meta name="twitter:description" content="When I was working on securing docker registry, I followed the instructions but when run docker push I always get x509: certificate signed by unknown authority error, this means the self-signed certif">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-03 23:37:24" itemprop="dateModified" datetime="2019-12-03T23:37:24-08:00">2019-12-03</time>
+                <time title="Modified: 2020-04-24 20:31:43" itemprop="dateModified" datetime="2020-04-24T20:31:43-07:00">2020-04-24</time>
               
             
           </span>
@@ -461,15 +461,15 @@
       
 
       
-        <p>When I was working on securing docker registry, I followed the instructions but when run <code>docker push</code> I always get <code>x509: certificate signed by unknown authorit</code> error, this means the self-signed certificate is still not identified by docker daemon.</p>
+        <p>When I was working on securing docker registry, I followed the instructions but when run <code>docker push</code> I always get <code>x509: certificate signed by unknown authority</code> error, this means the self-signed certificate is still not identified by docker daemon.</p>
 <p>This time to get more detail information, need to check the docker daemon log.</p>
-<h1 id="How-to-enable-debug-mode"><a href="#How-to-enable-debug-mode" class="headerlink" title="How to enable debug mode?"></a>How to enable debug mode?</h1><p>By default, the debug is mute, not much helpful info from logs, check here: <a href="https://docs.docker.com/config/daemon/" target="_blank" rel="noopener">https://docs.docker.com/config/daemon/</a>, enable debugging section.</p>
-<p>Edit the <code>daemon.json</code> file, which is usually located in <code>/etc/docker/</code>. You may need to create this file, if it does not yet exist.<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"debug"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="How-to-enable-debug-mode"><a href="#How-to-enable-debug-mode" class="headerlink" title="How to enable debug mode?"></a>How to enable debug mode?</h1><p>By default, the debug mode is off, not much helpful info from logs, check here: <a href="https://docs.docker.com/config/daemon/" target="_blank" rel="noopener">https://docs.docker.com/config/daemon/</a>, enable debugging section.</p>
+<p>Edit the <code>daemon.json</code> file, which is usually located in <code>/etc/docker/</code>. You may need to create this file, if it is not there.<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"debug"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Then send a <code>HUP</code> signal to the daemon to cause it to reload its configuration. On Linux hosts, use the following command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill -SIGHUP $(pidof dockerd)</span><br></pre></td></tr></table></figure></p>
 <h1 id="Where-is-the-log"><a href="#Where-is-the-log" class="headerlink" title="Where is the log?"></a>Where is the log?</h1><p><a href="https://stackoverflow.com/questions/30969435/where-is-the-docker-daemon-log" target="_blank" rel="noopener">https://stackoverflow.com/questions/30969435/where-is-the-docker-daemon-log</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu (old using upstart ) - /var/log/upstart/docker.log</span><br><span class="line">Ubuntu (new using systemd ) - sudo journalctl -fu docker.service</span><br><span class="line">Amazon Linux AMI - /var/log/docker</span><br><span class="line">Boot2Docker - /var/log/docker.log</span><br><span class="line">Debian GNU/Linux - /var/log/daemon.log</span><br><span class="line">CentOS - /var/log/daemon.log | grep docker</span><br><span class="line">CoreOS - journalctl -u docker.service</span><br><span class="line">Fedora - journalctl -u docker.service</span><br><span class="line">Red Hat Enterprise Linux Server - /var/log/messages | grep docker</span><br></pre></td></tr></table></figure></p>
-<p>I am in Red Hat, from <code>/var/log/messages</code> file I clearly see that the docker daemon pick certificate under <code>/etc/docker/certs.d/&lt;domain, no port number!&gt;</code> folder.</p>
+<p>In Red Hat, from <code>/var/log/messages</code> file I clearly see that the docker daemon pick certificate under <code>/etc/docker/certs.d/&lt;domain, no port number!&gt;</code> folder.</p>
 <p>If your OS is using <code>systemd</code>, the <code>journalctl</code> command can help, but the output from container is also dumping here, see this issue: <a href="https://github.com/moby/moby/issues/23339" target="_blank" rel="noopener">https://github.com/moby/moby/issues/23339</a>.</p>
-<p>You can filter it by (works fine for me in Red Hat):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -fu docker _TRANSPORT=stdout + OBJECT_EXE=docker</span><br></pre></td></tr></table></figure></p>
+<p>You can filter it by (works fine in Red Hat):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -fu docker _TRANSPORT=stdout + OBJECT_EXE=docker</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="OOD 可以看成是 System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programmingDesi">
+  <meta name="description" content="OOD 可以看成是 High Level System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP Design videoOOP: Obje">
 <meta name="keywords" content="OOP design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OOP Design">
 <meta property="og:url" content="http://yoursite.com/2020/03/29/design-OOD/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="OOD 可以看成是 System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programmingDesi">
+<meta property="og:description" content="OOD 可以看成是 High Level System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP Design videoOOP: Obje">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-22T00:33:44.972Z">
+<meta property="og:updated_time" content="2020-04-27T03:28:48.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOP Design">
-<meta name="twitter:description" content="OOD 可以看成是 System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP: Object-oriented programmingDesi">
+<meta name="twitter:description" content="OOD 可以看成是 High Level System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP Design videoOOP: Obje">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-21 17:33:44" itemprop="dateModified" datetime="2020-04-21T17:33:44-07:00">2020-04-21</time>
+                <time title="Modified: 2020-04-26 20:28:48" itemprop="dateModified" datetime="2020-04-26T20:28:48-07:00">2020-04-26</time>
               
             
           </span>
@@ -461,9 +461,9 @@
       
 
       
-        <p>OOD 可以看成是 System Design 后的具体实现。</p>
+        <p>OOD 可以看成是 High Level System Design 后的具体实现。</p>
 <p>This blog is for <code>Object Oriented Design</code>, please revisit frequently to refresh. The notes are mainly from <code>https://www.educative.io/</code>.</p>
-<p><code>OOP</code>: <code>Object-oriented programming</code><br><code>Design pattern</code><br><code>Concurrency</code></p>
+<p><a href="https://www.youtube.com/watch?v=fJW65Wo7IHI&amp;list=PLGLfVvz_LVvS5P7khyR4xDp7T9lCk9PgE" target="_blank" rel="noopener">OOP Design video</a><br><code>OOP</code>: <code>Object-oriented programming</code><br><code>Design pattern</code>: singleton, factory, etc<br><code>Concurrency</code></p>
 <p>The four principles of object-oriented programming are encapsulation, abstraction, inheritance, and polymorphism.</p>
 <p>The process of OO analysis and design can be described as:</p>
 <ol>
@@ -488,11 +488,12 @@
 <p>找到actors之后，围绕actors就可以提出具体要求，可以做什么事情:<br>member can search book by title, name, date, category, author.<br>book has unique id, rack number, etc.<br>member can checkout, reserve book copies.<br>days a member can keep the book.<br>numbers a member can checkout.<br>collect fine if after due date.<br>system can send notification to user.<br>…</p>
 <p>最后确认需具体要实现什么的功能？</p>
 <ol start="2">
-<li><p>use case diagram<br>这对具体的实现功能，画出具体的use case diagram</p>
+<li><p>use case diagram<br>从object角度, 看看各自可以有什么操作, 对具体的实现功能，画出具体的use case diagram。</p>
 </li>
-<li><p>class diagram<br>有几个问题:<br>interface vs inheritace，什么时候谁合适? pluralsight中看看课程</p>
+<li><p>class diagram<br>有几个问题:<br>要从high level考虑有哪些abstract class, enum, constant, interface等。<br>然后各自的依赖关系画一下。</p>
 </li>
 </ol>
+<p>interface vs inheritace，什么时候谁合适?</p>
 <p>在实现代码的时候，class diagram可以作为指导原则</p>
 <ol start="4">
 <li><p>activity diagram<br>画出具体实现<strong>某一</strong>功能的状态图</p>
@@ -522,7 +523,25 @@
 <li><p>code<br>see: <a href="https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z" target="_blank" rel="noopener">https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z</a></p>
 </li>
 </ol>
-<h3 id="Design-Amazon-online-shopping-system"><a href="#Design-Amazon-online-shopping-system" class="headerlink" title="Design Amazon online shopping system"></a>Design Amazon online shopping system</h3>
+<h3 id="Design-Amazon-online-shopping-system"><a href="#Design-Amazon-online-shopping-system" class="headerlink" title="Design Amazon online shopping system"></a>Design Amazon online shopping system</h3><ol>
+<li>get clarity</li>
+</ol>
+<ul>
+<li>what scope do you want me to focus on?</li>
+<li>high level design or dive into a specific function component, wirte class and method.</li>
+</ul>
+<p><code>Objects</code>: guest, member, admin and system<br>分别讨论一下各自可以做什么操作。</p>
+<p>几个主要的system:<br>register, search, review, order, shipment, payment, notification.</p>
+<ol start="2">
+<li>use case diagram</li>
+<li>activity diagram</li>
+<li>sequence diagram</li>
+</ol>
+<h4 id="Design-shopify"><a href="#Design-shopify" class="headerlink" title="Design shopify"></a>Design shopify</h4><p><a href="https://www.youtube.com/watch?v=lEL4F_0J3l8" target="_blank" rel="noopener">shopify eCommerce platform</a><br>类似于淘宝, 有自己的网店portal.</p>
+<h3 id="Design-stack-overflow"><a href="#Design-stack-overflow" class="headerlink" title="Design stack overflow"></a>Design stack overflow</h3><p>Stack Overflow is one of the largest online communities for developers to learn and share their knowledge.</p>
+<p>Users of Stack Overflow can earn reputation points and badges. For example, a person is awarded ten reputation points for receiving an “up” vote on an answer and five points for the “up” vote of a question. The can also receive badges for their valued contributions. A higher reputation lets users unlock new privileges like the ability to vote, comment on, and even edit other people’s posts.</p>
+<p><code>Actors</code>: admin, guest, member, system, moderator(close,delete,undelete question)</p>
+<h3 id="Design-a-Movie-Ticket-Booking-System"><a href="#Design-a-Movie-Ticket-Booking-System" class="headerlink" title="Design a Movie Ticket Booking System"></a>Design a Movie Ticket Booking System</h3>
       
     </div>
 
@@ -922,7 +941,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Library-Management-System"><span class="nav-number">1.</span> <span class="nav-text">Design a Library Management System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-parking-lot"><span class="nav-number">2.</span> <span class="nav-text">Design parking lot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-Amazon-online-shopping-system"><span class="nav-number">3.</span> <span class="nav-text">Design Amazon online shopping system</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Library-Management-System"><span class="nav-number">1.</span> <span class="nav-text">Design a Library Management System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-parking-lot"><span class="nav-number">2.</span> <span class="nav-text">Design parking lot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-Amazon-online-shopping-system"><span class="nav-number">3.</span> <span class="nav-text">Design Amazon online shopping system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Design-shopify"><span class="nav-number">3.1.</span> <span class="nav-text">Design shopify</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-stack-overflow"><span class="nav-number">4.</span> <span class="nav-text">Design stack overflow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Movie-Ticket-Booking-System"><span class="nav-number">5.</span> <span class="nav-text">Design a Movie Ticket Booking System</span></a></li></ol></div>
             
 
           </div>
