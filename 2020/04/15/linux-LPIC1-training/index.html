@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。2020年4月份pluralsight在搞活动，免费注册学习！感觉讲得还行！Linux都没系统学习过，这次lock down at home是个机会补补课。 Environment: CentOS 7 Enterprise Linux EssentialsReading OS data123456789## syst">
+  <meta name="description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。 备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat EssentialsReading OS data123456789## system version## s">
 <meta name="keywords" content="linux,LPIC-1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux LPIC-1 Training">
 <meta property="og:url" content="http://yoursite.com/2020/04/15/linux-LPIC1-training/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。2020年4月份pluralsight在搞活动，免费注册学习！感觉讲得还行！Linux都没系统学习过，这次lock down at home是个机会补补课。 Environment: CentOS 7 Enterprise Linux EssentialsReading OS data123456789## syst">
+<meta property="og:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。 备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat EssentialsReading OS data123456789## system version## s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-27T03:28:27.398Z">
+<meta property="og:updated_time" content="2020-04-27T23:50:53.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux LPIC-1 Training">
-<meta name="twitter:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。2020年4月份pluralsight在搞活动，免费注册学习！感觉讲得还行！Linux都没系统学习过，这次lock down at home是个机会补补课。 Environment: CentOS 7 Enterprise Linux EssentialsReading OS data123456789## syst">
+<meta name="twitter:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。 备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat EssentialsReading OS data123456789## system version## s">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-26 20:28:27" itemprop="dateModified" datetime="2020-04-26T20:28:27-07:00">2020-04-26</time>
+                <time title="Modified: 2020-04-27 16:50:53" itemprop="dateModified" datetime="2020-04-27T16:50:53-07:00">2020-04-27</time>
               
             
           </span>
@@ -461,8 +461,9 @@
       
 
       
-        <p>这篇总结是来自PluralSight上的<code>LPIC-1</code>课程的Essential章节。2020年4月份pluralsight在搞活动，免费注册学习！感觉讲得还行！Linux都没系统学习过，这次lock down at home是个机会补补课。</p>
-<p>Environment: <code>CentOS 7 Enterprise Linux</code></p>
+        <p>这篇总结是来自PluralSight上的<code>LPIC-1</code>课程的Essential章节。</p>
+<p>备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。</p>
+<p>Environment: <code>CentOS 7 Enterprise Linux</code> or <code>RedHat</code></p>
 <h2 id="Essentials"><a href="#Essentials" class="headerlink" title="Essentials"></a>Essentials</h2><p>Reading OS data<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## system version</span></span><br><span class="line"><span class="comment">## softlink actually</span></span><br><span class="line">cat /etc/os-release</span><br><span class="line">cat /etc/system-release</span><br><span class="line">cat /etc/redhat-release</span><br><span class="line"></span><br><span class="line"><span class="comment">## kernel number</span></span><br><span class="line">uname -r</span><br><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure></p>
 <h3 id="Shutdown"><a href="#Shutdown" class="headerlink" title="Shutdown"></a>Shutdown</h3><p>Send message to others<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## send to individual user terminal</span></span><br><span class="line">write dsadm</span><br><span class="line">&gt; xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">## send to all user in terminals</span></span><br><span class="line">wall &lt; message.txt</span><br></pre></td></tr></table></figure></p>
 <p>Shutdown system and prompt<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## reboot now</span></span><br><span class="line">shutdown -r now</span><br><span class="line"><span class="comment">## halt/poweroff in 10 mins and use wall send message to login users</span></span><br><span class="line">shutdown -h 10 <span class="string">"The system is going down in 10 min"</span></span><br><span class="line"><span class="comment">## cancel shutdown</span></span><br><span class="line">shutdown -c</span><br></pre></td></tr></table></figure></p>
