@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。 备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat EssentialsReading OS data123456789## system version## s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-27T23:50:53.812Z">
+<meta property="og:updated_time" content="2020-04-30T16:10:43.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux LPIC-1 Training">
 <meta name="twitter:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。 备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat EssentialsReading OS data123456789## system version## s">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">84</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">85</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">157</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">158</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-27 16:50:53" itemprop="dateModified" datetime="2020-04-27T16:50:53-07:00">2020-04-27</time>
+                <time title="Modified: 2020-04-30 09:10:43" itemprop="dateModified" datetime="2020-04-30T09:10:43-07:00">2020-04-30</time>
               
             
           </span>
@@ -467,8 +467,8 @@
 <h2 id="Essentials"><a href="#Essentials" class="headerlink" title="Essentials"></a>Essentials</h2><p>Reading OS data<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## system version</span></span><br><span class="line"><span class="comment">## softlink actually</span></span><br><span class="line">cat /etc/os-release</span><br><span class="line">cat /etc/system-release</span><br><span class="line">cat /etc/redhat-release</span><br><span class="line"></span><br><span class="line"><span class="comment">## kernel number</span></span><br><span class="line">uname -r</span><br><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure></p>
 <h3 id="Shutdown"><a href="#Shutdown" class="headerlink" title="Shutdown"></a>Shutdown</h3><p>Send message to others<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## send to individual user terminal</span></span><br><span class="line">write dsadm</span><br><span class="line">&gt; xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">## send to all user in terminals</span></span><br><span class="line">wall &lt; message.txt</span><br></pre></td></tr></table></figure></p>
 <p>Shutdown system and prompt<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## reboot now</span></span><br><span class="line">shutdown -r now</span><br><span class="line"><span class="comment">## halt/poweroff in 10 mins and use wall send message to login users</span></span><br><span class="line">shutdown -h 10 <span class="string">"The system is going down in 10 min"</span></span><br><span class="line"><span class="comment">## cancel shutdown</span></span><br><span class="line">shutdown -c</span><br></pre></td></tr></table></figure></p>
-<p>Changing runlevels<br>what is <code>runlevel</code> in linux?<br><a href="https://www.liquidweb.com/kb/linux-runlevels-explained/" target="_blank" rel="noopener">https://www.liquidweb.com/kb/linux-runlevels-explained/</a><br>比如<br>runlevel 1 就只能root user且没有network enabled，也叫作rescue.target，可以做一些关键系统的操作。<br>runlevel 3 是默认的multi-user + network enabled。<br>runlevel 5 是Desktop interface + runlevel 3的组合。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show current runlevel</span></span><br><span class="line">who -r</span><br><span class="line">runlevel</span><br><span class="line"></span><br><span class="line"><span class="comment">## default runlevel</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="comment">## set defailt runlevel</span></span><br><span class="line">systemctl <span class="built_in">set</span>-default multi-user.target</span><br></pre></td></tr></table></figure></p>
-<h3 id="Manage-processes"><a href="#Manage-processes" class="headerlink" title="Manage processes"></a>Manage processes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show process on current shell</span></span><br><span class="line"><span class="comment">## use dash is UNIX options</span></span><br><span class="line">ps -f</span><br><span class="line"><span class="comment">## -e means all processes</span></span><br><span class="line">ps -ef --forest</span><br><span class="line">ps -F -p $(pgrep sshd)</span><br><span class="line"><span class="comment">## kill all sleep processes</span></span><br><span class="line">pkill sleep</span><br><span class="line"><span class="comment">## BSD options</span></span><br><span class="line">ps aux</span><br></pre></td></tr></table></figure>
+<p>Changing runlevels<br>what is <code>runlevel</code> in linux?<br><a href="https://www.liquidweb.com/kb/linux-runlevels-explained/" target="_blank" rel="noopener">https://www.liquidweb.com/kb/linux-runlevels-explained/</a><br>比如<br>runlevel 1 就只能root user且没有network enabled，也叫作rescue.target，可以做一些需要隔离的操作。<br>runlevel 3 是默认的multi-user + network enabled。<br>runlevel 5 是Desktop interface + runlevel 3的组合。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show current runlevel</span></span><br><span class="line">who -r</span><br><span class="line">runlevel</span><br><span class="line"></span><br><span class="line"><span class="comment">## default runlevel</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="comment">## set defailt runlevel</span></span><br><span class="line">systemctl <span class="built_in">set</span>-default multi-user.target</span><br></pre></td></tr></table></figure></p>
+<h3 id="Manage-processes"><a href="#Manage-processes" class="headerlink" title="Manage processes"></a>Manage processes</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show process on current shell</span></span><br><span class="line"><span class="comment">## use dash is UNIX options</span></span><br><span class="line">ps -f</span><br><span class="line"><span class="comment">## -e means all processes</span></span><br><span class="line">ps -ef --forest</span><br><span class="line"><span class="comment">## -F show full format column</span></span><br><span class="line">ps -F -p $(pgrep sshd)</span><br><span class="line"><span class="comment">## kill all sleep processes</span></span><br><span class="line">pkill sleep</span><br><span class="line"><span class="comment">## BSD options</span></span><br><span class="line">ps aux</span><br></pre></td></tr></table></figure>
 <p><code>$$</code> the PID of current running process<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /proc/$$</span><br><span class="line"><span class="comment">## we can interrogate this directory</span></span><br><span class="line"><span class="comment">## current dir</span></span><br><span class="line">ls -l cwd</span><br><span class="line"><span class="comment">## current exe</span></span><br><span class="line">ls -l exe</span><br></pre></td></tr></table></figure></p>
 <p><code>top</code> 命令的options还记得吗? 比如切换memory显示单位，选择排序的依据CPU/MEM occupied..</p>
 <h3 id="Process-priority"><a href="#Process-priority" class="headerlink" title="Process priority"></a>Process priority</h3><p>if something runs in foreground and prevent you from doing anything, use <code>ctrl + z</code> to suspend it (still in memory, not takeing CPU time), then put it in background.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sleep 10000</span><br><span class="line">^Z</span><br><span class="line">[1]+  Stopped                 sleep 10000</span><br><span class="line"></span><br><span class="line"><span class="comment">## use job command, `+` means current focus</span></span><br><span class="line"><span class="built_in">jobs</span></span><br><span class="line">[1]+  Stopped                 sleep 10000</span><br><span class="line"></span><br><span class="line"><span class="comment">## use bg command to put current focus in background</span></span><br><span class="line"><span class="built_in">bg</span></span><br><span class="line">[1]+ sleep 10000 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment">## check is running in background</span></span><br><span class="line"><span class="built_in">jobs</span></span><br><span class="line">[1]+  Running                 sleep 10000 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment">## use fg will bring current focus to foreground again</span></span><br></pre></td></tr></table></figure></p>
@@ -543,6 +543,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/04/30/k8s-helm-quick-start/" rel="prev" title="Helm Quick Start">
+                Helm Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -613,7 +617,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">157</span>
+                    <span class="site-state-item-count">158</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -857,7 +861,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">84</span>
+                      
+                    
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

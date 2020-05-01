@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="OOD 可以看成是 High Level System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP Design videoOOP: Obje">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-29T04:45:28.125Z">
+<meta property="og:updated_time" content="2020-05-01T16:40:43.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOP Design">
 <meta name="twitter:description" content="OOD 可以看成是 High Level System Design 后的具体实现。 This blog is for Object Oriented Design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/. OOP Design videoOOP: Obje">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">84</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">85</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">157</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">158</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-28 21:45:28" itemprop="dateModified" datetime="2020-04-28T21:45:28-07:00">2020-04-28</time>
+                <time title="Modified: 2020-05-01 09:40:43" itemprop="dateModified" datetime="2020-05-01T09:40:43-07:00">2020-05-01</time>
               
             
           </span>
@@ -481,6 +481,19 @@
 <li>sequence diagram (emphasize on interaction between objects, time series)</li>
 <li>activity diagram (emphasize on control of flow)</li>
 </ol>
+<p><strong>Summary</strong>:<br>总的来看，通过class diagram，设计好基本的abstract class, interface, base class，然后再延伸，实例化。实例化的class中设计好attributes, method的实现。</p>
+<ul>
+<li><p>定义好enum, constants.</p>
+</li>
+<li><p>把不同的系统分开设计，比如notifiation, payment…</p>
+</li>
+<li><p>对于actor people，有一个account class, 被包含在person abstract class中，然后这个person被实例化为其他诸如guest, admin, member等class. (有类似关系的以此类推)</p>
+</li>
+<li><p>对于有查询需求的任务, search interface中声明search方法，然后被search的对象类implements, 在这个对象内部实现search的各种method, 通常需要与database连接。</p>
+</li>
+<li><p>可能会用到设计模式</p>
+</li>
+</ul>
 <h3 id="Design-a-Library-Management-System"><a href="#Design-a-Library-Management-System" class="headerlink" title="Design a Library Management System"></a>Design a Library Management System</h3><p>Library management systems help libraries keep track of the books and their checkouts, as well as members’ subscriptions and profiles.</p>
 <ol>
 <li>get clarity of the requirements, Be sure to ask questions to find the exact scope of the system that the interviewer has in mind</li>
@@ -488,7 +501,7 @@
 <p>找到actors之后，围绕actors就可以提出具体要求，可以做什么事情:<br>member can search book by title, name, date, category, author.<br>book has unique id, rack number, etc.<br>member can checkout, reserve book copies.<br>days a member can keep the book.<br>numbers a member can checkout.<br>collect fine if after due date.<br>system can send notification to user.<br>…</p>
 <p>最后确认需具体要实现什么的功能？</p>
 <ol start="2">
-<li><p>use case diagram<br>从object角度, 看看各自可以有什么操作, 对具体的实现功能，画出具体的use case diagram。</p>
+<li><p>use case diagram, define top use cases<br>从object角度, 看看各自可以有什么操作, 对具体的实现功能，画出具体的use case diagram。</p>
 </li>
 <li><p>class diagram<br>有几个问题:<br>要从high level考虑有哪些abstract class, enum, constant, interface等。<br>然后各自的依赖关系画一下。</p>
 </li>
@@ -541,7 +554,43 @@
 <h3 id="Design-stack-overflow"><a href="#Design-stack-overflow" class="headerlink" title="Design stack overflow"></a>Design stack overflow</h3><p>Stack Overflow is one of the largest online communities for developers to learn and share their knowledge.</p>
 <p>Users of Stack Overflow can earn reputation points and badges. For example, a person is awarded ten reputation points for receiving an “up” vote on an answer and five points for the “up” vote of a question. The can also receive badges for their valued contributions. A higher reputation lets users unlock new privileges like the ability to vote, comment on, and even edit other people’s posts.</p>
 <p><code>Actors</code>: admin, guest, member, system, moderator(close,delete,undelete question)</p>
-<h3 id="Design-a-Movie-Ticket-Booking-System"><a href="#Design-a-Movie-Ticket-Booking-System" class="headerlink" title="Design a Movie Ticket Booking System"></a>Design a Movie Ticket Booking System</h3>
+<h3 id="Design-a-Movie-Ticket-Booking-System"><a href="#Design-a-Movie-Ticket-Booking-System" class="headerlink" title="Design a Movie Ticket Booking System"></a>Design a Movie Ticket Booking System</h3><ol>
+<li><p>high level overview<br>movie theater -&gt; halls -&gt; moive -&gt; shows<br>search movie<br>select show and boot ticket<br>select seat<br>notification<br>payment<br><strong>concurrency</strong> issue when booking:<br>在数据库层面实现的，没有使用Java的concurrency package<br>We can use transactions in SQL databases to avoid any clashes.<br>lock the rows before we update them<br>discount/coupon apply</p>
+</li>
+<li><p>use case diagram</p>
+</li>
+<li>class diagram</li>
+<li>activity diagram</li>
+</ol>
+<h3 id="Design-ATM"><a href="#Design-ATM" class="headerlink" title="Design ATM"></a>Design ATM</h3><p>Automated teller machine (ATM)<br>withdraw and deposit money</p>
+<p>components of ATM:<br>card reader<br>kaypad<br>screen<br>Cash dispenser<br>Deposit slot<br>printer<br>network</p>
+<p>checking and saving account of user<br>都放在<strong>transaction中，保证原子性</strong>:<br>Balance inquiry<br>Deposit cash<br>Deposit check<br>Withdraw cash<br>Transfer funds</p>
+<p>The ATM will maintain an internal log of transactions that contains information about hardware failures; this log will be used by the ATM operator to resolve any issues.</p>
+<p><code>actors:</code><br>operator<br>customer<br>bank manager<br>system</p>
+<h3 id="Design-an-Airline-Management-System"><a href="#Design-an-Airline-Management-System" class="headerlink" title="Design an Airline Management System"></a>Design an Airline Management System</h3><p>This system involves the scheduling of flights, air ticket reservations, flight cancellations, customer support, and staff management. Daily flights updates can also be retrieved by using the system.</p>
+<p>roundtrip<br>one way<br>mutli-city</p>
+<p>回忆一下预定的界面<br>departing<br>returning</p>
+<h3 id="Design-a-Hotel-Management-System"><a href="#Design-a-Hotel-Management-System" class="headerlink" title="Design a Hotel Management System"></a>Design a Hotel Management System</h3><p>和ticket booking类似<br>a online portal, keep track of available rooms, book rooms and generate bill.<br>booking of different room types like standard, deluxe, family suite, etc<br>housekeeping log to keep track of all housekeeping tasks</p>
+<ol>
+<li><p>use case diagram<br>guest<br>manager<br>system<br>housekeeper<br>Receptionist</p>
+</li>
+<li><p>class diagram</p>
+</li>
+<li>activity diagram</li>
+</ol>
+<h3 id="Restaurant-Management-system"><a href="#Restaurant-Management-system" class="headerlink" title="Restaurant Management system"></a>Restaurant Management system</h3><p>同上，补充几个特点:<br>The system allows the manager to keep track of available tables in the system as well as the reservation of tables and bill generation.<br>这里是西餐的形式，没人一个座位，单独点餐。</p>
+<p>menu -&gt; menu sections -&gt; items<br>rooms -&gt; tables (reservation or walk-in)</p>
+<h3 id="Design-Facebook"><a href="#Design-Facebook" class="headerlink" title="Design Facebook"></a>Design Facebook</h3><p>Facebook is an online social networking service where users can connect with other users to post and read messages. Users access Facebook through their website interface or mobile apps.</p>
+<h3 id="Design-LinkedIn"><a href="#Design-LinkedIn" class="headerlink" title="Design LinkedIn"></a>Design LinkedIn</h3><p>Similar to Facebook design but carter to professionals. 各种功能几乎就一样。</p>
+<p>A LinkedIn member’s profile page, which emphasizes their skills, employment history, and education, has professional network news feeds with customizable modules.</p>
+<ol>
+<li><p>use case diagram<br>member<br>admin<br>system</p>
+</li>
+<li><p>class diagram</p>
+</li>
+<li>activity diagram</li>
+</ol>
+
       
     </div>
 
@@ -661,7 +710,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">157</span>
+                    <span class="site-state-item-count">158</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -905,7 +954,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">84</span>
+                      
+                    
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -941,7 +992,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Library-Management-System"><span class="nav-number">1.</span> <span class="nav-text">Design a Library Management System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-parking-lot"><span class="nav-number">2.</span> <span class="nav-text">Design parking lot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-Amazon-online-shopping-system"><span class="nav-number">3.</span> <span class="nav-text">Design Amazon online shopping system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Design-shopify"><span class="nav-number">3.1.</span> <span class="nav-text">Design shopify</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-stack-overflow"><span class="nav-number">4.</span> <span class="nav-text">Design stack overflow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Movie-Ticket-Booking-System"><span class="nav-number">5.</span> <span class="nav-text">Design a Movie Ticket Booking System</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Library-Management-System"><span class="nav-number">1.</span> <span class="nav-text">Design a Library Management System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-parking-lot"><span class="nav-number">2.</span> <span class="nav-text">Design parking lot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-Amazon-online-shopping-system"><span class="nav-number">3.</span> <span class="nav-text">Design Amazon online shopping system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Design-shopify"><span class="nav-number">3.1.</span> <span class="nav-text">Design shopify</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-stack-overflow"><span class="nav-number">4.</span> <span class="nav-text">Design stack overflow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Movie-Ticket-Booking-System"><span class="nav-number">5.</span> <span class="nav-text">Design a Movie Ticket Booking System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-ATM"><span class="nav-number">6.</span> <span class="nav-text">Design ATM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-an-Airline-Management-System"><span class="nav-number">7.</span> <span class="nav-text">Design an Airline Management System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-a-Hotel-Management-System"><span class="nav-number">8.</span> <span class="nav-text">Design a Hotel Management System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restaurant-Management-system"><span class="nav-number">9.</span> <span class="nav-text">Restaurant Management system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-Facebook"><span class="nav-number">10.</span> <span class="nav-text">Design Facebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Design-LinkedIn"><span class="nav-number">11.</span> <span class="nav-text">Design LinkedIn</span></a></li></ol></div>
             
 
           </div>

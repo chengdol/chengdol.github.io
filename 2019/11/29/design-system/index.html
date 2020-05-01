@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This blog is for system design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/ and Youtube channel. 有的系统设计主要是各功能部件合理组合:  Design Instagarm Design Dropbox Desi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-26T01:42:30.562Z">
+<meta property="og:updated_time" content="2020-05-01T21:44:07.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="System Design">
 <meta name="twitter:description" content="This blog is for system design, please revisit frequently to refresh. The notes are mainly from https://www.educative.io/ and Youtube channel. 有的系统设计主要是各功能部件合理组合:  Design Instagarm Design Dropbox Desi">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">84</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">85</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">157</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">158</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-25 18:42:30" itemprop="dateModified" datetime="2020-04-25T18:42:30-07:00">2020-04-25</time>
+                <time title="Modified: 2020-05-01 14:44:07" itemprop="dateModified" datetime="2020-05-01T14:44:07-07:00">2020-05-01</time>
               
             
           </span>
@@ -517,7 +517,7 @@
 <h2 id="NoSQL-Database"><a href="#NoSQL-Database" class="headerlink" title="NoSQL Database:"></a>NoSQL Database:</h2><p><a href="https://www.youtube.com/watch?v=uD3p_rZPBUQ" target="_blank" rel="noopener">An Introduction To NoSQL Databases</a><br><strong>Big Data</strong>: social network, search engine, traditional methods of processing and storage are inadequate.</p>
 <ol>
 <li>Key-value stores: Redis, Dynamo (redis can also be cache)</li>
-<li>Document database: MongoDB</li>
+<li>Document database: MongoDB, Couchbase</li>
 <li><a href="https://www.youtube.com/watch?v=8KGVFB3kVHQ" target="_blank" rel="noopener">Wide-column database</a>: Cassandra, HBase</li>
 <li>Graph database: Neo4J</li>
 </ol>
@@ -566,7 +566,7 @@
 <li><p>cache policy, LRU, 80-20 rule.</p>
 </li>
 </ol>
-<h1 id="Other-System-Design-Videos"><a href="#Other-System-Design-Videos" class="headerlink" title="Other System Design Videos:"></a>Other System Design Videos:</h1><p><a href="https://www.youtube.com/watch?v=UzLMhqg3_Wc&amp;list=PLrmLmBdmIlps7GJJWW9I7N0P0rB0C3eY2" target="_blank" rel="noopener">Introduce to System Design</a><br>同样推荐了这本书<code>&lt;&lt;Designing Data Intensive Applications&gt;&gt;</code>, 会对这些topics有更深入的讲解。</p>
+<h1 id="Other-System-Design-Videos"><a href="#Other-System-Design-Videos" class="headerlink" title="Other System Design Videos:"></a>Other System Design Videos:</h1><h2 id="Introduce-to-System-Design"><a href="#Introduce-to-System-Design" class="headerlink" title="Introduce to System Design"></a>Introduce to System Design</h2><p><a href="https://www.youtube.com/watch?v=UzLMhqg3_Wc&amp;list=PLrmLmBdmIlps7GJJWW9I7N0P0rB0C3eY2" target="_blank" rel="noopener">Introduce to System Design</a><br>同样推荐了这本书<code>&lt;&lt;Designing Data Intensive Applications&gt;&gt;</code>, 会对这些topics有更深入的讲解。</p>
 <ol>
 <li>ask good question:<br>which features care about, which not?<br>how much to scale (data, request, latency)</li>
 <li>don’t use buzzword (be clear about the tech you use)</li>
@@ -635,6 +635,15 @@
 <li>Docker, Kubernetes, Mesos</li>
 <li>Hadoop/Spark and HDFS</li>
 </ol>
+<h2 id="Design-Spotify-Apple-Muisc-Youtube-Music"><a href="#Design-Spotify-Apple-Muisc-Youtube-Music" class="headerlink" title="Design Spotify| Apple Muisc | Youtube Music"></a>Design Spotify| Apple Muisc | Youtube Music</h2><p><a href="https://www.youtube.com/watch?v=ks-CS41AiQs" target="_blank" rel="noopener">Design Spotify| Apple Muisc | Youtube Music</a></p>
+<ol>
+<li>scope: cover and what else you are not going to cover</li>
+<li>key components (具体分析了一下spotify工作的过程，比如存储，传输protocol转换，low latency, CDN)</li>
+<li>data model</li>
+<li>scaling</li>
+</ol>
+<p>if data size is high, consider compress audio data<br>quality, user use different device and network condition<br>distribution CDN</p>
+<p>scaling group 比如一些stateless servers可以使用k8s, containers去管理。</p>
 
       
     </div>
@@ -755,7 +764,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">157</span>
+                    <span class="site-state-item-count">158</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -999,7 +1008,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">84</span>
+                      
+                    
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1035,7 +1046,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CAP-Theorem"><span class="nav-number">1.</span> <span class="nav-text">CAP Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thinking-process"><span class="nav-number">2.</span> <span class="nav-text">Thinking process</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Crucial-Components"><span class="nav-number">3.</span> <span class="nav-text">Crucial Components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key-Characteristics-of-Distributed-Systems"><span class="nav-number">4.</span> <span class="nav-text">Key Characteristics of Distributed Systems</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用技术知识"><span class="nav-number">5.</span> <span class="nav-text">常用技术知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#备份的说法"><span class="nav-number">5.1.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSQL-Database"><span class="nav-number">5.2.</span> <span class="nav-text">NoSQL Database:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-Hashing-with-virtual-replicas"><span class="nav-number">5.3.</span> <span class="nav-text">Consistent Hashing (with virtual replicas)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Polling-轮询"><span class="nav-number">5.4.</span> <span class="nav-text">Long Polling (轮询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Sharding"><span class="nav-number">5.5.</span> <span class="nav-text">Data Sharding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Server-vs-Application-Server"><span class="nav-number">5.6.</span> <span class="nav-text">Web Server vs Application Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy-server"><span class="nav-number">5.7.</span> <span class="nav-text">proxy server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">5.8.</span> <span class="nav-text">Map Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exponential-Moving-Average-EMA"><span class="nav-number">5.9.</span> <span class="nav-text">Exponential Moving Average (EMA)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Design-Bottlenecks"><span class="nav-number">6.</span> <span class="nav-text">Some Design Bottlenecks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-System-Design-Videos"><span class="nav-number">7.</span> <span class="nav-text">Other System Design Videos:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CAP-Theorem"><span class="nav-number">1.</span> <span class="nav-text">CAP Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thinking-process"><span class="nav-number">2.</span> <span class="nav-text">Thinking process</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Crucial-Components"><span class="nav-number">3.</span> <span class="nav-text">Crucial Components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key-Characteristics-of-Distributed-Systems"><span class="nav-number">4.</span> <span class="nav-text">Key Characteristics of Distributed Systems</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用技术知识"><span class="nav-number">5.</span> <span class="nav-text">常用技术知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#备份的说法"><span class="nav-number">5.1.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSQL-Database"><span class="nav-number">5.2.</span> <span class="nav-text">NoSQL Database:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-Hashing-with-virtual-replicas"><span class="nav-number">5.3.</span> <span class="nav-text">Consistent Hashing (with virtual replicas)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Polling-轮询"><span class="nav-number">5.4.</span> <span class="nav-text">Long Polling (轮询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Sharding"><span class="nav-number">5.5.</span> <span class="nav-text">Data Sharding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Server-vs-Application-Server"><span class="nav-number">5.6.</span> <span class="nav-text">Web Server vs Application Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy-server"><span class="nav-number">5.7.</span> <span class="nav-text">proxy server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">5.8.</span> <span class="nav-text">Map Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exponential-Moving-Average-EMA"><span class="nav-number">5.9.</span> <span class="nav-text">Exponential Moving Average (EMA)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Design-Bottlenecks"><span class="nav-number">6.</span> <span class="nav-text">Some Design Bottlenecks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-System-Design-Videos"><span class="nav-number">7.</span> <span class="nav-text">Other System Design Videos:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduce-to-System-Design"><span class="nav-number">7.1.</span> <span class="nav-text">Introduce to System Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Spotify-Apple-Muisc-Youtube-Music"><span class="nav-number">7.2.</span> <span class="nav-text">Design Spotify| Apple Muisc | Youtube Music</span></a></li></ol></li></ol></div>
             
 
           </div>
