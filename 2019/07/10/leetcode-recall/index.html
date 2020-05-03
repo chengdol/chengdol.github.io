@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TO-DO hiring season, internal reference position: backend developer, DevOps, Infra system design from x code in my laptop? baidu cloud? company series, buy x code or leetcode? resume project chat blog">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-23T17:40:15.468Z">
+<meta property="og:updated_time" content="2020-05-03T07:17:23.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Summary">
 <meta name="twitter:description" content="TO-DO hiring season, internal reference position: backend developer, DevOps, Infra system design from x code in my laptop? baidu cloud? company series, buy x code or leetcode? resume project chat blog">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-23 10:40:15" itemprop="dateModified" datetime="2020-04-23T10:40:15-07:00">2020-04-23</time>
+                <time title="Modified: 2020-05-03 00:17:23" itemprop="dateModified" datetime="2020-05-03T00:17:23-07:00">2020-05-03</time>
               
             
           </span>
@@ -523,6 +523,8 @@
 <p>Arrays.sort(int[]) primitive type是不能自己写comparator的！</p>
 </blockquote>
 <p>数组内容字符串化用:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// correct!</span></span><br><span class="line">Arrays.toString(a);</span><br><span class="line"><span class="comment">// wrong! 这个返回id string</span></span><br><span class="line">a.toString()</span><br></pre></td></tr></table></figure></p>
+<p>Shuffle arrays:<br>Every permutation of array element should equally likely:<br><a href="https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/</a><br><a href="https://introcs.cs.princeton.edu/java/stdlib/StdRandom.java.html" target="_blank" rel="noopener">https://introcs.cs.princeton.edu/java/stdlib/StdRandom.java.html</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// nums[0] swap with element in range [0, n)</span></span><br><span class="line"><span class="comment">// nums[1] swap with element in range [1, n)</span></span><br><span class="line"><span class="comment">// nums[2] swap with element in range [2, n)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] shuffle(<span class="keyword">int</span>[] nums)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">int</span> j = i + rand.nextInt(nums.length - i);</span><br><span class="line">    <span class="comment">// swap</span></span><br><span class="line">    <span class="keyword">int</span> tmp = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = tmp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> nums;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>TreeSet operation time complexity, from java TreeSet doc:<br><strong>This implementation provides guaranteed log(n) time cost for the basic operations (add, remove and contains).</strong></p>
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br></pre></td></tr></table></figure>
 <p>HashMap&lt;&gt;() not thread safe<br>HashTable&lt;&gt;(), thread safe but ConcurrentHash…</p>
