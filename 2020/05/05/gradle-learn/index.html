@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 groovybooks, course">
+  <meta name="description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 GroovyBooks, course">
 <meta name="keywords" content="inprogress">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Groovy Gradle and Jenkins">
 <meta property="og:url" content="http://yoursite.com/2020/05/05/gradle-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 groovybooks, course">
+<meta property="og:description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 GroovyBooks, course">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-10T03:42:49.797Z">
+<meta property="og:updated_time" content="2020-05-11T08:13:20.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Groovy Gradle and Jenkins">
-<meta name="twitter:description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 groovybooks, course">
+<meta name="twitter:description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 GroovyBooks, course">
 
 
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-05-09 20:42:49" itemprop="dateModified" datetime="2020-05-09T20:42:49-07:00">2020-05-09</time>
+                <time title="Modified: 2020-05-11 01:13:20" itemprop="dateModified" datetime="2020-05-11T01:13:20-07:00">2020-05-11</time>
               
             
           </span>
@@ -463,10 +463,11 @@
       
         <p><strong>This blog is still in progress…</strong></p>
 <p>最近在做一些pipeline的工作，需要快速上手，主要涉及到的:<br>Jenkins<br>gradle<br>Groovy<br>现在不清楚的地方是各自文件的语法。<br>jenkins how to start from scratch, how to configure?<br>先从groovy，gradle入手，然后jenkins。</p>
-<h2 id="groovy"><a href="#groovy" class="headerlink" title="groovy"></a>groovy</h2><p>books, course and presentation, recommend that course!<br><a href="https://groovy-lang.org/learn.html#books" target="_blank" rel="noopener">https://groovy-lang.org/learn.html#books</a></p>
-<p><a href="http://groovy-lang.org/syntax.html" target="_blank" rel="noopener">http://groovy-lang.org/syntax.html</a><br>alternative java laguage<br>DSL: domain specific language</p>
-<p><code>sdkman</code> very good (also for gradle!)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sdk install groovy 2.5.2</span><br><span class="line">yum install java-1.8.0-openjdk-devel -y</span><br><span class="line"></span><br><span class="line">groovysh</span><br><span class="line">println <span class="string">"123"</span></span><br><span class="line"></span><br><span class="line">def xx is <span class="built_in">local</span> scope</span><br><span class="line"></span><br><span class="line">:<span class="built_in">help</span></span><br><span class="line">:show variable</span><br><span class="line"></span><br><span class="line">xx.groovy</span><br><span class="line"><span class="comment">## compile</span></span><br><span class="line">groovyc xx.groovy</span><br><span class="line"><span class="comment">## run </span></span><br><span class="line">groovy xx.groovy</span><br><span class="line"><span class="comment">## this is ok</span></span><br><span class="line"><span class="variable">$abc</span></span><br><span class="line">List = [1,2,3]</span><br></pre></td></tr></table></figure></p>
-<h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><p>don’t see latest book, refer the official website<br><a href="https://gradle.org/guides/" target="_blank" rel="noopener">https://gradle.org/guides/</a><br>Ant and Maven are also build tools, gradle wrapper, incremental builds.</p>
+<h1 id="Groovy"><a href="#Groovy" class="headerlink" title="Groovy"></a>Groovy</h1><p>Books, course and presentations, recommend:<br><a href="https://groovy-lang.org/learn.html#books" target="_blank" rel="noopener">https://groovy-lang.org/learn.html#books</a></p>
+<p><a href="http://groovy-lang.org/syntax.html" target="_blank" rel="noopener">http://groovy-lang.org/syntax.html</a><br>alternative java language</p>
+<p><code>DSL</code>: domain specific language<br><code>sdkman</code> very good installation toolkit (also for gradle!)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## must have jdk installed</span></span><br><span class="line">yum install java-1.8.0-openjdk-devel -y</span><br><span class="line"><span class="comment">## specify version 2.5.2</span></span><br><span class="line">sdk install groovy 2.5.2</span><br></pre></td></tr></table></figure></p>
+<p>others:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">groovysh</span><br><span class="line">println <span class="string">"123"</span></span><br><span class="line"></span><br><span class="line">def xx is <span class="built_in">local</span> scope</span><br><span class="line"></span><br><span class="line">:<span class="built_in">help</span></span><br><span class="line">:show variable</span><br><span class="line"></span><br><span class="line">xx.groovy</span><br><span class="line"><span class="comment">## compile</span></span><br><span class="line">groovyc xx.groovy</span><br><span class="line"><span class="comment">## run </span></span><br><span class="line">groovy xx.groovy</span><br><span class="line"><span class="comment">## this is ok</span></span><br><span class="line"><span class="variable">$abc</span></span><br><span class="line">List = [1,2,3]</span><br></pre></td></tr></table></figure></p>
+<h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><p>don’t see latest book,  please refer to official doc<br><a href="https://gradle.org/guides/" target="_blank" rel="noopener">https://gradle.org/guides/</a><br>Ant and Maven are also build tools, gradle wrapper, incremental builds.</p>
 <ol>
 <li>build by convention</li>
 <li>Groovy DSL</li>
@@ -477,7 +478,32 @@
 <p>To install Gradle, using <code>sdkman</code> tool.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## generate gradlew script</span></span><br><span class="line">gradle wrapper</span><br></pre></td></tr></table></figure>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'java'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> &#123;</span><br><span class="line">  <span class="keyword">doLast</span> &#123;</span><br><span class="line">    <span class="comment">// groovy syntax</span></span><br><span class="line">    <span class="keyword">println</span> <span class="string">"hello, gradle!"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h2><p>Declarative Pipelines: <a href="https://www.jenkins.io/doc/book/pipeline/syntax/" target="_blank" rel="noopener">https://www.jenkins.io/doc/book/pipeline/syntax/</a></p>
+<h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><p>Other interesting project: <code>Tekton</code>, <code>Jenkinx</code> (k8s involved)<br>Declarative Pipelines: <a href="https://www.jenkins.io/doc/book/pipeline/syntax/" target="_blank" rel="noopener">https://www.jenkins.io/doc/book/pipeline/syntax/</a></p>
+<p>Install jenkins, must have right <code>openjdk</code> installed.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can use war file:</span></span><br><span class="line">java -jar jenkins.war</span><br></pre></td></tr></table></figure></p>
+<p>or using rpm download for centos/redhat, then using systemctl to start jenkins<br><a href="https://www.jenkins.io/doc/book/installing/#red-hat-centos" target="_blank" rel="noopener">https://www.jenkins.io/doc/book/installing/#red-hat-centos</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## you will see the default port is 8080</span></span><br><span class="line">ps aux | grep jenkinx</span><br></pre></td></tr></table></figure></p>
+<p>then you can open the web version by <code>public ip:8080</code>.</p>
+<p>Jenkins use file system to store everything, if using systemd, the configuration is in <code>/var/lib/jenkins</code>. You can backup this folder, or if you want to wipe it out, then run <code>systemctl restart jenkins</code>, then jenkins is in init state.</p>
+<p>Even don’t need to use Jenkins UI to create project, you can directly mkdir and files in the Jenkins directory, then go to <code>Manage Jenkins</code> -&gt; <code>Reload Configuration from Disk</code>.</p>
+<p>Demo Jenkins URL (from my fyre node):<br><a href="http://9.30.166.179:8080/" target="_blank" rel="noopener">http://9.30.166.179:8080/</a><br>there are some failures in installing plugins. Maybe war file is good?</p>
+<h2 id="Run-jenkins-in-docker-container"><a href="#Run-jenkins-in-docker-container" class="headerlink" title="Run jenkins in docker container"></a>Run jenkins in docker container</h2><p><a href="https://hub.docker.com/r/jenkins/jenkins" target="_blank" rel="noopener">https://hub.docker.com/r/jenkins/jenkins</a><br>you can run several jenkins version in your machine, for testing, upgrading…<br>but you may need to customize the jenkins docker image.</p>
+<h2 id="Creating-app-build"><a href="#Creating-app-build" class="headerlink" title="Creating app build"></a>Creating app build</h2><p>freestyle project -&gt; pipeline (series of freestyle project)</p>
+<p>Jenkins <code>Workspace</code>, you can see it in console output or click Workspace icon in your project dashboard. Everything from git clone to build result is put in your project workspace. Every build will overrode the previous one.</p>
+<p>To store the build artifact, use <code>Post-build Action</code> in configure. for example, you want to archive some jar or zip files. then after build is done, these archives will show in the build page.</p>
+<h3 id="Build-trend"><a href="#Build-trend" class="headerlink" title="Build trend"></a>Build trend</h3><p>right to <code>Build History</code> list, there is a <code>trend</code> button, click it will see the build time history statistics and distribution.</p>
+<h2 id="Testing-and-CI"><a href="#Testing-and-CI" class="headerlink" title="Testing and CI"></a>Testing and CI</h2><p>Now start the pipeline job type. After creating a pipeline job, you will see <code>pipeline syntax</code> in the page, that’s all you need.</p>
+<p>一般来说，使用在git中的<code>declarative pipeline script</code> (for example: Jenkins file)去构造pipeline. 在pipeline configure中设置。</p>
+<p>如果没用<code>declarative pipeline script</code>， 而是通过pipeline generator去设置script (可以在这个script中定义各种变量)，则常用的Steps:</p>
+<ul>
+<li><p>node: Allocate node<br>Jenkins use <code>master &lt;-&gt; agent model</code>, you can configure tasks to be executed in agent node.</p>
+<p>To add slaves, you can add <code>New Node</code> in <code>Build Executor Status</code>, you need to setup credentials and know_hosts file for ssh connection. (如何node没有被发现，会显示错误，根据错误指示排查问题即可)</p>
+</li>
+<li><p>stage: Stage</p>
+</li>
+<li>git: Git</li>
+<li>dir: Change Current Directory</li>
+<li>sh: Shell Script</li>
+<li>step: General Build Step</li>
+</ul>
 
       
     </div>
@@ -880,7 +906,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#groovy"><span class="nav-number">1.</span> <span class="nav-text">groovy</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle"><span class="nav-number"></span> <span class="nav-text">Gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Groovy"><span class="nav-number">1.</span> <span class="nav-text">Groovy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle"><span class="nav-number">2.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">3.</span> <span class="nav-text">Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-jenkins-in-docker-container"><span class="nav-number">3.1.</span> <span class="nav-text">Run jenkins in docker container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-app-build"><span class="nav-number">3.2.</span> <span class="nav-text">Creating app build</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-trend"><span class="nav-number">3.2.1.</span> <span class="nav-text">Build trend</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing-and-CI"><span class="nav-number">3.3.</span> <span class="nav-text">Testing and CI</span></a></li></ol></li></ol></div>
             
 
           </div>
