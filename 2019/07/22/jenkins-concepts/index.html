@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Jenkins is a great tool for continuous integration and continuous delivery but what exactly does the CI/CD mean? 12345678910111213141516171819            +-----------------------+           +---------">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-22T23:22:28.223Z">
+<meta property="og:updated_time" content="2020-05-13T05:18:26.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins CI&#x2F;CD Concept">
 <meta name="twitter:description" content="Jenkins is a great tool for continuous integration and continuous delivery but what exactly does the CI/CD mean? 12345678910111213141516171819            +-----------------------+           +---------">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">159</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">160</span></a>
 
   </li>
 
@@ -393,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-07-22 14:11:29 / Modified: 16:22:28" itemprop="dateCreated datePublished" datetime="2019-07-22T14:11:29-07:00">2019-07-22</time>
+              <time title="Created: 2019-07-22 14:11:29" itemprop="dateCreated datePublished" datetime="2019-07-22T14:11:29-07:00">2019-07-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-12 22:18:26" itemprop="dateModified" datetime="2020-05-12T22:18:26-07:00">2020-05-12</time>
               
             
           </span>
@@ -451,12 +463,9 @@
       
         <p><code>Jenkins</code> is a great tool for continuous integration and continuous delivery but what exactly does the <code>CI/CD</code> mean?</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">            +-----------------------+           +----------------------+           +------------------------+</span><br><span class="line">            |                       |           |                      |           |                        |</span><br><span class="line">            |   continuous          |           |   continuous         |           |   continuous           |</span><br><span class="line">            |         integration   +-----------&gt;         delivery     +-----------+       development      |</span><br><span class="line">            |                       |           |                      |           |                        |</span><br><span class="line">            +---------+-------------+           +--------------+-------+           +---------------------+--+</span><br><span class="line">                      ^                                        ^                                         ^</span><br><span class="line">                      |                                        |                                         |</span><br><span class="line">                      |                                        |                                         |</span><br><span class="line">+---------------------+----------+              +--------------+----------------------+      +-----------+--------------------+</span><br><span class="line">|  kick off depends on commits   |              |  platform specific testings:        |      | ready to be used by customers  |</span><br><span class="line">|  or schedule                   |              |  security, performance, API...      |      |                                |</span><br><span class="line">+-----------+--------------------+------+       |                                     |      +--------------------------------+</span><br><span class="line">            |   code version control    |       +-------------------------------------+</span><br><span class="line">            |   branching strategy      |</span><br><span class="line">+-----------+-------------+-------------+</span><br><span class="line">|  regression testings    |</span><br><span class="line">|                         |</span><br><span class="line">+-------------------------+</span><br></pre></td></tr></table></figure>
-<blockquote>
 <p><code>Regression testing</code>: re-running functional and non-functional tests to ensure that previously developed and tested software still performs after a change. If not, that would be called a <code>regression</code>. Changes that may require regression testing include bug fixes, software enhancements, configuration changes, etc.</p>
-</blockquote>
-<blockquote>
-<p><a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">Branching strategy: feature branch and primary development branch</a></p>
-</blockquote>
+<p>Git branching:<br><a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">Branching strategy: feature branch and primary development branch</a></p>
+<p>Devops practice:<br><a href="https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html" target="_blank" rel="noopener">Blue-green deploy</a></p>
 <h2 id="Resoucrs"><a href="#Resoucrs" class="headerlink" title="Resoucrs"></a>Resoucrs</h2><p><a href="https://www.infoworld.com/article/3271126/what-is-cicd-continuous-integration-and-continuous-delivery-explained.html" target="_blank" rel="noopener"><strong>What is CI/CD? Continuous integration and continuous delivery explained</strong></a><br><code>Continuous integration</code> is a coding philosophy and set of practices that drive development teams to implement small changes and check in code to version control repositories frequently. </p>
 <p><code>Continuous delivery</code> automates the delivery of applications to selected infrastructure environments.</p>
 <p>A mature <code>CI/CD</code> practice has the option of implementing <code>continuous deployment</code> where application changes run through the <code>CI/CD</code> pipeline and passing builds are deployed directly to production environments. </p>
@@ -585,7 +594,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">159</span>
+                    <span class="site-state-item-count">160</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

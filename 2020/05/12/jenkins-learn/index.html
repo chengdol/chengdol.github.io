@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 GroovyBooks, course">
-<meta name="keywords" content="inprogress">
+  <meta name="description" content="JenkinsOther interesting project: Tekton, Jenkinx (k8s involved)Declarative Pipelines: https://www.jenkins.io/doc/book/pipeline/syntax/ Installing Jenkins, must have compatible openjdk installed.12##">
+<meta name="keywords" content="jenkins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Groovy Gradle and Jenkins">
-<meta property="og:url" content="http://yoursite.com/2020/05/05/gradle-learn/index.html">
+<meta property="og:title" content="Jenkins Learn">
+<meta property="og:url" content="http://yoursite.com/2020/05/12/jenkins-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 GroovyBooks, course">
+<meta property="og:description" content="JenkinsOther interesting project: Tekton, Jenkinx (k8s involved)Declarative Pipelines: https://www.jenkins.io/doc/book/pipeline/syntax/ Installing Jenkins, must have compatible openjdk installed.12##">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-12T02:05:43.097Z">
+<meta property="og:updated_time" content="2020-05-13T08:48:16.522Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Groovy Gradle and Jenkins">
-<meta name="twitter:description" content="This blog is still in progress… 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:JenkinsgradleGroovy现在不清楚的地方是各自文件的语法。jenkins how to start from scratch, how to configure?先从groovy，gradle入手，然后jenkins。 GroovyBooks, course">
+<meta name="twitter:title" content="Jenkins Learn">
+<meta name="twitter:description" content="JenkinsOther interesting project: Tekton, Jenkinx (k8s involved)Declarative Pipelines: https://www.jenkins.io/doc/book/pipeline/syntax/ Installing Jenkins, must have compatible openjdk installed.12##">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/05/05/gradle-learn/">
+  <link rel="canonical" href="http://yoursite.com/2020/05/12/jenkins-learn/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Groovy Gradle and Jenkins | 海胆阶段's Blog</title>
+  <title>Jenkins Learn | 海胆阶段's Blog</title>
   
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">159</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">160</span></a>
 
   </li>
 
@@ -350,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/05/gradle-learn/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/jenkins-learn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -367,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Groovy Gradle and Jenkins
+          <h1 class="post-title" itemprop="name headline">Jenkins Learn
 
               
             
@@ -393,7 +393,7 @@
                 
               
 
-              <time title="Created: 2020-05-05 15:48:26" itemprop="dateCreated datePublished" datetime="2020-05-05T15:48:26-07:00">2020-05-05</time>
+              <time title="Created: 2020-05-12 22:28:03" itemprop="dateCreated datePublished" datetime="2020-05-12T22:28:03-07:00">2020-05-12</time>
             
 
             
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-05-11 19:05:43" itemprop="dateModified" datetime="2020-05-11T19:05:43-07:00">2020-05-11</time>
+                <time title="Modified: 2020-05-13 01:48:16" itemprop="dateModified" datetime="2020-05-13T01:48:16-07:00">2020-05-13</time>
               
             
           </span>
@@ -427,7 +427,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/InPorgress/" itemprop="url" rel="index"><span itemprop="name">InPorgress</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Jenkins/" itemprop="url" rel="index"><span itemprop="name">Jenkins</span></a></span>
 
                 
                 
@@ -461,47 +461,33 @@
       
 
       
-        <p><strong>This blog is still in progress…</strong></p>
-<p>最近在做一些pipeline的工作，需要快速上手，主要涉及到的:<br>Jenkins<br>gradle<br>Groovy<br>现在不清楚的地方是各自文件的语法。<br>jenkins how to start from scratch, how to configure?<br>先从groovy，gradle入手，然后jenkins。</p>
-<h1 id="Groovy"><a href="#Groovy" class="headerlink" title="Groovy"></a>Groovy</h1><p>Books, course and presentations, recommend:<br><a href="https://groovy-lang.org/learn.html#books" target="_blank" rel="noopener">https://groovy-lang.org/learn.html#books</a></p>
-<p><a href="http://groovy-lang.org/syntax.html" target="_blank" rel="noopener">http://groovy-lang.org/syntax.html</a><br>alternative java language</p>
-<p><code>DSL</code>: domain specific language<br><code>sdkman</code> very good installation toolkit (also for gradle!)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## must have jdk installed</span></span><br><span class="line">yum install java-1.8.0-openjdk-devel -y</span><br><span class="line"><span class="comment">## specify version 2.5.2</span></span><br><span class="line">sdk install groovy 2.5.2</span><br></pre></td></tr></table></figure></p>
-<p>others:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">groovysh</span><br><span class="line">println <span class="string">"123"</span></span><br><span class="line"></span><br><span class="line">def xx is <span class="built_in">local</span> scope</span><br><span class="line"></span><br><span class="line">:<span class="built_in">help</span></span><br><span class="line">:show variable</span><br><span class="line"></span><br><span class="line">xx.groovy</span><br><span class="line"><span class="comment">## compile</span></span><br><span class="line">groovyc xx.groovy</span><br><span class="line"><span class="comment">## run </span></span><br><span class="line">groovy xx.groovy</span><br><span class="line"><span class="comment">## this is ok</span></span><br><span class="line"><span class="variable">$abc</span></span><br><span class="line">List = [1,2,3]</span><br></pre></td></tr></table></figure></p>
-<h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><p>don’t see latest book,  please refer to official doc<br><a href="https://gradle.org/guides/" target="_blank" rel="noopener">https://gradle.org/guides/</a><br>Ant and Maven are also build tools, gradle wrapper, incremental builds.</p>
-<ol>
-<li>build by convention</li>
-<li>Groovy DSL</li>
-<li>supports dependencies</li>
-<li>support mutli-project build</li>
-<li>easily customizable</li>
-</ol>
-<p>To install Gradle, using <code>sdkman</code> tool.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## generate gradlew script</span></span><br><span class="line">gradle wrapper</span><br></pre></td></tr></table></figure>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'java'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> &#123;</span><br><span class="line">  <span class="keyword">doLast</span> &#123;</span><br><span class="line">    <span class="comment">// groovy syntax</span></span><br><span class="line">    <span class="keyword">println</span> <span class="string">"hello, gradle!"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><p>Other interesting project: <code>Tekton</code>, <code>Jenkinx</code> (k8s involved)<br>Declarative Pipelines: <a href="https://www.jenkins.io/doc/book/pipeline/syntax/" target="_blank" rel="noopener">https://www.jenkins.io/doc/book/pipeline/syntax/</a></p>
-<p>Install jenkins, must have right <code>openjdk</code> installed.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can use war file:</span></span><br><span class="line">java -jar jenkins.war</span><br></pre></td></tr></table></figure></p>
-<p>or using rpm download for centos/redhat, then using systemctl to start jenkins<br><a href="https://www.jenkins.io/doc/book/installing/#red-hat-centos" target="_blank" rel="noopener">https://www.jenkins.io/doc/book/installing/#red-hat-centos</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## you will see the default port is 8080</span></span><br><span class="line">ps aux | grep jenkinx</span><br></pre></td></tr></table></figure></p>
-<p>then you can open the web version by <code>public ip:8080</code>.</p>
-<p>Jenkins use file system to store everything, if using systemd, the configuration is in <code>/var/lib/jenkins</code>. You can backup this folder, or if you want to wipe it out, then run <code>systemctl restart jenkins</code>, then jenkins is in init state.</p>
-<p>Even don’t need to use Jenkins UI to create project, you can directly mkdir and files in the Jenkins directory, then go to <code>Manage Jenkins</code> -&gt; <code>Reload Configuration from Disk</code>.</p>
-<p>Demo Jenkins URL (from my fyre node):<br><a href="http://9.30.166.179:8080/" target="_blank" rel="noopener">http://9.30.166.179:8080/</a><br>there are some failures in installing plugins. Can fix the failure by <code>Plugin Manager</code></p>
-<h2 id="Run-jenkins-in-docker-container"><a href="#Run-jenkins-in-docker-container" class="headerlink" title="Run jenkins in docker container"></a>Run jenkins in docker container</h2><p>这块很有意思，加入容器后就太灵活了。<br><a href="https://hub.docker.com/r/jenkins/jenkins" target="_blank" rel="noopener">https://hub.docker.com/r/jenkins/jenkins</a><br>you can run several jenkins version in your machine, for testing new features, upgrading…<br>You may need to customize the jenkins docker image.</p>
-<h2 id="Creating-app-build"><a href="#Creating-app-build" class="headerlink" title="Creating app build"></a>Creating app build</h2><p>freestyle project -&gt; pipeline (series of freestyle project)</p>
-<p>Jenkins <code>Workspace</code>, you can see it in console output or click Workspace icon in your project dashboard. Everything from git clone to build result is put in your project workspace. Every build will overrode the previous one. (you can use tar command to backup and restore this workspace)</p>
+        <h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><p>Other interesting project: <code>Tekton</code>, <code>Jenkinx</code> (k8s involved)<br>Declarative Pipelines: <a href="https://www.jenkins.io/doc/book/pipeline/syntax/" target="_blank" rel="noopener">https://www.jenkins.io/doc/book/pipeline/syntax/</a></p>
+<p>Installing Jenkins, must have compatible <code>openjdk</code> installed.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can use war file:</span></span><br><span class="line">java -jar jenkins.war</span><br></pre></td></tr></table></figure></p>
+<p>or using rpm install for centos/redhat, then using systemctl to start/enable Jenkins<br><a href="https://www.jenkins.io/doc/book/installing/#red-hat-centos" target="_blank" rel="noopener">https://www.jenkins.io/doc/book/installing/#red-hat-centos</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## you will see the default jenkins port is 8080</span></span><br><span class="line">ps aux | grep jenkinx</span><br></pre></td></tr></table></figure></p>
+<p>then you can open the web version by <code>&lt;node ip&gt;:8080</code>.</p>
+<p>If wizard install failed with some plugins, you can fix this later in <code>Manage Plugins</code>.</p>
+<p>Jenkins use file system to store everything, if using systemd, the configuration is in <code>/var/lib/jenkins</code>. You can backup this folder, or if you want to wipe it out, then run <code>systemctl restart jenkins</code>, then jenkins goes back to init state.</p>
+<p>Even Jenkins UI to create project is not needed, you can mkdir and files in the Jenkins working directory, then go to <code>Manage Jenkins</code> -&gt; <code>Reload Configuration from Disk</code>.</p>
+<h3 id="Jenkins-in-docker-container"><a href="#Jenkins-in-docker-container" class="headerlink" title="Jenkins in docker container"></a>Jenkins in docker container</h3><p>这块很有意思，加入容器后就太灵活了。<br><a href="https://hub.docker.com/r/jenkins/jenkins" target="_blank" rel="noopener">https://hub.docker.com/r/jenkins/jenkins</a><br>you can parallelly run several jenkins version in one machine, for purposes like testing new features, testing upgrade, so on and so forth. But you may need to customize the jenkins docker image and expose to different port.</p>
+<h2 id="Creating-app-build"><a href="#Creating-app-build" class="headerlink" title="Creating app build"></a>Creating app build</h2><p>freestyle project -&gt; pipeline (series of freestyle project), freestyle project is not recommended.</p>
+<p>Jenkins <strong>Workspace</strong>, you can see it in console output or click <code>Workspace</code> icon in your project dashboard. Everything running is in project workspace. Every build will override the previous one. You can use tar command to backup and restore this workspace, or clean workspace.</p>
 <p>To store the build artifact, use <code>Post-build Action</code> in configure. for example, you want to archive some jar or zip files. then after build is done, these archives will show in the build page.</p>
-<h3 id="Build-trend"><a href="#Build-trend" class="headerlink" title="Build trend"></a>Build trend</h3><p>right to <code>Build History</code> list, there is a <code>trend</code> button, click it will see the build time history statistics and distribution.</p>
-<h2 id="Testing-and-Continuous-integration"><a href="#Testing-and-Continuous-integration" class="headerlink" title="Testing and Continuous integration"></a>Testing and Continuous integration</h2><p>Now start the <code>pipeline</code> job type. After creating a pipeline job, you will see <code>pipeline syntax</code> button in the page, it contains necessary resources to start. You can also use <code>Copy from</code> to create a pipeline from another, for quick start</p>
-<p>一般来说，使用在git中的<code>declarative pipeline script</code> (for example: Jenkins file)去构造pipeline. 在pipeline configure中设置这一属性。</p>
+<h3 id="Build-trend"><a href="#Build-trend" class="headerlink" title="Build trend"></a>Build trend</h3><p>Right to <code>Build History</code> list, there is a <code>trend</code> button, click it will see the build time history statistics and distribution.</p>
+<h2 id="Testing-and-Continuous-integration"><a href="#Testing-and-Continuous-integration" class="headerlink" title="Testing and Continuous integration"></a>Testing and Continuous integration</h2><p>Now start the <code>pipeline</code> job type. After creating a pipeline job, you will see <code>pipeline syntax</code> button in the page bottom, it contains necessary resources to start. You can also use <code>Copy from</code> to copy a pipeline configure from another, for quick start.</p>
+<p>一般来说，使用在git中的<code>declarative pipeline script</code> (for example: Jenkins file)去构造pipeline. 在pipeline configure中设置。</p>
 <blockquote>
 <p>这里有关于declarative pipeline的介绍视频: <a href="https://www.jenkins.io/solutions/pipeline/" target="_blank" rel="noopener">https://www.jenkins.io/solutions/pipeline/</a></p>
 </blockquote>
-<h3 id="Add-slave-nodes"><a href="#Add-slave-nodes" class="headerlink" title="Add slave nodes"></a>Add slave nodes</h3><p>To add slaves, you can add <code>New Node</code> in <code>Build Executor Status</code>, you need to setup credentials and know_hosts file for ssh connection. (如何node没有被发现，会显示错误，根据错误指示排查问题即可)</p>
-<h3 id="Pipeline-steps"><a href="#Pipeline-steps" class="headerlink" title="Pipeline steps"></a>Pipeline steps</h3><p>如果没用<code>declarative pipeline script</code>， 而是通过pipeline generator去设置script (可以在这个script中定义各种变量)，则常用的Steps:</p>
+<h3 id="Add-slave-nodes"><a href="#Add-slave-nodes" class="headerlink" title="Add slave nodes"></a>Add slave nodes</h3><p><code>Manage Jenkins</code> -&gt; <code>Manage Nodes and Clouds</code><br>To add slaves, usually use SSH to launch agent nodes. (如果node没有被发现，会显示错误，根据错误指示排查问题即可)</p>
+<h3 id="Pipeline-steps"><a href="#Pipeline-steps" class="headerlink" title="Pipeline steps"></a>Pipeline steps</h3><p>如果直接在Jenkins configure UI中设置script，则常用的Steps (<code>declarative pipeline</code>是新的语法):</p>
 <ul>
 <li><p>node: Allocate node<br>Jenkins use <code>master &lt;-&gt; agent model</code>, you can configure tasks to be executed in agent node.</p>
 </li>
-<li><p>stage: Stage</p>
+<li><p>stage: stage</p>
 </li>
+<li>stash: stash some files to be used later in build</li>
+<li>unstash: restore files previous stashed</li>
+<li>parallel: execute in parallel (如果注册了多个slave nodes，则parallel会在上面执行并行的任务， 一般用在测试的时候，比如测试不同的环境和配置)</li>
 <li>git: Git</li>
 <li>dir: Change Current Directory</li>
 <li>sh: Shell Script</li>
@@ -521,7 +507,7 @@
 <h2 id="Managing-plugins"><a href="#Managing-plugins" class="headerlink" title="Managing plugins"></a>Managing plugins</h2><p><code>Manage Jenkins</code> -&gt; <code>Manage Plugins</code>, then you can select and install plugin in <code>Available</code> section. For example:</p>
 <ul>
 <li>Pipeline (如果这个没安装，则不会在UI中显示pipeline的动态流程图)</li>
-<li><p>Html publisher (常用于发布unit test后的html report，这些html文件其实是被相关test生成好的)</p>
+<li><p>Html publisher (常用于发布unit test后的html report，这些html文件其实是被相关test生成好的, publisher then renders it)</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">publishHTML([<span class="string">allowMissing:</span> <span class="literal">true</span>,</span><br><span class="line"><span class="symbol">            alwaysLinkToLastBuild:</span> <span class="literal">true</span>,</span><br><span class="line"><span class="symbol">                keepAll:</span> <span class="literal">true</span>,</span><br><span class="line"><span class="symbol">                reportDir:</span> <span class="string">"$WORKSPACE/cognitive-designer-api/DSJsonApiServletJUnitTests/build/reports/tests/payloadtests"</span>,</span><br><span class="line"><span class="symbol">                reportFiles:</span> <span class="string">'index.html'</span>,</span><br><span class="line"><span class="symbol">                reportName:</span> <span class="string">'Payload Test'</span>,</span><br><span class="line"><span class="symbol">                reportTitles:</span> <span class="string">''</span>])</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Green Balls (show green color for success)</p>
@@ -532,7 +518,12 @@
 <p>Pipeline compatible plugins: <a href="https://github.com/jenkinsci/pipeline-plugin/blob/master/COMPATIBILITY.md" target="_blank" rel="noopener">https://github.com/jenkinsci/pipeline-plugin/blob/master/COMPATIBILITY.md</a></p>
 </blockquote>
 <p>在初始化设置Jenkins的时候，有可能有plugins安装失败，可以自己在<code>Manage plugin</code>中安装，然后restart Jenkins (关于restart Jenkins请在没有job运行的情况下进行，不同的安装方式restart的方法不同，或者在安装plugin的时候选择restart jenkins after install), for example: <code>systemctl restart jenkins</code>, 这可以消除控制面板上的plugin failure警告。。</p>
-<h2 id="Continuous-delivery"><a href="#Continuous-delivery" class="headerlink" title="Continuous delivery"></a>Continuous delivery</h2>
+<h2 id="Continuous-delivery"><a href="#Continuous-delivery" class="headerlink" title="Continuous delivery"></a>Continuous delivery</h2><p>In <code>Blue Ocean</code>, you can run multiple builds in parallel. if more than one builds run in the same agent, the workplace path is distinguished by suffix (@count number). 但是能不能run multiple builds in one agent depends on how you design your pipeline and tasks.</p>
+<p><code>Blue Ocean</code>中的UI对parallel的显示也很直观，方便查看。</p>
+<h3 id="Flyweight-executor"><a href="#Flyweight-executor" class="headerlink" title="Flyweight executor"></a>Flyweight executor</h3><p>Flyweight executor reside in Jenkins master, used to execute code outside of node allocation. Others are heavyweight executors. Flyweight exxcutor will not be counted into executor capacity.</p>
+<p>For example, we use flyweight executor for pause, in Jenkins script:<br><a href="https://stackoverflow.com/questions/44737036/jenkins-pipeline-with-code-pause-for-input" target="_blank" rel="noopener">https://stackoverflow.com/questions/44737036/jenkins-pipeline-with-code-pause-for-input</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input <span class="string">"waiting for approval, move to staging stage..."</span></span><br></pre></td></tr></table></figure></p>
+<p>The job will be paused, you can go to <code>Paused for Input</code> to decide what to do next: proceed or abort. (In <code>Blue Ocean</code>, the pause interface is more clear)</p>
+<h2 id="Declarative-pipeline"><a href="#Declarative-pipeline" class="headerlink" title="Declarative pipeline"></a>Declarative pipeline</h2>
       
     </div>
 
@@ -555,7 +546,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/inprogress/" rel="tag"># inprogress</a>
+            <a href="/tags/jenkins/" rel="tag"># jenkins</a>
           
         </div>
       
@@ -648,7 +639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">159</span>
+                    <span class="site-state-item-count">160</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -934,7 +925,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Groovy"><span class="nav-number">1.</span> <span class="nav-text">Groovy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle"><span class="nav-number">2.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">3.</span> <span class="nav-text">Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-jenkins-in-docker-container"><span class="nav-number">3.1.</span> <span class="nav-text">Run jenkins in docker container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-app-build"><span class="nav-number">3.2.</span> <span class="nav-text">Creating app build</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-trend"><span class="nav-number">3.2.1.</span> <span class="nav-text">Build trend</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing-and-Continuous-integration"><span class="nav-number">3.3.</span> <span class="nav-text">Testing and Continuous integration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-slave-nodes"><span class="nav-number">3.3.1.</span> <span class="nav-text">Add slave nodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pipeline-steps"><span class="nav-number">3.3.2.</span> <span class="nav-text">Pipeline steps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Triggering-auto-build"><span class="nav-number">3.3.3.</span> <span class="nav-text">Triggering auto build</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Email-Notification"><span class="nav-number">3.3.4.</span> <span class="nav-text">Email Notification</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Managing-plugins"><span class="nav-number">3.4.</span> <span class="nav-text">Managing plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Continuous-delivery"><span class="nav-number">3.5.</span> <span class="nav-text">Continuous delivery</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins-in-docker-container"><span class="nav-number">1.0.1.</span> <span class="nav-text">Jenkins in docker container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-app-build"><span class="nav-number">1.1.</span> <span class="nav-text">Creating app build</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-trend"><span class="nav-number">1.1.1.</span> <span class="nav-text">Build trend</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing-and-Continuous-integration"><span class="nav-number">1.2.</span> <span class="nav-text">Testing and Continuous integration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-slave-nodes"><span class="nav-number">1.2.1.</span> <span class="nav-text">Add slave nodes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pipeline-steps"><span class="nav-number">1.2.2.</span> <span class="nav-text">Pipeline steps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Triggering-auto-build"><span class="nav-number">1.2.3.</span> <span class="nav-text">Triggering auto build</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Email-Notification"><span class="nav-number">1.2.4.</span> <span class="nav-text">Email Notification</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Managing-plugins"><span class="nav-number">1.3.</span> <span class="nav-text">Managing plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Continuous-delivery"><span class="nav-number">1.4.</span> <span class="nav-text">Continuous delivery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flyweight-executor"><span class="nav-number">1.4.1.</span> <span class="nav-text">Flyweight executor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Declarative-pipeline"><span class="nav-number">1.5.</span> <span class="nav-text">Declarative pipeline</span></a></li></ol></div>
             
 
           </div>
