@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 GroovyBooks, course and presentations, recommend:http">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-18T06:37:15.818Z">
+<meta property="og:updated_time" content="2020-05-21T03:16:37.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inprogress">
 <meta name="twitter:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 GroovyBooks, course and presentations, recommend:http">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">90</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">92</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">28</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">29</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">162</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">163</span></a>
 
   </li>
 
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-05-17 23:37:15" itemprop="dateModified" datetime="2020-05-17T23:37:15-07:00">2020-05-17</time>
+                <time title="Modified: 2020-05-20 20:16:37" itemprop="dateModified" datetime="2020-05-20T20:16:37-07:00">2020-05-20</time>
               
             
           </span>
@@ -490,17 +490,19 @@
 <h3 id="deploy-keys"><a href="#deploy-keys" class="headerlink" title="deploy keys"></a>deploy keys</h3><p><a href="https://github.blog/2015-06-16-read-only-deploy-keys/" target="_blank" rel="noopener">https://github.blog/2015-06-16-read-only-deploy-keys/</a></p>
 <h1 id="承上启下"><a href="#承上启下" class="headerlink" title="承上启下"></a>承上启下</h1><p>interpersonal skill, BQ</p>
 <p>现在能接触到的基础打好<br>k8s, docker, jenkins (groovy + gradle), ansible, helm<br>git -&gt; gitlab (with jenkins)<br>常用工具:<br>visual studio<br>bash, zsh</p>
-<p>composing database layer:<br>cassandra<br>elastic<br>consul<br>vault</p>
+<p>composing database layer:<br>cassandra<br>elasticsearch (monitoring + log system)<br>consul<br>vault</p>
+<p>monitoring:<br>prometheus<br>grafana<br>kibana</p>
 <p>others:<br>kafka<br>zookeeper</p>
-<p>我猜工作流程:<br>用terraform 构造k8s 环境 或其他， 用ansible增加或更改配置，然后在k8s中部署应用，最后集成CI/CD<br>development -&gt; QA/UAT - &gt; production</p>
+<p>我猜工作流程:<br>用terraform 构造k8s 环境 或其他， 用ansible增加或更改配置，然后在k8s中部署应用(prometheus + grafana and elk for logs)，最后集成CI/CD<br>development -&gt; QA/UAT - &gt; production</p>
 <h2 id="understand"><a href="#understand" class="headerlink" title="understand"></a>understand</h2><p>如果不清楚这些则看不懂配置的含义, 要清楚各个cloud中resource的类型，配置，如何搭配:<br>instance, vpc, lb, dns, storage, routing, subnet, gateway</p>
 <p>GCP/GKS<br>AWS: VPC, EC2</p>
-<p>terraform -&gt; deploy k8s (EKS or GKS) -&gt; install vault, elasticsearch, cassandra by helm (need modify though)<br>-&gt;<br>Monitoring:<br>Prometheus<br>Grafana<br>Kibana<br>-&gt;<br>CI/CD: jenkins + gitlab</p>
+<p>terraform -&gt; deploy k8s (EKS or GKS) -&gt; install vault, elasticsearch, cassandra by helm (need modify though)<br>-&gt;<br>Prometheus<br>Grafana<br>Kibana<br>-&gt;<br>CI/CD: jenkins + gitlab</p>
 <p>把完全不知道是什么的快速过一遍。<br>先学terraform -&gt; elasticsearch -&gt; vault, cassandra -&gt; monitoring tools</p>
 <h2 id="steps"><a href="#steps" class="headerlink" title="steps"></a>steps</h2><ol>
 <li>terrform provision k8s on aws and gcp</li>
 <li>k8s on fyre to test other components via helm</li>
-<li>monitoring</li>
+<li>monitoring system: prometheus + grafana</li>
+<li>log system: elasticsearch, kibaba</li>
 </ol>
 
       
@@ -622,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">162</span>
+                    <span class="site-state-item-count">163</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -691,7 +693,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -884,7 +888,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">90</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">92</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

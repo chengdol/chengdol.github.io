@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="PrometheusOpen-source monitoring and alerting toolkit: https://prometheus.io/  PromQL Grafana integration written in Go  Type of metrics want to collect, get full view of the health of the system:Runt">
+  <meta name="description" content="PrometheusArchitecture To recap:  Know how to setup Know how to configure Know how to export different kind of metrics Know how to PromQL Know how to integrate Grafana  Open-source monitoring and aler">
 <meta name="keywords" content="monitor,prometheus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Prometheus Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/05/18/infra-prometheus/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="PrometheusOpen-source monitoring and alerting toolkit: https://prometheus.io/  PromQL Grafana integration written in Go  Type of metrics want to collect, get full view of the health of the system:Runt">
+<meta property="og:description" content="PrometheusArchitecture To recap:  Know how to setup Know how to configure Know how to export different kind of metrics Know how to PromQL Know how to integrate Grafana  Open-source monitoring and aler">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-20T07:16:21.475Z">
+<meta property="og:image" content="https://drive.google.com/uc?id=1WrobLras0BsfiVB_RphmprnA6-6Dm83U">
+<meta property="og:updated_time" content="2020-05-21T04:16:07.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus Quick Start">
-<meta name="twitter:description" content="PrometheusOpen-source monitoring and alerting toolkit: https://prometheus.io/  PromQL Grafana integration written in Go  Type of metrics want to collect, get full view of the health of the system:Runt">
+<meta name="twitter:description" content="PrometheusArchitecture To recap:  Know how to setup Know how to configure Know how to export different kind of metrics Know how to PromQL Know how to integrate Grafana  Open-source monitoring and aler">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1WrobLras0BsfiVB_RphmprnA6-6Dm83U">
 
 
 
@@ -260,7 +262,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">90</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">92</span></a>
 
   </li>
         
@@ -279,7 +281,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">28</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">29</span></a>
 
   </li>
         
@@ -298,7 +300,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">162</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">163</span></a>
 
   </li>
 
@@ -410,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-05-20 00:16:21" itemprop="dateModified" datetime="2020-05-20T00:16:21-07:00">2020-05-20</time>
+                <time title="Modified: 2020-05-20 21:16:07" itemprop="dateModified" datetime="2020-05-20T21:16:07-07:00">2020-05-20</time>
               
             
           </span>
@@ -461,7 +463,16 @@
       
 
       
-        <h1 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h1><p>Open-source monitoring and alerting toolkit: <a href="https://prometheus.io/" target="_blank" rel="noopener">https://prometheus.io/</a></p>
+        <h1 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h1><p>Architecture<br><img src="https://drive.google.com/uc?id=1WrobLras0BsfiVB_RphmprnA6-6Dm83U" alt=""></p>
+<p>To recap:</p>
+<ul>
+<li>Know how to setup</li>
+<li>Know how to configure</li>
+<li>Know how to export different kind of metrics</li>
+<li>Know how to PromQL</li>
+<li>Know how to integrate Grafana</li>
+</ul>
+<p>Open-source monitoring and alerting toolkit: <a href="https://prometheus.io/" target="_blank" rel="noopener">https://prometheus.io/</a></p>
 <ul>
 <li>PromQL</li>
 <li>Grafana integration</li>
@@ -475,15 +486,24 @@
 </ul>
 <p>Application metrics, custom statistics<br>Docker metrics: 监控docker自身的状况也很重要</p>
 <h2 id="Architecting"><a href="#Architecting" class="headerlink" title="Architecting"></a>Architecting</h2><ol>
-<li>metrics provider (spend more time analyzing app to see which states to collect)<br>Docker container/server expose metrics API</li>
-<li>metrics server (polling server)<br>Prometheus container reads and store time-series data from metrics API</li>
-<li>metrics visualizer<br>Query and visualize data by Grafana running in another container to build the dashboard, we can add security access(https) for Grafana from outsdie the cluster.</li>
+<li>Metrics provider (spend more time analyzing app to see which states to be collected)<br>Docker container/server expose metrics API</li>
+<li>Metrics server (polling server)<br>Prometheus container reads and store time-series data from metrics API</li>
+<li>Metrics visualizer<br>Query and visualize data by Grafana running in another container to build the dashboard, we can add security access(https) of Grafana from outsdie the cluster.</li>
 </ol>
-<p>On prometheus side, with different configuration to different environment, for example: dev, test, prod have different polling interval seconds.</p>
+<p>On prometheus side, using different configuration to different environment, for example: dev, test, prod have different polling interval seconds.</p>
 <h2 id="Collecting-Metrics"><a href="#Collecting-Metrics" class="headerlink" title="Collecting Metrics"></a>Collecting Metrics</h2><p>Prometheus is driven by simple configuration file.</p>
-<p>Prometheus image under <code>prom</code> org:<br><a href="https://hub.docker.com/r/prom/prometheus" target="_blank" rel="noopener">https://hub.docker.com/r/prom/prometheus</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull prom/prometheus:v2.18.1</span><br><span class="line"><span class="comment">## --publish-all: publish all ports</span></span><br><span class="line"><span class="comment">## after run check which port is mapping to 9090</span></span><br><span class="line">docker run --detach --name=prom --publish-all prom/prometheus:v2.18.1</span><br></pre></td></tr></table></figure></p>
-<p>Then access the interface via<code>&lt;public&gt;:&lt;port&gt;</code>. as specified in prometheus Docker file, the configure file by default is <code>--config.file=/etc/prometheus/prometheus.yml</code> in container. You can customize as you need, for example, wrap the original image:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM prom/prometheus:v2.18.1</span><br><span class="line"><span class="comment">## copy your config file to default place</span></span><br><span class="line">COPY prometheus.yml /etc/prometheus/prometheus.yml</span><br></pre></td></tr></table></figure></p>
+<p>Prometheus image under <code>prom</code> org in Docker Hub:<br><a href="https://hub.docker.com/r/prom/prometheus" target="_blank" rel="noopener">https://hub.docker.com/r/prom/prometheus</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull prom/prometheus:v2.18.1</span><br><span class="line"><span class="comment">## --publish-all: publish all ports</span></span><br><span class="line"><span class="comment">## after run check which port is mapping to 9090</span></span><br><span class="line">docker run --detach --name=prom --publish-all prom/prometheus:v2.18.1</span><br></pre></td></tr></table></figure></p>
+<p>Then access the interface via<code>&lt;public&gt;:&lt;port&gt;</code>. Per specified in prometheus Docker file, the configure file by default is <code>--config.file=/etc/prometheus/prometheus.yml</code> in container. You can customize as you need, for example, wrap the original image:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM prom/prometheus:v2.18.1</span><br><span class="line"><span class="comment">## copy your config file to default place</span></span><br><span class="line">COPY prometheus.yml /etc/prometheus/prometheus.yml</span><br></pre></td></tr></table></figure></p>
+<p>Other userful image in <code>prom</code>:<br><a href="https://hub.docker.com/u/prom" target="_blank" rel="noopener">https://hub.docker.com/u/prom</a><br>Key components for monitoring:</p>
+<ul>
+<li>node-exporter</li>
+<li>alertmanager</li>
+<li>pushgateway </li>
+</ul>
 <h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><p><a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/" target="_blank" rel="noopener">https://prometheus.io/docs/prometheus/latest/configuration/configuration/</a><br>Set other containers as scrape targets, in the prometheus UI, you can check the configuration file from <code>Status</code> -&gt; <code>Configuration</code>, for example:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">global:</span></span><br><span class="line"><span class="attr">  scrape_interval:</span> <span class="number">10</span><span class="string">s</span></span><br><span class="line"></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'netfx-app'</span></span><br><span class="line">    <span class="comment">## metrics point http</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/metrics/</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line">    <span class="comment">## netfx is the container name</span></span><br><span class="line">    <span class="comment">## 50506 is port number</span></span><br><span class="line"><span class="attr">      - targets:</span> <span class="string">['netfx:50506']</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'java-app'</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/app-metrics/</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span> <span class="string">['java:8080']</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'java-tomcat'</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/metrics/</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span> <span class="string">['java:8080']</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## monitor docker</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'docker-managers'</span></span><br><span class="line">    <span class="comment">## override global setting</span></span><br><span class="line"><span class="attr">    scrape_interval:</span> <span class="number">15</span><span class="string">s</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/metrics</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span> <span class="string">['host.docker.internal:50501']</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'docker-workers'</span></span><br><span class="line"><span class="attr">    scrape_interval:</span> <span class="number">15</span><span class="string">s</span></span><br><span class="line"><span class="attr">    metrics_path:</span> <span class="string">/metrics</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">      - targets:</span> <span class="string">['host.docker.internal:50501']</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Here the configuration is <code>static_configs</code>, Prometheus supports service discovery so is able to scrape all containers, good for dynamical and self-healing environment.</p>
+</blockquote>
 <h3 id="Metrics-data-type"><a href="#Metrics-data-type" class="headerlink" title="Metrics data type"></a>Metrics data type</h3><p><a href="https://prometheus.io/docs/concepts/metric_types/" target="_blank" rel="noopener">https://prometheus.io/docs/concepts/metric_types/</a></p>
 <ul>
 <li>counter (monotonic increasing)</li>
@@ -492,7 +512,7 @@
 <li>summary<br>目前就这几种类型的metrics type，prometheus server收集这些数据并且存在数据库中，可以使用promQL去查询。自带的graph UI比较简单，后面会有Grafana去帮忙显示。</li>
 </ul>
 <h2 id="Exposing-Metrics"><a href="#Exposing-Metrics" class="headerlink" title="Exposing Metrics"></a>Exposing Metrics</h2><p>Let’s see how to export metrics for prometheus to scrape.</p>
-<h3 id="Runtime-metrics"><a href="#Runtime-metrics" class="headerlink" title="Runtime metrics"></a>Runtime metrics</h3><p>Runtime has metrics by its own, for example, Tomcat has web server metrics, Java has JVM metrics, we just need to expose them from container.</p>
+<h3 id="Runtime-metrics"><a href="#Runtime-metrics" class="headerlink" title="Runtime metrics"></a>Runtime metrics</h3><p>Runtime (operating system or application host data) has metrics by its own, for example, Tomcat has web server metrics, Java has JVM metrics, we just need to expose them from container as <code>/metrics</code>.</p>
 <ul>
 <li>Using exporting utility<br>For app which don’t have their own metrics API</li>
 <li>Running in app container</li>
@@ -501,8 +521,45 @@
 </ul>
 <p>Exporter的好处是显而易见的，比如legacy app没有metrics的接口，这时候可以使用exporter去处理。如此一来Container hosts both app and exportor，要注意exportor不要占用太多资源。</p>
 <p>Exporter integration:<br><a href="https://prometheus.io/docs/instrumenting/exporters/" target="_blank" rel="noopener">https://prometheus.io/docs/instrumenting/exporters/</a></p>
-<p>This Dockerfile has integrated Tomcat/JVM exporter:<br><a href="https://github.com/nlighten/tomcat_exporter" target="_blank" rel="noopener">https://github.com/nlighten/tomcat_exporter</a><br>Just several extra line added:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## build source code</span></span><br><span class="line"><span class="keyword">FROM</span> maven:<span class="number">3.5</span>.<span class="number">4</span>-jdk-<span class="number">8</span>-slim AS builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/jsfapp </span></span><br><span class="line"><span class="bash">COPY src/java/jsfapp/pom.xml .</span></span><br><span class="line"><span class="bash">RUN mvn -B -f pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency:resolve</span></span><br><span class="line"><span class="bash">COPY src/java/jsfapp .</span></span><br><span class="line"><span class="bash">RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># app image</span></span></span><br><span class="line"><span class="bash">FROM tomcat:8.5-jre8-alpine</span></span><br><span class="line"><span class="bash">ENV WEBAPP_HOME=<span class="variable">$&#123;CATALINA_HOME&#125;</span>/webapps</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN rm -r -f <span class="variable">$&#123;WEBAPP_HOME&#125;</span></span></span><br><span class="line"><span class="bash"><span class="comment">#############################</span></span></span><br><span class="line"><span class="bash"><span class="comment">## add exporter utility</span></span></span><br><span class="line"><span class="bash">WORKDIR <span class="variable">$&#123;WEBAPP_HOME&#125;</span></span></span><br><span class="line"><span class="bash"><span class="comment">## copy exporter jar and war files</span></span></span><br><span class="line"><span class="bash">COPY --from=psmonitoring/tomcat-exporter:0.0.6 /exporter/*.jar <span class="variable">$&#123;CATALINA_HOME&#125;</span>/lib/</span></span><br><span class="line"><span class="bash">COPY --from=psmonitoring/tomcat-exporter:0.0.6 /exporter/tomcat_exporter_servlet-0.0.6.war ./metrics.war</span></span><br><span class="line"><span class="bash"><span class="comment">#############################</span></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR <span class="variable">$&#123;WEBAPP_HOME&#125;</span>/ROOT </span></span><br><span class="line"><span class="bash"><span class="comment">## copy from builder (see first line)</span></span></span><br><span class="line"><span class="bash">COPY --from=builder /usr/src/jsfapp/target/jsfapp/ .</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Application-metrics"><a href="#Application-metrics" class="headerlink" title="Application metrics"></a>Application metrics</h3><h3 id="Docker-metrics"><a href="#Docker-metrics" class="headerlink" title="Docker metrics"></a>Docker metrics</h3>
+<p>This Dockerfile has integrated Tomcat exporter:<br><a href="https://github.com/nlighten/tomcat_exporter" target="_blank" rel="noopener">https://github.com/nlighten/tomcat_exporter</a><br>Just several extra line added:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## build source code</span></span><br><span class="line"><span class="keyword">FROM</span> maven:<span class="number">3.5</span>.<span class="number">4</span>-jdk-<span class="number">8</span>-slim AS builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/jsfapp </span></span><br><span class="line"><span class="bash">COPY src/java/jsfapp/pom.xml .</span></span><br><span class="line"><span class="bash">RUN mvn -B -f pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency:resolve</span></span><br><span class="line"><span class="bash">COPY src/java/jsfapp .</span></span><br><span class="line"><span class="bash">RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># app image</span></span></span><br><span class="line"><span class="bash">FROM tomcat:8.5-jre8-alpine</span></span><br><span class="line"><span class="bash">ENV WEBAPP_HOME=<span class="variable">$&#123;CATALINA_HOME&#125;</span>/webapps</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN rm -r -f <span class="variable">$&#123;WEBAPP_HOME&#125;</span></span></span><br><span class="line"><span class="bash"><span class="comment">#############################</span></span></span><br><span class="line"><span class="bash"><span class="comment">## add exporter utility</span></span></span><br><span class="line"><span class="bash">WORKDIR <span class="variable">$&#123;WEBAPP_HOME&#125;</span></span></span><br><span class="line"><span class="bash"><span class="comment">## copy exporter jar and war files</span></span></span><br><span class="line"><span class="bash">COPY --from=psmonitoring/tomcat-exporter:0.0.6 /exporter/*.jar <span class="variable">$&#123;CATALINA_HOME&#125;</span>/lib/</span></span><br><span class="line"><span class="bash">COPY --from=psmonitoring/tomcat-exporter:0.0.6 /exporter/tomcat_exporter_servlet-0.0.6.war ./metrics.war</span></span><br><span class="line"><span class="bash"><span class="comment">#############################</span></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR <span class="variable">$&#123;WEBAPP_HOME&#125;</span>/ROOT </span></span><br><span class="line"><span class="bash"><span class="comment">## copy from builder (see first line)</span></span></span><br><span class="line"><span class="bash">COPY --from=builder /usr/src/jsfapp/target/jsfapp/ .</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Application-metrics"><a href="#Application-metrics" class="headerlink" title="Application metrics"></a>Application metrics</h3><p><a href="https://prometheus.io/docs/instrumenting/clientlibs/" target="_blank" rel="noopener">https://prometheus.io/docs/instrumenting/clientlibs/</a><br>Using prometheus client libraries, 选择匹配你开发语言的库，然后加入依赖调用即可。</p>
+<p>Also see best practice:<br><a href="https://prometheus.io/docs/practices/naming/" target="_blank" rel="noopener">https://prometheus.io/docs/practices/naming/</a><br><code>Label</code> is useful, for example, you want to metrics the http response, there are several kinds: 200 OK, 500 Internal Server Error, 401 Unauthroized, 403 Forbidden. Don;t separate them to different metrics, too complicated, just put them as http_response_total with different label, easy to graph and filter. </p>
+<p>Some guidelines:</p>
+<ul>
+<li>Any external interactions with other systems should be instrumented, so you know how often your app is communicating, whether the communication succeeds, and how long it takes. </li>
+<li>Any workflows that involve multiple processes should be instrumented at each stage with a correlation ID label, so you can track progress through the system. </li>
+<li>Any business facing metrics, which need reporting on, should be instrumented, so you can build a live dashboard rather than sending out historical reports. </li>
+<li>Look at all the logging that you currently have in your app. Try to instrument total counts for each type of log entry, info, warn, error and so on. Then you can compare the numbers between environments or between releases.</li>
+</ul>
+<p>For example, use <code>/app-metrics</code> as endpoint to expose. For example, adding metrics to Java App:</p>
+<ol>
+<li>maven prometheus client library</li>
+<li>create and register custom metrics</li>
+<li>increment counters and gauges</li>
+<li>servlet hosting metrics endpoint </li>
+</ol>
+<h3 id="Docker-metrics"><a href="#Docker-metrics" class="headerlink" title="Docker metrics"></a>Docker metrics</h3><p>Experimental mode in docker but safe to use, docker metrics includes:</p>
+<ul>
+<li>Engine details</li>
+<li>Image builds</li>
+<li>Containers<br>The metrics endpoint is in standard prometheus text format.</li>
+</ul>
+<h3 id="Grafana-Integration"><a href="#Grafana-Integration" class="headerlink" title="Grafana Integration"></a>Grafana Integration</h3><p>Grafana image in Docker Hub:<br><a href="https://hub.docker.com/r/grafana/grafana" target="_blank" rel="noopener">https://hub.docker.com/r/grafana/grafana</a></p>
+<ul>
+<li>Running in container</li>
+<li>Connecting to Prometheus</li>
+<li>Visualizing query results</li>
+<li>Packaging the dashboard</li>
+</ul>
+<p>Grafana support querying time-series database like <strong>prometheus</strong> and influxdb, also support <strong>Elasticsearch</strong> logging &amp; analytics database.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## pull image</span></span><br><span class="line">docker pull grafana/grafana:7.0.0</span><br><span class="line">docker run --detach --name=grafana --publish-all grafana/grafana:7.0.0</span><br></pre></td></tr></table></figure>
+<p>The default login is <code>admin/admin</code>. After login, go to set <code>Data Sources</code>, select prometheus and specify the url, then import data in dashboard.</p>
+<p>You can also create new dashboard with different graph, import and query data from data sources.</p>
+<p>更深入的话比如如何设置alerting等。</p>
+<h1 id="Pair-with-Kubernetes"><a href="#Pair-with-Kubernetes" class="headerlink" title="Pair with Kubernetes"></a>Pair with Kubernetes</h1><p><a href="https://www.youtube.com/watch?v=bErGEHf6GCc&amp;list=PLpbcUe4chE7-HuslXKj1MB10ncorfzEGa" target="_blank" rel="noopener">https://www.youtube.com/watch?v=bErGEHf6GCc&amp;list=PLpbcUe4chE7-HuslXKj1MB10ncorfzEGa</a><br><a href="https://www.youtube.com/watch?v=CmPdyvgmw-A" target="_blank" rel="noopener">https://www.youtube.com/watch?v=CmPdyvgmw-A</a><br><a href="https://www.youtube.com/watch?v=h4Sl21AKiDg" target="_blank" rel="noopener">https://www.youtube.com/watch?v=h4Sl21AKiDg</a></p>
+<p><a href="https://www.youtube.com/watch?v=5o37CGlNLr8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=5o37CGlNLr8</a><br><a href="https://www.youtube.com/watch?v=LQpmeb7idt8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=LQpmeb7idt8</a></p>
+<p>articles:<br><a href="https://www.metricfire.com/blog/prometheus-vs-elk" target="_blank" rel="noopener">https://www.metricfire.com/blog/prometheus-vs-elk</a><br><a href="https://logz.io/blog/grafana-vs-kibana/" target="_blank" rel="noopener">https://logz.io/blog/grafana-vs-kibana/</a></p>
+
       
     </div>
 
@@ -549,6 +606,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/20/infra-elasticsearch/" rel="prev" title="Elastic Stack Quick Start">
+                Elastic Stack Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -620,7 +681,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">162</span>
+                    <span class="site-state-item-count">163</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -689,7 +750,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -882,7 +945,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">90</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">92</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -918,7 +985,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Prometheus"><span class="nav-number">1.</span> <span class="nav-text">Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecting"><span class="nav-number">1.1.</span> <span class="nav-text">Architecting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collecting-Metrics"><span class="nav-number">1.2.</span> <span class="nav-text">Collecting Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuration"><span class="nav-number">1.2.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metrics-data-type"><span class="nav-number">1.2.2.</span> <span class="nav-text">Metrics data type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exposing-Metrics"><span class="nav-number">1.3.</span> <span class="nav-text">Exposing Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-metrics"><span class="nav-number">1.3.1.</span> <span class="nav-text">Runtime metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-metrics"><span class="nav-number">1.3.2.</span> <span class="nav-text">Application metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-metrics"><span class="nav-number">1.3.3.</span> <span class="nav-text">Docker metrics</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Prometheus"><span class="nav-number">1.</span> <span class="nav-text">Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecting"><span class="nav-number">1.1.</span> <span class="nav-text">Architecting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collecting-Metrics"><span class="nav-number">1.2.</span> <span class="nav-text">Collecting Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuration"><span class="nav-number">1.2.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metrics-data-type"><span class="nav-number">1.2.2.</span> <span class="nav-text">Metrics data type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exposing-Metrics"><span class="nav-number">1.3.</span> <span class="nav-text">Exposing Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-metrics"><span class="nav-number">1.3.1.</span> <span class="nav-text">Runtime metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-metrics"><span class="nav-number">1.3.2.</span> <span class="nav-text">Application metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-metrics"><span class="nav-number">1.3.3.</span> <span class="nav-text">Docker metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grafana-Integration"><span class="nav-number">1.3.4.</span> <span class="nav-text">Grafana Integration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pair-with-Kubernetes"><span class="nav-number">2.</span> <span class="nav-text">Pair with Kubernetes</span></a></li></ol></div>
             
 
           </div>
