@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Elastic Stackhttps://www.elastic.co/elastic-stackThe Elastic Stack is one of the most effective ways to leverage open source technology to build a central logging, monitoring, and alerting system for">
+<meta name="keywords" content="monitor,elasticsearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elastic Stack Quick Start">
+<meta property="og:url" content="http://yoursite.com/2020/05/20/monitor-elasticsearch/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="Elastic Stackhttps://www.elastic.co/elastic-stackThe Elastic Stack is one of the most effective ways to leverage open source technology to build a central logging, monitoring, and alerting system for">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://drive.google.com/uc?id=1ch29tlydlCpFxh2RARV0EVxH_1AWSzRl">
+<meta property="og:updated_time" content="2020-05-23T05:44:28.032Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elastic Stack Quick Start">
+<meta name="twitter:description" content="Elastic Stackhttps://www.elastic.co/elastic-stackThe Elastic Stack is one of the most effective ways to leverage open source technology to build a central logging, monitoring, and alerting system for">
+<meta name="twitter:image" content="https://drive.google.com/uc?id=1ch29tlydlCpFxh2RARV0EVxH_1AWSzRl">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/20/monitor-elasticsearch/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Elastic Stack Quick Start | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">91</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">164</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/monitor-elasticsearch/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Elastic Stack Quick Start
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-20 17:04:40" itemprop="dateCreated datePublished" datetime="2020-05-20T17:04:40-07:00">2020-05-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-22 22:44:28" itemprop="dateModified" datetime="2020-05-22T22:44:28-07:00">2020-05-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Monitor/" itemprop="url" rel="index"><span itemprop="name">Monitor</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Elastic-Stack"><a href="#Elastic-Stack" class="headerlink" title="Elastic Stack"></a>Elastic Stack</h1><p><a href="https://www.elastic.co/elastic-stack" target="_blank" rel="noopener">https://www.elastic.co/elastic-stack</a><br>The Elastic Stack is one of the most effective ways to leverage open source technology to build a central logging, monitoring, and alerting system for servers and applications.</p>
+<p><code>Elasticsearch</code>: distributed, fast, highly scalable document database.<br><code>Logstash</code>: Aggregates, filters and supplyments log data, forwards them to Elasticsearch.<br><code>Kibana</code>: Web-based front-end to visualize data.<br><code>Beats</code>: lightweight utilities for reading logs from a varity of sources, sends data to Logstash or other backends.<br><code>Altering</code>: Send notifications to email, slack, pagerduty so on and so forth.</p>
+<p><img src="https://drive.google.com/uc?id=1ch29tlydlCpFxh2RARV0EVxH_1AWSzRl" alt=""></p>
+<p><a href="https://stackoverflow.com/questions/40793901/prometheus-vs-elasticsearch-which-is-better-for-container-and-server-monitoring" target="_blank" rel="noopener">Elastic stack vs Prometheus</a>:<br>ELK is general-purpose no-sql stack can be used for monitoring, aggregating all the logging and shipping to elastic search for ease of browsing all the logging and similar things.</p>
+<p>Prometheus is dedicated monitoring system, alongside with service discovery consul and alert-manager, the right tool for the jobs.</p>
+<h2 id="Install-Elasticsearch"><a href="#Install-Elasticsearch" class="headerlink" title="Install Elasticsearch"></a>Install Elasticsearch</h2><p>There are several ways to install: binary, rpm or on kubernetes<br><a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="noopener">https://www.elastic.co/downloads/elasticsearch</a></p>
+<blockquote>
+<p>Java runtime is required.</p>
+</blockquote>
+<p>I am here installing by yum repo with latest Elasticsearch version, before launching it go to <code>/etc/elasticsearch/elasticsearch.yml</code>, set the cluster name and node name, for example:<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.7/rpm.html#rpm-configuring" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/7.7/rpm.html#rpm-configuring</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## cluster name</span></span><br><span class="line">cluster.name: chengdol-els</span><br><span class="line"><span class="comment">## node name</span></span><br><span class="line">node.name: master</span><br><span class="line"><span class="comment">## ip to access</span></span><br><span class="line">network.host: 9.30.94.85</span><br><span class="line"><span class="comment">## this is one of the must configuration</span></span><br><span class="line">discovery.seed_hosts: [<span class="string">"127.0.0.1"</span>, <span class="string">"[::1]"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>Then changing one system level setting (this is default, can skip):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## permenantly </span></span><br><span class="line">sysctl -w vm.max_map_count=262144</span><br></pre></td></tr></table></figure></p>
+<p>The start by systemd<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start Elasticsearch</span><br></pre></td></tr></table></figure></p>
+<p>Check the server is up and running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 9200 is the defaul port</span></span><br><span class="line"><span class="comment">## or using postman</span></span><br><span class="line">curl http://9.30.94.85:9200</span><br><span class="line"></span><br><span class="line"><span class="comment">## response from Elasticsearch server</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="string">"master"</span>,</span><br><span class="line">  <span class="string">"cluster_name"</span> : <span class="string">"chengdol-els"</span>,</span><br><span class="line">  <span class="string">"cluster_uuid"</span> : <span class="string">"1fDfNniwR-uX3mXHQGItVw"</span>,</span><br><span class="line">  <span class="string">"version"</span> : &#123;</span><br><span class="line">    <span class="string">"number"</span> : <span class="string">"7.7.0"</span>,</span><br><span class="line">    <span class="string">"build_flavor"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"build_type"</span> : <span class="string">"rpm"</span>,</span><br><span class="line">    <span class="string">"build_hash"</span> : <span class="string">"81a1e9eda8e6183f5237786246f6dced26a10eaf"</span>,</span><br><span class="line">    <span class="string">"build_date"</span> : <span class="string">"2020-05-12T02:01:37.602180Z"</span>,</span><br><span class="line">    <span class="string">"build_snapshot"</span> : <span class="literal">false</span>,</span><br><span class="line">    <span class="string">"lucene_version"</span> : <span class="string">"8.5.1"</span>,</span><br><span class="line">    <span class="string">"minimum_wire_compatibility_version"</span> : <span class="string">"6.8.0"</span>,</span><br><span class="line">    <span class="string">"minimum_index_compatibility_version"</span> : <span class="string">"6.0.0-beta1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"tagline"</span> : <span class="string">"You Know, for Search"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Install-Logstash"><a href="#Install-Logstash" class="headerlink" title="Install Logstash"></a>Install Logstash</h2><p><a href="https://www.elastic.co/downloads/logstash" target="_blank" rel="noopener">https://www.elastic.co/downloads/logstash</a></p>
+<blockquote>
+<p>Java runtime is required.</p>
+</blockquote>
+<p>Installing by yum repos, by default the app location is in <code>/usr/share/logstash</code>, enable and start by systemd. A simple test to verify the correction:</p>
+<p>Using systemd to start Logstash will load the configuration specified in <code>/etc/logstash/logstash.yml</code>. Using command to start Logstash is not recommended, usually for testing.</p>
+<p>In <code>/etc/logstash/logstash.yml</code> file, you can set the value of <code>path.config</code> field so Logstash know where to pick the pipeline configurations.<br><a href="https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html</a></p>
+<p>A brief deviation, If you run <code>systemctl status logstash</code>, will see<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Loaded: loaded (/etc/systemd/system/logstash.service; disabled; vendor preset: disabled)</span><br></pre></td></tr></table></figure></p>
+<p>Open and check <code>/etc/systemd/system/logstash.service</code>, you will find where the configuration files reside: <code>/etc/logstash</code>, also where is the executable <code>/usr/share/logstash</code>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/logstash</span><br><span class="line"><span class="comment">## test running</span></span><br><span class="line">bin/logstash -e <span class="string">'input &#123; stdin &#123; &#125; &#125; output &#123; elasticsearch &#123; hosts =&gt; ["&lt;9.30.94.85&gt;:9200"] &#125; &#125;'</span></span><br><span class="line"><span class="comment">## then type something to send</span></span><br></pre></td></tr></table></figure>
+<p>Then use curl or postman to fetch log from Elasticsearch:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## you will see what you typed in logstash</span></span><br><span class="line">curl http://9.30.94.85:9200/logstash-*/_search</span><br></pre></td></tr></table></figure></p>
+<h3 id="Read-Beats-Data"><a href="#Read-Beats-Data" class="headerlink" title="Read Beats Data"></a>Read Beats Data</h3><p>To read data from Beats:</p>
+<ol>
+<li>Input: where is the data from? logs? beats?</li>
+<li>Filter: how should we parse the data? grok filters, geoip filters, etc.</li>
+<li>Output: where should we store the logs? backend? Elasticsearch?</li>
+</ol>
+<p>Go to <code>/etc/logstash/conf.d</code>, create new file for example, <code>beats.conf</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    <span class="comment">## in Beats side, listening on port 5043</span></span><br><span class="line">    beats &#123;</span><br><span class="line">        port =&gt; <span class="string">"5043"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">    <span class="keyword">if</span> [<span class="built_in">type</span>] == <span class="string">"syslog"</span> &#123;</span><br><span class="line">        <span class="comment">## grok filter</span></span><br><span class="line">        grok &#123;</span><br><span class="line">            match =&gt; &#123; <span class="string">"message"</span> =&gt; <span class="string">"%&#123;SYSLOGTIMESTAMP:syslog_timestamp&#125; %&#123;SYSLOGHOST:syslog_hostname&#125; %&#123;DATA:syslog_program&#125;(?:\[%&#123;POSINT:syslog_pid&#125;\])?: %&#123;GREEDYDATA:syslog_message&#125;"</span> &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        date &#123;</span><br><span class="line">           match =&gt; [ <span class="string">"syslog_timestamp"</span>, <span class="string">"MMM  d HH:mm:ss"</span>, <span class="string">"MMM dd HH:mm:ss"</span> ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">        <span class="comment">## Elasticsearch address</span></span><br><span class="line">        hosts =&gt; [ <span class="string">"9.30.94.85:9200"</span> ]</span><br><span class="line">        <span class="comment">## 这个对应Kibana中的Index Patterns</span></span><br><span class="line">        index =&gt; <span class="string">"%&#123;[@metadata][beat]&#125;-%&#123;+YYYY.MM.dd&#125;"</span></span><br><span class="line">        document_type =&gt; <span class="string">"%&#123;[@metadata][type]&#125;"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Then run command to testing file validity:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## --config.test_and_exit: parses configuration file and reports any errors.</span></span><br><span class="line">bin/logstash -f beats.conf --config.test_and_exit</span><br><span class="line"></span><br><span class="line"><span class="comment">## The --config.reload.automatic: enables automatic config reloading so that don’t have to stop and restart Logstash every time modify the configuration file.</span></span><br><span class="line">bin/logstash -f beats.conf --config.reload.automatic</span><br></pre></td></tr></table></figure></p>
+<h2 id="Install-Kibana"><a href="#Install-Kibana" class="headerlink" title="Install Kibana"></a>Install Kibana</h2><p><a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="noopener">https://www.elastic.co/downloads/kibana</a><br>written in Node.js, no other dependencies needed.</p>
+<p>Do a quick configuration, then start by systemd:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/kibana/kibana.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># To allow connections from remote users, set this parameter to a non-loopback address.</span></span><br><span class="line">server.host: <span class="string">"9.30.94.85"</span></span><br><span class="line"><span class="comment"># The Kibana server's name.  This is used for display purposes.</span></span><br><span class="line">server.name: <span class="string">"chengdol-kibana"</span></span><br><span class="line"><span class="comment"># The URLs of the Elasticsearch instances to use for all your queries.</span></span><br><span class="line">elasticsearch.hosts: [<span class="string">"http://9.30.94.85:9200"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">## start</span></span><br><span class="line">systemctl start kibana</span><br><span class="line"><span class="comment">## to view the web interface</span></span><br><span class="line"><span class="comment">## default is 5601</span></span><br><span class="line">http://9.30.94.85:5601</span><br></pre></td></tr></table></figure></p>
+<h3 id="Create-Dashboard"><a href="#Create-Dashboard" class="headerlink" title="Create Dashboard"></a>Create Dashboard</h3><p>Go to <code>Management</code>, create <code>Index Patterns</code> set format to poll data from Elasticsearch, then <code>Visualize</code> create graphs, add the graph to <code>Dashboard</code>.</p>
+<h2 id="Beats"><a href="#Beats" class="headerlink" title="Beats"></a>Beats</h2><p><a href="https://www.elastic.co/beats/" target="_blank" rel="noopener">https://www.elastic.co/beats/</a><br>Beats can output data to Elasticsearch, Logstash and Redis. But usually we send data to Logstash (pre-processing) then forward to Elasticsearch.</p>
+<p>Each Beat has configure yaml file with detailed configuration guideline. For example, in the configure yaml file, comment out Elasticsearch output, use Logstash output.</p>
+<ul>
+<li>Filebeat: text log files</li>
+<li>Metricbeat: OS and applications</li>
+<li>Packetbeat: network monitoring</li>
+<li>Winlogbeat: windows event log</li>
+<li>Libbeat: write your own</li>
+</ul>
+<h2 id="Alerting"><a href="#Alerting" class="headerlink" title="Alerting"></a>Alerting</h2><p>Not free feature.</p>
+<p>Workflow:</p>
+<ul>
+<li>Schedule/trigger</li>
+<li>Input/Query</li>
+<li>Condition</li>
+<li>Action</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/monitor/" rel="tag"># monitor</a>
+          
+            <a href="/tags/elasticsearch/" rel="tag"># elasticsearch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/18/monitor-prometheus/" rel="next" title="Prometheus Quick Start">
+                <i class="fa fa-chevron-left"></i> Prometheus Quick Start
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/21/book-design-dataintensive-app/" rel="prev" title="Design Data-Intensive Applications">
+                Design Data-Intensive Applications <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">164</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Stack"><span class="nav-number">1.</span> <span class="nav-text">Elastic Stack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Elasticsearch"><span class="nav-number">1.1.</span> <span class="nav-text">Install Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Logstash"><span class="nav-number">1.2.</span> <span class="nav-text">Install Logstash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Beats-Data"><span class="nav-number">1.2.1.</span> <span class="nav-text">Read Beats Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Kibana"><span class="nav-number">1.3.</span> <span class="nav-text">Install Kibana</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Dashboard"><span class="nav-number">1.3.1.</span> <span class="nav-text">Create Dashboard</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Beats"><span class="nav-number">1.4.</span> <span class="nav-text">Beats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alerting"><span class="nav-number">1.5.</span> <span class="nav-text">Alerting</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
