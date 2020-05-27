@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。关于vimrc的配置，参考:https://github.com/chengdol/vim-configuration Other resourcesHow I booted my Vim Actually you can learn Vim by run command vimtutor in">
+  <meta name="description" content="看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。 Other resourcesHow I booted my Vim Actually you can learn Vim by run command vimtutor in your terminal, that is a simple and quick tutorial. For a">
 <meta name="keywords" content="book,vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Practical Vim, 2nd Edition">
 <meta property="og:url" content="http://yoursite.com/2019/08/06/book-vim/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。关于vimrc的配置，参考:https://github.com/chengdol/vim-configuration Other resourcesHow I booted my Vim Actually you can learn Vim by run command vimtutor in">
+<meta property="og:description" content="看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。 Other resourcesHow I booted my Vim Actually you can learn Vim by run command vimtutor in your terminal, that is a simple and quick tutorial. For a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-27T07:27:53.645Z">
+<meta property="og:updated_time" content="2020-05-27T21:20:18.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practical Vim, 2nd Edition">
-<meta name="twitter:description" content="看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。关于vimrc的配置，参考:https://github.com/chengdol/vim-configuration Other resourcesHow I booted my Vim Actually you can learn Vim by run command vimtutor in">
+<meta name="twitter:description" content="看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。 Other resourcesHow I booted my Vim Actually you can learn Vim by run command vimtutor in your terminal, that is a simple and quick tutorial. For a">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-05-27 00:27:53" itemprop="dateModified" datetime="2020-05-27T00:27:53-07:00">2020-05-27</time>
+                <time title="Modified: 2020-05-27 14:20:18" itemprop="dateModified" datetime="2020-05-27T14:20:18-07:00">2020-05-27</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">15k</span>
+                <span title="Symbols count in article">16k</span>
               
 
               
@@ -508,23 +508,36 @@
       
 
       
-        <p>看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。<br>关于vimrc的配置，参考:<br><a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">https://github.com/chengdol/vim-configuration</a></p>
+        <p>看这种书挺枯燥，还是learn by doing 比较好，用一段时间后再去看书感受会更深, 做一些补充。</p>
 <h1 id="Other-resources"><a href="#Other-resources" class="headerlink" title="Other resources"></a>Other resources</h1><p><a href="https://nvie.com/posts/how-i-boosted-my-vim/" target="_blank" rel="noopener">How I booted my Vim</a></p>
 <p>Actually you can learn <code>Vim</code> by run command <code>vimtutor</code> in your terminal, that is a simple and quick tutorial. For a quick review, just see summary after each lesson.</p>
 <p><strong>TO-DO</strong></p>
 <ul>
 <li>vim copy to clipboard not internal register</li>
-<li>code block folding</li>
-<li>indention</li>
+<li>vim yaml</li>
+<li>vim groovy, gradle</li>
 </ul>
 <h1 id="Daily-Foundation"><a href="#Daily-Foundation" class="headerlink" title="Daily Foundation"></a>Daily Foundation</h1><p>掌握好这些操作基本上就满足日常需求了。</p>
-<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>Which mode is currently use should be clear:  <code>Normal</code> mode, <code>Insert</code> mode and <code>Visual</code> mode, <code>Command-Line</code> mode, <code>Replace</code> mode, etc.</p>
-<p><code>Visual</code> mode lets us select text in the <code>buffer</code> and then operate on the selection.</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>关于vimrc的配置，参考:<br><a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">https://github.com/chengdol/vim-configuration</a></p>
+<ul>
+<li>Basic configuration</li>
+<li>Custom key mapping</li>
+<li>Vimscript plugin</li>
+</ul>
+<p>About mapping:</p>
+<ul>
+<li>nmap: normal mode</li>
+<li>vmap: visual mode</li>
+<li>imap: insert mode</li>
+<li>map: normal, visual and operating-pending mode</li>
+<li>map!: command and insert mode</li>
+</ul>
+<p>To list mapping: <code>:map</code> or more specific <code>:vmap</code></p>
+<p>Which mode is currently use should be clear:  <code>Normal</code> mode, <code>Insert</code> mode and <code>Visual</code> mode, <code>Command-Line</code> mode, <code>Replace</code> mode, etc. <code>Visual</code> mode lets us select text in the <code>buffer</code> and then operate on the selection.</p>
 <p>If you suspect that your customizations are causing interference, here’s a quick test. Try quitting Vim and then launching it with these options:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -u NONE -N</span><br></pre></td></tr></table></figure></p>
 <p>The <code>-u NONE</code> flag tells Vim not to source your <code>vimrc</code> on startup. That way, your customizations won’t be applied and plugins will be disabled. In older versions of Vim, not loading a <code>vimrc</code> file activates <code>vi</code> compatible mode, which causes many useful features to be disabled. The <code>-N</code> flag prevents this by setting the <code>nocompatible</code> option. Since version 8.0 of Vim, the <code>nocompatible</code> option is set by default, making the <code>-N</code> flag unnecessary.</p>
 <p><code>vim -N file</code>: -N not use vi compatible mode, use newer vim mode. or can configuring in <code>.vimrc</code> file.</p>
-<p>vim syntax highlighting, supports lots of syntax highlighting by default, but may need plugin, for example gradle file.</p>
-<p>For example:<br><code>:set list</code>, <code>:set nolist</code>, <code>:set list?</code>, <code>:set list&amp;</code>: set, unset, check value, set as default.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set autochdir &quot;auto set current dir as working dir</span><br><span class="line">set wildmode=list:longest &quot;activate TAB auto-complete file path</span><br></pre></td></tr></table></figure></p>
+<p><code>:set list</code>, <code>:set nolist</code>, <code>:set list?</code>, <code>:set list&amp;</code>: set, unset, check value, set as default.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set autochdir &quot;auto set current dir as working dir</span><br><span class="line">set wildmode=list:longest &quot;activate TAB auto-complete file path</span><br></pre></td></tr></table></figure></p>
 <h2 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h2><p>Vim 8.0 has its own built-in package manager. For Vim version less than 8.0, I use <code>vim-plug</code> as the plugin manager:<br><a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener">https://github.com/junegunn/vim-plug</a></p>
 <blockquote>
 <p>Please see my <a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">vim-configuration git repo</a>, download the vimrc file.</p>
@@ -579,6 +592,8 @@
 <li>-: reduce windows, <code>3-</code></li>
 </ul>
 <p><strong>tab</strong><br>各个文件单独的tab，不用划分window了, 这个部分是放在vimrc中的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot; Tab mappings.</span><br><span class="line">nnoremap tt :tabnew&lt;cr&gt;</span><br><span class="line">nnoremap te :tabedit</span><br><span class="line">nnoremap tc :tabclose&lt;cr&gt;</span><br><span class="line">nnoremap to :tabonly&lt;cr&gt;</span><br><span class="line">nnoremap tn :tabnext&lt;cr&gt;</span><br><span class="line">nnoremap tp :tabprevious&lt;cr&gt;</span><br><span class="line">nnoremap tf :tabfirst&lt;cr&gt;</span><br><span class="line">nnoremap tl :tablast&lt;cr&gt;</span><br><span class="line">nnoremap tm :tabmove</span><br></pre></td></tr></table></figure></p>
+<p><strong>Folding</strong><br>Fold by syntax or indent (yaml). <code>:sed foldmethod=indent/syntax</code><br><code>zM</code>, <code>zR</code>: fold and unfold all<br><code>zi</code>: toggle fold all<br><code>zc</code>, <code>zo</code>: close, open fold block<br><code>za</code>: toggle fold block<br><code>zk</code>, <code>zj</code>: move fold focus up and down</p>
+<p>还可以根据file type去设定, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Automatic fold settings for specific files. Uncomment to use.</span><br><span class="line">&quot; autocmd FileType ruby setlocal foldmethod=syntax</span><br><span class="line">&quot; autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2</span><br></pre></td></tr></table></figure></p>
 <h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>Using <code>hjkl</code> (在后续许多命令中都有涉及) or <code>arrow</code> keys to move around, can have number ahead to indicate how many line to move.</p>
 <p><code>:q!</code> quit without saving.<br><code>:wq</code> quit with saving, always retouch the timestamp.<br>sometimes using <code>:q!</code> and <code>:wq!</code>: <a href="https://unix.stackexchange.com/questions/88247/use-of-in-vim" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/88247/use-of-in-vim</a></p>
 <p><code>:x</code>  the same as <code>:wq</code>, but write only when changes have been made.<br><code>:w filename</code> used to save file to <code>filename</code>.<br><code>:w !sudo tee %</code> write to sudo with current file name, <code>%</code> represent current file name. (用在保存更改read-only文件的内容)</p>
@@ -587,7 +602,9 @@
 <p><strong>Scrolling</strong><br>Press <code>G</code> to move you to the bottom of the file.<br>Type <code>gg</code> to move you to the start of the file.<br><code>line number + G</code> or <code>line number + gg</code> will go to the line specified.<br>To go back to where you came from press <code>Ctrl-o</code> (Keep <code>Ctrl</code> down while pressing the letter <code>o</code>). To go forward <code>Ctrl-i</code><br><code>H</code>, <code>M</code> and <code>L</code> move the cursor to top, medium and bottom of current page<br><code>zt</code>, <code>zz</code>, <code>zb</code>: move cursor line to top, middle, bottom of screen</p>
 <p><strong>Make mark</strong><br>For example, jump back and forth spots:<br><a href="https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/" target="_blank" rel="noopener">https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/</a><br><code>:marks</code></p>
 <p><strong>Shift code</strong><br>Shift configuration is in <code>.vimrc</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot; shift with tab</span><br><span class="line">set tabstop=2                    &quot; Global tab width.</span><br><span class="line">set shiftwidth=2                 &quot; And again, related.</span><br><span class="line">set expandtab                    &quot; Use spaces instead of tabs</span><br></pre></td></tr></table></figure></p>
+<p><code>:retab</code>: replace all tabs with spaces in current buffer.</p>
 <p><code>&gt;&gt;</code>, <code>&lt;&lt;</code> shift current line, <code>4&gt;&gt;</code>, <code>4&lt;&lt;</code> block shift with 4 lines together.<br>In insert mode, can use tab itself to shift, or using <code>ctrl+t</code>, <code>ctrl+d</code>: shift right and left.</p>
+<p>对于code block indention，我在.vimrc 中设置了vmap, 用visual mode选中后shift就很方便了。</p>
 <p><strong>Search and replace</strong><br><code>/</code> search forward, <code>?</code> search backword. when hit the search, <code>n</code> go forward, <code>N</code> go backword. If the cursor is at search word, use <code>*</code> to search forward, <code>#</code> search back, use <code>g*</code>, <code>g#</code> do partial match search.</p>
 <p><code>/case\c</code> search case-insensitive, <code>/CaSe\C</code> search case-sensitive. <code>\c</code> and <code>\C</code> can be anywhere in pattern.</p>
 <p><code>:s/old/new/g</code> to substitute <code>old</code> by <code>new</code> in a line for all occrurences. you must place the cursor in that line.<br>To change every occurrence of a character string between two lines,<br><code>:#,#s/old/new/g</code> where <code>#,#</code> are the line numbers of the range of lines where the substitution is to be done.<br><code>:%s/old/new/g</code>  to change every occurrence in the whole file.<br><code>:%s/old/new/gc</code> to find every occurrence in the whole file, with a prompt whether to substitute or not, <code>c</code> is confirmation.</p>
@@ -1066,7 +1083,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">643k</span>
+    <span title="Symbols count total">644k</span>
   
 
   
