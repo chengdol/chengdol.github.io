@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。 Other resourcesHow I booted my VimInformative!! I grab lots of configurations from it, go and poke around the author’s vimrc file. Vim Tutorial Videos">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-28T21:47:57.941Z">
+<meta property="og:updated_time" content="2020-05-31T06:58:22.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practical Vim, 2nd Edition">
 <meta name="twitter:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。 Other resourcesHow I booted my VimInformative!! I grab lots of configurations from it, go and poke around the author’s vimrc file. Vim Tutorial Videos">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-05-28 14:47:57" itemprop="dateModified" datetime="2020-05-28T14:47:57-07:00">2020-05-28</time>
+                <time title="Modified: 2020-05-30 23:58:22" itemprop="dateModified" datetime="2020-05-30T23:58:22-07:00">2020-05-30</time>
               
             
           </span>
@@ -510,11 +510,11 @@
       
         <p>看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。</p>
 <h1 id="Other-resources"><a href="#Other-resources" class="headerlink" title="Other resources"></a>Other resources</h1><p><a href="https://nvie.com/posts/how-i-boosted-my-vim/" target="_blank" rel="noopener">How I booted my Vim</a><br>Informative!! I grab lots of configurations from it, go and poke around the author’s vimrc file.</p>
-<p><a href="http://derekwyatt.org/vim/tutorials/index.html" target="_blank" rel="noopener">Vim Tutorial Videos</a><br>There are a lot, see O`Relly.</p>
-<p>Actually you can learn <code>Vim</code> by run command <code>vimtutor</code> in your terminal, that is a simple and quick tutorial. For a quick review, just see summary after each lesson.</p>
+<p><a href="http://derekwyatt.org/vim/tutorials/index.html" target="_blank" rel="noopener">Vim Tutorial Videos</a><br>There are a lot, see O`Reilly.</p>
+<p>Actually you can learn <code>Vim</code> by running command <code>vimtutor</code> in your terminal, it is a simple and quick tutorial. For a quick review, just see summary after each lesson.</p>
 <h1 id="Daily-Foundation"><a href="#Daily-Foundation" class="headerlink" title="Daily Foundation"></a>Daily Foundation</h1><p>掌握好这些操作基本上就满足日常需求了。</p>
 <h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p><code>.vimrc</code> is just like <code>.bashrc</code>. you create a <code>.vimrc</code> (even it’s empty) to tell vim use vim not vi-compatiable mode!</p>
-<p>关于vimrc的配置，参考:<br><a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">https://github.com/chengdol/vim-configuration</a></p>
+<p>关于vimrc的配置，参考my github repo:<br><a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">https://github.com/chengdol/vim-configuration</a></p>
 <ol>
 <li>Basic configuration</li>
 <li>Custom key mapping</li>
@@ -532,11 +532,11 @@
 <p>Which mode is currently use should be clear:  <code>Normal</code> mode, <code>Insert</code> mode and <code>Visual</code> mode, <code>Command-Line</code> mode, <code>Replace</code> mode, etc. <code>Visual</code> mode lets us select text in the <code>buffer</code> and then operate on the selection.</p>
 <p>If you suspect that your customizations are causing interference, here’s a quick test. Try quitting Vim and then launching it with these options:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -u NONE -N</span><br></pre></td></tr></table></figure></p>
 <p>The <code>-u NONE</code> flag tells Vim not to source your <code>vimrc</code> on startup. That way, your customizations won’t be applied and plugins will be disabled. In older versions of Vim, not loading a <code>vimrc</code> file activates <code>vi</code> compatible mode, which causes many useful features to be disabled. The <code>-N</code> flag prevents this by setting the <code>nocompatible</code> option. Since version 8.0 of Vim, the <code>nocompatible</code> option is set by default, making the <code>-N</code> flag unnecessary.</p>
-<p><code>vim -N file</code>: -N not use vi compatible mode, use newer vim mode. or can configuring in <code>.vimrc</code> file.</p>
-<p><code>:set list</code>, <code>:set nolist</code>, <code>:set list?</code>, <code>:set list&amp;</code>: set, unset, check value, set as default.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set autochdir &quot;auto set current dir as working dir</span><br><span class="line">set wildmode=list:longest &quot;activate TAB auto-complete file path</span><br></pre></td></tr></table></figure></p>
-<p><strong>Reload .vimrc</strong><br>Reload .vimrc without restarting vim: <code>:source ~/.vimrc</code></p>
-<h2 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h2><p>Vim 8.0 has its own built-in package manager. For Vim version less than 8.0, I use <code>vim-plug</code> as the plugin manager:<br><a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener">https://github.com/junegunn/vim-plug</a><br>You can specify git address of the plugin, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;https://github.com/tfnico/vim-gradle.git&apos;</span><br></pre></td></tr></table></figure></p>
-<p>If the plugin does not get auto installed, run <code>:PlugInstall</code>, check the plug status by <code>:PlugStatus</code>.</p>
+<p><code>vim -N file</code>: <code>-N</code> not using vi compatible mode, use newer vim mode. or can configuring in <code>.vimrc</code> file.</p>
+<p><code>:set list</code>, <code>:set nolist</code>, <code>:set list?</code>, <code>:set list&amp;</code>: set, unset, check value, set as default. 以此类推.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set autochdir &quot;auto set current dir as working dir</span><br><span class="line">set wildmode=list:longest &quot;activate TAB auto-complete file path</span><br></pre></td></tr></table></figure></p>
+<p><strong>Reload .vimrc</strong><br>Reload .vimrc without restarting vim: <code>:source ~/.vimrc</code>. 已经加入vimrc了。</p>
+<h2 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h2><p>Vim 8.0 has its own built-in package manager. For Vim version less than 8.0, I use <code>vim-plug</code> as the plugin manager:<br><a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener">https://github.com/junegunn/vim-plug</a><br>You can even specify git address of the plugin, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;https://github.com/tfnico/vim-gradle.git&apos;</span><br></pre></td></tr></table></figure></p>
+<p>If the plugin does not get auto installed, run <code>:PlugInstall</code>, check the plug status by <code>:PlugStatus</code>. 这些在<code>vim-plug</code> README中都有说明。</p>
 <blockquote>
 <p>Please see my <a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">vim-configuration git repo</a>, download the vimrc file.</p>
 </blockquote>
@@ -546,6 +546,7 @@
 <li>buffer explorer: 比默认的buffer要好看</li>
 <li>taglist: source code browser</li>
 </ul>
+<p>NERDTree，在目录界面中通过<code>m</code>启动常规文件/文件夹操作。<code>C</code>回车 进入子文件夹。</p>
 <h2 id="Display-Management"><a href="#Display-Management" class="headerlink" title="Display Management"></a>Display Management</h2><p>Vim中切换编辑多个文件：<br><code>:cd /tmp</code> change vim working directory<br><code>:pwd</code> show current working directory<br><code>:set hidden</code> (put it in <code>.vimrc</code>): <a href="https://medium.com/usevim/vim-101-set-hidden-f78800142855" target="_blank" rel="noopener">https://medium.com/usevim/vim-101-set-hidden-f78800142855</a><br><code>:e .</code> browse current directory, select file to edit</p>
 <p><code>:ls</code> list buffer (open files)</p>
 <ul>
@@ -555,6 +556,8 @@
 </ul>
 <p><code>:bn</code> go to next buffer<br><code>:bp</code> go to previous buffer<br><code>:bd</code> delete buffer, such as <code>:bd5</code><br><code>:bf</code> go to first buffer<br><code>:bl</code> go to last buffer<br><code>:b3</code> go to 3rd buffer<br><code>gf</code> jump to the file under the cursor, use <code>ctrl+o</code> jump back</p>
 <p>可以在vim <code>:e &lt;path&gt;</code> 中直接创建，删除文件或者文件夹，显示long format, sort等</p>
+<blockquote>
+<p>在使用<code>vim-plug</code>加载插件后，这部分功能失效了, 不过可以使用command mode去做查看。</p>
 <ul>
 <li>i: long, thin, tree format</li>
 <li>s: sort by name, time, file size</li>
@@ -565,6 +568,7 @@
 <li>R: rename file or dir</li>
 <li>-: go up a directory</li>
 </ul>
+</blockquote>
 <h3 id="windows-amp-splits"><a href="#windows-amp-splits" class="headerlink" title="windows &amp; splits"></a>windows &amp; splits</h3><p>All start with <code>ctrl+w</code>:</p>
 <ul>
 <li>s: split horizontally </li>
@@ -593,7 +597,7 @@
 <p>What is <code>Leader key</code> in Vim?<br><a href="https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file" target="_blank" rel="noopener">https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file</a><br>The <code>Leader key</code> is a way of extending the power of VIM’s shortcuts by using sequences of keys to perform a command.</p>
 <h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>Using <code>hjkl</code> (在后续许多命令中都有涉及) or <code>arrow</code> keys to move around, can have number ahead to indicate how many line to move.</p>
 <p><code>:q!</code> quit without saving.<br><code>:wq</code> quit with saving, always retouch the timestamp.<br>sometimes using <code>:q!</code> and <code>:wq!</code>: <a href="https://unix.stackexchange.com/questions/88247/use-of-in-vim" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/88247/use-of-in-vim</a></p>
-<p><code>:x</code>  the same as <code>:wq</code>, but write only when changes have been made.<br><code>:w filename</code> used to save file to <code>filename</code>.<br><code>:w !sudo tee %</code> write to sudo with current file name, <code>%</code> represent current file name. (用在保存更改read-only文件的内容)</p>
+<p><code>:x</code> the same as <code>:wq</code>, but write only when changes have been made.<br><code>:w filename</code> used to save file to <code>filename</code>.<br><code>:w !sudo tee %</code> write to sudo with current file name, <code>%</code> represent current file name. (用在保存更改read-only文件的内容)</p>
 <p><a href="https://medium.com/usevim/vim-101-quick-movement-c12889e759e0" target="_blank" rel="noopener">Quick Movement</a><br><code>A</code> append at end of the line, <code>a</code> appends after cursor.<br><code>I</code> insert ata head of the line, <code>i</code> insert at cursor.<br><code>W</code> jump contiguous words, <code>w</code> jump one word.<br><code>o</code> will open a line below cursor, <code>O</code> open above.<br><code>3w</code> move 3 words forward, <code>0</code> move to the start of the line.<br><code>^</code> go to first non-empty char in line<br><code>3fn</code> find 3rd <code>n</code> char at this line. repeat by <code>;</code></p>
 <h3 id="Screen-line-movement"><a href="#Screen-line-movement" class="headerlink" title="Screen line movement"></a>Screen line movement</h3><p>screen line指被terminal因宽度限制产生的行，并不是指原始的很长的那一行。<br><code>g0</code>, <code>gm</code>, <code>g$</code>: start, middle, end of a line.<br><code>gk</code>, <code>gj</code>: move up/down in screan line (can use arrow instead k/j ).</p>
 <h3 id="Scrolling"><a href="#Scrolling" class="headerlink" title="Scrolling"></a>Scrolling</h3><p>Press <code>G</code> to move you to the bottom of the file.<br>Type <code>gg</code> to move you to the start of the file.<br><code>line number + G</code> or <code>line number + gg</code> will go to the line specified.<br>To go back to where you came from press <code>Ctrl-o</code> (Keep <code>Ctrl</code> down while pressing the letter <code>o</code>). To go forward <code>Ctrl-i</code><br><code>H</code>, <code>M</code> and <code>L</code> move the cursor to top, medium and bottom of current page<br><code>zt</code>, <code>zz</code>, <code>zb</code>: move cursor line to top, middle, bottom of screen</p>
