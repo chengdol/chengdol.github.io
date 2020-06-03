@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="JenkinsJenkins is not a build system, it is a structured model.Other interesting project: Tekton, Jenkinx (k8s involved) Installing Jenkins, must have compatible openjdk installed.12## can use war fil">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-22T18:28:13.229Z">
+<meta property="og:updated_time" content="2020-06-02T21:31:31.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins Quick Start">
 <meta name="twitter:description" content="JenkinsJenkins is not a build system, it is a structured model.Other interesting project: Tekton, Jenkinx (k8s involved) Installing Jenkins, must have compatible openjdk installed.12## can use war fil">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">167</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">168</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-05-22 11:28:13" itemprop="dateModified" datetime="2020-05-22T11:28:13-07:00">2020-05-22</time>
+                <time title="Modified: 2020-06-02 14:31:31" itemprop="dateModified" datetime="2020-06-02T14:31:31-07:00">2020-06-02</time>
               
             
           </span>
@@ -516,10 +516,13 @@
 <p>Jenkins use file system to store everything, if using systemd, the configuration is in <code>/var/lib/jenkins</code>. You can backup this folder, or if you want to wipe it out, then run <code>systemctl restart jenkins</code>, then jenkins goes back to init state.</p>
 <p>Even Jenkins UI to create project is not needed, you can mkdir and files in the Jenkins working directory, then go to <code>Manage Jenkins</code> -&gt; <code>Reload Configuration from Disk</code>.</p>
 <blockquote>
-<p>遇到一件很神奇的事情，有次Jenkins的Credentials配置消失了。。。重启也不见恢复，后来我直接stop daemon, 清空workspace下所有文件，再次重启初始化，就恢复了。</p>
+<p>遇到一件很神奇的事情，有次Jenkins的Credentials配置消失了。。。重启也不见恢复，后来我直接stop daemon, 清空workspace下所有文件，再次重启初始化，就恢复了。后来想想我应该是在配置Credentials时把配置改错了，可以通过<code>Manage Jenkins</code> -&gt; <code>Configure Credentials</code> 改回去。</p>
 </blockquote>
 <h2 id="Creating-app-build"><a href="#Creating-app-build" class="headerlink" title="Creating app build"></a>Creating app build</h2><p>freestyle project -&gt; pipeline (series of freestyle project), freestyle project is not recommended.</p>
 <p>Jenkins <strong>Workspace</strong>, you can see it in console output or click <code>Workspace</code> icon in your project dashboard. Everything running is in project workspace. Every build will override the previous one. You can use tar command to backup and restore this workspace, or clean workspace.</p>
+<blockquote>
+<p>注意, 如果在Jenkins configuration中直接使用pipeline script 而不是 SCM, 是不会创建workspace的。</p>
+</blockquote>
 <p>To store the build artifact, use <code>Post-build Action</code> in configure. for example, you want to archive some jar or zip files. then after build is done, these archives will show in the build page.</p>
 <h3 id="Build-trend"><a href="#Build-trend" class="headerlink" title="Build trend"></a>Build trend</h3><p>Right to <code>Build History</code> list, there is a <code>trend</code> button, click it will see the build time history statistics and distribution.</p>
 <h2 id="Testing-and-Continuous-integration"><a href="#Testing-and-Continuous-integration" class="headerlink" title="Testing and Continuous integration"></a>Testing and Continuous integration</h2><p>Now start the <code>pipeline</code> job type. After creating a pipeline job, you will see <code>pipeline syntax</code> button in the page bottom, it contains necessary resources to start. You can also use <code>Copy from</code> to copy a pipeline configure from another, for quick start.</p>
@@ -598,11 +601,11 @@
 <li>Supports running pipelines and library methods</li>
 <li>Can mock steps and validate calls</li>
 </ul>
-<h1 id="Jenkins-in-docker"><a href="#Jenkins-in-docker" class="headerlink" title="Jenkins in docker"></a>Jenkins in docker</h1><p>这块很有意思，加入容器后就太灵活了。<br><a href="https://hub.docker.com/r/jenkins/jenkins" target="_blank" rel="noopener">https://hub.docker.com/r/jenkins/jenkins</a><br>you can parallelly run several jenkins version in one machine, for purposes like testing new features, testing upgrade, so on and so forth. But you may need to customize the jenkins docker image and expose to different port.</p>
-<p>The agents can also be containers.</p>
-<blockquote>
+<h1 id="Jenkins-in-docker"><a href="#Jenkins-in-docker" class="headerlink" title="Jenkins in docker"></a>Jenkins in docker</h1><blockquote>
 <p>这是课程<a href="https://app.pluralsight.com/library/courses/using-declarative-jenkins-pipelines/table-of-contents" target="_blank" rel="noopener">Using Declarative Jenkins Pipelines</a>的最后一章，目前不是重点，没看完。</p>
 </blockquote>
+<p>这块很有意思，加入容器后就太灵活了。<br><a href="https://hub.docker.com/r/jenkins/jenkins" target="_blank" rel="noopener">https://hub.docker.com/r/jenkins/jenkins</a><br>you can parallelly run several jenkins version in one machine, for purposes like testing new features, testing upgrade, so on and so forth. But you may need to customize the jenkins docker image and expose to different port.</p>
+<p>The agents can also be containers.</p>
 
       
     </div>
@@ -725,7 +728,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">167</span>
+                    <span class="site-state-item-count">168</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1069,7 +1072,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">645k</span>
+    <span title="Symbols count total">648k</span>
   
 
   
