@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。  By default oc/kubectl edit will use vi in Linux if environment variable OC _EDITOR is empty, if you have .vimrc that is not compatible with vi, will">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-02T01:42:58.597Z">
+<meta property="og:updated_time" content="2020-06-04T00:24:57.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practical Vim, 2nd Edition">
 <meta name="twitter:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。  By default oc/kubectl edit will use vi in Linux if environment variable OC _EDITOR is empty, if you have .vimrc that is not compatible with vi, will">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">168</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">171</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-01 18:42:58" itemprop="dateModified" datetime="2020-06-01T18:42:58-07:00">2020-06-01</time>
+                <time title="Modified: 2020-06-03 17:24:57" itemprop="dateModified" datetime="2020-06-03T17:24:57-07:00">2020-06-03</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">20k</span>
+                <span title="Symbols count in article">21k</span>
               
 
               
@@ -614,6 +614,9 @@
 <p><code>:s/old/new/g</code> to substitute <code>old</code> by <code>new</code> in a line for all occrurences. you must place the cursor in that line.<br>To change every occurrence of a character string between two lines,<br><code>:#,#s/old/new/g</code> where <code>#,#</code> are the line numbers of the range of lines where the substitution is to be done.<br><code>:%s/old/new/g</code>  to change every occurrence in the whole file.<br><code>:%s/old/new/gc</code> to find every occurrence in the whole file, with a prompt whether to substitute or not, <code>c</code> is confirmation.</p>
 <p>For case-sensitive: <code>:%s/old/new/Igc</code>, but actually can be <code>:%s/old\C/new/gc</code>.</p>
 <h3 id="Copy-and-Paste"><a href="#Copy-and-Paste" class="headerlink" title="Copy and Paste"></a>Copy and Paste</h3><p>这里和vim 的 register有关. Default is unnamed register, delete, change, substitute, search and yank all use registers.</p>
+<blockquote>
+<p>Pasting text into a terminal running Vim with automatic indentation enabled can destroy the indentation of the pasted text: <a href="https://vim.fandom.com/wiki/Toggle_auto-indenting_for_code_paste" target="_blank" rel="noopener">https://vim.fandom.com/wiki/Toggle_auto-indenting_for_code_paste</a>, use <code>vim-bracketed-paste</code> can fix this.</p>
+</blockquote>
 <p>Show register contents: <code>:registers</code></p>
 <p><code>y</code> is copy operator, for example, <code>yw</code> copy one word, <code>y$</code> copy to end of the line and <code>yy</code> used to copy a line, then you can paste through <code>p</code>. you can use <code>v</code> to select and copy. By default it uses unnamed register. Register <code>0</code> always stores the yank content, so you can use <code>&quot;0p</code> to paste.</p>
 <p><code>&quot;ayy</code>, <code>&quot;ap</code> use register <code>a</code> to yank and paste. Usually we use <code>a~z</code> and <code>A~Z</code> register, the uppercase register can append text to current content.</p>
@@ -753,7 +756,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">168</span>
+                    <span class="site-state-item-count">171</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1097,7 +1100,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">650k</span>
+    <span title="Symbols count total">654k</span>
   
 
   
