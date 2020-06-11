@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. pausehttps:">
+  <meta name="description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. k8s挺有意思，看看这">
 <meta name="keywords" content="ansible">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ansible Module Reference">
 <meta property="og:url" content="http://yoursite.com/2019/03/22/ansible-module-refer/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. pausehttps:">
+<meta property="og:description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. k8s挺有意思，看看这">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-10T19:15:07.247Z">
+<meta property="og:updated_time" content="2020-06-07T08:02:56.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Module Reference">
-<meta name="twitter:description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. pausehttps:">
+<meta name="twitter:description" content="There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document. How to organize the ansible files structure, see best practice. k8s挺有意思，看看这">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">95</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">96</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">171</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">172</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-10 11:15:07" itemprop="dateModified" datetime="2020-02-10T11:15:07-08:00">2020-02-10</time>
+                <time title="Modified: 2020-06-07 01:02:56" itemprop="dateModified" datetime="2020-06-07T01:02:56-07:00">2020-06-07</time>
               
             
           </span>
@@ -510,6 +510,9 @@
       
         <p>There are some commonly used Ansible modules that I will refer frequently. More specific detail please see Ansible document.</p>
 <p>How to organize the ansible files structure, see best <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html" target="_blank" rel="noopener">practice</a>.</p>
+<h2 id="k8s"><a href="#k8s" class="headerlink" title="k8s"></a>k8s</h2><p>挺有意思，看看这篇文章，和Helm做了一下比较:<br><a href="https://blog.51cto.com/99cloud/2336420?source=dra" target="_blank" rel="noopener">https://blog.51cto.com/99cloud/2336420?source=dra</a></p>
+<p>Manage kubernetes objects<br><a href="https://docs.ansible.com/ansible/latest/modules/k8s_module.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/latest/modules/k8s_module.html</a></p>
+<p>除了这个，还有其他一些k8s相关的moduels.</p>
 <h2 id="pause"><a href="#pause" class="headerlink" title="pause"></a>pause</h2><p><a href="https://docs.ansible.com/ansible/latest/modules/pause_module.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/latest/modules/pause_module.html</a><br>Pauses playbook execution for a set amount of time, or until a prompt is acknowledged. All parameters are optional. The default behavior is to pause with a prompt.</p>
 <p>The pause module integrates into async/parallelized playbooks without any special considerations (see Rolling Updates). When using pauses with the serial playbook parameter (as in rolling updates) you are only prompted once for the current group of hosts.</p>
 <p>Useful when debug certain task to see the execution result:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># just pause </span></span><br><span class="line"><span class="attr">- pause:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a helpful reminder of what to look out for post-update.</span></span><br><span class="line"><span class="attr">- pause:</span></span><br><span class="line"><span class="attr">    prompt:</span> <span class="string">"Make sure org.foo.FooOverload exception is not present"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pause to get some sensitive input.</span></span><br><span class="line"><span class="attr">- pause:</span></span><br><span class="line"><span class="attr">    prompt:</span> <span class="string">"Enter a secret"</span></span><br><span class="line"><span class="attr">    echo:</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure></p>
@@ -555,7 +558,7 @@
 <p>Notice that async task can only be accessed in the same playbook.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">async</span> <span class="string">task</span> <span class="string">in</span> <span class="string">background</span></span><br><span class="line"><span class="attr">  any_errors_fatal:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  shell:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    echo "start first task"</span></span><br><span class="line"><span class="string">    sleep 20</span></span><br><span class="line"><span class="string">    touch /tmp/sleep.done</span></span><br><span class="line"><span class="string">  ## when poll &gt; 0, task still blocks</span></span><br><span class="line"><span class="string">  ## when poll = 0, task run in background</span></span><br><span class="line"><span class="string"></span><span class="attr">  poll:</span> <span class="number">0</span></span><br><span class="line">  <span class="comment">## explicitly sets the timeout 1000 seconds</span></span><br><span class="line"><span class="attr">  async:</span> <span class="number">1000</span> </span><br><span class="line">  <span class="comment">## register for later check</span></span><br><span class="line"><span class="attr">  register:</span> <span class="string">sleepTask</span></span><br><span class="line"><span class="attr">  when:</span> <span class="string">"inventory_hostname == groups.master[0]"</span></span><br><span class="line"><span class="attr">  args:</span></span><br><span class="line"><span class="attr">    creates:</span> <span class="string">/tmp/sleep.done</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">check</span> <span class="string">async</span> <span class="string">task</span> <span class="string">status</span></span><br><span class="line"><span class="attr">  any_errors_fatal:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment">## check async task status</span></span><br><span class="line"><span class="attr">  async_status:</span></span><br><span class="line"><span class="attr">    jid:</span> <span class="string">"<span class="template-variable">&#123;&#123; sleepTask.ansible_job_id &#125;&#125;</span>"</span></span><br><span class="line"><span class="attr">  register:</span> <span class="string">job_result</span></span><br><span class="line"><span class="attr">  until:</span> <span class="string">job_result.finished</span></span><br><span class="line"><span class="attr">  when:</span> <span class="string">"inventory_hostname == groups.master[0]"</span></span><br><span class="line"><span class="attr">  retries:</span> <span class="number">30</span></span><br><span class="line"><span class="attr">  delay:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h2 id="synchronize"><a href="#synchronize" class="headerlink" title="synchronize"></a>synchronize</h2><p>rsync wrapper</p>
-<h2 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h2><p><a href="https://docs.ansible.com/ansible/2.4/playbooks_loops.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/2.4/playbooks_loops.html</a><br>items</p>
+<h2 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h2><p><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html</a><br>items</p>
 <h2 id="variables"><a href="#variables" class="headerlink" title="variables"></a>variables</h2><p>inventory_hostname<br>groups<br>jinjia2 template <figure class="highlight plain"><figcaption><span>&#125;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">operator: in</span><br><span class="line"></span><br><span class="line">## conditional</span><br><span class="line">when clause</span><br><span class="line"></span><br><span class="line">```yaml</span><br><span class="line">## 不是每个module都支持creates的</span><br><span class="line">args:</span><br><span class="line">  creates: xxx</span><br></pre></td></tr></table></figure></p>
 
       
@@ -677,7 +680,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">171</span>
+                    <span class="site-state-item-count">172</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -953,7 +956,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">95</span>
+                      
+                    
+                    <span class="site-state-item-count">96</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -989,7 +994,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pause"><span class="nav-number">1.</span> <span class="nav-text">pause</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skip"><span class="nav-number">2.</span> <span class="nav-text">skip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug"><span class="nav-number">3.</span> <span class="nav-text">debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fail"><span class="nav-number">4.</span> <span class="nav-text">fail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">5.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch"><span class="nav-number">6.</span> <span class="nav-text">fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template"><span class="nav-number">7.</span> <span class="nav-text">template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">8.</span> <span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#command"><span class="nav-number">9.</span> <span class="nav-text">command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">10.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemd"><span class="nav-number">11.</span> <span class="nav-text">systemd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file"><span class="nav-number">12.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lineinfile"><span class="nav-number">13.</span> <span class="nav-text">lineinfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mount"><span class="nav-number">14.</span> <span class="nav-text">mount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asynchronous"><span class="nav-number">15.</span> <span class="nav-text">asynchronous</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronize"><span class="nav-number">16.</span> <span class="nav-text">synchronize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop"><span class="nav-number">17.</span> <span class="nav-text">loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variables"><span class="nav-number">18.</span> <span class="nav-text">variables</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#k8s"><span class="nav-number">1.</span> <span class="nav-text">k8s</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pause"><span class="nav-number">2.</span> <span class="nav-text">pause</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skip"><span class="nav-number">3.</span> <span class="nav-text">skip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug"><span class="nav-number">4.</span> <span class="nav-text">debug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fail"><span class="nav-number">5.</span> <span class="nav-text">fail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">6.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch"><span class="nav-number">7.</span> <span class="nav-text">fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#template"><span class="nav-number">8.</span> <span class="nav-text">template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">9.</span> <span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#command"><span class="nav-number">10.</span> <span class="nav-text">command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-number">11.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemd"><span class="nav-number">12.</span> <span class="nav-text">systemd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file"><span class="nav-number">13.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lineinfile"><span class="nav-number">14.</span> <span class="nav-text">lineinfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mount"><span class="nav-number">15.</span> <span class="nav-text">mount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asynchronous"><span class="nav-number">16.</span> <span class="nav-text">asynchronous</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronize"><span class="nav-number">17.</span> <span class="nav-text">synchronize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loop"><span class="nav-number">18.</span> <span class="nav-text">loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variables"><span class="nav-number">19.</span> <span class="nav-text">variables</span></a></li></ol></div>
             
 
           </div>
@@ -1021,7 +1026,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">660k</span>
+    <span title="Symbols count total">678k</span>
   
 
   
