@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具。Book accompanying git repo:https://github.com/chengdol/chapters/ (this is forked from origin)还推">
+  <meta name="description" content="这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具，也就是书中说的application SRE。Book accompanying git repo:https://github.com/chengdol/chapters/ (this i">
 <meta name="keywords" content="book,kubernetes,operator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes Operators">
 <meta property="og:url" content="http://yoursite.com/2020/06/03/book-k8s-operator/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具。Book accompanying git repo:https://github.com/chengdol/chapters/ (this is forked from origin)还推">
+<meta property="og:description" content="这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具，也就是书中说的application SRE。Book accompanying git repo:https://github.com/chengdol/chapters/ (this i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-12T04:52:58.187Z">
+<meta property="og:updated_time" content="2020-06-13T06:40:40.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes Operators">
-<meta name="twitter:description" content="这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具。Book accompanying git repo:https://github.com/chengdol/chapters/ (this is forked from origin)还推">
+<meta name="twitter:description" content="这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具，也就是书中说的application SRE。Book accompanying git repo:https://github.com/chengdol/chapters/ (this i">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-11 21:52:58" itemprop="dateModified" datetime="2020-06-11T21:52:58-07:00">2020-06-11</time>
+                <time title="Modified: 2020-06-12 23:40:40" itemprop="dateModified" datetime="2020-06-12T23:40:40-07:00">2020-06-12</time>
               
             
           </span>
@@ -508,9 +508,9 @@
       
 
       
-        <p>这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.<br>看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具。<br>Book accompanying git repo:<br><a href="https://github.com/chengdol/chapters/" target="_blank" rel="noopener">https://github.com/chengdol/chapters/</a> (this is forked from origin)<br>还推荐几本书, from O’reilly:</p>
+        <p>这段时间开始研究Operator了，刚好有这本书，计划快速过一遍，recap quick start.<br>看完了一遍，最深得感受就是，如果K8s是云的操作系统，那么Operator就是一个云应用程序自己的管理工具，也就是书中说的application SRE。<br>Book accompanying git repo:<br><a href="https://github.com/chengdol/chapters/" target="_blank" rel="noopener">https://github.com/chengdol/chapters/</a> (this is forked from origin)<br>还推荐几本书, from O’reilly:</p>
 <ul>
-<li>Programming Kubernetes</li>
+<li>Programming Kubernetes (dive deeper into API)</li>
 <li>Extending Kubernetes</li>
 </ul>
 <p>My K8s operator-sdk demo git repo, step by step guide you setup a custom operator and deploy in K8s cluster:<br><a href="https://github.com/chengdol/k8s-operator-sdk-demo" target="_blank" rel="noopener">https://github.com/chengdol/k8s-operator-sdk-demo</a></p>
@@ -608,7 +608,8 @@
 <li>helm-charts: helm chart structure for your app</li>
 <li>watches.yaml: maps each CR type to the specific Helm chart that is used to handle it. </li>
 </ul>
-<h3 id="Existing-Chart"><a href="#Existing-Chart" class="headerlink" title="Existing Chart"></a>Existing Chart</h3><p>Generate Helm operator atop existing helm archive:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OPERATOR_NAME=visitors-helm-operator</span><br><span class="line"><span class="comment">## download existing chart archive</span></span><br><span class="line">wget https://github.com/kubernetes-operators-book/chapters/releases/download/1.0.0/visitors-helm.tgz</span><br><span class="line"><span class="comment">## generate operator</span></span><br><span class="line">operator-sdk new <span class="variable">$OPERATOR_NAME</span> --api-version=example.com/v1 --kind=VisitorsApp --<span class="built_in">type</span>=helm --helm-chart=./visitors-helm.tgz</span><br></pre></td></tr></table></figure></p>
+<h3 id="Existing-Chart"><a href="#Existing-Chart" class="headerlink" title="Existing Chart"></a>Existing Chart</h3><p>Helm install command 其实有很多参数可以customize，比如选择values yaml file, 但这里没有这么灵活，用的是默认的values.yaml.</p>
+<p>Generate Helm operator atop existing helm archive:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OPERATOR_NAME=visitors-helm-operator</span><br><span class="line"><span class="comment">## download existing chart archive</span></span><br><span class="line">wget https://github.com/kubernetes-operators-book/chapters/releases/download/1.0.0/visitors-helm.tgz</span><br><span class="line"><span class="comment">## generate helm operator</span></span><br><span class="line">operator-sdk new <span class="variable">$OPERATOR_NAME</span> --api-version=example.com/v1 --kind=VisitorsApp --<span class="built_in">type</span>=helm --helm-chart=./visitors-helm.tgz</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><code>--helm-chart</code>: A URL to a chart archive, The repository and name of a remote chart, or The location of a local directory</li>
 <li><code>--helm-chart-repo</code>: Specifies a remote repository URL for the chart </li>
@@ -622,7 +623,7 @@
 </ul>
 <h2 id="Ansible-Operator"><a href="#Ansible-Operator" class="headerlink" title="Ansible Operator"></a>Ansible Operator</h2><p>More or less the same as Helm operator generation.<br>Generate blank Ansible operator project:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OPERATOR_NAME=visitors-ansible-operator</span><br><span class="line">operator-sdk new <span class="variable">$OPERATOR_NAME</span> --api-version=example.com/v1 --kind=VisitorsApp --<span class="built_in">type</span>=ansible</span><br></pre></td></tr></table></figure></p>
 <h2 id="Test-Operator"><a href="#Test-Operator" class="headerlink" title="Test Operator"></a>Test Operator</h2><p>An Operator is delivered as a normal container image. However, during the development and testing cycle, it is often easier to skip the image creation process and simply run the Operator <strong>outside of the cluster</strong>.<br>这个用在开发测试的时候，它不会部署一个真正的operator deployment，只是一个process，但实验效果和真实的一样。这里只是针对helm and ansible的类型.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## go to root path of operator project</span></span><br><span class="line"><span class="comment">## specify full path in chart field</span></span><br><span class="line">cp watches.yaml <span class="built_in">local</span>-watches.yaml</span><br><span class="line">kubectl apply -f deploy/crds/*_crd.yaml</span><br><span class="line"><span class="comment">## start opeerator process</span></span><br><span class="line">operator-sdk up <span class="built_in">local</span> --watches-file ./<span class="built_in">local</span>-watches.yaml</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## go to root path of operator project</span></span><br><span class="line"><span class="comment">## set full path in `chart` field to chart</span></span><br><span class="line">cp watches.yaml <span class="built_in">local</span>-watches.yaml</span><br><span class="line">kubectl apply -f deploy/crds/*_crd.yaml</span><br><span class="line"><span class="comment">## start opeerator process</span></span><br><span class="line">operator-sdk up <span class="built_in">local</span> --watches-file ./<span class="built_in">local</span>-watches.yaml</span><br></pre></td></tr></table></figure>
 <p>The process is up and running, next is to apply your <code>cr</code> yaml:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f deploy/crds/*_cr.yaml</span><br><span class="line">kubectl delete -f deploy/crds/*_cr.yaml</span><br></pre></td></tr></table></figure></p>
 <p>你会看到log的变化，以及application在k8s cluster中的更新。<br>Once the test is complete, end the running process by pressing <code>Ctrl-C</code>.</p>
 <p>During development, repeat this process to test changes. On each iteration, be sure to restart the Operator process to pick up any changes to the Helm or Ansible files</p>
@@ -1216,7 +1217,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">683k</span>
+    <span title="Symbols count total">684k</span>
   
 
   
