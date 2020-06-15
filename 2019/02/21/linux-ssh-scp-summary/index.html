@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
+  <meta name="description" content="This blog used to walk through some ssh(secure shell) and scp usages, based on a real life scenario. InstallFirst, understand that there are openssh client and openssh server: Installing and Enabling">
 <meta name="keywords" content="linux,ssh,scp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSH and SCP Daily Work Summary">
 <meta property="og:url" content="http://yoursite.com/2019/02/21/linux-ssh-scp-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
+<meta property="og:description" content="This blog used to walk through some ssh(secure shell) and scp usages, based on a real life scenario. InstallFirst, understand that there are openssh client and openssh server: Installing and Enabling">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
 <meta property="og:image" content="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP">
@@ -112,10 +112,10 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2019-06-17T21:56:18.424Z">
+<meta property="og:updated_time" content="2020-06-14T23:40:47.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH and SCP Daily Work Summary">
-<meta name="twitter:description" content="This article used to walk you through some commonly ssh and scp usages, based on a real life scenario. ################################################################# &amp;emsp; Insert latest update at">
+<meta name="twitter:description" content="This blog used to walk through some ssh(secure shell) and scp usages, based on a real life scenario. InstallFirst, understand that there are openssh client and openssh server: Installing and Enabling">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
 
 
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">96</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">98</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">172</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">174</span></a>
 
   </li>
 
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 14:56:18" itemprop="dateModified" datetime="2019-06-17T14:56:18-07:00">2019-06-17</time>
+                <time title="Modified: 2020-06-14 16:40:47" itemprop="dateModified" datetime="2020-06-14T16:40:47-07:00">2020-06-14</time>
               
             
           </span>
@@ -493,7 +493,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7.8k</span>
+                <span title="Symbols count in article">17k</span>
               
 
               
@@ -517,26 +517,48 @@
       
 
       
-        <p>This article used to walk you through some commonly <code>ssh</code> and <code>scp</code> usages, based on a real life scenario.</p>
-<p>################################################################<br># &emsp; Insert latest update at the top of the logs<br>#<br># &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br># &emsp; 03/12/2019 &emsp; &emsp; recover public key<br># &emsp; 03/11/2019 &emsp; &emsp; ssh -i option<br># &emsp; 02/21/2019 &emsp; &emsp; scp folder or files<br># &emsp; 01/23/2019 &emsp; &emsp; sshpass<br># &emsp; 01/22/2019 &emsp; &emsp; no prompt first time<br># &emsp; 01/08/2019 &emsp; &emsp; ECDSA host key changed<br># &emsp; 01/06/2019 &emsp; &emsp; ssh-kenscan<br># &emsp; 12/19/2018 &emsp; &emsp; ssh-copy-id<br># &emsp; 11/14/2018 &emsp; &emsp; ssh run shell script<br># &emsp; 10/01/2018 &emsp; &emsp; ssh send command<br>################################################################</p>
-<h3 id="10-01-2018"><a href="#10-01-2018" class="headerlink" title="10/01/2018"></a>10/01/2018</h3><p>use <code>ssh</code> send commands to execute on remote machine:<br><img src="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV" alt=""><br><code>-t</code> flag allow you to interact with remote machine:<br><img src="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP" alt=""></p>
-<h3 id="11-14-2018"><a href="#11-14-2018" class="headerlink" title="11/14/2018"></a>11/14/2018</h3><p>use ssh run shell script in remote machine<br><img src="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ" alt=""></p>
-<h3 id="12-19-2018"><a href="#12-19-2018" class="headerlink" title="12/19/2018"></a>12/19/2018</h3><p>use <code>ssh-copy-id</code> to copy local machine public key to remote machine’s <code>~/.ssh/authorized_keys</code> file, so next time when you <code>ssh</code> again, no prompt to require password:</p>
+        <p>This blog used to walk through some <code>ssh</code>(secure shell) and <code>scp</code> usages, based on a real life scenario.</p>
+<h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>First, understand that there are openssh client and openssh server: <a href="https://phoenixnap.com/kb/how-to-enable-ssh-centos-7" target="_blank" rel="noopener">Installing and Enabling OpenSSH on CentOS 7</a>, this article briefly introduce openssh configuration and firewall setting for it.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum –y install openssh-server openssh-clients</span><br></pre></td></tr></table></figure>
+<p>If only install openssh-clients, you can ssh to others but others cannot ssh to you, since you don’t have ssh server listening at port 22.</p>
+<p>After installing openssh-server, enable and start the sshd daemon<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> sshd</span><br><span class="line">systemctl start sshd</span><br><span class="line"><span class="comment">## check status</span></span><br><span class="line">systemctl status sshd</span><br></pre></td></tr></table></figure></p>
+<p>The system OpenSSH server configuration file is <code>/etc/ssh/sshd_config</code>, the custom configuration file is <code>~/.ssh/config</code>.<br>Firewall setting for ssh on file <code>/etc/sysconfig/iptables</code>.</p>
+<h1 id="SSH-Agent"><a href="#SSH-Agent" class="headerlink" title="SSH Agent"></a>SSH Agent</h1><p>很久之前看书的时候没明白这个概念，现在居然秒懂!<br>A handy program called <code>ssh-agent</code> simplifies working with SSH private keys.</p>
+<p>In macOS, ssh-agent is running by default, but in Linux, start by yourself (ensure only one instance of ssh-agent is running)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## first check if only one instance is running</span></span><br><span class="line">ps aux | grep ssh-agent$</span><br><span class="line"><span class="comment">## if it is there but cannot work, kill it.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> $(ssh-agent)</span><br></pre></td></tr></table></figure></p>
+<p>If you run <code>ssh-agent</code>, it will output environment vars you need to set, for example, you can also manually export these instead of using <code>eval</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment">## export these manually is OK</span></span><br><span class="line">SSH_AUTH_SOCK=/tmp/ssh-YI7PBGlkOteo/agent.2547; <span class="built_in">export</span> SSH_AUTH_SOCK;</span><br><span class="line">SSH_AGENT_PID=2548; <span class="built_in">export</span> SSH_AGENT_PID;</span><br><span class="line"><span class="built_in">echo</span> Agent pid 2548;</span><br></pre></td></tr></table></figure></p>
+<p>Add your private key to ssh-agent<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-add</span><br><span class="line">ssh-add ~/.ssh.id-rsa</span><br><span class="line"><span class="comment">## list all identities </span></span><br><span class="line">ssh-add -l</span><br></pre></td></tr></table></figure></p>
+<p>How to start ssh-agent on login:<br><a href="https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login" target="_blank" rel="noopener">https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login</a><br>Add below to your <code>.bash_profile</code>,<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">SSH_ENV=<span class="string">"<span class="variable">$HOME</span>/.ssh/env"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> start_agent &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Initialising new SSH agent..."</span></span><br><span class="line">    /usr/bin/ssh-agent | sed <span class="string">'s/^echo/#echo/'</span> &gt; <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'succeeded'</span></span><br><span class="line">    chmod 600 <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span></span><br><span class="line">    . <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span> &gt; /dev/null</span><br><span class="line">    /usr/bin/ssh-add;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## Source SSH settings, if applicable</span></span><br><span class="line"><span class="keyword">if</span> [ -f <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    . <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span> &gt; /dev/null</span><br><span class="line">    <span class="comment">#ps $&#123;SSH_AGENT_PID&#125; doesn't work under cywgin</span></span><br><span class="line">    ps -ef | grep <span class="variable">$&#123;SSH_AGENT_PID&#125;</span> | grep ssh-agent$ &gt; /dev/null || &#123;</span><br><span class="line">        start_agent;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    start_agent;</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+<p>When you try to make a connection to a remote host, and you have ssh-agent running, the SSH client will try to use the keys stored in ssh-agent to authenticate with the host</p>
+<p>Advantages:</p>
+<ol>
+<li><p>For encrypted SSH private keys，只有第一次加入ssh-agent的时候要求输入password。如果不使用ssh-agent，每次SSH都会要求输入password</p>
+</li>
+<li><p>If you are using Ansible to manage hosts that use different SSH keys, using an SSH agent simplifies your Ansible configuration files.</p>
+</li>
+<li><p>ssh-agent forwarding, see below</p>
+</li>
+</ol>
+<h3 id="SSh-Agent-Forwarding"><a href="#SSh-Agent-Forwarding" class="headerlink" title="SSh Agent Forwarding"></a>SSh Agent Forwarding</h3><p>If you are cloning a Git repository over SSH, you’ll need to use an SSH private key recognized by your Git server. I like to avoid copying private SSH keys to my remote host, in order to limit the damage in case a host ever gets compromised.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## example.xx.com does not have the private key to access git repo</span></span><br><span class="line"><span class="comment">## but the local host who issue ssh has</span></span><br><span class="line">ssh -A root@example.xxx.com</span><br><span class="line"><span class="comment">## git clone via ssh</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:lorin/mezzanine-example.git</span><br></pre></td></tr></table></figure></p>
+<h1 id="Usage-Summary"><a href="#Usage-Summary" class="headerlink" title="Usage Summary"></a>Usage Summary</h1><p>################################################################<br># &emsp; Insert latest update at the top of the logs<br>#<br># &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br># &emsp; 03/12/2019 &emsp; &emsp; recover public key<br># &emsp; 03/11/2019 &emsp; &emsp; ssh -i option<br># &emsp; 02/21/2019 &emsp; &emsp; scp folder or files<br># &emsp; 01/23/2019 &emsp; &emsp; sshpass<br># &emsp; 01/22/2019 &emsp; &emsp; no prompt first time<br># &emsp; 01/08/2019 &emsp; &emsp; ECDSA host key changed<br># &emsp; 01/06/2019 &emsp; &emsp; ssh-kenscan<br># &emsp; 12/19/2018 &emsp; &emsp; ssh-copy-id<br># &emsp; 11/14/2018 &emsp; &emsp; ssh run shell script<br># &emsp; 10/01/2018 &emsp; &emsp; ssh send command<br>################################################################</p>
+<h2 id="10-01-2018"><a href="#10-01-2018" class="headerlink" title="10/01/2018"></a>10/01/2018</h2><p>use <code>ssh</code> send commands to execute on remote machine:<br><img src="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV" alt=""><br><code>-t</code> flag allow you to interact with remote machine:<br><img src="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP" alt=""></p>
+<h2 id="11-14-2018"><a href="#11-14-2018" class="headerlink" title="11/14/2018"></a>11/14/2018</h2><p>use ssh run shell script in remote machine<br><img src="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ" alt=""></p>
+<h2 id="12-19-2018"><a href="#12-19-2018" class="headerlink" title="12/19/2018"></a>12/19/2018</h2><p>use <code>ssh-copy-id</code> to copy local machine public key to remote machine’s <code>~/.ssh/authorized_keys</code> file, so next time when you <code>ssh</code> again, no prompt to require password:</p>
 <p><img src="https://drive.google.com/uc?id=1HdAmGdDB1HxPtwFSzrTQcS-g7hw5r3o4" alt=""></p>
 <p>Sometimes I see people use <code>~/.ssh/id_rsa</code> with <code>ssh-copy-id</code>, that confused me because that is private key, OK, <code>man</code> tell me why:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i identity_file</span><br><span class="line">        ...If the filename does not end in .pub this is added.  If the filename is omitted, the default_ID_file is used.</span><br></pre></td></tr></table></figure></p>
-<h3 id="01-06-2019"><a href="#01-06-2019" class="headerlink" title="01/06/2019"></a>01/06/2019</h3><p>use <code>ssh-keyscan</code> to get remote machine ecdsa identity, you can put this item into local known_hosts file, so when first time <code>ssh</code> login, there is no prompt to input <code>yes</code>:<br><img src="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp" alt=""><br>actually better to use <code>-o StrictHostKeyChecking=no</code> flag.</p>
-<h3 id="01-08-2019"><a href="#01-08-2019" class="headerlink" title="01/08/2019"></a>01/08/2019</h3><p>I create a new cluster with the same master hostname as the deleted one, so when I try to ssh to it, interesting thing happens:<br><img src="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd" alt=""><br>go to <code>~/.ssh/known_hosts</code> file and delete the corresponding <code>ECDSA</code> line<br><img src="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10" alt=""></p>
-<h3 id="01-22-2019"><a href="#01-22-2019" class="headerlink" title="01/22/2019"></a>01/22/2019</h3><p>when you first time ssh or scp to remote machine, it will prompt to add remote machine to <code>~/.ssh/known_hosts</code> file, this may interrupt <code>ansible</code> or shell script running, so I want to skip it. For example:<br><img src="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq" alt=""><br>use <code>-o StrictHostKeyChecking=no</code> option, it will silently add remote host name to <code>~/.ssh/known_host</code> file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_dsa.pub -o StrictHostKeyChecking=no root@example.com</span><br></pre></td></tr></table></figure></p>
+<h2 id="01-06-2019"><a href="#01-06-2019" class="headerlink" title="01/06/2019"></a>01/06/2019</h2><p>use <code>ssh-keyscan</code> to get remote machine ecdsa identity, you can put this item into local known_hosts file, so when first time <code>ssh</code> login, there is no prompt to input <code>yes</code>:<br><img src="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp" alt=""><br>actually better to use <code>-o StrictHostKeyChecking=no</code> flag.</p>
+<h2 id="01-08-2019"><a href="#01-08-2019" class="headerlink" title="01/08/2019"></a>01/08/2019</h2><p>I create a new cluster with the same master hostname as the deleted one, so when I try to ssh to it, interesting thing happens:<br><img src="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd" alt=""><br>go to <code>~/.ssh/known_hosts</code> file and delete the corresponding <code>ECDSA</code> line<br><img src="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10" alt=""></p>
+<h2 id="01-22-2019"><a href="#01-22-2019" class="headerlink" title="01/22/2019"></a>01/22/2019</h2><p>when you first time ssh or scp to remote machine, it will prompt to add remote machine to <code>~/.ssh/known_hosts</code> file, this may interrupt <code>ansible</code> or shell script running, so I want to skip it. For example:<br><img src="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq" alt=""><br>use <code>-o StrictHostKeyChecking=no</code> option, it will silently add remote host name to <code>~/.ssh/known_host</code> file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_dsa.pub -o StrictHostKeyChecking=no root@example.com</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ./<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure>
 <p>if you don’t want to add the host name, <code>-o UserKnownHostsFile=/dev/null</code> option can save you.</p>
-<h3 id="01-23-2019"><a href="#01-23-2019" class="headerlink" title="01/23/2019"></a>01/23/2019</h3><p>scp or ssh without prompt input password<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sshpass</span><br></pre></td></tr></table></figure></p>
+<h2 id="01-23-2019"><a href="#01-23-2019" class="headerlink" title="01/23/2019"></a>01/23/2019</h2><p>scp or ssh without prompt input password<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sshpass</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; scp/ssh ...</span><br></pre></td></tr></table></figure>
 <p>It’s useful to set password-less at first time, combine all of these, no prompt will show up:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no ...</span><br></pre></td></tr></table></figure></p>
-<h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>scp <code>source</code> directory and it’s content recursively to <code>root</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ~/<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure></p>
+<h2 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h2><p>scp <code>source</code> directory and it’s content recursively to <code>root</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ~/<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure></p>
 <p>scp all files in <code>source</code> directory to <code>target</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no ./<span class="built_in">source</span>/* root@example.com:~/target</span><br></pre></td></tr></table></figure></p>
-<h3 id="03-11-2019"><a href="#03-11-2019" class="headerlink" title="03/11/2019"></a>03/11/2019</h3><p>The <code>ssh</code> command has <code>-i</code> option, you associate private key with this flags:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa xxx</span><br></pre></td></tr></table></figure></p>
+<h2 id="03-11-2019"><a href="#03-11-2019" class="headerlink" title="03/11/2019"></a>03/11/2019</h2><p>The <code>ssh</code> command has <code>-i</code> option, you associate private key with this flags:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa xxx</span><br></pre></td></tr></table></figure></p>
 <p>Note that SSH never send private key over the network, <code>-i</code> merely used to answer challenge that is generated using the corresponding public key from target machine, you don’t need to explicitly use <code>-i</code> if you use default private key in right location.</p>
-<h3 id="03-12-2019"><a href="#03-12-2019" class="headerlink" title="03/12/2019"></a>03/12/2019</h3><p>If public key is lost, you can use existing private key to generate one:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -y -f ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
+<h2 id="03-12-2019"><a href="#03-12-2019" class="headerlink" title="03/12/2019"></a>03/12/2019</h2><p>If public key is lost, you can use existing private key to generate one:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -y -f ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
+<p>Or just create new key pair<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"yes"</span> | ssh-keygen -t rsa -N <span class="string">""</span> -f ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -661,7 +683,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">172</span>
+                    <span class="site-state-item-count">174</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -939,7 +961,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">96</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">98</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -975,7 +1001,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-01-2018"><span class="nav-number">1.</span> <span class="nav-text">10/01/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-14-2018"><span class="nav-number">2.</span> <span class="nav-text">11/14/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-19-2018"><span class="nav-number">3.</span> <span class="nav-text">12/19/2018</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-06-2019"><span class="nav-number">4.</span> <span class="nav-text">01/06/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-08-2019"><span class="nav-number">5.</span> <span class="nav-text">01/08/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-22-2019"><span class="nav-number">6.</span> <span class="nav-text">01/22/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01-23-2019"><span class="nav-number">7.</span> <span class="nav-text">01/23/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-21-2019"><span class="nav-number">8.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-11-2019"><span class="nav-number">9.</span> <span class="nav-text">03/11/2019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-12-2019"><span class="nav-number">10.</span> <span class="nav-text">03/12/2019</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Install"><span class="nav-number">1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-Agent"><span class="nav-number">2.</span> <span class="nav-text">SSH Agent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSh-Agent-Forwarding"><span class="nav-number">2.0.1.</span> <span class="nav-text">SSh Agent Forwarding</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Usage-Summary"><span class="nav-number">3.</span> <span class="nav-text">Usage Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-01-2018"><span class="nav-number">3.1.</span> <span class="nav-text">10/01/2018</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-14-2018"><span class="nav-number">3.2.</span> <span class="nav-text">11/14/2018</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-19-2018"><span class="nav-number">3.3.</span> <span class="nav-text">12/19/2018</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-06-2019"><span class="nav-number">3.4.</span> <span class="nav-text">01/06/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-08-2019"><span class="nav-number">3.5.</span> <span class="nav-text">01/08/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-22-2019"><span class="nav-number">3.6.</span> <span class="nav-text">01/22/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-23-2019"><span class="nav-number">3.7.</span> <span class="nav-text">01/23/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-21-2019"><span class="nav-number">3.8.</span> <span class="nav-text">02/21/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-11-2019"><span class="nav-number">3.9.</span> <span class="nav-text">03/11/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-12-2019"><span class="nav-number">3.10.</span> <span class="nav-text">03/12/2019</span></a></li></ol></li></div>
             
 
           </div>
@@ -1007,7 +1033,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">684k</span>
+    <span title="Symbols count total">694k</span>
   
 
   

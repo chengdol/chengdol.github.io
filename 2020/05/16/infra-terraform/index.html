@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TerraformFrom Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and consistent repeatable deployment. Terrafrom provision G">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-01T16:23:45.997Z">
+<meta property="og:updated_time" content="2020-06-13T08:20:05.642Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Terraform Quick Start">
 <meta name="twitter:description" content="TerraformFrom Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and consistent repeatable deployment. Terrafrom provision G">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">96</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">98</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">172</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">174</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-01 09:23:45" itemprop="dateModified" datetime="2020-06-01T09:23:45-07:00">2020-06-01</time>
+                <time title="Modified: 2020-06-13 01:20:05" itemprop="dateModified" datetime="2020-06-13T01:20:05-07:00">2020-06-13</time>
               
             
           </span>
@@ -510,12 +510,16 @@
       
         <h1 id="Terraform"><a href="#Terraform" class="headerlink" title="Terraform"></a>Terraform</h1><p>From Hashicorp, removing manual build process, adopting declarative approach to deploy <strong>infrastructure as code</strong>, reusable, idempotent and consistent repeatable deployment.</p>
 <p>Terrafrom provision GKS<br><a href="https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster" target="_blank" rel="noopener">https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster</a></p>
-<p>This post from IBM can give you a good overview:<br><a href="https://www.ibm.com/cloud/learn/terraform" target="_blank" rel="noopener">https://www.ibm.com/cloud/learn/terraform</a><br>Terraform vs Kubernetes<br>Terraform vs Ansible</p>
+<p>This article from IBM can give you a good overview:<br><a href="https://www.ibm.com/cloud/learn/terraform" target="_blank" rel="noopener">https://www.ibm.com/cloud/learn/terraform</a></p>
+<ul>
+<li>Terraform vs Kubernetes</li>
+<li>Terraform vs Ansible</li>
+</ul>
 <p>CSDN:<br><a href="https://www.cnblogs.com/sparkdev/p/10052310.html" target="_blank" rel="noopener">https://www.cnblogs.com/sparkdev/p/10052310.html</a></p>
 <p>Terraform 文档非常informative，结构清晰:<br><a href="https://www.terraform.io/docs/" target="_blank" rel="noopener">https://www.terraform.io/docs/</a></p>
-<p>Terraform之于cloud infra就相当于 helm之于K8s, 大大简化了操作复杂性，自动快速部署，同时做到了复用，versioning等特性。但首先得去了解cloud provider中提供的资源的用途，搭配。</p>
+<p>Terraform之于cloud infra就相当于 helm之于K8s, 大大简化了操作复杂性，自动快速部署，同时做到了复用，versioning等特性。但首先得去了解cloud provider中提供的资源的用途，搭配。这个在O’reilly上有专门结合cloud部署的课程。</p>
 <h2 id="Play-around"><a href="#Play-around" class="headerlink" title="Play around"></a>Play around</h2><p>resource files in github:<br><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></p>
-<p>what are needed:<br>Aws account, may get charged, ask for GCP free access.</p>
+<p>what is needed:<br>AWS account, may get charged, ask for GCP free access.</p>
 <h2 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h2><p>Terraform executable: download from web<br>Terraform files: using hashicorp configure language DSL<br>Terraform plugin: interact with provider: AWS, GCP, Azure, etc<br>Terraform state file: json and don’t touch it</p>
 <p>You can have multiple terraform file: <code>.tf</code>, when run terraform it will stitch them together to form a single configuration. 比如把variables, outputs, resources, tfvars分开。</p>
 <p>tfvars file be default named as <code>terraform.tfvars</code>. otherwise when run <code>plan</code> you need to specify the file path.</p>
@@ -703,7 +707,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">172</span>
+                    <span class="site-state-item-count">174</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -981,7 +985,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">96</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">98</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1049,7 +1057,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">684k</span>
+    <span title="Symbols count total">694k</span>
   
 
   
