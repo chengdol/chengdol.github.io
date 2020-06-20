@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+  <meta name="description" content="Consul web site:https://www.consul.io/ Online play:https://demo.consul.io/ui/dc1/services IntroductionChallenges in managing services:  Service discovery Failure Detection Mutli-Data center Service co">
 <meta name="keywords" content="infra,consul">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Consul Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/06/13/infra-consul/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="Consul web site:https://www.consul.io/ Online play:https://demo.consul.io/ui/dc1/services IntroductionChallenges in managing services:  Service discovery Failure Detection Mutli-Data center Service co">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-16T16:10:50.115Z">
+<meta property="og:updated_time" content="2020-06-20T07:12:42.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Consul Quick Start">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:description" content="Consul web site:https://www.consul.io/ Online play:https://demo.consul.io/ui/dc1/services IntroductionChallenges in managing services:  Service discovery Failure Detection Mutli-Data center Service co">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-16 09:10:50" itemprop="dateModified" datetime="2020-06-16T09:10:50-07:00">2020-06-16</time>
+                <time title="Modified: 2020-06-20 00:12:42" itemprop="dateModified" datetime="2020-06-20T00:12:42-07:00">2020-06-20</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">0</span>
+                <span title="Symbols count in article">13k</span>
               
 
               
@@ -508,7 +508,45 @@
       
 
       
-        
+        <p>Consul web site:<br><a href="https://www.consul.io/" target="_blank" rel="noopener">https://www.consul.io/</a></p>
+<p>Online play:<br><a href="https://demo.consul.io/ui/dc1/services" target="_blank" rel="noopener">https://demo.consul.io/ui/dc1/services</a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Challenges in managing services:</p>
+<ul>
+<li>Service discovery</li>
+<li>Failure Detection</li>
+<li>Mutli-Data center</li>
+<li>Service configuration</li>
+</ul>
+<p>一个应用服务架构中，一般有API tier增加灵活性，同时提供额外的服务，比如以下应用就可以直接拿来API使用:</p>
+<ul>
+<li>MailGun</li>
+<li>Stripe</li>
+<li>Loggly</li>
+<li>Datadog</li>
+</ul>
+<p>Consul is <code>distributed</code>.</p>
+<p>These services need to be discovered by each other. 对于越来越复杂的内部组织结构，比如很多internal load balancer, Consul can come and play, 比如提供内部的DNS服务, Service discovery.</p>
+<p>Failure Dectection, Consul running lightweight Consul agent (server or client mode) on each of node in your environment. The agent will diagnose all services running locally.</p>
+<p>Reacting configuration via key/value store, reflecting changes quickly in near real time. </p>
+<p>Multi-Data center aware.</p>
+<h2 id="Lab-Environment-Setup"><a href="#Lab-Environment-Setup" class="headerlink" title="Lab Environment Setup"></a>Lab Environment Setup</h2><p>Refer this git repo:<br><a href="https://github.com/g0t4/consul-getting-started/blob/master/Vagrantfile" target="_blank" rel="noopener">https://github.com/g0t4/consul-getting-started/blob/master/Vagrantfile</a></p>
+<p>Consul is easy to install, just a executable binary, put it in <code>/usr/local/bin</code>:<br><a href="https://www.consul.io/downloads" target="_blank" rel="noopener">https://www.consul.io/downloads</a></p>
+<p>我修改了一下课程的demo，做了一个简单的consul lab cluster:</p>
+<h2 id="Monitor-Nodes"><a href="#Monitor-Nodes" class="headerlink" title="Monitor Nodes"></a>Monitor Nodes</h2><p>在这一章的例子中提供了一个很好的建模思路！在vagrant virutal machine中安装docker，然后用container的方式运行一些服务，再expose这些端口出来(看上去对iptables做了更改)，这样就避免了很多的virtual machine上的配置工作。</p>
+<p>可以去Vagrant box catalog中找别人配置好的box 直接使用。</p>
+<p>Start consul server agent:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -dev: development agent, server mode will be turned on this agent, for quick start</span></span><br><span class="line"><span class="comment">## in production, don't use -dev</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## -advertise: specify one ipv4 interface</span></span><br><span class="line"><span class="comment">## -client: specify client access ip, usuall 0.0.0.0</span></span><br><span class="line">consul agent -dev -<span class="built_in">bind</span> 0.0.0.0 -advertise 172.20.20.31 -client 0.0.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment">## log output</span></span><br><span class="line">==&gt; Starting Consul agent...</span><br><span class="line">           Version: <span class="string">'v1.8.0'</span></span><br><span class="line">           Node ID: <span class="string">'95b60a36-f350-8a2b-b1cb-54f7b79657dc'</span></span><br><span class="line">         Node name: <span class="string">'consul-server'</span></span><br><span class="line">        Datacenter: <span class="string">'dc1'</span> (Segment: <span class="string">'&lt;all&gt;'</span>)</span><br><span class="line">            Server: <span class="literal">true</span> (Bootstrap: <span class="literal">false</span>)</span><br><span class="line">       Client Addr: [127.0.0.1] (HTTP: 8500, HTTPS: -1, gRPC: 8502, DNS: 8600)</span><br><span class="line">      Cluster Addr: 172.20.20.31 (LAN: 8301, WAN: 8302)</span><br><span class="line">           Encrypt: Gossip: <span class="literal">false</span>, TLS-Outgoing: <span class="literal">false</span>, TLS-Incoming: <span class="literal">false</span>, Auto-Encrypt-TLS: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">==&gt; Log data will now stream <span class="keyword">in</span> as it occurs:</span><br><span class="line">    ...</span><br><span class="line">    2020-06-19T23:59:25.729Z [INFO]  agent.server: New leader elected: payload=consul-server</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></p>
+<p>我改动了一下Vagrantfile， 我估计是routing table出了问题，在MacOS host上无法访问private network中的virtual machine:<br><a href="https://stackoverflow.com/questions/23497855/unable-to-connect-to-vagrant-private-network-from-host" target="_blank" rel="noopener">https://stackoverflow.com/questions/23497855/unable-to-connect-to-vagrant-private-network-from-host</a></p>
+<p>于是我增加了一个VM <code>ui</code> 去显示consul 的UI with port forwarding, but still does not work, from the log the port 8500 is bound with 127.0.0.1:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Client Addr: [127.0.0.1] (HTTP: 8500, HTTPS: -1, gRPC: -1, DNS: 8600)</span><br><span class="line">Cluster Addr: 172.20.20.41 (LAN: 8301, WAN: 8302)</span><br></pre></td></tr></table></figure></p>
+<p>首先，我想到了更改Client Addr 为 172.20.20.41，因为这是我在Vagrantfile中设置的private IP:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">consul agent -config-file /vagrant/ui.consul.json -advertise 172.20.20.41 -client 172.20.20.41</span><br></pre></td></tr></table></figure></p>
+<p>但还是不行, 主机上<code>localhost:8500</code> 无法连接，当然为了确认<code>-client</code> flag的使用的正确性，用netstat查看一下是否端口在改interface上。后来我就想到应该是iptables的问题了，没有这个interface上的流量forward出去，那就改成<code>0.0.0.0</code>好了(specify “any IPv4 address at all”):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## /vagrant/ui.consul.json set ui is true</span></span><br><span class="line">consul agent -config-file /vagrant/ui.consul.json -advertise 172.20.20.41 -client 0.0.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment">## output</span></span><br><span class="line">==&gt; Starting Consul agent...</span><br><span class="line">           Version: <span class="string">'v1.8.0'</span></span><br><span class="line">           Node ID: <span class="string">'10ccbe63-bef0-3cf6-b24b-e0a53bdef213'</span></span><br><span class="line">         Node name: <span class="string">'ui'</span></span><br><span class="line">        Datacenter: <span class="string">'dc1'</span> (Segment: <span class="string">''</span>)</span><br><span class="line">            Server: <span class="literal">false</span> (Bootstrap: <span class="literal">false</span>)</span><br><span class="line">       Client Addr: [0.0.0.0] (HTTP: 8500, HTTPS: -1, gRPC: -1, DNS: 8600)</span><br><span class="line">      Cluster Addr: 172.20.20.41 (LAN: 8301, WAN: 8302)</span><br><span class="line">           Encrypt: Gossip: <span class="literal">false</span>, TLS-Outgoing: <span class="literal">false</span>, TLS-Incoming: <span class="literal">false</span>, Auto-Encrypt-TLS: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">==&gt; Log data will now stream <span class="keyword">in</span> as it occurs:</span><br><span class="line">...</span><br><span class="line">==&gt; Consul agent running!</span><br><span class="line">...</span><br><span class="line">    2020-06-20T03:38:12.476Z [INFO]  agent: (LAN) joining: lan_addresses=[172.20.20.31]</span><br><span class="line">    2020-06-20T03:38:12.477Z [WARN]  agent.client.manager: No servers available</span><br><span class="line">    2020-06-20T03:38:12.477Z [ERROR] agent.anti_entropy: failed to sync remote state: error=<span class="string">"No known Consul servers"</span></span><br><span class="line">    2020-06-20T03:38:12.480Z [INFO]  agent.client.serf.lan: serf: EventMemberJoin: consul-server 172.20.20.31</span><br><span class="line">    2020-06-20T03:38:12.480Z [INFO]  agent: (LAN) joined: number_of_nodes=1</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>或者可以在config json中定义<code>client_addr</code>:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"retry_join"</span>: [<span class="string">"172.20.20.31"</span>],</span><br><span class="line">  <span class="attr">"data_dir"</span>: <span class="string">"/tmp/consul"</span>,</span><br><span class="line">  <span class="attr">"client_addr"</span>: <span class="string">"0.0.0.0"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>虽然通过的ui virtual machine暴露的web，但是所有信息都来自consul server! 和k8s nodeport的模式类似。</p>
+<p>Can access via HTTP API: <a href="https://www.consul.io/api-docs" target="_blank" rel="noopener">https://www.consul.io/api-docs</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8500/v1/catalog/nodes</span><br><span class="line"><span class="comment">## format readable</span></span><br><span class="line">http://localhost:8500/v1/catalog/nodes?pretty</span><br></pre></td></tr></table></figure></p>
+<p>DNS query, go to <code>ui</code> node, when we run consul agent, the DNS port is 8600:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## query node</span></span><br><span class="line">dig @localhost -p 8600 consul-server.node.consul</span><br><span class="line"><span class="comment">## query service</span></span><br><span class="line">dig @localhost -p 8600 consul.service.consul</span><br><span class="line"><span class="comment">## query service record, will show you the server port, such as 8300</span></span><br><span class="line">dig @localhost -p 8600 consul.service.consul SRV</span><br></pre></td></tr></table></figure></p>
+<p>The RPC Protocol is deprecated and support was removed in Consul <code>0.8</code>. Please use the <code>HTTP API</code>, which has support for all features of the RPC Protocol.</p>
+<p>这里提到了2个有用的commands, 本来是用RPC实现的，但现在改了:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can specify target point</span></span><br><span class="line"><span class="comment">## provide debug info</span></span><br><span class="line">consul info [-http-addr=172.20.20.31:8500]</span><br><span class="line"><span class="comment">## get log message, 这样就可以在某一agent上查看任意其他的agent log了</span></span><br><span class="line">consul monitor [-http-addr=172.20.20.31:8500]</span><br></pre></td></tr></table></figure></p>
+<p>Here <code>172.20.20.31</code> is consul server, you must start it by <code>-client 0.0.0.0</code>, otherwise the port is bound with loopback interface and cannot access.</p>
+<h2 id="Service-Discovery"><a href="#Service-Discovery" class="headerlink" title="Service Discovery"></a>Service Discovery</h2>
       
     </div>
 
@@ -599,8 +637,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -925,6 +972,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lab-Environment-Setup"><span class="nav-number">2.</span> <span class="nav-text">Lab Environment Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monitor-Nodes"><span class="nav-number">3.</span> <span class="nav-text">Monitor Nodes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Discovery"><span class="nav-number">4.</span> <span class="nav-text">Service Discovery</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -950,7 +1014,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">695k</span>
+    <span title="Symbols count total">700k</span>
   
 
   

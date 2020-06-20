@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1DqpLc4_K5ZSjSSSBKIqUEYuSOrXWdra_">
 <meta property="og:image" content="https://drive.google.com/uc?id=1soVs4XwDeH6A6D9CG6ZK4WS_jSAnVxPI">
 <meta property="og:image" content="https://drive.google.com/uc?id=1QRlirLbMDaA2p_XgEPnvA1fZn98qLJ_M">
-<meta property="og:updated_time" content="2020-04-29T04:45:19.747Z">
+<meta property="og:updated_time" content="2020-06-20T03:31:19.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Networking PluralSight">
 <meta name="twitter:description" content="这篇总结是来自PluralSight上的LPIC-1课程的Network chapter，以及LFCE Advanced Networking training. Frequently asked Question:What is going on when you hit URL in browser?from mediumfrom Quora 备注:2020年4月份pluralsight在搞活">
@@ -443,7 +443,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-28 21:45:19" itemprop="dateModified" datetime="2020-04-28T21:45:19-07:00">2020-04-28</time>
+                <time title="Modified: 2020-06-19 20:31:19" itemprop="dateModified" datetime="2020-06-19T20:31:19-07:00">2020-06-19</time>
               
             
           </span>
@@ -532,10 +532,10 @@
 <p>这些文件里面都写好了配置，more details see this link:<br><a href="https://www.computernetworkingnotes.com/rhce-study-guide/network-configuration-files-in-linux-explained.html" target="_blank" rel="noopener">https://www.computernetworkingnotes.com/rhce-study-guide/network-configuration-files-in-linux-explained.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">BOOTPROTO=dhcp</span><br><span class="line">NAME=eth0</span><br><span class="line">DEVICE=eth0</span><br><span class="line">ONBOOT=yes</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
 <p>After editing the ifcfg-xx file, bring down and up that interface:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifdown eth0</span><br><span class="line">ifup eth0</span><br></pre></td></tr></table></figure></p>
 <h2 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h2><p>Display route tables<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ip r</span><br><span class="line"><span class="comment">## route and netstat 每个column的意思更清楚一些</span></span><br><span class="line">netstat -r</span><br><span class="line">route</span><br><span class="line"></span><br><span class="line"><span class="comment">## destination 表示一个ip range, 要出去的packet IP 和 mask 作用之后</span></span><br><span class="line"><span class="comment">## 据destination送去不同的interface</span></span><br><span class="line"><span class="comment">## 如果和mask作用后有多个match, 则去mask最长的那个</span></span><br><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">default         gateway         0.0.0.0         UG    0      0        0 eth1</span><br><span class="line">9.30.94.0       0.0.0.0         255.255.254.0   U     0      0        0 eth1</span><br><span class="line">172.16.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0</span><br></pre></td></tr></table></figure></p>
-<p>Adding routes, 把所有的找不到routing的traffic全部转到192.168.56.104上去，通过eth0, 比如当前的machine无法访问外网，而192.168.56.104却可以, 但之后192.168.56.104也需要配置成router。</p>
-<p>当时在做项目的时候需要去ds ops console查看performance, 但Openshift worker node外界无法直接访问，只能通过infra node的routing才行，于是先用nodePort expose service, 再设置infra node到对应worker node port的映射，最后对外用MASQUERADE。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## this command is not persistent</span></span><br><span class="line"><span class="comment">## default can be format like 192.168.1.0/24</span></span><br><span class="line">ip route add default via 192.168.56.104 dev eth0</span><br></pre></td></tr></table></figure></p>
+<p>Adding routes, 把所有的找不到routing的traffic全部转到192.168.56.104上去，通过eth0, 比如当前的machine无法访问外网，而192.168.56.104却可以, 但之后192.168.56.104也需要配置成router。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## this command is not persistent</span></span><br><span class="line"><span class="comment">## default can be format like 192.168.1.0/24</span></span><br><span class="line">ip route add default via 192.168.56.104 dev eth0</span><br></pre></td></tr></table></figure></p>
 <p>如果需要make it persist, need to edit <code>/etc/sysconfig/network-scripts/</code> corresponding file eth0, 或者自己添加script，然后重启network <code>systemctl restart network</code>.</p>
 <p>Configuring a linux system as router:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## now let's configure machine 192.168.56.104 as a router</span></span><br><span class="line">vim /etc/sysctl.conf</span><br><span class="line"><span class="comment">## add this line to enable ipv4 forward</span></span><br><span class="line">net.ipv4.ip_forward=1</span><br><span class="line"><span class="comment">## reload</span></span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure></p>
+<p>当时在做项目的时候需要去ds ops console查看performance, 但Openshift worker node外界无法直接访问，只能通过infra node的routing才行，于是先用nodePort expose service, 再设置infra node到对应worker node port的映射，最后对外用MASQUERADE。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## run in infra node</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 32160 -j DNAT --to-destination &lt;worker private IP&gt;:32160</span><br><span class="line"></span><br><span class="line">iptables -t nat -A POSTROUTING -j MASQUERADE</span><br><span class="line">iptables -t nat -L -v -n</span><br></pre></td></tr></table></figure></p>
 <p>Allowing access to the internet via NAT, so traffic can get back to private network.</p>
 <blockquote>
 <p>注意routing这部分还没有涉及到firewall, firewall is inactive</p>
@@ -1056,7 +1056,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">695k</span>
+    <span title="Symbols count total">700k</span>
   
 
   
