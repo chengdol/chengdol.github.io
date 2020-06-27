@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Git repo, this repo has useful Vault commands:https://github.com/ned1313/Getting-Started-Vault My Vault lab cluster:https://github.com/chengdol/vagrant-vault IntroductionVault web site:https://www.vau">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-25T02:15:11.556Z">
+<meta property="og:updated_time" content="2020-06-27T06:10:36.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vault Quick Start">
 <meta name="twitter:description" content="Git repo, this repo has useful Vault commands:https://github.com/ned1313/Getting-Started-Vault My Vault lab cluster:https://github.com/chengdol/vagrant-vault IntroductionVault web site:https://www.vau">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">99</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">100</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">175</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">176</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-24 19:15:11" itemprop="dateModified" datetime="2020-06-24T19:15:11-07:00">2020-06-24</time>
+                <time title="Modified: 2020-06-26 23:10:36" itemprop="dateModified" datetime="2020-06-26T23:10:36-07:00">2020-06-26</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">14k</span>
+                <span title="Symbols count in article">27k</span>
               
 
               
@@ -516,11 +516,11 @@
 <p>Vault works well with Consul.</p>
 <p>Start a Vault server:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## same as consul in development mode, don't use this in production!</span></span><br><span class="line"><span class="comment">## 0.0.0.0:8200, used for vagrant port fordwarding access from host</span></span><br><span class="line">vault server -dev-listen-address 0.0.0.0:8200 -dev</span><br></pre></td></tr></table></figure></p>
 <p>Output as below:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">WARNING! dev mode is enabled! In this mode, Vault runs entirely in-memory</span><br><span class="line">and starts unsealed with a single unseal key. The root token is already</span><br><span class="line">authenticated to the CLI, so you can immediately begin using Vault.</span><br><span class="line"></span><br><span class="line">You may need to set the following environment variable:</span><br><span class="line"></span><br><span class="line">    $ export VAULT_ADDR=&apos;http://0.0.0.0:8200&apos;</span><br><span class="line"></span><br><span class="line">The unseal key and root token are displayed below in case you want to</span><br><span class="line">seal/unseal the Vault or re-authenticate.</span><br><span class="line"></span><br><span class="line">## these two are critical</span><br><span class="line">Unseal Key: pLNBmZQRHvspdy5unZcTjm1jOVQ81Z0pO6ywYHNP1zQ=</span><br><span class="line">Root Token: s.hfnmMkgG7cggWDOmPfHC1jIe</span><br><span class="line"></span><br><span class="line">Development mode should NOT be used in production installations!</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Vault API access</span></span><br><span class="line"><span class="built_in">export</span> VAULT_ADDR=<span class="string">'http://0.0.0.0:8200'</span></span><br><span class="line"><span class="built_in">export</span> VAULT_TOKEN=s.ttlDcetbJe3uLt0FF5rSidg3</span><br><span class="line"></span><br><span class="line"><span class="comment">## login to vault server need VAULT_TOKEN to login</span></span><br><span class="line">vault login</span><br></pre></td></tr></table></figure>
+<p>注意，这里VAULT_ADDR是本地的，vault server当然可以在其他地方，设置对应的地址即可.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Vault API access</span></span><br><span class="line"><span class="built_in">export</span> VAULT_ADDR=<span class="string">'http://0.0.0.0:8200'</span></span><br><span class="line"><span class="built_in">export</span> VAULT_TOKEN=s.ttlDcetbJe3uLt0FF5rSidg3</span><br><span class="line"></span><br><span class="line"><span class="comment">## login to vault server need VAULT_TOKEN to login</span></span><br><span class="line">vault login</span><br></pre></td></tr></table></figure></p>
 <p>Vault web UI access: <code>http://localhost:8200</code></p>
 <p>So, just like Consul, there are 3 ways to interact with Vault server: UI, API, CLI (actually running API under the hood). </p>
 <p><code>secret</code> is a pre-existing secret engine folder in Vault storage path:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Write a secret</span></span><br><span class="line">vault kv put secret/hg2g answer=42</span><br><span class="line"><span class="comment">#For Linux</span></span><br><span class="line"><span class="comment"># marvin.json is a json file</span></span><br><span class="line">curl --header <span class="string">"X-Vault-Token: <span class="variable">$VAULT_TOKEN</span>"</span> --request POST \</span><br><span class="line"> --data @marvin.json <span class="variable">$VAULT_ADDR</span>/v1/secret/data/marvin</span><br></pre></td></tr></table></figure></p>
-<p>marvin.json:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"data"</span>: &#123;</span><br><span class="line">        <span class="attr">"paranoid"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"status"</span>: <span class="string">"bored"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>marvin.json is as follow:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"data"</span>: &#123;</span><br><span class="line">        <span class="attr">"paranoid"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"status"</span>: <span class="string">"bored"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Get a secret</span></span><br><span class="line">vault kv get secret/hg2g</span><br><span class="line"><span class="comment">#specify format</span></span><br><span class="line">vault kv get -format=json secret/hg2g</span><br><span class="line">vault kv get -format=yaml secret/hg2g</span><br><span class="line"><span class="comment">#For Linux</span></span><br><span class="line"><span class="comment">#Install jq if necessary</span></span><br><span class="line">sudo yum install jq -y</span><br><span class="line">curl --header <span class="string">"X-Vault-Token: <span class="variable">$VAULT_TOKEN</span>"</span> <span class="variable">$VAULT_ADDR</span>/v1/secret/data/marvin | jq</span><br><span class="line"></span><br><span class="line"><span class="comment">#Put a new secret in and a new value for an existing secret</span></span><br><span class="line">vault kv put secret/hg2g answer=54 ford=prefect</span><br><span class="line">vault kv get secret/hg2g</span><br><span class="line"></span><br><span class="line"><span class="comment">#Delete the secrets</span></span><br><span class="line">vault kv delete secret/hg2g</span><br><span class="line">vault kv get secret/hg2g</span><br><span class="line"></span><br><span class="line"><span class="comment">#For Linux</span></span><br><span class="line">curl --header <span class="string">"X-Vault-Token: <span class="variable">$VAULT_TOKEN</span>"</span> --request DELETE <span class="variable">$VAULT_ADDR</span>/v1/secret/data/marvin</span><br></pre></td></tr></table></figure>
 <h2 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h2><p>Vault vs K8s secrets?</p>
 <h1 id="Working-with-Secrets"><a href="#Working-with-Secrets" class="headerlink" title="Working with Secrets"></a>Working with Secrets</h1><p>Secret lifecycle:</p>
@@ -543,10 +543,89 @@
 <ul>
 <li><a href="https://github.com/ned1313/Getting-Started-Vault/blob/master/m3/m3-secretengine.sh" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Vault/blob/master/m3/m3-secretengine.sh</a></li>
 </ul>
-<h2 id="Create-Mysql-DB-Secret-Engine"><a href="#Create-Mysql-DB-Secret-Engine" class="headerlink" title="Create Mysql DB Secret Engine"></a>Create Mysql DB Secret Engine</h2><ul>
+<h2 id="Create-Mysql-DB-Secret-Engine"><a href="#Create-Mysql-DB-Secret-Engine" class="headerlink" title="Create Mysql DB Secret Engine"></a>Create Mysql DB Secret Engine</h2><p>Vault official reference:</p>
+<ul>
+<li><a href="https://www.vaultproject.io/docs/secrets" target="_blank" rel="noopener">https://www.vaultproject.io/docs/secrets</a></li>
+</ul>
+<p>Vault在这里类似一个中间层，在user 和 Mysql instance之间，保存和传递credential和请求. 这个demo在AZure上spin up了一个bitnami Mysql instance，和本地的vault mysql secret engine关联，然后通过Vault联系Mysql 产生一个dynamic user，并授予这个临时user权限，我们通过这个临时user就可以操作Mysql 数据库了。</p>
+<p>这个dynamic user lifecycle also managed by Vault, as well as the permission the user has. </p>
+<ul>
 <li><a href="https://github.com/ned1313/Getting-Started-Vault/blob/master/m3/m3-mysqlengine.sh" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Vault/blob/master/m3/m3-mysqlengine.sh</a></li>
 </ul>
-
+<p>Except Mysql example, Vault secrets can be used for certificates, for SSH credentials, etc.<br>Secrets engine make Vault extensible, there are different plugin to handle different needs.</p>
+<h1 id="Controlling-Access"><a href="#Controlling-Access" class="headerlink" title="Controlling Access"></a>Controlling Access</h1><p>Similar to RBAC in K8s, authentication method to control login, policies to control what is able to do, managing client tokens.</p>
+<h2 id="Vault-Auth-Method"><a href="#Vault-Auth-Method" class="headerlink" title="Vault Auth Method"></a>Vault Auth Method</h2><p>Vault has internal authentication (called <code>userpass</code>) and support external, multiple authrntication methods.</p>
+<ul>
+<li><a href="https://github.com/ned1313/Getting-Started-Vault/blob/master/m4/m4-basicauth.sh" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Vault/blob/master/m4/m4-basicauth.sh</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list current auth methods</span></span><br><span class="line"><span class="comment">## by default, we only have token auth method</span></span><br><span class="line">vault auth list</span><br><span class="line"><span class="comment">## enable new auth method</span></span><br><span class="line">vault auth <span class="built_in">enable</span> userpass</span><br><span class="line"><span class="comment">## create user</span></span><br><span class="line">vault write auth/userpass/users/arthur password=dent</span><br><span class="line"><span class="comment">## list user</span></span><br><span class="line">vault list auth/userpass/users</span><br></pre></td></tr></table></figure>
+<p>You will see the changes in UI <code>Access</code> section.</p>
+<p>Once you create a user/password, then you can run for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 这里使用的是user/password login，不是用token</span></span><br><span class="line">vault login -method=userpass username=arthur</span><br><span class="line"><span class="comment">## then input password</span></span><br><span class="line">Password (will be hidden): </span><br><span class="line"><span class="comment">## 这个warning是因为，做实验的时候之前export了root token</span></span><br><span class="line">WARNING! The VAULT_TOKEN environment variable is <span class="built_in">set</span>! This takes precedence</span><br><span class="line">over the value <span class="built_in">set</span> by this <span class="built_in">command</span>. To use the value <span class="built_in">set</span> by this <span class="built_in">command</span>,</span><br><span class="line"><span class="built_in">unset</span> the VAULT_TOKEN environment variable or <span class="built_in">set</span> it to the token displayed</span><br><span class="line">below.</span><br><span class="line"></span><br><span class="line">Success! You are now authenticated. The token information displayed below</span><br><span class="line">is already stored <span class="keyword">in</span> the token helper. You <span class="keyword">do</span> NOT need to run <span class="string">"vault login"</span></span><br><span class="line">again. Future Vault requests will automatically use this token.</span><br><span class="line"></span><br><span class="line">Key                    Value</span><br><span class="line">---                    -----</span><br><span class="line">token                  s.z52FGzn78XynKlxeS0Akt0t7</span><br><span class="line">token_accessor         90LaRNNtsCUEg6yDd9ldRi3v</span><br><span class="line">token_duration         768h</span><br><span class="line">token_renewable        <span class="literal">true</span></span><br><span class="line">token_policies         [<span class="string">"default"</span>]</span><br><span class="line">identity_policies      []</span><br><span class="line">policies               [<span class="string">"default"</span>]</span><br><span class="line">token_meta_username    arthur</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## will show you where is the token from, not root token any more</span></span><br><span class="line"><span class="comment">## see `path` field where is the token from</span></span><br><span class="line">vault token lookup</span><br></pre></td></tr></table></figure></p>
+<p>Token represent who you are and what you can do, for example, the user itself cannot update its password via its token:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## update password</span></span><br><span class="line">vault write auth/userpass/users/arthur/password password=tricia</span><br><span class="line"><span class="comment">## output</span></span><br><span class="line">Error writing data to auth/userpass/users/arthur/password: Error making API request.</span><br><span class="line"></span><br><span class="line">URL: PUT http://0.0.0.0:8200/v1/auth/userpass/users/arthur/password</span><br><span class="line">Code: 403. Errors:</span><br><span class="line"></span><br><span class="line">* 1 error occurred:</span><br><span class="line">	* permission denied</span><br></pre></td></tr></table></figure></p>
+<p>Can do this after export root token.</p>
+<p>Delete auth:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Remove account</span></span><br><span class="line">vault delete auth/userpass/users/arthur</span><br></pre></td></tr></table></figure></p>
+<p>这里介绍了2个新概念: <code>LDAP</code> and <code>Active Directory</code></p>
+<ul>
+<li><p><a href="https://stackoverflow.com/questions/663402/what-are-the-differences-between-ldap-and-active-directory" target="_blank" rel="noopener">What are the differences between LDAP and Active Directory?</a><br>Active Directory is a database based system that provides authentication, directory, policy, and other services in a Windows environment</p>
+<p>LDAP (Lightweight Directory Access Protocol) is an application protocol for querying and modifying items in directory service providers like Active Directory, which supports a form of LDAP.</p>
+<p>Short answer: AD is a directory services database, and LDAP is one of the protocols you can use to talk to it.</p>
+</li>
+</ul>
+<p>见下面vault policy章节的例子.<br>Case: 在外部设置了<code>AD</code> as authentication method, enable <code>LDAP</code> auth in Vault. Then user login Vault with AD credentials against LDAP talk to AD, AD tells Vault determine the policy about what the user can do, then user will get the right token from vault to access the store.</p>
+<h2 id="Vault-Policy"><a href="#Vault-Policy" class="headerlink" title="Vault Policy"></a>Vault Policy</h2><p>Similar to K8s role.</p>
+<ul>
+<li><a href="https://github.com/ned1313/Getting-Started-Vault/blob/master/m4/m4-activedirectory.sh" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Vault/blob/master/m4/m4-activedirectory.sh</a></li>
+</ul>
+<p>这个例子，远程登录了一个Vault server, login as root, create <code>devkv</code> store with key and value pair, then create policy <code>dev</code> with HCL file for user to access the <code>devkv</code>. </p>
+<p>Enable LDAP auth, configure it with Active Directory remotely. Then assign the <code>developers</code> group in LDAP with <code>dev</code> policy.</p>
+<p>Then user <code>adent</code> login vault against <code>ldap</code> method. The user is in the <code>developers</code> group so it will get token with permission specified by <code>dev</code> policy.</p>
+<h2 id="Client-Token"><a href="#Client-Token" class="headerlink" title="Client Token"></a>Client Token</h2><ul>
+<li><a href="https://www.vaultproject.io/docs/concepts/tokens" target="_blank" rel="noopener">https://www.vaultproject.io/docs/concepts/tokens</a></li>
+</ul>
+<h2 id="Wrapping-Response"><a href="#Wrapping-Response" class="headerlink" title="Wrapping Response"></a>Wrapping Response</h2><ul>
+<li><a href="https://github.com/ned1313/Getting-Started-Vault/blob/master/m4/m4-tokenwrapping.sh" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Vault/blob/master/m4/m4-tokenwrapping.sh</a></li>
+</ul>
+<h1 id="Operating-Vaule-Server"><a href="#Operating-Vaule-Server" class="headerlink" title="Operating Vaule Server"></a>Operating Vaule Server</h1><p>主要讲了production Vault server setup.</p>
+<ul>
+<li>Vault server architecture</li>
+<li>Storage backend options</li>
+<li>Vault server operations</li>
+</ul>
+<p>这里例子用Consul作为 storage backend(不是说it’s not intended for this吗😂), 在Vault 主机上运行有Consul agent 和 远处的Consul server通信 (gossip tcp: 8301, RPC tcp: 8300) ，Consul server可以有多个以实现HA。Vault通过本地的Consul agent port 8500和其交互，外界访问Vault 用默认的port 8200:</p>
+<ul>
+<li><a href="https://github.com/ned1313/Getting-Started-Vault/tree/master/m5" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Vault/tree/master/m5</a></li>
+</ul>
+<p>可以留意一下这里的Consul配置，之前用的一直是dev mode，这里是production mode了, 把Consul 包装成了一个service, run as daemon, in <code>consul</code> folder:</p>
+<ul>
+<li>consul-deploy.sh</li>
+<li>consul.hcl</li>
+<li>server.hcl</li>
+<li>consul.service<br>注意把 <code>.hcl</code> and <code>.service</code> 文件内容paste到 <code>consul-deploy.sh</code> 创建的文件中。script中的<code>useradd</code> command也值得借鉴。<code>consul keygen</code> 是用来产生encrypt string的，用在server 和 client的 <code>.hcl</code>中。</li>
+</ul>
+<p>Consul agent setup:</p>
+<ul>
+<li>consul-deploy-agent.sh</li>
+<li>consul-agent.hcl</li>
+</ul>
+<p>好了，这里引出一个有意思的东西: <strong>Create Custom Systemd Service</strong>，之前从来没有这么做过，原来systemd是可以自己配置的！</p>
+<ul>
+<li><a href="https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6" target="_blank" rel="noopener">https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6</a></li>
+</ul>
+<p>Vault server Config, also set Vault as systemd service, in <code>vault</code> folder:</p>
+<ul>
+<li>vault-deploy.sh</li>
+<li>vault.hcl</li>
+<li>vault.service<br>在 <code>.hcl</code> 中就配置了Consul 为storage backend，看上去本来就有这种特性，所以不需要过多的设置。</li>
+</ul>
+<h2 id="Server-Operations"><a href="#Server-Operations" class="headerlink" title="Server Operations"></a>Server Operations</h2><p>Operator command:</p>
+<ul>
+<li><a href="https://www.vaultproject.io/docs/commands/operator" target="_blank" rel="noopener">https://www.vaultproject.io/docs/commands/operator</a></li>
+</ul>
+<p>Setup production Vault server, sealed and need to unseal:</p>
+<ul>
+<li><a href="https://github.com/ned1313/Getting-Started-Vault/blob/master/m5/m5-serveroperations.sh" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Vault/blob/master/m5/m5-serveroperations.sh</a></li>
+</ul>
+<h1 id="Auditing"><a href="#Auditing" class="headerlink" title="Auditing"></a>Auditing</h1>
       
     </div>
 
@@ -593,6 +672,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/25/pipeline-jenkinsX-learn/" rel="prev" title="Jenkins X Quick Start">
+                Jenkins X Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -664,7 +747,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">175</span>
+                    <span class="site-state-item-count">176</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -948,7 +1031,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">99</span>
+                      
+                    
+                    <span class="site-state-item-count">100</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -984,7 +1069,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">1.1.</span> <span class="nav-text">Questions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Working-with-Secrets"><span class="nav-number">2.</span> <span class="nav-text">Working with Secrets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-New-Secret-Engine"><span class="nav-number">2.1.</span> <span class="nav-text">Create New Secret Engine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-Mysql-DB-Secret-Engine"><span class="nav-number">2.2.</span> <span class="nav-text">Create Mysql DB Secret Engine</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Questions"><span class="nav-number">1.1.</span> <span class="nav-text">Questions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Working-with-Secrets"><span class="nav-number">2.</span> <span class="nav-text">Working with Secrets</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-New-Secret-Engine"><span class="nav-number">2.1.</span> <span class="nav-text">Create New Secret Engine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-Mysql-DB-Secret-Engine"><span class="nav-number">2.2.</span> <span class="nav-text">Create Mysql DB Secret Engine</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Controlling-Access"><span class="nav-number">3.</span> <span class="nav-text">Controlling Access</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vault-Auth-Method"><span class="nav-number">3.1.</span> <span class="nav-text">Vault Auth Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vault-Policy"><span class="nav-number">3.2.</span> <span class="nav-text">Vault Policy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Client-Token"><span class="nav-number">3.3.</span> <span class="nav-text">Client Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wrapping-Response"><span class="nav-number">3.4.</span> <span class="nav-text">Wrapping Response</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Operating-Vaule-Server"><span class="nav-number">4.</span> <span class="nav-text">Operating Vaule Server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Server-Operations"><span class="nav-number">4.1.</span> <span class="nav-text">Server Operations</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Auditing"><span class="nav-number">5.</span> <span class="nav-text">Auditing</span></a></li></ol></div>
             
 
           </div>
@@ -1016,7 +1101,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">716k</span>
+    <span title="Symbols count total">724k</span>
   
 
   
