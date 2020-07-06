@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TerraformFrom Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and consistent repeatable deployment. Terrafrom provision G">
+  <meta name="description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
 <meta name="keywords" content="infra,terraform">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Terraform Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/05/16/infra-terraform/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TerraformFrom Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and consistent repeatable deployment. Terrafrom provision G">
+<meta property="og:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-13T08:20:05.642Z">
+<meta property="og:updated_time" content="2020-07-05T02:05:02.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Terraform Quick Start">
-<meta name="twitter:description" content="TerraformFrom Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and consistent repeatable deployment. Terrafrom provision G">
+<meta name="twitter:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-13 01:20:05" itemprop="dateModified" datetime="2020-06-13T01:20:05-07:00">2020-06-13</time>
+                <time title="Modified: 2020-07-04 19:05:02" itemprop="dateModified" datetime="2020-07-04T19:05:02-07:00">2020-07-04</time>
               
             
           </span>
@@ -508,26 +508,50 @@
       
 
       
-        <h1 id="Terraform"><a href="#Terraform" class="headerlink" title="Terraform"></a>Terraform</h1><p>From Hashicorp, removing manual build process, adopting declarative approach to deploy <strong>infrastructure as code</strong>, reusable, idempotent and consistent repeatable deployment.</p>
-<p>Terrafrom provision GKS<br><a href="https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster" target="_blank" rel="noopener">https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster</a></p>
-<p>This article from IBM can give you a good overview:<br><a href="https://www.ibm.com/cloud/learn/terraform" target="_blank" rel="noopener">https://www.ibm.com/cloud/learn/terraform</a></p>
+        <h1 id="Terraform"><a href="#Terraform" class="headerlink" title="Terraform"></a>Terraform</h1><p>To alter a planet for the purpose of sustaining life.</p>
+<p>From Hashicorp, removing manual build process, adopting declarative approach to deploy <strong>infrastructure as code</strong>, reusable, idempotent and consistent repeatable deployment.</p>
+<p>Terrafrom provisions GKS</p>
 <ul>
+<li><a href="https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster" target="_blank" rel="noopener">https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster</a></li>
+</ul>
+<p>This article from IBM can give you a good overview:</p>
+<ul>
+<li><a href="https://www.ibm.com/cloud/learn/terraform" target="_blank" rel="noopener">https://www.ibm.com/cloud/learn/terraform</a><ul>
 <li>Terraform vs Kubernetes</li>
 <li>Terraform vs Ansible</li>
 </ul>
-<p>CSDN:<br><a href="https://www.cnblogs.com/sparkdev/p/10052310.html" target="_blank" rel="noopener">https://www.cnblogs.com/sparkdev/p/10052310.html</a></p>
-<p>Terraform 文档非常informative，结构清晰:<br><a href="https://www.terraform.io/docs/" target="_blank" rel="noopener">https://www.terraform.io/docs/</a></p>
+</li>
+</ul>
+<p>CSDN:</p>
+<ul>
+<li><a href="https://www.cnblogs.com/sparkdev/p/10052310.html" target="_blank" rel="noopener">https://www.cnblogs.com/sparkdev/p/10052310.html</a></li>
+</ul>
+<p>Terraform 文档非常informative，结构清晰:</p>
+<ul>
+<li><a href="https://www.terraform.io/docs/" target="_blank" rel="noopener">https://www.terraform.io/docs/</a></li>
+</ul>
 <p>Terraform之于cloud infra就相当于 helm之于K8s, 大大简化了操作复杂性，自动快速部署，同时做到了复用，versioning等特性。但首先得去了解cloud provider中提供的资源的用途，搭配。这个在O’reilly上有专门结合cloud部署的课程。</p>
-<h2 id="Play-around"><a href="#Play-around" class="headerlink" title="Play around"></a>Play around</h2><p>resource files in github:<br><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></p>
+<h2 id="Play-around"><a href="#Play-around" class="headerlink" title="Play around"></a>Play around</h2><p>resource files in github:</p>
+<ul>
+<li><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></li>
+</ul>
 <p>what is needed:<br>AWS account, may get charged, ask for GCP free access.</p>
 <h2 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h2><p>Terraform executable: download from web<br>Terraform files: using hashicorp configure language DSL<br>Terraform plugin: interact with provider: AWS, GCP, Azure, etc<br>Terraform state file: json and don’t touch it</p>
 <p>You can have multiple terraform file: <code>.tf</code>, when run terraform it will stitch them together to form a single configuration. 比如把variables, outputs, resources, tfvars分开。</p>
-<p>tfvars file be default named as <code>terraform.tfvars</code>. otherwise when run <code>plan</code> you need to specify the file path.</p>
-<h2 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h2><p>If you update the terraform file with different configuration, rerun <code>init</code>, <code>plan</code> and <code>apply</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list all commands</span></span><br><span class="line">terraform -<span class="built_in">help</span></span><br><span class="line">terraform version</span><br><span class="line"><span class="comment">## linter</span></span><br><span class="line">terraform validate</span><br><span class="line"></span><br><span class="line">terraform init</span><br><span class="line"><span class="comment">## will show you the diff if you update your terraform file</span></span><br><span class="line"><span class="comment">## load terraform.tfvars by default</span></span><br><span class="line">terraform plan -out plan.tfplan</span><br><span class="line"><span class="comment">## will generate a tfstate file</span></span><br><span class="line"><span class="comment">## perform creation as much parallel as possible</span></span><br><span class="line">terraform apply <span class="string">"plan.tfplan"</span></span><br><span class="line"></span><br><span class="line">terraform show</span><br><span class="line"><span class="comment">## for example, show you igress url</span></span><br><span class="line">terraform output</span><br><span class="line"><span class="comment">## destroy Terraform-managed infrastructure</span></span><br><span class="line">terraform destroy</span><br></pre></td></tr></table></figure></p>
-<p>Provisioning k8s in GCP:<br><a href="https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster" target="_blank" rel="noopener">https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster</a></p>
-<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>Hashicorp configuration language:<br><a href="https://www.terraform.io/docs/configuration/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/index.html</a></p>
-<p>参考这些例子中的tf文件，格式还是比较固定的<br><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></p>
-<p>怎么知道resource的名称呢? 有很多provider现成的resource可用:<br><a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/resources.html</a><br>还有random provider，比如产生随机数</p>
+<p>tfvars file by default named as <code>terraform.tfvars</code>, otherwise when run <code>plan</code> you need to specify the file path.</p>
+<h2 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h2><p>If you update the terraform file with different configuration, rerun <code>init</code>, <code>plan</code> and <code>apply</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list all commands</span></span><br><span class="line">terraform -<span class="built_in">help</span></span><br><span class="line">terraform version</span><br><span class="line"><span class="comment">## linter</span></span><br><span class="line">terraform validate</span><br><span class="line"></span><br><span class="line">terraform init</span><br><span class="line"><span class="comment">## will show you the diff if you update your terraform file</span></span><br><span class="line"><span class="comment">## load terraform.tfvars by default</span></span><br><span class="line">terraform plan -out plan.tfplan</span><br><span class="line"><span class="comment">## will generate a tfstate file</span></span><br><span class="line"><span class="comment">## perform creation as much parallel as possible</span></span><br><span class="line">terraform apply <span class="string">"plan.tfplan"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## output terraform state or plan file in a human-readable form</span></span><br><span class="line">terraform show</span><br><span class="line"><span class="comment">## for example, show you igress url</span></span><br><span class="line">terraform output</span><br><span class="line"></span><br><span class="line"><span class="comment">## show objects being managed by state file</span></span><br><span class="line">terraform state list</span><br><span class="line"></span><br><span class="line"><span class="comment">## destroy Terraform-managed infrastructure</span></span><br><span class="line">terraform destroy</span><br></pre></td></tr></table></figure></p>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>Hashicorp configuration language:</p>
+<ul>
+<li><a href="https://www.terraform.io/docs/configuration/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/index.html</a></li>
+</ul>
+<p>参考这些例子中的tf文件，格式还是比较固定的</p>
+<ul>
+<li><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></li>
+</ul>
+<p>怎么知道resource的名称呢? 有很多provider现成的resource可用:</p>
+<ul>
+<li><a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/resources.html</a><br>还有random provider，比如产生随机数</li>
+</ul>
 <p>Object types:</p>
 <ul>
 <li>string</li>
@@ -536,7 +560,7 @@
 <li>list (index start from 0)</li>
 <li>map</li>
 </ul>
-<h3 id="Provisioner"><a href="#Provisioner" class="headerlink" title="Provisioner"></a>Provisioner</h3><p>类似于ansible的配置操作，在deploy infrastructure 之后。<br>post-deployment configuration, last resort, prefer ansible/puppet or chef.<br>provisioner can be local or remote</p>
+<h3 id="Provisioner"><a href="#Provisioner" class="headerlink" title="Provisioner"></a>Provisioner</h3><p>类似于ansible的配置操作，在deploy infrastructure 之后.<br>post-deployment configuration, last resort, prefer ansible/puppet or chef.<br>provisioner can be local or remote</p>
 <p>common provisioner:</p>
 <ul>
 <li>file</li>
@@ -545,7 +569,10 @@
 </ul>
 <h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p><a href="https://www.terraform.io/docs/configuration/functions.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/functions.html</a></p>
 <p>You can experiment with functions in Terraform console, this can help with troubleshooting.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">terraform console</span><br><span class="line">&gt; min(2,5,90)</span><br><span class="line"><span class="comment">## load var from terraform state file</span></span><br><span class="line">&gt; cidrsubnet(var.network_address_space, 8, 0)</span><br><span class="line">&gt; lookup(local.common_tags, <span class="string">"Bill"</span>, <span class="string">"Unknown"</span>)</span><br></pre></td></tr></table></figure></p>
-<h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p>Support mutliple providers, all written in Go.<br><a href="https://www.terraform.io/docs/providers/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/providers/index.html</a></p>
+<h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p>Support mutliple providers, all written in Go.</p>
+<ul>
+<li><a href="https://www.terraform.io/docs/providers/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/providers/index.html</a></li>
+</ul>
 <h3 id="Resource-arguments"><a href="#Resource-arguments" class="headerlink" title="Resource arguments"></a>Resource arguments</h3><p><a href="https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies</a><br>common ones:</p>
 <ul>
 <li>depends_on: make sure terraform creates things in right order</li>
@@ -572,8 +599,14 @@
 <p>Workspace example, there is a <code>terraform.workspace</code> built-in variable can be used to indicate the workspace currently in, then use it in map variable to select right value for different environment. (不用再去分别创建不同的folder for different environment了)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create dev workspace and switch to it</span></span><br><span class="line">terraform workspace new dev</span><br><span class="line"><span class="comment">## show workspace</span></span><br><span class="line">terraform workspace list</span><br><span class="line">terraform plan -out dev.tfplan</span><br><span class="line">terraform apply <span class="string">"dev.tfplan"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## now create another workspace for QA</span></span><br><span class="line">terraform workspace new QA</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">## switch workspace</span></span><br><span class="line">terraform workspace select dev</span><br></pre></td></tr></table></figure></p>
 <h2 id="Managing-secrets"><a href="#Managing-secrets" class="headerlink" title="Managing secrets"></a>Managing secrets</h2><p>Hashicorp <strong>vault</strong> is for this purpose. it can hand over credentials from cloud provider to terraform and set ttl for the secrets.</p>
 <p>Or you can use environment variable to specify the credentials, terraform will pick it automatically, but bear in mind to use the right env var name.</p>
-<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p>Make code reuse eaiser:<br><a href="https://www.terraform.io/docs/configuration/modules.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/modules.html</a></p>
-<p>Terraform registry, similar concept with Helm, Docker:<br><a href="https://registry.terraform.io/" target="_blank" rel="noopener">https://registry.terraform.io/</a><br>Using module block to invoke local or remote modules.</p>
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p>Make code reuse eaiser:</p>
+<ul>
+<li><a href="https://www.terraform.io/docs/configuration/modules.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/modules.html</a></li>
+</ul>
+<p>Terraform registry, similar concept with Helm, Docker:</p>
+<ul>
+<li><a href="https://registry.terraform.io/" target="_blank" rel="noopener">https://registry.terraform.io/</a><br>Using module block to invoke local or remote modules.</li>
+</ul>
 <ol>
 <li>root module</li>
 <li>support versioning</li>
@@ -1067,7 +1100,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">733k</span>
+    <span title="Symbols count total">744k</span>
   
 
   

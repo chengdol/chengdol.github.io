@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="More information please see man bash (contains if condition syntax). In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following comman">
+  <meta name="description" content="In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Login and Nonlogin Shell">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/shell-login-nonlogin/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="More information please see man bash (contains if condition syntax). In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following comman">
+<meta property="og:description" content="In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-26T18:16:42.245Z">
+<meta property="og:updated_time" content="2020-07-05T23:39:03.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Login and Nonlogin Shell">
-<meta name="twitter:description" content="More information please see man bash (contains if condition syntax). In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following comman">
+<meta name="twitter:description" content="In the non-root development for DataStage, in order to launch applications as non-root user, I use su - dsadm with following commands. Later I occassionally notice that badal use su dsadm… So what are">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-26 11:16:42" itemprop="dateModified" datetime="2020-04-26T11:16:42-07:00">2020-04-26</time>
+                <time title="Modified: 2020-07-05 16:39:03" itemprop="dateModified" datetime="2020-07-05T16:39:03-07:00">2020-07-05</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7.8k</span>
+                <span title="Symbols count in article">8k</span>
               
 
               
@@ -508,8 +508,7 @@
       
 
       
-        <p>More information please see <code>man bash</code> (contains <code>if</code> condition syntax).</p>
-<p>In the non-root development for DataStage, in order to launch applications as non-root user, I use <code>su - dsadm</code> with following commands. Later I occassionally notice that badal use <code>su dsadm</code>… So what are the differences?</p>
+        <p>In the non-root development for DataStage, in order to launch applications as non-root user, I use <code>su - dsadm</code> with following commands. Later I occassionally notice that badal use <code>su dsadm</code>… So what are the differences?</p>
 <p>There are two main shell instance types: <code>interactive</code> and <code>noninteractive</code>, but of those, only interactive shells are of interest because noninteractive shells (such as those that run shell scripts) usually don’t read any startup files. </p>
 <p><code>Interactive shells</code> are the ones that you use to <strong>run commands from a terminal</strong>, they can be classified as <code>login</code> or <code>non-login</code>. I know there are lots of startup files under each user’s home directory, how do they be called and in what order?</p>
 <h2 id="Login-Shell"><a href="#Login-Shell" class="headerlink" title="Login Shell"></a>Login Shell</h2><p>Logging in remotely with <code>SSH</code> will give you a login shell.</p>
@@ -535,6 +534,8 @@
 <h2 id="Bash-Parameters"><a href="#Bash-Parameters" class="headerlink" title="Bash Parameters"></a>Bash Parameters</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Make bash act as if it had been invoked as a login shell</span></span><br><span class="line"><span class="comment">## 但实际上并不是真正的login shell, echo $0 可知</span></span><br><span class="line">bash --login</span><br><span class="line">bash -l</span><br><span class="line"></span><br><span class="line"><span class="comment">## -c: string If the -c option is present, then commands are read from string.</span></span><br><span class="line"><span class="comment">## If there are arguments after the string</span></span><br><span class="line"><span class="comment">## they are assigned to the positional parameters, starting with $0.</span></span><br><span class="line"><span class="comment">## 这就不是interactive shell了</span></span><br><span class="line">bash -c /tmp/test.sh hello world!</span><br><span class="line"></span><br><span class="line"><span class="comment">## do not run ~/.bashrc, by default same as `sh`</span></span><br><span class="line">bash --norc</span><br><span class="line"></span><br><span class="line"><span class="comment">## 这个只对login shell才有用，不进行任何初始化</span></span><br><span class="line">bash --noprofile</span><br><span class="line"></span><br><span class="line"><span class="comment">## specify other script to replace .bashrc</span></span><br><span class="line">bash --rcfile &lt;path to file&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## do syntax check only</span></span><br><span class="line">bash -n &lt;script&gt;</span><br></pre></td></tr></table></figure>
 <p>Interesting question:<br><a href="https://stackoverflow.com/questions/9357464/how-to-start-a-shell-without-any-user-configuration" target="_blank" rel="noopener">How to start a shell in clean</a></p>
 <p><code>~/.bash_logout</code> will be executed when exit login shell.</p>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Docker or K8s pod init process 会初始化 <code>~/.bashrc</code>吗？ 这个init process 是user login shell呢 还是 non-login shell?</p>
+<p>From experiment, no source <code>~/.bashrc</code> for init process.</p>
 
       
     </div>
@@ -983,7 +984,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Login-Shell"><span class="nav-number">1.</span> <span class="nav-text">Login Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-login-Shell"><span class="nav-number">2.</span> <span class="nav-text">Non-login Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash-Parameters"><span class="nav-number">3.</span> <span class="nav-text">Bash Parameters</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Login-Shell"><span class="nav-number">1.</span> <span class="nav-text">Login Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-login-Shell"><span class="nav-number">2.</span> <span class="nav-text">Non-login Shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash-Parameters"><span class="nav-number">3.</span> <span class="nav-text">Bash Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question"><span class="nav-number">4.</span> <span class="nav-text">Question</span></a></li></ol></div>
             
 
           </div>
@@ -1015,7 +1016,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">733k</span>
+    <span title="Symbols count total">744k</span>
   
 
   

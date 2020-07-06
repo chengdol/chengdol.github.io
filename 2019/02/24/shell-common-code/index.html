@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. set builtinUsually I use set -x for debugging purpose, today I see a new s">
+  <meta name="description" content="More information please see man bash, it has comprehensive information. This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. se">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Common Code Snippets">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/shell-common-code/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. set builtinUsually I use set -x for debugging purpose, today I see a new s">
+<meta property="og:description" content="More information please see man bash, it has comprehensive information. This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. se">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-25T21:45:36.840Z">
+<meta property="og:updated_time" content="2020-07-05T22:18:32.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Common Code Snippets">
-<meta name="twitter:description" content="This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. set builtinUsually I use set -x for debugging purpose, today I see a new s">
+<meta name="twitter:description" content="More information please see man bash, it has comprehensive information. This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. se">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-25 14:45:36" itemprop="dateModified" datetime="2020-06-25T14:45:36-07:00">2020-06-25</time>
+                <time title="Modified: 2020-07-05 15:18:32" itemprop="dateModified" datetime="2020-07-05T15:18:32-07:00">2020-07-05</time>
               
             
           </span>
@@ -508,7 +508,8 @@
       
 
       
-        <p>This blog collects the commonly used code snippets based on my daily work, also do summary from related <em>stackoverflow</em> topics.</p>
+        <p>More information please see <code>man bash</code>, it has comprehensive information.</p>
+<p>This blog collects the commonly used code snippets based on my daily work, also do summary from related <em>stackoverflow</em> topics.</p>
 <h2 id="set-builtin"><a href="#set-builtin" class="headerlink" title="set builtin"></a>set builtin</h2><p>Usually I use <code>set -x</code> for debugging purpose, today I see a new statement <code>set -ex</code>. What is this and what is set in Bash? 后来又知道了很多，见awesome list中的bash tutoral.</p>
 <p><a href="https://www.gnu.org/software/bash//manual/html_node/The-Set-Builtin.html" target="_blank" rel="noopener">The Set Builtin</a>, in short, <code>set</code> allows you to change the values of shell options and set the positional parameters, or to display the names and values of shell variables.</p>
 <p><code>set -e</code>, causes the shell to exit if any subcommand or pipeline returns a non-zero status. This tells bash that it should exit the script if any statement returns a non-true return value. The benefit of using <code>-e</code> is that it prevents errors snowballing into serious issues when they could have been caught earlier. </p>
@@ -518,9 +519,9 @@
 <p><code>readlink -f $0</code> will follow every symlink in every component of the given name recursively and get the <code>canonical</code> path. A single file existing on a system can have <strong>many</strong> different paths that refer to it, but only one <code>canonical</code> path, <code>canonical</code> gives a unique <strong>absolute</strong> path for a given file. That means even though you call a script in it’s current directory, <code>readlink -f $0</code> will give you the absolute path!</p>
 <p><code>dirname $0</code> cut the script name to get the calling path, the path is relative not absolute.</p>
 <h2 id="run-script-in-it’s-driectory"><a href="#run-script-in-it’s-driectory" class="headerlink" title="run script in it’s driectory"></a>run script in it’s driectory</h2><p>Sometimes we want to run script in it’s folder by <code>./xxx.sh</code>. we can check that:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SCRIPT_PATH=$(dirname <span class="variable">$0</span>)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"X"</span><span class="string">"<span class="variable">$&#123;SCRIPT_PATH&#125;</span>"</span> != <span class="string">"X."</span> ]]; <span class="keyword">then</span></span><br><span class="line">  LogMsg <span class="string">"###### ERROR: Please run this script in it's directory!"</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="create-tmp-file-to-store-log"><a href="#create-tmp-file-to-store-log" class="headerlink" title="create tmp file to store log"></a>create tmp file to store log</h2><p>create a temporary file or directory<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OUT_FILE=$(mktemp /tmp/log.XXXX)</span><br></pre></td></tr></table></figure></p>
-<p>it will randomly generate 4 characters to replace <code>XXXX</code>. You may need to delete the tmp file when script finish, for example, use hook and signal trap<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> exitHook &#123;</span><br><span class="line">  rm -f <span class="variable">$OUT_FILE</span></span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.yml</span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.out</span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.err</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> exitHook EXIT</span><br></pre></td></tr></table></figure></p>
-<p>Actually, you can get random number from<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $RANDOM</span><br></pre></td></tr></table></figure></p>
+<h2 id="create-tmp-file-to-store-log"><a href="#create-tmp-file-to-store-log" class="headerlink" title="create tmp file to store log"></a>create tmp file to store log</h2><p>create a temporary file or directory, this temp file is owned and grouped by the current user.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OUT_FILE=$(mktemp /tmp/log.XXXXXX)</span><br></pre></td></tr></table></figure></p>
+<p>it will randomly generate 6 characters to replace <code>XXXXXX</code>. You may need to delete the tmp file when script exits, for example, use <code>trap</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> exitHook &#123;</span><br><span class="line">  rm -f <span class="variable">$OUT_FILE</span></span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.yml</span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.out</span><br><span class="line">  rm -f <span class="variable">$&#123;OUT_FILE&#125;</span>.err</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">## must put at beginning of script</span></span><br><span class="line"><span class="built_in">trap</span> exitHook EXIT</span><br></pre></td></tr></table></figure></p>
+<p>Actually, you can get random number from<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$RANDOM</span></span><br></pre></td></tr></table></figure></p>
 <p>you can also seed it to generate reproducible sequence:<br><a href="https://stackoverflow.com/questions/42004870/seed-for-random-environment-variable-in-bash" target="_blank" rel="noopener">https://stackoverflow.com/questions/42004870/seed-for-random-environment-variable-in-bash</a></p>
 <h2 id="if-condition"><a href="#if-condition" class="headerlink" title="if condition"></a>if condition</h2><p>List of <a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html" target="_blank" rel="noopener">test command condition statements</a> Or check manual <code>man test</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sth does not exist?</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">"<span class="variable">$&#123;sth&#125;</span>"</span><span class="string">"X"</span> == <span class="string">"X"</span> ]]; <span class="keyword">then</span></span><br><span class="line">  LogMsg <span class="string">"###### INFO: ..."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
@@ -1047,7 +1048,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">733k</span>
+    <span title="Symbols count total">744k</span>
   
 
   

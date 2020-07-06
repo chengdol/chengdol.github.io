@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I want to convert several commands into one line to put in command/args in yaml file for Kubernetes deployment. But always get syntax error with bad ; mark like -bash: syntax error near unexpected tok">
+  <meta name="description" content="I want to wrap several commands into one line format to put in command/args field in yaml file for Kubernetes. But always get syntax error with bad ;, for example: -bash: syntax error near unexpected">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Background Sign Caution">
 <meta property="og:url" content="http://yoursite.com/2019/09/09/shell-background-sign-caution/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I want to convert several commands into one line to put in command/args in yaml file for Kubernetes deployment. But always get syntax error with bad ; mark like -bash: syntax error near unexpected tok">
+<meta property="og:description" content="I want to wrap several commands into one line format to put in command/args field in yaml file for Kubernetes. But always get syntax error with bad ;, for example: -bash: syntax error near unexpected">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T23:44:02.724Z">
+<meta property="og:updated_time" content="2020-07-05T22:21:13.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Background Sign Caution">
-<meta name="twitter:description" content="I want to convert several commands into one line to put in command/args in yaml file for Kubernetes deployment. But always get syntax error with bad ; mark like -bash: syntax error near unexpected tok">
+<meta name="twitter:description" content="I want to wrap several commands into one line format to put in command/args field in yaml file for Kubernetes. But always get syntax error with bad ;, for example: -bash: syntax error near unexpected">
 
 
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-09-09 13:51:10 / Modified: 16:44:02" itemprop="dateCreated datePublished" datetime="2019-09-09T13:51:10-07:00">2019-09-09</time>
+              <time title="Created: 2019-09-09 13:51:10" itemprop="dateCreated datePublished" datetime="2019-09-09T13:51:10-07:00">2019-09-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-07-05 15:21:13" itemprop="dateModified" datetime="2020-07-05T15:21:13-07:00">2020-07-05</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">907</span>
+                <span title="Symbols count in article">1k</span>
               
 
               
@@ -496,9 +508,9 @@
       
 
       
-        <p>I want to convert several commands into one line to put in <code>command</code>/<code>args</code> in yaml file for Kubernetes deployment. But always get syntax error with bad <code>;</code> mark like <code>-bash: syntax error near unexpected token ;&#39;</code>, finally realize the error is from <code>&amp;</code>.</p>
-<p>Notice that here <code>&amp;</code> should not have <code>;</code> behind it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(echo 123)&amp;; sleep 5; echo 456</span><br></pre></td></tr></table></figure></p>
-<p>instead the correct way is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(echo 123)&amp; sleep 5; echo 456</span><br></pre></td></tr></table></figure></p>
+        <p>I want to wrap several commands into one line format to put in <code>command</code>/<code>args</code> field in yaml file for Kubernetes. But always get syntax error with bad <code>;</code>, for example: <code>-bash: syntax error near unexpected token ;&#39;</code>, finally understand the error is from <code>&amp;</code>.</p>
+<p>Notice that here <code>&amp;</code> should not have <code>;</code> after it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">echo</span> 123)&amp;; sleep 5; <span class="built_in">echo</span> 456</span><br></pre></td></tr></table></figure></p>
+<p>Instead the correct way is:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">echo</span> 123)&amp; sleep 5; <span class="built_in">echo</span> 456</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -953,7 +965,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">733k</span>
+    <span title="Symbols count total">744k</span>
   
 
   
