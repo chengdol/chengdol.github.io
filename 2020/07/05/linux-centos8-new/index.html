@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="New features:  Using cockpit web interface Using enhanced firewall: nftables Managing NFSv4 with nfsconf Layered storage management with stratis Data de-duplication and compression with VDO (virtual d">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-07T07:27:08.679Z">
+<meta property="og:updated_time" content="2020-07-07T21:13:54.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What&#39;s New in CentOS 8">
 <meta name="twitter:description" content="New features:  Using cockpit web interface Using enhanced firewall: nftables Managing NFSv4 with nfsconf Layered storage management with stratis Data de-duplication and compression with VDO (virtual d">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">103</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">104</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">178</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">179</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-07 00:27:08" itemprop="dateModified" datetime="2020-07-07T00:27:08-07:00">2020-07-07</time>
+                <time title="Modified: 2020-07-07 14:13:54" itemprop="dateModified" datetime="2020-07-07T14:13:54-07:00">2020-07-07</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">22k</span>
+                <span title="Symbols count in article">23k</span>
               
 
               
@@ -572,7 +572,13 @@
 <ul>
 <li><a href="https://computingforgeeks.com/ext4-vs-xfs-complete-comparison/" target="_blank" rel="noopener">https://computingforgeeks.com/ext4-vs-xfs-complete-comparison/</a></li>
 </ul>
-<h1 id="VDO"><a href="#VDO" class="headerlink" title="VDO"></a>VDO</h1>
+<p>New commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list block device</span></span><br><span class="line">lsblk</span><br><span class="line"><span class="comment">## wipe disks</span></span><br><span class="line">wipefs --all /dev/sdb</span><br><span class="line"><span class="comment">## shrink or extend file to specific size</span></span><br><span class="line">truncate -s 10g /tmp/blk.tmp1</span><br><span class="line"><span class="comment">## create loopback device</span></span><br><span class="line">losetup /dev/loop1 /tmp/blk.tmp1</span><br></pre></td></tr></table></figure></p>
+<h1 id="Virtual-Data-Optimizer"><a href="#Virtual-Data-Optimizer" class="headerlink" title="Virtual Data Optimizer"></a>Virtual Data Optimizer</h1><p>To make use of block level deduplication, compression, thin-provisioning to save space.</p>
+<ul>
+<li><a href="https://lab.redhat.com/vdo-configure" target="_blank" rel="noopener">https://lab.redhat.com/vdo-configure</a></li>
+</ul>
+<p>Example Use Case:<br>To reduce the amount of operational and storage costs in data centers, we use the deduplication and compression features in VDO to decrease the footprint of data.</p>
+
       
     </div>
 
@@ -619,6 +625,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/07/infra-packer/" rel="prev" title="Packer Quick Start">
+                Packer Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -690,7 +700,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">178</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -984,7 +994,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">103</span>
+                      
+                    
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1020,7 +1032,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fast-Ping-Test"><span class="nav-number">1.</span> <span class="nav-text">Fast Ping Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cocopit-Web-Console"><span class="nav-number">2.</span> <span class="nav-text">Cocopit Web Console</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Enhancing-Firewall"><span class="nav-number">3.</span> <span class="nav-text">Enhancing Firewall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFSv4"><span class="nav-number">4.</span> <span class="nav-text">NFSv4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Storage-Management-Stratis"><span class="nav-number">5.</span> <span class="nav-text">Storage Management Stratis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VDO"><span class="nav-number">6.</span> <span class="nav-text">VDO</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fast-Ping-Test"><span class="nav-number">1.</span> <span class="nav-text">Fast Ping Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cocopit-Web-Console"><span class="nav-number">2.</span> <span class="nav-text">Cocopit Web Console</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Enhancing-Firewall"><span class="nav-number">3.</span> <span class="nav-text">Enhancing Firewall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFSv4"><span class="nav-number">4.</span> <span class="nav-text">NFSv4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Storage-Management-Stratis"><span class="nav-number">5.</span> <span class="nav-text">Storage Management Stratis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-Data-Optimizer"><span class="nav-number">6.</span> <span class="nav-text">Virtual Data Optimizer</span></a></li></ol></div>
             
 
           </div>
@@ -1052,7 +1064,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">750k</span>
+    <span title="Symbols count total">751k</span>
   
 
   
