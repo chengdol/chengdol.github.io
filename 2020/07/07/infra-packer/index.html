@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="What are the differences between Packer and Docker?  How docker and packer are different  Packer template is JSON format.  builders provisioners post-processors">
+  <meta name="description" content="Build Images for cloud and on-premise, Packer template is JSON format (easily source control).  variables builders: can have multiple builders run parallelly. provisioners: run in order, need only to">
 <meta name="keywords" content="infra,packer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Packer Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/07/07/infra-packer/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="What are the differences between Packer and Docker?  How docker and packer are different  Packer template is JSON format.  builders provisioners post-processors">
+<meta property="og:description" content="Build Images for cloud and on-premise, Packer template is JSON format (easily source control).  variables builders: can have multiple builders run parallelly. provisioners: run in order, need only to">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-08T06:21:25.083Z">
+<meta property="og:updated_time" content="2020-07-08T21:24:18.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Packer Quick Start">
-<meta name="twitter:description" content="What are the differences between Packer and Docker?  How docker and packer are different  Packer template is JSON format.  builders provisioners post-processors">
+<meta name="twitter:description" content="Build Images for cloud and on-premise, Packer template is JSON format (easily source control).  variables builders: can have multiple builders run parallelly. provisioners: run in order, need only to">
 
 
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2020-07-07 14:27:56 / Modified: 23:21:25" itemprop="dateCreated datePublished" datetime="2020-07-07T14:27:56-07:00">2020-07-07</time>
+              <time title="Created: 2020-07-07 14:27:56" itemprop="dateCreated datePublished" datetime="2020-07-07T14:27:56-07:00">2020-07-07</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-07-08 14:24:18" itemprop="dateModified" datetime="2020-07-08T14:24:18-07:00">2020-07-08</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">400</span>
+                <span title="Symbols count in article">1.1k</span>
               
 
               
@@ -496,16 +508,20 @@
       
 
       
-        <p>What are the differences between Packer and Docker?</p>
+        <p>Build Images for cloud and on-premise, Packer template is JSON format (easily source control).</p>
+<ul>
+<li>variables</li>
+<li>builders: can have multiple builders run parallelly.</li>
+<li>provisioners: run in order, need <code>only</code> to specify where to run.</li>
+<li>post-processors: auto post-build tasks, eg: compression.</li>
+</ul>
+<p><code>-debug</code> flag in build can help run steps one by one, parallel build in debug mode is running sequentially.</p>
+<p>To build Ubuntu VirtualBox image VOF, ISO is download from Ubuntu web site then Packer will launch it to run provisioner. Then use post-processor to compress VOF to tar.gz, or convert to Vagrant box.</p>
+<p>What are the differences between Packer and Docker?</p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/47169353/how-are-docker-and-packer-different-and-which-one-should-i-prefer-when-provisio" target="_blank" rel="noopener">How docker and packer are different</a></li>
 </ul>
-<p>Packer template is JSON format.</p>
-<ul>
-<li>builders</li>
-<li>provisioners</li>
-<li>post-processors</li>
-</ul>
+<p>Transition from Packer to Docker is easy, but the docker builder may not efficient as the docker native tool.</p>
 
       
     </div>
@@ -962,7 +978,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">751k</span>
+    <span title="Symbols count total">752k</span>
   
 
   

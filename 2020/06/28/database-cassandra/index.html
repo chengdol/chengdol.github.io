@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TODO可以模拟single node cluster, multiple node cluster and multiple data center. Seed for joining, private ip for each, config cassandra.yaml, use rpm to install1234## you will see the cluster node status">
+  <meta name="description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication stratefy and tunable consistency Seed for joining, private ip for each, config cassandra.yaml, use">
 <meta name="keywords" content="database,cassandra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Cassandra">
 <meta property="og:url" content="http://yoursite.com/2020/06/28/database-cassandra/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODO可以模拟single node cluster, multiple node cluster and multiple data center. Seed for joining, private ip for each, config cassandra.yaml, use rpm to install1234## you will see the cluster node status">
+<meta property="og:description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication stratefy and tunable consistency Seed for joining, private ip for each, config cassandra.yaml, use">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-07T21:14:19.951Z">
+<meta property="og:updated_time" content="2020-07-08T17:55:03.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Cassandra">
-<meta name="twitter:description" content="TODO可以模拟single node cluster, multiple node cluster and multiple data center. Seed for joining, private ip for each, config cassandra.yaml, use rpm to install1234## you will see the cluster node status">
+<meta name="twitter:description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication stratefy and tunable consistency Seed for joining, private ip for each, config cassandra.yaml, use">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-07 14:14:19" itemprop="dateModified" datetime="2020-07-07T14:14:19-07:00">2020-07-07</time>
+                <time title="Modified: 2020-07-08 10:55:03" itemprop="dateModified" datetime="2020-07-08T10:55:03-07:00">2020-07-08</time>
               
             
           </span>
@@ -508,23 +508,23 @@
       
 
       
-        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>可以模拟single node cluster, multiple node cluster and multiple data center.</p>
+        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>Single node cluster: practice CQL<br>Multiple node cluster/ multiple data center: verify replication stratefy and tunable consistency</p>
 <p>Seed for joining, private ip for each, config cassandra.yaml, use rpm to install<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## you will see the cluster node status</span></span><br><span class="line">./bin/nodetool status</span><br><span class="line"><span class="comment">## see token range and belongs to which node</span></span><br><span class="line">./bin/nodetool ring</span><br></pre></td></tr></table></figure></p>
 <p>Token number is acutally the virtual node number in one physical node.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CASSANDRA_SEEDS=ip or hostname?</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">nodetool join - Join the ring</span><br></pre></td></tr></table></figure>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Vagrant Cassandra lab environment:<br><a href="https://github.com/chengdol/vagrant-cassandra" target="_blank" rel="noopener">https://github.com/chengdol/vagrant-cassandra</a></p>
 <p>Cassandra web site:<br><a href="https://cassandra.apache.org/" target="_blank" rel="noopener">https://cassandra.apache.org/</a></p>
-<p>Open-source Nosql Database, originally developed from Facebook. Data stored is associated with token.</p>
+<p>Open-source <strong>NoSQL</strong> Database, originally developed from Facebook. Data stored is associated with token.</p>
 <p><code>Virtual node</code> concept. When new physical node is added, actually it is represented by multiple virtual nodes inserted randemly in the token range, the virtual node will talk to its neighbor to take over the data originally belongs to them.</p>
 <p><code>Snitch</code>, let Cassandra know environment.</p>
-<h2 id="Replicatin-Strategy"><a href="#Replicatin-Strategy" class="headerlink" title="Replicatin Strategy"></a>Replicatin Strategy</h2><p>Keyspace: a namespace that defines data replication on nodes, one keyspace may have mutliple related tables, the <code>Replicatin Strategy</code> is keyspace-wide:</p>
+<h2 id="Replication-Strategy"><a href="#Replication-Strategy" class="headerlink" title="Replication Strategy"></a>Replication Strategy</h2><p><code>Keyspace</code>: a namespace that defines data replication on nodes, one keyspace may have mutliple related tables, the <code>Replicatin Strategy</code> is keyspace-wide:</p>
 <ul>
 <li>simply strategy for single data center</li>
 <li>network topology strategy for multiple data centers</li>
 </ul>
 <p>Data center can have multiple racks.</p>
 <p>For example, one data center has 2 racks, rack1 has 2 nodes, rack2 has one node, if the simply strategy is 1, then rack1 owns 50% data, each node in rack1 owns 25%, rack2 owns 50%, since rack2 only contains 1 node, so that node owns 50%.</p>
-<h2 id="Tunable-Consistency"><a href="#Tunable-Consistency" class="headerlink" title="Tunable Consistency"></a>Tunable Consistency</h2><p>Coordinator node: client connect to perform actions. Each connection to Cassandra may have a different coordinator node.</p>
+<h2 id="Tunable-Consistency"><a href="#Tunable-Consistency" class="headerlink" title="Tunable Consistency"></a>Tunable Consistency</h2><p><code>Coordinator Node</code>: client connect to perform actions. Each connection to Cassandra may have a different coordinator node.</p>
 <p>Consistency level for <strong>write</strong>: </p>
 <ul>
 <li><code>ONE</code>, <code>TWO</code>, <code>THREE</code> </li>
@@ -540,7 +540,7 @@
 <li><code>ALL</code> (must all good)</li>
 </ul>
 <p><code>Read Repair</code>: 当对一个node写失败了but back online later，在read时如果有多个replicas的数据可以参考，则对那个node可重新写入上次wirte失败的数据. Run <code>nodetool repair</code> periodically will resolve the inconsistencies in cluster.</p>
-<p>Achieving string consistency:</p>
+<p>Achieving strong consistency:</p>
 <ul>
 <li>write consistency + read consistency &gt; replication factor</li>
 </ul>
@@ -550,7 +550,7 @@
 <li><code>LOCAL_QUORUM</code>: local means current coordinator node data center</li>
 <li><code>LOCAL_ONE</code>: the same as <code>ONE</code></li>
 </ul>
-<h1 id="CQL"><a href="#CQL" class="headerlink" title="CQL"></a>CQL</h1><p>A single node cluster is enough for playing this section.</p>
+<h1 id="CQL"><a href="#CQL" class="headerlink" title="CQL"></a>CQL</h1><p>A single Vagrant node is enough for playing this section.</p>
 <p>Cassandra Query Language:</p>
 <ul>
 <li><p><a href="https://cassandra.apache.org/doc/latest/cql/index.html" target="_blank" rel="noopener">https://cassandra.apache.org/doc/latest/cql/index.html</a></p>
@@ -561,7 +561,7 @@
 <li>Counters</li>
 <li>Aggregate functions</li>
 </ul>
-<p>With <code>cqlsh</code> script, you can specify remote Cassandra node with port to connect, by default it will connect to localhost 9042 port.</p>
+<p>With <code>cqlsh</code> script, you can specify remote Cassandra node with port to connect, by default it will connect to localhost 9042 port. (类似于consul, 连接本地服务即可作用于全局)</p>
 <p>Keyspace -&gt; Tables -&gt; partitions -&gt; row.</p>
 <p>In brief, each table requires a unique <code>primary key</code>. The first field listed is the <code>partition key</code>, since its hashed value is used to determine the node to store the data. If those fields are wrapped in parentheses then the partition key is composite. Otherwise the first field is the partition key. Any fields listed after the primary key are called <code>clustering columns</code>. These store data in ascending or descending order within the partition for the fast retrieval of similar values. All the fields together are the primary key.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## help</span></span><br><span class="line">cqlsh&gt; <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">Documented shell commands:</span><br><span class="line">===========================</span><br><span class="line">CAPTURE  CLS          COPY  DESCRIBE  EXPAND  LOGIN   SERIAL  SOURCE   UNICODE</span><br><span class="line">CLEAR    CONSISTENCY  DESC  EXIT      HELP    PAGING  SHOW    TRACING</span><br><span class="line"></span><br><span class="line">CQL <span class="built_in">help</span> topics:</span><br><span class="line">================</span><br><span class="line">AGGREGATES               CREATE_KEYSPACE           DROP_TRIGGER      TEXT     </span><br><span class="line">ALTER_KEYSPACE           CREATE_MATERIALIZED_VIEW  DROP_TYPE         TIME     </span><br><span class="line">ALTER_MATERIALIZED_VIEW  CREATE_ROLE               DROP_USER         TIMESTAMP</span><br><span class="line">ALTER_TABLE              CREATE_TABLE              FUNCTIONS         TRUNCATE </span><br><span class="line">ALTER_TYPE               CREATE_TRIGGER            GRANT             TYPES    </span><br><span class="line">ALTER_USER               CREATE_TYPE               INSERT            UPDATE   </span><br><span class="line">APPLY                    CREATE_USER               INSERT_JSON       USE      </span><br><span class="line">ASCII                    DATE                      INT               UUID     </span><br><span class="line">BATCH                    DELETE                    JSON            </span><br><span class="line">BEGIN                    DROP_AGGREGATE            KEYWORDS        </span><br><span class="line">BLOB                     DROP_COLUMNFAMILY         LIST_PERMISSIONS</span><br><span class="line">BOOLEAN                  DROP_FUNCTION             LIST_ROLES      </span><br><span class="line">COUNTER                  DROP_INDEX                LIST_USERS      </span><br><span class="line">CREATE_AGGREGATE         DROP_KEYSPACE             PERMISSIONS     </span><br><span class="line">CREATE_COLUMNFAMILY      DROP_MATERIALIZED_VIEW    REVOKE          </span><br><span class="line">CREATE_FUNCTION          DROP_ROLE                 SELECT          </span><br><span class="line">             DROP_TABLE                SELECT_JSON </span><br><span class="line"></span><br><span class="line"><span class="comment">## specified</span></span><br><span class="line">cqlsh&gt; <span class="built_in">help</span> consistency;</span><br></pre></td></tr></table></figure>
@@ -1102,7 +1102,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Replicatin-Strategy"><span class="nav-number">2.1.</span> <span class="nav-text">Replicatin Strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tunable-Consistency"><span class="nav-number">2.2.</span> <span class="nav-text">Tunable Consistency</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CQL"><span class="nav-number">3.</span> <span class="nav-text">CQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multi-Row-Partition"><span class="nav-number">4.</span> <span class="nav-text">Multi-Row Partition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Composite-Key"><span class="nav-number">4.1.</span> <span class="nav-text">Composite Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static-Columns"><span class="nav-number">4.2.</span> <span class="nav-text">Static Columns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-Series-Data"><span class="nav-number">4.3.</span> <span class="nav-text">Time Series Data</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Replication-Strategy"><span class="nav-number">2.1.</span> <span class="nav-text">Replication Strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tunable-Consistency"><span class="nav-number">2.2.</span> <span class="nav-text">Tunable Consistency</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CQL"><span class="nav-number">3.</span> <span class="nav-text">CQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multi-Row-Partition"><span class="nav-number">4.</span> <span class="nav-text">Multi-Row Partition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Composite-Key"><span class="nav-number">4.1.</span> <span class="nav-text">Composite Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static-Columns"><span class="nav-number">4.2.</span> <span class="nav-text">Static Columns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-Series-Data"><span class="nav-number">4.3.</span> <span class="nav-text">Time Series Data</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1134,7 +1134,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">751k</span>
+    <span title="Symbols count total">752k</span>
   
 
   
