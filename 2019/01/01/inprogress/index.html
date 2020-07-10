@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 Shellvariable pattern match: ${1##*/} ${USAGE%/*}, et">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-07T21:27:41.155Z">
+<meta property="og:updated_time" content="2020-07-08T22:14:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inprogress">
 <meta name="twitter:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 Shellvariable pattern match: ${1##*/} ${USAGE%/*}, et">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-07 14:27:41" itemprop="dateModified" datetime="2020-07-07T14:27:41-07:00">2020-07-07</time>
+                <time title="Modified: 2020-07-08 15:14:27" itemprop="dateModified" datetime="2020-07-08T15:14:27-07:00">2020-07-08</time>
               
             
           </span>
@@ -579,12 +579,12 @@
 <p>use <code>%40</code> replace <code>@</code>.<br><code>github.ibm.com/repo/hello.git</code> is the url to your repo</p>
 <h3 id="deploy-keys"><a href="#deploy-keys" class="headerlink" title="deploy keys"></a>deploy keys</h3><p><a href="https://github.blog/2015-06-16-read-only-deploy-keys/" target="_blank" rel="noopener">https://github.blog/2015-06-16-read-only-deploy-keys/</a></p>
 <h1 id="承上启下"><a href="#承上启下" class="headerlink" title="承上启下"></a>承上启下</h1><p>interpersonal skill, BQ<br><a href="https://mail.google.com/mail/u/1/#inbox/FMfcgxwHNMbchDhFLQBnSltwkxBJVLbX" target="_blank" rel="noopener">https://mail.google.com/mail/u/1/#inbox/FMfcgxwHNMbchDhFLQBnSltwkxBJVLbX</a></p>
-<p>As an “intro” project, I would recommend deploying Kubernetes using Terraform. You can use any provider such as GKE, AKS or EKS.</p>
-<p>Once the Terraform template is working, extend it to install some applications inside Kubernetes, such as Vault, Elastic, Cassandra, etc. using the Helm and Helmfile.</p>
-<p>You may want to integrate the database applications inside Kubernetes with a Vault instance such that they would use it for authentication backend.</p>
+<p>As an “intro” project, I would recommend deploying <code>Kubernetes using Terraform</code>. You can use any provider such as <code>GKE</code>, AKS or EKS.</p>
+<p>Once the Terraform template is working, extend it to install some applications inside Kubernetes, such as <code>Vault, Elastic, Cassandra</code>, etc. using the <code>Helm and Helmfile</code>.</p>
+<p>You may want to integrate the database applications inside Kubernetes with a <code>Vault instance such that they would use it for authentication backend</code>.</p>
 <p>You can either build the Helm Charts yourself or use existing ones (perhaps you would want to modify them..)</p>
-<p>Further, you can extend the application deployment to emit some metrics and setup monitoring using Prometheus and Grafana.</p>
-<p>Once you are happy with the runtime stack, introduce some CI/CD pipelines using Jenkins and/or Gitlab.</p>
+<p>Further, you can extend the application deployment to emit some metrics and setup monitoring using <code>Prometheus and Grafana</code>.</p>
+<p>Once you are happy with the runtime stack, introduce some <code>CI/CD pipelines using Jenkins and/or Gitlab</code>.</p>
 <p>现在能接触到的基础打好<br>k8s, docker, jenkins (groovy + gradle), ansible, helm<br>git -&gt; gitlab (with jenkins)</p>
 <ul>
 <li><p>常用工具:<br>vim<br>visual studio<br>bash (中文版教程可以), zsh</p>
@@ -615,6 +615,7 @@
 <li>cassandra</li>
 </ol>
 <p>实验: 在k8s中部署cassandra<br>实验: 在k8s中部署jenkins pipeline + gitlab</p>
+<h1 id="AWS-learning"><a href="#AWS-learning" class="headerlink" title="AWS learning"></a>AWS learning</h1><p>VPC</p>
 </deep>
       
     </div>
@@ -1067,7 +1068,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell"><span class="nav-number">1.</span> <span class="nav-text">Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gitbook"><span class="nav-number">2.</span> <span class="nav-text">Gitbook</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Go"><span class="nav-number">3.</span> <span class="nav-text">Go</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Groovy"><span class="nav-number">4.</span> <span class="nav-text">Groovy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle"><span class="nav-number">5.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K8s"><span class="nav-number">6.</span> <span class="nav-text">K8s</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-number">7.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deploy-keys"><span class="nav-number">7.0.1.</span> <span class="nav-text">deploy keys</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#承上启下"><span class="nav-number">8.</span> <span class="nav-text">承上启下</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#understand"><span class="nav-number">8.1.</span> <span class="nav-text">understand</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steps"><span class="nav-number">8.2.</span> <span class="nav-text">steps</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell"><span class="nav-number">1.</span> <span class="nav-text">Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gitbook"><span class="nav-number">2.</span> <span class="nav-text">Gitbook</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Go"><span class="nav-number">3.</span> <span class="nav-text">Go</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Groovy"><span class="nav-number">4.</span> <span class="nav-text">Groovy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle"><span class="nav-number">5.</span> <span class="nav-text">Gradle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K8s"><span class="nav-number">6.</span> <span class="nav-text">K8s</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-number">7.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deploy-keys"><span class="nav-number">7.0.1.</span> <span class="nav-text">deploy keys</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#承上启下"><span class="nav-number">8.</span> <span class="nav-text">承上启下</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#understand"><span class="nav-number">8.1.</span> <span class="nav-text">understand</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steps"><span class="nav-number">8.2.</span> <span class="nav-text">steps</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AWS-learning"><span class="nav-number">9.</span> <span class="nav-text">AWS learning</span></a></li></div>
             
 
           </div>

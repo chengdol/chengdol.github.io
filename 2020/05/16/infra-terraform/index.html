@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-08T21:33:00.965Z">
+<meta property="og:updated_time" content="2020-07-09T19:11:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Terraform Quick Start">
 <meta name="twitter:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-08 14:33:00" itemprop="dateModified" datetime="2020-07-08T14:33:00-07:00">2020-07-08</time>
+                <time title="Modified: 2020-07-09 12:11:13" itemprop="dateModified" datetime="2020-07-09T12:11:13-07:00">2020-07-09</time>
               
             
           </span>
@@ -581,12 +581,12 @@
 <li>provider</li>
 </ul>
 <h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>Other way to use variables rather than specifying in single <code>.tf</code> file.</p>
-<p>The scenario, we need development, QA/UAT, production environment, how to implement via one configuratio and multiple inputs?</p>
+<p>The scenario, we need development, QA(Quality Assurance)/UAT(User Acceptance Testing), production environment, how to implement via one configuration and multiple inputs?</p>
 <p>The variable can be from:</p>
 <ul>
 <li>file</li>
 <li>environment variable</li>
-<li>var option</li>
+<li>var command flags</li>
 </ul>
 <p>You can override variables and precedence, select value based on environment, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## specify default value in tf file</span></span><br><span class="line">variable <span class="string">"env_name"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span> = string</span><br><span class="line">  default = <span class="string">"develop"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## specify in tfvars file</span></span><br><span class="line">env_name = <span class="string">"uat"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## specify in command line</span></span><br><span class="line">terraform plan -var <span class="string">'env_name=production'</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Workspace"><a href="#Workspace" class="headerlink" title="Workspace"></a>Workspace</h2><p>Workspace is the recommended way to working with multiple environments, for example:</p>
