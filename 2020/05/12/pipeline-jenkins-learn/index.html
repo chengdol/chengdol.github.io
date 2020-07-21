@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Vagrant Jenkins server git repo for testing purpose:https://github.com/chengdol/vagrant-jenkins Certified Jenkins EngineeCertified Jenkins Engineer (CJE):https://github.com/bmuschko/cje-crash-course J">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-25T21:45:09.000Z">
+<meta property="og:updated_time" content="2020-07-21T01:36:26.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins Quick Start">
 <meta name="twitter:description" content="Vagrant Jenkins server git repo for testing purpose:https://github.com/chengdol/vagrant-jenkins Certified Jenkins EngineeCertified Jenkins Engineer (CJE):https://github.com/bmuschko/cje-crash-course J">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">106</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">107</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">180</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">181</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-25 14:45:09" itemprop="dateModified" datetime="2020-06-25T14:45:09-07:00">2020-06-25</time>
+                <time title="Modified: 2020-07-20 18:36:26" itemprop="dateModified" datetime="2020-07-20T18:36:26-07:00">2020-07-20</time>
               
             
           </span>
@@ -580,7 +580,8 @@
 <p>在初始化设置Jenkins的时候，有可能有plugins安装失败，可以自己在<code>Manage plugin</code>中安装，然后restart Jenkins (关于restart Jenkins请在没有job运行的情况下进行，不同的安装方式restart的方法不同，或者在安装plugin的时候选择restart jenkins after install), for example: <code>systemctl restart jenkins</code>, 这可以消除控制面板上的plugin failure警告。。</p>
 <h2 id="Continuous-delivery"><a href="#Continuous-delivery" class="headerlink" title="Continuous delivery"></a>Continuous delivery</h2><p>In <code>Blue Ocean</code>, you can run multiple builds in parallel. if more than one builds run in the same agent, the workplace path is distinguished by suffix (@count number). 但是能不能run multiple builds in one agent depends on how you design your pipeline and tasks.</p>
 <p><code>Blue Ocean</code>中的UI对parallel的显示也很直观，方便查看。</p>
-<h3 id="Trigger-builds-remotely"><a href="#Trigger-builds-remotely" class="headerlink" title="Trigger builds remotely"></a>Trigger builds remotely</h3><p>Setup token in pipeline configure interface. Then in the upstream pipeline, for example, perform:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## unsecured connection</span></span><br><span class="line">curl POST http://&lt;url&gt;/job/<span class="variable">$&#123;PIPELINE_NAME&#125;</span>/buildWithParameters?token=<span class="variable">$&#123;PIPELINE_TOKEN&#125;</span>\\&amp;para1=val1\\&amp;para2=val2\\&amp;para3=val3</span><br><span class="line"><span class="comment">## secured connection</span></span><br><span class="line">curl --user <span class="variable">$&#123;BUILD_USER&#125;</span>:<span class="variable">$&#123;JENKINS_TOKEN&#125;</span> --request POST https://&lt;url&gt;/job/<span class="variable">$&#123;PIPELINE_NAME&#125;</span>/buildWithParameters?para1=val1\\&amp;para2=val2\\&amp;para3=val3</span><br></pre></td></tr></table></figure></p>
+<h3 id="Trigger-builds-remotely"><a href="#Trigger-builds-remotely" class="headerlink" title="Trigger builds remotely"></a>Trigger builds remotely</h3><p>Setup token in pipeline configure interface. Then in the upstream pipeline, for example, 这个语法不是很稳定，和官网上的不太一样，要自己试一试:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## unsecured connection</span></span><br><span class="line"><span class="comment">## --user is the jenkin login user and password</span></span><br><span class="line">curl POST http://&lt;url&gt;/job/<span class="variable">$&#123;PIPELINE_NAME&#125;</span>/buildWithParameters?token=<span class="variable">$&#123;PIPELINE_TOKEN&#125;</span>\\&amp;para1=val1\\&amp;&amp;para2=val2 --user admin:password</span><br><span class="line"></span><br><span class="line"><span class="comment">## secured connection</span></span><br><span class="line">curl --user <span class="variable">$&#123;BUILD_USER&#125;</span>:<span class="variable">$&#123;JENKINS_TOKEN&#125;</span> --request POST https://&lt;url&gt;/job/<span class="variable">$&#123;PIPELINE_NAME&#125;</span>/buildWithParameters?para1=val1\\&amp;para2=val2\\&amp;para3=val3</span><br></pre></td></tr></table></figure></p>
+<p>You don’t need to specify all parameters in URL, the parameters default values will be used on the configuration side.</p>
 <h3 id="Flyweight-executor"><a href="#Flyweight-executor" class="headerlink" title="Flyweight executor"></a>Flyweight executor</h3><p>Flyweight executor reside in Jenkins master, used to execute code outside of node allocation. Others are heavyweight executors. Flyweight exxcutor will not be counted into executor capacity.</p>
 <p>For example, we use flyweight executor for pause, in Jenkins script:<br><a href="https://stackoverflow.com/questions/44737036/jenkins-pipeline-with-code-pause-for-input" target="_blank" rel="noopener">https://stackoverflow.com/questions/44737036/jenkins-pipeline-with-code-pause-for-input</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## see below declarative pipeline demo code</span></span><br><span class="line">input <span class="string">"waiting for approval, move to staging stage..."</span></span><br></pre></td></tr></table></figure></p>
 <p>The job will be paused, you can go to <code>Paused for Input</code> to decide what to do next: proceed or abort. (In <code>Blue Ocean</code>, the pause interface is more clear)</p>
@@ -753,7 +754,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">180</span>
+                    <span class="site-state-item-count">181</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1055,7 +1056,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">106</span>
+                      
+                    
+                    <span class="site-state-item-count">107</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1123,7 +1126,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">755k</span>
+    <span title="Symbols count total">761k</span>
   
 
   
