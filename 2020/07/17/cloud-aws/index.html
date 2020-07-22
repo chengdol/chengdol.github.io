@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="From plurlasight: AWS Certified Developer – Associate (DVA-C01) 以下是我自己工作中的体验：  工作中经常用到， 需要花时间学习理解的: vpc, subset, security group, eni, route53, acm, IAM 其次: load balancer, auto scaling, ddb throttle， a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-21T08:06:38.551Z">
+<meta property="og:updated_time" content="2020-07-22T07:17:14.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS">
 <meta name="twitter:description" content="From plurlasight: AWS Certified Developer – Associate (DVA-C01) 以下是我自己工作中的体验：  工作中经常用到， 需要花时间学习理解的: vpc, subset, security group, eni, route53, acm, IAM 其次: load balancer, auto scaling, ddb throttle， a">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-21 01:06:38" itemprop="dateModified" datetime="2020-07-21T01:06:38-07:00">2020-07-21</time>
+                <time title="Modified: 2020-07-22 00:17:14" itemprop="dateModified" datetime="2020-07-22T00:17:14-07:00">2020-07-22</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.7k</span>
+                <span title="Symbols count in article">2.6k</span>
               
 
               
@@ -515,11 +515,26 @@
 <li>其次: load balancer, auto scaling, ddb throttle， api gateway。</li>
 <li>其他: lambda, step function， cloudformation, s3, ec2, sqs, sns, cloudwatch, ecs, ecr, code deploy 等等</li>
 </ol>
-<h2 id="Core-Services"><a href="#Core-Services" class="headerlink" title="Core Services"></a>Core Services</h2><p><code>EC2</code>: Elastic Cloud Compute<br><code>AMI</code>: Amazon Machine Image<br><code>EBS</code>: Elastic Block Storage, use for EC2 files systems<br><code>Security Group</code>: set of firewall rules that control the traffic for your instance, for example, control who can ssh to EC2 instance</p>
+<h2 id="Core-Services"><a href="#Core-Services" class="headerlink" title="Core Services"></a>Core Services</h2><p><code>EC2</code>: Elastic Cloud Compute<br><code>AMI</code>: Amazon Machine Image<br><code>EBS</code>: Elastic Block Storage, use for EC2 files systems<br><code>Security Group</code>: set of firewall rules that control the traffic for your single instance, for example, control who can ssh to EC2 instance, <code>VPC</code> is for groups of instance</p>
 <p><code>S3</code>: Simple Storage Service, maxmium file size is 5T, bucket is accessed via URL, the same as gcloud storage. Can be used for hosting static web site.</p>
 <p><code>RDS</code>: Relation Database Service<br><code>Route53</code>: Domain Name System (DNS) servics, you can register your domain name!</p>
-<h2 id="Enhancing-Services"><a href="#Enhancing-Services" class="headerlink" title="Enhancing Services"></a>Enhancing Services</h2><p><code>EB</code>: Elastic Beanstalk, application container service<br><code>Lambda</code>: Serverless option for executing code<br><code>DynamoDB</code>: a managed NoSQL database<br><code>VPC</code>: for securing your services, components in the VPC can connect by private IP<br><code>CloudFront</code>: super fast CDN<br><code>CloudWatch</code>: monitor and log service</p>
-<h2 id="Operate-on-AWS"><a href="#Operate-on-AWS" class="headerlink" title="Operate on AWS"></a>Operate on AWS</h2>
+<h2 id="Enhancing-Services"><a href="#Enhancing-Services" class="headerlink" title="Enhancing Services"></a>Enhancing Services</h2><p><code>EB</code>: Elastic Beanstalk, application service running on EC2</p>
+<p><code>Lambda</code>: Serverless option for executing code, function as a service, only pay when the code is running, significant cost savings if you have infrequent activity. Great for small, irregular tasks, for example, nightly ETL kickoffs, notification type functions</p>
+<p><code>DynamoDB</code>: a managed NoSQL database, supports both key-values and document models</p>
+<p><code>VPC</code>: for securing your services, components in the VPC can connect each through private IP. Multiple <code>subnets</code> can be in VPC, for example, you can configure public subnet and private subnet.</p>
+<p>How does <code>VPC</code> work? </p>
+<ul>
+<li>route table: control what goes where</li>
+<li>network ACL(access control list): act as subnet-level firewalls, control who can come and go </li>
+</ul>
+<p><code>CloudWatch</code>: monitoring resources and acting on alerts</p>
+<p><code>CloudFront</code>: super fast CDN, works seamlessly with S3, EC2, load balancing and route53</p>
+<h2 id="Access-AWS"><a href="#Access-AWS" class="headerlink" title="Access AWS"></a>Access AWS</h2><ul>
+<li>Web console</li>
+<li>SDK, programming application uses: <a href="https://github.com/aws" target="_blank" rel="noopener">https://github.com/aws</a></li>
+<li>Command line</li>
+</ul>
+
       
     </div>
 
@@ -977,7 +992,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-Services"><span class="nav-number">1.</span> <span class="nav-text">Core Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enhancing-Services"><span class="nav-number">2.</span> <span class="nav-text">Enhancing Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operate-on-AWS"><span class="nav-number">3.</span> <span class="nav-text">Operate on AWS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-Services"><span class="nav-number">1.</span> <span class="nav-text">Core Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enhancing-Services"><span class="nav-number">2.</span> <span class="nav-text">Enhancing Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-AWS"><span class="nav-number">3.</span> <span class="nav-text">Access AWS</span></a></li></ol></div>
             
 
           </div>
@@ -1009,7 +1024,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">761k</span>
+    <span title="Symbols count total">762k</span>
   
 
   
