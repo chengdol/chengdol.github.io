@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 Shellvariable pattern match: ${1##*/} ${USAGE%/*}, et">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-19T02:05:11.682Z">
+<meta property="og:updated_time" content="2020-07-23T04:35:51.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inprogress">
 <meta name="twitter:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 Shellvariable pattern match: ${1##*/} ${USAGE%/*}, et">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-18 19:05:11" itemprop="dateModified" datetime="2020-07-18T19:05:11-07:00">2020-07-18</time>
+                <time title="Modified: 2020-07-22 21:35:51" itemprop="dateModified" datetime="2020-07-22T21:35:51-07:00">2020-07-22</time>
               
             
           </span>
@@ -579,7 +579,7 @@
 <p>use <code>%40</code> replace <code>@</code>.<br><code>github.ibm.com/repo/hello.git</code> is the url to your repo</p>
 <h3 id="deploy-keys"><a href="#deploy-keys" class="headerlink" title="deploy keys"></a>deploy keys</h3><p><a href="https://github.blog/2015-06-16-read-only-deploy-keys/" target="_blank" rel="noopener">https://github.blog/2015-06-16-read-only-deploy-keys/</a></p>
 <h1 id="承上启下"><a href="#承上启下" class="headerlink" title="承上启下"></a>承上启下</h1><p>interpersonal skill, BQ<br><a href="https://mail.google.com/mail/u/1/#inbox/FMfcgxwHNMbchDhFLQBnSltwkxBJVLbX" target="_blank" rel="noopener">https://mail.google.com/mail/u/1/#inbox/FMfcgxwHNMbchDhFLQBnSltwkxBJVLbX</a></p>
-<p>As an “intro” project, I would recommend deploying <code>Kubernetes using Terraform</code>. You can use any provider such as <code>GKE</code>, AKS or EKS.</p>
+<p>As an “intro” project, I would recommend deploying <code>Kubernetes using Terraform</code>. You can use any provider such as <code>GKE</code>, AKS or <code>EKS</code>.</p>
 <p>Once the Terraform template is working, extend it to install some applications inside Kubernetes, such as <code>Vault, Elastic, Cassandra</code>, etc. using the <code>Helm and Helmfile</code>.</p>
 <p>You may want to integrate the database applications inside Kubernetes with a <code>Vault instance such that they would use it for authentication backend</code>.</p>
 <p>You can either build the Helm Charts yourself or use existing ones (perhaps you would want to modify them..)</p>
@@ -598,11 +598,10 @@
 </ul>
 <p>load balancer: nginx, haproxy</p>
 <ul>
-<li>cloud 基本结构，应用，组件:<br>AWS<br>GCP, ok<br>Azure</li>
+<li>cloud 基本结构，应用，组件:<br>AWS, ok<br>GCP, ok<br>Azure</li>
 </ul>
 <p>我猜工作流程:<br>用terraform 构造k8s 环境 或其他， 用ansible增加或更改配置，然后在k8s中部署应用(prometheus + grafana and elk for logs)，最后集成CI/CD<br>development -&gt; QA/UAT - &gt; production</p>
 <h2 id="understand"><a href="#understand" class="headerlink" title="understand"></a>understand</h2><p>如果不清楚这些则看不懂配置的含义, 要清楚各个cloud中resource的类型，配置，如何搭配:<br>instance, vpc, lb, dns, storage, routing, subnet, gateway</p>
-<p>GCP/GKS<br>AWS: VPC, EC2</p>
 <p>terraform -&gt; deploy k8s (EKS or GKS) -&gt; install vault, elasticsearch, cassandra by helm (need modify though)<br>-&gt;<br>Prometheus<br>Grafana<br>Kibana<br>-&gt;<br>CI/CD: jenkins + gitlab</p>
 <p>把完全不知道是什么的快速过一遍。<br>先学terraform -&gt; elasticsearch -&gt; vault, cassandra -&gt; monitoring tools<br>packer -&gt; gitlab, tower -&gt; helmfile</p>
 <h2 id="steps"><a href="#steps" class="headerlink" title="steps"></a>steps</h2><ol>

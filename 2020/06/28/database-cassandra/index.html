@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication stratefy and tunable consistency Seed for joining, private ip for each, config cassandra.yaml, use">
+  <meta name="description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication strategy and tunable consistency 目前好事Mac iptables 如何 于Virtual machine private IP 互相访问的问题。Seed for j">
 <meta name="keywords" content="database,cassandra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Cassandra">
 <meta property="og:url" content="http://yoursite.com/2020/06/28/database-cassandra/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication stratefy and tunable consistency Seed for joining, private ip for each, config cassandra.yaml, use">
+<meta property="og:description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication strategy and tunable consistency 目前好事Mac iptables 如何 于Virtual machine private IP 互相访问的问题。Seed for j">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T22:26:38.836Z">
+<meta property="og:updated_time" content="2020-07-23T20:36:19.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Cassandra">
-<meta name="twitter:description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication stratefy and tunable consistency Seed for joining, private ip for each, config cassandra.yaml, use">
+<meta name="twitter:description" content="TODOSingle node cluster: practice CQLMultiple node cluster/ multiple data center: verify replication strategy and tunable consistency 目前好事Mac iptables 如何 于Virtual machine private IP 互相访问的问题。Seed for j">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-12 15:26:38" itemprop="dateModified" datetime="2020-07-12T15:26:38-07:00">2020-07-12</time>
+                <time title="Modified: 2020-07-23 13:36:19" itemprop="dateModified" datetime="2020-07-23T13:36:19-07:00">2020-07-23</time>
               
             
           </span>
@@ -508,8 +508,8 @@
       
 
       
-        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>Single node cluster: practice CQL<br>Multiple node cluster/ multiple data center: verify replication stratefy and tunable consistency</p>
-<p>Seed for joining, private ip for each, config cassandra.yaml, use rpm to install<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## you will see the cluster node status</span></span><br><span class="line">./bin/nodetool status</span><br><span class="line"><span class="comment">## see token range and belongs to which node</span></span><br><span class="line">./bin/nodetool ring</span><br></pre></td></tr></table></figure></p>
+        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>Single node cluster: practice CQL<br>Multiple node cluster/ multiple data center: verify replication strategy and tunable consistency</p>
+<p>目前好事Mac iptables 如何 于Virtual machine private IP 互相访问的问题。<br>Seed for joining, private ip for each, config cassandra.yaml, use rpm to install cassadnra. Now I am using binary to run Cassandra:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## you will see the cluster node status</span></span><br><span class="line">./bin/nodetool status</span><br><span class="line"><span class="comment">## see token range and belongs to which node</span></span><br><span class="line">./bin/nodetool ring</span><br></pre></td></tr></table></figure></p>
 <p>Token number is acutally the virtual node number in one physical node.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CASSANDRA_SEEDS=ip or hostname?</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">nodetool join - Join the ring</span><br></pre></td></tr></table></figure>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Vagrant Cassandra lab environment:<br><a href="https://github.com/chengdol/vagrant-cassandra" target="_blank" rel="noopener">https://github.com/chengdol/vagrant-cassandra</a></p>
@@ -550,13 +550,10 @@
 <li><code>LOCAL_QUORUM</code>: local means current coordinator node data center</li>
 <li><code>LOCAL_ONE</code>: the same as <code>ONE</code></li>
 </ul>
-<h1 id="CQL"><a href="#CQL" class="headerlink" title="CQL"></a>CQL</h1><p>A single Vagrant node is enough for playing this section.</p>
-<p>Cassandra Query Language:</p>
+<h1 id="CQL"><a href="#CQL" class="headerlink" title="CQL"></a>CQL</h1><p>A single Vagrant Cassandra node is enough for CQL.<br>Cassandra Query Language:</p>
 <ul>
-<li><p><a href="https://cassandra.apache.org/doc/latest/cql/index.html" target="_blank" rel="noopener">https://cassandra.apache.org/doc/latest/cql/index.html</a></p>
-</li>
-<li><p>Keyspace, table and basic data type</p>
-</li>
+<li><a href="https://cassandra.apache.org/doc/latest/cql/index.html" target="_blank" rel="noopener">https://cassandra.apache.org/doc/latest/cql/index.html</a></li>
+<li>Keyspace, table and basic data type</li>
 <li>CRUD operations</li>
 <li>Counters</li>
 <li>Aggregate functions</li>
@@ -648,6 +645,7 @@
 <p>Select latest view_id from each course, using the limit clause<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> course_id, view_id <span class="keyword">from</span> course_page_views <span class="keyword">where</span> course_id = <span class="string">'nodejs-big-picture'</span> <span class="keyword">limit</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> course_id, view_id <span class="keyword">from</span> course_page_views <span class="keyword">where</span> course_id = <span class="string">'advanced-javascript'</span> <span class="keyword">limit</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
 <p>Retrieve the latest course page view for all courses with ‘select distinct’ and the static column<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> course_id, last_view_id <span class="keyword">from</span> course_page_views;</span><br></pre></td></tr></table></figure></p>
 <p>Select all the individual views for each course, one at a time<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> course_id, view_id <span class="keyword">from</span> course_page_views <span class="keyword">where</span> course_id = <span class="string">'nodejs-big-picture'</span>;</span><br><span class="line"><span class="keyword">select</span> course_id, view_id <span class="keyword">from</span> course_page_views <span class="keyword">where</span> course_id = <span class="string">'advanced-javascript'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>课程后面的东西目前用不到，到时候再接着看。</p>
 
       
     </div>

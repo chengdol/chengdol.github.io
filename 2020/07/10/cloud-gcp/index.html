@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This is from Pluralsight. GCP lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell is acutally running on a ephemeral compute engi">
-<meta name="keywords" content="gcp,cloud">
+  <meta name="description" content="From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell">
+<meta name="keywords" content="cloud,gcp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google Cloud">
 <meta property="og:url" content="http://yoursite.com/2020/07/10/cloud-gcp/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This is from Pluralsight. GCP lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell is acutally running on a ephemeral compute engi">
+<meta property="og:description" content="From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-22T20:41:00.561Z">
+<meta property="og:updated_time" content="2020-07-23T04:29:09.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google Cloud">
-<meta name="twitter:description" content="This is from Pluralsight. GCP lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell is acutally running on a ephemeral compute engi">
+<meta name="twitter:description" content="From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-22 13:41:00" itemprop="dateModified" datetime="2020-07-22T13:41:00-07:00">2020-07-22</time>
+                <time title="Modified: 2020-07-22 21:29:09" itemprop="dateModified" datetime="2020-07-22T21:29:09-07:00">2020-07-22</time>
               
             
           </span>
@@ -508,8 +508,8 @@
       
 
       
-        <p>This is from Pluralsight.</p>
-<p><strong>GCP lab:</strong><br><a href="https://www.qwiklabs.com/" target="_blank" rel="noopener">https://www.qwiklabs.com/</a></p>
+        <p>From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。</p>
+<p><strong>GCP Lab:</strong><br><a href="https://www.qwiklabs.com/" target="_blank" rel="noopener">https://www.qwiklabs.com/</a></p>
 <h1 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h1><p>Cloud SDK commands:</p>
 <ul>
 <li>gcloud</li>
@@ -517,11 +517,11 @@
 <li>gsutil (google storage)</li>
 <li>bq (big query)</li>
 </ul>
-<p>Cloud shell is acutally running on a ephemeral compute engine virtual machine.<br>其实command line 操作创建各种资源 比UI 更方便。</p>
-<p><code>Zone</code> is under <code>Region</code>, you can think of zones as data center in a region.</p>
+<p>Cloud shell is acutally running on a ephemeral compute engine instance. 其实command line 操作创建各种资源 比UI 更方便。</p>
+<p><code>Zone</code> is under <code>Region</code>, you can think of a zone as data center in a region.</p>
 <p><code>Anthos</code> is google’s morden solution for hybird and multi-cloud systems and services management.</p>
 <p><code>GCP cloud functions</code>: serverless execution environment for building and connecting cloud services. With Cloud Functions you write simple, single-purpose functions that are attached to events emitted from your cloud infrastructure and services. Your Cloud Function is triggered when an event being watched is fired. Your code executes in a fully managed environment. There is no need to provision any infrastructure or worry about managing any servers.</p>
-<p><code>GCP deployment manager</code>: just like <code>Terraform</code>, infrastructure as code.</p>
+<p><code>GCP deployment manager</code>: like <code>Terraform</code>, infrastructure as code.</p>
 <p><code>GCP Dataproc</code> for running Apache Spark and Apache Hadoop clusters.<br><code>GCP Dataflows</code> offers managed data pipelines, serverless fully managed data processing.<br><code>GCP Dataprep</code> visually explore, clean and prepare data for analysis and machine learning.</p>
 <p><code>BigQuery</code> is fully managed data warehouse.<br><code>Pub/Sub</code> (publisher/subscriber) is scalable, reliable messaging.<br><code>DataLab</code> offers interactive data exploration. Build on Jupyter.</p>
 <h1 id="Kubernetes-Architecting"><a href="#Kubernetes-Architecting" class="headerlink" title="Kubernetes Architecting"></a>Kubernetes Architecting</h1><p>Build on top of compute engine.<br>Container is isolated in user space to running application code, lightweight, represent as a process:</p>
@@ -531,11 +531,9 @@
 <li>cgroups</li>
 <li>nuion file systems</li>
 </ul>
-<p><code>Cloud Build</code>: Build, test, and deploy on our serverless CI/CD platform.</p>
-<p>Google maintains a container registry: <code>gcr.io</code></p>
-<p><code>Cloud Run</code>: build on <code>Knative</code>, for serverless workloads.</p>
-<p>Use <code>Node Pool</code> to manage different kinds of nodes.<br><code>Private Cluster</code>, google products and authorized networks can access.</p>
-<p>GKE abstracts away the master, show you the worker nodes on dashboard.</p>
+<p>GKE abstracts away the master, only show the worker nodes on dashboard.<br>Use <code>Node Pool</code> to manage different kinds of nodes.<br>Google maintains a container registry: <code>gcr.io</code><br><code>Cloud Run</code>: build on <code>Knative</code>, for serverless workloads.</p>
+<p><code>Cloud Build</code>: Build, test, and deploy on serverless CI/CD platform.</p>
+<p><code>Private Cluster</code>, google products and authorized networks can access.</p>
 <h1 id="Fundations"><a href="#Fundations" class="headerlink" title="Fundations"></a>Fundations</h1><p><code>Compute Engine</code> let you run virtual machine. In GCP, K8s nodes are actually virtual machine running in Compute Engine, just like IBM Fyre, you can see them in Compute Engine dashboard.</p>
 <ul>
 <li>Fully customized virtual machines</li>
@@ -543,7 +541,7 @@
 <li>Global load balancing and autoscaling</li>
 <li>Per-second billing</li>
 </ul>
-<p>VM has built-in SDK commands.</p>
+<p>VM has built-in SDK commands.<br>A <code>vCPU</code> is equal to 1 hardware hyper-thread.</p>
 <p><code>Preemptible VM</code>: can be terminated by GCP if the resources is needed in other places.<br>Cloud storage is binary large-object storage. 不同的storage针对不同的对象.</p>
 <p><code>VPC</code>: virtual private cloud, VPC is global scope, subnet is regional, can have different zone on the same subnet. Each VPC network is contained in a GCP project. VPC make componets connect to each other or isolated from each other.</p>
 <p>You control the VPC network, use its <code>route table</code> to forward traffic within network, even across subnets.</p>
@@ -554,14 +552,14 @@
 <li>custom mode (for production)</li>
 </ul>
 <p><code>VPN</code> can connect the on-premises network to GCP network.</p>
-<p>Vms can be on the same subnet but different zones.Every subnet has four reserved IP addresses in its primary IP range: <code>.0</code> for subnet network itself, <code>.1</code> for subnet gateway, second-to-last address in the range and the last address.</p>
-<p>The external IP is transparent to VM, mapped by VPC. You will not see it by <code>ip a s</code> command. In <code>/etc/hosts</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10.128.0.2 instance-1.us-central1-a.c.terraform-k8s-282804.internal instance-1  <span class="comment"># Added by Google</span></span><br><span class="line"><span class="comment">## internal DNS reslover</span></span><br><span class="line">169.254.169.254 metadata.google.internal  <span class="comment"># Added by Google</span></span><br></pre></td></tr></table></figure></p>
+<p>Vms can be on the same subnet but different zones. Every subnet has four reserved IP addresses in its primary IP range: <code>.0</code> for subnet network itself, <code>.1</code> for subnet gateway, second-to-last address in the range and the last address.</p>
+<p>The external IP is transparent to VM, managed by VPC. You will not see it by <code>ip a s</code> command.<br>In <code>/etc/hosts</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10.128.0.2 instance-1.us-central1-a.c.terraform-k8s-282804.internal instance-1  <span class="comment"># Added by Google</span></span><br><span class="line"><span class="comment">## internal DNS reslover</span></span><br><span class="line">169.254.169.254 metadata.google.internal  <span class="comment"># Added by Google</span></span><br></pre></td></tr></table></figure></p>
 <p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nslookup instance-1</span><br><span class="line"></span><br><span class="line">Server:         169.254.169.254</span><br><span class="line">Address:        169.254.169.254<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">Non-authoritative answer:</span><br><span class="line">Name:   instance-1.us-central1-a.c.terraform-k8s-282804.internal</span><br><span class="line">Address: 10.128.0.2</span><br></pre></td></tr></table></figure></p>
 <p>Setup VPC peering or VPN to allow internal network connection between VPCs.</p>
 <p>You can delete the whole default network setting, and create your own, for example, auto or custom mode network.</p>
 <p><code>Private google access</code> (for example to access cloud storage) and <code>Cloud NAT</code> (only outbound is allowed) help VM without external IP to access internet.</p>
-<p>A <code>vCPU</code> is equal to 1 hardware hyper-thread.</p>
-<p><code>RAM Disk</code>: tmpfs, fast scratch disk or cache, faster then disk but slower then memory.<br>VM comes with a single root persistent disk, can attach extended disk to VM, it is network storage! The extend disk needs to be formated and mounted by yourself, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.ext4 -F -E lazy_itable_init=0 \</span><br><span class="line">                     lazy_journal_init=0,discard \</span><br><span class="line">                     /dev/disk/by_id/&lt;disk name&gt;</span><br><span class="line"></span><br><span class="line">sudo mount -o discard,defaults /dev/disk/by_id/&lt;disk name&gt; /home/&lt;target directory&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>RAM Disk</code>: tmpfs, fast scratch disk or cache, faster then disk but slower then memory.</p>
+<p>VM comes with a single root persistent disk, can attach additional disk to VM, it is network storage! The extended disk needs to be formated and mounted by yourself, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.ext4 -F -E lazy_itable_init=0 \</span><br><span class="line">                     lazy_journal_init=0,discard \</span><br><span class="line">                     /dev/disk/by_id/&lt;disk name&gt;</span><br><span class="line"></span><br><span class="line">sudo mount -o discard,defaults /dev/disk/by_id/&lt;disk name&gt; /home/&lt;target directory&gt;</span><br></pre></td></tr></table></figure></p>
 <p><code>App engine</code> is not like Compute engine, it does not comprise of virtual machines, instead get access a family of services that application needs. Container(K8s, hybird) is in the middle of Compute engine (IssA) and App engine (PaaS). You don’t want to focus on the infrastructure at all, just want to focus on your application code. Especially suited for for building scalable web application/web site and mobile backends, RESTful API.</p>
 <p>App engine flexible environment is rely on container running in virtual machine in compute engine.</p>
 <h1 id="Core-Services"><a href="#Core-Services" class="headerlink" title="Core Services"></a>Core Services</h1><h2 id="IAM"><a href="#IAM" class="headerlink" title="IAM"></a>IAM</h2><p><code>IAM</code>: identity and access management, who can do what on which resources. It is for user.<br><code>Service Account</code> is for application.</p>
@@ -582,14 +580,13 @@
 <p><code>Cloud Memorystore</code>: creates and manages Redis instances on the Google Cloud Platform.</p>
 <h2 id="Resource-Management"><a href="#Resource-Management" class="headerlink" title="Resource Management"></a>Resource Management</h2><p>Resource manager, quotas, labels and billing.</p>
 <h2 id="Resource-Monitor"><a href="#Resource-Monitor" class="headerlink" title="Resource Monitor"></a>Resource Monitor</h2><p>From stackdriver collection.</p>
-<h1 id="Scaling-and-Automation"><a href="#Scaling-and-Automation" class="headerlink" title="Scaling and Automation"></a>Scaling and Automation</h1><h2 id="Interconnecting-Networks"><a href="#Interconnecting-Networks" class="headerlink" title="Interconnecting Networks"></a>Interconnecting Networks</h2><p>In the demo, Two VMs in differen region and subnet, setup the VPN tunnel they can ping each other via private IP.</p>
+<h1 id="Scaling-and-Automation"><a href="#Scaling-and-Automation" class="headerlink" title="Scaling and Automation"></a>Scaling and Automation</h1><h2 id="Interconnecting-Networks"><a href="#Interconnecting-Networks" class="headerlink" title="Interconnecting Networks"></a>Interconnecting Networks</h2><p>In the demo, Two VMs in differen region and subnet, setup the <code>VPN tunnel</code> they can ping each other via private IP.</p>
 <p>理解了这部分，可以自己搭建VPN翻墙了.<br><code>Cloud VPN</code>: securely connect your infrastructure to GCP VPC network, useful for low-volume data connections.</p>
 <p>Options: IPsec VPN tunnel, dedicated interconnect (for large traffic) and partner interconnect (via other service provider network)</p>
 <p>Configure cloud VPN gateway and on-premises VPN gateway, setup VPN tunnel (encrypted traffic), must be paired.</p>
 <h2 id="Load-Balancing-and-Auto-Scaling"><a href="#Load-Balancing-and-Auto-Scaling" class="headerlink" title="Load Balancing and Auto Scaling"></a>Load Balancing and Auto Scaling</h2><p>Managed instance groups, typically used with autoscaler.</p>
 <p>HTTP(s) load balancing: level 7 application layer load balancer.</p>
 <p>In the demo, create VM with detached disk, install apach2 then keep the disk to create custom image, use this image to create instance template then creating instance groups.</p>
-<p>主要是知道怎麼選擇，見slide.</p>
 <h2 id="Infrastructure-Automation"><a href="#Infrastructure-Automation" class="headerlink" title="Infrastructure Automation"></a>Infrastructure Automation</h2><p>Deployment manager and Terraform, can also use Ansible, Chef, Puppet..</p>
 <p>Terraform is integrated in Cloud Shell.</p>
 <p>GCP marketplace, production-ready solutions.</p>
@@ -616,9 +613,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/gcp/" rel="tag"># gcp</a>
-          
             <a href="/tags/cloud/" rel="tag"># cloud</a>
+          
+            <a href="/tags/gcp/" rel="tag"># gcp</a>
           
         </div>
       
