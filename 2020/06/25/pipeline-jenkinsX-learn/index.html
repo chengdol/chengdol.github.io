@@ -105,7 +105,7 @@
 <meta property="og:description" content="An opinionated CI/CD platform built on top of Kubernetes. Introduction from Cloudbees:  https://www.youtube.com/watch?v=PqSfYuKEkVU https://www.youtube.com/watch?v=dO3ZHr0Rsvs  Terraform is recommende">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://jenkins-x.io/images/jx-arch.png">
-<meta property="og:updated_time" content="2020-07-27T03:32:18.645Z">
+<meta property="og:updated_time" content="2020-07-28T04:50:01.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins X Quick Start">
 <meta name="twitter:description" content="An opinionated CI/CD platform built on top of Kubernetes. Introduction from Cloudbees:  https://www.youtube.com/watch?v=PqSfYuKEkVU https://www.youtube.com/watch?v=dO3ZHr0Rsvs  Terraform is recommende">
@@ -441,7 +441,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-26 20:32:18" itemprop="dateModified" datetime="2020-07-26T20:32:18-07:00">2020-07-26</time>
+                <time title="Modified: 2020-07-27 21:50:01" itemprop="dateModified" datetime="2020-07-27T21:50:01-07:00">2020-07-27</time>
               
             
           </span>
@@ -486,7 +486,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">8.2k</span>
+                <span title="Symbols count in article">11k</span>
               
 
               
@@ -563,7 +563,7 @@
 <li><a href="https://victorops.com/blog/what-is-chatops" target="_blank" rel="noopener">What is ChatOps</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jx create pullrequest</span><br><span class="line">jx get previews</span><br><span class="line">jx delete previews</span><br></pre></td></tr></table></figure>
-<h1 id="Creating-Custom-QucikStart-and-Build-Packs"><a href="#Creating-Custom-QucikStart-and-Build-Packs" class="headerlink" title="Creating Custom QucikStart and Build Packs"></a>Creating Custom QucikStart and Build Packs</h1><p><code>Build Packs</code>: <a href="https://buildpacks.io/" target="_blank" rel="noopener">https://buildpacks.io/</a>, the Jenkins X project template, powered by <a href="https://github.com/Azure/draft" target="_blank" rel="noopener">Draft</a>.</p>
+<h1 id="Creating-Custom-QucikStart-and-Build-Packs"><a href="#Creating-Custom-QucikStart-and-Build-Packs" class="headerlink" title="Creating Custom QucikStart and Build Packs"></a>Creating Custom QucikStart and Build Packs</h1><p><code>Build Packs</code>: <a href="https://buildpacks.io/" target="_blank" rel="noopener">https://buildpacks.io/</a>, the Jenkins X project template, powered by <a href="https://github.com/Azure/draft" target="_blank" rel="noopener">Draft</a>, contains:</p>
 <ul>
 <li>Dockerfile</li>
 <li>Production and Preview Helm charts</li>
@@ -571,6 +571,28 @@
 </ul>
 <p>Quick start workflow:<br>jx create quickstart -&gt; choose<br>quick start projects -&gt; generate<br>Vanilla project      -&gt; detects<br>Build packs          -&gt; modifies<br>Jenkins X project</p>
 <p>So bascially, we use quickstart to create a vanilla project skeleton, then Jenkins X-ify this project by build packs (generate languange specific Jenkins X template files). So <code>jx import</code> existing project also use build packs to do the job.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list repositories containing quickstarts</span></span><br><span class="line">jx get quickstartlocation</span><br><span class="line"></span><br><span class="line"><span class="comment">## create new quickstart repository</span></span><br><span class="line">jx create quickstartlocation</span><br><span class="line"></span><br><span class="line"><span class="comment">## delete new quickstart repository</span></span><br><span class="line">jx delete quickstartlocation</span><br><span class="line"></span><br><span class="line"><span class="comment">## edit current buildpack location</span></span><br><span class="line">jx edit buildpack</span><br></pre></td></tr></table></figure>
+<h1 id="Customize-Jenkins-X-Pipeline"><a href="#Customize-Jenkins-X-Pipeline" class="headerlink" title="Customize Jenkins X Pipeline"></a>Customize Jenkins X Pipeline</h1><p>Jenkins X file definition has YAML file structure, make use of inheritance to reduce repetition.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## validate pipeline syntax</span></span><br><span class="line">jx step syntax validate pipeline</span><br><span class="line"></span><br><span class="line"><span class="comment">## show full pipeline</span></span><br><span class="line">jx step syntax effective</span><br></pre></td></tr></table></figure>
+<h1 id="Versioning-and-Releasing-App"><a href="#Versioning-and-Releasing-App" class="headerlink" title="Versioning and Releasing App"></a>Versioning and Releasing App</h1><p>Jenkins X adopts <code>Semantic versioning</code>, split into 3 components.</p>
+<ul>
+<li>Major: breaking changes</li>
+<li>Minor: non-breaking changes</li>
+<li>Patch: bug fixes</li>
+</ul>
+<p>Patch number is auto-incremented, Major/Minor versions are set manually.</p>
+<h1 id="Custom-Domain-and-TLS"><a href="#Custom-Domain-and-TLS" class="headerlink" title="Custom Domain and TLS"></a>Custom Domain and TLS</h1><p><code>nip.io</code>, the IP with it is not human readable and prevents TLS, insecure. 比如外界访问部署后的应用。 Jenkins X allows custom domains and HTTPS</p>
+<p>External DNS:</p>
+<ul>
+<li>Makes Kubernetes resources discoverable on public DNS servers</li>
+<li>Automates creation of DNS records</li>
+</ul>
+<p>Certificate Manager:</p>
+<ul>
+<li>Issues SSL certificates for our applications</li>
+<li>Leverages <code>Lets Encrypt</code> behind the scenes</li>
+</ul>
+<p>First buy domain from Google Domains web site then use it in Google Cloud settings.</p>
 
       
     </div>
@@ -1037,7 +1059,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Aerial-View"><span class="nav-number">1.</span> <span class="nav-text">Aerial View</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Setup-Jenkins-X"><span class="nav-number">2.</span> <span class="nav-text">Setup Jenkins X</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-First-App-on-Jenkins-X-Pipeline"><span class="nav-number">3.</span> <span class="nav-text">Create First App on Jenkins X Pipeline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Environment-with-GitOps"><span class="nav-number">4.</span> <span class="nav-text">Environment with GitOps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pull-Requests-and-ChatOps"><span class="nav-number">5.</span> <span class="nav-text">Pull Requests and ChatOps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Creating-Custom-QucikStart-and-Build-Packs"><span class="nav-number">6.</span> <span class="nav-text">Creating Custom QucikStart and Build Packs</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Aerial-View"><span class="nav-number">1.</span> <span class="nav-text">Aerial View</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Setup-Jenkins-X"><span class="nav-number">2.</span> <span class="nav-text">Setup Jenkins X</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-First-App-on-Jenkins-X-Pipeline"><span class="nav-number">3.</span> <span class="nav-text">Create First App on Jenkins X Pipeline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Environment-with-GitOps"><span class="nav-number">4.</span> <span class="nav-text">Environment with GitOps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pull-Requests-and-ChatOps"><span class="nav-number">5.</span> <span class="nav-text">Pull Requests and ChatOps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Creating-Custom-QucikStart-and-Build-Packs"><span class="nav-number">6.</span> <span class="nav-text">Creating Custom QucikStart and Build Packs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Customize-Jenkins-X-Pipeline"><span class="nav-number">7.</span> <span class="nav-text">Customize Jenkins X Pipeline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Versioning-and-Releasing-App"><span class="nav-number">8.</span> <span class="nav-text">Versioning and Releasing App</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Custom-Domain-and-TLS"><span class="nav-number">9.</span> <span class="nav-text">Custom Domain and TLS</span></a></li></ol></div>
             
 
           </div>
@@ -1069,7 +1091,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">768k</span>
+    <span title="Symbols count total">772k</span>
   
 
   
