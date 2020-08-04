@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 Shellvariable pattern match: ${1##*/} ${USAGE%/*}, et">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-23T04:35:51.710Z">
+<meta property="og:updated_time" content="2020-08-03T18:14:59.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inprogress">
 <meta name="twitter:description" content="This is the blog incubator 最近在做一些pipeline的工作，需要快速上手，主要涉及到的:Jenkins (已经OK)gradle  (基本OK)Groovy  (即将OK)现在不清楚的地方是各自文件的语法。先从groovy，gradle入手，然后jenkins。 Shellvariable pattern match: ${1##*/} ${USAGE%/*}, et">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">182</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">183</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-22 21:35:51" itemprop="dateModified" datetime="2020-07-22T21:35:51-07:00">2020-07-22</time>
+                <time title="Modified: 2020-08-03 11:14:59" itemprop="dateModified" datetime="2020-08-03T11:14:59-07:00">2020-08-03</time>
               
             
           </span>
@@ -552,10 +552,15 @@
 <p>go object-oriented program 很不一样<br>这个在k8s operator中大量用到了</p>
 <p>every loop is <code>for</code> loop<br>loop over collections<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> collection &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// or _ is write-only variable</span></span><br><span class="line"><span class="keyword">for</span> _, v := <span class="keyword">range</span> collection &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>panic, similar to exception</p>
-<h1 id="Groovy"><a href="#Groovy" class="headerlink" title="Groovy"></a>Groovy</h1><p>Books, course and presentations, recommend:<br><a href="https://groovy-lang.org/learn.html#books" target="_blank" rel="noopener">https://groovy-lang.org/learn.html#books</a><br>O’relly course</p>
+<h1 id="Groovy"><a href="#Groovy" class="headerlink" title="Groovy"></a>Groovy</h1><p>掌握基本data type, control structure, function definition 就可以了.<br>和Java 通用的.</p>
+<p>Groovy quick start:<br><a href="https://www.youtube.com/watch?v=B98jc8hdu9g" target="_blank" rel="noopener">https://www.youtube.com/watch?v=B98jc8hdu9g</a></p>
+<p>Books, course and presentations, recommend:<br><a href="https://groovy-lang.org/learn.html#books" target="_blank" rel="noopener">https://groovy-lang.org/learn.html#books</a><br>O’relly course</p>
 <p><a href="http://groovy-lang.org/syntax.html" target="_blank" rel="noopener">http://groovy-lang.org/syntax.html</a><br>alternative java language</p>
-<p><code>DSL</code>: domain specific language<br><code>sdkman</code> very good installation toolkit (also for gradle!)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## must have jdk installed</span></span><br><span class="line">yum install java-1.8.0-openjdk-devel -y</span><br><span class="line"><span class="comment">## specify version 2.5.2</span></span><br><span class="line">sdk install groovy 2.5.2</span><br></pre></td></tr></table></figure></p>
-<p>others:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">groovysh</span><br><span class="line">println <span class="string">"123"</span></span><br><span class="line"></span><br><span class="line">def xx is <span class="built_in">local</span> scope</span><br><span class="line"></span><br><span class="line">:<span class="built_in">help</span></span><br><span class="line">:show variable</span><br><span class="line"></span><br><span class="line">xx.groovy</span><br><span class="line"><span class="comment">## compile</span></span><br><span class="line">groovyc xx.groovy</span><br><span class="line"><span class="comment">## run </span></span><br><span class="line">groovy xx.groovy</span><br><span class="line"><span class="comment">## this is ok</span></span><br><span class="line"><span class="variable">$abc</span></span><br><span class="line">List = [1,2,3]</span><br></pre></td></tr></table></figure></p>
+<p><code>DSL</code>: domain specific language<br><code>sdkman</code> very good installation toolkit (also for gradle!)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## must have jdk installed first</span></span><br><span class="line">yum install java-1.8.0-openjdk-devel -y</span><br><span class="line"><span class="comment">## specify version 2.5.2</span></span><br><span class="line">sdk install groovy 2.5.2</span><br></pre></td></tr></table></figure></p>
+<p>Utilize vagrant VM to setup groovy runtime with SDKMAN, sync folder to work with VSC.<br>groovy closure:<br><a href="https://groovy-lang.org/closures.html" target="_blank" rel="noopener">https://groovy-lang.org/closures.html</a></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// each</span></span><br><span class="line"><span class="keyword">def</span> names = [<span class="string">"alice"</span>, <span class="string">"bob"</span>, <span class="string">"michael"</span>];</span><br><span class="line"><span class="comment">// using closure</span></span><br><span class="line">names.each &#123; println it &#125;;</span><br></pre></td></tr></table></figure>
+<p>OOP, the class can be no constructor.</p>
+<p>String interpolation:<br><a href="https://groovy-lang.org/syntax.html#_string_interpolation" target="_blank" rel="noopener">https://groovy-lang.org/syntax.html#_string_interpolation</a></p>
 <h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><p>don’t see latest book,  please refer to official doc<br><a href="https://gradle.org/guides/" target="_blank" rel="noopener">https://gradle.org/guides/</a><br>Ant and Maven are also build tools, gradle wrapper, incremental builds.</p>
 <ol>
 <li>build by convention</li>
@@ -736,7 +741,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-count">183</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1110,7 +1115,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">773k</span>
+    <span title="Symbols count total">777k</span>
   
 
   
