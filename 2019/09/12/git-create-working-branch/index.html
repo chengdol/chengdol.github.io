@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Let me record the workflow about how to create your own working branch from master. I git clone the original repo to local, then git checkout -b to a develop branch based on the master branch, for exa">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-16T03:51:51.000Z">
+<meta property="og:updated_time" content="2020-08-08T08:52:00.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Create Working Branch">
 <meta name="twitter:description" content="Let me record the workflow about how to create your own working branch from master. I git clone the original repo to local, then git checkout -b to a develop branch based on the master branch, for exa">
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">32</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">33</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">183</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">184</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-15 19:51:51" itemprop="dateModified" datetime="2020-01-15T19:51:51-08:00">2020-01-15</time>
+                <time title="Modified: 2020-08-08 01:52:00" itemprop="dateModified" datetime="2020-08-08T01:52:00-07:00">2020-08-08</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.6k</span>
+                <span title="Symbols count in article">2.7k</span>
               
 
               
@@ -509,8 +509,8 @@
 
       
         <p>Let me record the workflow about how to create your own working branch from master.</p>
-<p>I <code>git clone</code> the original repo to local, then <code>git checkout -b</code> to a <code>develop</code> branch based on the <code>master</code> branch, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(cd /GitRepos; git clone git@github.xxx.com:xxx.git)</span><br></pre></td></tr></table></figure></p>
-<p>then go to local git repository<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b develop</span><br></pre></td></tr></table></figure></p>
+<p>I <code>git clone</code> the original repo to local, then <code>git checkout -b</code> to a <code>develop</code> branch based on the <code>master</code> branch, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">cd</span> /GitRepos; git <span class="built_in">clone</span> git@github.xxx.com:xxx.git)</span><br></pre></td></tr></table></figure></p>
+<p>then go to local git repository<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b develop</span><br></pre></td></tr></table></figure></p>
 <p>After checkout to new branch, if you do nothing and get files changed, this is sometimes a format issue, go to edit <code>.gitattributes</code>, comment out the regex, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># * text=auto</span><br></pre></td></tr></table></figure></p>
 <p>Save and run <code>git status</code>, you will see the change now is on <code>.gitattributes</code>, then undo the change and save.</p>
 <p>Now you are in <code>develop</code> branch, let’s check the config information:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure></p>
@@ -553,8 +553,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/11/git-merge-strategy/" rel="next" title="Pull Request Merge Strategy">
-                <i class="fa fa-chevron-left"></i> Pull Request Merge Strategy
+              <a href="/2019/09/11/git-merge-strategy/" rel="next" title="Git Merge and Rebase">
+                <i class="fa fa-chevron-left"></i> Git Merge and Rebase
               </a>
             
           </div>
@@ -628,7 +628,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">183</span>
+                    <span class="site-state-item-count">184</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -705,7 +705,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -985,7 +987,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">777k</span>
+    <span title="Symbols count total">783k</span>
   
 
   

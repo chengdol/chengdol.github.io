@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This course is from PluralSight Automating Jenkins with Groovy.这里不是讲如何编写declarative pipeline, 而是对Jenkins进行本地化配置, by Groovy script. 使用 Groovy 操控Jenkins API 去替代一些重复的UI 操作，就是从API 层面去使用jenkins，比如schedule">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-04T05:45:57.466Z">
+<meta property="og:updated_time" content="2020-08-04T15:53:59.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins Quick Start II">
 <meta name="twitter:description" content="This course is from PluralSight Automating Jenkins with Groovy.这里不是讲如何编写declarative pipeline, 而是对Jenkins进行本地化配置, by Groovy script. 使用 Groovy 操控Jenkins API 去替代一些重复的UI 操作，就是从API 层面去使用jenkins，比如schedule">
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">32</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">33</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">183</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">184</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-03 22:45:57" itemprop="dateModified" datetime="2020-08-03T22:45:57-07:00">2020-08-03</time>
+                <time title="Modified: 2020-08-04 08:53:59" itemprop="dateModified" datetime="2020-08-04T08:53:59-07:00">2020-08-04</time>
               
             
           </span>
@@ -518,8 +518,8 @@
 </ul>
 <p>第1, 2个接下来👇都提到了。</p>
 <h1 id="Jenkins-Configure-Groovy"><a href="#Jenkins-Configure-Groovy" class="headerlink" title="Jenkins Configure Groovy"></a>Jenkins Configure Groovy</h1><p>Install Groovy plug-in from Jenkins Plugin Manager, search <code>Groovy</code> in Available section. </p>
-<p>You can also run Groovy script in <code>Manage Jenkins</code> -&gt; <code>Script Console</code>, you can write <code>system script</code> here, for example:<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// default packages are imported</span></span><br><span class="line"><span class="keyword">def</span> svr = Jenkins.instance;</span><br><span class="line"><span class="comment">// TEST job</span></span><br><span class="line"><span class="keyword">def</span> job = svr.getJob(<span class="string">"TEST"</span>);</span><br><span class="line"><span class="keyword">def</span> sched= job.scheduleBuild2(<span class="number">0</span>);</span><br><span class="line">sched.get();</span><br></pre></td></tr></table></figure></p>
-<p>还可以用groovy 调用API 去读取设置的Parameters, then use them in script. The jenkins API documention is in:<br><a href="https://javadoc.jenkins.io/" target="_blank" rel="noopener">https://javadoc.jenkins.io/</a></p>
+<p>You can also run Groovy script in <code>Manage Jenkins</code> -&gt; <code>Script Console</code>, you can write <code>system script</code> here, for example:<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// default packages are imported</span></span><br><span class="line"><span class="keyword">def</span> svr = Jenkins.instance;</span><br><span class="line"><span class="comment">// get existing TEST job</span></span><br><span class="line"><span class="keyword">def</span> job = svr.getJob(<span class="string">"TEST"</span>);</span><br><span class="line"><span class="keyword">def</span> sched= job.scheduleBuild2(<span class="number">0</span>);</span><br><span class="line">sched.get();</span><br></pre></td></tr></table></figure></p>
+<p>还可以用groovy 调用API 去读取设置的Parameters, then use them in script. The jenkins API documention is in:<br><a href="https://javadoc.jenkins.io/" target="_blank" rel="noopener">https://javadoc.jenkins.io/</a><br>Hudson的名字由来是历史原因.</p>
 <p>You can put this inline script in <code>freestyle project</code>, go to configure -&gt; <code>Build</code>, there are 2 options about Groovy:</p>
 <ul>
 <li>Execute Groovy Script: <code>non-system</code> script, has less security freight, do jobs that out of jenkins internals.</li>
@@ -577,8 +577,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/26/mac-zsh/" rel="next" title="Setup Zsh and Theme">
-                <i class="fa fa-chevron-left"></i> Setup Zsh and Theme
+              <a href="/2020/07/26/mac-terminal_shell/" rel="next" title="Terminal and Shell Setup">
+                <i class="fa fa-chevron-left"></i> Terminal and Shell Setup
               </a>
             
           </div>
@@ -657,7 +657,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">183</span>
+                    <span class="site-state-item-count">184</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -734,7 +734,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1031,7 +1033,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">777k</span>
+    <span title="Symbols count total">783k</span>
   
 
   

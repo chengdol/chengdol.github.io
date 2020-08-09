@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits https://help.github.com/en/articles/merging-a-pull-request https://help.github.com/en/articles/configurin">
+  <meta name="description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## me">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pull Request Merge Strategy">
+<meta property="og:title" content="Git Merge and Rebase">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/git-merge-strategy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits https://help.github.com/en/articles/merging-a-pull-request https://help.github.com/en/articles/configurin">
+<meta property="og:description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## me">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-13T05:45:22.000Z">
+<meta property="og:updated_time" content="2020-08-08T21:30:36.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pull Request Merge Strategy">
-<meta name="twitter:description" content="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits https://help.github.com/en/articles/merging-a-pull-request https://help.github.com/en/articles/configurin">
+<meta name="twitter:title" content="Git Merge and Rebase">
+<meta name="twitter:description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## me">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Pull Request Merge Strategy | 海胆阶段's Blog</title>
+  <title>Git Merge and Rebase | 海胆阶段's Blog</title>
   
 
 
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">32</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">33</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">183</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">184</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Pull Request Merge Strategy
+          <h1 class="post-title" itemprop="name headline">Git Merge and Rebase
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-12 22:45:22" itemprop="dateModified" datetime="2019-09-12T22:45:22-07:00">2019-09-12</time>
+                <time title="Modified: 2020-08-08 14:30:36" itemprop="dateModified" datetime="2020-08-08T14:30:36-07:00">2020-08-08</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.3k</span>
+                <span title="Symbols count in article">2.4k</span>
               
 
               
@@ -508,13 +508,26 @@
       
 
       
-        <p><a href="https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits" target="_blank" rel="noopener">https://help.github.com/en/articles/about-merge-methods-on-github#squashing-your-merge-commits</a></p>
-<p><a href="https://help.github.com/en/articles/merging-a-pull-request" target="_blank" rel="noopener">https://help.github.com/en/articles/merging-a-pull-request</a></p>
-<p><a href="https://help.github.com/en/articles/configuring-commit-squashing-for-pull-requests" target="_blank" rel="noopener">https://help.github.com/en/articles/configuring-commit-squashing-for-pull-requests</a></p>
-<p><a href="https://github.com/ros-planning/moveit_tutorials/issues/280" target="_blank" rel="noopener">https://github.com/ros-planning/moveit_tutorials/issues/280</a></p>
-<p><a href="https://github.blog/2016-04-01-squash-your-commits/" target="_blank" rel="noopener">https://github.blog/2016-04-01-squash-your-commits/</a></p>
-<p>delete my branch remote in git web<br><a href="https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository" target="_blank" rel="noopener">https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository</a></p>
-<p>rm -rf will not delete git hidden files !!</p>
+        <p>之前其实很少用到<code>git merge</code> and <code>git rebase</code>，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI.</p>
+<p>在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## merge feature to master</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment">## squash will summary all commits in feature branch into merge commit</span></span><br><span class="line">git merge --squash feature</span><br><span class="line"><span class="comment">## need to commit this merge</span></span><br><span class="line">git commit -m <span class="string">"feature and master merged"</span></span><br></pre></td></tr></table></figure></p>
+<p>关于rebase的使用，可以参考这篇文章，它构造了一个线性的git hsitory，方便以后查看:<br><a href="https://www.jianshu.com/p/6960811ac89c" target="_blank" rel="noopener">https://www.jianshu.com/p/6960811ac89c</a></p>
+<ol>
+<li>先将本地master 更新, git pull origin master</li>
+<li>进入需要rebase的分支, git checkout dev</li>
+<li>执行rebase, git rebase master. 这样就把master的commits 线性的合并到dev 分支了</li>
+<li>rebase可能遇到conflicts, 参考这里去修复<a href="https://docs.github.com/en/github/using-git/resolving-merge-conflicts-after-a-git-rebase" target="_blank" rel="noopener">Resolving merge conflicts after a Git rebase</a></li>
+<li>dev 中rebase 完成后，切换到master执行merge, git checkout master, git rebase dev</li>
+</ol>
+<p>这样就把dev合并到master中了，实际上还是先rebase 再merge.</p>
+<p>这个文章讲了更多的rebase 特性:<br><a href="https://baijiahao.baidu.com/s?id=1633418495146592435" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1633418495146592435</a></p>
+<ol>
+<li>git pull –rebase</li>
+<li>修改commit 历史</li>
+<li>合并commit</li>
+<li>分解commit</li>
+<li>重新排序commit</li>
+</ol>
+<h2 id="Other-GitHub-tutorials"><a href="#Other-GitHub-tutorials" class="headerlink" title="Other GitHub tutorials:"></a>Other GitHub tutorials:</h2><p>GitHub.com Help Documentation:<br><a href="https://docs.github.com/en/github" target="_blank" rel="noopener">https://docs.github.com/en/github</a></p>
 
       
     </div>
@@ -608,8 +621,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -626,7 +648,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">183</span>
+                    <span class="site-state-item-count">184</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -703,7 +725,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -958,6 +982,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-GitHub-tutorials"><span class="nav-number">1.</span> <span class="nav-text">Other GitHub tutorials:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -983,7 +1024,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">777k</span>
+    <span title="Symbols count total">783k</span>
   
 
   

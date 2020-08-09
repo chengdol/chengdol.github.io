@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="The article talks about the variable scope in shell. especially how to access variables in one script from another. Local VariablesThe set command displays all functions and local variables defined fo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-01T05:00:30.699Z">
+<meta property="og:updated_time" content="2020-08-04T15:58:35.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Variables in Shell">
 <meta name="twitter:description" content="The article talks about the variable scope in shell. especially how to access variables in one script from another. Local VariablesThe set command displays all functions and local variables defined fo">
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">32</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">33</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">183</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">184</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-31 22:00:30" itemprop="dateModified" datetime="2020-07-31T22:00:30-07:00">2020-07-31</time>
+                <time title="Modified: 2020-08-04 08:58:35" itemprop="dateModified" datetime="2020-08-04T08:58:35-07:00">2020-08-04</time>
               
             
           </span>
@@ -518,7 +518,7 @@
 <p>You can use <code>unset</code> to remove an existing environment variable.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> demo</span><br></pre></td></tr></table></figure></p>
 <p>If you want to only set the variable for one command in one use, just prefix it, eg:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## EDITOR will only works for crontab command</span></span><br><span class="line">EDITOR=vim crontab -e</span><br></pre></td></tr></table></figure></p>
 <p>A common trick for programmers is to include the <code>single dot</code> symbol in their <code>PATH</code> environment variable. The single dot symbol represents the current directory:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span>:.</span><br></pre></td></tr></table></figure></p>
-<h1 id="Declare-Command"><a href="#Declare-Command" class="headerlink" title="Declare Command"></a>Declare Command</h1><p>Notice that <code>declare</code> can print both <code>set</code> and <code>env</code> variables. And <code>declare</code> command can be used to create local variables in <code>set</code> collection or export to <code>env</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -l: convert to lower case</span></span><br><span class="line"><span class="built_in">declare</span> -l hello=WORLD</span><br><span class="line"><span class="comment">## -u: convert to upper case</span></span><br><span class="line"><span class="built_in">declare</span> -u hello=world</span><br><span class="line"></span><br><span class="line">hello=world</span><br><span class="line"><span class="built_in">declare</span> -p hello</span><br><span class="line"><span class="comment">## result is below, -- means local variable with no options</span></span><br><span class="line"><span class="built_in">declare</span> -- hello=<span class="string">"world"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## declare can also export variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=123</span><br><span class="line"><span class="comment">## will see apple in env</span></span><br><span class="line">env | grep apple</span><br><span class="line"><span class="built_in">declare</span> -p apple</span><br><span class="line"><span class="comment">## result is below, -x means exported variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=<span class="string">"123"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## remove from env</span></span><br><span class="line"><span class="built_in">declare</span> +x apple</span><br></pre></td></tr></table></figure></p>
+<h1 id="Declare-Command"><a href="#Declare-Command" class="headerlink" title="Declare Command"></a>Declare Command</h1><p>Notice that <code>declare</code> can print both <code>set</code> and <code>env</code> variables. And <code>declare</code> command can be used to create local variables in <code>set</code> collection or export to <code>env</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -l: convert to lower case</span></span><br><span class="line"><span class="built_in">declare</span> -l hello=WORLD</span><br><span class="line"><span class="comment">## -u: convert to upper case</span></span><br><span class="line"><span class="built_in">declare</span> -u hello=world</span><br><span class="line"><span class="comment">## then if reassign value to hello, will be convert to lower/upper case automatically</span></span><br><span class="line"></span><br><span class="line">hello=world</span><br><span class="line"><span class="built_in">declare</span> -p hello</span><br><span class="line"><span class="comment">## result is below, -- means local variable with no options</span></span><br><span class="line"><span class="built_in">declare</span> -- hello=<span class="string">"world"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## declare can also export variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=123</span><br><span class="line"><span class="comment">## will see apple in env</span></span><br><span class="line">env | grep apple</span><br><span class="line"><span class="built_in">declare</span> -p apple</span><br><span class="line"><span class="comment">## result is below, -x means exported variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=<span class="string">"123"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## remove from env</span></span><br><span class="line"><span class="built_in">declare</span> +x apple</span><br></pre></td></tr></table></figure></p>
 <p>You can mix the option:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">declare</span> -x -l EDITOR</span><br><span class="line">EDITOR=vIM</span><br><span class="line"></span><br><span class="line"><span class="built_in">declare</span> -p EDITOR</span><br><span class="line"><span class="comment">## auto fix it to lower case</span></span><br><span class="line"><span class="built_in">declare</span> -xl EDITOR=<span class="string">"vim"</span></span><br></pre></td></tr></table></figure></p>
 <p>Create constant (read-only) variable, cannot be unset and remain for the shell session:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## set name as readonly</span></span><br><span class="line"><span class="built_in">declare</span> -r name=bob</span><br><span class="line"><span class="comment">## export it and readonly</span></span><br><span class="line"><span class="built_in">declare</span> -xr name=alice</span><br><span class="line"><span class="comment">## define a readonly array</span></span><br><span class="line"><span class="built_in">declare</span> -ra array=(1 2 3 4)</span><br></pre></td></tr></table></figure></p>
 <p>还有篇blog讲到了declare 创建arrays:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## index-based</span></span><br><span class="line"><span class="built_in">declare</span> -a user_name</span><br><span class="line"><span class="comment">## associated-based</span></span><br><span class="line"><span class="built_in">declare</span> -A user_name</span><br></pre></td></tr></table></figure></p>
@@ -666,7 +666,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">183</span>
+                    <span class="site-state-item-count">184</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -743,7 +743,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1040,7 +1042,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">777k</span>
+    <span title="Symbols count total">783k</span>
   
 
   
