@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="未来可见的一段时期要switch 到 Python了。这里主要记录一下用Python 刷题的总结，特别是一些不知道的module, funtions等等，还有就是知道了但没有熟练应用。 对于while, if 等，None, 0 等都视作False，不用再去显示比较了。123456divmod(x, y)&quot;&quot;&quot;returns a pair of numbers consisting of thei">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-11T06:12:33.582Z">
+<meta property="og:updated_time" content="2020-08-13T06:48:45.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Python Summary">
 <meta name="twitter:description" content="未来可见的一段时期要switch 到 Python了。这里主要记录一下用Python 刷题的总结，特别是一些不知道的module, funtions等等，还有就是知道了但没有熟练应用。 对于while, if 等，None, 0 等都视作False，不用再去显示比较了。123456divmod(x, y)&quot;&quot;&quot;returns a pair of numbers consisting of thei">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-10 23:12:33" itemprop="dateModified" datetime="2020-08-10T23:12:33-07:00">2020-08-10</time>
+                <time title="Modified: 2020-08-12 23:48:45" itemprop="dateModified" datetime="2020-08-12T23:48:45-07:00">2020-08-12</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1k</span>
+                <span title="Symbols count in article">2.7k</span>
               
 
               
@@ -510,6 +510,8 @@
       
         <p>未来可见的一段时期要switch 到 Python了。<br>这里主要记录一下用Python 刷题的总结，特别是一些不知道的module, funtions等等，还有就是知道了但没有熟练应用。</p>
 <p>对于while, if 等，None, 0 等都视作False，不用再去显示比较了。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">divmod(x, y)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">returns a pair of numbers consisting of their quotient and remainder.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">x <span class="keyword">and</span> y : x <span class="keyword">is</span> numerator <span class="keyword">and</span> y <span class="keyword">is</span> denominator</span><br><span class="line">x <span class="keyword">and</span> y must be non complex</span><br></pre></td></tr></table></figure></p>
+<p>L1480: 这题学到个新的function accumulate 依次叠加<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> accumulate</span><br><span class="line">itr = accumulate([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">list(itr)</span><br><span class="line"><span class="comment">## [1, 3, 6, 10, 15]</span></span><br></pre></td></tr></table></figure></p>
+<p>L617: 如果是BFS, 则要使用queue:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## init</span></span><br><span class="line">queue = collections.deque([])</span><br><span class="line"><span class="comment">## same as len(queue)</span></span><br><span class="line"><span class="comment">## cannonical way for all collections (tuples, strings, lists, dicts and all their many subtypes) to check empty or not</span></span><br><span class="line"><span class="keyword">while</span> queue:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -978,7 +980,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">791k</span>
+    <span title="Symbols count total">792k</span>
   
 
   
