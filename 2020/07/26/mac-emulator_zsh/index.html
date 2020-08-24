@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Q6qoOp8xFw6wa-XxCLEUp0jG9NebV_7W">
-<meta property="og:updated_time" content="2020-08-15T04:30:38.379Z">
+<meta property="og:updated_time" content="2020-08-23T23:58:06.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Emulator and Oh-My-Zsh Setup">
 <meta name="twitter:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Install iTermInstall iTerm2 on Machttps://www.ite">
@@ -282,7 +282,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">33</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">34</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">186</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">188</span></a>
 
   </li>
 
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-14 21:30:38" itemprop="dateModified" datetime="2020-08-14T21:30:38-07:00">2020-08-14</time>
+                <time title="Modified: 2020-08-23 16:58:06" itemprop="dateModified" datetime="2020-08-23T16:58:06-07:00">2020-08-23</time>
               
             
           </span>
@@ -487,7 +487,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">13k</span>
+                <span title="Symbols count in article">15k</span>
               
 
               
@@ -544,7 +544,7 @@
 <p>Install by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://starship.rs/install.sh | bash</span><br></pre></td></tr></table></figure></p>
 <p>After install, append this line in <code>~/.bashrc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(starship init bash)</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>My config file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.config &amp;&amp; touch ~/.config/starship.toml</span><br></pre></td></tr></table></figure></p>
-<p>My current <code>~/.config/starship.toml</code> file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Disable the newline at the start of the prompt</span></span><br><span class="line">add_newline = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[line_break]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[character]</span><br><span class="line">symbol = <span class="string">"➜"</span></span><br><span class="line">error_symbol = <span class="string">"✗"</span></span><br><span class="line">use_symbol_for_status = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[battery]</span><br><span class="line">full_symbol = <span class="string">"🔋"</span></span><br><span class="line">charging_symbol = <span class="string">"⚡️"</span></span><br><span class="line">discharging_symbol = <span class="string">"💀"</span></span><br><span class="line"></span><br><span class="line">[time]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line">format = <span class="string">"🕙[ %T ]"</span></span><br><span class="line">utc_time_offset = <span class="string">"-5"</span></span><br><span class="line">time_range = <span class="string">"10:00:00-14:00:00"</span></span><br><span class="line"></span><br><span class="line">[directory]</span><br><span class="line">truncation_length = 8</span><br><span class="line"></span><br><span class="line">[python]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[package]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[ruby]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[rust]</span><br><span class="line">disabled = <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>My current <code>~/.config/starship.toml</code> file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Disable the newline at the start of the prompt</span></span><br><span class="line">add_newline = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[line_break]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[character]</span><br><span class="line">symbol = <span class="string">"➜"</span></span><br><span class="line">error_symbol = <span class="string">"✗"</span></span><br><span class="line">use_symbol_for_status = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[battery]</span><br><span class="line">full_symbol = <span class="string">"🔋"</span></span><br><span class="line">charging_symbol = <span class="string">"⚡️"</span></span><br><span class="line">discharging_symbol = <span class="string">"💀"</span></span><br><span class="line"></span><br><span class="line">[time]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line">format = <span class="string">"🕙[ %T ]"</span></span><br><span class="line">utc_time_offset = <span class="string">"-5"</span></span><br><span class="line">time_range = <span class="string">"10:00:00-14:00:00"</span></span><br><span class="line"></span><br><span class="line">[directory]</span><br><span class="line">truncation_length = 8</span><br><span class="line"></span><br><span class="line"><span class="comment">## show virtual environments</span></span><br><span class="line">[python]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[package]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[ruby]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[rust]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[nodejs]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[java]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[golang]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[aws]</span><br><span class="line">disabled = <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -667,7 +667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">186</span>
+                    <span class="site-state-item-count">188</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -746,7 +746,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">33</span>
+                      
+                    
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1045,7 +1047,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">798k</span>
+    <span title="Symbols count total">805k</span>
   
 
   
