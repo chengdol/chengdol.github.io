@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses /ibm/unicorn_rsa as the key to ssh, we can generate a new k">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-14T22:18:34.000Z">
+<meta property="og:updated_time" content="2020-08-29T05:16:55.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Setup SSH Passwordless">
 <meta name="twitter:description" content="We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses /ibm/unicorn_rsa as the key to ssh, we can generate a new k">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">109</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">110</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">34</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">35</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-14 15:18:34" itemprop="dateModified" datetime="2020-06-14T15:18:34-07:00">2020-06-14</time>
+                <time title="Modified: 2020-08-28 22:16:55" itemprop="dateModified" datetime="2020-08-28T22:16:55-07:00">2020-08-28</time>
               
             
           </span>
@@ -509,7 +509,7 @@
 
       
         <p>We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses <code>/ibm/unicorn_rsa</code> as the key to ssh, we can generate a new key and utilize it to communicate.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## "yes" will overwrite existing rsa key</span></span><br><span class="line"><span class="comment">## -t specifies the type of key to create</span></span><br><span class="line"><span class="comment">## -N provides the new passphrase</span></span><br><span class="line"><span class="comment">## -f specifies the filename of the key file</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"yes"</span> | ssh-keygen -t rsa -N <span class="string">""</span> -f ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment">## then append the id_rsa.pub content to authorized_keys in each node</span></span><br><span class="line"><span class="built_in">declare</span> -a nodes=($(cat /etc/hosts | grep -i ibmcloud | awk &#123;<span class="string">'print $2'</span>&#125;))</span><br><span class="line">key=$(cat ~/.ssh/id_rsa.pub)</span><br><span class="line"><span class="keyword">for</span> node <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;nodes[@]&#125;</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"[INFO] copy ssh public to <span class="variable">$&#123;node&#125;</span>"</span></span><br><span class="line">  ssh -i /ibm/unicorn_rsa -o StrictHostKeyChecking=no <span class="variable">$&#123;node&#125;</span> <span class="string">"echo <span class="variable">$&#123;key&#125;</span> &gt;&gt; ~/.ssh/authorized_keys"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## "yes" will overwrite existing rsa key</span></span><br><span class="line"><span class="comment">## -t specify the type of key to create</span></span><br><span class="line"><span class="comment">## -N provides the new passphrase</span></span><br><span class="line"><span class="comment">## -f specifies the filename of the key file</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"yes"</span> | ssh-keygen -t rsa -N <span class="string">""</span> -f ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment">## then append the id_rsa.pub content to authorized_keys in each node</span></span><br><span class="line"><span class="built_in">declare</span> -a nodes=($(cat /etc/hosts | grep -i ibmcloud | awk &#123;<span class="string">'print $2'</span>&#125;))</span><br><span class="line">key=$(cat ~/.ssh/id_rsa.pub)</span><br><span class="line"><span class="keyword">for</span> node <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;nodes[@]&#125;</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"[INFO] copy ssh public to <span class="variable">$&#123;node&#125;</span>"</span></span><br><span class="line">  ssh -i /ibm/unicorn_rsa -o StrictHostKeyChecking=no <span class="variable">$&#123;node&#125;</span> <span class="string">"echo <span class="variable">$&#123;key&#125;</span> &gt;&gt; ~/.ssh/authorized_keys"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>More information about ssh and scp can refer this <a href="https://chengdol.github.io/2019/02/21/linux-ssh-scp-summary/" target="_blank" rel="noopener">post</a>.</p>
 
       
@@ -705,7 +705,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">34</span>
+                      
+                    
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -936,7 +938,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">109</span>
+                      
+                    
+                    <span class="site-state-item-count">110</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -987,7 +991,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">805k</span>
+    <span title="Symbols count total">809k</span>
   
 
   
