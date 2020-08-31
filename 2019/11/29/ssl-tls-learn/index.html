@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
-<meta name="keywords" content="ssl,tls">
+<meta name="keywords" content="linux,ssl,tls">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSL&#x2F;TLS Demystify">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/ssl-tls-learn/index.html">
@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi">
-<meta property="og:updated_time" content="2020-08-30T00:46:45.004Z">
+<meta property="og:updated_time" content="2020-08-30T19:33:11.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL&#x2F;TLS Demystify">
 <meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
@@ -265,7 +265,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">110</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">113</span></a>
 
   </li>
         
@@ -284,7 +284,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">35</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
 
   </li>
         
@@ -303,7 +303,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">188</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">190</span></a>
 
   </li>
 
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-29 17:46:45" itemprop="dateModified" datetime="2020-08-29T17:46:45-07:00">2020-08-29</time>
+                <time title="Modified: 2020-08-30 12:33:11" itemprop="dateModified" datetime="2020-08-30T12:33:11-07:00">2020-08-30</time>
               
             
           </span>
@@ -527,10 +527,8 @@
 <p>Interesting, from <code>Network</code> I see the the chrome browser actually uses IPV6 address talk to server, for example facebook and some other sites. see this <a href="https://superuser.com/questions/1199129/how-web-browser-determines-when-to-use-ipv4-or-ipv6-to-connect-to-the-destinatio" target="_blank" rel="noopener">question</a></p>
 </blockquote>
 <h1 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h1><ul>
-<li><p>symmetric encryption, the same key is used by both sides, for example: <code>AES</code>. This algorithm is embedded in SSL with HTTPS protocol.</p>
-</li>
-<li><p>asymmetric encryption, for example: <code>RSA</code>.</p>
-</li>
+<li>symmetric encryption, the same key is used by both sides, for example: <code>AES</code>. This algorithm is embedded in SSL with HTTPS protocol.</li>
+<li>asymmetric encryption, for example: <code>RSA</code>.</li>
 </ul>
 <h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>How does hash work to verify data integrity:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data + hash(data)  ---------&gt; data + hash(data)</span><br><span class="line">                                |         |</span><br><span class="line">                                |--hash--&gt;| (compare if they are the same)</span><br></pre></td></tr></table></figure></p>
 <p>Notice that in database the password is hashed, not plain text.</p>
@@ -554,7 +552,7 @@
 </ul>
 <p>Usually(but not necessarily), the keys are <code>interchangeable</code>, in the sense that if key A encrypts a message, then B can decrypt it, and if key B encrypts a message, then key A can decrypt it. While common, this property is not essential to asymmetric encryption.</p>
 <ul>
-<li>signing<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">           data                          |----------&gt; hash value</span><br><span class="line">            | (hash)     ==========&gt;     |  compare       |</span><br><span class="line">            |                            |                |</span><br><span class="line">        private key encrypt              |           public key decrypte</span><br><span class="line">            |                            | (hash)         |</span><br><span class="line">data   +   encrypted hash              data    +   encrypted hash</span><br></pre></td></tr></table></figure>
+<li>signing<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">           data                          |----------&gt; hash value</span><br><span class="line">            | (hash)     ==========&gt;     |  compare      /|\</span><br><span class="line">            |                            |                |</span><br><span class="line">        private key encrypt              |           public key decrypte</span><br><span class="line">           \|/                           | (hash)         |</span><br><span class="line">data   +   encrypted hash              data    +   encrypted hash</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>Signing ensures the data is sent by the <code>owner of private key</code> and not has been modified inbetween.</p>
@@ -643,6 +641,8 @@
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
             <a href="/tags/ssl/" rel="tag"># ssl</a>
           
@@ -743,7 +743,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">188</span>
+                    <span class="site-state-item-count">190</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -826,7 +826,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1059,7 +1061,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">110</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1127,7 +1135,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">809k</span>
+    <span title="Symbols count total">810k</span>
   
 
   

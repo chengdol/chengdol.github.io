@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Single CentOS guest virtual machine vagrant setup git reop:https://github.com/chengdol/vagrant-centos 早在2019年使用Ansible (from Book &amp;lt;&amp;lt;Ansible: Up and Running&amp;gt;&amp;gt;)的时候就了解到了Vagrant，知道它能非常方便的provi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-25T22:05:08.000Z">
+<meta property="og:updated_time" content="2020-08-31T00:23:21.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vagrant Quick Start">
 <meta name="twitter:description" content="Single CentOS guest virtual machine vagrant setup git reop:https://github.com/chengdol/vagrant-centos 早在2019年使用Ansible (from Book &amp;lt;&amp;lt;Ansible: Up and Running&amp;gt;&amp;gt;)的时候就了解到了Vagrant，知道它能非常方便的provi">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">110</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">113</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">35</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">188</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">190</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-25 15:05:08" itemprop="dateModified" datetime="2020-06-25T15:05:08-07:00">2020-06-25</time>
+                <time title="Modified: 2020-08-30 17:23:21" itemprop="dateModified" datetime="2020-08-30T17:23:21-07:00">2020-08-30</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">19k</span>
+                <span title="Symbols count in article">21k</span>
               
 
               
@@ -510,39 +510,36 @@
       
         <p>Single CentOS guest virtual machine vagrant setup git reop:<br><a href="https://github.com/chengdol/vagrant-centos" target="_blank" rel="noopener">https://github.com/chengdol/vagrant-centos</a></p>
 <p>早在2019年使用Ansible (from Book <code>&lt;&lt;Ansible: Up and Running&gt;&gt;</code>)的时候就了解到了Vagrant，知道它能非常方便的provision VirtualBox machine lab environment for testing purpose (比如测试Ansible的功能模块, Jenkins, Nginx)。这次系统地学习了，这样在本地部署实验集群也很方便了。</p>
-<p>并且提供诸如 Windows, MacOS等许多操作系统的box image. 还有Openshift, Kubernetes all-in-one box等。</p>
+<p><a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">https://app.vagrantup.com/boxes/search</a> 提供诸如 Windows, MacOS等许多操作系统的box image. 还有Openshift, Kubernetes all-in-one box等。</p>
 <p>If you’ve ever joined a new software team and spent a couple of days discovering what software you had to install on your laptop so you could run a development version of an internal product, you’ve felt the pain that Vagrant was built to alleviate.</p>
 <p>Ansible playbooks are a great way to specify how to configure a Vagrant machine so new comers on your team can get up and running on day one.</p>
-<p>这是来自于PluralSight 2014年的Vagrant课程，记录的时候会有一些更新。</p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Vagrant Blog (from HashiCorp):<br><a href="https://www.hashicorp.com/blog/category/vagrant" target="_blank" rel="noopener">https://www.hashicorp.com/blog/category/vagrant</a></p>
-<p>First read through Vagrant web site:<br><a href="https://www.vagrantup.com/" target="_blank" rel="noopener">https://www.vagrantup.com/</a></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="https://www.vagrantup.com/intro" target="_blank" rel="noopener">Introduction to Vagrant</a><br>Vagrant is a tool for building and managing virtual machine environments in a single workflow. </p>
+<p><a href="https://www.vagrantup.com/intro/vs" target="_blank" rel="noopener">Vagrant vs. Other Software</a><br>Compare with VirutalBox CLI tools, Docker and Terraform.</p>
+<p>First read the Vagrant web site:<br><a href="https://www.vagrantup.com/" target="_blank" rel="noopener">https://www.vagrantup.com/</a></p>
 <p>It leverages a <code>declarative</code> configuration file which describes all your software requirements, packages, operating system configuration, users, and more.</p>
 <p>Vagrant also integrates with your existing configuration management tooling like Ansible, Chef, Docker, Puppet or Salt, so you can use the same scripts to configure Vagrant as production.</p>
-<p>-<a href="https://www.vagrantup.com/intro" target="_blank" rel="noopener">Introduction to Vagrant</a></p>
-<p>  Vagrant is a tool for building and managing virtual machine environments in a single workflow. </p>
-<ul>
-<li><p><a href="https://www.vagrantup.com/intro/vs" target="_blank" rel="noopener">Vagrant vs. Other Software</a></p>
-<p>Compare with VirutalBox CLI tools, Docker and Terraform.</p>
-</li>
-</ul>
+<p>Vagrant Blog (from HashiCorp):<br><a href="https://www.hashicorp.com/blog/category/vagrant" target="_blank" rel="noopener">https://www.hashicorp.com/blog/category/vagrant</a></p>
 <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>Installation is easy, Vagrant and VirtualBox, other providers are possible, for example, Docker, VMware.</p>
 <p>Download and install Vagrant:<br><a href="https://www.vagrantup.com/downloads" target="_blank" rel="noopener">https://www.vagrantup.com/downloads</a></p>
 <p>Download and install VirtualBox:<br><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">https://www.virtualbox.org/wiki/Downloads</a></p>
 <h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><p>The <code>Vagrantfile</code> is meant to be committed to <code>version control</code> with your project, if you use version control. This way, every person working with that project can benefit from Vagrant without any upfront work.</p>
+<p>The syntax of Vagrantfiles is <code>Ruby</code>, but knowledge of the Ruby programming language is not necessary to make modifications to the Vagrantfile, since it is mostly simple variable assignment.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## init project</span></span><br><span class="line">mkdir vagrant_getting_started</span><br><span class="line"><span class="built_in">cd</span> vagrant_getting_started</span><br><span class="line"><span class="comment">## --minimal: minimal Vagrantfile</span></span><br><span class="line">vagrant init hashicorp/bionic64 --minimal</span><br></pre></td></tr></table></figure>
-<p>A place where you can find host boxes:<br><a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">https://app.vagrantup.com/boxes/search</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## download box image</span></span><br><span class="line">vagrant box add hashicorp/bionic64</span><br></pre></td></tr></table></figure></p>
+<p>A place where you can find image boxes:<br><a href="https://app.vagrantup.com/boxes/search" target="_blank" rel="noopener">https://app.vagrantup.com/boxes/search</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## download box image</span></span><br><span class="line">vagrant box add hashicorp/bionic64</span><br></pre></td></tr></table></figure></p>
 <p>In the above command, you will notice that boxes are namespaced. Boxes are broken down into two parts - the username and the box name - separated by a slash. In the example above, the username is “hashicorp”, and the box is “bionic64”.</p>
-<p>Editing Vagrantfile, this is a simple example from Vagrant web site, actually these are listed in Vagrantfile but comment out:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Vagrant.configure(<span class="string">"2"</span>) <span class="keyword">do</span> |config|</span><br><span class="line">  config.vm.box = <span class="string">"centos/7"</span></span><br><span class="line">  config.vm.hostname = <span class="string">"chengdol-local"</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## specify box version</span></span><br><span class="line">  config.vm.box_version = <span class="string">"2004.01"</span></span><br><span class="line">  config.vm.box_url = <span class="string">"https://vagrantcloud.com/hashicorp/bionic64"</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## provision.sh is in the same folder as Vagrantfile</span></span><br><span class="line">  <span class="comment">## if not specify privileged: false, run as root!</span></span><br><span class="line">  <span class="comment">## can have multiple provisioning statements</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## 可以把需要root的配置和其他user的配置分开provisioning</span></span><br><span class="line">  config.vm.provision :shell, path: <span class="string">"provision.sh"</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## port forwarding</span></span><br><span class="line">  <span class="comment">## can do auto-correct if conflicts</span></span><br><span class="line">  config.vm.network :forwarded_port, guest: 80, host: 4567</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
-<p>Note that by default ssh login as <code>vagrant</code>, not <code>root</code> user, you can use <code>sudo</code> to execute command or run <code>sudo su -</code> first.</p>
-<p>Another useful setting, 比port forwarding 更方便! 这个对于本地测试是足够了.<br>经过试验，发现就算用了private IP，也必须用port forwarding才能外部访问! 还有一点要注意，防火墙firewall是否关闭或设置相应的rules，否则也可能访问不到:</p>
+<p>Editing Vagrantfile, this is a simple example from Vagrant web site:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Vagrant.configure(<span class="string">"2"</span>) <span class="keyword">do</span> |config|</span><br><span class="line">  config.vm.box = <span class="string">"centos/7"</span></span><br><span class="line">  config.vm.hostname = <span class="string">"chengdol-local"</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## specify box version</span></span><br><span class="line">  config.vm.box_version = <span class="string">"2004.01"</span></span><br><span class="line">  config.vm.box_url = <span class="string">"https://vagrantcloud.com/hashicorp/bionic64"</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## provision.sh is in the same folder as Vagrantfile</span></span><br><span class="line">  <span class="comment">## if not specify privileged: false, it runs as root!</span></span><br><span class="line">  <span class="comment">## can have multiple provisioning statements</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## 可以把需要root的配置和其他user的配置分开provisioning</span></span><br><span class="line">  config.vm.provision :shell, path: <span class="string">"provision.sh"</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">## port forwarding</span></span><br><span class="line">  <span class="comment">## can do auto-correct if conflicts</span></span><br><span class="line">  config.vm.network :forwarded_port, guest: 80, host: 4567</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>Another useful setting, 比port forwarding 更方便! 这个对于本地测试是足够了.<br>经过试验，发现就算用了private IP，也必须用port forwarding才能外部访问! 还有一点要注意，防火墙firewall是否关闭或设置相应的rules，否则也可能访问不到port:</p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/5984217/vagrants-port-forwarding-not-working" target="_blank" rel="noopener">Vagrant’s port forwarding not working</a></li>
 </ul>
 <p>不过private IP是集群必备，否则不能相互SSH访问。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## assign private IP</span></span><br><span class="line">config.vm.network <span class="string">"private_network"</span>, ip: <span class="string">"192.168.33.10"</span></span><br></pre></td></tr></table></figure></p>
-<p>This configuration uses a Vagrant private network. The machine will be accessible <code>only</code> from the machine that runs Vagrant. You won’t be able to connect to this IP address from another physical machine, even if it’s on the same network as the machine running Vagrant. However, different Vagrant machines <strong>can</strong> connect to each other.</p>
+<p>This configuration uses a Vagrant private network. The machine can be accessed <code>only</code> from the machine that runs Vagrant. You won’t be able to connect to this IP address from another physical machine, even if it’s on the same network as the machine running Vagrant. However, different Vagrant machines <strong>can</strong> connect to each other.</p>
 <p>Public network, allow general public access to VM, 但本地测试使用意义不大。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## when start, it will prompt you select which interface to use</span></span><br><span class="line">config.vm.network <span class="string">"public_network"</span>, ip: <span class="string">"192.168.33.10"</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## ssh agent forwarding, for example, git clone from VM using the private key of host</span></span><br><span class="line">config.ssh.forward_agent = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>Bring up the environment:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check machine status</span></span><br><span class="line">vagrant status</span><br><span class="line"><span class="comment">## at your project root directory</span></span><br><span class="line">vagrant up</span><br><span class="line"><span class="comment">## ssh to guest machine in your project</span></span><br><span class="line">vagrant ssh</span><br><span class="line"></span><br><span class="line"><span class="comment">## when you finish working</span></span><br><span class="line"><span class="comment">## destroy machine</span></span><br><span class="line"><span class="comment">## -f: confirm</span></span><br><span class="line">vagrant destroy -f</span><br><span class="line"><span class="comment">## remove the box</span></span><br><span class="line">vagrant box remove</span><br></pre></td></tr></table></figure></p>
+<p>Note that by default <code>vagrant ssh</code> login as user <code>vagrant</code>, not <code>root</code> user, you can use <code>sudo</code> to execute command or run <code>sudo su -</code> first.</p>
+<p><a href="https://stackoverflow.com/questions/10864372/how-to-ssh-to-vagrant-without-actually-running-vagrant-ssh" target="_blank" rel="noopener">可不可以直接使用ssh command呢</a>？也是可以的, 在project中有个<code>.vagrant</code> folder，the private key is in the path <code>.vagrant/machines/&lt;VM name&gt;/virtualbox/private_key</code>, 可以用这个private key to ssh:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i &lt;path to private key&gt; -p 2222 vagrant@127.0.0.1</span><br></pre></td></tr></table></figure></p>
+<p>这些信息可以通过<code>vagrant ssh-config</code>查看到:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## vagrant must be running</span></span><br><span class="line">vagrant ssh-config</span><br><span class="line"></span><br><span class="line">Host default</span><br><span class="line">  HostName 127.0.0.1</span><br><span class="line">  User vagrant</span><br><span class="line">  Port 2222</span><br><span class="line">  UserKnownHostsFile /dev/null</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  PasswordAuthentication no</span><br><span class="line">  IdentityFile .../.vagrant/machines/default/virtualbox/private_key</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">  LogLevel FATAL</span><br></pre></td></tr></table></figure></p>
 <p>By using <code>synced folders</code>, Vagrant will automatically sync your files to and from the guest machine. By default, Vagrant shares your <code>project directory</code> (remember, that is the one with the Vagrantfile) to the <code>/vagrant</code> directory in your guest machine.</p>
 <p>Synced folder will be mapped <strong>before</strong> provisioning would run.</p>
 <p>Vagrant also support rsync, primarily in situations where other synced folder mechanisms are not available:<br><a href="https://www.vagrantup.com/docs/synced-folders/rsync.html" target="_blank" rel="noopener">https://www.vagrantup.com/docs/synced-folders/rsync.html</a></p>
@@ -550,14 +547,12 @@
 <p>Vagrant remembers that it has already run the provisioner and will not run it a second time, except you force it.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## reboot machine and reload provision setting if machine is already running</span></span><br><span class="line"><span class="comment">## if no provision needed, just run vagrant reload</span></span><br><span class="line"><span class="comment">## --provision: force run provision again</span></span><br><span class="line">vagrant reload --provision</span><br><span class="line"><span class="comment">## force rerun provision when machine is running</span></span><br><span class="line">vagrant provision</span><br></pre></td></tr></table></figure></p>
 <p>Idempotent shell script, provision中用到了很多softlink去软连接synced folder中的文件或文件夹到需要的地方，这样方便在host machine中编辑.</p>
 <p>For complex provisioning scripts, it may be more efficient to package a custom Vagrant box with those packages pre-installed instead of building them each time:<br><a href="https://www.vagrantup.com/docs/boxes" target="_blank" rel="noopener">https://www.vagrantup.com/docs/boxes</a><br>You can add, list, remove and update the box, see <code>vagrant box -h</code>.</p>
-<p>Methods to teardown:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## hibernate</span></span><br><span class="line">vagrant <span class="built_in">suspend</span></span><br><span class="line">vagrant resume</span><br><span class="line"></span><br><span class="line"><span class="comment">## power off</span></span><br><span class="line">vagrant halt</span><br><span class="line"><span class="comment">## reclaim all resources</span></span><br><span class="line">vagrant destroy</span><br><span class="line"><span class="comment">## boot again</span></span><br><span class="line">vagrant up</span><br></pre></td></tr></table></figure></p>
+<p>Methods to teardown:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## hibernate, save states in disk</span></span><br><span class="line">vagrant <span class="built_in">suspend</span></span><br><span class="line">vagrant resume</span><br><span class="line"></span><br><span class="line"><span class="comment">## normal power off</span></span><br><span class="line">vagrant halt</span><br><span class="line"><span class="comment">## reclaim all resources</span></span><br><span class="line">vagrant destroy</span><br><span class="line"><span class="comment">## boot again</span></span><br><span class="line">vagrant up</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://stackoverflow.com/questions/42549087/in-vagrant-which-is-better-out-of-halt-and-suspend" target="_blank" rel="noopener">When to use suspend vs halt</a></p>
 <p>Command help<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vagrant -h</span><br><span class="line"><span class="comment">## subcommand</span></span><br><span class="line">vagrant up -h</span><br><span class="line">vagrant box add -h</span><br></pre></td></tr></table></figure></p>
 <h2 id="Multi-Machine"><a href="#Multi-Machine" class="headerlink" title="Multi-Machine"></a>Multi-Machine</h2><p>这个是非常实用的部分，对于测试ansible 以及 jenkins:<br><a href="https://www.vagrantup.com/docs/multi-machine" target="_blank" rel="noopener">https://www.vagrantup.com/docs/multi-machine</a></p>
-<h2 id="Convert-ova-to-box"><a href="#Convert-ova-to-box" class="headerlink" title="Convert ova to box"></a>Convert ova to box</h2><p>Convert a Virtualbox ova to a Vagrant box</p>
-<ul>
-<li><a href="https://gist.github.com/chengdol/315d3cbb83cf224c3b34913095b7fff9" target="_blank" rel="noopener">https://gist.github.com/chengdol/315d3cbb83cf224c3b34913095b7fff9</a></li>
-</ul>
-<h1 id="PluralSight"><a href="#PluralSight" class="headerlink" title="PluralSight"></a>PluralSight</h1><p>这里做一些笔记补充</p>
+<h2 id="Convert-ova-to-box"><a href="#Convert-ova-to-box" class="headerlink" title="Convert ova to box"></a>Convert ova to box</h2><p>Convert a Virtualbox ova to a Vagrant box<br><a href="https://gist.github.com/chengdol/315d3cbb83cf224c3b34913095b7fff9" target="_blank" rel="noopener">https://gist.github.com/chengdol/315d3cbb83cf224c3b34913095b7fff9</a></p>
+<h1 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h1><p>这是来自于PluralSight 2014年的Vagrant课程，记录的时候会有一些更新。</p>
 <h2 id="VirtualBox-Commands"><a href="#VirtualBox-Commands" class="headerlink" title="VirtualBox Commands"></a>VirtualBox Commands</h2><p>Virtualbox command line tool:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list VMs</span></span><br><span class="line">vboxmanage list vms</span><br><span class="line"><span class="comment">## show running VMs</span></span><br><span class="line">vboxmanage list runningvms</span><br></pre></td></tr></table></figure></p>
 <h2 id="Vagrant"><a href="#Vagrant" class="headerlink" title="Vagrant"></a>Vagrant</h2><p>Display an GUI interface, in the Vagrantfile<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 这个block对virtualBox做了更详细的配置</span></span><br><span class="line">config.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> |vb|</span><br><span class="line">  <span class="comment"># Display the VirtualBox GUI when booting the machine</span></span><br><span class="line">  vb.gui = <span class="literal">true</span></span><br><span class="line">  <span class="comment">## Customize the amount of memory on the VM:</span></span><br><span class="line">  <span class="comment">## default virtualbox memory is 512MB </span></span><br><span class="line">  vb.memory = <span class="string">"1024"</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
 <p>You will see the login screen popped up by VirtualBox, login user/password are both <code>vagrant</code>.</p>
@@ -684,7 +679,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">188</span>
+                    <span class="site-state-item-count">190</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -767,7 +762,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1000,7 +997,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">110</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1036,7 +1039,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">1.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project"><span class="nav-number">1.2.</span> <span class="nav-text">Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-Machine"><span class="nav-number">1.3.</span> <span class="nav-text">Multi-Machine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convert-ova-to-box"><span class="nav-number">1.4.</span> <span class="nav-text">Convert ova to box</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PluralSight"><span class="nav-number">2.</span> <span class="nav-text">PluralSight</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VirtualBox-Commands"><span class="nav-number">2.1.</span> <span class="nav-text">VirtualBox Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vagrant"><span class="nav-number">2.2.</span> <span class="nav-text">Vagrant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hubot"><span class="nav-number">2.3.</span> <span class="nav-text">Hubot</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">1.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project"><span class="nav-number">1.2.</span> <span class="nav-text">Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-Machine"><span class="nav-number">1.3.</span> <span class="nav-text">Multi-Machine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convert-ova-to-box"><span class="nav-number">1.4.</span> <span class="nav-text">Convert ova to box</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Others"><span class="nav-number">2.</span> <span class="nav-text">Others</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VirtualBox-Commands"><span class="nav-number">2.1.</span> <span class="nav-text">VirtualBox Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vagrant"><span class="nav-number">2.2.</span> <span class="nav-text">Vagrant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hubot"><span class="nav-number">2.3.</span> <span class="nav-text">Hubot</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1068,7 +1071,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">809k</span>
+    <span title="Symbols count total">810k</span>
   
 
   

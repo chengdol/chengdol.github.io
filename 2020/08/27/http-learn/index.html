@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，可能之后会单独总结一下。这次涉及到的以前没接触的新概念挺多，Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel是B">
+  <meta name="description" content="最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。这次涉及到的以前没接触的概念挺多，比如, Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel">
 <meta name="keywords" content="http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/08/27/http-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，可能之后会单独总结一下。这次涉及到的以前没接触的新概念挺多，Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel是B">
+<meta property="og:description" content="最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。这次涉及到的以前没接触的概念挺多，比如, Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-30T07:03:44.641Z">
+<meta property="og:updated_time" content="2020-08-30T18:53:55.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP Quick Start">
-<meta name="twitter:description" content="最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，可能之后会单独总结一下。这次涉及到的以前没接触的新概念挺多，Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel是B">
+<meta name="twitter:description" content="最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。这次涉及到的以前没接触的概念挺多，比如, Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">110</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">113</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">35</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">188</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">190</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-30 00:03:44" itemprop="dateModified" datetime="2020-08-30T00:03:44-07:00">2020-08-30</time>
+                <time title="Modified: 2020-08-30 11:53:55" itemprop="dateModified" datetime="2020-08-30T11:53:55-07:00">2020-08-30</time>
               
             
           </span>
@@ -508,9 +508,9 @@
       
 
       
-        <p>最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，可能之后会单独总结一下。这次涉及到的以前没接触的新概念挺多，Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel是Blaze的开源版本。</p>
+        <p>最近在做migrating Squid to Envoy的工作，其中重要的一件事是HTTP的控制 和 转发，这方面不是很了解。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。这次涉及到的以前没接触的概念挺多，比如, Envoy 是个C++ code based的项目，从Lyft开源，目前几乎云大厂都在使用，值得一提的是Envoy是Bazel build的，而Bazel是Blaze的开源版本。</p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>非常不错的Tutorial:<br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN web docs: HTTP</a></p>
-<p><a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0" target="_blank" rel="noopener">HTTP Crash Course &amp; Exploration</a><br>The typical HTTP format:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">METHOD PATH PROTOCOL</span><br><span class="line">HEADERS: name: value</span><br><span class="line"></span><br><span class="line">BODY</span><br></pre></td></tr></table></figure></p>
+<p>很快速的把基础部分过了一下:<br><a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0" target="_blank" rel="noopener">HTTP Crash Course &amp; Exploration</a><br>The typical HTTP format:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">METHOD PATH PROTOCOL</span><br><span class="line">HEADERS: name: value</span><br><span class="line"></span><br><span class="line">BODY</span><br></pre></td></tr></table></figure></p>
 <p>HTTP status code:</p>
 <ul>
 <li>1xx, informational</li>
@@ -520,7 +520,8 @@
 <li>5xx, server error</li>
 </ul>
 <p>HTTP/2, faster and more efficient &amp; secure, request and response multiplexing.</p>
-<h1 id="CONNECT-Method"><a href="#CONNECT-Method" class="headerlink" title="CONNECT Method"></a>CONNECT Method</h1><p><a href="https://stackoverflow.com/questions/11697943/when-should-one-use-connect-and-get-http-methods-at-http-proxy-server" target="_blank" rel="noopener">When should one use CONNECT</a><br>With SSL(HTTPS), only the two remote end-points understand the requests, and the proxy cannot decipher them. Hence, all it does is open that tunnel using CONNECT, and lets the two end-points (webserver and client) talk to each other directly.</p>
+<h1 id="CONNECT-Method"><a href="#CONNECT-Method" class="headerlink" title="CONNECT Method"></a>CONNECT Method</h1><p>关注的重点来了.</p>
+<p><a href="https://stackoverflow.com/questions/11697943/when-should-one-use-connect-and-get-http-methods-at-http-proxy-server" target="_blank" rel="noopener">When should one use CONNECT</a><br>With SSL(HTTPS), only the two remote end-points understand the requests, and the proxy cannot decipher them. Hence, all it does is open that tunnel using CONNECT, and lets the two end-points (webserver and client) talk to each other directly.</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT" target="_blank" rel="noopener">MDN web docs: CONNECT</a><br>For example, the CONNECT method can be used to access websites that use SSL (HTTPS). The client asks an HTTP Proxy server to <code>tunnel</code> the TCP connection to the desired destination. The server then proceeds to make the connection on behalf of the client. Once the connection has been established by the server, the Proxy server continues to proxy the TCP stream to and from the client.</p>
 <p>这篇文章很不错:<br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling" target="_blank" rel="noopener">MDN web docs: proxy servers and tunneling</a><br>There are two types of proxies: forward proxies (or tunnel, or gateway) and reverse proxies (used to control and protect access to a server for load-balancing, authentication, decryption or caching).</p>
 <p>Forward proxies can hide the identities of clients whereas reverse proxies can hide the identities of servers.</p>
@@ -570,6 +571,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/30/proxy-squid/" rel="prev" title="Proxy Squid">
+                Proxy Squid <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -641,7 +646,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">188</span>
+                    <span class="site-state-item-count">190</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -724,7 +729,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -957,7 +964,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">110</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1025,7 +1038,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">809k</span>
+    <span title="Symbols count total">810k</span>
   
 
   
