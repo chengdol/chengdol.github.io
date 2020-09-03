@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This post is about configuring secure docker registry as docker container, check this for setting up secure docker registry pod in K8s.   More about SSL please check my blog SSL Demystify. It contains">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-29T23:29:36.000Z">
+<meta property="og:updated_time" content="2020-09-02T03:26:01.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set up Secure Docker Registry Container">
 <meta name="twitter:description" content="This post is about configuring secure docker registry as docker container, check this for setting up secure docker registry pod in K8s.   More about SSL please check my blog SSL Demystify. It contains">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">190</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">192</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-29 16:29:36" itemprop="dateModified" datetime="2020-06-29T16:29:36-07:00">2020-06-29</time>
+                <time title="Modified: 2020-09-01 20:26:01" itemprop="dateModified" datetime="2020-09-01T20:26:01-07:00">2020-09-01</time>
               
             
           </span>
@@ -515,7 +515,7 @@
 <p>Securing access to your hosted images is paramount, the registry natively supports <code>TLS</code> and <code>basic authentication</code>, let’s do it.</p>
 <p>The Registry GitHub repository includes additional information about advanced authentication and authorization methods. Only very large or public deployments are expected to extend the Registry in this way.</p>
 <p>Finally, the Registry ships with a robust notification system, calling webhooks in response to activity, and both extensive logging and reporting, mostly useful for large installations that want to collect metrics.</p>
-<h2 id="Generate-Self-signed-Certificate"><a href="#Generate-Self-signed-Certificate" class="headerlink" title="Generate Self-signed Certificate"></a>Generate Self-signed Certificate</h2><p>See <a href="(https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry">document</a>) from docker.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/certs</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate domain.key and self-signed domain.crt</span></span><br><span class="line"><span class="comment">## I use -days 3650</span></span><br><span class="line">openssl req \</span><br><span class="line">      -newkey rsa:4096 -nodes -x509 -sha256\</span><br><span class="line">      -keyout certs/domain.key -out certs/domain.crt -days 3650 \</span><br><span class="line">      -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=&lt;Company Name&gt;/OU=Org/CN=chengdol.registry.com"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Generate-Self-signed-Certificate"><a href="#Generate-Self-signed-Certificate" class="headerlink" title="Generate Self-signed Certificate"></a>Generate Self-signed Certificate</h2><p>See <a href="https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry" target="_blank" rel="noopener">document</a> from docker.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/certs</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate domain.key and self-signed domain.crt</span></span><br><span class="line"><span class="comment">## I use -days 3650</span></span><br><span class="line">openssl req \</span><br><span class="line">      -newkey rsa:4096 -nodes -x509 -sha256\</span><br><span class="line">      -keyout certs/domain.key -out certs/domain.crt -days 3650 \</span><br><span class="line">      -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=&lt;Company Name&gt;/OU=Org/CN=chengdol.registry.com"</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Notice that the <code>CN=chengdol.registry.com</code> must be the registry access url, no port number suffix needed.</p>
 </blockquote>
@@ -536,10 +536,10 @@
 <p>If you don’t do this, when run docker push you will get this error:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error response from daemon: Get https://chengdol.registry.com/v2/: x509: certificate signed by unknown authority</span><br></pre></td></tr></table></figure></p>
 <p>If docker still complains about the certificate when using authentication?<br>When using authentication, some versions of Docker also require you to trust the certificate at the OS level.</p>
 <p>For RedHat, do:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp certs/domain.crt /etc/pki/ca-trust/<span class="built_in">source</span>/anchors/myregistrydomain.com.crt</span><br><span class="line">update-ca-trust</span><br></pre></td></tr></table></figure></p>
-<p>Now you can push and pull like, no need to specify port number, it will use 443 port:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu</span><br><span class="line">docker tag ubuntu chengdol.registry.com/ubuntu:v1</span><br><span class="line">docker push chengdol.registry.com/ubuntu:v1</span><br><span class="line">docker pull chengdol.registry.com/ubuntu:v1</span><br></pre></td></tr></table></figure></p>
-<p>So far, secure configuration is done, now the docker registry will use <code>HTTPS</code> in <code>443</code> port to communciate with docker client. If you want to also setup basic authentication, see below:</p>
+<p>Now you can push and pull like below, no need to specify port number, it will use 443 port:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu</span><br><span class="line">docker tag ubuntu chengdol.registry.com/ubuntu:v1</span><br><span class="line">docker push chengdol.registry.com/ubuntu:v1</span><br><span class="line">docker pull chengdol.registry.com/ubuntu:v1</span><br></pre></td></tr></table></figure></p>
+<p>So far, secure configuration is done, now the docker registry will use <code>HTTPS</code> in <code>443</code> port to communciate with docker client. If you want to setup basic authentication, see below:</p>
 <h2 id="Setup-Basic-Authrntication"><a href="#Setup-Basic-Authrntication" class="headerlink" title="Setup Basic Authrntication"></a>Setup Basic Authrntication</h2><blockquote>
-<p>Warning: You cannot use authentication with authentication schemes that send credentials as clear text. You <strong>must</strong> configure <code>TLS</code> first for authentication to work.</p>
+<p>Warning: You cannot enable authentication that send credentials as clear text. You <strong>must</strong> configure <code>TLS</code> first for authentication to work.</p>
 </blockquote>
 <p>Use <code>htpasswd</code> to create the user info:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/auth</span><br><span class="line">htpasswd -Bbn demo demo &gt; /root/auth/htpasswd</span><br></pre></td></tr></table></figure></p>
 <p>Then, we switch back to <code>5000</code> port: (注意这里没用443端口)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry \</span><br><span class="line">  -v /root/auth:/auth \</span><br><span class="line">  -e &quot;REGISTRY_AUTH=htpasswd&quot; \</span><br><span class="line">  -e &quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot; \</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  -v /root/certs:/certs \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure></p>
@@ -668,7 +668,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">190</span>
+                    <span class="site-state-item-count">192</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1060,7 +1060,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">810k</span>
+    <span title="Symbols count total">811k</span>
   
 
   

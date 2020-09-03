@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi">
-<meta property="og:updated_time" content="2020-08-30T19:33:11.349Z">
+<meta property="og:updated_time" content="2020-09-02T03:18:09.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL&#x2F;TLS Demystify">
 <meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
@@ -303,7 +303,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">190</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">192</span></a>
 
   </li>
 
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-30 12:33:11" itemprop="dateModified" datetime="2020-08-30T12:33:11-07:00">2020-08-30</time>
+                <time title="Modified: 2020-09-01 20:18:09" itemprop="dateModified" datetime="2020-09-01T20:18:09-07:00">2020-09-01</time>
               
             
           </span>
@@ -573,7 +573,7 @@
 <h2 id="Why-we-need-intermediary-CAs"><a href="#Why-we-need-intermediary-CAs" class="headerlink" title="Why we need intermediary CAs?"></a>Why we need intermediary CAs?</h2><p>There are not so much public root CAs because of problem of trust. Actually anybody can create own root CA but nobody will trust it. That’s why there is limited set of global root CAs that are trusted worldwide by operating systems and browsers. You can view list of such global CAs with their root certificates in any browser or OS.</p>
 <p>Such root CAs have certificates with long period of validity and their main responsibility is simple create “source of trust”. That’s why they don’t issue certificates to end users to avoid additional work and minimize risk that their private keys will be compromised. Intermediate CAs certificates don’t necessarily need to be in the list of trusted certificates in the OS or browser. They need simply be issued by trusted root CA.</p>
 <h1 id="Chain-of-Trust"><a href="#Chain-of-Trust" class="headerlink" title="Chain of Trust"></a>Chain of Trust</h1><p><code>openssl</code> command:</p>
-<p>Generate RSA private key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate private.pem file private key with aes256 encryption method</span></span><br><span class="line"><span class="comment">## will ask you input pass phrase </span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate public key from above private key</span></span><br><span class="line"><span class="comment">## will ask you pass phrase from private key</span></span><br><span class="line">openssopenssl rsa -<span class="keyword">in</span> private.pem -outform PEM -pubout -out public.pem</span><br></pre></td></tr></table></figure></p>
+<p>Generate RSA private key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate private.pem file private key with aes256 encryption method</span></span><br><span class="line"><span class="comment">## will ask you input pass phrase </span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate public key from above private key</span></span><br><span class="line"><span class="comment">## will ask you pass phrase from private key</span></span><br><span class="line">openssl rsa -<span class="keyword">in</span> private.pem -outform PEM -pubout -out public.pem</span><br></pre></td></tr></table></figure></p>
 <h2 id="Root-CAs-in-OS"><a href="#Root-CAs-in-OS" class="headerlink" title="Root CAs in OS"></a>Root CAs in OS</h2><ul>
 <li>How does web browser trust the root CAs and certificates?<br>The OS ships a list of trusted certificates, in Mac search <code>Keychain Access</code>. </li>
 </ul>
@@ -743,7 +743,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">190</span>
+                    <span class="site-state-item-count">192</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1135,7 +1135,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">810k</span>
+    <span title="Symbols count total">811k</span>
   
 
   
