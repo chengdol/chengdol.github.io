@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When build docker images, sometimes we need to use some files to install some packages inside container, for example when build redhat docker image: redhat.repo, entitlement/ and rpm-gpg/ are needed f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-11T18:52:00.000Z">
+<meta property="og:updated_time" content="2020-09-05T02:48:28.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Commit">
 <meta name="twitter:description" content="When build docker images, sometimes we need to use some files to install some packages inside container, for example when build redhat docker image: redhat.repo, entitlement/ and rpm-gpg/ are needed f">
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-10-11 11:29:35 / Modified: 11:52:00" itemprop="dateCreated datePublished" datetime="2019-10-11T11:29:35-07:00">2019-10-11</time>
+              <time title="Created: 2019-10-11 11:29:35" itemprop="dateCreated datePublished" datetime="2019-10-11T11:29:35-07:00">2019-10-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-09-04 19:48:28" itemprop="dateModified" datetime="2020-09-04T19:48:28-07:00">2020-09-04</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.9k</span>
+                <span title="Symbols count in article">4.2k</span>
               
 
               
@@ -498,7 +510,7 @@
       
         <p>When build docker images, sometimes we need to use some files to install some packages inside container, for example when build redhat docker image: <code>redhat.repo</code>, <code>entitlement/</code> and <code>rpm-gpg/</code> are needed for package installation.</p>
 <p>But we don’t want to use <code>COPY</code> command in dockerfile to copy them into image, that will add layers to store them when run <code>docker build</code>, not safe. The solution is mount these files in <code>docker run</code>, after install then commit, <code>docker commit</code> <strong>will not</strong> include any data in volumes mounted inside the container.</p>
-<p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">## mount redhat repo and keys, install packages</span><br><span class="line">docker run --detach \</span><br><span class="line">  --name=serviceosbase \</span><br><span class="line">  --user 0 \</span><br><span class="line">  -v /etc/yum.repos.d/redhat.repo:/etc/yum.repos.d/redhat.repo \</span><br><span class="line">  -v /etc/pki/rpm-gpg:/etc/pki/rpm-gpg \</span><br><span class="line">  -v /etc/pki/entitlement:/etc/pki/entitlement \</span><br><span class="line">  --entrypoint=/bin/sh \</span><br><span class="line">  $&#123;DOCKER_IMAGE_TAG&#125;:1 \</span><br><span class="line">  -c &apos;tail -f /dev/null&apos;</span><br><span class="line"></span><br><span class="line">docker exec serviceosbase /bin/sh -c &quot;yum install -y glibc glibc-common systemd</span><br><span class="line">    systemd-libs openssl-libs &amp;&amp; yum update -y &amp;&amp; rm -rf /var/tmp/yum-* &amp;&amp; yum</span><br><span class="line">    makecache fast&quot;</span><br><span class="line"></span><br><span class="line">docker commit serviceosbase $&#123;DOCKER_IMAGE_TAG&#125;:1</span><br></pre></td></tr></table></figure></p>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## mount redhat repo and keys, install packages</span></span><br><span class="line">docker run --detach \</span><br><span class="line">  --name=serviceosbase \</span><br><span class="line">  --user 0 \</span><br><span class="line">  -v /etc/yum.repos.d/redhat.repo:/etc/yum.repos.d/redhat.repo \</span><br><span class="line">  -v /etc/pki/rpm-gpg:/etc/pki/rpm-gpg \</span><br><span class="line">  -v /etc/pki/entitlement:/etc/pki/entitlement \</span><br><span class="line">  --entrypoint=/bin/sh \</span><br><span class="line">  <span class="variable">$&#123;DOCKER_IMAGE_TAG&#125;</span>:1 \</span><br><span class="line">  -c <span class="string">'tail -f /dev/null'</span></span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> serviceosbase /bin/sh -c <span class="string">"yum install -y glibc glibc-common systemd</span></span><br><span class="line"><span class="string">    systemd-libs openssl-libs &amp;&amp; yum update -y &amp;&amp; rm -rf /var/tmp/yum-* &amp;&amp; yum</span></span><br><span class="line"><span class="string">    makecache fast"</span></span><br><span class="line"></span><br><span class="line">docker commit serviceosbase <span class="variable">$&#123;DOCKER_IMAGE_TAG&#125;</span>:1</span><br></pre></td></tr></table></figure></p>
 <p>You can check the layers with <code>docker history &lt;image&gt;</code> command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IMAGE               CREATED              CREATED BY                                      SIZE                COMMENT</span><br><span class="line">1f6e112efb83        About a minute ago   /bin/sh -c <span class="comment">#(nop)  ENV LANG=en_US.UTF-8 LANGU   0 B</span></span><br><span class="line">6060bfb14056        About a minute ago   /bin/sh -c rm /etc/yum.repos.d/ubi.repo &amp;&amp;      10.83 MB</span><br><span class="line">543fa76542de        2 minutes ago        /bin/sh -c <span class="comment">#(nop)  MAINTAINER XXX               0 B</span></span><br><span class="line">6558c4297a5d        2 minutes ago        /bin/sh -c <span class="comment">#(nop)  LABEL name=IIS Services ve   0 B</span></span><br><span class="line">6fecccc91c83        5 weeks ago                                                          7.06 kB</span><br><span class="line">&lt;missing&gt;           5 weeks ago                                                          204.8 MB            Imported from -</span><br></pre></td></tr></table></figure></p>
 <p>Compare with dockerfile, no layer is for mount data after commit.</p>
 
@@ -987,7 +999,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">811k</span>
+    <span title="Symbols count total">817k</span>
   
 
   

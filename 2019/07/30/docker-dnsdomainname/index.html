@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I have some doubts about dnsdomainname command in docker container when I developed non-root DataStage, in engine conductor tier. References to Configure container DNS How can Docker supply each conta">
+  <meta name="description" content="I have some doubts about dnsdomainname command in docker container when I developed non-root DataStage, in Engine Conductor tier. References to Configure container DNS How can Docker supply each conta">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Configuring Container DNS">
 <meta property="og:url" content="http://yoursite.com/2019/07/30/docker-dnsdomainname/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I have some doubts about dnsdomainname command in docker container when I developed non-root DataStage, in engine conductor tier. References to Configure container DNS How can Docker supply each conta">
+<meta property="og:description" content="I have some doubts about dnsdomainname command in docker container when I developed non-root DataStage, in Engine Conductor tier. References to Configure container DNS How can Docker supply each conta">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-11T18:25:07.000Z">
+<meta property="og:updated_time" content="2020-09-05T02:55:27.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Configuring Container DNS">
-<meta name="twitter:description" content="I have some doubts about dnsdomainname command in docker container when I developed non-root DataStage, in engine conductor tier. References to Configure container DNS How can Docker supply each conta">
+<meta name="twitter:description" content="I have some doubts about dnsdomainname command in docker container when I developed non-root DataStage, in Engine Conductor tier. References to Configure container DNS How can Docker supply each conta">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-11 11:25:07" itemprop="dateModified" datetime="2019-10-11T11:25:07-07:00">2019-10-11</time>
+                <time title="Modified: 2020-09-04 19:55:27" itemprop="dateModified" datetime="2020-09-04T19:55:27-07:00">2020-09-04</time>
               
             
           </span>
@@ -508,7 +508,7 @@
       
 
       
-        <p>I have some doubts about <code>dnsdomainname</code> command in docker container when I developed non-root DataStage, in <code>engine conductor</code> tier.</p>
+        <p>I have some doubts about <code>dnsdomainname</code> command in docker container when I developed non-root DataStage, in <code>Engine Conductor</code> tier.</p>
 <p>References to <a href="https://docs.docker.com/v17.09/engine/userguide/networking/default_network/configure-dns/" target="_blank" rel="noopener">Configure container DNS</a></p>
 <p>How can Docker supply each container a <code>hostname</code> and <code>DNS configuration</code> without having to build a custom image with the hostname written inside? The trick is to <strong>overlay</strong> three crucial <code>/etc</code> files inside the container with virtual files where it can write fresh information.</p>
 <p>In container, run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># mount | grep etc</span><br><span class="line"></span><br><span class="line">/dev/mapper/rhel-root on /etc/resolv.conf type xfs (rw,relatime,attr2,inode64,noquota)</span><br><span class="line">/dev/mapper/rhel-root on /etc/hostname type xfs (rw,relatime,attr2,inode64,noquota)</span><br><span class="line">/dev/mapper/rhel-root on /etc/hosts type xfs (rw,relatime,attr2,inode64,noquota)</span><br></pre></td></tr></table></figure></p>
@@ -1010,7 +1010,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">811k</span>
+    <span title="Symbols count total">817k</span>
   
 
   

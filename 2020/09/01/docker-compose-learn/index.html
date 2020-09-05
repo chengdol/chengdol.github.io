@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Docker Compose vs Docker SwarmThe difference lies mostly in the backend, where docker-compose deploys container on a single Docker host, Docker Swarm deploys it across multiple nodes. Loosely speaking">
+  <meta name="description" content="Docker Compose vs Docker SwarmThe difference lies mostly in the backend, where docker-compose deploys container on a single Docker host, Docker Swarm deploys it across multiple nodes. 现在想想，当时组员在本地搭建Da">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Compose Quick Start">
-<meta property="og:url" content="http://yoursite.com/2020/09/01/docker-compose/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/09/01/docker-compose-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Docker Compose vs Docker SwarmThe difference lies mostly in the backend, where docker-compose deploys container on a single Docker host, Docker Swarm deploys it across multiple nodes. Loosely speaking">
+<meta property="og:description" content="Docker Compose vs Docker SwarmThe difference lies mostly in the backend, where docker-compose deploys container on a single Docker host, Docker Swarm deploys it across multiple nodes. 现在想想，当时组员在本地搭建Da">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-01T14:45:34.227Z">
+<meta property="og:updated_time" content="2020-09-05T02:56:39.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Compose Quick Start">
-<meta name="twitter:description" content="Docker Compose vs Docker SwarmThe difference lies mostly in the backend, where docker-compose deploys container on a single Docker host, Docker Swarm deploys it across multiple nodes. Loosely speaking">
+<meta name="twitter:description" content="Docker Compose vs Docker SwarmThe difference lies mostly in the backend, where docker-compose deploys container on a single Docker host, Docker Swarm deploys it across multiple nodes. 现在想想，当时组员在本地搭建Da">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/09/01/docker-compose/">
+  <link rel="canonical" href="http://yoursite.com/2020/09/01/docker-compose-learn/">
 
 
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/01/docker-compose/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/01/docker-compose-learn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2020-09-01 07:44:03 / Modified: 07:45:34" itemprop="dateCreated datePublished" datetime="2020-09-01T07:44:03-07:00">2020-09-01</time>
+              <time title="Created: 2020-09-01 07:44:03" itemprop="dateCreated datePublished" datetime="2020-09-01T07:44:03-07:00">2020-09-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-09-04 19:56:39" itemprop="dateModified" datetime="2020-09-04T19:56:39-07:00">2020-09-04</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">329</span>
+                <span title="Symbols count in article">26k</span>
               
 
               
@@ -496,7 +508,43 @@
       
 
       
-        <p><strong>Docker Compose vs Docker Swarm</strong><br>The difference lies mostly in the backend, where docker-compose deploys container on a single Docker host, Docker Swarm deploys it across multiple nodes. Loosely speaking, it can still do most things that docker-compose can but it scales it across multiple Docker hosts.</p>
+        <p><strong>Docker Compose vs Docker Swarm</strong><br>The difference lies mostly in the backend, where docker-compose deploys container on a <strong>single</strong> Docker host, Docker Swarm deploys it across <strong>multiple nodes</strong>.</p>
+<p>现在想想，当时组员在本地搭建DataStage也应该用docker compose, it is especially good for web development:</p>
+<ul>
+<li>accelerate onboarding</li>
+<li>eliminate app conflicts</li>
+<li>environment consistency</li>
+<li>ship software faster</li>
+</ul>
+<h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p><a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">https://docs.docker.com/compose/install/</a><br>For Mac docker-compose is self-contained with Docker desktop:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check location</span></span><br><span class="line"><span class="built_in">which</span> docker-compose</span><br><span class="line"><span class="comment">## show version</span></span><br><span class="line">docker-compose version</span><br></pre></td></tr></table></figure></p>
+<p>For Linux, first install <code>Docker Engine</code>, then download docker-compose to executable path:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1.26.2 is current stable version</span></span><br><span class="line">sudo curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.26.2/docker-compose-<span class="variable">$(uname -s)</span>-<span class="variable">$(uname -m)</span>"</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p>
+<p>or download binary from github release directly:<br><a href="https://github.com/docker/compose/releases" target="_blank" rel="noopener">https://github.com/docker/compose/releases</a></p>
+<p>Uninstall docker-compose, remove binary:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -f /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></p>
+<h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><p><a href="https://docs.docker.com/compose/gettingstarted/" target="_blank" rel="noopener">https://docs.docker.com/compose/gettingstarted/</a><br>If you know how to write yaml file for Kubernetes, then quick easy to understand the <code>docker-compose.yml</code>.</p>
+<p>Some basic commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## build or rebuild service images</span></span><br><span class="line"><span class="comment">## if not specify service name, will build all images</span></span><br><span class="line">docker-compose build [--no-cache] [service name]</span><br><span class="line"></span><br><span class="line"><span class="comment">## run services</span></span><br><span class="line"><span class="comment">## will build images if not yet</span></span><br><span class="line"><span class="comment">## -d: detch</span></span><br><span class="line"><span class="comment">## --no-deps: just bring up specified service</span></span><br><span class="line">docker-compose up [-d | --no-deps] [service name]</span><br><span class="line"></span><br><span class="line"><span class="comment">## check logs</span></span><br><span class="line">docker-compose logs [-f] &lt;service name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## see what is running</span></span><br><span class="line">docker-compose ps</span><br><span class="line"></span><br><span class="line"><span class="comment">## one-off command in container</span></span><br><span class="line">docker-compose run &lt;service name&gt; &lt;commands&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## start/stop service, will not remove container</span></span><br><span class="line">docker-compose start</span><br><span class="line">docker-compose stop</span><br><span class="line"></span><br><span class="line"><span class="comment">## remove stopped containers</span></span><br><span class="line">docker-compose rm [service name]</span><br><span class="line"></span><br><span class="line"><span class="comment">## shutdown, similar to docker rm -f ...</span></span><br><span class="line"><span class="comment">## --volumes: remove the mounted data volume</span></span><br><span class="line"><span class="comment">## --rmi all: remove all images</span></span><br><span class="line">docker-compose down [--volumes] [--rmi all]</span><br></pre></td></tr></table></figure></p>
+<h2 id="Command-Completion"><a href="#Command-Completion" class="headerlink" title="Command Completion"></a>Command Completion</h2><p><a href="https://docs.docker.com/compose/completion/#install-command-completion" target="_blank" rel="noopener">https://docs.docker.com/compose/completion/#install-command-completion</a><br>for oh-my-zsh, add <code>docker</code> and <code>docker-compose</code> to plugins list in <code>~/.zshrc</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(... docker docker-compose)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Config-File"><a href="#Config-File" class="headerlink" title="Config File"></a>Config File</h2><p>遇到没见过的指令，查阅这里:<br><a href="https://docs.docker.com/compose/compose-file/" target="_blank" rel="noopener">https://docs.docker.com/compose/compose-file/</a></p>
+<p>Define services relationship in <code>docker-compose.yml</code> file.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## docker-compose.yml can parse env variables in current running environment</span></span><br><span class="line"><span class="comment">## 通过这些环境变量控制读取的文件类型,比如development, staging, production</span></span><br><span class="line"><span class="comment">## export APP_ENV=development</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 这里假设下面的文件夹和文件都存在，比如dockerfile 等等</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## docker-compuse version</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">"3.7"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  web:</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">web</span></span><br><span class="line"><span class="attr">    build:</span></span><br><span class="line">      <span class="comment">## relative path is base on docker-compose.yml directory</span></span><br><span class="line">      <span class="comment">## can be url</span></span><br><span class="line"><span class="attr">      context:</span> <span class="string">.</span></span><br><span class="line">      <span class="comment">## args used in dockerfile, must declaure using ARG in dockerfile</span></span><br><span class="line">      <span class="comment">## only seen in build process!</span></span><br><span class="line"><span class="attr">      args:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">buildno=1</span></span><br><span class="line">      <span class="comment">## relative path to context</span></span><br><span class="line"><span class="attr">      dockerfile:</span> <span class="string">web/web.dockerfile</span></span><br><span class="line">    <span class="comment">## specify built image and tag</span></span><br><span class="line">    <span class="comment">## if no image here, docker-compose will use it's name convension</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">webapp:v1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">## dependencies</span></span><br><span class="line">    <span class="comment">## docker-compose will start mongo and redis first</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">mongo</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">redis</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">## host: container</span></span><br><span class="line">    <span class="comment">## 外界访问采用host port</span></span><br><span class="line">    <span class="comment">## 内部之间访问用container port</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"80:80"</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"443:443"</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"9090-9100:8080-8100"</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">## add env vars from a file</span></span><br><span class="line"><span class="attr">    env_file:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">web.env/app.$&#123;APP_ENV&#125;.env</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">/opt/runtime_opts.env</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">## other form of env vars</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      RACK_ENV:</span> <span class="string">development</span></span><br><span class="line">      <span class="comment">## boolean muct be quoted</span></span><br><span class="line"><span class="attr">      SHOW:</span> <span class="string">'true'</span></span><br><span class="line">      <span class="comment">## value is from current running environment</span></span><br><span class="line"><span class="attr">      SESSION_SECRET:</span></span><br><span class="line">    <span class="comment">## mount volume</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">    - web:</span><span class="string">/opt/web</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">/opt/data:/opt/data</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">## overwrite WORKDIR in Dockerfile</span></span><br><span class="line"><span class="attr">    working_dir:</span> <span class="string">/opt/web</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">## containers in the same network are reachable by others</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">nodeapp-network</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">  mongo:</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">mongo</span></span><br><span class="line"><span class="attr">    build:</span></span><br><span class="line"><span class="attr">      context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">      dockerfile:</span> <span class="string">mongo/mongo-dockerfile</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"27017"</span></span><br><span class="line"><span class="attr">    env_file:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">mongo.env/mongo.$&#123;APP_ENV&#125;.env</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">nodeapp-network</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">redis</span></span><br><span class="line">    <span class="comment">## pull image from other places</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">redis:latest</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"6379"</span></span><br><span class="line"><span class="attr">    env_file:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">redis.env/redis.$&#123;APP_ENV&#125;.env</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">nodeapp-network</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr"> nodeapp-network:</span></span><br><span class="line">   <span class="comment">## docker defaults to use bridge driver in single host</span></span><br><span class="line"><span class="attr">   driver:</span> <span class="string">brigde</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Volume"><a href="#Volume" class="headerlink" title="Volume"></a>Volume</h2><p>关于storage的讲解:<br><a href="https://docs.docker.com/storage/" target="_blank" rel="noopener">https://docs.docker.com/storage/</a></p>
+<p>docker-compose volume:<br><a href="https://docs.docker.com/compose/compose-file/#volume-configuration-reference" target="_blank" rel="noopener">https://docs.docker.com/compose/compose-file/#volume-configuration-reference</a></p>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><p>这个章节讲到了所有docker network的类型，作用，区别:<br><a href="https://docs.docker.com/network/" target="_blank" rel="noopener">https://docs.docker.com/network/</a></p>
+<p>Docker network labs:<br><a href="https://github.com/docker/labs/tree/master/networking" target="_blank" rel="noopener">https://github.com/docker/labs/tree/master/networking</a></p>
+<p>From docker’s perspective, Steps to create a container network:</p>
+<ol>
+<li><p>create a custom bridge network</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create a bridge network isolated_network</span></span><br><span class="line">docker network create --driver bridge isolated_network</span><br><span class="line"></span><br><span class="line"><span class="comment">## see created network, the driver is bridge</span></span><br><span class="line"><span class="comment">## you can see host and none are there</span></span><br><span class="line">docker network ls</span><br><span class="line"></span><br><span class="line"><span class="comment">## inspect </span></span><br><span class="line">docker network inspect isolated_network</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>run containers in the network and ping each other by container name</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create 2 busybox in the same network</span></span><br><span class="line">docker run -d --name=test1  --net=isolated_network --entrypoint=/bin/sh busybox -c <span class="string">"tail -f /dev/null"</span></span><br><span class="line">docker run -d --name=test2  --net=isolated_network --entrypoint=/bin/sh busybox -c <span class="string">"tail -f /dev/null"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## you can see containers in this network</span></span><br><span class="line">docker network inspect isolated_network</span><br><span class="line"></span><br><span class="line"><span class="comment">## ping each other</span></span><br><span class="line">docker <span class="built_in">exec</span> test1 ping -c 5 test2</span><br><span class="line">docker <span class="built_in">exec</span> test2 ping -c 5 test1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>remove network created</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker network rm isolated_network</span><br><span class="line">docker network ls</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>同样的思路，可以查看docker-compose中建立的network的信息。</p>
+<p>列出了docker compose中top-level networks 创建时的options, after creating top-level networks, they can be referenced by service-level to use:<br><a href="https://docs.docker.com/compose/compose-file/#network-configuration-reference" target="_blank" rel="noopener">https://docs.docker.com/compose/compose-file/#network-configuration-reference</a></p>
+<p>这篇文章说得很明白, docker compose中network是如何作为的:<br><a href="https://docs.docker.com/compose/networking/" target="_blank" rel="noopener">https://docs.docker.com/compose/networking/</a></p>
+<p>这个例子很有意思，把frontend, backend的网络分开了, only app can reach both networks:<br><a href="https://docs.docker.com/compose/networking/#specify-custom-networks" target="_blank" rel="noopener">https://docs.docker.com/compose/networking/#specify-custom-networks</a><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  proxy:</span></span><br><span class="line"><span class="attr">    build:</span> <span class="string">./proxy</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">frontend</span></span><br><span class="line"><span class="attr">  app:</span></span><br><span class="line"><span class="attr">    build:</span> <span class="string">./app</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">frontend</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">backend</span></span><br><span class="line"><span class="attr">  db:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">postgres</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">backend</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  frontend:</span></span><br><span class="line">    <span class="comment"># Use a custom driver</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">custom-driver-1</span></span><br><span class="line"><span class="attr">  backend:</span></span><br><span class="line">    <span class="comment"># Use a custom driver which takes special options</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">custom-driver-2</span></span><br><span class="line"><span class="attr">    driver_opts:</span></span><br><span class="line"><span class="attr">      foo:</span> <span class="string">"1"</span></span><br><span class="line"><span class="attr">      bar:</span> <span class="string">"2"</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -590,8 +638,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -958,6 +1015,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Install"><span class="nav-number">1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Getting-Started"><span class="nav-number">2.</span> <span class="nav-text">Getting Started</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-Completion"><span class="nav-number">2.1.</span> <span class="nav-text">Command Completion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config-File"><span class="nav-number">2.2.</span> <span class="nav-text">Config File</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volume"><span class="nav-number">2.3.</span> <span class="nav-text">Volume</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network"><span class="nav-number">2.4.</span> <span class="nav-text">Network</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -983,7 +1057,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">811k</span>
+    <span title="Symbols count total">817k</span>
   
 
   
