@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Install SSH (SCP SFTP)Notice that ssh, scp and sftp are all installed from openssh-clients package. 操作的目标机器的用户以及密码就是目标机器上">
+  <meta name="description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
 <meta name="keywords" content="linux,ssh,scp,sftp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSH SCP SFTP Daily Work Summary">
 <meta property="og:url" content="http://yoursite.com/2019/02/21/linux-ssh-scp-sftp-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Install SSH (SCP SFTP)Notice that ssh, scp and sftp are all installed from openssh-clients package. 操作的目标机器的用户以及密码就是目标机器上">
+<meta property="og:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
 <meta property="og:image" content="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP">
@@ -112,10 +112,10 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2020-09-05T23:45:56.099Z">
+<meta property="og:updated_time" content="2020-09-07T21:06:43.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH SCP SFTP Daily Work Summary">
-<meta name="twitter:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Install SSH (SCP SFTP)Notice that ssh, scp and sftp are all installed from openssh-clients package. 操作的目标机器的用户以及密码就是目标机器上">
+<meta name="twitter:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
 
 
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-05 16:45:56" itemprop="dateModified" datetime="2020-09-05T16:45:56-07:00">2020-09-05</time>
+                <time title="Modified: 2020-09-07 14:06:43" itemprop="dateModified" datetime="2020-09-07T14:06:43-07:00">2020-09-07</time>
               
             
           </span>
@@ -518,6 +518,7 @@
 
       
         <p>This blog used to walk through some <code>ssh</code>(secure shell), <code>scp</code> and <code>sftp</code> use cases.</p>
+<p><strong>Aside:</strong><br><a href="https://security.stackexchange.com/questions/29876/what-are-the-differences-between-ssh-generated-keysssh-keygen-and-openssl-keys" target="_blank" rel="noopener">difference between OpenSSH vs OpenSSL</a><br>The file format is different but they both encode the same kind of keys. Moreover, they are both generated with the same code.</p>
 <h1 id="Install-SSH-SCP-SFTP"><a href="#Install-SSH-SCP-SFTP" class="headerlink" title="Install SSH (SCP SFTP)"></a>Install SSH (SCP SFTP)</h1><p>Notice that <code>ssh</code>, <code>scp</code> and <code>sftp</code> are all installed from <code>openssh-clients</code> package. 操作的目标机器的用户以及密码就是目标机器上在<code>/etc/passwd</code>中对应的用户及其密码。</p>
 <p>First, understand that there are openssh client and openssh server: <a href="https://phoenixnap.com/kb/how-to-enable-ssh-centos-7" target="_blank" rel="noopener">Installing and Enabling OpenSSH on CentOS 7</a>, this article briefly introduce openssh configuration and firewall setting for it.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum –y install openssh-server openssh-clients</span><br></pre></td></tr></table></figure>
@@ -1115,7 +1116,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">824k</span>
+    <span title="Symbols count total">827k</span>
   
 
   

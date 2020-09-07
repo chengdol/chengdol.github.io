@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi">
-<meta property="og:updated_time" content="2020-09-02T03:18:09.622Z">
+<meta property="og:updated_time" content="2020-09-07T21:06:43.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL&#x2F;TLS Demystify">
 <meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-01 20:18:09" itemprop="dateModified" datetime="2020-09-01T20:18:09-07:00">2020-09-01</time>
+                <time title="Modified: 2020-09-07 14:06:43" itemprop="dateModified" datetime="2020-09-07T14:06:43-07:00">2020-09-07</time>
               
             
           </span>
@@ -489,7 +489,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">18k</span>
+                <span title="Symbols count in article">21k</span>
               
 
               
@@ -526,9 +526,11 @@
 <blockquote>
 <p>Interesting, from <code>Network</code> I see the the chrome browser actually uses IPV6 address talk to server, for example facebook and some other sites. see this <a href="https://superuser.com/questions/1199129/how-web-browser-determines-when-to-use-ipv4-or-ipv6-to-connect-to-the-destinatio" target="_blank" rel="noopener">question</a></p>
 </blockquote>
+<h1 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h1><p>Get free HTTPs certificates forever, it utilizes <code>Let&#39;s Encrypt</code> CA to automatically refresh the certificate for your web site:<br><a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a></p>
+<p>How it works:<br><a href="https://letsencrypt.org/how-it-works/" target="_blank" rel="noopener">https://letsencrypt.org/how-it-works/</a><br>This is accomplished by running a certificate management agent on the web server.<br>There are two steps to this process. First, the agent proves to the CA that the web server controls a domain. Then, the agent can request, renew, and revoke certificates for that domain.</p>
 <h1 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h1><ul>
-<li>symmetric encryption, the same key is used by both sides, for example: <code>AES</code>. This algorithm is embedded in SSL with HTTPS protocol.</li>
-<li>asymmetric encryption, for example: <code>RSA</code>.</li>
+<li><code>symmetric</code> encryption, the same key is used by both sides, for example: <code>AES</code>. This algorithm is embedded in SSL with HTTPS protocol.</li>
+<li><code>asymmetric</code> encryption, for example: <code>RSA</code>.</li>
 </ul>
 <h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>How does hash work to verify data integrity:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data + hash(data)  ---------&gt; data + hash(data)</span><br><span class="line">                                |         |</span><br><span class="line">                                |--hash--&gt;| (compare if they are the same)</span><br></pre></td></tr></table></figure></p>
 <p>Notice that in database the password is hashed, not plain text.</p>
@@ -596,13 +598,17 @@
 <li>For anyone else using this in automation, here’s all of the common parameters for the subject: <code>-subj &quot;/C=US/ST=CA/L=San Jose/O=Company Name/OU=Org/CN=&lt;domain&gt;&quot;</code></li>
 <li>Remember to use <code>-sha256</code> to generate SHA-256-based certificate.</li>
 </ul>
-<h1 id="SSL-TLS-and-HTTPS"><a href="#SSL-TLS-and-HTTPS" class="headerlink" title="SSL/TLS and HTTPS"></a>SSL/TLS and HTTPS</h1><p><code>SSL</code>: Secure Socket Layer<br><code>TLS</code>: Transport Layer Security.<br>Both are cryptographic protocols used in HTTPS.</p>
-<p>Difference between <code>SSL</code> vs <code>TLS</code>:  TLS is an update and secure version of SSL.<br><a href="https://www.globalsign.com/en/blog/ssl-vs-tls-difference/" target="_blank" rel="noopener">https://www.globalsign.com/en/blog/ssl-vs-tls-difference/</a><br>It’s important to note that certificates are not dependent on protocols. Sometimes you hear <code>SSL/TLS certificate</code>, it may be more accurate to call them <code>Certificates for use with SSL and TLS</code>, since the protocols are determined by your server configuration, not the certificates themselves.</p>
+<h1 id="SSL-TLS-and-HTTPS"><a href="#SSL-TLS-and-HTTPS" class="headerlink" title="SSL/TLS and HTTPS"></a>SSL/TLS and HTTPS</h1><p>Both are cryptographic protocols used in HTTPS:</p>
+<ul>
+<li><code>SSL</code>: Secure Socket Layer</li>
+<li><code>TLS</code>: Transport Layer Security. </li>
+</ul>
+<p>Difference between <code>SSL</code> vs <code>TLS</code>: <code>TLS</code> is an update and secure version of SSL.<br><a href="https://www.globalsign.com/en/blog/ssl-vs-tls-difference/" target="_blank" rel="noopener">https://www.globalsign.com/en/blog/ssl-vs-tls-difference/</a><br>It’s important to note that certificates are not dependent on protocols. Sometimes you hear <code>SSL/TLS certificate</code>, it may be more accurate to call them <code>Certificates for use with SSL and TLS</code>, since the protocols are determined by your server configuration, not the certificates themselves.</p>
 <p>Go to <a href="https://www.ssllabs.com/ssltest/" target="_blank" rel="noopener"><code>ssllab</code></a>, you can check which version of TLS the web server use, input the web server address and scan, then click IP icon.</p>
 <p>Why <code>RSA</code> is not used in data encryption?</p>
 <ol>
-<li>too slow</li>
-<li>bi-directional data encryption requires RSA key pairs on both sides<br>We encrypt data use symmetic key after setup secure connection.</li>
+<li>too slow.</li>
+<li>bi-directional data encryption requires RSA key pairs on both sides.<br>We encrypt data use symmetic key after setup secure connection.</li>
 </ol>
 <blockquote>
 <p>Why need rsa key pairs on both sides? If the key is interchangeable, everyone has public key can decrypt data encrypted by private key!</p>
@@ -610,12 +616,21 @@
 <h2 id="Establish-TLS-Session"><a href="#Establish-TLS-Session" class="headerlink" title="Establish TLS Session"></a>Establish TLS Session</h2><ol>
 <li>establish tcp session</li>
 <li>establish tls session (negotiate protocol)</li>
-<li>web server sends its certifiate (intermediate and others) to browser</li>
+<li>web server sends its <strong>certifiate</strong> (intermediate and others) to browser</li>
 <li>browser generate symmetic key secured by public key from server and send to server. Or use <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener"><code>Diffie–Hellman key exchange</code></a>.</li>
 </ol>
 <p>Let’s see wireshark for wikipedia connection:<br>The top 3 are TCP handshakes, then you see TLS client hello, then TLS server hello.<br><img src="https://drive.google.com/uc?id=1BqEQwaHXUIBIJguBGifnGIc_AnHJtoBB" alt=""></p>
 <p>In client hello, there are lots of information to negoitate with server, here you see some supported version of TLS, also cipher suites.<br><img src="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N" alt=""></p>
 <p>In server hello, you see the the server has selected one of cipher suites. The <code>TLS_ECDHE.._SHA256</code> means it uses Diffie–Hellman key exchange and sha256 as hash.<br><img src="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm" alt=""></p>
+<h3 id="Other-Readings"><a href="#Other-Readings" class="headerlink" title="Other Readings"></a>Other Readings</h3><p>这个网站上的资源可以好好看看:<br><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener">https://www.cloudflare.com/learning/</a></p>
+<p>–&gt;&gt; <a href="https://www.cloudflare.com/learning/ssl/how-does-ssl-work/" target="_blank" rel="noopener">How Does SSL Work? </a><br>The main use case for SSL/TLS is securing communications between a client and a server, but it can also secure email, VoIP, and other communications over unsecured networks.</p>
+<p>–&gt;&gt; <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/" target="_blank" rel="noopener">TLS handshakes</a><br>During a TLS handshake, the two communicating sides exchange messages to acknowledge each other, verify each other, establish the encryption algorithms they will use, and agree on session keys.</p>
+<p>SSL handshakes are now called TLS handshakes, although the “SSL” name is still in wide use.</p>
+<p>A TLS handshake also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.</p>
+<p>这里讲到了2种不同的TLS handshake过程，一个是public-private key参与，另一个是Diffie–Hellman handshake. 对于第一种方式，提到了client从server cerficiate extract public key:<br><a href="https://stackoverflow.com/questions/17143606/how-to-save-public-key-from-a-certificate-in-pem-format" target="_blank" rel="noopener">https://stackoverflow.com/questions/17143606/how-to-save-public-key-from-a-certificate-in-pem-format</a></p>
+<p>–&gt;&gt; <a href="https://security.stackexchange.com/questions/115762/how-is-it-possible-to-do-tls-through-proxy-without-anyone-noticing/115764" target="_blank" rel="noopener">How does proxy handle TLS handshakes</a><br>HTTPS knows how to tunnel the TLS handshake even through the proxy.<br>也就说TLS/SSL through proxy就是通过HTTP CONNECT tunnel去实现的, 特别是看一下第二个回答, comments:</p>
+<p>So, the proxy is not MITM’ing the HTTPS connection, by replacing the server’s certificate with its own - it’s simply passing the HTTPS connection straight through between the client and the server. Is that right?</p>
+<p>Normally, when HTTPS is done through a proxy, this is done with the CONNECT mechanism: the client talks to the proxy and asks it to provide a bidirectional tunnel for bytes with the target system. In that case, the certificate that the client sees is really from the server, not from the proxy. In that situation, the proxy is kept on the outside of the SSL/TLS session – it can see that some SSL/TLS is taking place, but it has no access to the encryption keys.</p>
 <h2 id="Diffie–Hellman"><a href="#Diffie–Hellman" class="headerlink" title="Diffie–Hellman"></a>Diffie–Hellman</h2><p>Diffie–Hellman uses one-way function, for example, mod operation.<br><img src="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi" alt=""><br>See, here <code>a</code>, <code>b</code> are priviate keys on both side, <code>g</code>, <code>p</code> are public key. <code>A</code>, <code>B</code> are mod result, <code>K</code> is the final result that both side can get use to encrypt the data.</p>
 <p>Elliptic-curve cryptography is used in Diffie–Hellman.</p>
 <h1 id="Custom-Domain"><a href="#Custom-Domain" class="headerlink" title="Custom Domain"></a>Custom Domain</h1><p>Purchase custom domain and use free hosting to setup our website.</p>
@@ -1107,7 +1122,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">1.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">1.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">1.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">1.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">1.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">2.</span> <span class="nav-text">Chain of Trust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-CAs-in-OS"><span class="nav-number">2.1.</span> <span class="nav-text">Root CAs in OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify-chain-of-trust"><span class="nav-number">2.2.</span> <span class="nav-text">Verify chain of trust</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Self-signed-Certificate"><span class="nav-number">3.</span> <span class="nav-text">Create Self-signed Certificate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-TLS-and-HTTPS"><span class="nav-number">4.</span> <span class="nav-text">SSL/TLS and HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Establish-TLS-Session"><span class="nav-number">4.1.</span> <span class="nav-text">Establish TLS Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diffie–Hellman"><span class="nav-number">4.2.</span> <span class="nav-text">Diffie–Hellman</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Custom-Domain"><span class="nav-number">5.</span> <span class="nav-text">Custom Domain</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Certbot"><span class="nav-number">1.</span> <span class="nav-text">Certbot</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">2.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">2.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">2.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">2.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">2.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">2.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">3.</span> <span class="nav-text">Chain of Trust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-CAs-in-OS"><span class="nav-number">3.1.</span> <span class="nav-text">Root CAs in OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify-chain-of-trust"><span class="nav-number">3.2.</span> <span class="nav-text">Verify chain of trust</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Self-signed-Certificate"><span class="nav-number">4.</span> <span class="nav-text">Create Self-signed Certificate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-TLS-and-HTTPS"><span class="nav-number">5.</span> <span class="nav-text">SSL/TLS and HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Establish-TLS-Session"><span class="nav-number">5.1.</span> <span class="nav-text">Establish TLS Session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Readings"><span class="nav-number">5.1.1.</span> <span class="nav-text">Other Readings</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diffie–Hellman"><span class="nav-number">5.2.</span> <span class="nav-text">Diffie–Hellman</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Custom-Domain"><span class="nav-number">6.</span> <span class="nav-text">Custom Domain</span></a></li></ol></div>
             
 
           </div>
@@ -1139,7 +1154,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">824k</span>
+    <span title="Symbols count total">827k</span>
   
 
   
