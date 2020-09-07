@@ -99,14 +99,14 @@
   <meta name="description" content="cURL stands for ‘Client URL’, it is a command-line tool for getting or sending data including files using URL syntax. Since cURL uses libcurl, it supports a range of common network protocols, currentl">
 <meta name="keywords" content="linux,curl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cURL Command Daily Work Summary">
+<meta property="og:title" content="cURL Use Case Summary">
 <meta property="og:url" content="http://yoursite.com/2019/05/23/linux-curl-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="cURL stands for ‘Client URL’, it is a command-line tool for getting or sending data including files using URL syntax. Since cURL uses libcurl, it supports a range of common network protocols, currentl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-03T06:24:33.049Z">
+<meta property="og:updated_time" content="2020-09-05T06:08:32.650Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cURL Command Daily Work Summary">
+<meta name="twitter:title" content="cURL Use Case Summary">
 <meta name="twitter:description" content="cURL stands for ‘Client URL’, it is a command-line tool for getting or sending data including files using URL syntax. Since cURL uses libcurl, it supports a range of common network protocols, currentl">
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>cURL Command Daily Work Summary | 海胆阶段's Blog</title>
+  <title>cURL Use Case Summary | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">113</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">115</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">192</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">193</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cURL Command Daily Work Summary
+          <h1 class="post-title" itemprop="name headline">cURL Use Case Summary
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-02 23:24:33" itemprop="dateModified" datetime="2020-09-02T23:24:33-07:00">2020-09-02</time>
+                <time title="Modified: 2020-09-04 23:08:32" itemprop="dateModified" datetime="2020-09-04T23:08:32-07:00">2020-09-04</time>
               
             
           </span>
@@ -510,14 +510,14 @@
       
         <p><code>cURL</code> stands for ‘Client URL’, it is a command-line tool for getting or sending data including files using URL syntax. Since <code>cURL</code> uses <code>libcurl</code>, it supports a range of common network protocols, currently including HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, LDAP, DAP, DICT, TELNET, FILE, IMAP, POP3, SMTP and RTSP.</p>
 <p>Here is a open-source book: <a href="https://ec.haxx.se/" target="_blank" rel="noopener">Everything curl</a></p>
-<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 06/16/2019 &emsp; &emsp; http requestverbose<br>#  &emsp; 05/23/2019 &emsp; &emsp; download from file server<br>#  &emsp; 06/22/2020 &emsp; &emsp; redirect, PUT/GET/DELETE<br>#  &emsp; 09/02/2020 &emsp; &emsp; check headers only<br>#  &emsp; 09/03/2020 &emsp; &emsp; use specific forward proxy<br>#<br>################################################################</p>
-<h2 id="05-23-2019"><a href="#05-23-2019" class="headerlink" title="05/23/2019"></a>05/23/2019</h2><p>If the file server needs user name/password (usually will prompt when you open in browser).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">USER=<span class="string">"username"</span></span><br><span class="line">PASSWD=<span class="string">"passwd"</span></span><br><span class="line"></span><br><span class="line">USER_PWD=<span class="string">"<span class="variable">$USER</span>:<span class="variable">$PASSWD</span>"</span></span><br><span class="line">STREAMURL=<span class="string">"https://ips-file.xx.com/Builds/InformationServer/10.5.1/release/target.tar.gz"</span></span><br><span class="line"></span><br><span class="line">curl -k -u <span class="variable">$&#123;USER_PWD&#125;</span> -LO <span class="variable">$&#123;STREAMURL&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p><code>-O</code>: downloads the file and saves it with the same name as in the URL.<br><code>-u</code>: specify “user:password”<br><code>-k</code>: explicitly allows curl to perform ‘insecure’ SSL connections and transfers.<br><code>-L</code>: for redirect</p>
+<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 05/23/2019 &emsp; &emsp; download file<br>#  &emsp; 06/16/2019 &emsp; &emsp; http request verbose<br>#  &emsp; 06/22/2020 &emsp; &emsp; redirect, PUT/GET/DELETE<br>#  &emsp; 09/02/2020 &emsp; &emsp; check headers only<br>#  &emsp; 09/03/2020 &emsp; &emsp; use specific forward proxy<br>#<br>################################################################</p>
+<h2 id="05-23-2019"><a href="#05-23-2019" class="headerlink" title="05/23/2019"></a>05/23/2019</h2><p>If the file server needs user name/password (usually will prompt when you open in browser).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">USER=<span class="string">"username"</span></span><br><span class="line">PASSWD=<span class="string">"passwd"</span></span><br><span class="line">USER_PWD=<span class="string">"<span class="variable">$USER</span>:<span class="variable">$PASSWD</span>"</span></span><br><span class="line">STREAMURL=<span class="string">"https://ips-file.xx.com/Builds/InformationServer/10.5.1/release/target.tar.gz"</span></span><br><span class="line"><span class="comment">## downlaod file with user/password to server</span></span><br><span class="line">curl -k -u <span class="variable">$&#123;USER_PWD&#125;</span> -LO <span class="variable">$&#123;STREAMURL&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## download file with custom name and slient</span></span><br><span class="line">curl -sS &lt;url&gt; -o /tmp/archive.tgz</span><br></pre></td></tr></table></figure></p>
+<p><code>-O</code>: downloads the file and saves it with the same name as in the URL.<br><code>-u</code>: specify “user:password”<br><code>-k</code>: explicitly allows curl to perform ‘insecure’ SSL connections and transfers.<br><code>-L</code>: allow redirect<br><code>-o</code>: custom file name<br><code>-s</code>: slient all output<br><code>-S</code>: used with slient, output error message</p>
 <p>If you don’t turn off the certificate check, you will get error message and fail:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">curl:</span> <span class="string">(60)</span> <span class="string">Peer's</span> <span class="string">Certificate</span> <span class="string">has</span> <span class="string">expired.</span></span><br><span class="line"><span class="string">More</span> <span class="string">details</span> <span class="attr">here:</span> <span class="attr">http://curl.haxx.se/docs/sslcerts.html</span></span><br><span class="line"></span><br><span class="line"><span class="string">curl</span> <span class="string">performs</span> <span class="string">SSL</span> <span class="string">certificate</span> <span class="string">verification</span> <span class="string">by</span> <span class="string">default,</span> <span class="string">using</span> <span class="string">a</span> <span class="string">"bundle"</span></span><br><span class="line"> <span class="string">of</span> <span class="string">Certificate</span> <span class="string">Authority</span> <span class="string">(CA)</span> <span class="string">public</span> <span class="string">keys</span> <span class="string">(CA</span> <span class="string">certs).</span> <span class="string">If</span> <span class="string">the</span> <span class="string">default</span></span><br><span class="line"> <span class="string">bundle</span> <span class="string">file</span> <span class="string">isn't</span> <span class="string">adequate,</span> <span class="string">you</span> <span class="string">can</span> <span class="string">specify</span> <span class="string">an</span> <span class="string">alternate</span> <span class="string">file</span></span><br><span class="line"> <span class="string">using</span> <span class="string">the</span> <span class="bullet">--cacert</span> <span class="string">option.</span></span><br><span class="line"><span class="string">If</span> <span class="string">this</span> <span class="string">HTTPS</span> <span class="string">server</span> <span class="string">uses</span> <span class="string">a</span> <span class="string">certificate</span> <span class="string">signed</span> <span class="string">by</span> <span class="string">a</span> <span class="string">CA</span> <span class="string">represented</span> <span class="string">in</span></span><br><span class="line"> <span class="string">the</span> <span class="string">bundle,</span> <span class="string">the</span> <span class="string">certificate</span> <span class="string">verification</span> <span class="string">probably</span> <span class="string">failed</span> <span class="string">due</span> <span class="string">to</span> <span class="string">a</span></span><br><span class="line"> <span class="string">problem</span> <span class="string">with</span> <span class="string">the</span> <span class="string">certificate</span> <span class="string">(it</span> <span class="string">might</span> <span class="string">be</span> <span class="string">expired,</span> <span class="string">or</span> <span class="string">the</span> <span class="string">name</span> <span class="string">might</span></span><br><span class="line"> <span class="string">not</span> <span class="string">match</span> <span class="string">the</span> <span class="string">domain</span> <span class="string">name</span> <span class="string">in</span> <span class="string">the</span> <span class="string">URL).</span></span><br><span class="line"><span class="string">If</span> <span class="string">you'd</span> <span class="string">like</span> <span class="string">to</span> <span class="string">turn</span> <span class="string">off</span> <span class="string">curl's</span> <span class="string">verification</span> <span class="string">of</span> <span class="string">the</span> <span class="string">certificate,</span> <span class="string">use</span></span><br><span class="line"> <span class="string">the</span> <span class="bullet">-k</span> <span class="string">(or</span> <span class="bullet">--insecure)</span> <span class="string">option.</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="06-16-2019"><a href="#06-16-2019" class="headerlink" title="06/16/2019"></a>06/16/2019</h2><p>When I was working on <a href="https://chengdol.github.io/2019/06/10/docker-registry-api/" target="_blank" rel="noopener">Docker Registry API</a>, I primarily use <code>curl</code> to do the job.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -k -X GET http://localhost:5000/v2/_catalog</span><br></pre></td></tr></table></figure></p>
 <p><code>-v</code>: Makes the fetching more verbose/talkative. Mostly useful for debugging. A line starting with <code>&gt;</code> means <code>header data</code> sent by curl, <code>&lt;</code> means <code>header data</code> received by curl that is hidden in normal cases, and a line starting with <code>*</code> means additional info provided by curl.<br><code>-X</code>: (HTTP) Specifies a custom request method to use when communicating with the HTTP server.</p>
-<h2 id="06-22-2020"><a href="#06-22-2020" class="headerlink" title="06/22/2020"></a>06/22/2020</h2><p>在学习Consul 和 Vault的时候，它们有HTTP API接口，会用到curl:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -L: redirect</span></span><br><span class="line"><span class="comment">## -i: include response header info to output</span></span><br><span class="line">curl -iL http://...</span><br><span class="line"></span><br><span class="line"><span class="comment">## -v: verbose, to see better error message</span></span><br><span class="line"><span class="comment">## 比如开了防火墙，网页打不开，可以用-v 检查一下输出</span></span><br><span class="line">curl -v http://...</span><br><span class="line"></span><br><span class="line"><span class="comment">## -d|--data: value to be put</span></span><br><span class="line">curl -X PUT -d <span class="string">'50s'</span> http://localhost:8500/v1/kv/prod/portal/haproxy/timeout-server</span><br><span class="line">curl -X DELETE http://localhost:8500/v1/kv/prod/portal/haproxy/timeout-server</span><br><span class="line">curl -X GET http://localhost:8500/v1/kv/prod/portal/haproxy/timeout-server?pretty</span><br></pre></td></tr></table></figure></p>
-<h2 id="09-02-2020"><a href="#09-02-2020" class="headerlink" title="09/02/2020"></a>09/02/2020</h2><p>添加header，仅仅显示request headers，以及隐藏output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## --header: add header</span></span><br><span class="line"><span class="comment">## -L: redirect</span></span><br><span class="line"><span class="comment">## -I: fetch headers only</span></span><br><span class="line"><span class="comment">## -v: show request headers</span></span><br><span class="line"><span class="comment">## -s: hide progress bar</span></span><br><span class="line"><span class="comment">## &gt; /dev/null: hide output, show only the -v output</span></span><br><span class="line">curl --header <span class="string">"Host: chengdol.github.io"</span> -L -Ivs http://185.199.110.153 &gt; /dev/null</span><br></pre></td></tr></table></figure></p>
+<h2 id="06-22-2020"><a href="#06-22-2020" class="headerlink" title="06/22/2020"></a>06/22/2020</h2><p>在学习Consul 和 Vault的时候，它们有HTTP API接口，会用到curl:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -L: redirect</span></span><br><span class="line"><span class="comment">## -i: include response header info to output</span></span><br><span class="line">curl -iL http://...</span><br><span class="line"></span><br><span class="line"><span class="comment">## -v: verbose, to see better error message</span></span><br><span class="line"><span class="comment">## 比如开了防火墙，网页打不开，可以用-v 检查一下输出</span></span><br><span class="line">curl -v http://...</span><br><span class="line"></span><br><span class="line"><span class="comment">## -d|--data: value to be put</span></span><br><span class="line"><span class="comment">##  -X, --request</span></span><br><span class="line">curl -X PUT -d <span class="string">'50s'</span> http://localhost:8500/v1/kv/prod/portal/haproxy/timeout-server</span><br><span class="line">curl -X DELETE http://localhost:8500/v1/kv/prod/portal/haproxy/timeout-server</span><br><span class="line">curl -X GET http://localhost:8500/v1/kv/prod/portal/haproxy/timeout-server?pretty</span><br></pre></td></tr></table></figure></p>
+<h2 id="09-02-2020"><a href="#09-02-2020" class="headerlink" title="09/02/2020"></a>09/02/2020</h2><p>添加header，仅仅显示request headers，以及隐藏output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## --header: add header</span></span><br><span class="line"><span class="comment">## -L: redirect</span></span><br><span class="line"><span class="comment">## -I: fetch headers only</span></span><br><span class="line"><span class="comment">## -v: show request headers</span></span><br><span class="line"><span class="comment">## -s: hide progress bar, slient</span></span><br><span class="line"><span class="comment">## &gt; /dev/null: hide output, show only the -v output</span></span><br><span class="line">curl --header <span class="string">"Host: chengdol.github.io"</span> -L -Ivs http://185.199.110.153 &gt; /dev/null</span><br></pre></td></tr></table></figure></p>
 <h2 id="09-03-2020"><a href="#09-03-2020" class="headerlink" title="09/03/2020"></a>09/03/2020</h2><p>Using forward proxy, learned from Envoy migration.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -x, --proxy: use the specific proxy</span></span><br><span class="line"><span class="comment">## -U, --proxy-user: user/password for proxy authentication</span></span><br><span class="line"><span class="comment">## this option override the existing proxy environment variable </span></span><br><span class="line">curl -v -x localhost:10000 -U &lt;user:password&gt; http://www.example.com</span><br></pre></td></tr></table></figure></p>
 
       
@@ -641,7 +641,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">192</span>
+                    <span class="site-state-item-count">193</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -965,7 +965,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">113</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">115</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1033,7 +1037,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">817k</span>
+    <span title="Symbols count total">824k</span>
   
 
   
