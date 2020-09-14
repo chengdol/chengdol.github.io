@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 How to:  用virtualenvwrapper 先搭建一个python3 项目和对应的环境。 激活环境后, 写一个sh">
-<meta name="keywords" content="python">
+  <meta name="description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 后续还可以添加basic auth service, 甚至SSL/TLS support, 作为其他服务的测试工具。 How">
+<meta name="keywords" content="python,server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python Simple Http Server">
+<meta property="og:title" content="Python Simple Http(s) Server">
 <meta property="og:url" content="http://yoursite.com/2020/09/02/python-simpleHttpServer/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 How to:  用virtualenvwrapper 先搭建一个python3 项目和对应的环境。 激活环境后, 写一个sh">
+<meta property="og:description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 后续还可以添加basic auth service, 甚至SSL/TLS support, 作为其他服务的测试工具。 How">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-03T05:20:58.212Z">
+<meta property="og:updated_time" content="2020-09-13T22:32:34.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python Simple Http Server">
-<meta name="twitter:description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 How to:  用virtualenvwrapper 先搭建一个python3 项目和对应的环境。 激活环境后, 写一个sh">
+<meta name="twitter:title" content="Python Simple Http(s) Server">
+<meta name="twitter:description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 后续还可以添加basic auth service, 甚至SSL/TLS support, 作为其他服务的测试工具。 How">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Python Simple Http Server | 海胆阶段's Blog</title>
+  <title>Python Simple Http(s) Server | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">115</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">120</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">193</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">197</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python Simple Http Server
+          <h1 class="post-title" itemprop="name headline">Python Simple Http(s) Server
 
               
             
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2020-09-02 22:09:04 / Modified: 22:20:58" itemprop="dateCreated datePublished" datetime="2020-09-02T22:09:04-07:00">2020-09-02</time>
+              <time title="Created: 2020-09-02 22:09:04" itemprop="dateCreated datePublished" datetime="2020-09-02T22:09:04-07:00">2020-09-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-09-13 15:32:34" itemprop="dateModified" datetime="2020-09-13T15:32:34-07:00">2020-09-13</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.3k</span>
+                <span title="Symbols count in article">5.8k</span>
               
 
               
@@ -497,12 +509,18 @@
 
       
         <p>最近为了在局域网中传输文件，用Python搭建了一个很简单的<a href="https://docs.python.org/3/library/http.server.html" target="_blank" rel="noopener">HTTP web server to serve files</a>, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。</p>
+<p>后续还可以添加basic auth service, 甚至SSL/TLS support, 作为其他服务的测试工具。</p>
 <p>How to:</p>
 <ol>
 <li>用<code>virtualenvwrapper</code> 先搭建一个python3 项目和对应的环境。</li>
 <li>激活环境后, 写一个shell script，输出运行时的网址和端口</li>
 </ol>
-<p>比如在Mac中，使用如下脚本:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## use 8000 as port number</span></span><br><span class="line">echo <span class="string">"$(ifconfig | grep -A 10 ^en0 | grep inet | grep -v inet6 | cut -d"</span> <span class="string">" -f2)"</span>:<span class="number">8000</span></span><br><span class="line">python3 -m http.server <span class="number">8000</span> --bind <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> --directory &lt;absolute path to share folder&gt;</span><br></pre></td></tr></table></figure></p>
+<p>比如在Mac中，使用如下脚本:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## use 8000 as port number</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$(ifconfig | grep -A 10 ^en0 | grep inet | grep -v inet6 | cut -d" " -f2)</span>"</span>:8000</span><br><span class="line"><span class="comment">## http.server module</span></span><br><span class="line"><span class="comment">## port number: 8000</span></span><br><span class="line">python3 -m http.server 8000 --<span class="built_in">bind</span> 0.0.0.0 --directory &lt;absolute path to share folder&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Basic-Auth"><a href="#Basic-Auth" class="headerlink" title="Basic Auth"></a>Basic Auth</h2><p><a href="https://gist.github.com/fxsjy/5465353" target="_blank" rel="noopener">https://gist.github.com/fxsjy/5465353</a><br>You can package it in container or run on virtualenv.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## works on python2</span></span><br><span class="line"><span class="comment">## port: 8080</span></span><br><span class="line"><span class="comment">## auth: user:password</span></span><br><span class="line">python2 -m main.py 8080 chengdol:123456</span><br></pre></td></tr></table></figure></p>
+<p>This script is modified and integrate to below pip module.</p>
+<h2 id="HTTPS-Basic-Auth"><a href="#HTTPS-Basic-Auth" class="headerlink" title="HTTPS Basic Auth"></a>HTTPS Basic Auth</h2><p><a href="https://github.com/tianhuil/SimpleHTTPAuthServer" target="_blank" rel="noopener">https://github.com/tianhuil/SimpleHTTPAuthServer</a><br>You can run the pip in python2 virtualenv or build a docker container.</p>
+<p>Modify to build a image with https auth server, for example:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## works on python2</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/app</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">USER root</span></span><br><span class="line"><span class="bash"><span class="comment">## pip install</span></span></span><br><span class="line"><span class="bash">RUN pip install SimpleHTTPAuthServer</span></span><br><span class="line"><span class="bash"><span class="comment">## to setup self-signed certificate, need to pre-generated key and cert</span></span></span><br><span class="line"><span class="bash">RUN mkdir -p /root/.ssh</span></span><br><span class="line"><span class="bash">RUN openssl req \</span></span><br><span class="line"><span class="bash">    -newkey rsa:2048 -new -nodes -x509 -days 3650 \</span></span><br><span class="line"><span class="bash">    -keyout /root/.ssh/key.pem -out /root/.ssh/cert.pem \</span></span><br><span class="line"><span class="bash">    -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=GOOG/OU=Org/CN=localhost"</span></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">## copy other files to WORKDIR</span></span></span><br><span class="line"><span class="bash">COPY file.txt .</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">EXPOSE 8080</span></span><br><span class="line"><span class="bash"><span class="comment">## start with https</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"python"</span>, <span class="string">"-m"</span>, <span class="string">"SimpleHTTPAuthServer"</span>, <span class="string">"8080"</span>, <span class="string">"chengdol:123456"</span>, <span class="string">"--https"</span>]</span></span><br></pre></td></tr></table></figure></p>
+<p>Then go to firefox, type and hit <code>https://localhost:8080</code>.</p>
 
       
     </div>
@@ -527,6 +545,8 @@
         <div class="post-tags">
           
             <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/server/" rel="tag"># server</a>
           
         </div>
       
@@ -596,8 +616,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -614,7 +643,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -699,7 +728,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -942,7 +975,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">115</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -967,6 +1010,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Auth"><span class="nav-number">1.</span> <span class="nav-text">Basic Auth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS-Basic-Auth"><span class="nav-number">2.</span> <span class="nav-text">HTTPS Basic Auth</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -993,7 +1053,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">827k</span>
+    <span title="Symbols count total">843k</span>
   
 
   

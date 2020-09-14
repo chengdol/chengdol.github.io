@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Python3 Tutorial:https://www.tutorialspoint.com/python3/index.htmhttps://www.w3schools.com/python/default.asp TemplateWith Docstring, you can use help command to get module information, for example:12">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-04T03:47:47.227Z">
+<meta property="og:updated_time" content="2020-09-09T06:21:17.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3 Quick Start">
 <meta name="twitter:description" content="Python3 Tutorial:https://www.tutorialspoint.com/python3/index.htmhttps://www.w3schools.com/python/default.asp TemplateWith Docstring, you can use help command to get module information, for example:12">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">115</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">120</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">193</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">197</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-03 20:47:47" itemprop="dateModified" datetime="2020-09-03T20:47:47-07:00">2020-09-03</time>
+                <time title="Modified: 2020-09-08 23:21:17" itemprop="dateModified" datetime="2020-09-08T23:21:17-07:00">2020-09-08</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">74k</span>
+                <span title="Symbols count in article">76k</span>
               
 
               
@@ -540,7 +540,8 @@
 <li><code>threading</code>: threading operation</li>
 </ul>
 <p><code>time</code> vs <code>datetime</code> modules:<br><a href="https://stackoverflow.com/questions/7479777/difference-between-python-datetime-vs-time-modules" target="_blank" rel="noopener">https://stackoverflow.com/questions/7479777/difference-between-python-datetime-vs-time-modules</a><br>the <code>time</code> module is principally for working with unix time stamps; expressed as a floating point number taken to be seconds since the unix epoch. the <code>datetime</code> module can support many of the same operations, but provides a more object oriented set of types, and also has some limited support for time zones.</p>
-<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>The parameters have many format, for example: <code>*args</code>, <code>**kwargs</code>.<br>If no <code>return</code>, then will implicitly return <code>None</code>.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function_name</span><span class="params">(para1 = <span class="string">"hello"</span>, para2 = <span class="number">34</span>)</span>:</span></span><br><span class="line">    <span class="comment">## rebind the global variable to local</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><p>The parameters have many format, for example: <code>*args</code>, <code>**kwargs</code>. This is also called parameters packing, in contrast, we have unpacking, <code>*</code> is for tuple or list, <code>**</code> is for dict.<br>If no <code>return</code>, then will implicitly return <code>None</code>.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function_name</span><span class="params">(para1 = <span class="string">"hello"</span>, para2 = <span class="number">34</span>)</span>:</span></span><br><span class="line">    <span class="comment">## rebind the global variable to local</span></span><br><span class="line">    <span class="keyword">global</span> count</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure></p>
+<p>Unpacking parameters:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(a, b, c, d)</span>:</span> </span><br><span class="line">    print(a, b, c, d) </span><br><span class="line"></span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] </span><br><span class="line">  </span><br><span class="line"><span class="comment"># Unpacking list into four arguments </span></span><br><span class="line">fun(*my_list)</span><br></pre></td></tr></table></figure></p>
 <p>The parameters after <code>*</code> must be passed by key word:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function_name</span><span class="params">(para1, *, para2 = <span class="string">"hello"</span>, para3)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">function_name(<span class="number">1</span>, para2 = <span class="string">"world"</span>, para3 = <span class="number">567</span>)</span><br></pre></td></tr></table></figure></p>
 <p>Notice that always use immutable value for default value!! Default value赋值会在执行函数的时候只运行一次，看样子是一直存在内存里了。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append_word</span><span class="params">(org=[])</span>:</span></span><br><span class="line">    org.append(<span class="string">"!"</span>)</span><br><span class="line">    <span class="keyword">return</span> org</span><br><span class="line"><span class="comment">## if you call multiple times with default value, the "!" get accumulated</span></span><br><span class="line">print(append_word()) <span class="comment"># ["!"]</span></span><br><span class="line">print(append_word()) <span class="comment"># ["!", "!"]</span></span><br><span class="line">print(append_word()) <span class="comment"># ["!", "!", "!"]</span></span><br></pre></td></tr></table></figure></p>
 <p>Another example:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_time</span><span class="params">(t = time.ctime<span class="params">()</span>)</span>:</span></span><br><span class="line">    print(t)</span><br><span class="line"></span><br><span class="line"><span class="comment">## the print will not get updated</span></span><br><span class="line">show_time()</span><br><span class="line">show_time()</span><br></pre></td></tr></table></figure></p>
@@ -737,7 +738,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -822,7 +823,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1065,7 +1070,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">115</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1133,7 +1148,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">827k</span>
+    <span title="Symbols count total">843k</span>
   
 
   

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Wget is a free utility for non-interactive download of files from the Web.  It supports HTTP, HTTPS, and FTP protocols, as well as retrieval through HTTP proxies. It is fault-tolerance, has big overla">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-07T21:06:43.907Z">
+<meta property="og:updated_time" content="2020-09-11T04:41:31.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Wget Use Case Summary">
 <meta name="twitter:description" content="Wget is a free utility for non-interactive download of files from the Web.  It supports HTTP, HTTPS, and FTP protocols, as well as retrieval through HTTP proxies. It is fault-tolerance, has big overla">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">115</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">120</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">193</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">197</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-07 14:06:43" itemprop="dateModified" datetime="2020-09-07T14:06:43-07:00">2020-09-07</time>
+                <time title="Modified: 2020-09-10 21:41:31" itemprop="dateModified" datetime="2020-09-10T21:41:31-07:00">2020-09-10</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">939</span>
+                <span title="Symbols count in article">3.1k</span>
               
 
               
@@ -508,10 +508,14 @@
       
 
       
-        <p><code>Wget</code> is a free utility for non-interactive download of files from the Web.  It supports HTTP, HTTPS, and FTP protocols, as well as retrieval through HTTP proxies.</p>
-<p>It is fault-tolerance, has big overlap with curl, both heavily using.</p>
+        <p><code>Wget</code> is a free utility for non-interactive download of files from the Web.  It supports HTTP, HTTPS, and FTP protocols, as well as retrieval through HTTP proxies. It is fault-tolerance, has big overlap with curl, both heavily using.</p>
 <p><code>wget -h</code> and man page are informative.</p>
+<blockquote>
+<p>值得注意的是，不同Linux版本wget支持的选项可能不完整。</p>
+</blockquote>
 <h2 id="Continue-download"><a href="#Continue-download" class="headerlink" title="Continue download"></a>Continue download</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## assume the url is disrupted and leave a incomplete file in current folder</span></span><br><span class="line"><span class="comment">## -c,--continue: continue</span></span><br><span class="line">wget &lt;url&gt; -c</span><br></pre></td></tr></table></figure>
+<h2 id="Authz"><a href="#Authz" class="headerlink" title="Authz"></a>Authz</h2><p>If you proxy, http_proxy for http connection, https_proxy for https connection.<br><a href="https://askubuntu.com/questions/1070838/why-wget-does-not-use-username-and-password-in-url-first-time" target="_blank" rel="noopener">Wget basic authentication challenge</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## http use http_proxy flag</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## other options:</span></span><br><span class="line"><span class="comment">## --no-check-certificate: Don't check the server certificate against the available certificate authorities</span></span><br><span class="line"><span class="comment">## --connect-timeout: seconds, TCP connections that take longer to establish will be aborted</span></span><br><span class="line"><span class="comment">## -e, --execute: commands, env varaible</span></span><br><span class="line"><span class="comment">## --auth-no-challenge: for server never sends HTTP authentication challenges, not recommended</span></span><br><span class="line">wget --no-check-certificate --connect-timeout 10 -e http_proxy=<span class="string">"envoy:10000"</span> http://www.httpbin.org/ip --auth-no-challenge --user xxx --password xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">## https use https_proxy flag</span></span><br><span class="line">wget --no-check-certificate --connect-timeout 10 -e https_proxy=<span class="string">"envoy:10000"</span> https://www.httpbin.org/ip --auth-no-challenge --user xxx --password xxx</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -549,8 +553,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/02/python-simpleHttpServer/" rel="next" title="Python Simple Http Server">
-                <i class="fa fa-chevron-left"></i> Python Simple Http Server
+              <a href="/2020/09/02/python-simpleHttpServer/" rel="next" title="Python Simple Http(s) Server">
+                <i class="fa fa-chevron-left"></i> Python Simple Http(s) Server
               </a>
             
           </div>
@@ -558,6 +562,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/07/server-apache/" rel="prev" title="Apache Server">
+                Apache Server <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -629,7 +637,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -714,7 +722,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -957,7 +969,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">115</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -993,7 +1015,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Continue-download"><span class="nav-number">1.</span> <span class="nav-text">Continue download</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Continue-download"><span class="nav-number">1.</span> <span class="nav-text">Continue download</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Authz"><span class="nav-number">2.</span> <span class="nav-text">Authz</span></a></li></ol></div>
             
 
           </div>
@@ -1025,7 +1047,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">827k</span>
+    <span title="Symbols count total">843k</span>
   
 
   

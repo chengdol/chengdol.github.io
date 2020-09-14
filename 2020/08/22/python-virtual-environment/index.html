@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="To use and manage third-party libraries without messing up python environment, organizing different project that has its own unique dependencies:  pip: package management virtualenv: project and depen">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-03T06:24:43.403Z">
+<meta property="og:updated_time" content="2020-09-11T04:41:31.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Packages and Virtual Environment">
 <meta name="twitter:description" content="To use and manage third-party libraries without messing up python environment, organizing different project that has its own unique dependencies:  pip: package management virtualenv: project and depen">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">115</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">120</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">193</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">197</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-02 23:24:43" itemprop="dateModified" datetime="2020-09-02T23:24:43-07:00">2020-09-02</time>
+                <time title="Modified: 2020-09-10 21:41:31" itemprop="dateModified" datetime="2020-09-10T21:41:31-07:00">2020-09-10</time>
               
             
           </span>
@@ -540,7 +540,7 @@
 <p>You can also see <code>tox.ini</code> file in flask git repo, it is used for testing against different python versions in different virtual environments.</p>
 <h1 id="Virtualenvwrapper"><a href="#Virtualenvwrapper" class="headerlink" title="Virtualenvwrapper"></a>Virtualenvwrapper</h1><p>A user-friently wrapper around virtualenv， easy creation and activation, bind projects to virtualenvs.</p>
 <p>Setup:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## install system-widely</span></span><br><span class="line">sudo python3 -m pip install virtualenvwrapper</span><br><span class="line">sudo pip3 install virtualenvwrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## get path</span></span><br><span class="line"><span class="built_in">which</span> virtualenvwrapper.sh</span><br><span class="line">/usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">## add below lines to ~/.bashrc</span></span><br><span class="line"><span class="comment">## point virtualenvwrapper to pyhton3 explicitly</span></span><br><span class="line"><span class="built_in">export</span> VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3</span><br><span class="line"><span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</span><br><span class="line"><span class="comment">## if you don't want to use default virtual env home</span></span><br><span class="line"><span class="comment">## use absolute path</span></span><br><span class="line"><span class="built_in">export</span> WORKON_HOME=<span class="string">"/home/&lt;user&gt;/virtualenvs"</span></span><br><span class="line"><span class="comment">## set the project homes, when use mkproject will create project folder here</span></span><br><span class="line"><span class="comment">## use absolute path</span></span><br><span class="line"><span class="built_in">export</span> PROJECT_HOME=<span class="string">"/home/&lt;user&gt;/dev"</span></span><br></pre></td></tr></table></figure></p>
-<p>Operations:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show virtual environments list</span></span><br><span class="line">workon</span><br><span class="line"></span><br><span class="line"><span class="comment">## enter or switch virtual environment</span></span><br><span class="line">workon &lt;venv name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## will create both venv and project</span></span><br><span class="line"><span class="comment">## if the project is bound with venv, use workon will auto switch to project folder</span></span><br><span class="line">mkproject &lt;pro name&gt;</span><br><span class="line">mkproject -p python3 &lt;pro name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## for old project does not bind with venv</span></span><br><span class="line"><span class="comment">## activate venv and go to old project folder, run below to bind them</span></span><br><span class="line">setvirtualenvproject </span><br><span class="line"></span><br><span class="line"><span class="comment">## create a venv</span></span><br><span class="line">mkvirtualenv &lt;venv name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## remove a venv</span></span><br><span class="line">rmvirtualenv &lt;venv name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## deactivate venv</span></span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure></p>
+<p>Operations:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show virtual environments list</span></span><br><span class="line">workon</span><br><span class="line"></span><br><span class="line"><span class="comment">## enter or switch virtual environment</span></span><br><span class="line">workon &lt;venv name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## will create both venv and project</span></span><br><span class="line"><span class="comment">## if the project is bound with venv, use workon will auto switch to project folder</span></span><br><span class="line">mkproject &lt;pro name&gt;</span><br><span class="line">mkproject -p python3 &lt;pro name&gt;</span><br><span class="line">mkproject -p python2 &lt;pro name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## for old project does not bind with venv</span></span><br><span class="line"><span class="comment">## activate venv and go to old project folder, run below to bind them</span></span><br><span class="line">setvirtualenvproject </span><br><span class="line"></span><br><span class="line"><span class="comment">## create a venv</span></span><br><span class="line">mkvirtualenv &lt;venv name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## remove a venv</span></span><br><span class="line"><span class="comment">## you need to manually remove project folder is you want</span></span><br><span class="line">rmvirtualenv &lt;venv name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## deactivate venv</span></span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure></p>
 <h1 id="Other-Future-Tools"><a href="#Other-Future-Tools" class="headerlink" title="Other Future Tools"></a>Other Future Tools</h1><p>New projects:</p>
 <ul>
 <li>pipenv: <a href="https://pipenv-fork.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://pipenv-fork.readthedocs.io/en/latest/</a></li>
@@ -666,7 +666,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -751,7 +751,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -994,7 +998,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">115</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1062,7 +1076,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">827k</span>
+    <span title="Symbols count total">843k</span>
   
 
   

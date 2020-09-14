@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。  By default oc/kubectl edit will use vi in Linux if environment variable OC _EDITOR is empty, if you have .vimrc that is not compatible with vi, will">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-06T06:27:30.000Z">
+<meta property="og:updated_time" content="2020-09-11T04:41:31.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practical Vim, 2nd Edition">
 <meta name="twitter:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。  By default oc/kubectl edit will use vi in Linux if environment variable OC _EDITOR is empty, if you have .vimrc that is not compatible with vi, will">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">115</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">120</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">193</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">197</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-05 23:27:30" itemprop="dateModified" datetime="2020-06-05T23:27:30-07:00">2020-06-05</time>
+                <time title="Modified: 2020-09-10 21:41:31" itemprop="dateModified" datetime="2020-09-10T21:41:31-07:00">2020-09-10</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">21k</span>
+                <span title="Symbols count in article">22k</span>
               
 
               
@@ -627,7 +627,23 @@
 <h3 id="Folding"><a href="#Folding" class="headerlink" title="Folding"></a>Folding</h3><p>这个非常有用，比如编辑yaml 文件。<br>Fold by syntax or indent (yaml). <code>:sed foldmethod=indent/syntax</code><br><code>zM</code>, <code>zR</code>: fold and unfold all<br><code>zi</code>: toggle fold all<br><code>zc</code>, <code>zo</code>: close, open fold block<br><code>za</code>: toggle fold block<br><code>zk</code>, <code>zj</code>: move fold focus up and down</p>
 <p>还可以根据file type去设定, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Automatic fold settings for specific files. Uncomment to use.</span><br><span class="line">&quot; autocmd FileType ruby setlocal foldmethod=syntax</span><br><span class="line">&quot; autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2</span><br></pre></td></tr></table></figure></p>
 <h3 id="Recording"><a href="#Recording" class="headerlink" title="Recording"></a>Recording</h3><p>暂时没用到，对重复的复杂操作有用。</p>
-<h3 id="others"><a href="#others" class="headerlink" title="others"></a>others</h3><p>Press <code>u</code> to undo the last commands, <code>U</code> to undo all the changes in a line.<br><code>crtl+r</code> to undo undo.</p>
+<h3 id="Block-comment-and-uncomment"><a href="#Block-comment-and-uncomment" class="headerlink" title="Block comment and uncomment"></a>Block comment and uncomment</h3><p><a href="https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim" target="_blank" rel="noopener">quick way to comment and uncomment block of codes</a><br>comment:</p>
+<ol>
+<li>press <code>Esc</code></li>
+<li>hit <code>ctrl+v</code>, enter visual block mode</li>
+<li>use arrow keys select the lines, it won’t highlight everthing, it’s ok</li>
+<li><code>shift+i</code></li>
+<li>insert the text you want, e.g: #, //, %</li>
+<li>press <code>Esc</code> twice</li>
+</ol>
+<p>uncomment:</p>
+<ol>
+<li>press <code>Esc</code></li>
+<li>hit <code>ctrl+v</code>, enter visual block mode</li>
+<li>use arrow keys select text you want to delete</li>
+<li>press <code>x</code> to delete the text</li>
+</ol>
+<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>Press <code>u</code> to undo the last commands, <code>U</code> to undo all the changes in a line.<br><code>crtl+r</code> to undo undo.</p>
 <p>Type <code>rx</code> to replace the one character at the cursor with  <code>x</code>. <code>R</code> is used to replace more then one chars, type <code>R</code> then get into insert mode.</p>
 <p><code>ce</code> deletes the word and places you in Insert mode, so you can type new word, it will replace old ones. <code>c</code> is <strong>change operator</strong>, just like <code>d</code>.<br>比如要更改3个连续的words 在某行中: <code>c3w</code>, then type.</p>
 <p><code>Ctrl+g</code> will show cursor location in the file and the file status, also the file name.</p>
@@ -756,7 +772,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -841,7 +857,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1084,7 +1104,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">115</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1120,7 +1150,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-resources"><span class="nav-number">1.</span> <span class="nav-text">Other resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Daily-Foundation"><span class="nav-number">2.</span> <span class="nav-text">Daily Foundation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">2.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugin"><span class="nav-number">2.2.</span> <span class="nav-text">Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Display-Management"><span class="nav-number">2.3.</span> <span class="nav-text">Display Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows-amp-splits"><span class="nav-number">2.3.1.</span> <span class="nav-text">windows &amp; splits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tab"><span class="nav-number">2.3.2.</span> <span class="nav-text">Tab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-number">2.4.</span> <span class="nav-text">Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-line-movement"><span class="nav-number">2.4.1.</span> <span class="nav-text">Screen line movement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrolling"><span class="nav-number">2.4.2.</span> <span class="nav-text">Scrolling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-Mark"><span class="nav-number">2.4.3.</span> <span class="nav-text">Make Mark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shift"><span class="nav-number">2.4.4.</span> <span class="nav-text">Shift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-and-Replace"><span class="nav-number">2.4.5.</span> <span class="nav-text">Search and Replace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-and-Paste"><span class="nav-number">2.4.6.</span> <span class="nav-text">Copy and Paste</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Folding"><span class="nav-number">2.4.7.</span> <span class="nav-text">Folding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recording"><span class="nav-number">2.4.8.</span> <span class="nav-text">Recording</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#others"><span class="nav-number">2.4.9.</span> <span class="nav-text">others</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-resources"><span class="nav-number">1.</span> <span class="nav-text">Other resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Daily-Foundation"><span class="nav-number">2.</span> <span class="nav-text">Daily Foundation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">2.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugin"><span class="nav-number">2.2.</span> <span class="nav-text">Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Display-Management"><span class="nav-number">2.3.</span> <span class="nav-text">Display Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows-amp-splits"><span class="nav-number">2.3.1.</span> <span class="nav-text">windows &amp; splits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tab"><span class="nav-number">2.3.2.</span> <span class="nav-text">Tab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-number">2.4.</span> <span class="nav-text">Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-line-movement"><span class="nav-number">2.4.1.</span> <span class="nav-text">Screen line movement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrolling"><span class="nav-number">2.4.2.</span> <span class="nav-text">Scrolling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-Mark"><span class="nav-number">2.4.3.</span> <span class="nav-text">Make Mark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shift"><span class="nav-number">2.4.4.</span> <span class="nav-text">Shift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-and-Replace"><span class="nav-number">2.4.5.</span> <span class="nav-text">Search and Replace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-and-Paste"><span class="nav-number">2.4.6.</span> <span class="nav-text">Copy and Paste</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Folding"><span class="nav-number">2.4.7.</span> <span class="nav-text">Folding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recording"><span class="nav-number">2.4.8.</span> <span class="nav-text">Recording</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-comment-and-uncomment"><span class="nav-number">2.4.9.</span> <span class="nav-text">Block comment and uncomment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-number">2.4.10.</span> <span class="nav-text">Others</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1152,7 +1182,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">827k</span>
+    <span title="Symbols count total">843k</span>
   
 
   

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="首先要明白到底是要的froward prxoy or reverse proxy. 理解了proxy是如何处理SSL/TLS的之后，查看这里文档继续:https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl SNI routingSNI (Server Name Indication) is an ex">
+  <meta name="description" content="General Proxy Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个channel讲了很多关于Proxy的知识点，总结如下：  Understand what is forward proxy or reverse proxy and their benefits.  forwar">
 <meta name="keywords" content="envoy,proxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Envoy">
 <meta property="og:url" content="http://yoursite.com/2020/08/30/proxy-envoy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="首先要明白到底是要的froward prxoy or reverse proxy. 理解了proxy是如何处理SSL/TLS的之后，查看这里文档继续:https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl SNI routingSNI (Server Name Indication) is an ex">
+<meta property="og:description" content="General Proxy Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个channel讲了很多关于Proxy的知识点，总结如下：  Understand what is forward proxy or reverse proxy and their benefits.  forwar">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-07T21:06:43.909Z">
+<meta property="og:updated_time" content="2020-09-14T03:06:58.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
-<meta name="twitter:description" content="首先要明白到底是要的froward prxoy or reverse proxy. 理解了proxy是如何处理SSL/TLS的之后，查看这里文档继续:https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl SNI routingSNI (Server Name Indication) is an ex">
+<meta name="twitter:description" content="General Proxy Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个channel讲了很多关于Proxy的知识点，总结如下：  Understand what is forward proxy or reverse proxy and their benefits.  forwar">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">115</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">120</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">193</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">197</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-07 14:06:43" itemprop="dateModified" datetime="2020-09-07T14:06:43-07:00">2020-09-07</time>
+                <time title="Modified: 2020-09-13 20:06:58" itemprop="dateModified" datetime="2020-09-13T20:06:58-07:00">2020-09-13</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">577</span>
+                <span title="Symbols count in article">5.1k</span>
               
 
               
@@ -508,8 +508,66 @@
       
 
       
-        <p>首先要明白到底是要的froward prxoy or reverse proxy.</p>
-<p>理解了proxy是如何处理SSL/TLS的之后，查看这里文档继续:<br><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl" target="_blank" rel="noopener">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl</a></p>
+        <h1 id="General-Proxy-Concepts"><a href="#General-Proxy-Concepts" class="headerlink" title="General Proxy Concepts"></a>General Proxy Concepts</h1><p>由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。<br><a href="https://www.youtube.com/playlist?list=PLQnljOFTspQVMeBmWI2AhxULWEeo7AaMC" target="_blank" rel="noopener">Youtube Proxy Channel</a><br>这个channel讲了很多关于Proxy的知识点，总结如下：</p>
+<ol>
+<li><p>Understand what is forward proxy or reverse proxy and their benefits.</p>
+<ul>
+<li>forward proxy: anonymity, caching, blocking unwanted sites, GeoFencing</li>
+<li><p>reverse proxy: load balancing, ingress, caching, isolating internal traffic, logging, canary deployment</p>
+<blockquote>
+<p>Note: reverse proxy is not necessarily to be a load balancer. Load balancer is just an instance of reverse proxy.</p>
+</blockquote>
+<p>FAQ:<br>Can proxy &amp; reverse proxy used in the same time? Yes, for example, service mesh.<br>Is Proxy just for HTTP traffic? No, many types, for example, HTTPS proxy, SOCKS proxy..</p>
+<p>How forward proxy knows the destination? via the <code>HOST</code> header, start from http/1.1.<br><code>ping</code> will not go through HTTP proxy, it is a lower protocol L3. 也就是说，不是所有traffic都走的proxy. 你也可以设置哪些访问用proxy, 哪些不用。</p>
+<p>Proxy can add its header to tell server where is the originating IP: <code>X-Forwarded-For</code> header.<br>Proxy is dedicated: HTTP proxy (only for HTTP), HTTPS proxy(only for HTTPS), SOCKS proxy (only for L4).</p>
+<p><code>Transparent proxy(gateway)</code> you don’t need to do configiration, you are not aware of.</p>
+</li>
+</ul>
+</li>
+<li><p>VPN vs Forward proxy, pros and cons.</p>
+<p> In VPN, the client becomes a part of different network as VPN server. The VPN server acts as an intermediary of sorts as you connect to the internet, thereby hiding your IP address.</p>
+<p> VPN Pros</p>
+<ul>
+<li>Anonymity (but VPN knows you) </li>
+<li>Encrypts traffic </li>
+<li>Redirect all traffic at the lowest level (layer 2) </li>
+<li>Access restricted content </li>
+<li><p>Access Private networks (work) </p>
+<p>VPN Cons</p>
+</li>
+<li>Slow because extra hops </li>
+<li>Double Encryption </li>
+<li>VPN can log your data (DNS)</li>
+<li><p>No caching</p>
+<p>Proxy Pros</p>
+</li>
+<li>Anonymity (proxy knows you) </li>
+<li>Caching L7</li>
+<li>Work on Layer 7 &amp; Layer 3/4</li>
+<li>Blocking Websites (transparent proxy) </li>
+<li><p>Control and many applications (varnish http accelerator, load balancing, service mesh, firewall proxy security) </p>
+<p>Proxy Cons </p>
+</li>
+<li>Applications can bypass proxy </li>
+<li>Not all traffic is routed via proxy, dedicated </li>
+<li>No encryption by default </li>
+<li>More dangerous than VPN, for example MITM, so check your certificate.</li>
+</ul>
+</li>
+<li><p>L4 and L7 Reverse proxy<br> L7 proxy works on layer 7, it will redirect the request after requestion completely received. 这个proxy会查看client request 和组装new request to target server.</p>
+<p> L4 proxy works on layer 4(packet level), it will redirect the request packet immediately to target server (don’t wait all packets). 这个proxy并不知道request内容是什么，仅仅是转发packets.</p>
+</li>
+<li><p>TLS termination proxy and TLS forward proxy<br> TLS termination proxy:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        (proxy cert)</span><br><span class="line">client &lt;=================&gt; proxy &lt;------------------&gt; servers</span><br><span class="line">            https                        http</span><br></pre></td></tr></table></figure>
+<p> TLS forward proxy, it is not <code>tunneling</code> (对于TLS tunnel的类型或许叫做<code>HTTPS forward proxy</code>, <code>Tunnel proxy</code>更合适):</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        (proxy cert)                  (server cert)</span><br><span class="line">client &lt;=================&gt; proxy &lt;==================&gt; servers</span><br><span class="line">            https                        https</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><ol>
+<li>github repo demo, reverse and forward proxy, CONNECT, external auth</li>
+<li>with docker compose</li>
+</ol>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>理解了proxy是如何处理SSL/TLS的之后，查看这里文档继续:<br><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl" target="_blank" rel="noopener">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl</a></p>
 <p><a href="https://proxy.dockerflow.com/sni-routing/" target="_blank" rel="noopener">SNI routing</a><br>SNI (Server Name Indication) is an extension to TLS that allows a client to specify which hostname it is attempting to connect to at the start of the TLS handshaking process. </p>
 
       
@@ -606,8 +664,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -624,7 +691,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">197</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -709,7 +776,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -952,7 +1023,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">115</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -977,6 +1058,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Proxy-Concepts"><span class="nav-number">1.</span> <span class="nav-text">General Proxy Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">2.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">3.</span> <span class="nav-text">Introduction</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1003,7 +1101,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">827k</span>
+    <span title="Symbols count total">843k</span>
   
 
   
