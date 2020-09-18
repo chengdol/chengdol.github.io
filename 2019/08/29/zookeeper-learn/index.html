@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Recently lots of Kafka and Zookeeper things are going on, I am not familiar with them so take time to learn. Kafka in a NutshellUsing Kafka as a central messaging bus. All incoming data is first place">
-<meta name="keywords" content="kafka">
+  <meta name="description" content="Apach Zookeeper">
+<meta name="keywords" content="zookeeper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kafka Introduction">
-<meta property="og:url" content="http://yoursite.com/2019/08/29/kafka-introd/index.html">
+<meta property="og:title" content="Zookeeper Quick Start">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/zookeeper-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Recently lots of Kafka and Zookeeper things are going on, I am not familiar with them so take time to learn. Kafka in a NutshellUsing Kafka as a central messaging bus. All incoming data is first place">
+<meta property="og:description" content="Apach Zookeeper">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-29T23:16:29.000Z">
+<meta property="og:updated_time" content="2020-09-18T07:29:01.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kafka Introduction">
-<meta name="twitter:description" content="Recently lots of Kafka and Zookeeper things are going on, I am not familiar with them so take time to learn. Kafka in a NutshellUsing Kafka as a central messaging bus. All incoming data is first place">
+<meta name="twitter:title" content="Zookeeper Quick Start">
+<meta name="twitter:description" content="Apach Zookeeper">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/29/kafka-introd/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/29/zookeeper-learn/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Kafka Introduction | 海胆阶段's Blog</title>
+  <title>Zookeeper Quick Start | 海胆阶段's Blog</title>
   
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">197</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">198</span></a>
 
   </li>
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/kafka-introd/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/zookeeper-learn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kafka Introduction
+          <h1 class="post-title" itemprop="name headline">Zookeeper Quick Start
 
               
             
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-08-29 10:18:29 / Modified: 16:16:29" itemprop="dateCreated datePublished" datetime="2019-08-29T10:18:29-07:00">2019-08-29</time>
+              <time title="Created: 2019-08-29 16:18:35" itemprop="dateCreated datePublished" datetime="2019-08-29T16:18:35-07:00">2019-08-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-09-18 00:29:01" itemprop="dateModified" datetime="2020-09-18T00:29:01-07:00">2020-09-18</time>
               
             
           </span>
@@ -444,7 +456,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Zookeeper/" itemprop="url" rel="index"><span itemprop="name">Zookeeper</span></a></span>
 
                 
                 
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.4k</span>
+                <span title="Symbols count in article">98</span>
               
 
               
@@ -496,13 +508,7 @@
       
 
       
-        <p>Recently lots of Kafka and Zookeeper things are going on, I am not familiar with them so take time to learn.</p>
-<p><a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a><br>Using Kafka as a central messaging bus. All incoming data is first placed in Kafka and all outgoing data is read from Kafka. Kafka centralizes communication between producers of data and consumers of that data.</p>
-<p>Kafka is a distributed messaging system providing fast, highly scalable and redundant messaging through a pub-sub model. Kafka’s distributed design gives it several advantages.</p>
-<p>All Kafka messages are organized into <code>topics</code>. A <code>consumer</code> pulls messages off of a Kafka topic while <code>producers</code> push messages into a Kafka <code>topic</code>. Kafka, as a distributed system, each node in the cluster is called a Kafka <code>broker</code>.</p>
-<p>Each Kafka topics are divided into a number of <code>partitions</code>. Partitions allow you to parallelize a topic by splitting the data in a particular topic across multiple brokers.</p>
-<p>Each message within a partition has an identifier called its <code>offset</code>. The <code>offset</code> the ordering of messages as an immutable sequence.</p>
-<p><a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apach Kafka Official Doc</a></p>
+        <p><a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">Apach Zookeeper</a></p>
 
       
     </div>
@@ -526,7 +532,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kafka/" rel="tag"># kafka</a>
+            <a href="/tags/zookeeper/" rel="tag"># zookeeper</a>
           
         </div>
       
@@ -539,8 +545,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/27/k8s-feature-gates/" rel="next" title="Kubernetes Feature Gates">
-                <i class="fa fa-chevron-left"></i> Kubernetes Feature Gates
+              <a href="/2019/08/29/kafka-learn/" rel="next" title="Kafka Quick Start">
+                <i class="fa fa-chevron-left"></i> Kafka Quick Start
               </a>
             
           </div>
@@ -549,8 +555,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/29/zookeeper-introd/" rel="prev" title="Zookeeper Introduction">
-                Zookeeper Introduction <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/04/shell-timeout/" rel="prev" title="Shell timeout Command">
+                Shell timeout Command <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -614,7 +620,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">197</span>
+                    <span class="site-state-item-count">198</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1007,7 +1013,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">843k</span>
+    <span title="Symbols count total">848k</span>
   
 
   
