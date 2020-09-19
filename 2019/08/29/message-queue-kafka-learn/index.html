@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="这里主要记录一下docker container 一些有意思的用法。  把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv: 12345docker run \      --rm \      -it \      -v pathto/chart:/">
-<meta name="keywords" content="docker">
+  <meta name="description" content="IntroductionApach Kafka Official Doc What is Kafka?Learn Kafka GuideOpen source, distributed, streaming platform. For real-time event-driven applications, features:  fast high accuracy records in orde">
+<meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker Use Case">
-<meta property="og:url" content="http://yoursite.com/2020/09/15/docker-use-case/index.html">
+<meta property="og:title" content="Kafka Quick Start">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/message-queue-kafka-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="这里主要记录一下docker container 一些有意思的用法。  把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv: 12345docker run \      --rm \      -it \      -v pathto/chart:/">
+<meta property="og:description" content="IntroductionApach Kafka Official Doc What is Kafka?Learn Kafka GuideOpen source, distributed, streaming platform. For real-time event-driven applications, features:  fast high accuracy records in orde">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-18T07:29:01.370Z">
+<meta property="og:updated_time" content="2020-09-19T01:58:57.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker Use Case">
-<meta name="twitter:description" content="这里主要记录一下docker container 一些有意思的用法。  把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv: 12345docker run \      --rm \      -it \      -v pathto/chart:/">
+<meta name="twitter:title" content="Kafka Quick Start">
+<meta name="twitter:description" content="IntroductionApach Kafka Official Doc What is Kafka?Learn Kafka GuideOpen source, distributed, streaming platform. For real-time event-driven applications, features:  fast high accuracy records in orde">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/09/15/docker-use-case/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/29/message-queue-kafka-learn/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Docker Use Case | 海胆阶段's Blog</title>
+  <title>Kafka Quick Start | 海胆阶段's Blog</title>
   
 
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/docker-use-case/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/message-queue-kafka-learn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker Use Case
+          <h1 class="post-title" itemprop="name headline">Kafka Quick Start
 
               
             
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2020-09-15 08:48:00" itemprop="dateCreated datePublished" datetime="2020-09-15T08:48:00-07:00">2020-09-15</time>
+              <time title="Created: 2019-08-29 10:18:29" itemprop="dateCreated datePublished" datetime="2019-08-29T10:18:29-07:00">2019-08-29</time>
             
 
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-18 00:29:01" itemprop="dateModified" datetime="2020-09-18T00:29:01-07:00">2020-09-18</time>
+                <time title="Modified: 2020-09-18 18:58:57" itemprop="dateModified" datetime="2020-09-18T18:58:57-07:00">2020-09-18</time>
               
             
           </span>
@@ -456,7 +456,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a></span>
 
                 
                 
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.1k</span>
+                <span title="Symbols count in article">2.2k</span>
               
 
               
@@ -508,15 +508,33 @@
       
 
       
-        <p>这里主要记录一下docker container 一些有意思的用法。</p>
-<ol>
-<li><p>把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:<br>比如 helm linter cv:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">      --rm \</span><br><span class="line">      -it \</span><br><span class="line">      -v pathto/chart:/chart \</span><br><span class="line">      cv:latest cv lint helm /chart</span><br></pre></td></tr></table></figure>
-<p>Logs may also be captured by passing an additional volume: <code>-v ~/path/to/logs:/tmp/cv</code></p>
-<p>再比如jsonnet，搭建本地运行环境比较困难:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## convert chart.yaml.jsonnet to chart.yaml</span></span><br><span class="line"><span class="comment">## -V version="1": pass parameters to chart.yaml.jsonnet</span></span><br><span class="line"><span class="comment">## sed -e 's/"//g': remove double quotes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## the entrypoint of this image is running jsonnet command</span></span><br><span class="line">docker run \</span><br><span class="line">      --rm \</span><br><span class="line">      -v pathto/chart.yaml.jsonnet:/chart.yaml.jsonnet \</span><br><span class="line">      bitnami/jsonnet:latest /chart.yaml.jsonnet -V version=<span class="string">"1"</span> -S | sed -e <span class="string">'s/"//g'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apach Kafka Official Doc</a></p>
+<p><a href="https://www.youtube.com/watch?v=aj9CDZm0Glc" target="_blank" rel="noopener">What is Kafka?</a><br><a href="https://www.ibm.com/cloud/learn/apache-kafka" target="_blank" rel="noopener">Learn Kafka Guide</a><br>Open source, distributed, streaming platform. For real-time event-driven applications, features:</p>
+<ul>
+<li>fast</li>
+<li>high accuracy</li>
+<li>records in order</li>
+<li>fault tolerant</li>
+</ul>
+<p>Use cases:</p>
+<ul>
+<li>decoupling complex system</li>
+<li>messaging pub-sub</li>
+<li>location tracking, Uber</li>
+<li>data gathering, real-time recommendation</li>
+</ul>
+<p>4 core APIs:</p>
+<ul>
+<li>producer: publish</li>
+<li>consumer: subscribe</li>
+<li>streams: add complex processing capabilities</li>
+<li>connector: for reusing</li>
+</ul>
+<p><a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a><br>Using Kafka as a central messaging bus. All incoming data is first placed in Kafka and all outgoing data is read from Kafka. Kafka centralizes communication between producers of data and consumers of that data.</p>
+<p>Kafka is a distributed messaging system providing fast, highly scalable and redundant messaging through a pub-sub model. Kafka’s distributed design gives it several advantages.</p>
+<p>All Kafka messages are organized into <code>topics</code>. A <code>consumer</code> pulls messages off of a Kafka topic while <code>producers</code> push messages into a Kafka <code>topic</code>. Kafka, as a distributed system, each node in the cluster is called a Kafka <code>broker</code>.</p>
+<p>Each Kafka topics are divided into a number of <code>partitions</code>. Partitions allow you to parallelize a topic by splitting the data in a particular topic across multiple brokers.</p>
+<p>Each message within a partition has an identifier called its <code>offset</code>. The <code>offset</code> the ordering of messages as an immutable sequence.</p>
 
       
     </div>
@@ -540,7 +558,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
+            <a href="/tags/kafka/" rel="tag"># kafka</a>
           
         </div>
       
@@ -553,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/13/socket-learn/" rel="next" title="Socket Quick Start">
-                <i class="fa fa-chevron-left"></i> Socket Quick Start
+              <a href="/2019/08/27/k8s-feature-gates/" rel="next" title="Kubernetes Feature Gates">
+                <i class="fa fa-chevron-left"></i> Kubernetes Feature Gates
               </a>
             
           </div>
@@ -562,6 +580,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/29/message-queue-zookeeper-learn/" rel="prev" title="Zookeeper Quick Start">
+                Zookeeper Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -606,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -992,6 +1023,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1017,7 +1065,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">848k</span>
+    <span title="Symbols count total">849k</span>
   
 
   
