@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell">
+  <meta name="description" content="From PluralSight Google Cloud path. 下载的配套slides 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:从PluralSight的课程入口进入:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (bi">
 <meta name="keywords" content="cloud,gcp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google Cloud">
 <meta property="og:url" content="http://yoursite.com/2020/07/10/cloud-gcp/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell">
+<meta property="og:description" content="From PluralSight Google Cloud path. 下载的配套slides 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:从PluralSight的课程入口进入:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (bi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-19T01:59:20.259Z">
+<meta property="og:updated_time" content="2020-09-21T04:45:53.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google Cloud">
-<meta name="twitter:description" content="From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (big query)  Cloud shell">
+<meta name="twitter:description" content="From PluralSight Google Cloud path. 下载的配套slides 讲得很详细，可以参考，特别是讲解了如何选择资源组合。 GCP Lab:从PluralSight的课程入口进入:https://www.qwiklabs.com/ TermsCloud SDK commands:  gcloud kubectl gsutil (google storage) bq (bi">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-18 18:59:20" itemprop="dateModified" datetime="2020-09-18T18:59:20-07:00">2020-09-18</time>
+                <time title="Modified: 2020-09-20 21:45:53" itemprop="dateModified" datetime="2020-09-20T21:45:53-07:00">2020-09-20</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">12k</span>
+                <span title="Symbols count in article">15k</span>
               
 
               
@@ -508,8 +508,8 @@
       
 
       
-        <p>From Pluralsight Google Cloud path. 下载的配套slide 讲得很详细，可以参考，特别是讲解了如何选择资源组合。</p>
-<p><strong>GCP Lab:</strong><br><a href="https://www.qwiklabs.com/" target="_blank" rel="noopener">https://www.qwiklabs.com/</a></p>
+        <p>From PluralSight Google Cloud path. 下载的配套slides 讲得很详细，可以参考，特别是讲解了如何选择资源组合。</p>
+<p><strong>GCP Lab:</strong><br>从PluralSight的课程入口进入:<br><a href="https://www.qwiklabs.com/" target="_blank" rel="noopener">https://www.qwiklabs.com/</a></p>
 <h1 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h1><p>Cloud SDK commands:</p>
 <ul>
 <li>gcloud</li>
@@ -517,9 +517,9 @@
 <li>gsutil (google storage)</li>
 <li>bq (big query)</li>
 </ul>
-<p>Cloud shell is acutally running on a ephemeral compute engine instance. 其实command line 操作创建各种资源 比UI 更方便。</p>
+<p>Cloud shell is acutally running on a ephemeral compute engine instance. 其实command line 操作创建各种资源 比UI 更方便 (这也是Terraform的基础)</p>
 <p><code>Zone</code> is under <code>Region</code>, you can think of a zone as data center in a region.</p>
-<p><code>Anthos</code> is google’s morden solution for hybird and multi-cloud systems and services management.</p>
+<p><code>Anthos</code> is google’s morden solution for hybird and multi-cloud systems and services management. (下面一章会专门总结一下)</p>
 <p><code>GCP cloud functions</code>: serverless execution environment for building and connecting cloud services. With Cloud Functions you write simple, single-purpose functions that are attached to events emitted from your cloud infrastructure and services. Your Cloud Function is triggered when an event being watched is fired. Your code executes in a fully managed environment. There is no need to provision any infrastructure or worry about managing any servers.</p>
 <p><code>GCP deployment manager</code>: like <code>Terraform</code>, infrastructure as code.</p>
 <p><code>GCP Dataproc</code> for running Apache Spark and Apache Hadoop clusters.<br><code>GCP Dataflows</code> offers managed data pipelines, serverless fully managed data processing.<br><code>GCP Dataprep</code> visually explore, clean and prepare data for analysis and machine learning.</p>
@@ -552,7 +552,7 @@
 <li>custom mode (for production)</li>
 </ul>
 <p><code>VPN</code> can connect the on-premises network to GCP network.</p>
-<p>Vms can be on the same subnet but different zones. Every subnet has four reserved IP addresses in its primary IP range: <code>.0</code> for subnet network itself, <code>.1</code> for subnet gateway, second-to-last address in the range and the last address.</p>
+<p>VMs can be on the same subnet but different zones. Every subnet has four reserved IP addresses in its primary IP range: <code>.0</code> for subnet network itself, <code>.1</code> for subnet gateway, second-to-last address in the range and the last address.</p>
 <p>The external IP is transparent to VM, managed by VPC. You will not see it by <code>ip a s</code> command.<br>In <code>/etc/hosts</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10.128.0.2 instance-1.us-central1-a.c.terraform-k8s-282804.internal instance-1  <span class="comment"># Added by Google</span></span><br><span class="line"><span class="comment">## internal DNS reslover</span></span><br><span class="line">169.254.169.254 metadata.google.internal  <span class="comment"># Added by Google</span></span><br></pre></td></tr></table></figure></p>
 <p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nslookup instance-1</span><br><span class="line"></span><br><span class="line">Server:         169.254.169.254</span><br><span class="line">Address:        169.254.169.254<span class="comment">#53</span></span><br><span class="line"></span><br><span class="line">Non-authoritative answer:</span><br><span class="line">Name:   instance-1.us-central1-a.c.terraform-k8s-282804.internal</span><br><span class="line">Address: 10.128.0.2</span><br></pre></td></tr></table></figure></p>
 <p>Setup VPC peering or VPN to allow internal network connection between VPCs.</p>
@@ -590,7 +590,18 @@
 <h2 id="Infrastructure-Automation"><a href="#Infrastructure-Automation" class="headerlink" title="Infrastructure Automation"></a>Infrastructure Automation</h2><p>Deployment manager and Terraform, can also use Ansible, Chef, Puppet..</p>
 <p>Terraform is integrated in Cloud Shell.</p>
 <p>GCP marketplace, production-ready solutions.</p>
-<h1 id="Anthos"><a href="#Anthos" class="headerlink" title="Anthos"></a>Anthos</h1>
+<h1 id="Anthos"><a href="#Anthos" class="headerlink" title="Anthos"></a>Anthos</h1><p>建议把这个系列的slides下载复习。<br>Qucik Labs and slides are from <a href="https://app.pluralsight.com/paths/skills/architecting-hybrid-cloud-infrastructure-with-anthos" target="_blank" rel="noopener">PluralSight Anthos special</a></p>
+<p>Built on open source technologies pioneered by Google—including Kubernetes, Istio, and Knative—Anthos enables consistency between on-premises and cloud environments.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">      On-premises                           Public Cloud</span><br><span class="line">|----------------------|               |-----------------------|</span><br><span class="line">|                       Config Management                      | Anthos Configuration Management</span><br><span class="line">|      &lt;==============================================&gt;        |</span><br><span class="line">|                       Service Mesh                           | Istio, communications &amp;</span><br><span class="line">|      &lt;==============================================&gt;        |        observability</span><br><span class="line">|-----------|           |              |                       |</span><br><span class="line">| Enterprise| |---------|              |-----------|           |</span><br><span class="line">| workload  | |Containers              |Containers |           | Kubernetes, deployment &amp;</span><br><span class="line">|           | |---------|              |-----------|           |             run-time platform</span><br><span class="line">|           |   K8s     |              |   GKE                 |</span><br><span class="line">|           | on-premise|              |                       |</span><br><span class="line">|-----------|-----------|              |-----------------------|</span><br></pre></td></tr></table></figure></p>
+<p>这个系列先讲了Anthos是什么，组成结构，然后讲了service mesh, 最后讲了anthos config management (ACM).</p>
+<p>几个要点:</p>
+<ol>
+<li>on-premises cluster中安装运行有一个agent pod, 用来主动注册该cluster到anthos control plane</li>
+<li>所有注册过的cluster是统一管理和可视的，在同一个control plane，cluster中的资源也可见</li>
+<li>Anthos中很重要的部分就是service mesh, 使用的是Istio，所以要理解这部分。见我的关于Istio的博客。</li>
+<li>config management is the single source of truth, 可以把所有的policies都放在一个git repo中，是为desired state, 使用时会传播到所有被managed的objects中，是否被managed 在manifest中有annotation标记.</li>
+<li>multiple control planes DNS using Istio CoreDNS, not kube-dns (for local).</li>
+</ol>
+
       
     </div>
 
@@ -1122,7 +1133,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">849k</span>
+    <span title="Symbols count total">854k</span>
   
 
   
