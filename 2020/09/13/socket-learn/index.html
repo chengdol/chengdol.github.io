@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TODO: python socket module demos: https://pymotw.com/2/socket/uds.html  最近在做Proxy的工作，重新回顾和学习了很多相关的东西，这里把Socket的分类和概念梳理一下。 Sockethttps://en.wikipedia.org/wiki/Socket  Network socket, an end-point in a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-14T06:18:24.987Z">
+<meta property="og:updated_time" content="2020-09-22T05:07:49.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Socket Quick Start">
 <meta name="twitter:description" content="TODO: python socket module demos: https://pymotw.com/2/socket/uds.html  最近在做Proxy的工作，重新回顾和学习了很多相关的东西，这里把Socket的分类和概念梳理一下。 Sockethttps://en.wikipedia.org/wiki/Socket  Network socket, an end-point in a">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">120</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">121</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">198</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">199</span></a>
 
   </li>
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2020-09-13 22:02:04 / Modified: 23:18:24" itemprop="dateCreated datePublished" datetime="2020-09-13T22:02:04-07:00">2020-09-13</time>
+              <time title="Created: 2020-09-13 22:02:04" itemprop="dateCreated datePublished" datetime="2020-09-13T22:02:04-07:00">2020-09-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-09-21 22:07:49" itemprop="dateModified" datetime="2020-09-21T22:07:49-07:00">2020-09-21</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.4k</span>
+                <span title="Symbols count in article">4.5k</span>
               
 
               
@@ -502,9 +514,9 @@
 <p>最近在做Proxy的工作，重新回顾和学习了很多相关的东西，这里把Socket的分类和概念梳理一下。</p>
 <h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><p><a href="https://en.wikipedia.org/wiki/Socket" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Socket</a></p>
 <ul>
-<li>Network socket, an end-point in a communication across a network or the Internet</li>
-<li>Unix domain socket, an end-point in local inter-process communication</li>
-<li>socket(), a system call defined by the Berkeley sockets API</li>
+<li><code>Network socket</code>, an end-point in a bidirectional communication across a network or the Internet</li>
+<li><code>Unix domain socket</code>, an end-point in local bidirectional inter-process communication</li>
+<li><code>socket()</code>, a system call defined by the Berkeley sockets API</li>
 </ul>
 <p><a href="https://serverfault.com/a/124518" target="_blank" rel="noopener">Unix socket vs Network socket</a></p>
 <h2 id="Unix-Domain-Socket"><a href="#Unix-Domain-Socket" class="headerlink" title="Unix Domain Socket"></a>Unix Domain Socket</h2><p><a href="https://en.wikipedia.org/wiki/Unix_domain_socket" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Unix_domain_socket</a><br>A <strong>Unix domain socket</strong> or <strong>IPC socket</strong> (inter-process communication socket) is a data communications endpoint for exchanging data between processes executing on the same host operating system. </p>
@@ -531,7 +543,7 @@
 <ul>
 <li>Datagram sockets: connectless sockets, which use UDP.</li>
 <li>Stream sockets: connection-oriented sockets, which use TCP.</li>
-<li>Raw sockets.</li>
+<li>Raw sockets: IP packet.</li>
 </ul>
 <h2 id="Berkeley-Sockets"><a href="#Berkeley-Sockets" class="headerlink" title="Berkeley Sockets"></a>Berkeley Sockets</h2><p><a href="https://en.wikipedia.org/wiki/Berkeley_sockets" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Berkeley_sockets</a><br>Berkeley sockets is an application programming interface (API) for <strong>Internet sockets</strong> and <strong>Unix domain sockets</strong>, used for inter-process communication (IPC). 是以上几个socket的一种统一的抽象表示。</p>
 <p>The term <strong>POSIX sockets</strong> is essentially synonymous with <strong>Berkeley sockets</strong>, but they are also known as <strong>BSD sockets</strong>.</p>
@@ -655,7 +667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">198</span>
+                    <span class="site-state-item-count">199</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -997,7 +1009,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">120</span>
+                      
+                    
+                    <span class="site-state-item-count">121</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1065,7 +1079,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">854k</span>
+    <span title="Symbols count total">857k</span>
   
 
   
