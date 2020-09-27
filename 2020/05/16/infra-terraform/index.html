@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-23T05:17:29.235Z">
+<meta property="og:updated_time" content="2020-09-26T21:54:04.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Terraform Quick Start">
 <meta name="twitter:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-22 22:17:29" itemprop="dateModified" datetime="2020-09-22T22:17:29-07:00">2020-09-22</time>
+                <time title="Modified: 2020-09-26 14:54:04" itemprop="dateModified" datetime="2020-09-26T14:54:04-07:00">2020-09-26</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">14k</span>
+                <span title="Symbols count in article">20k</span>
               
 
               
@@ -539,7 +539,7 @@
 <h2 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h2><p>Terraform executable: download from web<br>Terraform files: using hashicorp configure language DSL<br>Terraform plugin: interact with provider: AWS, GCP, Azure, etc<br>Terraform state file: json and don’t touch it</p>
 <p>You can have multiple terraform file: <code>.tf</code>, when run terraform it will stitch them together to form a single configuration. 比如把variables, outputs, resources, tfvars分开。</p>
 <p>tfvars file by default named as <code>terraform.tfvars</code>, otherwise when run <code>plan</code> you need to specify the file path.</p>
-<h2 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h2><p>If you update the terraform file with different configuration, rerun <code>init</code>, <code>plan</code> and <code>apply</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list all commands</span></span><br><span class="line">terraform -<span class="built_in">help</span></span><br><span class="line">terraform version</span><br><span class="line"><span class="comment">## linter</span></span><br><span class="line">terraform validate</span><br><span class="line"></span><br><span class="line">terraform init</span><br><span class="line"><span class="comment">## will show you the diff if you update your terraform file</span></span><br><span class="line"><span class="comment">## load terraform.tfvars by default</span></span><br><span class="line">terraform plan -out plan.tfplan</span><br><span class="line"><span class="comment">## will generate a tfstate file</span></span><br><span class="line"><span class="comment">## perform creation as much parallel as possible</span></span><br><span class="line">terraform apply <span class="string">"plan.tfplan"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## output terraform state or plan file in a human-readable form</span></span><br><span class="line">terraform show</span><br><span class="line"><span class="comment">## for example, show you igress url</span></span><br><span class="line">terraform output</span><br><span class="line"></span><br><span class="line"><span class="comment">## show objects being managed by state file</span></span><br><span class="line">terraform state list</span><br><span class="line"></span><br><span class="line"><span class="comment">## destroy Terraform-managed infrastructure</span></span><br><span class="line">terraform destroy</span><br></pre></td></tr></table></figure></p>
+<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><p>If you update the terraform file with different configuration, rerun <code>init</code>, <code>plan</code> and <code>apply</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list all commands</span></span><br><span class="line">terraform --<span class="built_in">help</span></span><br><span class="line">terraform version</span><br><span class="line"><span class="comment">## linter</span></span><br><span class="line">terraform validate</span><br><span class="line"></span><br><span class="line">terraform init</span><br><span class="line"><span class="comment">## will show you the diff if you update your terraform file</span></span><br><span class="line"><span class="comment">## load terraform.tfvars by default</span></span><br><span class="line"><span class="comment">## not necessary for terrafrom &gt;= 0.12</span></span><br><span class="line">terraform plan -out plan.tfplan</span><br><span class="line"></span><br><span class="line"><span class="comment">## will generate a tfstate file</span></span><br><span class="line"><span class="comment">## perform creation as much parallel as possible</span></span><br><span class="line"><span class="comment">## --auto-approve: for script, no interactive</span></span><br><span class="line">terraform apply <span class="string">"plan.tfplan"</span> [--auto-approve]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## Manually mark a resource as tainted, forcing a destroy and recreate</span></span><br><span class="line"><span class="comment">## on the next plan/apply.</span></span><br><span class="line">terraform taint &lt;google_compute_instance.vm_instance&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## output terraform state or plan file in a human-readable form</span></span><br><span class="line"><span class="comment">## show what has been created</span></span><br><span class="line">terraform show</span><br><span class="line"></span><br><span class="line"><span class="comment">## show output variable value</span></span><br><span class="line"><span class="comment">## useful for scripts to extract outputs from your configuration</span></span><br><span class="line">terraform output [output name]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## refresh your state by comparing it to your cloud infrastructure</span></span><br><span class="line"><span class="comment">## for example, populate the output variable</span></span><br><span class="line">terraform refresh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## show objects being managed by state file</span></span><br><span class="line">terraform state list</span><br><span class="line"></span><br><span class="line"><span class="comment">## destroy Terraform-managed infrastructure</span></span><br><span class="line">terraform destroy [--auto-approve]</span><br></pre></td></tr></table></figure></p>
 <h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>Hashicorp configuration language:</p>
 <ul>
 <li><a href="https://www.terraform.io/docs/configuration/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/index.html</a></li>
@@ -552,21 +552,14 @@
 <ul>
 <li><a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/resources.html</a><br>还有random provider，比如产生随机数</li>
 </ul>
-<p>Object types:</p>
-<ul>
-<li>string</li>
-<li>number (integer/decimal)</li>
-<li>bool (true/false)</li>
-<li>list (index start from 0)</li>
-<li>map</li>
-</ul>
-<h3 id="Provisioner"><a href="#Provisioner" class="headerlink" title="Provisioner"></a>Provisioner</h3><p>类似于ansible的配置操作，在deploy infrastructure 之后.<br>post-deployment configuration, last resort, prefer ansible/puppet or chef.<br>provisioner can be local or remote</p>
-<p>common provisioner:</p>
+<h3 id="Provisioner"><a href="#Provisioner" class="headerlink" title="Provisioner"></a>Provisioner</h3><p>类似于ansible的配置操作，在deploy infrastructure 之后.<br>post-deployment configuration and last resort, prefer ansible/puppet or chef.</p>
+<p>Provisioner can be local or remote:</p>
 <ul>
 <li>file</li>
-<li>local-exec</li>
+<li>local-exec: executes a command locally on the machine running Terraform, not the VM instance itself. </li>
 <li>remote-exec</li>
 </ul>
+<p>Terraform treats provisioners differently from other arguments. Provisioners only run when a resource is created, but adding a provisioner does not force that resource to be destroyed and recreated. Use <code>terraform taint</code> to tell Terraform to recreate the instance.</p>
 <h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p><a href="https://www.terraform.io/docs/configuration/functions.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/functions.html</a></p>
 <p>You can experiment with functions in Terraform console, this can help with troubleshooting.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">terraform console</span><br><span class="line">&gt; min(2,5,90)</span><br><span class="line"><span class="comment">## load var from terraform state file</span></span><br><span class="line">&gt; cidrsubnet(var.network_address_space, 8, 0)</span><br><span class="line">&gt; lookup(local.common_tags, <span class="string">"Bill"</span>, <span class="string">"Unknown"</span>)</span><br></pre></td></tr></table></figure></p>
 <h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p>Support mutliple providers, all written in Go.</p>
@@ -584,11 +577,19 @@
 <p>The scenario, we need development, QA(Quality Assurance)/UAT(User Acceptance Testing), production environment, how to implement via one configuration and multiple inputs?</p>
 <p>The variable can be from:</p>
 <ul>
-<li>file</li>
-<li>environment variable</li>
-<li>var command flags</li>
+<li>file: <code>terraform.tfvars</code> or specify by <code>-var-file</code> in terraform command.</li>
+<li>environment variable: <code>TF_VAR_name</code>.</li>
+<li>terraform command flags <code>-var</code>.</li>
 </ul>
 <p>You can override variables and precedence, select value based on environment, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## specify default value in tf file</span></span><br><span class="line">variable <span class="string">"env_name"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span> = string</span><br><span class="line">  default = <span class="string">"develop"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## specify in tfvars file</span></span><br><span class="line">env_name = <span class="string">"uat"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## specify in command line</span></span><br><span class="line">terraform plan -var <span class="string">'env_name=production'</span></span><br></pre></td></tr></table></figure></p>
+<p>Variable types:</p>
+<ul>
+<li>string, the default type if no explicitly specified</li>
+<li>number (integer/decimal)</li>
+<li>list (index start from 0)</li>
+<li>map</li>
+</ul>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">variable <span class="string">"project"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span> = string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">variable <span class="string">"web_instance_count"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span>    = number</span><br><span class="line">  default = 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## list</span></span><br><span class="line">variable <span class="string">"cidrs"</span> &#123; default = [] &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## map</span></span><br><span class="line">variable <span class="string">"machine_types"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span>    = map</span><br><span class="line">  default = &#123;</span><br><span class="line">    dev  = <span class="string">"f1-micro"</span></span><br><span class="line">    <span class="built_in">test</span> = <span class="string">"n1-highcpu-32"</span></span><br><span class="line">    prod = <span class="string">"n1-highcpu-32"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Workspace"><a href="#Workspace" class="headerlink" title="Workspace"></a>Workspace</h2><p>Workspace is the recommended way to working with multiple environments, for example:</p>
 <ul>
 <li>state management</li>
@@ -617,6 +618,16 @@
 <li>variables input</li>
 <li>resources</li>
 <li>output values (calling part will take this in)</li>
+</ul>
+<h1 id="Google-Cloud-Platform"><a href="#Google-Cloud-Platform" class="headerlink" title="Google Cloud Platform"></a>Google Cloud Platform</h1><p>Good tutorial:<br><a href="https://learn.hashicorp.com/tutorials/terraform/google-cloud-platform-build" target="_blank" rel="noopener">https://learn.hashicorp.com/tutorials/terraform/google-cloud-platform-build</a></p>
+<p>If run <code>terraform apply</code> get permission issues, add the service account used to IAM, than grant it roles. Then retry the apply command.</p>
+<p>用Terraform 建造的VM instance network 没有ssh allow firewall rule, 要自己添加:<br><a href="https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-ssh" target="_blank" rel="noopener">https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-ssh</a></p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p>Commonly use reource types for terraform <code>resource</code> block:</p>
+<ul>
+<li>google_compute_network</li>
+<li>google_compute_instance</li>
+<li>google_compute_address</li>
+<li>google_storage_bucket</li>
 </ul>
 
       
@@ -1120,7 +1131,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Terraform"><span class="nav-number">1.</span> <span class="nav-text">Terraform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Play-around"><span class="nav-number">1.1.</span> <span class="nav-text">Play around</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composition"><span class="nav-number">1.2.</span> <span class="nav-text">Composition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command"><span class="nav-number">1.3.</span> <span class="nav-text">Command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syntax"><span class="nav-number">1.4.</span> <span class="nav-text">Syntax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Provisioner"><span class="nav-number">1.4.1.</span> <span class="nav-text">Provisioner</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">1.5.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Provider"><span class="nav-number">1.6.</span> <span class="nav-text">Provider</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Resource-arguments"><span class="nav-number">1.6.1.</span> <span class="nav-text">Resource arguments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variables"><span class="nav-number">1.7.</span> <span class="nav-text">Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Workspace"><span class="nav-number">1.8.</span> <span class="nav-text">Workspace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Managing-secrets"><span class="nav-number">1.9.</span> <span class="nav-text">Managing secrets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module"><span class="nav-number">1.10.</span> <span class="nav-text">Module</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Terraform"><span class="nav-number">1.</span> <span class="nav-text">Terraform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Play-around"><span class="nav-number">1.1.</span> <span class="nav-text">Play around</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composition"><span class="nav-number">1.2.</span> <span class="nav-text">Composition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commands"><span class="nav-number">1.3.</span> <span class="nav-text">Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syntax"><span class="nav-number">1.4.</span> <span class="nav-text">Syntax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Provisioner"><span class="nav-number">1.4.1.</span> <span class="nav-text">Provisioner</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">1.5.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Provider"><span class="nav-number">1.6.</span> <span class="nav-text">Provider</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Resource-arguments"><span class="nav-number">1.6.1.</span> <span class="nav-text">Resource arguments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variables"><span class="nav-number">1.7.</span> <span class="nav-text">Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Workspace"><span class="nav-number">1.8.</span> <span class="nav-text">Workspace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Managing-secrets"><span class="nav-number">1.9.</span> <span class="nav-text">Managing secrets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module"><span class="nav-number">1.10.</span> <span class="nav-text">Module</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Google-Cloud-Platform"><span class="nav-number">2.</span> <span class="nav-text">Google Cloud Platform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">2.1.</span> <span class="nav-text">Resources</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1152,7 +1163,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">859k</span>
+    <span title="Symbols count total">868k</span>
   
 
   
