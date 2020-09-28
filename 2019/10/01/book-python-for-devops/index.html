@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Good description for daily use: One time I was in the ocean and a wave crashed on top of me and took my breath away as it pulled me deeper into the ocean. Just as I started to recover my breath, anoth">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-27T05:34:53.358Z">
+<meta property="og:updated_time" content="2020-09-28T04:32:18.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python for Devops">
 <meta name="twitter:description" content="Good description for daily use: One time I was in the ocean and a wave crashed on top of me and took my breath away as it pulled me deeper into the ocean. Just as I started to recover my breath, anoth">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">121</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">122</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">200</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">201</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-26 22:34:53" itemprop="dateModified" datetime="2020-09-26T22:34:53-07:00">2020-09-26</time>
+                <time title="Modified: 2020-09-27 21:32:18" itemprop="dateModified" datetime="2020-09-27T21:32:18-07:00">2020-09-27</time>
               
             
           </span>
@@ -560,7 +560,7 @@
 <h1 id="Chapter-3-Command-Line"><a href="#Chapter-3-Command-Line" class="headerlink" title="Chapter 3 Command Line"></a>Chapter 3 Command Line</h1><p>Python offers tools for interacting with systems and shells. You should become familiar with the <code>sys</code>, <code>os</code>, and <code>subprocess</code> modules, as are all essential tools.</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">## little or big endian</span></span><br><span class="line">sys.byteorder</span><br><span class="line"><span class="comment">## python object size</span></span><br><span class="line">sys.getsizeof(<span class="number">1</span>)</span><br><span class="line"><span class="comment">## platform</span></span><br><span class="line">sys.platform</span><br><span class="line"><span class="comment">## python version</span></span><br><span class="line">sys.version_info.major</span><br><span class="line">sys.version_info.minor</span><br></pre></td></tr></table></figure>
 <p>The most common usage of the os module is to get settings from environment variables.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">## pwd and cd</span></span><br><span class="line">os.getcwd()</span><br><span class="line">os.chdir(<span class="string">'/tmp'</span>)</span><br><span class="line"><span class="comment">## get and set env var</span></span><br><span class="line">os.environ.get(<span class="string">'HOME'</span>)</span><br><span class="line">os.environ[<span class="string">'HOME'</span>] = <span class="string">'/tmp'</span></span><br><span class="line"><span class="comment">## login user</span></span><br><span class="line">os.getlogin()</span><br></pre></td></tr></table></figure></p>
-<p>With <code>subprocess</code> you can run your favorite shell command or other command line software and collect its output from within Python. For the majority of use-cases, you should use the <code>subprocess.run</code> function to spawn processes<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">sub = subprocess.run([<span class="string">'ls'</span>, <span class="string">'-ltr'</span>], capture_output=<span class="keyword">True</span>, universal_newlines=<span class="keyword">True</span>)</span><br><span class="line">sub.stdout</span><br><span class="line">sub.stderr</span><br><span class="line"><span class="comment">## exception will be raised when use</span></span><br><span class="line">sub = subprocess.run([<span class="string">'ls'</span>, <span class="string">'/non'</span>], capture_output=<span class="keyword">True</span>, universal_newlines=<span class="keyword">True</span>, check=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
+<p>With <code>subprocess</code> you can run your favorite shell command or other command line software and collect its output from within Python. For the majority of use-cases, you should use the <code>subprocess.run</code> function to spawn processes<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="comment">## text = True: convert to string</span></span><br><span class="line">sub = subprocess.run([<span class="string">'ls'</span>, <span class="string">'-ltr'</span>], capture_output=<span class="keyword">True</span>, universal_newlines=<span class="keyword">True</span> [,text=<span class="keyword">True</span>, stdout=&lt;file&gt;])</span><br><span class="line">sub.stdout</span><br><span class="line">sub.stderr</span><br><span class="line">print(sub.stdout.decode())</span><br><span class="line"><span class="comment">## exception will be raised when use</span></span><br><span class="line">sub = subprocess.run([<span class="string">'ls'</span>, <span class="string">'/non'</span>], capture_output=<span class="keyword">True</span>, universal_newlines=<span class="keyword">True</span>, check=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
 <h2 id="Creating-Command-Line-Tools"><a href="#Creating-Command-Line-Tools" class="headerlink" title="Creating Command Line Tools"></a>Creating Command Line Tools</h2><p>Invoke python script usually by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python xx.py</span><br></pre></td></tr></table></figure></p>
 <p>or you can eliminate python by adding <code>#!/usr/bin/env python</code>(or <code>python3</code>) at first line of the script, then <code>chmod</code> the script to executable:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xx.py</span><br></pre></td></tr></table></figure></p>
 <p>The simplest and most basic way to process arguments from the command line is to use the argv attribute of the <code>sys module</code>:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Simple command line tool using sys.argv</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  <span class="comment">## sys.argv is a list</span></span><br><span class="line">  sys.argv[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> <span class="string">'--help'</span> <span class="keyword">in</span> sys.argv:</span><br><span class="line">    help_message = <span class="string">f"Usage: <span class="subst">&#123;sys.argv[<span class="number">0</span>]&#125;</span> ..."</span></span><br><span class="line">    print(help_message)</span><br><span class="line">    sys.exit()</span><br><span class="line"><span class="comment">## can get index</span></span><br><span class="line">idx = sys.argv.index(<span class="string">'--namespace'</span>)</span><br><span class="line">namespace = sys.argv[idx]</span><br></pre></td></tr></table></figure></p>
@@ -721,7 +721,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">200</span>
+                    <span class="site-state-item-count">201</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1065,7 +1065,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">121</span>
+                      
+                    
+                    <span class="site-state-item-count">122</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1133,7 +1135,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">868k</span>
+    <span title="Symbols count total">870k</span>
   
 
   
