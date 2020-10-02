@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2020-09-23T05:17:29.236Z">
+<meta property="og:updated_time" content="2020-10-02T06:46:54.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH SCP SFTP Daily Work Summary">
 <meta name="twitter:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-22 22:17:29" itemprop="dateModified" datetime="2020-09-22T22:17:29-07:00">2020-09-22</time>
+                <time title="Modified: 2020-10-01 23:46:54" itemprop="dateModified" datetime="2020-10-01T23:46:54-07:00">2020-10-01</time>
               
             
           </span>
@@ -493,7 +493,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">35k</span>
+                <span title="Symbols count in article">37k</span>
               
 
               
@@ -561,15 +561,15 @@
 <p><a href="https://smallstep.com/blog/ssh-agent-explained/" target="_blank" rel="noopener">SSH agent and ProxyJump explained</a><br>Talking risk of SSH agent forwarding, access internal hosts through a bastion, ProxyJump is much safer.<br>也谈到了SSH是怎么handshake, 传输中用的是新的对称钥匙.</p>
 <p><strong>JumpBox or Bastion Host:</strong><br>Baston hosts are usually public-facing, hardened systems that serve as an entrypoint to systems behind a firewall or other restricted location, and they are especially popular with the rise of cloud computing.</p>
 <p>Notice that you need to generate key and copy the public key to bastion host first.<br><a href="https://www.redhat.com/sysadmin/ssh-proxy-bastion-proxyjump" target="_blank" rel="noopener">SSH to remote hosts though a proxy or bastion with ProxyJump</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -J specify the jumphost</span></span><br><span class="line">ssh -J &lt;bastion-host&gt; &lt;remote-host&gt;</span><br><span class="line">ssh -J user@&lt;bastion:port&gt; &lt;user@remote:port&gt;</span><br><span class="line">ssh -J &lt;bastion1&gt;,&lt;bastion2&gt; &lt;remote&gt;</span><br></pre></td></tr></table></figure></p>
-<p>最主要的还是配置<code>~/.ssh/config</code> 文件, basic settings:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## may have more statements here, for example, User, Port, AgentForward, etc</span></span><br><span class="line"><span class="comment">## The Bastion Host</span></span><br><span class="line">Host bastion-host-nickname</span><br><span class="line">  HostName bastion-hostname</span><br><span class="line"></span><br><span class="line"><span class="comment">## The Remote Host</span></span><br><span class="line">Host remote-host-nickname</span><br><span class="line">  HostName remote-hostname</span><br><span class="line">  ProxyJump bastion-host-nickname</span><br></pre></td></tr></table></figure></p>
+<p>最主要的还是配置<code>~/.ssh/config</code> 文件, basic settings:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## may have more statements here, for example, User, Port, AgentForward, etc</span></span><br><span class="line"><span class="comment">## The Bastion Host</span></span><br><span class="line">Host &lt;jump-host-nickname&gt;</span><br><span class="line">  User &lt;user name&gt;</span><br><span class="line">  <span class="comment">## default is no</span></span><br><span class="line">  ProxyUseFdpass no</span><br><span class="line">  <span class="comment">## jumpbox port</span></span><br><span class="line">  Port 22</span><br><span class="line">  <span class="comment">## jumpbox IP</span></span><br><span class="line">  HostName &lt;hostname or IP&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## The Remote Host</span></span><br><span class="line">Host &lt;remote-host-nickname&gt;</span><br><span class="line">  Hostname &lt;remote-hostname or ip address <span class="keyword">for</span> example: 172.12.234.12&gt;</span><br><span class="line">  User &lt;user name&gt;</span><br><span class="line">  AddKeysToAgent yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">  <span class="comment">## may need pem file, the private key</span></span><br><span class="line">  IdentityFile ~/.ssh/file.pem</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  ServerAliveInterval 60</span><br><span class="line"></span><br><span class="line"><span class="comment">## the remote host match this IP will use jumpbox</span></span><br><span class="line">Match host 172.??.*</span><br><span class="line">  ProxyJump &lt;jump-host-nickname&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## or can specify jumpbox directly</span></span><br><span class="line">Host &lt;remote-host-nickname&gt;</span><br><span class="line">  HostName &lt; remote-hostname or ip address&gt;</span><br><span class="line">  ProxyJump bastion-host-nickname</span><br></pre></td></tr></table></figure></p>
 <p>Then you can ssh directly: <code>ssh remote-host-nickname</code></p>
 <p><code>ProxyCommand</code> is an alternative of ProxyJump, but it is old.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o ProxyCommand=<span class="string">"ssh -W %h:%p bastion-host"</span> remote-host</span><br></pre></td></tr></table></figure></p>
 <p>还有一些没明白，特别是对于Gitlab上的pull or push, ProxyJump是如何工作的呢？并且为什么User is git?</p>
 <h1 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h1><ol>
-<li>Use <code>-v</code> flag in ssh command</li>
+<li>Use <code>-v</code> flag in ssh command (比如之前pem file 权限和格式没设置对，都有提示)</li>
 <li>Wireshark capture ssh traffic on that interface, you should see <code>SSHv2</code> protocol and more details</li>
 <li>Check system log, <code>journalctl | grep sshd</code>.</li>
-<li>Launch sshd on another port in debug mode: <code>sudo /usr/bin/sshd -d -p 2020</code>, then ssh to this port <code>2020</code> from client <code>ssh -p 2020 ...</code>.</li>
+<li>Launch sshd on another port in debug mode: <code>sudo /usr/bin/sshd -d -p 2020</code>, then ssh to this port <code>2020</code> from client <code>ssh -p 2020 user@remote_server</code>.</li>
 <li>May restriced by firewall</li>
 </ol>
 <h1 id="Usage-Summary"><a href="#Usage-Summary" class="headerlink" title="Usage Summary"></a>Usage Summary</h1><p>################################################################<br># &emsp; Insert latest update at the top of the logs<br>#<br># &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br># &emsp; 10/01/2018 &emsp; &emsp; ssh send command<br># &emsp; 11/14/2018 &emsp; &emsp; ssh run shell script<br># &emsp; 12/19/2018 &emsp; &emsp; ssh-copy-id<br># &emsp; 01/06/2019 &emsp; &emsp; ssh-kenscan<br># &emsp; 01/08/2019 &emsp; &emsp; ECDSA host key changed<br># &emsp; 01/22/2019 &emsp; &emsp; no prompt first time<br># &emsp; 01/23/2019 &emsp; &emsp; sshpass<br># &emsp; 02/21/2019 &emsp; &emsp; scp folder or files<br># &emsp; 03/11/2019 &emsp; &emsp; ssh -i option<br># &emsp; 03/12/2019 &emsp; &emsp; recover public key<br># &emsp; 09/05/2020 &emsp; &emsp; sftp<br>#<br>################################################################</p>
@@ -1136,7 +1136,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">870k</span>
+    <span title="Symbols count total">876k</span>
   
 
   

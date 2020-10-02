@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a single machine):Parallel programmingWorki">
+  <meta name="description" content="TODO pytest logging threading patterns   这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a">
 <meta name="keywords" content="python,concurrency">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Concurrency">
 <meta property="og:url" content="http://yoursite.com/2020/09/27/python-concurrency/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a single machine):Parallel programmingWorki">
+<meta property="og:description" content="TODO pytest logging threading patterns   这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-28T21:15:17.839Z">
+<meta property="og:updated_time" content="2020-09-29T07:33:01.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Concurrency">
-<meta name="twitter:description" content="这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a single machine):Parallel programmingWorki">
+<meta name="twitter:description" content="TODO pytest logging threading patterns   这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-28 14:15:17" itemprop="dateModified" datetime="2020-09-28T14:15:17-07:00">2020-09-28</time>
+                <time title="Modified: 2020-09-29 00:33:01" itemprop="dateModified" datetime="2020-09-29T00:33:01-07:00">2020-09-29</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.6k</span>
+                <span title="Symbols count in article">13k</span>
               
 
               
@@ -508,7 +508,12 @@
       
 
       
-        <p>这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。<br>根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a single machine):<br><strong>Parallel programming</strong><br>Working with multi-process cores, suited for <code>CPUs intensive tasks (CPU-bound tasks)</code>: solving the problem rather than reading to or writing from a device. Better CPU gets better performance:</p>
+        <h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
+<li>pytest</li>
+<li>logging</li>
+<li>threading patterns </li>
+</ol>
+<p>这里把Python concurrency的内容单独拿出来整理一下，前面遇到了诸如 co-routine, subprocess的内容，这里一并总结了。<br>根据需要选择适合场景的concurrency pattern, typs of concurrency (here we talk running app on a single machine):<br><strong>Parallel programming</strong><br>Working with multi-process cores, suited for <code>CPUs intensive tasks (CPU-bound tasks)</code>: solving the problem rather than reading to or writing from a device. Better CPU gets better performance:</p>
 <ul>
 <li>String operations</li>
 <li>Search algorithns</li>
@@ -527,8 +532,30 @@
 <li><a href="https://stackoverflow.com/questions/13606867/what-is-the-difference-between-multiprocessing-and-subprocess" target="_blank" rel="noopener">What is the difference between multiprocessing and subprocess?</a></li>
 <li><a href="https://stackoverflow.com/questions/2629680/deciding-among-subprocess-multiprocessing-and-thread-in-python" target="_blank" rel="noopener">Deciding among subprocess, multiprocessing, and thread in Python?</a></li>
 </ul>
-<p>Demo code:<br><a href="https://github.com/tim-ojo/python-concurrency-getting-started" target="_blank" rel="noopener">https://github.com/tim-ojo/python-concurrency-getting-started</a><br>Logging is disabled by pytest 需要设置一下，否则logging不会工作了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -p no:logging</span><br></pre></td></tr></table></figure></p>
-
+<p>Demo code without threads and mulitprocessing:<br><a href="https://github.com/tim-ojo/python-concurrency-getting-started" target="_blank" rel="noopener">https://github.com/tim-ojo/python-concurrency-getting-started</a></p>
+<p>In newer version, Logging is disabled by pytest, need to explicitly enable it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -p no:logging</span><br></pre></td></tr></table></figure></p>
+<h1 id="Threading"><a href="#Threading" class="headerlink" title="Threading"></a>Threading</h1><p>这里的介绍已经说得很清楚了:<br><a href="https://docs.python.org/3/library/threading.html" target="_blank" rel="noopener">https://docs.python.org/3/library/threading.html</a></p>
+<p>如果有多个cores, threads running in parallel, if only single core, threads share time on that core.<br>A process starts with a main thread, the main thread spawns other worker threads. 不过仅仅使用thread的基本并发功能有很多缺陷，比如thread interference.</p>
+<p>这里说一下Python threading 的局限, <code>GIL(Global Interpreter Lock)</code>, only <code>one</code> Python thread can run at a time, it is not true concurrency, it is a cooperative multipthreading, so using Python threading in <code>IO-bound</code> tasks rather than CPU-bound tasks.</p>
+<p>GIL workarounds:</p>
+<ul>
+<li>Jython</li>
+<li>IronPython</li>
+<li>Python Multiprocessing</li>
+<li>concurrent.futures.ProcessPoolExecutor</li>
+</ul>
+<p>如何构造threads呢? You can pass callable object (function) to constructor, the Thread class is defined as <code>class threading.Thread(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)</code>:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do_some_work</span><span class="params">(val)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"doing some work in thread"</span>)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"echo: &#123;&#125;"</span>.format(val))</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">val = <span class="string">"text"</span></span><br><span class="line"><span class="comment">## pass callable to constructor</span></span><br><span class="line"><span class="comment">## args is tuple</span></span><br><span class="line">t=threading.Thread(target=do_some_work,args=(val,))</span><br><span class="line"><span class="comment">## start thread t</span></span><br><span class="line">t.start()</span><br><span class="line"><span class="comment">## main thread waits until called thread terminates</span></span><br><span class="line">t.join()</span><br></pre></td></tr></table></figure></p>
+<p>Rr by overriding the <code>run()</code> method in a subclass. No other methods (except for the constructor) should be overridden in a subclass. In other words, only override the <code>__init__()</code> and <code>run()</code> methods of this class.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FibonacciThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        Thread.__init__(self)</span><br><span class="line">        self.num = num</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span> </span><br><span class="line">        fib=[<span class="number">0</span>]*(self.num + <span class="number">1</span>) </span><br><span class="line">        fib[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        fib[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, self.num + <span class="number">1</span>): </span><br><span class="line">            fib[i] = fib[i - <span class="number">1</span>] + fib[i - <span class="number">2</span>] </span><br><span class="line">            <span class="keyword">print</span> fib[self.num]</span><br><span class="line"></span><br><span class="line">myFibTask1 = FibonacciThread(<span class="number">9</span>)</span><br><span class="line">myFibTask2 = FibonacciThread(<span class="number">12</span>)</span><br><span class="line">myFibTask1.start()</span><br><span class="line">myFibTask2.start()</span><br><span class="line"></span><br><span class="line">myFibTask1.join()</span><br><span class="line">myFibTask2.join()</span><br></pre></td></tr></table></figure></p>
+<p><code>Thread interference</code>, a typical example is bank account deposit and withdraw, a <code>race condition</code> may occur. To <strong>synchronze</strong> threads, can use <code>lock</code> (<strong>primitive</strong> or <strong>reentrant</strong>)</p>
+<ul>
+<li>primitive lock, any thread can release it.</li>
+<li>reentrant lock, only holder can release, can be acquired multiple times, by the same thread.</li>
+</ul>
+<p>Lock benefit: faster.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="comment">## not owned by a particular thread</span></span><br><span class="line"><span class="comment">## globally shared</span></span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="comment">## automically acquire and release lock</span></span><br><span class="line"><span class="keyword">with</span> lock:</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">## do something</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## use try-finally block</span></span><br><span class="line">lock.acquire()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">## do something</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    lock.release()</span><br><span class="line"></span><br><span class="line"><span class="comment">## check is the lock is acquired</span></span><br><span class="line">lock.locked()</span><br></pre></td></tr></table></figure></p>
+<p><code>Semaphore</code>: maintains a set of permits. 限制每次最大threads可以进行的数量。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## default permit is 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## automically acquire and release semaphore</span></span><br></pre></td></tr></table></figure></p>
+<p><code>Events</code> and <code>Conditions</code></p>
+<p>Inter-thread communication using queues.</p>
+<h1 id="Multiprocessing"><a href="#Multiprocessing" class="headerlink" title="Multiprocessing"></a>Multiprocessing</h1>
       
     </div>
 
@@ -1028,7 +1055,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Concurrency"><span class="nav-number">1.</span> <span class="nav-text">Python Concurrency</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Concurrency"><span class="nav-number">2.</span> <span class="nav-text">Python Concurrency</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Threading"><span class="nav-number"></span> <span class="nav-text">Threading</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multiprocessing"><span class="nav-number"></span> <span class="nav-text">Multiprocessing</span></a></li></div>
             
 
           </div>
@@ -1060,7 +1087,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">870k</span>
+    <span title="Symbols count total">876k</span>
   
 
   
