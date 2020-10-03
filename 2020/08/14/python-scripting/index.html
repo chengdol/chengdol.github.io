@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Why Python scripting?Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The git repo of this post is:https://gi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-28T15:10:05.877Z">
+<meta property="og:updated_time" content="2020-10-03T23:09:45.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3 Scripting">
 <meta name="twitter:description" content="Why Python scripting?Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The git repo of this post is:https://gi">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">201</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">203</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-28 08:10:05" itemprop="dateModified" datetime="2020-09-28T08:10:05-07:00">2020-09-28</time>
+                <time title="Modified: 2020-10-03 16:09:45" itemprop="dateModified" datetime="2020-10-03T16:09:45-07:00">2020-10-03</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">16k</span>
+                <span title="Symbols count in article">17k</span>
               
 
               
@@ -553,9 +553,9 @@
 <p>这节的git repo例子很有意思<code>5_signal-primes-v5.py</code>, <code>6_timeout.py</code>, 用signal handler 去改变条件变量的值，从而改变运行逻辑。之前一直在BASH中用trap去做终止前的处理。Linux has 2 signals set aside for user: <code>SIGUSR1</code>, <code>SIGUSR2</code>.</p>
 <h1 id="Executing-Commands"><a href="#Executing-Commands" class="headerlink" title="Executing Commands"></a>Executing Commands</h1><p>Run external commands, for example, call other shell commands or executables by <code>subprocess</code>, similar to linux <code>()</code>.</p>
 <p>How to Execute Shell Commands with Python:<br><a href="https://stackoverflow.com/questions/89228/calling-an-external-command-from-python" target="_blank" rel="noopener">https://stackoverflow.com/questions/89228/calling-an-external-command-from-python</a><br><a href="https://janakiev.com/blog/python-shell-commands/" target="_blank" rel="noopener">https://janakiev.com/blog/python-shell-commands/</a></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>其他请查看关于python concurrency专门的总结: <a href=""><code>Python Concurrency</code></a>.</p>
-<h1 id="String-Manipulation"><a href="#String-Manipulation" class="headerlink" title="String Manipulation"></a>String Manipulation</h1><p>Besides basic operation, it talks about datetime:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment">## depends on your local time zone</span></span><br><span class="line">rightnow = datetime.datetime.now()</span><br><span class="line">utc_rightnow = datetime.datetime.utcnow()</span><br><span class="line"></span><br><span class="line">rightnow.moth</span><br><span class="line">rightnow.hour</span><br><span class="line"></span><br><span class="line"><span class="comment">## lots of % format</span></span><br><span class="line">rightnow.strftime(<span class="string">"Today is %A"</span>)</span><br><span class="line"><span class="comment">## datetime.timedelta, to add and decrease time slot</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="comment">## the run method will call Popen under the nood</span></span><br><span class="line">p = subprocess.run([<span class="string">"ls"</span>, <span class="string">"-l"</span>], </span><br><span class="line">               env=&lt;env&gt;, </span><br><span class="line">               stdout=subprocess.PIPE, </span><br><span class="line">               stderr=subprocess.PIPE)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 高级操作</span></span><br><span class="line">p = subprocess.Popen([<span class="string">"/usr/bin/git"</span>, <span class="string">"commit"</span>, <span class="string">"-m"</span>, <span class="string">"Fixes a bug."</span>], </span><br><span class="line">                 env=&lt;env&gt;, </span><br><span class="line">                 stdout=subprocess.PIPE, </span><br><span class="line">                 stderr=subprocess.PIPE)</span><br><span class="line">p.returncode</span><br><span class="line">p.vommunicate()</span><br></pre></td></tr></table></figure>
+<p>关于python concurrency专门的总结: <code>Python Concurrency</code></p>
+<h1 id="String-Manipulation"><a href="#String-Manipulation" class="headerlink" title="String Manipulation"></a>String Manipulation</h1><p>Besides basic operation, it talks about datetime:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment">## depends on your local time zone</span></span><br><span class="line">rightnow = datetime.datetime.now()</span><br><span class="line">utc_rightnow = datetime.datetime.utcnow()</span><br><span class="line"></span><br><span class="line">rightnow.month</span><br><span class="line">rightnow.hour</span><br><span class="line"></span><br><span class="line"><span class="comment">## lots of % format</span></span><br><span class="line">rightnow.strftime(<span class="string">"Today is %A"</span>)</span><br><span class="line"><span class="comment">## datetime.timedelta, to add and decrease time slot</span></span><br></pre></td></tr></table></figure></p>
 <p>然后讲了<code>re</code> module. 可以参考这节的git code.</p>
 <h1 id="Processing-Text-Logging"><a href="#Processing-Text-Logging" class="headerlink" title="Processing Text, Logging"></a>Processing Text, Logging</h1><p>For long running background service, logging is a must, we can log events into: file, syslog or systemd journal.</p>
 <p>Logger has different handlers, for example: StreamHandler(stdout, stderr), FileHanlder, watchFileHandler, SysLogHandler, SockerHandler, JournalHandler, etc.</p>
@@ -680,7 +680,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">201</span>
+                    <span class="site-state-item-count">203</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1094,7 +1094,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">876k</span>
+    <span title="Symbols count total">878k</span>
   
 
   
