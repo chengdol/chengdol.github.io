@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
+  <meta name="description" content="IntroductionTo alter a planet for the purpose of sustaining life. This article from IBM can give you a good overview:https://www.ibm.com/cloud/learn/terraform  Terraform vs Kubernetes Terraform vs Ans">
 <meta name="keywords" content="infra,terraform">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Terraform Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/05/16/infra-terraform/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
+<meta property="og:description" content="IntroductionTo alter a planet for the purpose of sustaining life. This article from IBM can give you a good overview:https://www.ibm.com/cloud/learn/terraform  Terraform vs Kubernetes Terraform vs Ans">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-26T21:54:04.741Z">
+<meta property="og:updated_time" content="2020-10-11T07:33:19.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Terraform Quick Start">
-<meta name="twitter:description" content="TerraformTo alter a planet for the purpose of sustaining life. From Hashicorp, removing manual build process, adopting declarative approach to deploy infrastructure as code, reusable, idempotent and c">
+<meta name="twitter:description" content="IntroductionTo alter a planet for the purpose of sustaining life. This article from IBM can give you a good overview:https://www.ibm.com/cloud/learn/terraform  Terraform vs Kubernetes Terraform vs Ans">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-26 14:54:04" itemprop="dateModified" datetime="2020-09-26T14:54:04-07:00">2020-09-26</time>
+                <time title="Modified: 2020-10-11 00:33:19" itemprop="dateModified" datetime="2020-10-11T00:33:19-07:00">2020-10-11</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">20k</span>
+                <span title="Symbols count in article">21k</span>
               
 
               
@@ -508,18 +508,20 @@
       
 
       
-        <h1 id="Terraform"><a href="#Terraform" class="headerlink" title="Terraform"></a>Terraform</h1><p>To alter a planet for the purpose of sustaining life.</p>
-<p>From Hashicorp, removing manual build process, adopting declarative approach to deploy <strong>infrastructure as code</strong>, reusable, idempotent and consistent repeatable deployment.</p>
-<p>Terrafrom provisions GKS</p>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>To alter a planet for the purpose of sustaining life.</p>
+<p>This article from IBM can give you a good overview:<br><a href="https://www.ibm.com/cloud/learn/terraform" target="_blank" rel="noopener">https://www.ibm.com/cloud/learn/terraform</a></p>
 <ul>
-<li><a href="https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster" target="_blank" rel="noopener">https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster</a></li>
-</ul>
-<p>This article from IBM can give you a good overview:</p>
-<ul>
-<li><a href="https://www.ibm.com/cloud/learn/terraform" target="_blank" rel="noopener">https://www.ibm.com/cloud/learn/terraform</a><ul>
 <li>Terraform vs Kubernetes</li>
 <li>Terraform vs Ansible</li>
 </ul>
+<p>From Hashicorp, removing manual build process, adopting declarative approach to deploy <strong>infrastructure as code</strong>, reusable, idempotent and consistent repeatable deployment.</p>
+<p>Use gcloud, API or client binary can do the same work as Terraform, so what are the <code>benefits</code>:</p>
+<ul>
+<li><p>unified workflow: If you are already deploying infrastructure to Google Cloud with Terraform, your resources can fit into that workflow.</p>
+</li>
+<li><p>full lifecycle management: Terraform doesn’t only create resources, it updates, and deletes tracked resources without requiring you to inspect the API to identify those resources.</p>
+</li>
+<li><p>graph of relationships: Terraform understands dependency relationships between resources.</p>
 </li>
 </ul>
 <p>CSDN:</p>
@@ -530,29 +532,21 @@
 <ul>
 <li><a href="https://www.terraform.io/docs/" target="_blank" rel="noopener">https://www.terraform.io/docs/</a></li>
 </ul>
-<p>Terraform之于cloud infra就相当于 helm之于K8s, 大大简化了操作复杂性，自动快速部署，同时做到了复用，versioning等特性。但首先得去了解cloud provider中提供的资源的用途，搭配。这个在O’reilly上有专门结合cloud部署的课程。</p>
-<h2 id="Play-around"><a href="#Play-around" class="headerlink" title="Play around"></a>Play around</h2><p>resource files in github:</p>
-<ul>
-<li><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></li>
-</ul>
-<p>What is needed:<br>AWS, Gcloud or Azure account.</p>
+<p>Terraform之于cloud infra就相当于 helm之于K8s, 大大简化了操作复杂性，自动快速部署，同时做到了复用，versioning等特性。但首先得去了解cloud provider中提供的资源的用途，搭配。</p>
+<h2 id="Course-Github-Repo"><a href="#Course-Github-Repo" class="headerlink" title="Course Github Repo"></a>Course Github Repo</h2><p>resource files in github:<br><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></p>
 <h2 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h2><p>Terraform executable: download from web<br>Terraform files: using hashicorp configure language DSL<br>Terraform plugin: interact with provider: AWS, GCP, Azure, etc<br>Terraform state file: json and don’t touch it</p>
-<p>You can have multiple terraform file: <code>.tf</code>, when run terraform it will stitch them together to form a single configuration. 比如把variables, outputs, resources, tfvars分开。</p>
+<p>You can have multiple terraform files: <code>.tf</code>, when run terraform it will stitch them together to form a single configuration. 比如把variables, outputs, resources, tfvars分开。</p>
 <p>tfvars file by default named as <code>terraform.tfvars</code>, otherwise when run <code>plan</code> you need to specify the file path.</p>
-<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><p>If you update the terraform file with different configuration, rerun <code>init</code>, <code>plan</code> and <code>apply</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list all commands</span></span><br><span class="line">terraform --<span class="built_in">help</span></span><br><span class="line">terraform version</span><br><span class="line"><span class="comment">## linter</span></span><br><span class="line">terraform validate</span><br><span class="line"></span><br><span class="line">terraform init</span><br><span class="line"><span class="comment">## will show you the diff if you update your terraform file</span></span><br><span class="line"><span class="comment">## load terraform.tfvars by default</span></span><br><span class="line"><span class="comment">## not necessary for terrafrom &gt;= 0.12</span></span><br><span class="line">terraform plan -out plan.tfplan</span><br><span class="line"></span><br><span class="line"><span class="comment">## will generate a tfstate file</span></span><br><span class="line"><span class="comment">## perform creation as much parallel as possible</span></span><br><span class="line"><span class="comment">## --auto-approve: for script, no interactive</span></span><br><span class="line">terraform apply <span class="string">"plan.tfplan"</span> [--auto-approve]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## Manually mark a resource as tainted, forcing a destroy and recreate</span></span><br><span class="line"><span class="comment">## on the next plan/apply.</span></span><br><span class="line">terraform taint &lt;google_compute_instance.vm_instance&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## output terraform state or plan file in a human-readable form</span></span><br><span class="line"><span class="comment">## show what has been created</span></span><br><span class="line">terraform show</span><br><span class="line"></span><br><span class="line"><span class="comment">## show output variable value</span></span><br><span class="line"><span class="comment">## useful for scripts to extract outputs from your configuration</span></span><br><span class="line">terraform output [output name]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## refresh your state by comparing it to your cloud infrastructure</span></span><br><span class="line"><span class="comment">## for example, populate the output variable</span></span><br><span class="line">terraform refresh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## show objects being managed by state file</span></span><br><span class="line">terraform state list</span><br><span class="line"></span><br><span class="line"><span class="comment">## destroy Terraform-managed infrastructure</span></span><br><span class="line">terraform destroy [--auto-approve]</span><br></pre></td></tr></table></figure></p>
+<h1 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h1><p>To execute terraform command, build a docker image and mount cloud account credentials when start container.<br>If you update the terraform file with different configuration, rerun <code>init</code>, <code>plan</code> and <code>apply</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list all commands</span></span><br><span class="line">terraform --<span class="built_in">help</span></span><br><span class="line">terraform version</span><br><span class="line"><span class="comment">## linter</span></span><br><span class="line">terraform validate</span><br><span class="line"></span><br><span class="line"><span class="comment">## init will download plugin, for example, aws, gcp or azure..</span></span><br><span class="line">terraform init</span><br><span class="line"><span class="comment">## will show you the diff if you update your terraform file</span></span><br><span class="line"><span class="comment">## load terraform.tfvars by default</span></span><br><span class="line"><span class="comment">## not necessary for terrafrom &gt;= 0.12</span></span><br><span class="line">terraform plan -out plan.tfplan</span><br><span class="line"></span><br><span class="line"><span class="comment">## will generate a tfstate file</span></span><br><span class="line"><span class="comment">## perform creation as much parallel as possible</span></span><br><span class="line"><span class="comment">## --auto-approve: for script, no interactive</span></span><br><span class="line">terraform apply <span class="string">"plan.tfplan"</span> [--auto-approve]</span><br><span class="line"><span class="comment">## you can run apply directly rather than plan first</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## Manually mark a resource as tainted, forcing a destroy and recreate</span></span><br><span class="line"><span class="comment">## on the next plan/apply.</span></span><br><span class="line">terraform taint &lt;google_compute_instance.vm_instance&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## output terraform state or plan file in a human-readable form</span></span><br><span class="line"><span class="comment">## show what has been created</span></span><br><span class="line">terraform show</span><br><span class="line"></span><br><span class="line"><span class="comment">## show output variable value</span></span><br><span class="line"><span class="comment">## useful for scripts to extract outputs from your configuration</span></span><br><span class="line">terraform output [output name]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## refresh your state by comparing it to your cloud infrastructure</span></span><br><span class="line"><span class="comment">## for example, populate the output variable</span></span><br><span class="line">terraform refresh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## show objects being managed by state file</span></span><br><span class="line">terraform state list</span><br><span class="line"></span><br><span class="line"><span class="comment">## destroy Terraform-managed infrastructure</span></span><br><span class="line">terraform destroy [--auto-approve]</span><br></pre></td></tr></table></figure></p>
 <h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>Hashicorp configuration language:</p>
 <ul>
 <li><a href="https://www.terraform.io/docs/configuration/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/index.html</a></li>
-</ul>
-<p>参考这些例子中的tf文件，格式还是比较固定的</p>
-<ul>
-<li><a href="https://github.com/ned1313/Getting-Started-Terraform" target="_blank" rel="noopener">https://github.com/ned1313/Getting-Started-Terraform</a></li>
 </ul>
 <p>怎么知道resource的名称呢? 有很多provider现成的resource可用:</p>
 <ul>
 <li><a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/resources.html</a><br>还有random provider，比如产生随机数</li>
 </ul>
-<h3 id="Provisioner"><a href="#Provisioner" class="headerlink" title="Provisioner"></a>Provisioner</h3><p>类似于ansible的配置操作，在deploy infrastructure 之后.<br>post-deployment configuration and last resort, prefer ansible/puppet or chef.</p>
+<h1 id="Provisioner"><a href="#Provisioner" class="headerlink" title="Provisioner"></a>Provisioner</h1><p>类似于ansible的配置操作，在deploy infrastructure 之后.<br>post-deployment configuration and last resort, prefer ansible/puppet or chef.</p>
 <p>Provisioner can be local or remote:</p>
 <ul>
 <li>file</li>
@@ -560,20 +554,17 @@
 <li>remote-exec</li>
 </ul>
 <p>Terraform treats provisioners differently from other arguments. Provisioners only run when a resource is created, but adding a provisioner does not force that resource to be destroyed and recreated. Use <code>terraform taint</code> to tell Terraform to recreate the instance.</p>
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p><a href="https://www.terraform.io/docs/configuration/functions.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/functions.html</a></p>
+<h1 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h1><p><a href="https://www.terraform.io/docs/configuration/functions.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/functions.html</a></p>
 <p>You can experiment with functions in Terraform console, this can help with troubleshooting.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">terraform console</span><br><span class="line">&gt; min(2,5,90)</span><br><span class="line"><span class="comment">## load var from terraform state file</span></span><br><span class="line">&gt; cidrsubnet(var.network_address_space, 8, 0)</span><br><span class="line">&gt; lookup(local.common_tags, <span class="string">"Bill"</span>, <span class="string">"Unknown"</span>)</span><br></pre></td></tr></table></figure></p>
-<h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p>Support mutliple providers, all written in Go.</p>
-<ul>
-<li><a href="https://www.terraform.io/docs/providers/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/providers/index.html</a></li>
-</ul>
-<h3 id="Resource-arguments"><a href="#Resource-arguments" class="headerlink" title="Resource arguments"></a>Resource arguments</h3><p><a href="https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies</a><br>common ones:</p>
+<h1 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h1><p>Support mutliple providers, all written in Go.<br><a href="https://www.terraform.io/docs/providers/index.html" target="_blank" rel="noopener">https://www.terraform.io/docs/providers/index.html</a></p>
+<h1 id="Resource-arguments"><a href="#Resource-arguments" class="headerlink" title="Resource arguments"></a>Resource arguments</h1><p><a href="https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies</a><br>common ones:</p>
 <ul>
 <li>depends_on: make sure terraform creates things in right order</li>
 <li>count: create similar resources</li>
 <li>for_each: create resources not similar</li>
 <li>provider</li>
 </ul>
-<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>Other way to use variables rather than specifying in single <code>.tf</code> file.</p>
+<h1 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h1><p>Other way to use variables rather than specifying in single <code>.tf</code> file.</p>
 <p>The scenario, we need development, QA(Quality Assurance)/UAT(User Acceptance Testing), production environment, how to implement via one configuration and multiple inputs?</p>
 <p>The variable can be from:</p>
 <ul>
@@ -590,7 +581,7 @@
 <li>map</li>
 </ul>
 <p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">variable <span class="string">"project"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span> = string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">variable <span class="string">"web_instance_count"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span>    = number</span><br><span class="line">  default = 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## list</span></span><br><span class="line">variable <span class="string">"cidrs"</span> &#123; default = [] &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## map</span></span><br><span class="line">variable <span class="string">"machine_types"</span> &#123;</span><br><span class="line">  <span class="built_in">type</span>    = map</span><br><span class="line">  default = &#123;</span><br><span class="line">    dev  = <span class="string">"f1-micro"</span></span><br><span class="line">    <span class="built_in">test</span> = <span class="string">"n1-highcpu-32"</span></span><br><span class="line">    prod = <span class="string">"n1-highcpu-32"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Workspace"><a href="#Workspace" class="headerlink" title="Workspace"></a>Workspace</h2><p>Workspace is the recommended way to working with multiple environments, for example:</p>
+<h1 id="Workspace"><a href="#Workspace" class="headerlink" title="Workspace"></a>Workspace</h1><p>Workspace is the recommended way to working with multiple environments, for example:</p>
 <ul>
 <li>state management</li>
 <li>variables data</li>
@@ -598,16 +589,10 @@
 </ul>
 <p>State file example, we have dev, QA, prod three environments, put them each into separate folder, when run command, specify the input and output:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## for dev environment</span></span><br><span class="line"><span class="comment">## -state: where to write state file</span></span><br><span class="line"><span class="comment">## -var-file: load file</span></span><br><span class="line">terraform plan -state=<span class="string">"./dev/dev.state"</span> \</span><br><span class="line">               -var-file=<span class="string">"common.tfvars"</span> \</span><br><span class="line">               -var-file=<span class="string">"./dev/dev.tfvars"</span></span><br></pre></td></tr></table></figure></p>
 <p>Workspace example, there is a <code>terraform.workspace</code> built-in variable can be used to indicate the workspace currently in, then use it in map variable to select right value for different environment. (不用再去分别创建不同的folder for different environment了)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create dev workspace and switch to it</span></span><br><span class="line">terraform workspace new dev</span><br><span class="line"><span class="comment">## show workspace</span></span><br><span class="line">terraform workspace list</span><br><span class="line">terraform plan -out dev.tfplan</span><br><span class="line">terraform apply <span class="string">"dev.tfplan"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## now create another workspace for QA</span></span><br><span class="line">terraform workspace new QA</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">## switch workspace</span></span><br><span class="line">terraform workspace select dev</span><br></pre></td></tr></table></figure></p>
-<h2 id="Managing-secrets"><a href="#Managing-secrets" class="headerlink" title="Managing secrets"></a>Managing secrets</h2><p>Hashicorp <strong>vault</strong> is for this purpose. it can hand over credentials from cloud provider to terraform and set ttl for the secrets.</p>
+<h1 id="Managing-secrets"><a href="#Managing-secrets" class="headerlink" title="Managing secrets"></a>Managing secrets</h1><p>Hashicorp <strong>vault</strong> is for this purpose. it can hand over credentials from cloud provider to terraform and set ttl for the secrets.</p>
 <p>Or you can use environment variable to specify the credentials, terraform will pick it automatically, but bear in mind to use the right env var name.</p>
-<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p>Make code reuse eaiser:</p>
-<ul>
-<li><a href="https://www.terraform.io/docs/configuration/modules.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/modules.html</a></li>
-</ul>
-<p>Terraform registry, similar concept with Helm, Docker:</p>
-<ul>
-<li><a href="https://registry.terraform.io/" target="_blank" rel="noopener">https://registry.terraform.io/</a><br>Using module block to invoke local or remote modules.</li>
-</ul>
+<h1 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h1><p>Make code reuse eaiser:<br><a href="https://www.terraform.io/docs/configuration/modules.html" target="_blank" rel="noopener">https://www.terraform.io/docs/configuration/modules.html</a></p>
+<p>Terraform registry, similar concept with Helm, Docker:<br><a href="https://registry.terraform.io/" target="_blank" rel="noopener">https://registry.terraform.io/</a><br>Using module block to invoke local or remote modules.</p>
 <ol>
 <li>root module</li>
 <li>support versioning</li>
@@ -622,12 +607,15 @@
 <h1 id="Google-Cloud-Platform"><a href="#Google-Cloud-Platform" class="headerlink" title="Google Cloud Platform"></a>Google Cloud Platform</h1><p>Good tutorial:<br><a href="https://learn.hashicorp.com/tutorials/terraform/google-cloud-platform-build" target="_blank" rel="noopener">https://learn.hashicorp.com/tutorials/terraform/google-cloud-platform-build</a></p>
 <p>If run <code>terraform apply</code> get permission issues, add the service account used to IAM, than grant it roles. Then retry the apply command.</p>
 <p>用Terraform 建造的VM instance network 没有ssh allow firewall rule, 要自己添加:<br><a href="https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-ssh" target="_blank" rel="noopener">https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-ssh</a></p>
+<p>Terrafrom provisions <code>GKE</code> with additional node pool:<br><a href="https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster" target="_blank" rel="noopener">https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster</a></p>
 <h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p>Commonly use reource types for terraform <code>resource</code> block:</p>
 <ul>
 <li>google_compute_network</li>
 <li>google_compute_instance</li>
 <li>google_compute_address</li>
 <li>google_storage_bucket</li>
+<li>google_container_cluster</li>
+<li>google_container_node_pool</li>
 </ul>
 
       
@@ -1133,7 +1121,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Terraform"><span class="nav-number">1.</span> <span class="nav-text">Terraform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Play-around"><span class="nav-number">1.1.</span> <span class="nav-text">Play around</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composition"><span class="nav-number">1.2.</span> <span class="nav-text">Composition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commands"><span class="nav-number">1.3.</span> <span class="nav-text">Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syntax"><span class="nav-number">1.4.</span> <span class="nav-text">Syntax</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Provisioner"><span class="nav-number">1.4.1.</span> <span class="nav-text">Provisioner</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions"><span class="nav-number">1.5.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Provider"><span class="nav-number">1.6.</span> <span class="nav-text">Provider</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Resource-arguments"><span class="nav-number">1.6.1.</span> <span class="nav-text">Resource arguments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variables"><span class="nav-number">1.7.</span> <span class="nav-text">Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Workspace"><span class="nav-number">1.8.</span> <span class="nav-text">Workspace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Managing-secrets"><span class="nav-number">1.9.</span> <span class="nav-text">Managing secrets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module"><span class="nav-number">1.10.</span> <span class="nav-text">Module</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Google-Cloud-Platform"><span class="nav-number">2.</span> <span class="nav-text">Google Cloud Platform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">2.1.</span> <span class="nav-text">Resources</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Course-Github-Repo"><span class="nav-number">1.1.</span> <span class="nav-text">Course Github Repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composition"><span class="nav-number">1.2.</span> <span class="nav-text">Composition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Commands"><span class="nav-number">2.</span> <span class="nav-text">Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Syntax"><span class="nav-number">2.1.</span> <span class="nav-text">Syntax</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Provisioner"><span class="nav-number">3.</span> <span class="nav-text">Provisioner</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Functions"><span class="nav-number">4.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Provider"><span class="nav-number">5.</span> <span class="nav-text">Provider</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Resource-arguments"><span class="nav-number">6.</span> <span class="nav-text">Resource arguments</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Variables"><span class="nav-number">7.</span> <span class="nav-text">Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Workspace"><span class="nav-number">8.</span> <span class="nav-text">Workspace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Managing-secrets"><span class="nav-number">9.</span> <span class="nav-text">Managing secrets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Module"><span class="nav-number">10.</span> <span class="nav-text">Module</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Google-Cloud-Platform"><span class="nav-number">11.</span> <span class="nav-text">Google Cloud Platform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">11.1.</span> <span class="nav-text">Resources</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1165,7 +1153,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">878k</span>
+    <span title="Symbols count total">883k</span>
   
 
   

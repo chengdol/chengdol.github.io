@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## me">
+  <meta name="description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI 中merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## m">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Merge and Rebase">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/git-merge-rebase/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## me">
+<meta property="og:description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI 中merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## m">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-18T07:29:01.372Z">
+<meta property="og:updated_time" content="2020-10-11T07:33:19.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Merge and Rebase">
-<meta name="twitter:description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## me">
+<meta name="twitter:description" content="之前其实很少用到git merge and git rebase，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI. 在CLI 中merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:123456## m">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-18 00:29:01" itemprop="dateModified" datetime="2020-09-18T00:29:01-07:00">2020-09-18</time>
+                <time title="Modified: 2020-10-11 00:33:19" itemprop="dateModified" datetime="2020-10-11T00:33:19-07:00">2020-10-11</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.6k</span>
+                <span title="Symbols count in article">5.6k</span>
               
 
               
@@ -509,8 +509,8 @@
 
       
         <p>之前其实很少用到<code>git merge</code> and <code>git rebase</code>，一般都是通过Pull Request把merge feature branch’s updates into master via Github UI.</p>
-<p>在CLI merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## merge feature to master</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment">## squash will summary all commits in feature branch into merge commit</span></span><br><span class="line">git merge --squash feature</span><br><span class="line"><span class="comment">## need to commit this merge</span></span><br><span class="line">git commit -m <span class="string">"feature and master merged"</span></span><br></pre></td></tr></table></figure></p>
-<p>关于rebase的使用，可以参考这篇文章，它构造了一个线性的git hsitory，方便以后查看:<br><a href="https://www.jianshu.com/p/6960811ac89c" target="_blank" rel="noopener">https://www.jianshu.com/p/6960811ac89c</a><br>注意，这篇文章的例子是将dev branch 本地合并到master 再提交，并不是merge request的方式。</p>
+<p>在CLI 中merge feature into master，但这样master中的git hsitory不是线性的，并且会制造一个merge commit:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## merge feature to master</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment">## squash will summary all commits in feature branch into merge commit</span></span><br><span class="line">git merge --squash feature</span><br><span class="line"><span class="comment">## need to commit this merge</span></span><br><span class="line">git commit -m <span class="string">"feature and master merged"</span></span><br></pre></td></tr></table></figure></p>
+<p>关于rebase的使用，可以参考这篇文章，它构造了一个线性的git history，方便以后查看:<br><a href="https://www.jianshu.com/p/6960811ac89c" target="_blank" rel="noopener">https://www.jianshu.com/p/6960811ac89c</a><br>注意，这篇文章的例子是将dev branch 本地合并到master 再提交，并不是merge request的方式。</p>
 <ol>
 <li>先将本地master 更新, git pull origin master</li>
 <li>进入需要rebase的分支, git checkout dev</li>
@@ -521,13 +521,13 @@
 <p>这样就把dev合并到master中了，实际上还是先rebase 再 merge.</p>
 <p>这个文章讲了更多的rebase 特性:<br><a href="https://baijiahao.baidu.com/s?id=1633418495146592435" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1633418495146592435</a></p>
 <ol>
-<li>git pull –rebase</li>
+<li>git pull –rebase (will not use merge)</li>
 <li>修改commit 历史</li>
 <li>合并commit</li>
 <li>分解commit</li>
 <li>重新排序commit</li>
 </ol>
-<p><a href="https://thoughtbot.com/blog/git-interactive-rebase-squash-amend-rewriting-history#squash-commits-together" target="_blank" rel="noopener">Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History</a><br>遇到一个问题，一个merge request中可能有多次的commits，不过有时需要squash multiple commints into one:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 如果dev branch不干净</span></span><br><span class="line"><span class="comment">## later can run `git stash pop`</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment">## pull latest to master branch</span></span><br><span class="line">git checkout master</span><br><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line"><span class="comment">## current in dev branch, reword commits on top of master history</span></span><br><span class="line"><span class="comment">## -i: interactively </span></span><br><span class="line">git checkout dev</span><br><span class="line">git rebase -i master</span><br><span class="line"><span class="comment">## after rebase (squash), check commit log changes</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## update merge request on github</span></span><br><span class="line"><span class="comment">## 这时之前的merge request就会被重写</span></span><br><span class="line">git push -f origin dev</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://thoughtbot.com/blog/git-interactive-rebase-squash-amend-rewriting-history#squash-commits-together" target="_blank" rel="noopener">Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History</a><br>实际遇到一个要求，存在多次的commits在merge request中，需要squash multiple commits into one, 解决办法:<br>在本地rebase 然后再提交, for example I use <code>dev</code> branch:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 如果dev branch不干净</span></span><br><span class="line"><span class="comment">## later can run `git stash pop`</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment">## pull latest to master branch</span></span><br><span class="line"><span class="comment">## because it may be updated by others</span></span><br><span class="line">git checkout master</span><br><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## current in dev branch, reword commits on top of master history</span></span><br><span class="line">git checkout dev</span><br><span class="line"><span class="comment">## -i: interactively</span></span><br><span class="line">git rebase -i master</span><br><span class="line"><span class="comment">## may have conflicts, fix conflicts as prompted</span></span><br><span class="line">git add &lt;fixed files&gt;</span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## abort rebase</span></span><br><span class="line">git rebase --abort</span><br><span class="line"></span><br><span class="line"><span class="comment">## after rebase (squash), check commit log changes</span></span><br><span class="line">git <span class="built_in">log</span> -n 5</span><br><span class="line"></span><br><span class="line"><span class="comment">## update merge request on github</span></span><br><span class="line"><span class="comment">## 这时之前的merge request就会被重写</span></span><br><span class="line">git push -f origin dev</span><br></pre></td></tr></table></figure></p>
 <h2 id="Other-GitHub-tutorials"><a href="#Other-GitHub-tutorials" class="headerlink" title="Other GitHub tutorials:"></a>Other GitHub tutorials:</h2><p>GitHub.com Help Documentation:<br><a href="https://docs.github.com/en/github" target="_blank" rel="noopener">https://docs.github.com/en/github</a></p>
 
       
@@ -1063,7 +1063,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">878k</span>
+    <span title="Symbols count total">883k</span>
   
 
   

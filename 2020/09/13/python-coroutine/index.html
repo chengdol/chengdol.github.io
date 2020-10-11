@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Seeing the demo in websocket, Python websockets module is taking advantage of asyncio which provides an elegant coroutine-based API. So what is co-routine (协程)? 这个建议多看几遍如果忘了Python perspective of view">
+  <meta name="description" content="Seeing the demo in websocket, Python websockets module is taking advantage of asyncio which provides an elegant coroutine-based API. So what is co-routine (协程)? 这个建议多看几遍如果忘了, 把多进程，多线程和协程优缺点都讲到了, 然后从ge">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Co-routine">
 <meta property="og:url" content="http://yoursite.com/2020/09/13/python-coroutine/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Seeing the demo in websocket, Python websockets module is taking advantage of asyncio which provides an elegant coroutine-based API. So what is co-routine (协程)? 这个建议多看几遍如果忘了Python perspective of view">
+<meta property="og:description" content="Seeing the demo in websocket, Python websockets module is taking advantage of asyncio which provides an elegant coroutine-based API. So what is co-routine (协程)? 这个建议多看几遍如果忘了, 把多进程，多线程和协程优缺点都讲到了, 然后从ge">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-28T15:07:05.337Z">
+<meta property="og:updated_time" content="2020-10-11T07:33:19.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Co-routine">
-<meta name="twitter:description" content="Seeing the demo in websocket, Python websockets module is taking advantage of asyncio which provides an elegant coroutine-based API. So what is co-routine (协程)? 这个建议多看几遍如果忘了Python perspective of view">
+<meta name="twitter:description" content="Seeing the demo in websocket, Python websockets module is taking advantage of asyncio which provides an elegant coroutine-based API. So what is co-routine (协程)? 这个建议多看几遍如果忘了, 把多进程，多线程和协程优缺点都讲到了, 然后从ge">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-28 08:07:05" itemprop="dateModified" datetime="2020-09-28T08:07:05-07:00">2020-09-28</time>
+                <time title="Modified: 2020-10-11 00:33:19" itemprop="dateModified" datetime="2020-10-11T00:33:19-07:00">2020-10-11</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.8k</span>
+                <span title="Symbols count in article">5.8k</span>
               
 
               
@@ -509,10 +509,14 @@
 
       
         <p>Seeing the demo in <a href="https://github.com/chengdol/websocket-demo" target="_blank" rel="noopener"><code>websocket</code></a>, Python websockets module is taking advantage of <code>asyncio</code> which provides an elegant coroutine-based API.</p>
-<p>So what is co-routine (协程)? 这个建议多看几遍如果忘了<br><a href="https://www.youtube.com/watch?v=GSiZkP7cI80" target="_blank" rel="noopener">Python perspective of view on coroutine</a><br>Demo code github:<br><a href="https://github.com/jreese/pycon" target="_blank" rel="noopener">https://github.com/jreese/pycon</a></p>
-<p>A variant of functions that enables concurrency via <code>cooperative multitasking</code> (task yields` control when they are waiting for external resources). We can run all tasks in one thread in one process (就是在一个线程中模拟多线程，本质还是单线程), better than multi-threading and multi-processing in some situations(因为切换内核态和用户态要消耗系统时间和资源, 协程由用户自己控制切换，不用陷入系统内核态).</p>
-<p>这里举了个naive python code实现的例子, 用到了<code>yield</code> key word, 它不仅可以输出数据，也可以通过generator的send() method接受外部的参数. 当<code>yield</code> 整个过程结束的时候，会有一个StopIteration exception 抛出。这实现了AsyncIO的基本思想。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment">## 支持async io 的http 库</span></span><br><span class="line"><span class="keyword">from</span> aiohttp <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">URLS = [</span><br><span class="line">    <span class="string">"https://2019.northbaypython.org"</span>,</span><br><span class="line">    <span class="string">"https://duckduckgo.com"</span>,</span><br><span class="line">    <span class="string">"https://jreese.sh"</span>,</span><br><span class="line">    <span class="string">"https://news.ycombinator.com"</span>,</span><br><span class="line">    <span class="string">"https://python.org"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Coroutines with aiohttp</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">fetch</span><span class="params">(url: str)</span> -&gt; str:</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> request(<span class="string">"GET"</span>, url) <span class="keyword">as</span> r:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> r.text(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    coros = [fetch(url) <span class="keyword">for</span> url <span class="keyword">in</span> URLS]</span><br><span class="line">    <span class="comment">## gather will run tasks concurrently</span></span><br><span class="line">    <span class="comment">## *coros: unpacking waitable objects</span></span><br><span class="line">    results = <span class="keyword">await</span> asyncio.gather(*coros)</span><br><span class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">        print(<span class="string">f"<span class="subst">&#123;result[:<span class="number">20</span>]!r&#125;</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<p>So what is co-routine (协程)? 这个建议多看几遍如果忘了, 把多进程，多线程和协程优缺点都讲到了, 然后从generator + yield 出发，升级到asyncio:<br><a href="https://www.youtube.com/watch?v=GSiZkP7cI80" target="_blank" rel="noopener">Python perspective of view on coroutine</a><br>Demo code github:<br><a href="https://github.com/jreese/pycon" target="_blank" rel="noopener">https://github.com/jreese/pycon</a></p>
+<p>A variant of functions that enables concurrency via <code>cooperative multitasking</code> (task yields control when they are waiting for external resources 也就是在做完重要工作需要其他资源的时候，再转换到其他任务，所以协程很适合IO-bound tasks). We can run all tasks in one thread in one process (就是在一个线程中模拟多线程，本质还是单线程，注意Python threading module也是如此), better than multi-threading and multi-processing in some situations(因为切换内核态和用户态要消耗系统时间和资源, 协程由用户自己控制切换，不用陷入系统内核态).</p>
+<blockquote>
+<p>to analyze function bytecode, the Python <code>dis</code> module can help, for example:<br>  <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dis <span class="keyword">import</span> dis</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">dis(func)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>视频中举了个naive python code实现的例子, 用到了<code>yield</code> key word, 它不仅可以输出数据，也可以通过generator的send() method接收外部的参数. 当<code>yield</code> 整个过程结束的时候，会有一个StopIteration exception 抛出。这实现了AsyncIO的基本思想。</p>
+<p>For example, asyncio with aiohttp:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="comment">## 支持async io 的http 库</span></span><br><span class="line"><span class="keyword">from</span> aiohttp <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">URLS = [</span><br><span class="line">    <span class="string">"https://2019.northbaypython.org"</span>,</span><br><span class="line">    <span class="string">"https://duckduckgo.com"</span>,</span><br><span class="line">    <span class="string">"https://jreese.sh"</span>,</span><br><span class="line">    <span class="string">"https://news.ycombinator.com"</span>,</span><br><span class="line">    <span class="string">"https://python.org"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Coroutines with aiohttp</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">fetch</span><span class="params">(url: str)</span> -&gt; str:</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> request(<span class="string">"GET"</span>, url) <span class="keyword">as</span> r:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> r.text(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    coros = [fetch(url) <span class="keyword">for</span> url <span class="keyword">in</span> URLS]</span><br><span class="line">    <span class="comment">## gather will run tasks concurrently</span></span><br><span class="line">    <span class="comment">## *coros: unpacking waitable objects</span></span><br><span class="line">    results = <span class="keyword">await</span> asyncio.gather(*coros)</span><br><span class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">        print(<span class="string">f"<span class="subst">&#123;result[:<span class="number">20</span>]!r&#125;</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    asyncio.run(main())</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -1020,7 +1024,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">878k</span>
+    <span title="Symbols count total">883k</span>
   
 
   

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TODO docker compose reverse proxy docker compose forward proxy, http and https ext-authz  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个chann">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-22T05:07:49.450Z">
+<meta property="og:updated_time" content="2020-10-11T07:33:19.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
 <meta name="twitter:description" content="TODO docker compose reverse proxy docker compose forward proxy, http and https ext-authz  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个chann">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-21 22:07:49" itemprop="dateModified" datetime="2020-09-21T22:07:49-07:00">2020-09-21</time>
+                <time title="Modified: 2020-10-11 00:33:19" itemprop="dateModified" datetime="2020-10-11T00:33:19-07:00">2020-10-11</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7k</span>
+                <span title="Symbols count in article">11k</span>
               
 
               
@@ -568,15 +568,26 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        (proxy cert)                  (server cert)</span><br><span class="line">client &lt;=================&gt; proxy &lt;==================&gt; servers</span><br><span class="line">            https                        https</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>SNI<br>SNI (Server Name Indication) is an <code>extension to TLS</code> that allows a client to specify which hostname it is attempting to connect to at the start of the TLS handshaking process. (Because one single virtual server may host several secure web sites, the HOST header is hidden in TLS.)</p>
-<p>SNI sends host name in clear text, since it is in first hello message if handshake.<br>ESNI is new proposal to encrypt SNI hello.  </p>
-<p><a href="https://www.youtube.com/watch?v=t0zlO5-NWFU" target="_blank" rel="noopener">Demo</a>: launch 3 web sites in laptop: 127.0.0.1:8080, 127.0.0.1:8081, 127.0.0.1:8082 and a haproxy 0.0.0.0:80 (reverse proxy), configuring the router routes inbound traffic to haproxy to mimic situation in public cloud. Then use <code>noip</code> create 3 domain names using router public IP for these 3 web sites respectively. 这时还没有SNI，只有HTTP traffic, 只是根据proxy内部的设置通过HOST header把流量转发到对应的web site上。随后用certbot 生成3个cert, private keys 对应于3个web sites, 然后配置haproxy使用SSL/TLS. 这时SNI才开始起作用，从未client能获取正确的cert。</p>
-<p>这里Demo解释了当时envoy demo没看懂的地方，实际上就是更改了router的配置，所以才能用noip domain去访问本地的网站!</p>
+<p>SNI sends host name in clear text, since it is in first hello message in handshake.<br>ESNI is new proposal to encrypt SNI hello.  </p>
+<p><a href="https://www.youtube.com/watch?v=t0zlO5-NWFU" target="_blank" rel="noopener">Demo</a>: launch 3 web sites in laptop: 127.0.0.1:8080, 127.0.0.1:8081, 127.0.0.1:8082 and a haproxy 0.0.0.0:80 (reverse proxy), configuring the router routes inbound traffic to haproxy to mimic situation in public cloud. Then use <code>noip</code> create 3 domain names using router public IP for these 3 web sites respectively. 这时还没有SNI，只有HTTP traffic, 只是根据proxy内部的设置通过HOST header把流量转发到对应的web site上。随后用certbot 生成3个cert, private keys 对应于3个web sites, 然后配置haproxy使用SSL/TLS. 这时SNI才开始起作用，从而client能获取正确的cert。</p>
+<p>这里Demo解释了当时envoy demo没看懂的地方，实际上就是更改了router的配置，所以才能用noip domain去访问private网站!</p>
 </li>
 <li><p><a href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener">NAT</a><br>Used on layer4 LB and <a href="https://en.wikipedia.org/wiki/Port_forwarding" target="_blank" rel="noopener">port forwarding</a>.</p>
 </li>
 </ol>
 <p>Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device. It has become a popular and essential tool in conserving global address space in the face of IPv4 address exhaustion. One Internet-routable IP address of a NAT gateway can be used for an entire private network.</p>
 <p><code>IP masquerading</code> is a technique that hides an entire IP address space, usually consisting of private IP addresses, behind a single IP address in another, usually public address space. The hidden addresses are changed into a single (public) IP address as the source address of the outgoing IP packets so they appear as originating not from the hidden host but from the routing device itself. Because of the popularity of this technique to conserve IPv4 address space, the term NAT has become virtually synonymous with IP masquerading.</p>
+<h1 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h1><p>This github repo contains demos of popular proxies:<br><a href="https://github.com/chengdol/proxy/envoy" target="_blank" rel="noopener">https://github.com/chengdol/proxy/envoy</a></p>
+<h1 id="Envoy"><a href="#Envoy" class="headerlink" title="Envoy"></a>Envoy</h1><p>Web site: <a href="https://www.envoyproxy.io/" target="_blank" rel="noopener">https://www.envoyproxy.io/</a><br>建议逐个阅读，首先理解terminology, for example: downstream, upstream, listener, cluster, mesh, etc. 然后理解envoy architecture，这对于理解配置很有帮助，对于Inbound 流量，指定有Listener, 每个Listener 有filer chains, 其中包含各种类型的filters. 对于Outbound 流量，设置upstream clusters, 流量会根据配置送到对应的upstream中去。</p>
+<p>Envoy 的配置文件可以使yaml or json format, 配置的格式其实是和API 一一对应的, 目前最近的是v3 xDS API, xDS 中x 是一系列的LDS, EDS, CDS的统称，他们是不同层面的发现机制。LDS, CDS means Listener discovery service and cluster discovery service. EDS, endpoint discovery service.</p>
+<p>对于Envoy的二次开发，可以使用官方提供的镜像:<br><a href="https://www.envoyproxy.io/docs/envoy/latest/start/building#pre-built-binaries" target="_blank" rel="noopener">https://www.envoyproxy.io/docs/envoy/latest/start/building#pre-built-binaries</a></p>
+<p>CNCF Envoy talks:<br><a href="https://youtu.be/P719qI2h2yY" target="_blank" rel="noopener">Intro: Envoy - Matt Klein &amp; Constance Caramanolis, Lyft</a>, <a href="https://speakerdeck.com/mattklein123/velocity-2017-lyfts-envoy-experiences-operating-a-large-service-mesh" target="_blank" rel="noopener">slides</a><br><a href="https://youtu.be/gQF23Vw0keg" target="_blank" rel="noopener">Envoy Internals Deep Dive</a>, <a href="https://speakerdeck.com/mattklein123/kubecon-eu-2018" target="_blank" rel="noopener">slides</a></p>
+<p><a href="https://www.getambassador.io/resources/?topics=Envoy%20Proxy" target="_blank" rel="noopener">Ambassador Envoy blogs</a></p>
+<p><a href="https://jvns.ca/blog/2018/10/27/envoy-basics/" target="_blank" rel="noopener">Some Envoy basics</a><br>Istio (as far as I understand it) is basically an Envoy discovery service that uses information from the Kubernetes API (eg the services in your cluster) to configure Envoy clusters/routes. It has its own configuration language.</p>
+<p><a href="https://blog.getambassador.io/envoy-proxy-in-2019-security-caching-wasm-http-3-and-more-e5ba82da0197" target="_blank" rel="noopener">Envoy supports traffic shadowing</a><br>Traffic shadowing is a deployment pattern where production traffic is asynchronously copied to a non-production service for testing. Shadowing is a close cousin to two other commonly known deployment patterns, canary releases and blue/green deployments.</p>
+<h2 id="Reverse-Proxy"><a href="#Reverse-Proxy" class="headerlink" title="Reverse Proxy"></a>Reverse Proxy</h2><p>Good video:<br><a href="https://youtu.be/D0cuv1AEftE" target="_blank" rel="noopener">Load balancing and HTTP Routing with Envoy Proxy</a><br><a href="https://youtu.be/40gKzHQWgP0" target="_blank" rel="noopener">Envoy Proxy Crash Course, Architecture, L7 &amp; L4 Proxying, HTTP/2, Enabling TLS 1.2/1.3 and more</a> </p>
+<p><a href="https://www.katacoda.com/envoyproxy/scenarios/getting-started" target="_blank" rel="noopener">Envoy online codelab</a></p>
+<h2 id="Forward-Proxy"><a href="#Forward-Proxy" class="headerlink" title="Forward Proxy"></a>Forward Proxy</h2><p>All above articles and talks are related to reverse proxy, forward proxy support on envoy is still baisc and uncompleted, 比如在2020-09期间，HTTPS tunnel forward proxy authz就没有支持(也即是curl中的<code>-U</code> 选项)，并且HTTPS tunnel forward的过滤也不起作用。</p>
 
       
     </div>
@@ -1081,7 +1092,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Proxy-and-Network-Concepts"><span class="nav-number">2.</span> <span class="nav-text">General Proxy and Network Concepts</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Proxy-and-Network-Concepts"><span class="nav-number">2.</span> <span class="nav-text">General Proxy and Network Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-repo"><span class="nav-number">3.</span> <span class="nav-text">GitHub repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Envoy"><span class="nav-number">4.</span> <span class="nav-text">Envoy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reverse-Proxy"><span class="nav-number">4.1.</span> <span class="nav-text">Reverse Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forward-Proxy"><span class="nav-number">4.2.</span> <span class="nav-text">Forward Proxy</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1113,7 +1124,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">878k</span>
+    <span title="Symbols count total">883k</span>
   
 
   

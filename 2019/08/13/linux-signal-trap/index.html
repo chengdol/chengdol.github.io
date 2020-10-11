@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Signals are software interrupts sent to a program to indicate that an important event has occurred. The events can vary from user requests to illegal memory access errors. To list the signal supported">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-15T18:55:23.000Z">
+<meta property="og:updated_time" content="2020-10-04T22:51:17.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Signals and Trap">
 <meta name="twitter:description" content="Signals are software interrupts sent to a program to indicate that an important event has occurred. The events can vary from user requests to illegal memory access errors. To list the signal supported">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-15 11:55:23" itemprop="dateModified" datetime="2019-08-15T11:55:23-07:00">2019-08-15</time>
+                <time title="Modified: 2020-10-04 15:51:17" itemprop="dateModified" datetime="2020-10-04T15:51:17-07:00">2020-10-04</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.6k</span>
+                <span title="Symbols count in article">6.6k</span>
               
 
               
@@ -509,13 +509,24 @@
 
       
         <p>Signals are software interrupts sent to a program to indicate that an important event has occurred. The events can vary from user requests to illegal memory access errors.</p>
-<p>To list the signal supported in system:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -l</span><br></pre></td></tr></table></figure></p>
-<p>Some common signals:<br><strong>SIGHUP</strong>: Hang up detected on controlling terminal or death of controlling process. Many daemons will <code>reload</code> their configuration files and reopen their logfiles instead of exiting when receiving this signal.<br><strong>SIGINT</strong>: Issued if the user sends an interrupt signal (Ctrl + C)<br><strong>SIGQUIT</strong>: Issued if the user sends a quit signal (Ctrl + D)<br><strong>SIGKILL</strong>: If a process gets this signal it must quit immediately and will not perform any clean-up operations<br><strong>SIGTERM</strong>: Software termination signal (sent by kill by default)<br><strong>SIGSTOP</strong>: Stop process<br><strong>SIGSTP</strong>: Stop typed at terminal<br><strong>SIGCONT</strong>: Continue if stopped</p>
-<p>About trap the signals in script, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Set a Trap for Signals for graceful shutdown</span></span><br><span class="line"><span class="built_in">declare</span> -a SIGNALS_TRAPPED=(INT HUP QUIT TERM STOP)</span><br><span class="line"><span class="function"><span class="title">shudown_hook</span></span>() &#123;</span><br><span class="line">  ...</span><br><span class="line">  (/opt/servers/stop.sh)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Shutdown and Cleanup Successful..."</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> <span class="string">'shudown_hook'</span> <span class="string">"<span class="variable">$&#123;SIGNALS_TRAPPED[@]&#125;</span>"</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
-<p>The general format is <code>trap command signals</code>, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trap &quot;rm -rf /tmp/peek.txt; exit 0&quot; 1 2</span><br></pre></td></tr></table></figure></p>
-<p>Ignore signal:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trap &quot;&quot; 2 3 15</span><br></pre></td></tr></table></figure></p>
+<p>To list the signal supported on Linux system:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list all signal and corresponding number</span></span><br><span class="line"><span class="built_in">kill</span> -l</span><br><span class="line"></span><br><span class="line"> 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP</span><br><span class="line"> 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1</span><br><span class="line">11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM</span><br><span class="line">16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP</span><br><span class="line">21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR</span><br><span class="line">31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1	64) SIGRTMAX</span><br><span class="line"></span><br><span class="line"><span class="comment">## output signal name or number</span></span><br><span class="line"><span class="built_in">kill</span> -l 9</span><br><span class="line"><span class="built_in">kill</span> -l usr1</span><br></pre></td></tr></table></figure></p>
+<p>Kill process in command line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> -9 &lt;pid&gt;</span><br><span class="line"><span class="built_in">kill</span> -s 9 &lt;pid&gt;</span><br><span class="line"><span class="built_in">kill</span> -SIGKILL &lt;pid&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Some commonly use signals:</p>
+<ul>
+<li><strong>SIGHUP</strong>: Hang up detected on controlling terminal or death of controlling process. Many daemons will <code>reload</code> their configuration files and reopen their logfiles instead of exiting when receiving this signal.</li>
+<li><strong>SIGINT</strong>: Issued if the user sends an interrupt signal (Ctrl + C)</li>
+<li><strong>SIGQUIT</strong>: Issued if the user sends a quit signal (Ctrl + D)</li>
+<li><strong>SIGKILL</strong>: If a process gets this signal it must quit immediately and will not perform any clean-up operations, this one cannot be ignored or trapped! (这里提一下，force kill会导致程序，比如Python中finally clauses 和 exit handler 无法工作)</li>
+<li><strong>SIGTERM</strong>: Software termination signal (sent by kill by default)</li>
+<li><strong>SIGSTOP</strong>: Stop process</li>
+<li><strong>SIGSTP</strong>: Stop typed at terminal</li>
+<li><strong>SIGCONT</strong>: Continue if stopped</li>
+</ul>
+<p>About trap the signals in script, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Set a Trap for Signals for graceful shutdown</span></span><br><span class="line"><span class="built_in">declare</span> -a SIGNALS_TRAPPED=(INT HUP QUIT TERM STOP)</span><br><span class="line"><span class="function"><span class="title">shudown_hook</span></span>() &#123;</span><br><span class="line">  ...</span><br><span class="line">  (/opt/servers/stop.sh)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Shutdown and Cleanup Successful..."</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> <span class="string">'shudown_hook'</span> <span class="string">"<span class="variable">$&#123;SIGNALS_TRAPPED[@]&#125;</span>"</span></span><br></pre></td></tr></table></figure></p>
+<p>The general format is <code>trap command signals</code>, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> <span class="string">"rm -rf /tmp/peek.txt; exit 0"</span> 1 2</span><br></pre></td></tr></table></figure></p>
+<p>To ignore signals, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> <span class="string">""</span> 2 3 15</span><br></pre></td></tr></table></figure></p>
 <p>If you ignore a signal, all subshells also ignore that signal. However, if you specify an action to be taken on the receipt of a signal, all subshells will still take the default action on receipt of that signal.</p>
-<p>Reset the traps to default:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trap 2 3 15</span><br></pre></td></tr></table></figure></p>
+<p>Reset the traps to default:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> 2 3 15</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -1026,7 +1037,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">878k</span>
+    <span title="Symbols count total">883k</span>
   
 
   
