@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TODO docker compose reverse proxy docker compose forward proxy, http and https ext-authz  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个chann">
-<meta name="keywords" content="envoy,proxy">
+  <meta name="description" content="TODO docker compose reverse proxy  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个channel讲了很多关于Proxy的知识点，总结如下：  Understand what is forward pro">
+<meta name="keywords" content="proxy,envoy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Envoy">
 <meta property="og:url" content="http://yoursite.com/2020/08/30/proxy-envoy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODO docker compose reverse proxy docker compose forward proxy, http and https ext-authz  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个chann">
+<meta property="og:description" content="TODO docker compose reverse proxy  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个channel讲了很多关于Proxy的知识点，总结如下：  Understand what is forward pro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-11T07:33:19.274Z">
+<meta property="og:updated_time" content="2020-10-11T19:32:37.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
-<meta name="twitter:description" content="TODO docker compose reverse proxy docker compose forward proxy, http and https ext-authz  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个chann">
+<meta name="twitter:description" content="TODO docker compose reverse proxy  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。Youtube Proxy Channel这个channel讲了很多关于Proxy的知识点，总结如下：  Understand what is forward pro">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-10-11 00:33:19" itemprop="dateModified" datetime="2020-10-11T00:33:19-07:00">2020-10-11</time>
+                <time title="Modified: 2020-10-11 12:32:37" itemprop="dateModified" datetime="2020-10-11T12:32:37-07:00">2020-10-11</time>
               
             
           </span>
@@ -510,8 +510,6 @@
       
         <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><ol>
 <li>docker compose reverse proxy</li>
-<li>docker compose forward proxy, http and https</li>
-<li>ext-authz</li>
 </ol>
 <h1 id="General-Proxy-and-Network-Concepts"><a href="#General-Proxy-and-Network-Concepts" class="headerlink" title="General Proxy and Network Concepts"></a>General Proxy and Network Concepts</h1><p>由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下。<br><a href="https://www.youtube.com/playlist?list=PLQnljOFTspQVMeBmWI2AhxULWEeo7AaMC" target="_blank" rel="noopener">Youtube Proxy Channel</a><br>这个channel讲了很多关于Proxy的知识点，总结如下：</p>
 <ol>
@@ -577,7 +575,7 @@
 </ol>
 <p>Network address translation (NAT) is a method of remapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device. It has become a popular and essential tool in conserving global address space in the face of IPv4 address exhaustion. One Internet-routable IP address of a NAT gateway can be used for an entire private network.</p>
 <p><code>IP masquerading</code> is a technique that hides an entire IP address space, usually consisting of private IP addresses, behind a single IP address in another, usually public address space. The hidden addresses are changed into a single (public) IP address as the source address of the outgoing IP packets so they appear as originating not from the hidden host but from the routing device itself. Because of the popularity of this technique to conserve IPv4 address space, the term NAT has become virtually synonymous with IP masquerading.</p>
-<h1 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h1><p>This github repo contains demos of popular proxies:<br><a href="https://github.com/chengdol/proxy/envoy" target="_blank" rel="noopener">https://github.com/chengdol/proxy/envoy</a></p>
+<h1 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h1><p>This github repo contains demos of popular proxies:<br><a href="https://github.com/chengdol/proxy/tree/main/envoy" target="_blank" rel="noopener">https://github.com/chengdol/proxy/tree/main/envoy</a></p>
 <h1 id="Envoy"><a href="#Envoy" class="headerlink" title="Envoy"></a>Envoy</h1><p>Web site: <a href="https://www.envoyproxy.io/" target="_blank" rel="noopener">https://www.envoyproxy.io/</a><br>建议逐个阅读，首先理解terminology, for example: downstream, upstream, listener, cluster, mesh, etc. 然后理解envoy architecture，这对于理解配置很有帮助，对于Inbound 流量，指定有Listener, 每个Listener 有filer chains, 其中包含各种类型的filters. 对于Outbound 流量，设置upstream clusters, 流量会根据配置送到对应的upstream中去。</p>
 <p>Envoy 的配置文件可以使yaml or json format, 配置的格式其实是和API 一一对应的, 目前最近的是v3 xDS API, xDS 中x 是一系列的LDS, EDS, CDS的统称，他们是不同层面的发现机制。LDS, CDS means Listener discovery service and cluster discovery service. EDS, endpoint discovery service.</p>
 <p>对于Envoy的二次开发，可以使用官方提供的镜像:<br><a href="https://www.envoyproxy.io/docs/envoy/latest/start/building#pre-built-binaries" target="_blank" rel="noopener">https://www.envoyproxy.io/docs/envoy/latest/start/building#pre-built-binaries</a></p>
@@ -611,9 +609,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/envoy/" rel="tag"># envoy</a>
-          
             <a href="/tags/proxy/" rel="tag"># proxy</a>
+          
+            <a href="/tags/envoy/" rel="tag"># envoy</a>
           
         </div>
       
@@ -1124,7 +1122,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">883k</span>
+    <span title="Symbols count total">887k</span>
   
 
   
