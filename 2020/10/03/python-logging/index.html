@@ -97,16 +97,16 @@
 
 
   <meta name="description" content="IntroductionOfficial document:https://docs.python.org/3.8/howto/logging.html Logging level: DEBUG, INFO, WARNING, ERROR, CRITIAL, in increasing order of severity.设置这个的好处是可以根据level输出对应的logging信息，在设定lev">
-<meta name="keywords" content="python">
+<meta name="keywords" content="python,logging">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pythno Logging">
+<meta property="og:title" content="Python Logging">
 <meta property="og:url" content="http://yoursite.com/2020/10/03/python-logging/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="IntroductionOfficial document:https://docs.python.org/3.8/howto/logging.html Logging level: DEBUG, INFO, WARNING, ERROR, CRITIAL, in increasing order of severity.设置这个的好处是可以根据level输出对应的logging信息，在设定lev">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-18T18:33:28.655Z">
+<meta property="og:updated_time" content="2020-10-20T07:35:12.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pythno Logging">
+<meta name="twitter:title" content="Python Logging">
 <meta name="twitter:description" content="IntroductionOfficial document:https://docs.python.org/3.8/howto/logging.html Logging level: DEBUG, INFO, WARNING, ERROR, CRITIAL, in increasing order of severity.设置这个的好处是可以根据level输出对应的logging信息，在设定lev">
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Pythno Logging | 海胆阶段's Blog</title>
+  <title>Python Logging | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">122</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">124</span></a>
 
   </li>
         
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Pythno Logging
+          <h1 class="post-title" itemprop="name headline">Python Logging
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-10-18 11:33:28" itemprop="dateModified" datetime="2020-10-18T11:33:28-07:00">2020-10-18</time>
+                <time title="Modified: 2020-10-20 00:35:12" itemprop="dateModified" datetime="2020-10-20T00:35:12-07:00">2020-10-20</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.9k</span>
+                <span title="Symbols count in article">4.1k</span>
               
 
               
@@ -511,8 +511,9 @@
         <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Official document:<br><a href="https://docs.python.org/3.8/howto/logging.html" target="_blank" rel="noopener">https://docs.python.org/3.8/howto/logging.html</a></p>
 <p>Logging level: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>, <code>CRITIAL</code>, in increasing order of severity.<br>设置这个的好处是可以根据level输出对应的logging信息，在设定level之下的logging不会被记录, 比如当前level 设定为INFO, 则logging.debug()不会被输出。</p>
 <p>The default level is <code>WARNING</code>, which means that only events of this level and above will be tracked, unless the logging package is configured to do otherwise.</p>
-<p>Note that <code>logging.basicConfig()</code> should come at very first, second call is no-ops.</p>
-<h1 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">## see logging record attributes</span></span><br><span class="line"><span class="comment">## https://docs.python.org/3/library/logging.html#logrecord-attributes</span></span><br><span class="line">FORMAT = <span class="string">"[%(threadName)s, %(asctime)s, %(levelname)s] %(message)s"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## you can get level from command line options: --log=INFO</span></span><br><span class="line"><span class="comment">## write log to a file</span></span><br><span class="line">logging.basicConfig(filename=<span class="string">'/opt/logfile.log'</span>, level=logging.DEBUG, format=FORMAT)</span><br><span class="line"><span class="comment">## default the log will append to file, if you want to overwrite, set filemode='w'</span></span><br><span class="line">logging.basicConfig(filename=<span class="string">'/opt/logfile.log'</span>, filemode=<span class="string">'w'</span>, level=logging.DEBUG, format=FORMAT)</span><br><span class="line"></span><br><span class="line"><span class="comment">## write to system stdout</span></span><br><span class="line">logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format=FORMAT)</span><br><span class="line"></span><br><span class="line"><span class="comment">## in other places</span></span><br><span class="line">logging.debug(<span class="string">f"message"</span>)</span><br><span class="line">logging.info(<span class="string">f"message"</span>)</span><br><span class="line">logging.error(<span class="string">f"message"</span>)</span><br><span class="line">logging.critical(<span class="string">f"message"</span>)</span><br></pre></td></tr></table></figure>
+<p>Note that <code>logging.basicConfig()</code> should come at very first and it only take effect once.</p>
+<h1 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h1><p><a href="https://docs.python.org/3.8/howto/logging.html" target="_blank" rel="noopener">https://docs.python.org/3.8/howto/logging.html</a><br>See Basic Logging Tutorial</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">## see logging record attributes</span></span><br><span class="line"><span class="comment">## https://docs.python.org/3/library/logging.html#logrecord-attributes</span></span><br><span class="line">FORMAT = <span class="string">"[%(threadName)s, %(asctime)s, %(levelname)s] %(message)s"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## you can get level from command line options: --log=INFO</span></span><br><span class="line"><span class="comment">## write log to a file</span></span><br><span class="line">logging.basicConfig(filename=<span class="string">'/opt/logfile.log'</span>, level=logging.DEBUG, format=FORMAT)</span><br><span class="line"><span class="comment">## default the log will append to file, if you want to overwrite, set filemode='w'</span></span><br><span class="line">logging.basicConfig(filename=<span class="string">'/opt/logfile.log'</span>, filemode=<span class="string">'w'</span>, level=logging.DEBUG, format=FORMAT)</span><br><span class="line"></span><br><span class="line"><span class="comment">## write to system stdout</span></span><br><span class="line">logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format=FORMAT)</span><br><span class="line"></span><br><span class="line"><span class="comment">## in other places</span></span><br><span class="line">logging.debug(<span class="string">f"message"</span>)</span><br><span class="line">logging.info(<span class="string">f"message"</span>)</span><br><span class="line">logging.error(<span class="string">f"message"</span>)</span><br><span class="line">logging.critical(<span class="string">f"message"</span>)</span><br></pre></td></tr></table></figure>
 <h1 id="Advanced-Usage"><a href="#Advanced-Usage" class="headerlink" title="Advanced Usage"></a>Advanced Usage</h1><p><a href="https://docs.python.org/3.8/howto/logging.html#advanced-logging-tutorial" target="_blank" rel="noopener">https://docs.python.org/3.8/howto/logging.html#advanced-logging-tutorial</a></p>
 
       
@@ -539,6 +540,8 @@
           
             <a href="/tags/python/" rel="tag"># python</a>
           
+            <a href="/tags/logging/" rel="tag"># logging</a>
+          
         </div>
       
 
@@ -560,8 +563,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/10/03/python-pytest/" rel="prev" title="Python Pytest">
-                Python Pytest <i class="fa fa-chevron-right"></i>
+              <a href="/2020/10/03/python-unit-test/" rel="prev" title="Python Unit Test">
+                Python Unit Test <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -980,7 +983,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">122</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1048,7 +1055,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">887k</span>
+    <span title="Symbols count total">890k</span>
   
 
   

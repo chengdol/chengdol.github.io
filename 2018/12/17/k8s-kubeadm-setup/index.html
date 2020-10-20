@@ -96,21 +96,21 @@
 
 
 
-  <meta name="description" content="Update: 06/09/2020, plan to move to Gitbook, locally install via vargant and ansible.   Kubernetes version 1.13.2This article mainly talks about setting up k8s cluster by kubeadm manually. As far as">
+  <meta name="description" content="How to be a contribution beginner on k8s?https://youtu.be/o68ff5NokR8  find issues, search label good first issue communication build relationships  Kubernetes version 1.13.2This article mainly talks">
 <meta name="keywords" content="kubernetes,calico,kubeadm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Set Up K8s Cluster by Kubeadm">
 <meta property="og:url" content="http://yoursite.com/2018/12/17/k8s-kubeadm-setup/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Update: 06/09/2020, plan to move to Gitbook, locally install via vargant and ansible.   Kubernetes version 1.13.2This article mainly talks about setting up k8s cluster by kubeadm manually. As far as">
+<meta property="og:description" content="How to be a contribution beginner on k8s?https://youtu.be/o68ff5NokR8  find issues, search label good first issue communication build relationships  Kubernetes version 1.13.2This article mainly talks">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1pl6EV9YwD604U1ItoMKnqlAp0cjwEOAd">
 <meta property="og:image" content="https://drive.google.com/uc?id=11R3h2G2oknDcN3sY1cTdwUHQCnxwRysn">
 <meta property="og:image" content="https://drive.google.com/uc?id=1bPLxrrlLLyFvNn6cBdSIJbWpANy-ht4h">
-<meta property="og:updated_time" content="2020-06-09T23:04:05.000Z">
+<meta property="og:updated_time" content="2020-10-20T07:35:12.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set Up K8s Cluster by Kubeadm">
-<meta name="twitter:description" content="Update: 06/09/2020, plan to move to Gitbook, locally install via vargant and ansible.   Kubernetes version 1.13.2This article mainly talks about setting up k8s cluster by kubeadm manually. As far as">
+<meta name="twitter:description" content="How to be a contribution beginner on k8s?https://youtu.be/o68ff5NokR8  find issues, search label good first issue communication build relationships  Kubernetes version 1.13.2This article mainly talks">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1pl6EV9YwD604U1ItoMKnqlAp0cjwEOAd">
 
 
@@ -264,7 +264,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">122</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">124</span></a>
 
   </li>
         
@@ -443,7 +443,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-09 16:04:05" itemprop="dateModified" datetime="2020-06-09T16:04:05-07:00">2020-06-09</time>
+                <time title="Modified: 2020-10-20 00:35:12" itemprop="dateModified" datetime="2020-10-20T00:35:12-07:00">2020-10-20</time>
               
             
           </span>
@@ -512,9 +512,12 @@
       
 
       
-        <blockquote>
-<p>Update: 06/09/2020, plan to move to Gitbook, locally install via vargant and ansible. </p>
-</blockquote>
+        <p>How to be a contribution beginner on k8s?<br><a href="https://youtu.be/o68ff5NokR8" target="_blank" rel="noopener">https://youtu.be/o68ff5NokR8</a></p>
+<ol>
+<li>find issues, search label <code>good first issue</code></li>
+<li>communication</li>
+<li>build relationships</li>
+</ol>
 <p><strong>Kubernetes version 1.13.2</strong><br>This article mainly talks about setting up k8s cluster by <code>kubeadm</code> manually. As far as I know there are no coming changes that will significantly impact the validity of these steps.</p>
 <h2 id="Cluster-Info"><a href="#Cluster-Info" class="headerlink" title="Cluster Info"></a>Cluster Info</h2><p>I have a 3 nodes bare-metal cluster called <code>myk8s</code> with <strong>CentOS</strong> version 7.5, the <code>/etc/hosts</code> file in each node:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.16.158.44    myk8s1.fyre.ibm.com myk8s1</span><br><span class="line">172.16.171.110   myk8s2.fyre.ibm.com myk8s2</span><br><span class="line">172.16.171.227   myk8s3.fyre.ibm.com myk8s3</span><br></pre></td></tr></table></figure></p>
 <p>Let’ see the network interface on master node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## ifconfig -a</span></span><br><span class="line"></span><br><span class="line">eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.16.158.44  netmask 255.255.0.0  broadcast 172.16.255.255</span><br><span class="line">        ether 00:16:3e:01:9e:2c  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 1617615790  bytes 203050237209 (189.1 GiB)</span><br><span class="line">        RX errors 0  dropped 1  overruns 0  frame 0</span><br><span class="line">        TX packets 436  bytes 50037 (48.8 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">eth1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 9.30.97.218  netmask 255.255.254.0  broadcast 9.30.97.255</span><br><span class="line">        ether 00:20:09:1e:61:da  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 13350021  bytes 1424223654 (1.3 GiB)</span><br><span class="line">        RX errors 0  dropped 5  overruns 0  frame 0</span><br><span class="line">        TX packets 246436  bytes 45433438 (43.3 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
@@ -1050,7 +1053,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">122</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1118,7 +1125,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">887k</span>
+    <span title="Symbols count total">890k</span>
   
 
   

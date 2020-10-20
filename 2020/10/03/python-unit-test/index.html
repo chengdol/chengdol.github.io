@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
-<meta name="keywords" content="python">
+  <meta name="description" content="Unit test when and why:  help you understand what to develop from the test case. help you better to design the code structure, API or functions. help you to detect regression, pinpoint failures.  The">
+<meta name="keywords" content="python,unit test">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python Pytest">
-<meta property="og:url" content="http://yoursite.com/2020/10/03/python-pytest/index.html">
+<meta property="og:title" content="Python Unit Test">
+<meta property="og:url" content="http://yoursite.com/2020/10/03/python-unit-test/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="Unit test when and why:  help you understand what to develop from the test case. help you better to design the code structure, API or functions. help you to detect regression, pinpoint failures.  The">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-03T22:37:31.706Z">
+<meta property="og:updated_time" content="2020-10-20T07:35:12.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python Pytest">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:title" content="Python Unit Test">
+<meta name="twitter:description" content="Unit test when and why:  help you understand what to develop from the test case. help you better to design the code structure, API or functions. help you to detect regression, pinpoint failures.  The">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/10/03/python-pytest/">
+  <link rel="canonical" href="http://yoursite.com/2020/10/03/python-unit-test/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Python Pytest | 海胆阶段's Blog</title>
+  <title>Python Unit Test | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">122</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">124</span></a>
 
   </li>
         
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/03/python-pytest/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/03/python-unit-test/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python Pytest
+          <h1 class="post-title" itemprop="name headline">Python Unit Test
 
               
             
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2020-10-03 15:32:05 / Modified: 15:37:31" itemprop="dateCreated datePublished" datetime="2020-10-03T15:32:05-07:00">2020-10-03</time>
+              <time title="Created: 2020-10-03 15:32:05" itemprop="dateCreated datePublished" datetime="2020-10-03T15:32:05-07:00">2020-10-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-10-20 00:35:12" itemprop="dateModified" datetime="2020-10-20T00:35:12-07:00">2020-10-20</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">0</span>
+                <span title="Symbols count in article">13k</span>
               
 
               
@@ -496,7 +508,30 @@
       
 
       
-        
+        <p>Unit test when and why:</p>
+<ul>
+<li>help you understand what to develop from the test case.</li>
+<li>help you better to design the code structure, API or functions.</li>
+<li>help you to detect regression, pinpoint failures.</li>
+</ul>
+<p>The unit test should be put in CI pipeline for every new merge request, just like gitlab-ci does.</p>
+<h1 id="Unittest"><a href="#Unittest" class="headerlink" title="Unittest"></a>Unittest</h1><p><a href="https://docs.python.org/3.8/library/unittest.html" target="_blank" rel="noopener">https://docs.python.org/3.8/library/unittest.html</a><br>The test file name should be <code>test_xxx.py</code>.</p>
+<p>The test method name must be <code>def test_&lt;test case name&gt;(self)</code>. The test case name should be very specific and focus on a particular scenario. Don’t put everything together.</p>
+<p>Parent methods <code>setUp</code>, <code>tearDown</code> run for every test method. <code>tearDown</code> will still be run even if the test case failed. 一般来说不需要<code>tearDown</code> 因为对于strict test case 没有使用外界的资源。</p>
+<p>Decorator <a href="mailto:`@unittest.skip" target="_blank" rel="noopener">`@unittest.skip</a>(“WIP”)<code>, will skip the test case.</code>WIP` stands for working in progress, more<br>decorators see:<br><a href="https://docs.python.org/3.8/library/unittest.html#skipping-tests-and-expected-failures" target="_blank" rel="noopener">https://docs.python.org/3.8/library/unittest.html#skipping-tests-and-expected-failures</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="comment">## from &lt;py file name&gt; import &lt;class or some functions&gt;</span></span><br><span class="line"><span class="keyword">from</span> phonebook <span class="keyword">import</span> PhoneBook</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PhoneBookTest</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">## up to you use or not</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">    self.phonebook = PhoneBook()</span><br><span class="line"></span><br><span class="line">  <span class="comment">## test basic function</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_lookup_by_name</span><span class="params">(self)</span>:</span></span><br><span class="line">    self.phonebook.add(<span class="string">"Bob"</span>, <span class="string">"123456"</span>)</span><br><span class="line">    number = self.phonebook.lookup(<span class="string">"Bob"</span>)</span><br><span class="line">    self.assertEqual(<span class="string">"123456"</span>, number)</span><br><span class="line"></span><br><span class="line">  <span class="comment">## check exception</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_missing_name</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> self.assertRaises(KeyError):</span><br><span class="line">      self.phonebook.lookup(<span class="string">"missing"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">## skip this test</span></span><br><span class="line"><span class="meta">  @unittest.skip("WIP")</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">test_duplicate_name</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>For more assert methods, see:<br><a href="https://docs.python.org/3.8/library/unittest.html#assert-methods" target="_blank" rel="noopener">https://docs.python.org/3.8/library/unittest.html#assert-methods</a></p>
+<p>To start test in command line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## help</span></span><br><span class="line">python -m unittest -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## start unit test with specific python version</span></span><br><span class="line"><span class="comment">## run all tests</span></span><br><span class="line">python3 -m unittest</span><br><span class="line"></span><br><span class="line"><span class="comment">## can run tests from modules, classes or individual test method:</span></span><br><span class="line">python -m unittest test_module1 test_module2</span><br><span class="line">python -m unittest test_module.TestClass</span><br><span class="line">python -m unittest test_module.TestClass.test_method</span><br></pre></td></tr></table></figure></p>
+<h1 id="Pyest"><a href="#Pyest" class="headerlink" title="Pyest"></a>Pyest</h1><p>More native to python, use pip to install pytest module.<br><a href="https://docs.pytest.org/en/stable/" target="_blank" rel="noopener">https://docs.pytest.org/en/stable/</a><br>Other pytest plugins:</p>
+<ul>
+<li>pytest-html</li>
+</ul>
+<p>The test file name should be <code>test_xxx.py</code> and the test case name is <code>def test_xxx()</code>, the same as unittest conventions. No wrapping class is needed.</p>
+<p>pytest 有一些已经定义好的fixture 可以直接使用, 类似于依赖注入:<br><a href="https://docs.pytest.org/en/stable/fixture.html#fixture" target="_blank" rel="noopener">https://docs.pytest.org/en/stable/fixture.html#fixture</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># shows builtin and custom fixtures</span></span><br><span class="line">pytest --fixtures</span><br></pre></td></tr></table></figure></p>
+<p>目前用到的是很基本的，还有很多很强大的功能，比如 <code>pytest.ini</code>的配置，marker的定义和使用等，比如，定义了marker <code>slow</code> 用在test case上 <a href="mailto:`@pytest.mark.slow" target="_blank" rel="noopener">`@pytest.mark.slow</a><code>则在运行的时候可以在命令行上根据option 跳过所有被标记为slow的test cases:</code>python3 -m pytest “not slow”`.<br>Built-in marks:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## list built-in markers</span></span><br><span class="line">pytest --markers</span><br><span class="line"></span><br><span class="line"><span class="comment">## 类似@unittest.skip("WIP")</span></span><br><span class="line">@pytest.mark.skip(reason=None)</span><br><span class="line">@pytest.mark.skipif(condition, ..., *, reason=...)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="comment">## from &lt;py file name&gt; import &lt;class or some functions&gt;</span></span><br><span class="line"><span class="keyword">from</span> phonebook <span class="keyword">import</span> PhoneBook</span><br><span class="line"></span><br><span class="line"><span class="comment">## phonebook 这个名字必须和使用它的一样</span></span><br><span class="line"><span class="comment">## 类似于unittest setUp</span></span><br><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">phonebook</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">return</span> PhoneBook()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## phonebook 这个名字必须和使用它的一样</span></span><br><span class="line"><span class="comment">## 这里把setUp 和 tearDown 合在一起了</span></span><br><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">phonebook</span><span class="params">()</span>:</span></span><br><span class="line">  phonebook = PhoneBook()</span><br><span class="line">  <span class="keyword">yield</span>  PhoneBook()</span><br><span class="line">  phonebook.clear()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 这里phonebook参数就是来自上面定义的 pytest fixture</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_lookup_name</span><span class="params">(phonebook)</span>:</span></span><br><span class="line">  phonebook.add(<span class="string">"Bob"</span>, <span class="string">"123456"</span>)</span><br><span class="line">  <span class="comment">## use native python assertion</span></span><br><span class="line">  <span class="keyword">assert</span> <span class="string">"123456"</span> = phonebook.lookup(<span class="string">"Bob"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_missing_name_raises_error</span><span class="params">(phonebook)</span>:</span></span><br><span class="line">  <span class="comment">## need import pytest</span></span><br><span class="line">  <span class="keyword">with</span> pytest.raises(KeyError):</span><br><span class="line">      phonebook.lookup(<span class="string">"Missing"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.mark.skip("WIP")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_duplicate_name</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>To start test in command line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## start unit test</span></span><br><span class="line">python3 -m pytest</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -521,6 +556,8 @@
           
             <a href="/tags/python/" rel="tag"># python</a>
           
+            <a href="/tags/unit-test/" rel="tag"># unit test</a>
+          
         </div>
       
 
@@ -532,8 +569,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/03/python-logging/" rel="next" title="Pythno Logging">
-                <i class="fa fa-chevron-left"></i> Pythno Logging
+              <a href="/2020/10/03/python-logging/" rel="next" title="Python Logging">
+                <i class="fa fa-chevron-left"></i> Python Logging
               </a>
             
           </div>
@@ -585,8 +622,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -949,7 +995,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">122</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -974,6 +1024,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unittest"><span class="nav-number">1.</span> <span class="nav-text">Unittest</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pyest"><span class="nav-number">2.</span> <span class="nav-text">Pyest</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1000,7 +1067,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">887k</span>
+    <span title="Symbols count total">890k</span>
   
 
   
