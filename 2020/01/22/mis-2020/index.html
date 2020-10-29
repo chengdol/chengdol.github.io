@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="01/22/2020 NFS network file system, list nfs port:https://serverfault.com/questions/377170/which-ports-do-i-need-to-open-in-the-firewall-to-use-nfs 1rpcinfo -p | grep nfs It depends on the version of">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-20T19:43:55.092Z">
+<meta property="og:updated_time" content="2020-10-29T06:28:36.941Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea 2020">
 <meta name="twitter:description" content="01/22/2020 NFS network file system, list nfs port:https://serverfault.com/questions/377170/which-ports-do-i-need-to-open-in-the-firewall-to-use-nfs 1rpcinfo -p | grep nfs It depends on the version of">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">124</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">127</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">203</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">205</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-20 12:43:55" itemprop="dateModified" datetime="2020-09-20T12:43:55-07:00">2020-09-20</time>
+                <time title="Modified: 2020-10-28 23:28:36" itemprop="dateModified" datetime="2020-10-28T23:28:36-07:00">2020-10-28</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">8.7k</span>
+                <span title="Symbols count in article">9.5k</span>
               
 
               
@@ -580,12 +580,17 @@
 <li>same idea to check my blog theme: <code>ls -ltr | awk &#39;NR&gt;1 {print $NF}&#39; | cut -d&#39;-&#39; -f1 | sort | uniq -c | sort</code></li>
 </ul>
 <h3 id="09-09-2020"><a href="#09-09-2020" class="headerlink" title="09/09/2020"></a>09/09/2020</h3><ul>
-<li>Mac netstat list listening port, the <code>netstat</code> on Mac is not that powerful as on Linux:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -p: protocol</span></span><br><span class="line"><span class="comment">## -n: numerical address</span></span><br><span class="line"><span class="comment">## -a: show all connections</span></span><br><span class="line">netstat -an -ptcp | grep -i listen</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">lsof -i -P | grep -i <span class="string">"listen"</span></span><br></pre></td></tr></table></figure>
+<li>Mac netstat list listening port, the <code>netstat</code> on Mac is not that powerful as on Linux:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -p: protocol</span></span><br><span class="line"><span class="comment">## -n: numerical address</span></span><br><span class="line"><span class="comment">## -a: show all connections</span></span><br><span class="line">netstat -an -ptcp | grep -i listen</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line"><span class="comment">## -i: lists IP sockets</span></span><br><span class="line"><span class="comment">## -P: do not resolve port names</span></span><br><span class="line"><span class="comment">## -n: do not resolve hostnames</span></span><br><span class="line">lsof -i -P -n | grep -i <span class="string">"listen"</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="09-18-2020"><a href="#09-18-2020" class="headerlink" title="09/18/2020"></a>09/18/2020</h3><ul>
 <li>Interesting project <a href="https://github.com/hubotio/hubot" target="_blank" rel="noopener">https://github.com/hubotio/hubot</a></li>
 <li><code>seq</code> commands, i.e. <code>seq 1 9</code> generate sequence 1 to 9, used in shell for loop as counter.</li>
+</ul>
+<h3 id="10-25-2020"><a href="#10-25-2020" class="headerlink" title="10/25/2020"></a>10/25/2020</h3><ul>
+<li>Interesting, <code>ed</code> editor: <a href="https://sanctum.geek.nz/arabesque/actually-using-ed/" target="_blank" rel="noopener">https://sanctum.geek.nz/arabesque/actually-using-ed/</a></li>
+<li><code>Dash</code> is a Mac app browser API</li>
+<li><code>Typora</code> markdown editor</li>
 </ul>
 
       
@@ -707,7 +712,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">203</span>
+                    <span class="site-state-item-count">205</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1057,7 +1062,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">124</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">127</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1093,7 +1104,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-22-2020"><span class="nav-number">1.</span> <span class="nav-text">01/22/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-26-2020"><span class="nav-number">2.</span> <span class="nav-text">02/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-07-2020"><span class="nav-number">3.</span> <span class="nav-text">04/07/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-09-2020"><span class="nav-number">4.</span> <span class="nav-text">04/09/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-18-2020"><span class="nav-number">5.</span> <span class="nav-text">04/18/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-26-2020"><span class="nav-number">6.</span> <span class="nav-text">04/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-16-2020"><span class="nav-number">7.</span> <span class="nav-text">06/16/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-21-2020"><span class="nav-number">8.</span> <span class="nav-text">06/21/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-24-2020"><span class="nav-number">9.</span> <span class="nav-text">06/24/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-25-2020"><span class="nav-number">10.</span> <span class="nav-text">06/25/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-26-2020"><span class="nav-number">11.</span> <span class="nav-text">06/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-05-2020"><span class="nav-number">12.</span> <span class="nav-text">07/05/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-09-2020"><span class="nav-number">13.</span> <span class="nav-text">07/09/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-12-2020"><span class="nav-number">14.</span> <span class="nav-text">07/12/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-29-2020"><span class="nav-number">15.</span> <span class="nav-text">07/29/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-22-2020"><span class="nav-number">16.</span> <span class="nav-text">08/22/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-09-2020"><span class="nav-number">17.</span> <span class="nav-text">09/09/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-18-2020"><span class="nav-number">18.</span> <span class="nav-text">09/18/2020</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-22-2020"><span class="nav-number">1.</span> <span class="nav-text">01/22/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-26-2020"><span class="nav-number">2.</span> <span class="nav-text">02/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-07-2020"><span class="nav-number">3.</span> <span class="nav-text">04/07/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-09-2020"><span class="nav-number">4.</span> <span class="nav-text">04/09/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-18-2020"><span class="nav-number">5.</span> <span class="nav-text">04/18/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-26-2020"><span class="nav-number">6.</span> <span class="nav-text">04/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-16-2020"><span class="nav-number">7.</span> <span class="nav-text">06/16/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-21-2020"><span class="nav-number">8.</span> <span class="nav-text">06/21/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-24-2020"><span class="nav-number">9.</span> <span class="nav-text">06/24/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-25-2020"><span class="nav-number">10.</span> <span class="nav-text">06/25/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-26-2020"><span class="nav-number">11.</span> <span class="nav-text">06/26/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-05-2020"><span class="nav-number">12.</span> <span class="nav-text">07/05/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-09-2020"><span class="nav-number">13.</span> <span class="nav-text">07/09/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-12-2020"><span class="nav-number">14.</span> <span class="nav-text">07/12/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-29-2020"><span class="nav-number">15.</span> <span class="nav-text">07/29/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-22-2020"><span class="nav-number">16.</span> <span class="nav-text">08/22/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-09-2020"><span class="nav-number">17.</span> <span class="nav-text">09/09/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-18-2020"><span class="nav-number">18.</span> <span class="nav-text">09/18/2020</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-25-2020"><span class="nav-number">19.</span> <span class="nav-text">10/25/2020</span></a></li></ol></div>
             
 
           </div>
@@ -1125,7 +1136,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">894k</span>
+    <span title="Symbols count total">898k</span>
   
 
   

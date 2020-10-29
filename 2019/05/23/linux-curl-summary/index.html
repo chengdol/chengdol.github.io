@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="cURL stands for ‘Client URL’, it is a command-line tool for getting or sending data including files using URL syntax. Since cURL uses libcurl, it supports a range of common network protocols, currentl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-25T07:43:06.536Z">
+<meta property="og:updated_time" content="2020-10-29T06:28:36.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cURL Use Case Summary">
 <meta name="twitter:description" content="cURL stands for ‘Client URL’, it is a command-line tool for getting or sending data including files using URL syntax. Since cURL uses libcurl, it supports a range of common network protocols, currentl">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">124</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">127</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">203</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">205</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-10-25 00:43:06" itemprop="dateModified" datetime="2020-10-25T00:43:06-07:00">2020-10-25</time>
+                <time title="Modified: 2020-10-28 23:28:36" itemprop="dateModified" datetime="2020-10-28T23:28:36-07:00">2020-10-28</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">18k</span>
+                <span title="Symbols count in article">19k</span>
               
 
               
@@ -525,8 +525,9 @@
 <p>When using HTTPS proxy (tunnel), just an example with no authz here:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -v -x &lt;proxy:port&gt; https://www.example.com</span><br><span class="line"><span class="comment">## the same as</span></span><br><span class="line">https_proxy=&lt;proxy:port&gt; curl -v -x http://www.example.com</span><br></pre></td></tr></table></figure></p>
 <h2 id="09-06-2020"><a href="#09-06-2020" class="headerlink" title="09/06/2020"></a>09/06/2020</h2><p><code>wget</code> can do the same thing.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;url&gt; -o archive</span><br><span class="line"><span class="comment">## then break and resume</span></span><br><span class="line"><span class="comment">## -C -: automatrically resume from the break point</span></span><br><span class="line">curl &lt;url&gt; -C - -o archive</span><br></pre></td></tr></table></figure></p>
 <h2 id="09-07-2020"><a href="#09-07-2020" class="headerlink" title="09/07/2020"></a>09/07/2020</h2><p>Download/upload speed limit if you have a limit bandwidth.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## limit rate as 1m/second</span></span><br><span class="line"><span class="comment">## for example: 10k, 1g</span></span><br><span class="line">curl &lt;url&gt; -O --<span class="built_in">limit</span>-rate 1m</span><br></pre></td></tr></table></figure></p>
-<h2 id="09-08-2020"><a href="#09-08-2020" class="headerlink" title="09/08/2020"></a>09/08/2020</h2><p>Only fetch header information, no body:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -I,--head: (HTTP FTP FILE) Fetch the headers only!</span></span><br><span class="line">curl -I &lt;url&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="09-08-2020"><a href="#09-08-2020" class="headerlink" title="09/08/2020"></a>09/08/2020</h2><p>Only fetch header information, no body:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -I,--head: (HTTP FTP FILE) Fetch the headers only!</span></span><br><span class="line"><span class="comment">## notice that -i is to have response header to output, they are different</span></span><br><span class="line">curl -I &lt;url&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="09-09-2020"><a href="#09-09-2020" class="headerlink" title="09/09/2020"></a>09/09/2020</h2><p>Non-HTTP protocols over HTTP proxy<br>Most HTTP proxies allow clients to “tunnel through” it to a server on the other side. That’s exactly what’s done every time you use HTTPS through the HTTP proxy. CONNECT tunnel不仅仅针对HTTPS的，其他协议也可以借助于这个通道进行通信.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -p, --proxytunnel: make curl tunnel through the proxy</span></span><br><span class="line"><span class="comment">## used with -x, --proxy options</span></span><br><span class="line"><span class="comment">## here tunnel ftp protocol</span></span><br><span class="line">curl -p -x http://proxy.example.com:80 ftp://ftp.example.com/file.txt</span><br></pre></td></tr></table></figure></p>
+<h2 id="10-25-2020"><a href="#10-25-2020" class="headerlink" title="10/25/2020"></a>10/25/2020</h2><p><a href="https://daniel.haxx.se/blog/2018/04/05/curl-another-host/" target="_blank" rel="noopener">https://daniel.haxx.se/blog/2018/04/05/curl-another-host/</a><br>curl <code>--connect-to</code> option, 有的curl版本没有这个功能，要注意。用法是你不想curl去解析你给的URL中的hostname, 你告诉curl去其他地方，也就是这个URL真正的地址:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 这个example.com实际上是在localhost:8843 (自己搭建的)</span></span><br><span class="line"><span class="comment">## 如果不用--connect-to，那么curl会解析这个example.com然后到其他地方去了</span></span><br><span class="line">curl --connect-to example.com:443:localhost:8843 https://example.com/</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -649,7 +650,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">203</span>
+                    <span class="site-state-item-count">205</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -999,7 +1000,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">124</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">127</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1035,7 +1042,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#05-23-2019"><span class="nav-number">1.</span> <span class="nav-text">05/23/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-16-2019"><span class="nav-number">2.</span> <span class="nav-text">06/16/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-22-2020"><span class="nav-number">3.</span> <span class="nav-text">06/22/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-02-2020"><span class="nav-number">4.</span> <span class="nav-text">09/02/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-03-2020"><span class="nav-number">5.</span> <span class="nav-text">09/03/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-06-2020"><span class="nav-number">6.</span> <span class="nav-text">09/06/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-07-2020"><span class="nav-number">7.</span> <span class="nav-text">09/07/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-08-2020"><span class="nav-number">8.</span> <span class="nav-text">09/08/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-09-2020"><span class="nav-number">9.</span> <span class="nav-text">09/09/2020</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#05-23-2019"><span class="nav-number">1.</span> <span class="nav-text">05/23/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-16-2019"><span class="nav-number">2.</span> <span class="nav-text">06/16/2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-22-2020"><span class="nav-number">3.</span> <span class="nav-text">06/22/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-02-2020"><span class="nav-number">4.</span> <span class="nav-text">09/02/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-03-2020"><span class="nav-number">5.</span> <span class="nav-text">09/03/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-06-2020"><span class="nav-number">6.</span> <span class="nav-text">09/06/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-07-2020"><span class="nav-number">7.</span> <span class="nav-text">09/07/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-08-2020"><span class="nav-number">8.</span> <span class="nav-text">09/08/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#09-09-2020"><span class="nav-number">9.</span> <span class="nav-text">09/09/2020</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-25-2020"><span class="nav-number">10.</span> <span class="nav-text">10/25/2020</span></a></li></ol></div>
             
 
           </div>
@@ -1067,7 +1074,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">894k</span>
+    <span title="Symbols count total">898k</span>
   
 
   

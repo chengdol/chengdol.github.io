@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1e0ziORmoEx6zPk6J6qEid26aWl-zw21G">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Hy8vWUIBuo33oH976PNEkVzvAOzCuyKJ">
-<meta property="og:updated_time" content="2019-12-29T06:52:22.000Z">
+<meta property="og:updated_time" content="2020-10-29T06:28:36.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Linux Works, 2nd Edition">
 <meta name="twitter:description" content="Great book for all Linux developers and administrators! Just note for future quick revisit! Chapter1. The Big pictureThe most effective way to understand how an operating system works is through abstr">
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">124</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">127</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">203</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">205</span></a>
 
   </li>
 
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-28 22:52:22" itemprop="dateModified" datetime="2019-12-28T22:52:22-08:00">2019-12-28</time>
+                <time title="Modified: 2020-10-28 23:28:36" itemprop="dateModified" datetime="2020-10-28T23:28:36-07:00">2020-10-28</time>
               
             
           </span>
@@ -487,7 +487,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">184k</span>
+                <span title="Symbols count in article">185k</span>
               
 
               
@@ -1030,7 +1030,7 @@
 </blockquote>
 <p>then type followings:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Spacebar: Updates the display immediately.</span><br><span class="line">M: Sorts by current resident memory usage.</span><br><span class="line">T: Sorts by total (cumulative) CPU usage.</span><br><span class="line">P: Sorts by current CPU usage (the default).</span><br><span class="line">u: Displays only one user’s processes.</span><br><span class="line">f: Selects different statistics to display. (use arrow to move and space to select)</span><br><span class="line">?: Displays a usage summary for all top commands.</span><br></pre></td></tr></table></figure></p>
 <h3 id="Finding-Open-Files-by-lsof"><a href="#Finding-Open-Files-by-lsof" class="headerlink" title="Finding Open Files by lsof"></a>Finding Open Files by lsof</h3><p>One use for this command is when a disk cannot be unmounted because (unspecified) files are in use. The listing of open files can be consulted (suitably filtered if necessary) to identify the process that is using the files.</p>
-<p>The <code>lsof</code> command lists open files and the processes using them. <code>lsof</code> doesn’t stop at regular files—it can list network resources, dynamic libraries, pipes, and more.</p>
+<p>The <code>lsof</code> command lists open files and the processes using them. <code>lsof</code> doesn’t stop at regular files, it can list network resources, dynamic libraries, pipes, and more.</p>
 <p>For example:<br>Display entries for open files in <code>/usr</code> directory and successors.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof /usr/*</span><br></pre></td></tr></table></figure></p>
 <p>List open files for a particular PID:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -p 1623</span><br></pre></td></tr></table></figure></p>
 <h3 id="Tracing-Program-Execution-and-System-Calls"><a href="#Tracing-Program-Execution-and-System-Calls" class="headerlink" title="Tracing Program Execution and System Calls"></a>Tracing Program Execution and System Calls</h3><p>The most common use is to start a program using <code>strace</code>, which prints a list of <code>system calls</code> made by the program. This is useful if the program continually crashes, or does not behave as expected; for example using strace may reveal that the program is attempting to access a file which does not exist or cannot be read.</p>
@@ -1129,11 +1129,11 @@
 <h2 id="Chapter-10-Network-Applications-and-Services"><a href="#Chapter-10-Network-Applications-and-Services" class="headerlink" title="Chapter 10. Network Applications and Services"></a>Chapter 10. Network Applications and Services</h2><p>Let’s mainly focus on some important commands here:</p>
 <h3 id="curl-command"><a href="#curl-command" class="headerlink" title="curl command"></a>curl command</h3><p><code>curl</code> is a command line tool to transfer data to or from a server, using any of the supported protocols (HTTP, FTP, IMAP, POP3, SCP, SFTP, SMTP, TFTP, TELNET, LDAP or FILE). <code>curl</code> is powered by <code>Libcurl</code>. This tool is preferred for automation, since it is designed to work without user interaction. curl can transfer multiple file at once.</p>
 <p>you can refer this <a href="https://www.geeksforgeeks.org/curl-command-in-linux-with-examples/" target="_blank" rel="noopener">article</a>.</p>
-<h3 id="Diagnostic-Tools"><a href="#Diagnostic-Tools" class="headerlink" title="Diagnostic Tools"></a>Diagnostic Tools</h3><p><code>lsof</code> can track open files, but it can also list the programs currently using or listening to ports. Please read more when you need this tool.</p>
+<h3 id="Diagnostic-Tools"><a href="#Diagnostic-Tools" class="headerlink" title="Diagnostic Tools"></a>Diagnostic Tools</h3><p><code>lsof</code>(list open files) can track open files, but it can also list the programs currently using or listening to ports. Please read more when you need this tool.</p>
 <p><code>tcpdump</code>, a command tool version of wireshark.</p>
 <p><code>netcat</code>(or <code>nc</code>) I used it before for developing PXEngine, we use TCP to replace ssh connection between conductor and compute containers. <code>netcat</code> can connect to remote TCP/UDP ports, specify a local port, listen on ports, scan ports, redirect standard I/O to and from network connections, and more.</p>
-<p>I remember I use <code>nc</code> to listen on a port and on other side connect to that port and transfer data.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -p 1234</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc localhost 1234</span><br></pre></td></tr></table></figure>
+<p>I remember I use <code>nc</code> to listen on a port and on other side connect to that port and transfer data.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## install</span></span><br><span class="line">yum install -y nc</span><br><span class="line">apt install -y netcat</span><br><span class="line"></span><br><span class="line"><span class="comment">## -l: listening mode</span></span><br><span class="line"><span class="comment">## -p: port</span></span><br><span class="line">nc -l -p 1234</span><br><span class="line"><span class="comment">## client</span></span><br><span class="line">nc localhost 1234</span><br></pre></td></tr></table></figure></p>
+<p><code>netcat</code> can be used for TCP, UDP, Unix-domain sockets.</p>
 <p><code>nmap</code> scans all ports on a machine or network of machines looking for open ports, and it lists the ports it finds.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># nmap myk8s1.fyre.ibm.com</span><br><span class="line"></span><br><span class="line">Starting Nmap 6.40 ( http://nmap.org ) at 2019-05-22 23:33 PDT</span><br><span class="line">Nmap scan report for myk8s1.fyre.ibm.com (9.30.94.85)</span><br><span class="line">Host is up (0.00024s latency).</span><br><span class="line">Not shown: 995 closed ports</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">111/tcp  open  rpcbind</span><br><span class="line">179/tcp  open  bgp</span><br><span class="line">2049/tcp open  nfs</span><br><span class="line">5000/tcp open  upnp</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 0.20 seconds</span><br></pre></td></tr></table></figure></p>
 <h2 id="Chapter-11-Introduction-to-Shell-Scripts"><a href="#Chapter-11-Introduction-to-Shell-Scripts" class="headerlink" title="Chapter 11. Introduction to Shell Scripts"></a>Chapter 11. Introduction to Shell Scripts</h2><p>A shell script is a series of commands written in a file.<br>The <code>#!</code> part is called a <code>shebang</code>.</p>
 <p>When writing scripts and working on the command line, just remember what happens whenever the shell runs a command:</p>
@@ -1373,7 +1373,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">203</span>
+                    <span class="site-state-item-count">205</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1723,7 +1723,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">124</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">127</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1791,7 +1797,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">894k</span>
+    <span title="Symbols count total">898k</span>
   
 
   

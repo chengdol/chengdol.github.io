@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TODO docker compose http reverse proxy with flask apps tcp proxy with tcp server  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及实现什么样的功能?">
+  <meta name="description" content="TODO[ ] docker compose http reverse proxy with flask apps General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及实现什么样的功能? Youtube Proxy Channel这个">
 <meta name="keywords" content="envoy,proxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Envoy">
 <meta property="og:url" content="http://yoursite.com/2020/08/30/proxy-envoy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODO docker compose http reverse proxy with flask apps tcp proxy with tcp server  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及实现什么样的功能?">
+<meta property="og:description" content="TODO[ ] docker compose http reverse proxy with flask apps General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及实现什么样的功能? Youtube Proxy Channel这个">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-25T07:43:06.540Z">
+<meta property="og:updated_time" content="2020-10-29T06:28:36.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
-<meta name="twitter:description" content="TODO docker compose http reverse proxy with flask apps tcp proxy with tcp server  General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及实现什么样的功能?">
+<meta name="twitter:description" content="TODO[ ] docker compose http reverse proxy with flask apps General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及实现什么样的功能? Youtube Proxy Channel这个">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">124</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">127</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">203</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">205</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-10-25 00:43:06" itemprop="dateModified" datetime="2020-10-25T00:43:06-07:00">2020-10-25</time>
+                <time title="Modified: 2020-10-28 23:28:36" itemprop="dateModified" datetime="2020-10-28T23:28:36-07:00">2020-10-28</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">17k</span>
+                <span title="Symbols count in article">20k</span>
               
 
               
@@ -508,10 +508,7 @@
       
 
       
-        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><ol>
-<li>docker compose http reverse proxy with flask apps</li>
-<li>tcp proxy with tcp server</li>
-</ol>
+        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>[ ] docker compose http reverse proxy with flask apps</p>
 <h1 id="General-Proxy-and-Network-Concepts"><a href="#General-Proxy-and-Network-Concepts" class="headerlink" title="General Proxy and Network Concepts"></a>General Proxy and Network Concepts</h1><p>由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及实现什么样的功能?</p>
 <p><a href="https://www.youtube.com/playlist?list=PLQnljOFTspQVMeBmWI2AhxULWEeo7AaMC" target="_blank" rel="noopener">Youtube Proxy Channel</a><br>这个channel讲了很多关于Proxy的知识点，总结如下：</p>
 <ol>
@@ -558,28 +555,36 @@
 </li>
 </ol>
 <h1 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h1><p>This github repo contains demos for some popular proxies:<br><a href="https://github.com/chengdol/proxy/tree/main/envoy" target="_blank" rel="noopener">https://github.com/chengdol/proxy/tree/main/envoy</a></p>
-<h1 id="Envoy"><a href="#Envoy" class="headerlink" title="Envoy"></a>Envoy</h1><p>Web site: <a href="https://www.envoyproxy.io/" target="_blank" rel="noopener">https://www.envoyproxy.io/</a><br>首先要理解proxy的各种概念，类型，否则在配置时会一头雾水，不知所以然。</p>
-<p>选定Envoy的版本，进入文档，了解Envoy的terminology, for example: host, downstream, upstream, listener, cluster, mesh, etc.<br>了解envoy architecture，这对于理解配置很有帮助，对于Inbound 流量，指定有Listener, 每个Listener 有filter chains, 其中包含各种类型的filters. 对于Outbound 流量，设置upstream clusters, 流量会根据配置送到对应的upstream中去。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">downstream clients -----&gt; listeners -----&gt; filters -----&gt; upstream clusters</span><br><span class="line">     (app)                            (routing decision)</span><br></pre></td></tr></table></figure></p>
+<h1 id="Envoy"><a href="#Envoy" class="headerlink" title="Envoy"></a>Envoy</h1><p>首先要理解proxy的各种概念，类型，否则在配置时会一头雾水，不知所以然。</p>
+<p>Chinese web site: <a href="https://www.servicemesher.com/envoy/about_docs.html" target="_blank" rel="noopener">https://www.servicemesher.com/envoy/about_docs.html</a><br>Web site: <a href="https://www.envoyproxy.io/" target="_blank" rel="noopener">https://www.envoyproxy.io/</a></p>
+<p>选定Envoy的版本，进入文档，了解Envoy的terminology, for example: host, downstream, upstream, listener, cluster, mesh, etc.<br>了解envoy architecture，这对于理解配置很有帮助，对于Inbound 流量，指定有Listener, 每个Listener 有filter chains, 其中包含各种类型的filters. 对于Outbound 流量，设置upstream clusters, 流量会根据配置送到对应的upstream中去。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">downstream clients -----&gt; listeners -----&gt; filters -----&gt; upstream clusters</span><br><span class="line">     (app)                            (routing decision)</span><br></pre></td></tr></table></figure></p>
 <p>由于重要性的原因, Envoy将HTTP 单独划分出来, 当使用<code>http_connection_manager</code> filter时，Envoy就成为了L7 的proxy, 这时可以作为一般的reverse proxy (load balancer), 当配置为HTTP forward proxy时，主要用到了HTTP dynamic forward proxy 功能和 HTTP upgrades (CONNECT support)功能. 此外，在配置<code>http_connection_manager</code> 内部的<code>http_filters</code>时，<code>envoy.filters.http.router</code> 放在最后，这是向upstream 发送流量的filter.</p>
 <p>Envoy 的配置文件可以使yaml/json format, 配置的格式其实是和API 一一对应的, 查看API部分即可, 目前最近的是v3 xDS API, xDS 中<code>x</code> 是一系列的LDS, EDS, CDS的统称，他们是不同层面的发现机制。LDS, CDS means Listener discovery service and cluster discovery service. EDS, endpoint discovery service.</p>
 <p>对于Envoy的二次开发，可以使用官方提供的镜像:<br><a href="https://www.envoyproxy.io/docs/envoy/latest/start/building#pre-built-binaries" target="_blank" rel="noopener">https://www.envoyproxy.io/docs/envoy/latest/start/building#pre-built-binaries</a></p>
 <p>在测试配置文件时，可以使用docker compose的network将client, server各自隔离，proxy则可以访问2个网络，或者单独docker container进行测试。更改mounted 配置文件后docker restart即可生效。</p>
-<p>So far the best Envoy series:<br><a href="https://youtu.be/KsO4pw4tEGA" target="_blank" rel="noopener">Envoy Series Training</a><br>Envoy can be controlled via API (control/data plane). 这个其实也是生产环境中主要的调节方式。<br>Using golang write tcp, http server.<br>Using <code>nc</code> command to test envoy tcp proxy:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## envoy listening on port 10000 and upstream is a TCP server</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span> | nc localhost 10000</span><br></pre></td></tr></table></figure></p>
-<p>Or you can write a tcp client and the client talks to envoy.<br><code>fuser -k</code> command.</p>
-<p>Access envoy admin API from a docker container, expose the port <code>9901</code> and in browser hits <code>http://localhost:9901</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  access_log_path: /dev/stdout</span><br><span class="line">  address:</span><br><span class="line">    socket_address:</span><br><span class="line">      protocol: TCP</span><br><span class="line">      address: 0.0.0.0</span><br><span class="line">      port_value: 9901</span><br></pre></td></tr></table></figure></p>
-<p>In the dashboard, there are lots of metrics sections, important ones are <code>logging</code>, <code>stats</code>, <code>clusters</code>, <code>config_dump</code>,etc. For example, set debug mode in Envoy through curl command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=trace"</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=debug"</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=info"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Envoy-Series-Training"><a href="#Envoy-Series-Training" class="headerlink" title="Envoy Series Training"></a>Envoy Series Training</h2><p>So far the best Envoy series:<br><a href="https://youtu.be/KsO4pw4tEGA" target="_blank" rel="noopener">https://youtu.be/KsO4pw4tEGA</a>, summaries as below:</p>
+<p>Envoy can be controlled via API (control/data plane). 这个其实也是生产环境中主要的调节方式。Envoy admin 面板有很多选项，也有项目专门为Envoy开发control plane.</p>
+<p>Using golang write tcp, http server.<br>Using <code>nc</code>(netcat) command to test envoy tcp proxy:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## envoy listening on port 10000 and upstream is a TCP server</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span> | nc localhost 10000</span><br></pre></td></tr></table></figure></p>
+<p>Or you can write a tcp client and the client talks to envoy.<br><code>fuser -k</code> command to kill processes.</p>
+<p>Access envoy admin API from a docker container, expose the port <code>9901</code> and in browser hits <code>http://localhost:9901</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  access_log_path: /dev/stdout</span><br><span class="line">  address:</span><br><span class="line">    socket_address:</span><br><span class="line">      protocol: TCP</span><br><span class="line">      <span class="comment">## 127.0.0.1 is more secure,  can only be accessed when you are from within the network</span></span><br><span class="line">      <span class="comment">## 0.0.0.0 then everyone can access</span></span><br><span class="line">      address: 0.0.0.0</span><br><span class="line">      port_value: 9901</span><br></pre></td></tr></table></figure></p>
+<p>In the dashboard, there are lots of metrics sections, important ones are <code>logging</code>, <code>stats</code>, <code>clusters</code>, <code>config_dump</code>,etc. For example, set debug mode in Envoy through curl command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## get help</span></span><br><span class="line">curl http://localhost:9901/<span class="built_in">help</span></span><br><span class="line"><span class="comment">## operation</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=trace"</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=debug"</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=info"</span></span><br></pre></td></tr></table></figure></p>
 <p>Envoy status has native format support to Prometheus, Jaeger.</p>
-<p>CNCF Envoy talks:<br><a href="https://youtu.be/P719qI2h2yY" target="_blank" rel="noopener">Intro: Envoy - Matt Klein &amp; Constance Caramanolis, Lyft</a>, <a href="https://speakerdeck.com/mattklein123/velocity-2017-lyfts-envoy-experiences-operating-a-large-service-mesh" target="_blank" rel="noopener">slides</a><br><a href="https://youtu.be/gQF23Vw0keg" target="_blank" rel="noopener">Envoy Internals Deep Dive</a>, <a href="https://speakerdeck.com/mattklein123/kubecon-eu-2018" target="_blank" rel="noopener">slides</a></p>
+<p>Overload manager:<br><a href="https://www.envoyproxy.io/docs/envoy/v1.16.0/intro/arch_overview/operations/overload_manager#" target="_blank" rel="noopener">https://www.envoyproxy.io/docs/envoy/v1.16.0/intro/arch_overview/operations/overload_manager#</a><br>for example, limits envoy host system resource occupation. 资源使用限制。</p>
+<p>When configure envoy as edge proxy, 有很多需要考虑的地方，比如资源使用和限制等.</p>
+<p>Currenly we use <code>static_resources:</code>, there is also <code>dynamic_resouces:</code>，这个部分需要编写自己的配置，不太明白。</p>
+<p><code>hey</code> command, for load testing，这里用来测试envoy的根据权重的分流功能.<br><a href="https://github.com/rakyll/hey" target="_blank" rel="noopener">https://github.com/rakyll/hey</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## now looks it lack of maintaince and the release link is broken</span></span><br><span class="line">curl -Lk <span class="string">'https://gobinaries.com/binary/github.com/rakyll/hey?os=linux&amp;arch=amd64&amp;version=v0.1.4'</span> -o ./hey</span><br><span class="line">chmod +x ./hey</span><br><span class="line"></span><br><span class="line"><span class="comment">## it show you the request statics graph</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">./hey -n 100 http://localhost:10000</span><br><span class="line">sleep 1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="CNCF-Envoy-Talk"><a href="#CNCF-Envoy-Talk" class="headerlink" title="CNCF Envoy Talk"></a>CNCF Envoy Talk</h2><p><a href="https://youtu.be/P719qI2h2yY" target="_blank" rel="noopener">Intro: Envoy - Matt Klein &amp; Constance Caramanolis, Lyft</a>, <a href="https://speakerdeck.com/mattklein123/velocity-2017-lyfts-envoy-experiences-operating-a-large-service-mesh" target="_blank" rel="noopener">slides</a><br><a href="https://youtu.be/gQF23Vw0keg" target="_blank" rel="noopener">Envoy Internals Deep Dive</a>, <a href="https://speakerdeck.com/mattklein123/kubecon-eu-2018" target="_blank" rel="noopener">slides</a></p>
 <p><a href="https://www.getambassador.io/resources/?topics=Envoy%20Proxy" target="_blank" rel="noopener">Ambassador Envoy blogs</a></p>
 <p><a href="https://jvns.ca/blog/2018/10/27/envoy-basics/" target="_blank" rel="noopener">Some Envoy basics</a><br>Istio (as far as I understand it) is basically an Envoy discovery service that uses information from the Kubernetes API (eg the services in your cluster) to configure Envoy clusters/routes. It has its own configuration language.</p>
 <p><a href="https://blog.getambassador.io/envoy-proxy-in-2019-security-caching-wasm-http-3-and-more-e5ba82da0197" target="_blank" rel="noopener">Envoy supports traffic shadowing</a><br>Traffic shadowing is a deployment pattern where production traffic is asynchronously copied to a non-production service for testing. Shadowing is a close cousin to two other commonly known deployment patterns, canary releases and blue/green deployments.</p>
-<h2 id="Reverse-Proxy"><a href="#Reverse-Proxy" class="headerlink" title="Reverse Proxy"></a>Reverse Proxy</h2><p>Good video:<br><a href="https://youtu.be/D0cuv1AEftE" target="_blank" rel="noopener">Load balancing and HTTP Routing with Envoy Proxy</a><br><a href="https://youtu.be/40gKzHQWgP0" target="_blank" rel="noopener">Envoy Proxy Crash Course, Architecture, L7 &amp; L4 Proxying, HTTP/2, Enabling TLS 1.2/1.3 and more</a> </p>
+<h2 id="HTTP-s-Reverse-Proxy"><a href="#HTTP-s-Reverse-Proxy" class="headerlink" title="HTTP(s) Reverse Proxy"></a>HTTP(s) Reverse Proxy</h2><p>Good video:<br><a href="https://youtu.be/D0cuv1AEftE" target="_blank" rel="noopener">Load balancing and HTTP Routing with Envoy Proxy</a><br><a href="https://youtu.be/40gKzHQWgP0" target="_blank" rel="noopener">Envoy Proxy Crash Course, Architecture, L7 &amp; L4 Proxying, HTTP/2, Enabling TLS 1.2/1.3 and more</a> </p>
 <p><a href="https://www.katacoda.com/envoyproxy/scenarios/getting-started" target="_blank" rel="noopener">Envoy online codelab</a></p>
 <p>对于reverse proxy, 直接访问即可, 比如如果envoy在本地运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http(s)://localhost:80(443)</span><br></pre></td></tr></table></figure></p>
-<h2 id="Forward-Proxy"><a href="#Forward-Proxy" class="headerlink" title="Forward Proxy"></a>Forward Proxy</h2><p>All above articles and talks are related to reverse proxy, forward proxy support on envoy is still baisc and uncompleted, 比如在2020-09期间，HTTPS tunnel forward proxy authz就没有支持(也即是curl中的<code>-U</code> 选项)，并且HTTPS tunnel forward的过滤也不起作用。</p>
+<h2 id="HTTP-s-Forward-Proxy"><a href="#HTTP-s-Forward-Proxy" class="headerlink" title="HTTP(s) Forward Proxy"></a>HTTP(s) Forward Proxy</h2><p>Forward proxy support on envoy is still baisc, 当时遇到的几个问题:<br>CONNECT with domain match: <a href="https://github.com/envoyproxy/envoy/pull/13630" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/pull/13630</a><br>Block Ingress IPs: <a href="https://github.com/envoyproxy/envoy/issues/8388" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/issues/8388</a></p>
 <p>对于forward proxy, 则需要在curl中指定使用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -v -x localhost:10000 http(s)://www.httpbin.org</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">http(s)_proxy=localhost:10000 curl -v http(s)://www.httpbin.org</span><br></pre></td></tr></table></figure></p>
 <p>I was thinking what if I use <code>-x</code> with a reverse proxy, what will happen? For example, using this envoy config:<br><a href="https://github.com/envoyproxy/envoy/blob/v1.16.0/configs/google_com_proxy.v2.yaml" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/blob/v1.16.0/configs/google_com_proxy.v2.yaml</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -x localhost:10000 http://&lt;some valid or invalid url&gt;</span><br></pre></td></tr></table></figure></p>
 <p>From test, it will not show error but ignore the url I provide, still act as a reverse proxy and forward traffic to specified upstream cluster.</p>
+<h2 id="TCP-Proxy"><a href="#TCP-Proxy" class="headerlink" title="TCP Proxy"></a>TCP Proxy</h2><p>See github demo:<br><a href="https://github.com/chengdol/proxy/tree/main/envoy/tcp-proxy" target="_blank" rel="noopener">https://github.com/chengdol/proxy/tree/main/envoy/tcp-proxy</a></p>
 
       
     </div>
@@ -702,7 +707,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">203</span>
+                    <span class="site-state-item-count">205</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1052,7 +1057,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">124</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">127</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1088,7 +1099,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Proxy-and-Network-Concepts"><span class="nav-number">2.</span> <span class="nav-text">General Proxy and Network Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-repo"><span class="nav-number">3.</span> <span class="nav-text">GitHub repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Envoy"><span class="nav-number">4.</span> <span class="nav-text">Envoy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reverse-Proxy"><span class="nav-number">4.1.</span> <span class="nav-text">Reverse Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forward-Proxy"><span class="nav-number">4.2.</span> <span class="nav-text">Forward Proxy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Proxy-and-Network-Concepts"><span class="nav-number">2.</span> <span class="nav-text">General Proxy and Network Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-repo"><span class="nav-number">3.</span> <span class="nav-text">GitHub repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Envoy"><span class="nav-number">4.</span> <span class="nav-text">Envoy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Envoy-Series-Training"><span class="nav-number">4.1.</span> <span class="nav-text">Envoy Series Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNCF-Envoy-Talk"><span class="nav-number">4.2.</span> <span class="nav-text">CNCF Envoy Talk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-s-Reverse-Proxy"><span class="nav-number">4.3.</span> <span class="nav-text">HTTP(s) Reverse Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-s-Forward-Proxy"><span class="nav-number">4.4.</span> <span class="nav-text">HTTP(s) Forward Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-Proxy"><span class="nav-number">4.5.</span> <span class="nav-text">TCP Proxy</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1120,7 +1131,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">894k</span>
+    <span title="Symbols count total">898k</span>
   
 
   
