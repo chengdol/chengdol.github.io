@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[ ] pip internal config, repo To use and manage third-party libraries without messing up">
+  <meta name="description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[x] pip internal config, repo To use and manage third-party libraries without messing up">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Packages and Virtual Environment">
 <meta property="og:url" content="http://yoursite.com/2020/08/22/python-virtual-environment/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[ ] pip internal config, repo To use and manage third-party libraries without messing up">
+<meta property="og:description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[x] pip internal config, repo To use and manage third-party libraries without messing up">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-02T04:50:30.259Z">
+<meta property="og:updated_time" content="2020-11-09T07:49:09.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Packages and Virtual Environment">
-<meta name="twitter:description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[ ] pip internal config, repo To use and manage third-party libraries without messing up">
+<meta name="twitter:description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[x] pip internal config, repo To use and manage third-party libraries without messing up">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-01 20:50:30" itemprop="dateModified" datetime="2020-11-01T20:50:30-08:00">2020-11-01</time>
+                <time title="Modified: 2020-11-08 23:49:09" itemprop="dateModified" datetime="2020-11-08T23:49:09-08:00">2020-11-08</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">20k</span>
+                <span title="Symbols count in article">21k</span>
               
 
               
@@ -508,7 +508,7 @@
       
 
       
-        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?<br>[ ] pip internal config, repo</p>
+        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?<br>[x] pip internal config, repo</p>
 <p>To use and manage third-party libraries without messing up python environment, organizing different project that has its own unique dependencies:</p>
 <ul>
 <li><code>pip</code>: package management</li>
@@ -516,7 +516,7 @@
 <li><code>virtualenvwrapper</code>: making venv more convenient</li>
 </ul>
 <p>Does not talk the package that is the form of <code>__init__.py</code> under a folder, we are talking python distribution package.</p>
-<h1 id="Pip"><a href="#Pip" class="headerlink" title="Pip"></a>Pip</h1><p><strong>Best practice:</strong></p>
+<h1 id="PIP"><a href="#PIP" class="headerlink" title="PIP"></a>PIP</h1><p><strong>Best practice:</strong></p>
 <ol>
 <li>always work inside a virtual environment, keep things nice and clean.</li>
 <li>don’t use pip with <code>sudo</code>, otherwise the installation is system-wide.</li>
@@ -531,6 +531,7 @@
 <li>go to Browse projects -&gt; Operating system -&gt; Linux, then select other classifier (but this is still hard to search what is exactly needed).</li>
 <li>check <code>development status</code>, select package in production/stable version.</li>
 </ol>
+<p>Pip install from specified repo:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## use additional repo</span></span><br><span class="line">pip install --extra-index-url <span class="string">'&lt;repo url&gt;'</span> vault-client==0.0.4</span><br><span class="line"></span><br><span class="line"><span class="comment">## or set by</span></span><br><span class="line"><span class="comment">## pip config set &lt;ket&gt; &lt;value&gt;</span></span><br><span class="line">global.extra-index-url=<span class="string">'&lt;repo url&gt;'</span></span><br><span class="line">global.timeout=<span class="string">'10'</span></span><br><span class="line">global.trusted-host=<span class="string">'registry.corp.xxx.com'</span></span><br><span class="line"><span class="comment">## then run</span></span><br><span class="line">pip install vault-client==0.0.4</span><br></pre></td></tr></table></figure></p>
 <h1 id="Virtual-Environment"><a href="#Virtual-Environment" class="headerlink" title="Virtual Environment"></a>Virtual Environment</h1><p>Combining with <code>virtualenvwrapper</code> is good, recommended.</p>
 <p>Install <code>virtualenv</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## install system-widely</span></span><br><span class="line"><span class="comment">## preferred way</span></span><br><span class="line"><span class="comment">## -m: run module</span></span><br><span class="line">sudo python3 -m pip install virtualenv</span><br><span class="line">sudo pip3 install virtualenv</span><br></pre></td></tr></table></figure></p>
 <p>Create virtualenv:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/virtualenvs &amp;&amp; <span class="built_in">cd</span> ~/virtualenvs</span><br><span class="line"></span><br><span class="line"><span class="comment">## create a virtual env called rates in python3</span></span><br><span class="line">virtualenv -p python3 rates_py3</span><br><span class="line">virtualenv -p python3.8.4 rates_py3</span><br><span class="line"><span class="comment">## python2 based</span></span><br><span class="line">virtualenv -p python2 rates_py2</span><br><span class="line"></span><br><span class="line"><span class="comment">## activate</span></span><br><span class="line"><span class="built_in">cd</span> rates_py3</span><br><span class="line"><span class="comment">## after this you will see a prefix </span></span><br><span class="line"><span class="comment">## 一旦激活，不管在其他任何地方，都是这个环境！</span></span><br><span class="line">. ./bin/activate</span><br><span class="line"><span class="comment">## check</span></span><br><span class="line">python -V</span><br><span class="line">pip -V</span><br><span class="line"><span class="comment">## you will only see less packages installed</span></span><br><span class="line">pip list</span><br><span class="line"></span><br><span class="line"><span class="comment">## then start your work in your project folder...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## deactivate</span></span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure></p>
@@ -1061,7 +1062,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pip"><span class="nav-number">2.</span> <span class="nav-text">Pip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-Environment"><span class="nav-number">3.</span> <span class="nav-text">Virtual Environment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtualenvwrapper"><span class="nav-number">4.</span> <span class="nav-text">Virtualenvwrapper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-Future-Tools"><span class="nav-number">5.</span> <span class="nav-text">Other Future Tools</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PIP"><span class="nav-number">2.</span> <span class="nav-text">PIP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-Environment"><span class="nav-number">3.</span> <span class="nav-text">Virtual Environment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtualenvwrapper"><span class="nav-number">4.</span> <span class="nav-text">Virtualenvwrapper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-Future-Tools"><span class="nav-number">5.</span> <span class="nav-text">Other Future Tools</span></a></li></ol></div>
             
 
           </div>
@@ -1093,7 +1094,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">908k</span>
+    <span title="Symbols count total">911k</span>
   
 
   

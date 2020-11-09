@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2020-10-29T06:28:36.939Z">
+<meta property="og:updated_time" content="2020-11-09T07:49:09.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH SCP SFTP Daily Work Summary">
 <meta name="twitter:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-10-28 23:28:36" itemprop="dateModified" datetime="2020-10-28T23:28:36-07:00">2020-10-28</time>
+                <time title="Modified: 2020-11-08 23:49:09" itemprop="dateModified" datetime="2020-11-08T23:49:09-08:00">2020-11-08</time>
               
             
           </span>
@@ -534,9 +534,10 @@
 <h1 id="SSH-SOCKS-Proxy-Tunnel"><a href="#SSH-SOCKS-Proxy-Tunnel" class="headerlink" title="SSH SOCKS Proxy Tunnel"></a>SSH SOCKS Proxy Tunnel</h1><p>Aside: <a href="http://www.firewall.cx/vpn/vpn-guides-articles/1191-best-socks5-proxy-guide-torrenting-free-proxy-list.html" target="_blank" rel="noopener">Introduction to SOCKS proxy</a></p>
 <p>The transport protocol and by itself it is not encrypted.<br>类似于VPN的部分功能，但是通过SSH实现, allow web access from restricted network.<br><a href="https://www.pandasecurity.com/mediacenter/technology/difference-vpn-vs-proxy" target="_blank" rel="noopener">What is the difference between a VPN and a proxy</a></p>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel" target="_blank" rel="noopener">How To Route Web Traffic Securely Without a VPN Using a SOCKS Tunnel</a>:<br>A SOCKS proxy is basically an SSH tunnel in which specific applications forward their traffic down the tunnel to the server, and then on the server end, the proxy forwards the traffic out to the general Internet. Unlike a VPN, a SOCKS proxy has to be configured on an app by app basis on the client machine, but can be set up without any specialty client agents.</p>
-<p>The remote host must has ssh server running.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -D: dynamic application-level port forwarding</span></span><br><span class="line"><span class="comment">## -f: Forks the process to the background</span></span><br><span class="line"><span class="comment">## -C: Compresses the data before sending it</span></span><br><span class="line"><span class="comment">## -q: quiet</span></span><br><span class="line"><span class="comment">## don't like tunnel, on the remote host it is dynamic forwarding</span></span><br><span class="line">ssh -D 1234 -f -C -N -q user@remotehost</span><br></pre></td></tr></table></figure></p>
+<p>The remote host must has ssh server running.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -D: dynamic application-level port forwarding</span></span><br><span class="line"><span class="comment">## -C: Compresses the data before sending it</span></span><br><span class="line"><span class="comment">## -q: quiet</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## -f: Forks the process in the background</span></span><br><span class="line"><span class="comment">## don't like tunnel, on the remote host it is dynamic forwarding</span></span><br><span class="line">ssh -D 1234 -f -C -N -q user@remotehost</span><br></pre></td></tr></table></figure></p>
 <p>Then configure the web browser to use this socket proxy: <code>localhost:1234</code>, in firefox, check <code>Proxy DNS when using SOCKS v5</code>. 其实就类似于一个forward proxy了。<br>可以对比使用前后<code>ip4.me</code>，不一样了。</p>
 <p>Manually kill the tunnel process if you use <code>-f</code>.</p>
+<p>当时用SSH SOCKS tunnel 解决了内网中Vault 的访问问题，本地机器建立tunnel to Jenkins slave, which forward the request to Vault server.</p>
 <h1 id="SSH-X11-Forwarding"><a href="#SSH-X11-Forwarding" class="headerlink" title="SSH X11 Forwarding"></a>SSH X11 Forwarding</h1><p>Similar to VNC, but VNC transmits whole desktop which is more expensive.<br>Linux has good support to X11, on Mac, need to install XQuartz(still not work on Mac).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## -X: X11 forwarding</span></span><br><span class="line">ssh -X user@remotehost</span><br><span class="line"></span><br><span class="line"><span class="comment">## gedit is running on remotehost but reflect GUI locally</span></span><br><span class="line">&gt; gedit</span><br></pre></td></tr></table></figure></p>
 <h1 id="SSH-Agent"><a href="#SSH-Agent" class="headerlink" title="SSH Agent"></a>SSH Agent</h1><p>很久之前看书的时候没明白这个概念. 一个常见的用处就是保护originating host的private key.<br>A handy program called <code>ssh-agent</code> simplifies working with SSH private keys.</p>
 <p>In Mac, ssh-agent is running by default, but in Linux, start by yourself (ensure only one instance of ssh-agent is running)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## don't need do this if you are Mac, or your company laptop has agent running by default</span></span><br><span class="line"><span class="comment">## you can check by:</span></span><br><span class="line">ssh-add -l</span><br><span class="line"></span><br><span class="line"><span class="comment">## first check if only one instance is running</span></span><br><span class="line">ps aux | grep ssh-agent$</span><br><span class="line"><span class="comment">## if it is there but cannot work, kill it.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> $(ssh-agent)</span><br></pre></td></tr></table></figure></p>
@@ -1145,7 +1146,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">908k</span>
+    <span title="Symbols count total">911k</span>
   
 
   

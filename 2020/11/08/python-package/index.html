@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="最近在做Project的时候发现一个package无法在jump box之外的机器上通过pip安装，后来发现这是一个内部开发的python package， 并且为jump box的pip做了设置，加入了内部的package repo。关于package 的创建和发布还不是很了解，这里专门总结一下。Python Packaging User Guide Package nad ModulePack">
+  <meta name="description" content="最近在做Project的时候发现一个package无法在jump box之外的机器上通过pip安装，后来发现这是一个内部开发的python package， 并且为jump box的pip做了设置，加入了内部的package repo。关于package 的创建和发布还不是很了解，这里专门总结一下。Python Packaging User Guide Package and ModulePack">
 <meta name="keywords" content="python3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3 Package">
-<meta property="og:url" content="http://yoursite.com/2020/11/01/python-package/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/11/08/python-package/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="最近在做Project的时候发现一个package无法在jump box之外的机器上通过pip安装，后来发现这是一个内部开发的python package， 并且为jump box的pip做了设置，加入了内部的package repo。关于package 的创建和发布还不是很了解，这里专门总结一下。Python Packaging User Guide Package nad ModulePack">
+<meta property="og:description" content="最近在做Project的时候发现一个package无法在jump box之外的机器上通过pip安装，后来发现这是一个内部开发的python package， 并且为jump box的pip做了设置，加入了内部的package repo。关于package 的创建和发布还不是很了解，这里专门总结一下。Python Packaging User Guide Package and ModulePack">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-02T04:50:30.258Z">
+<meta property="og:updated_time" content="2020-11-09T07:49:09.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3 Package">
-<meta name="twitter:description" content="最近在做Project的时候发现一个package无法在jump box之外的机器上通过pip安装，后来发现这是一个内部开发的python package， 并且为jump box的pip做了设置，加入了内部的package repo。关于package 的创建和发布还不是很了解，这里专门总结一下。Python Packaging User Guide Package nad ModulePack">
+<meta name="twitter:description" content="最近在做Project的时候发现一个package无法在jump box之外的机器上通过pip安装，后来发现这是一个内部开发的python package， 并且为jump box的pip做了设置，加入了内部的package repo。关于package 的创建和发布还不是很了解，这里专门总结一下。Python Packaging User Guide Package and ModulePack">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/11/01/python-package/">
+  <link rel="canonical" href="http://yoursite.com/2020/11/08/python-package/">
 
 
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/01/python-package/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/08/python-package/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2020-11-01 20:50:30" itemprop="dateCreated datePublished" datetime="2020-11-01T20:50:30-08:00">2020-11-01</time>
+              <time title="Created: 2020-11-08 23:49:09" itemprop="dateCreated datePublished" datetime="2020-11-08T23:49:09-08:00">2020-11-08</time>
             
 
             
@@ -493,7 +493,7 @@
 
       
         <p>最近在做Project的时候发现一个package无法在jump box之外的机器上通过pip安装，后来发现这是一个内部开发的python package， 并且为jump box的pip做了设置，加入了内部的package repo。关于package 的创建和发布还不是很了解，这里专门总结一下。<br><a href="https://packaging.python.org/" target="_blank" rel="noopener">Python Packaging User Guide</a></p>
-<h1 id="Package-nad-Module"><a href="#Package-nad-Module" class="headerlink" title="Package nad Module"></a>Package nad Module</h1><p>Packages contains modules (module is normally a single python source file) or other packages.<br>Modules also are objects with special attributes.</p>
+<h1 id="Package-and-Module"><a href="#Package-and-Module" class="headerlink" title="Package and Module"></a>Package and Module</h1><p>Packages contains modules (module is normally a single python source file) or other packages.<br>Modules also are objects with special attributes.</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## urllib is package because it contains other modules or packages</span></span><br><span class="line"><span class="comment">## request is a nested module </span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line"><span class="comment">## although both are marked as module type</span></span><br><span class="line">type(urllib)</span><br><span class="line">type(urllib.request)</span><br><span class="line"></span><br><span class="line"><span class="comment">## show you the package location</span></span><br><span class="line">urllib.__path__</span><br><span class="line"><span class="comment">## error, because only package has this attribute</span></span><br><span class="line">urllib.request.__path__</span><br></pre></td></tr></table></figure>
 <p>How does python know where to import?<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment">## for system built-in modules</span></span><br><span class="line">sys.path</span><br><span class="line"><span class="comment">## you can manipulate on it </span></span><br><span class="line">sys.path.append(<span class="string">"&lt;path&gt;"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>Or specify in environment variable (see <code>python --help</code>):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## will append to sys.path</span></span><br><span class="line"><span class="built_in">export</span> PYTHONPATH=path1:path2:path3</span><br></pre></td></tr></table></figure></p>
@@ -1034,7 +1034,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-nad-Module"><span class="nav-number">1.</span> <span class="nav-text">Package nad Module</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-Structure"><span class="nav-number">2.</span> <span class="nav-text">Package Structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Namespace-Package"><span class="nav-number">3.</span> <span class="nav-text">Namespace Package</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executable-Directory"><span class="nav-number">4.</span> <span class="nav-text">Executable Directory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executable-Package"><span class="nav-number">5.</span> <span class="nav-text">Executable Package</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-Layout"><span class="nav-number">6.</span> <span class="nav-text">Package Layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-Distribution"><span class="nav-number">7.</span> <span class="nav-text">Package Distribution</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-and-Module"><span class="nav-number">1.</span> <span class="nav-text">Package and Module</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-Structure"><span class="nav-number">2.</span> <span class="nav-text">Package Structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Namespace-Package"><span class="nav-number">3.</span> <span class="nav-text">Namespace Package</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executable-Directory"><span class="nav-number">4.</span> <span class="nav-text">Executable Directory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executable-Package"><span class="nav-number">5.</span> <span class="nav-text">Executable Package</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-Layout"><span class="nav-number">6.</span> <span class="nav-text">Package Layout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Package-Distribution"><span class="nav-number">7.</span> <span class="nav-text">Package Distribution</span></a></li></ol></div>
             
 
           </div>
@@ -1066,7 +1066,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">908k</span>
+    <span title="Symbols count total">911k</span>
   
 
   
