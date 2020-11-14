@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I haven’t noticed the path format when I create tarball, this time the format issue plays as a major blocker in my project. We use a module tar file to deploy Zen in ICP4D cluster, when I use my custo">
+  <meta name="description" content="I haven’t noticed the path format when I created tarball, this time the format issue plays as a major blocker. We use a module tar file to deploy Zen in ICP4D cluster, when I use my customized tar fil">
 <meta name="keywords" content="linux,tar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tar Path Format Issue">
 <meta property="og:url" content="http://yoursite.com/2019/07/03/linux-tar-path/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I haven’t noticed the path format when I create tarball, this time the format issue plays as a major blocker in my project. We use a module tar file to deploy Zen in ICP4D cluster, when I use my custo">
+<meta property="og:description" content="I haven’t noticed the path format when I created tarball, this time the format issue plays as a major blocker. We use a module tar file to deploy Zen in ICP4D cluster, when I use my customized tar fil">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-16T00:16:18.000Z">
+<meta property="og:updated_time" content="2020-11-14T07:54:38.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tar Path Format Issue">
-<meta name="twitter:description" content="I haven’t noticed the path format when I create tarball, this time the format issue plays as a major blocker in my project. We use a module tar file to deploy Zen in ICP4D cluster, when I use my custo">
+<meta name="twitter:description" content="I haven’t noticed the path format when I created tarball, this time the format issue plays as a major blocker. We use a module tar file to deploy Zen in ICP4D cluster, when I use my customized tar fil">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-01-15 16:16:18" itemprop="dateModified" datetime="2020-01-15T16:16:18-08:00">2020-01-15</time>
+                <time title="Modified: 2020-11-13 23:54:38" itemprop="dateModified" datetime="2020-11-13T23:54:38-08:00">2020-11-13</time>
               
             
           </span>
@@ -508,13 +508,13 @@
       
 
       
-        <p>I haven’t noticed the path format when I create tarball, this time the format issue plays as a major blocker in my project.</p>
-<p>We use a module tar file to deploy <code>Zen</code> in ICP4D cluster, when I use my customized tar file, I get:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Loading images</span><br><span class="line">/ibm/InstallPackage/modules/./ibm-iisee-zen:1.0.0//images</span><br><span class="line">Loaded Images [==============================================================================] 7m29s (35/35) done</span><br><span class="line">Pushed Images [==============================================================================] 15m17s (35/35) done</span><br><span class="line">Deploying the chart as name ibm-iisee-zen100</span><br><span class="line">Running command: /ibm/InstallPackage/components/dpctl --config /ibm/InstallPackage/components/install.yaml helm rewriteChart -i /ibm/InstallPackage/modules/./ibm-iisee-zen:1.0.0//charts/*.tgz -o /ibm/InstallPackage/modules/./ibm-iisee-zen:1.0.0//charts/updated_ibm-iisee-zen100.tgz</span><br><span class="line">Running command: /ibm/InstallPackage/components/dpctl --config /ibm/InstallPackage/components/install.yaml helm installChart -f /ibm/InstallPackage/components/global.yaml   -r zen-ibm-iisee-zen100 -n zen -c /ibm/InstallPackage/modules/./ibm-iisee-zen:1.0.0//charts/updated_ibm-iisee-zen100.tgz</span><br><span class="line">Starting the installation ...</span><br><span class="line">There was a problem installing /ibm/InstallPackage/modules/ibm-iisee-zen:1.0.0/charts/updated_ibm-iisee-zen100.tgz chart. Reason: chart metadata (Chart.yaml) missing</span><br></pre></td></tr></table></figure></p>
-<p>Let’s highlight the command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Running command: /ibm/InstallPackage/components/dpctl --config /ibm/InstallPackage/components/install.yaml helm rewriteChart -i /ibm/InstallPackage/modules/./ibm-iisee-zen:1.0.0//charts/*.tgz -o /ibm/InstallPackage/modules/./ibm-iisee-zen:1.0.0//charts/updated_ibm-iisee-zen100.tgz</span><br></pre></td></tr></table></figure></p>
-<p>Look carefully there is a <code>./</code> in path <code>/ibm/InstallPackage/modules/./ibm-iisee-zen:1.0.0/....</code>, this is because I create tarball use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar cf ibm-iisee-zen-1.0.0.tar ./ibm-iisee-zen:1.0.0</span><br></pre></td></tr></table></figure></p>
+        <p>I haven’t noticed the path format when I created tarball, this time the format issue plays as a major blocker.</p>
+<p>We use a module tar file to deploy <code>Zen</code> in ICP4D cluster, when I use my customized tar file, I get:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Loading images</span><br><span class="line">/xxx/InstallPackage/modules/./xxx-iisee-zen:1.0.0//images</span><br><span class="line">Loaded Images [==============================================================================] 7m29s (35/35) done</span><br><span class="line">Pushed Images [==============================================================================] 15m17s (35/35) done</span><br><span class="line">Deploying the chart as name xxx-iisee-zen100</span><br><span class="line">Running command: /xxx/InstallPackage/components/dpctl --config /xxx/InstallPackage/components/install.yaml helm rewriteChart -i /xxx/InstallPackage/modules/./xxx-iisee-zen:1.0.0//charts/*.tgz -o /xxx/InstallPackage/modules/./xxx-iisee-zen:1.0.0//charts/updated_xxx-iisee-zen100.tgz</span><br><span class="line">Running command: /xxx/InstallPackage/components/dpctl --config /xxx/InstallPackage/components/install.yaml helm installChart -f /xxx/InstallPackage/components/global.yaml   -r zen-xxx-iisee-zen100 -n zen -c /xxx/InstallPackage/modules/./xxx-iisee-zen:1.0.0//charts/updated_xxx-iisee-zen100.tgz</span><br><span class="line">Starting the installation ...</span><br><span class="line">There was a problem installing /xxx/InstallPackage/modules/xxx-iisee-zen:1.0.0/charts/updated_xxx-iisee-zen100.tgz chart. Reason: chart metadata (Chart.yaml) missing</span><br></pre></td></tr></table></figure></p>
+<p>Let’s highlight the command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Running command: /xxx/InstallPackage/components/dpctl --config /xxx/InstallPackage/components/install.yaml helm rewriteChart -i /xxx/InstallPackage/modules/./xxx-iisee-zen:1.0.0//charts/*.tgz -o /xxx/InstallPackage/modules/./xxx-iisee-zen:1.0.0//charts/updated_xxx-iisee-zen100.tgz</span><br></pre></td></tr></table></figure></p>
+<p>Look carefully there is a <code>./</code> in path <code>/xxx/InstallPackage/modules/./xxx-iisee-zen:1.0.0/....</code>, this is because I create tarball use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar cf xxx-iisee-zen-1.0.0.tar ./xxx-iisee-zen:1.0.0</span><br></pre></td></tr></table></figure></p>
 <p>the <code>./</code> will be put in the extract path! which is the trouble maker.</p>
-<p>Instead I should first go to that directory, then tar or use <code>-C</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar cf ibm-iisee-zen-1.0.0.tar -C &lt;target directory&gt; ibm-iisee-zen:1.0.0</span><br></pre></td></tr></table></figure></p>
-<p>If we list the tarball contents, no prefix in the file structure:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -tvf ibm-iisee-zen-1.0.0.tar</span><br><span class="line"></span><br><span class="line">drwxr-xr-x 1001/docker       0 1969-12-31 16:00 ibm-iisee-zen:1.0.0/</span><br><span class="line">drwxr-xr-x 1001/docker       0 2019-07-02 15:13 ibm-iisee-zen:1.0.0/charts/</span><br><span class="line">-rw-r--r-- root/root    245868 2019-07-02 15:12 ibm-iisee-zen:1.0.0/charts/ibm-iisee-zen-1.0.1.tgz</span><br><span class="line">-rw------- 1001/docker    4758 1969-12-31 16:00 ibm-iisee-zen:1.0.0/manifest.yaml</span><br><span class="line">drwxr-xr-x 1001/docker       0 1969-12-31 16:00 ibm-iisee-zen:1.0.0/LICENSES/</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>Correct way:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;xxx-iisee-zen:1.0.0 parent folder&gt;</span><br><span class="line">tar cf xxx-iisee-zen-1.0.0.tar xxx-iisee-zen:1.0.0</span><br></pre></td></tr></table></figure></p>
+<p>If we list the tarball contents, no prefix in the file structure:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar tvf xxx-iisee-zen-1.0.0.tar</span><br><span class="line"></span><br><span class="line">drwxr-xr-x 1001/docker       0 1969-12-31 16:00 xxx-iisee-zen:1.0.0/</span><br><span class="line">drwxr-xr-x 1001/docker       0 2019-07-02 15:13 xxx-iisee-zen:1.0.0/charts/</span><br><span class="line">-rw-r--r-- root/root    245868 2019-07-02 15:12 xxx-iisee-zen:1.0.0/charts/xxx-iisee-zen-1.0.1.tgz</span><br><span class="line">-rw------- 1001/docker    4758 1969-12-31 16:00 xxx-iisee-zen:1.0.0/manifest.yaml</span><br><span class="line">drwxr-xr-x 1001/docker       0 1969-12-31 16:00 xxx-iisee-zen:1.0.0/LICENSES/</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
 <p>For more information about tar commands, I have a blob about it already <a href="https://chengdol.github.io/2019/02/21/linux-tar-summary/" target="_blank" rel="noopener"><code>&lt;&lt;Tar Command Daily Work Summary&gt;&gt;</code></a></p>
 
       
@@ -1036,7 +1036,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">911k</span>
+    <span title="Symbols count total">912k</span>
   
 
   

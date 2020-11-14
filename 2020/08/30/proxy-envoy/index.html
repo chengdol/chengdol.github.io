@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-02T04:50:30.256Z">
+<meta property="og:updated_time" content="2020-11-14T07:54:38.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
 <meta name="twitter:description" content="TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-01 20:50:30" itemprop="dateModified" datetime="2020-11-01T20:50:30-08:00">2020-11-01</time>
+                <time title="Modified: 2020-11-13 23:54:38" itemprop="dateModified" datetime="2020-11-13T23:54:38-08:00">2020-11-13</time>
               
             
           </span>
@@ -580,7 +580,7 @@
 <h2 id="HTTP-s-Reverse-Proxy"><a href="#HTTP-s-Reverse-Proxy" class="headerlink" title="HTTP(s) Reverse Proxy"></a>HTTP(s) Reverse Proxy</h2><p>Good video:<br><a href="https://youtu.be/D0cuv1AEftE" target="_blank" rel="noopener">Load balancing and HTTP Routing with Envoy Proxy</a><br><a href="https://youtu.be/40gKzHQWgP0" target="_blank" rel="noopener">Envoy Proxy Crash Course, Architecture, L7 &amp; L4 Proxying, HTTP/2, Enabling TLS 1.2/1.3 and more</a> </p>
 <p><a href="https://www.katacoda.com/envoyproxy/scenarios/getting-started" target="_blank" rel="noopener">Envoy online codelab</a></p>
 <p>对于reverse proxy, 直接访问即可, 比如如果envoy在本地运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http(s)://localhost:80(443)</span><br></pre></td></tr></table></figure></p>
-<h2 id="HTTP-s-Forward-Proxy"><a href="#HTTP-s-Forward-Proxy" class="headerlink" title="HTTP(s) Forward Proxy"></a>HTTP(s) Forward Proxy</h2><p>Forward proxy support on envoy is still baisc, 当时遇到的几个问题:<br>CONNECT with domain match: <a href="https://github.com/envoyproxy/envoy/pull/13630" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/pull/13630</a><br>Block Ingress IPs: <a href="https://github.com/envoyproxy/envoy/issues/8388" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/issues/8388</a></p>
+<h2 id="HTTP-s-Forward-Proxy"><a href="#HTTP-s-Forward-Proxy" class="headerlink" title="HTTP(s) Forward Proxy"></a>HTTP(s) Forward Proxy</h2><p>Forward proxy support on envoy is still baisc, 当时遇到的几个问题:<br>CONNECT with domain match:<br><a href="https://github.com/envoyproxy/envoy/pull/13630" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/pull/13630</a><br>Block or allow downstream source IPs:<br><a href="https://github.com/envoyproxy/envoy/issues/8388" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/issues/8388</a></p>
 <p>对于forward proxy, 则需要在curl中指定使用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -v -x localhost:10000 http(s)://www.httpbin.org</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">http(s)_proxy=localhost:10000 curl -v http(s)://www.httpbin.org</span><br></pre></td></tr></table></figure></p>
 <p>I was thinking what if I use <code>-x</code> with a reverse proxy, what will happen? For example, using this envoy config:<br><a href="https://github.com/envoyproxy/envoy/blob/v1.16.0/configs/google_com_proxy.v2.yaml" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/blob/v1.16.0/configs/google_com_proxy.v2.yaml</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -x localhost:10000 http://&lt;some valid or invalid url&gt;</span><br></pre></td></tr></table></figure></p>
 <p>From test, it will not show error but ignore the url I provide, still act as a reverse proxy and forward traffic to specified upstream cluster.</p>
@@ -1131,7 +1131,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">911k</span>
+    <span title="Symbols count total">912k</span>
   
 
   

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[x] pip internal config, repo To use and manage third-party libraries without messing up">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-09T07:49:09.286Z">
+<meta property="og:updated_time" content="2020-11-14T07:55:41.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Packages and Virtual Environment">
 <meta name="twitter:description" content="TODO[ ] pip package name convention and import name convention, e.g PyYaml but import yaml, pip install [name]?[x] pip internal config, repo To use and manage third-party libraries without messing up">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-08 23:49:09" itemprop="dateModified" datetime="2020-11-08T23:49:09-08:00">2020-11-08</time>
+                <time title="Modified: 2020-11-13 23:55:41" itemprop="dateModified" datetime="2020-11-13T23:55:41-08:00">2020-11-13</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">21k</span>
+                <span title="Symbols count in article">22k</span>
               
 
               
@@ -531,7 +531,7 @@
 <li>go to Browse projects -&gt; Operating system -&gt; Linux, then select other classifier (but this is still hard to search what is exactly needed).</li>
 <li>check <code>development status</code>, select package in production/stable version.</li>
 </ol>
-<p>Pip install from specified repo:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## use additional repo</span></span><br><span class="line">pip install --extra-index-url <span class="string">'&lt;repo url&gt;'</span> vault-client==0.0.4</span><br><span class="line"></span><br><span class="line"><span class="comment">## or set by</span></span><br><span class="line"><span class="comment">## pip config set &lt;ket&gt; &lt;value&gt;</span></span><br><span class="line">global.extra-index-url=<span class="string">'&lt;repo url&gt;'</span></span><br><span class="line">global.timeout=<span class="string">'10'</span></span><br><span class="line">global.trusted-host=<span class="string">'registry.corp.xxx.com'</span></span><br><span class="line"><span class="comment">## then run</span></span><br><span class="line">pip install vault-client==0.0.4</span><br></pre></td></tr></table></figure></p>
+<p>Pip install from specified repo:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## use additional repo</span></span><br><span class="line">pip install --extra-index-url <span class="string">'&lt;repo url&gt;'</span> vault-client==0.0.4</span><br><span class="line"></span><br><span class="line"><span class="comment">## or set by</span></span><br><span class="line"><span class="comment">## pip config set &lt;ket&gt; &lt;value&gt;</span></span><br><span class="line">global.extra-index-url=<span class="string">'&lt;repo url&gt;'</span></span><br><span class="line">global.timeout=<span class="string">'10'</span></span><br><span class="line">global.trusted-host=<span class="string">'registry.corp.xxx.com'</span></span><br><span class="line"><span class="comment">## then run</span></span><br><span class="line">pip install vault-client==0.0.4</span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者创建一个~/.pip/pip.conf 文件</span></span><br><span class="line">[global]</span><br><span class="line">timeout=10</span><br><span class="line">trusted-host = egistry.corp.xxx.com</span><br><span class="line">extra-index-url = &lt;repo url&gt;</span><br><span class="line"><span class="comment">## 然后</span></span><br><span class="line">pip install --no-cache-dir vault-client==0.0.4</span><br></pre></td></tr></table></figure></p>
 <h1 id="Virtual-Environment"><a href="#Virtual-Environment" class="headerlink" title="Virtual Environment"></a>Virtual Environment</h1><p>Combining with <code>virtualenvwrapper</code> is good, recommended.</p>
 <p>Install <code>virtualenv</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## install system-widely</span></span><br><span class="line"><span class="comment">## preferred way</span></span><br><span class="line"><span class="comment">## -m: run module</span></span><br><span class="line">sudo python3 -m pip install virtualenv</span><br><span class="line">sudo pip3 install virtualenv</span><br></pre></td></tr></table></figure></p>
 <p>Create virtualenv:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/virtualenvs &amp;&amp; <span class="built_in">cd</span> ~/virtualenvs</span><br><span class="line"></span><br><span class="line"><span class="comment">## create a virtual env called rates in python3</span></span><br><span class="line">virtualenv -p python3 rates_py3</span><br><span class="line">virtualenv -p python3.8.4 rates_py3</span><br><span class="line"><span class="comment">## python2 based</span></span><br><span class="line">virtualenv -p python2 rates_py2</span><br><span class="line"></span><br><span class="line"><span class="comment">## activate</span></span><br><span class="line"><span class="built_in">cd</span> rates_py3</span><br><span class="line"><span class="comment">## after this you will see a prefix </span></span><br><span class="line"><span class="comment">## 一旦激活，不管在其他任何地方，都是这个环境！</span></span><br><span class="line">. ./bin/activate</span><br><span class="line"><span class="comment">## check</span></span><br><span class="line">python -V</span><br><span class="line">pip -V</span><br><span class="line"><span class="comment">## you will only see less packages installed</span></span><br><span class="line">pip list</span><br><span class="line"></span><br><span class="line"><span class="comment">## then start your work in your project folder...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## deactivate</span></span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure></p>
@@ -1094,7 +1094,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">911k</span>
+    <span title="Symbols count total">912k</span>
   
 
   
