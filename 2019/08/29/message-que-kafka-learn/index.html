@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="IntroductionApach Kafka Official Doc What is Kafka:  https://www.youtube.com/watch?v=aj9CDZm0Glc https://www.youtube.com/watch?v=06iRM1Ghr1k Learn Kafka Guide  Open source, distributed, streaming plat">
+  <meta name="description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to topic in which partition? depends on event key (hash).[x] topic has its own set of partitions">
 <meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kafka Quick Start">
 <meta property="og:url" content="http://yoursite.com/2019/08/29/message-que-kafka-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="IntroductionApach Kafka Official Doc What is Kafka:  https://www.youtube.com/watch?v=aj9CDZm0Glc https://www.youtube.com/watch?v=06iRM1Ghr1k Learn Kafka Guide  Open source, distributed, streaming plat">
+<meta property="og:description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to topic in which partition? depends on event key (hash).[x] topic has its own set of partitions">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-02T04:50:30.255Z">
+<meta property="og:updated_time" content="2020-11-30T07:50:52.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka Quick Start">
-<meta name="twitter:description" content="IntroductionApach Kafka Official Doc What is Kafka:  https://www.youtube.com/watch?v=aj9CDZm0Glc https://www.youtube.com/watch?v=06iRM1Ghr1k Learn Kafka Guide  Open source, distributed, streaming plat">
+<meta name="twitter:description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to topic in which partition? depends on event key (hash).[x] topic has its own set of partitions">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-01 20:50:30" itemprop="dateModified" datetime="2020-11-01T20:50:30-08:00">2020-11-01</time>
+                <time title="Modified: 2020-11-29 23:50:52" itemprop="dateModified" datetime="2020-11-29T23:50:52-08:00">2020-11-29</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.4k</span>
+                <span title="Symbols count in article">6.1k</span>
               
 
               
@@ -508,39 +508,33 @@
       
 
       
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apach Kafka Official Doc</a></p>
-<p>What is Kafka:</p>
+        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>[ ] Kafka cluster communicate, how does the client know who is the leader?<br>[x] producer send message to topic in which partition? depends on event key (hash).<br>[x] topic has its own set of partitions, each partiton is assigned subset of coming events.<br>[x] how to ensure the message order of a entire topic? cannot, but order is guarantee in partition.<br>[x] <a href="https://www.quora.com/What-is-the-actual-role-of-Zookeeper-in-Kafka-What-benefits-will-I-miss-out-on-if-I-don%E2%80%99t-use-Zookeeper-and-Kafka-together" target="_blank" rel="noopener">zookeeper role</a> in kafka.</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="https://zhuanlan.zhihu.com/p/37405836" target="_blank" rel="noopener">Kafka简明教程</a><br><a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a><br><a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apach Kafka Official Doc</a><br><a href="https://www.ibm.com/cloud/learn/apache-kafka" target="_blank" rel="noopener">Learn Kafka Guide</a></p>
+<p>Youtube Kafka talks:</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=aj9CDZm0Glc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=aj9CDZm0Glc</a></li>
 <li><a href="https://www.youtube.com/watch?v=06iRM1Ghr1k" target="_blank" rel="noopener">https://www.youtube.com/watch?v=06iRM1Ghr1k</a></li>
-<li><a href="https://www.ibm.com/cloud/learn/apache-kafka" target="_blank" rel="noopener">Learn Kafka Guide</a></li>
 </ul>
-<p>Open source, distributed, streaming platform. For real-time event-driven applications, features:</p>
+<p>Note that message ordering for the entire topic is not guaranteed.<br>Producers and consumers are both kafka clients.</p>
+<p>Terms:</p>
 <ul>
-<li>fast</li>
-<li>high accuracy</li>
-<li>records in order</li>
-<li>fault tolerant</li>
+<li>topic (data send to or read from)</li>
+<li>producer (generate data)</li>
+<li>consumer (read data)</li>
+<li>broker (node in cluster)</li>
+<li>partition (divided from a topic)</li>
 </ul>
-<p>Use cases:</p>
-<ul>
-<li>decoupling complex system</li>
-<li>messaging pub-sub</li>
-<li>location tracking, Uber</li>
-<li>data gathering, real-time recommendation</li>
-</ul>
-<p>4 core APIs:</p>
-<ul>
-<li>producer: publish</li>
-<li>consumer: subscribe</li>
-<li>streams: add complex processing capabilities</li>
-<li>connector: connect with external systems</li>
-</ul>
-<p><a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a><br>Using Kafka as a central messaging bus. All incoming data is first placed in Kafka and all outgoing data is read from Kafka. Kafka centralizes communication between producers of data and consumers of that data.</p>
-<p>Kafka is a distributed messaging system providing fast, highly scalable and redundant messaging through a pub-sub model. Kafka’s distributed design gives it several advantages.</p>
-<p>All Kafka messages are organized into <code>topics</code>. A <code>consumer</code> pulls messages off of a Kafka topic while <code>producers</code> push messages into a Kafka <code>topic</code>. Kafka, as a distributed system, each node in the cluster is called a Kafka <code>broker</code>.</p>
-<p>Each Kafka topics are divided into a number of <code>partitions</code>. Partitions allow you to parallelize a topic by splitting the data in a particular topic across multiple brokers.</p>
-<p>Each message within a partition has an identifier called its <code>offset</code>. The <code>offset</code> the ordering of messages as an immutable sequence.</p>
+<p>A topic is similar to a folder in a filesystem, and the events are the files in that folder. An example topic name could be “payments”. Topics in Kafka are always multi-producer and multi-subscriber: a topic can have zero, one, or many producers that write events to it, as well as zero, one, or many consumers that subscribe to these events.</p>
+<p>Topics are partitioned, meaning a topic is spread over a number of “buckets” located on different Kafka brokers. This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to <strong>one</strong> of the topic’s partitions. Events with the same event key (e.g., a customer or vehicle ID) are written to the same partition, Kafka guarantees that any consumer of a given <code>topic-partition</code> will always read that partition’s events in exactly the same order as they were written.</p>
+<p>Kafka clents have 3 different levels of consistency, see <code>Consistency as a Kafka Client</code> in <a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a>.</p>
+<h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><p>Use Vanguard with Java installed to do the expirement:<br><a href="http://kafka.apache.org/quickstart" target="_blank" rel="noopener">http://kafka.apache.org/quickstart</a></p>
+<p>Pluralsight deploy Kafka cluster course uses java with gradle to run demos, the kafka and zookeeper are deployed as docker containers in docker-compose.</p>
+<h1 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h1><p>Producer send event to broker and broker place the event in one of the partitions.<br>比如这里有3个partitions, 2个consumers 在一个consumer group中，则consumer2 会对应到p2 p3处理事件，如果后来增加一个consumer3在这个consumer group中，则kafka 会partition rebalance p2 或 p3 到新增的消费者中，于是就变成了每个consumer 对应一个partiton。这样处理就不会因为consumer 数量的变化而导致event被重复处理或者没有被处理，也增加了throughtput. </p>
+<p>如果# of consumer &gt; # of partition 则多余的consumer 被闲置了，因此partition 的数量几乎决定了consumer 可有的最大数量。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                              broker              consumer group</span><br><span class="line">                        +---------------+        +------------+</span><br><span class="line">                        |  partition1---|--------|-&gt;consumer1 |</span><br><span class="line">           (batch send) |/              |        |            |</span><br><span class="line">producer --------------&gt;|- partition2---|--------|-&gt;consumer2 |</span><br><span class="line">                        |\              |        |/           |</span><br><span class="line">                        |  partition3---|--------|            |</span><br><span class="line">                        +---------------+        +------------+</span><br></pre></td></tr></table></figure></p>
+<p>关于event送到哪个partition是producer中key 决定的，所以如何选择key 很重要，它决定了送到partition 中的event 数量是否平衡，还要注意，kafka event order matters only within a single partition. 所以如果要保重某一类event 的顺序，则需要把它们划分到同一个partition中。Custom partitioning is possible and is reserved for special cases.</p>
+<h1 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h1><p>Producer 中的message 在send后其实是到了一个buffer，然后满足一定条件再batch send, 可以设置batch size，compression等。This is a tradeoff between latency and throughput.</p>
+<p>In kafka host <code>/var/lib/kafka/data</code> folder, partitions are stored here. 可以通过这事batch size大小去观察固定数量的event增加的空间大小，一般batch size越大，越节约broker的disk space.</p>
+<h1 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h1><p>Offset<br>Heart beat for health checking</p>
 
       
     </div>
@@ -1057,7 +1051,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-Start"><span class="nav-number">3.</span> <span class="nav-text">Quick Start</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Partition"><span class="nav-number">4.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Producer"><span class="nav-number">5.</span> <span class="nav-text">Producer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consumer"><span class="nav-number">6.</span> <span class="nav-text">Consumer</span></a></li></ol></div>
             
 
           </div>
@@ -1089,7 +1083,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">925k</span>
+    <span title="Symbols count total">932k</span>
   
 
   

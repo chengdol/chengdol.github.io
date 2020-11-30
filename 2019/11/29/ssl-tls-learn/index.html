@@ -96,22 +96,22 @@
 
 
 
-  <meta name="description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
+  <meta name="description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may n">
 <meta name="keywords" content="linux,ssl,tls">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSL&#x2F;TLS Demystify">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/ssl-tls-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
+<meta property="og:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may n">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1BqEQwaHXUIBIJguBGifnGIc_AnHJtoBB">
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi">
-<meta property="og:updated_time" content="2020-11-16T07:28:06.132Z">
+<meta property="og:updated_time" content="2020-11-30T07:50:52.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL&#x2F;TLS Demystify">
-<meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. https://www.ssllabs.com/index.html:The quality of SSL varies, you have SSL setup doesn’t mean your si">
+<meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may n">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1BqEQwaHXUIBIJguBGifnGIc_AnHJtoBB">
 
 
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-15 23:28:06" itemprop="dateModified" datetime="2020-11-15T23:28:06-08:00">2020-11-15</time>
+                <time title="Modified: 2020-11-29 23:50:52" itemprop="dateModified" datetime="2020-11-29T23:50:52-08:00">2020-11-29</time>
               
             
           </span>
@@ -489,7 +489,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">22k</span>
+                <span title="Symbols count in article">24k</span>
               
 
               
@@ -514,24 +514,26 @@
 
       
         <p>This is all about securing servers with <code>SSL/TLS certificates</code> from udemy course <strong>SSL complete guide</strong>.</p>
-<p><a href="https://www.ssllabs.com/index.html" target="_blank" rel="noopener">https://www.ssllabs.com/index.html</a>:<br>The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may not work correctly, sub-optimal.</p>
+<p>The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may not work correctly, sub-optimal, you can test it here:<br><a href="https://www.ssllabs.com/index.html" target="_blank" rel="noopener">https://www.ssllabs.com/index.html</a></p>
 <p>If you click the <code>lock</code> icon at left of the website address, it will show you if the connection is secured or not, it’s certificates, cookies and so on. further click the certificate icon, you will see <code>root CA</code>, <code>intermediate CA</code> and <code>certificate</code>.</p>
 <blockquote>
 <p>Install wireshark on Mac, go to download the <code>stable</code> version dmg package and double click to install.</p>
 </blockquote>
 <blockquote>
-<p>You can use chrome inspect -&gt; Network to see traffic details or use wireshark</p>
+<p>You can use Chrome inspect -&gt; Network to see traffic or use wireshark</p>
 </blockquote>
-<p>for example, from <code>Network</code> section, check HEADER information you can get IP address of source website, or just use <code>host</code>, <code>nslookup</code> commands to get IP address.</p>
+<p>For example, from <code>Network</code> select one item, check <code>HEADER</code> information you can get IP address of remote server, or just use <code>host</code>, <code>nslookup</code> commands to get IP address.</p>
 <blockquote>
-<p>Interesting, from <code>Network</code> I see the the chrome browser actually uses IPV6 address talk to server, for example facebook and some other sites. see this <a href="https://superuser.com/questions/1199129/how-web-browser-determines-when-to-use-ipv4-or-ipv6-to-connect-to-the-destinatio" target="_blank" rel="noopener">question</a></p>
+<p>Interesting, from <code>Network</code> I see the the chrome browser sometime uses IPV6 address talk to server, for example facebook and some other sites. see this <a href="https://superuser.com/questions/1199129/how-web-browser-determines-when-to-use-ipv4-or-ipv6-to-connect-to-the-destinatio" target="_blank" rel="noopener">question</a></p>
 </blockquote>
+<p><strong>大概总结一下:</strong><br>openssl 目前有command 一次性生成(或分开生成 private key -&gt; CSR -&gt; self-signed certificate) private key 和 (self-signed) certificate, 一般用pem 的格式。这2个东西是放在web server上的，也可以把private key 和 certificate 合并到一个pem 文件中。还要注意的是，这里没有用到public key，但public key可以从 private key 中生成(其实里面已经包含了public key的信息)。还要注意，web server 给 client的certificate 就只是certificate，不会有private key尽管它们可能在一个pem file中。</p>
+<p>在client部分，对于slef-signed certificate, 需要设置操作系统trust it，但如果是用的let’s encrypt，已经OK了。联想一下TLS handshake, 得到web serverd的certificate 后，会逐层验证到root CA(会下载所有相关的certificates), 由于client自身已经携带了well-known root CA的证书了，并且也知道CA的public key，所以就会知道这个root CA是否合法。如果合法，就会进行symmetric key的生成和交换，用于之后的数据传输。</p>
+<p>具体命令操作可以参考: <code>&lt;&lt;Set up Secure Docker Registry Container&gt;&gt;</code><br>如果要把这个过程自动化，比如自动给网站安排证书，更新，撤销等，需要用到一些框架机制，比如certbot，见下面一章:</p>
 <h1 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h1><p>Get free HTTPs certificates forever, it utilizes <code>Let&#39;s Encrypt</code> CA to automatically refresh the certificate for your web site:<br><a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a></p>
-<p>How it works:<br><a href="https://letsencrypt.org/how-it-works/" target="_blank" rel="noopener">https://letsencrypt.org/how-it-works/</a><br>This is accomplished by running a certificate management agent on the web server.<br>There are two steps to this process. First, the agent proves to the CA that the web server controls a domain. Then, the agent can request, renew, and revoke certificates for that domain.</p>
-<h1 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h1><ul>
-<li><code>symmetric</code> encryption, the same key is used by both sides, for example: <code>AES</code>. This algorithm is embedded in SSL with HTTPS protocol.</li>
-<li><code>asymmetric</code> encryption, for example: <code>RSA</code>.</li>
-</ul>
+<p>How it works:<br><a href="https://letsencrypt.org/getting-started/" target="_blank" rel="noopener">https://letsencrypt.org/getting-started/</a><br><a href="https://letsencrypt.org/how-it-works/" target="_blank" rel="noopener">https://letsencrypt.org/how-it-works/</a><br>This is accomplished by running a certificate management agent on the web server.</p>
+<p>To understand how the technology works, let’s walk through the process of setting up <code>https://example.com/</code> with a certificate management agent that supports Let’s Encrypt.</p>
+<p>There are two steps to this process. First, the agent proves to the CA that the web server controls a domain. Then, the agent can request, renew, and revoke certificates for that domain.</p>
+<h1 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h1><p><code>symmetric</code> encryption, the same key is used by both sides, for example: <code>AES</code>. This algorithm is embedded in SSL with HTTPS protocol.<br><code>asymmetric</code> encryption, for example: <code>RSA</code>.</p>
 <h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>How does hash work to verify data integrity:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data + hash(data)  ---------&gt; data + hash(data)</span><br><span class="line">                                |         |</span><br><span class="line">                                |--hash--&gt;| (compare if they are the same)</span><br></pre></td></tr></table></figure></p>
 <p>Notice that in database the password is hashed, not plain text.</p>
 <p>Hash algorithms: <code>MD5</code>, <code>SHA</code>…</p>
@@ -543,22 +545,17 @@
 <li>SHA-1: 160 bits</li>
 <li>SHA-256: 256 bits</li>
 <li><p>SHA-512: 512 bits</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shasum -a 256 -t test.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## SHA-256</span></span><br><span class="line">shasum -a 256 -t test.txt</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>HMAC: can be used with md5 or sha. In cryptography, an HMAC (sometimes expanded as either keyed-hash message authentication code or hash-based message authentication code) is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic <code>key</code>. It may be used to simultaneously verify <code>both</code> the data integrity and the authenticity of a message, as with any MAC. Any cryptographic hash function, such as SHA-256 or SHA-3, may be used in the calculation of an HMAC.</p>
 </li>
 </ul>
-<h2 id="Asymmetric-Keys"><a href="#Asymmetric-Keys" class="headerlink" title="Asymmetric Keys"></a>Asymmetric Keys</h2><ul>
-<li>encryption<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data -------------&gt; code =========&gt;  code -------------&gt; data  (owner side)</span><br><span class="line">      public key                          private key</span><br><span class="line">      encryption                          decryption</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h2 id="Asymmetric-Keys"><a href="#Asymmetric-Keys" class="headerlink" title="Asymmetric Keys"></a>Asymmetric Keys</h2><p><code>Encryption</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data -------------&gt; code =========&gt;  code -------------&gt; data  (owner side)</span><br><span class="line">      public key                          private key</span><br><span class="line">      encryption                          decryption</span><br></pre></td></tr></table></figure></p>
 <p>Usually(but not necessarily), the keys are <code>interchangeable</code>, in the sense that if key A encrypts a message, then B can decrypt it, and if key B encrypts a message, then key A can decrypt it. While common, this property is not essential to asymmetric encryption.</p>
-<ul>
-<li>signing<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">           data                          |----------&gt; hash value</span><br><span class="line">            | (hash)     ==========&gt;     |  compare      /|\</span><br><span class="line">            |                            |                |</span><br><span class="line">        private key encrypt              |           public key decrypte</span><br><span class="line">           \|/                           | (hash)         |</span><br><span class="line">data   +   encrypted hash              data    +   encrypted hash</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<p><code>Signature</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">            data                          |----------&gt; hash value</span><br><span class="line">             | (hash)     ==========&gt;     |  compare      /|\</span><br><span class="line">             |                            |                |</span><br><span class="line">         private key encrypt              |           public key decrypte</span><br><span class="line">            \|<span class="regexp">/                           | (hash)         |</span></span><br><span class="line"><span class="regexp">data   +   encrypted hash              data    +   encrypted hash</span></span><br></pre></td></tr></table></figure></p>
 <p>Signing ensures the data is sent by the <code>owner of private key</code> and not has been modified inbetween.</p>
-<p>What is the difference of digest and signature?<br><a href="https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10510_.htm" target="_blank" rel="noopener">https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10510_.htm</a><br>A message digest is a fixed size numeric representation of the contents of a message, computed by a hash function. A message digest can be encrypted, forming a digital signature.</p>
+<p>What is the difference of digest and signature?<br><a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.2.0/com.ibm.mq.sec.doc/q009810_.htm" target="_blank" rel="noopener">https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.2.0/com.ibm.mq.sec.doc/q009810_.htm</a><br>A message <code>digest</code> is a fixed size numeric representation of the contents of a message, computed by a hash function. A message digest can be encrypted by the sender’s private key, forming a <code>digital signature</code>.</p>
+<p>More readings:<br><a href="https://stackoverflow.com/questions/18257185/how-does-a-public-key-verify-a-signature" target="_blank" rel="noopener">How does a public key verify a signature?</a></p>
 <h2 id="PKI"><a href="#PKI" class="headerlink" title="PKI"></a>PKI</h2><p><code>public key infrastructure</code> is a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public-key encryption. The purpose of a PKI is to facilitate the secure electronic transfer of information for a range of network activities such as e-commerce, internet banking and confidential email.</p>
 <h2 id="Certificate"><a href="#Certificate" class="headerlink" title="Certificate"></a>Certificate</h2><p>A file with some contents:</p>
 <ol>
@@ -567,23 +564,16 @@
 <li>signature (RSA created, made by issuer)</li>
 <li>public key (from owner, we then use this public key to HTTPS)</li>
 </ol>
-<p>The basic rule is we trust the CA (the issuer) so on the certificate owner.</p>
-<blockquote>
-<p>Self-signed certificate: issued and signed by the owner.</p>
-</blockquote>
-<p>More readings:<br><a href="https://stackoverflow.com/questions/18257185/how-does-a-public-key-verify-a-signature" target="_blank" rel="noopener">How does a public key verify a signature?</a></p>
+<p><code>Self-signed certificate</code>: issued and signed by the owner.<br>The basic rule is we trust the CA (the issuer) so on the certificate owner.</p>
 <h2 id="Why-we-need-intermediary-CAs"><a href="#Why-we-need-intermediary-CAs" class="headerlink" title="Why we need intermediary CAs?"></a>Why we need intermediary CAs?</h2><p>There are not so much public root CAs because of problem of trust. Actually anybody can create own root CA but nobody will trust it. That’s why there is limited set of global root CAs that are trusted worldwide by operating systems and browsers. You can view list of such global CAs with their root certificates in any browser or OS.</p>
 <p>Such root CAs have certificates with long period of validity and their main responsibility is simple create “source of trust”. That’s why they don’t issue certificates to end users to avoid additional work and minimize risk that their private keys will be compromised. Intermediate CAs certificates don’t necessarily need to be in the list of trusted certificates in the OS or browser. They need simply be issued by trusted root CA.</p>
-<h1 id="Chain-of-Trust"><a href="#Chain-of-Trust" class="headerlink" title="Chain of Trust"></a>Chain of Trust</h1><p><code>openssl</code> command:</p>
-<p>Generate RSA private key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate private.pem file private key with aes256 encryption method</span></span><br><span class="line"><span class="comment">## will ask you input pass phrase </span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate public key from above private key</span></span><br><span class="line"><span class="comment">## will ask you pass phrase from private key</span></span><br><span class="line">openssl rsa -<span class="keyword">in</span> private.pem -outform PEM -pubout -out public.pem</span><br></pre></td></tr></table></figure></p>
-<h2 id="Root-CAs-in-OS"><a href="#Root-CAs-in-OS" class="headerlink" title="Root CAs in OS"></a>Root CAs in OS</h2><ul>
-<li>How does web browser trust the root CAs and certificates?<br>The OS ships a list of trusted certificates, in Mac search <code>Keychain Access</code>. </li>
-</ul>
+<h1 id="Chain-of-Trust"><a href="#Chain-of-Trust" class="headerlink" title="Chain of Trust"></a>Chain of Trust</h1><p>Let’s see <code>openssl</code> command, generate RSA private key and public key:<br>这里没有谈到self-signed certificate,见后面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate private.pem file private key with aes256 encryption method</span></span><br><span class="line"><span class="comment">## will ask you input pass phrase </span></span><br><span class="line"><span class="comment">## 实际上private.pem 包含了public key 的信息了！</span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate public key from above private key</span></span><br><span class="line"><span class="comment">## will ask you pass phrase from private key</span></span><br><span class="line">openssl rsa -<span class="keyword">in</span> private.pem -outform PEM -pubout -out public.pem</span><br></pre></td></tr></table></figure></p>
+<h2 id="Root-CAs-in-OS"><a href="#Root-CAs-in-OS" class="headerlink" title="Root CAs in OS"></a>Root CAs in OS</h2><p>How does web browser trust the root CAs and certificates?<br>The OS ships a list of trusted certificates, in Mac search <code>Keychain Access</code>. </p>
 <p>In Linux, see this <a href="https://blog.confirm.ch/adding-a-new-trusted-certificate-authority/" target="_blank" rel="noopener">link</a>: On Red Hat/Centos, It includes all trusted certificate authorities under <code>/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt</code>. Just add your new certificate authority file(s) to the directory <code>/etc/pki/ca-trust/source/anchors</code>, then run <code>/bin/update-ca-trust</code> for update the certificate authority file.</p>
-<h2 id="Verify-chain-of-trust"><a href="#Verify-chain-of-trust" class="headerlink" title="Verify chain of trust"></a>Verify chain of trust</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           root CA         |     intermediate CA       |        end user</span><br><span class="line">----------------------------------------------------------------------------------------</span><br><span class="line">  self-singed certificate  |     signed by root CA     |   signed by intermediate CA</span><br><span class="line">----------------------------------------------------------------------------------------</span><br><span class="line">   signature: encrpty      |    signature: encrpty     |       signature: encrpty</span><br><span class="line"> by private key of root CA | by private key of root CA |  by private key of intermediate</span><br><span class="line">                           |                           |  CA</span><br></pre></td></tr></table></figure>
+<h2 id="Verify-chain-of-trust"><a href="#Verify-chain-of-trust" class="headerlink" title="Verify chain of trust"></a>Verify chain of trust</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           <span class="string">root</span> <span class="string">CA</span>         <span class="string">|     intermediate CA       |        end user</span></span><br><span class="line"><span class="string">----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="string">  self-singed certificate  |     signed by root CA     |   signed by intermediate CA</span></span><br><span class="line"><span class="string">----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="string"></span><span class="attr">   signature:</span> <span class="string">encrpty</span>      <span class="string">|    signature: encrpty     |       signature: encrpty</span></span><br><span class="line"><span class="string"> by private key of root CA | by private key of root CA |  by private key of intermediate</span></span><br><span class="line"><span class="string">                           |                           |  CA</span></span><br></pre></td></tr></table></figure>
 <p><code>CSR</code>: certificate signing request (the root CA receive CSR from intermediate CA, the signature of intermediate CA is signed by root CA, the root CA also provide issuer info for intermediate CA. Similarly, end user is signed by intermediate CA)</p>
-<p>Web server sends you its certificate and all intermediate certificates. Then on your side start the verification process from end user certificates back to top intermediate certificate then root certificate.</p>
-<p>There is a online tool to check the certificates chain: <a href="https://www.geocerts.com/ssl-checker" target="_blank" rel="noopener">https://www.geocerts.com/ssl-checker</a>.</p>
+<p>Web server (the end user) sends you its certificate and all intermediate certificates. Then on your side start the verification process from end user certificates back to top intermediate certificate then root certificate. 这里如何验证的: To verify a certificate, a browser will obtain a sequence of certificates, each one having signed the next certificate in the sequence, connecting the signing CA’s root to the server’s certificate.</p>
+<p>There is a online tool to check the certificates chain:<br><a href="https://www.geocerts.com/ssl-checker" target="_blank" rel="noopener">https://www.geocerts.com/ssl-checker</a>.</p>
 <h1 id="Create-Self-signed-Certificate"><a href="#Create-Self-signed-Certificate" class="headerlink" title="Create Self-signed Certificate"></a>Create Self-signed Certificate</h1><p><a href="https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs#generating-csrs" target="_blank" rel="noopener">Openssl Essential, several ways to generate certificates</a></p>
 <p>Before creating certificate, you need <code>CSR</code>, and before <code>CSR</code>, you need first generate asymmetric keys. (Becuase certificate needs to include signature from upstream and also your public key)</p>
 <blockquote>
@@ -1190,7 +1180,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">925k</span>
+    <span title="Symbols count total">932k</span>
   
 
   
