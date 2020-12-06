@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to topic in which partition? depends on event key (hash).[x] topic has its own set of partitions">
-<meta name="keywords" content="kafka">
+  <meta name="description" content="Parameter expansion对于变量值的检查(比如是否是dash 开头)，提取(比如提取一个文件名去掉后缀)很有帮助，这个手册概括了所有情况，但可能不好理解，可以动手试一下就知道了, Shell parameter expansion.  其实用pipeline 也可以达到相同的结构，但是会麻烦一些。 这是中文总结，还不错Shell扩展(Shell Expansions)-参数扩展(Sh">
+<meta name="keywords" content="shell,regular expression,parameter expansion">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kafka Quick Start">
-<meta property="og:url" content="http://yoursite.com/2019/08/29/message-que-kafka-learn/index.html">
+<meta property="og:title" content="Shell Pattern Matching">
+<meta property="og:url" content="http://yoursite.com/2020/11/28/shell-pattern-match/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to topic in which partition? depends on event key (hash).[x] topic has its own set of partitions">
+<meta property="og:description" content="Parameter expansion对于变量值的检查(比如是否是dash 开头)，提取(比如提取一个文件名去掉后缀)很有帮助，这个手册概括了所有情况，但可能不好理解，可以动手试一下就知道了, Shell parameter expansion.  其实用pipeline 也可以达到相同的结构，但是会麻烦一些。 这是中文总结，还不错Shell扩展(Shell Expansions)-参数扩展(Sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-30T07:50:52.921Z">
+<meta property="og:updated_time" content="2020-12-06T08:06:01.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kafka Quick Start">
-<meta name="twitter:description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to topic in which partition? depends on event key (hash).[x] topic has its own set of partitions">
+<meta name="twitter:title" content="Shell Pattern Matching">
+<meta name="twitter:description" content="Parameter expansion对于变量值的检查(比如是否是dash 开头)，提取(比如提取一个文件名去掉后缀)很有帮助，这个手册概括了所有情况，但可能不好理解，可以动手试一下就知道了, Shell parameter expansion.  其实用pipeline 也可以达到相同的结构，但是会麻烦一些。 这是中文总结，还不错Shell扩展(Shell Expansions)-参数扩展(Sh">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/29/message-que-kafka-learn/">
+  <link rel="canonical" href="http://yoursite.com/2020/11/28/shell-pattern-match/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Kafka Quick Start | 海胆阶段's Blog</title>
+  <title>Shell Pattern Matching | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">129</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">130</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">209</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">210</span></a>
 
   </li>
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/message-que-kafka-learn/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/28/shell-pattern-match/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kafka Quick Start
+          <h1 class="post-title" itemprop="name headline">Shell Pattern Matching
 
               
             
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2019-08-29 10:18:29" itemprop="dateCreated datePublished" datetime="2019-08-29T10:18:29-07:00">2019-08-29</time>
+              <time title="Created: 2020-11-28 12:50:48" itemprop="dateCreated datePublished" datetime="2020-11-28T12:50:48-08:00">2020-11-28</time>
             
 
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-29 23:50:52" itemprop="dateModified" datetime="2020-11-29T23:50:52-08:00">2020-11-29</time>
+                <time title="Modified: 2020-12-06 00:06:01" itemprop="dateModified" datetime="2020-12-06T00:06:01-08:00">2020-12-06</time>
               
             
           </span>
@@ -456,7 +456,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a></span>
 
                 
                 
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.1k</span>
+                <span title="Symbols count in article">26k</span>
               
 
               
@@ -508,33 +508,75 @@
       
 
       
-        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>[ ] Kafka cluster communicate, how does the client know who is the leader?<br>[x] producer send message to topic in which partition? depends on event key (hash).<br>[x] topic has its own set of partitions, each partiton is assigned subset of coming events.<br>[x] how to ensure the message order of a entire topic? cannot, but order is guarantee in partition.<br>[x] <a href="https://www.quora.com/What-is-the-actual-role-of-Zookeeper-in-Kafka-What-benefits-will-I-miss-out-on-if-I-don%E2%80%99t-use-Zookeeper-and-Kafka-together" target="_blank" rel="noopener">zookeeper role</a> in kafka.</p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="https://zhuanlan.zhihu.com/p/37405836" target="_blank" rel="noopener">Kafka简明教程</a><br><a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a><br><a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apach Kafka Official Doc</a><br><a href="https://www.ibm.com/cloud/learn/apache-kafka" target="_blank" rel="noopener">Learn Kafka Guide</a></p>
-<p>Youtube Kafka talks:</p>
+        <h1 id="Parameter-expansion"><a href="#Parameter-expansion" class="headerlink" title="Parameter expansion"></a>Parameter expansion</h1><p>对于变量值的检查(比如是否是dash 开头)，提取(比如提取一个文件名去掉后缀)很有帮助，这个手册概括了所有情况，但可能不好理解，可以动手试一下就知道了, <a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html" target="_blank" rel="noopener">Shell parameter expansion</a>.  其实用pipeline 也可以达到相同的结构，但是会麻烦一些。</p>
+<p>这是中文总结，还不错<a href="https://juejin.cn/post/6844903842966929422" target="_blank" rel="noopener">Shell扩展(Shell Expansions)-参数扩展(Shell Parameter Expansion)</a></p>
+<p>注意<code>null</code> 和 <code>unset</code> variable的区别, <code>set -u</code> 可以检测没有定义的variable (也就是unset), <code>null</code> 在这里就是empty的意思，比如<code>var=</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var=</span><br><span class="line"><span class="comment">## 空</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span></span><br><span class="line"><span class="comment">## true</span></span><br><span class="line">[[ -z <span class="variable">$var</span> ]]</span><br><span class="line"><span class="comment">## false</span></span><br><span class="line">[[ -n <span class="variable">$var</span> ]]</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> -u</span><br><span class="line"><span class="built_in">unset</span> var</span><br><span class="line"><span class="comment">## 报错</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span></span><br></pre></td></tr></table></figure></p>
+<p>Bash’s various forms of parameter expansion can also distinguish between unset and null values:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## `w` can be literal or another variable</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## if a is unset, value of w is used</span></span><br><span class="line">a=<span class="variable">$&#123;a-w&#125;</span></span><br><span class="line"><span class="comment">## if a is unset or null, value of w is used</span></span><br><span class="line"><span class="comment">## for example, used for positional parameter init</span></span><br><span class="line">a=<span class="variable">$&#123;a:-w&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## if a is unset or null, value of w is assigned to a</span></span><br><span class="line"><span class="comment">## 不能用于positional parameters的赋值</span></span><br><span class="line"><span class="variable">$&#123;a:=w&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## if a is unset or null, w is written to stderr</span></span><br><span class="line">a=<span class="variable">$&#123;a:?w&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>Indirect parameter expansion:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parameter=<span class="string">"var"</span></span><br><span class="line">var=<span class="string">"hello"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## echo is hello</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;!parameter&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>Substring expansion，来自上面的链接中 <code>Shell parameter expansion</code> 的例子:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">$ string=01234567890abcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string:7&#125;</span></span><br><span class="line">7890abcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string:7:0&#125;</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string:7:2&#125;</span></span><br><span class="line">78</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string:7:-2&#125;</span></span><br><span class="line">7890abcdef</span><br><span class="line"><span class="comment">## 要空格, 防止:- 混淆</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string: -7&#125;</span></span><br><span class="line">bcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string: -7:0&#125;</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string: -7:2&#125;</span></span><br><span class="line">bc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;string: -7:-2&#125;</span></span><br><span class="line">bcdef</span><br><span class="line"></span><br><span class="line"><span class="comment">## set $1 positional parameter</span></span><br><span class="line">$ <span class="built_in">set</span> -- 01234567890abcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1:7&#125;</span></span><br><span class="line">7890abcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1:7:0&#125;</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1:7:2&#125;</span></span><br><span class="line">78</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1:7:-2&#125;</span></span><br><span class="line">7890abcdef</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1: -7&#125;</span></span><br><span class="line">bcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1: -7:0&#125;</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1: -7:2&#125;</span></span><br><span class="line">bc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;1: -7:-2&#125;</span></span><br><span class="line">bcdef</span><br><span class="line"></span><br><span class="line"><span class="comment">## array</span></span><br><span class="line">$ array[0]=01234567890abcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]:7&#125;</span></span><br><span class="line">7890abcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]:7:0&#125;</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]:7:2&#125;</span></span><br><span class="line">78</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]:7:-2&#125;</span></span><br><span class="line">7890abcdef</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]: -7&#125;</span></span><br><span class="line">bcdefgh</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]: -7:0&#125;</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]: -7:2&#125;</span></span><br><span class="line">bc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$&#123;array[0]: -7:-2&#125;</span></span><br><span class="line">bcdef</span><br></pre></td></tr></table></figure></p>
+<p>其他常见的用法:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 检查第一个位置参数是不是以-开头，扩展结果是删除最短的match部分</span></span><br><span class="line"><span class="comment">## 对 $&#123;1&#125; 的操作</span></span><br><span class="line"><span class="variable">$&#123;1#-&#125;</span></span><br><span class="line"><span class="comment">## 同上，但删除最长的match部分</span></span><br><span class="line"><span class="variable">$&#123;1##-&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>其实后面可以使用<a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching" target="_blank" rel="noopener">pattern matching</a>, 比如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$&#123;1#+(-)&#125;</span></span><br><span class="line"><span class="variable">$&#123;1##+(-)&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Shell-Globs"><a href="#Shell-Globs" class="headerlink" title="Shell Globs"></a>Shell Globs</h1><p>A glob is a wildcard that is processed by the shell and expands into a list of arguments.</p>
+<p>Glob is like regular expression but less expressive and eaiser to use. Glob match file names, for example <code>ls [0-9]?file*.txt</code>, whereas regular expression match text, for example <code>ls | grep &#39;[0-9].file.*\.txt&#39;</code>. Sometimes the funtionality can look blurred depending on how you use it.</p>
+<p>In <code>ls [0-9]?file*.txt</code>, <code>ls</code> does not support regular expression, shell expands the glob and used by <code>ls</code>.</p>
+<p><code>grep &#39;^A.*\.txt&#39; *.txt</code>, grep is using regular expression on the files context that file name is expanded by shell from glob.</p>
+<p>Shell expansion types and execution order (precedence from up to bottom):</p>
+<ol>
+<li>brace expansion <code>touch file{1..2}</code></li>
+<li>tile expansion <code>ls ~</code></li>
+<li>parameter and variable expansion <code>${1:1:1}</code></li>
+<li>command substitution $() or <code></code></li>
+<li>word splitting</li>
+<li>arithmetic expansion <code>echo $((11 + 22))</code></li>
+<li>filename expansion <code>echo file{1..2}.*</code></li>
+<li>quote removal <code>echo &quot;$USER&quot;</code></li>
+</ol>
+<h2 id="Wildcards"><a href="#Wildcards" class="headerlink" title="Wildcards"></a>Wildcards</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls *.txt</span><br><span class="line"><span class="comment"># ? as one char</span></span><br><span class="line">ls file?.txt</span><br><span class="line">ls file??.txt</span><br></pre></td></tr></table></figure>
+<h2 id="Character-Set"><a href="#Character-Set" class="headerlink" title="Character Set"></a>Character Set</h2><p>注意和brace expansion <code>{}</code> 区别，brace expansion是展开，character set是一种match:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># character set</span></span><br><span class="line"><span class="comment">## match one of them</span></span><br><span class="line">ls [123abc]file.txt</span><br><span class="line">ls file[0-9].txt</span><br><span class="line">ls file[a-z9].txt</span><br><span class="line"></span><br><span class="line"><span class="comment">## 这个显示的结果和bash设置有关</span></span><br><span class="line"><span class="comment">## locale, In bash terminal, set LC_COLLATE=C (collation)</span></span><br><span class="line">ls file[A-G].txt</span><br><span class="line"><span class="comment">## ! is inversion, not include a-z</span></span><br><span class="line">ls file[!a-z].txt</span><br><span class="line"><span class="comment">## put at end to match !, it is special char</span></span><br><span class="line">ls file[a-z!].txt</span><br><span class="line">ls file[az-].txt</span><br></pre></td></tr></table></figure></p>
+<h2 id="Character-classes"><a href="#Character-classes" class="headerlink" title="Character classes"></a>Character classes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## [:upper:] is the character class</span></span><br><span class="line">ls file[[:upper:]?].txt</span><br><span class="line">ls file[[:lower:]?].txt</span><br><span class="line">ls file[![:lower:][:space:]].txt</span><br></pre></td></tr></table></figure>
+<p>Others class commonly:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># numbers</span></span><br><span class="line">[:digit:]</span><br><span class="line"><span class="comment"># upper and lower case</span></span><br><span class="line">[:alpha:]</span><br><span class="line"><span class="comment"># upper and lower and numbers</span></span><br><span class="line">[:alnum:]</span><br><span class="line"><span class="comment"># spaces, tabs, newlines</span></span><br><span class="line">[:space:]</span><br></pre></td></tr></table></figure></p>
+<h2 id="Shell-globbing-Options"><a href="#Shell-globbing-Options" class="headerlink" title="Shell globbing Options"></a>Shell globbing Options</h2><p>使用<code>shopt</code> command的设置 glob的一些特性，比如设置nullglob, extglob, etc.</p>
+<p><code>shopt -s nocasematch</code>, set bash case-insensitive match in <code>case</code> or <code>[[ ]]</code> condition.<br>这个是从bash tutorial 中文版中学到的, <code>shopt</code> is bash built-in setting, unlike <code>set</code> is from POSIX.</p>
+<h1 id="Extended-Globs"><a href="#Extended-Globs" class="headerlink" title="Extended Globs"></a>Extended Globs</h1><p>You need to open it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shopt</span> | grep extglob</span><br><span class="line"><span class="built_in">shopt</span> -s extglob</span><br></pre></td></tr></table></figure></p>
+<p>For example, create test cases:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch file1.png photo.jpg photo photo.png file.png photo.png.jpg</span><br><span class="line">rm -f file1.png photo.jpg photo photo.png file.png photo.png.jpg</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## @(match): match one or others</span></span><br><span class="line"><span class="comment">## match photo.jpg</span></span><br><span class="line">ls photo@(.jpg)</span><br><span class="line">ls @(file)</span><br><span class="line"><span class="comment">## photo.jpg or photo.png</span></span><br><span class="line">ls photo@(.jpg|.png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## ?(match): match 0 or 1</span></span><br><span class="line">ls photo?(.jpg|.png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## +(match): match 1 or more</span></span><br><span class="line">ls photo+(.jpg|.png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## *(match): match 0 or more</span></span><br><span class="line">ls photo*(.jpg|.png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## !(match): invert match</span></span><br><span class="line"><span class="comment">## all files that do not have photo or file name and do not end with jpg or png</span></span><br><span class="line">!(+(file|photo)*+(.jpg|.png))</span><br></pre></td></tr></table></figure>
+<p>主要用在command line, if condition, case condition上，比regular expression matching更快。</p>
+<h1 id="Brace-Expansion"><a href="#Brace-Expansion" class="headerlink" title="Brace Expansion"></a>Brace Expansion</h1><p>这个用在比如for loop的counter, create file pre/suffix.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create file1.txt file2.txt file4.txt</span></span><br><span class="line">touch file&#123;1,2,4&#125;.txt</span><br><span class="line">touch file&#123;1..1000&#125;.txt</span><br><span class="line"></span><br><span class="line"><span class="comment">## expand from left to right</span></span><br><span class="line"><span class="built_in">echo</span> &#123;a..c&#125;&#123;10..15&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## specify increase step</span></span><br><span class="line"><span class="built_in">echo</span> &#123;1..100..2&#125;</span><br><span class="line"><span class="comment">## can pad heading 0</span></span><br><span class="line"><span class="built_in">echo</span> &#123;0001..10..2&#125;</span><br><span class="line"><span class="built_in">echo</span> &#123;10..0&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> &#123;a..z..2&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## can be nested</span></span><br><span class="line"><span class="built_in">echo</span> file-201&#123;1..9&#125;-&#123;0&#123;0..9&#125;,1&#123;1..2&#125;&#125;-&#123;1..30&#125;.&#123;tar,bak&#125;.&#123;tgz,bz2&#125;</span><br><span class="line"><span class="comment">## create folder structure</span></span><br><span class="line">mkdir -p 20&#123;10..20&#125;/&#123;01-12&#125;</span><br></pre></td></tr></table></figure></p>
+<p>For easy copy and rename file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## match before and after ,</span></span><br><span class="line"><span class="comment">## file file.bkp</span></span><br><span class="line">cp -f a/long/path/file&#123;,.bkp&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h1><p>注意regular expression 和 globs 的区别，regular expression 是match text的，globs是 shell来扩展.</p>
+<ol>
+<li>match text</li>
+<li>grep</li>
+<li>sed</li>
+<li>awk</li>
+<li>if [[ =~ ]]</li>
+<li>bash</li>
+<li>vim</li>
+</ol>
+<p><a href="https://www.regular-expressions.info/" target="_blank" rel="noopener">Regular Expression Info</a><br>POSIX regular expression has basic regular expression(BRE) and extended regular expression(ERE).</p>
+<p>Syntax:</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=aj9CDZm0Glc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=aj9CDZm0Glc</a></li>
-<li><a href="https://www.youtube.com/watch?v=06iRM1Ghr1k" target="_blank" rel="noopener">https://www.youtube.com/watch?v=06iRM1Ghr1k</a></li>
+<li><code>.</code> matches one char</li>
+<li><code>[ ]</code> character set</li>
+<li><code>\</code> escape single char</li>
+<li><code>( )</code> pattern grouping</li>
+<li><code>|</code> alternation</li>
+<li><code>? * + { }</code> repetition operators</li>
+<li><code>^abc</code> leading anchor</li>
+<li><code>abc$</code> trailing anchor</li>
+<li><code>[^abc]</code> netates pattern</li>
 </ul>
-<p>Note that message ordering for the entire topic is not guaranteed.<br>Producers and consumers are both kafka clients.</p>
-<p>Terms:</p>
-<ul>
-<li>topic (data send to or read from)</li>
-<li>producer (generate data)</li>
-<li>consumer (read data)</li>
-<li>broker (node in cluster)</li>
-<li>partition (divided from a topic)</li>
-</ul>
-<p>A topic is similar to a folder in a filesystem, and the events are the files in that folder. An example topic name could be “payments”. Topics in Kafka are always multi-producer and multi-subscriber: a topic can have zero, one, or many producers that write events to it, as well as zero, one, or many consumers that subscribe to these events.</p>
-<p>Topics are partitioned, meaning a topic is spread over a number of “buckets” located on different Kafka brokers. This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to <strong>one</strong> of the topic’s partitions. Events with the same event key (e.g., a customer or vehicle ID) are written to the same partition, Kafka guarantees that any consumer of a given <code>topic-partition</code> will always read that partition’s events in exactly the same order as they were written.</p>
-<p>Kafka clents have 3 different levels of consistency, see <code>Consistency as a Kafka Client</code> in <a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a>.</p>
-<h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><p>Use Vanguard with Java installed to do the expirement:<br><a href="http://kafka.apache.org/quickstart" target="_blank" rel="noopener">http://kafka.apache.org/quickstart</a></p>
-<p>Pluralsight deploy Kafka cluster course uses java with gradle to run demos, the kafka and zookeeper are deployed as docker containers in docker-compose.</p>
-<h1 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h1><p>Producer send event to broker and broker place the event in one of the partitions.<br>比如这里有3个partitions, 2个consumers 在一个consumer group中，则consumer2 会对应到p2 p3处理事件，如果后来增加一个consumer3在这个consumer group中，则kafka 会partition rebalance p2 或 p3 到新增的消费者中，于是就变成了每个consumer 对应一个partiton。这样处理就不会因为consumer 数量的变化而导致event被重复处理或者没有被处理，也增加了throughtput. </p>
-<p>如果# of consumer &gt; # of partition 则多余的consumer 被闲置了，因此partition 的数量几乎决定了consumer 可有的最大数量。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                              broker              consumer group</span><br><span class="line">                        +---------------+        +------------+</span><br><span class="line">                        |  partition1---|--------|-&gt;consumer1 |</span><br><span class="line">           (batch send) |/              |        |            |</span><br><span class="line">producer --------------&gt;|- partition2---|--------|-&gt;consumer2 |</span><br><span class="line">                        |\              |        |/           |</span><br><span class="line">                        |  partition3---|--------|            |</span><br><span class="line">                        +---------------+        +------------+</span><br></pre></td></tr></table></figure></p>
-<p>关于event送到哪个partition是producer中key 决定的，所以如何选择key 很重要，它决定了送到partition 中的event 数量是否平衡，还要注意，kafka event order matters only within a single partition. 所以如果要保重某一类event 的顺序，则需要把它们划分到同一个partition中。Custom partitioning is possible and is reserved for special cases.</p>
-<h1 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h1><p>Producer 中的message 在send后其实是到了一个buffer，然后满足一定条件再batch send, 可以设置batch size，compression等。This is a tradeoff between latency and throughput.</p>
-<p>In kafka host <code>/var/lib/kafka/data</code> folder, partitions are stored here. 可以通过这事batch size大小去观察固定数量的event增加的空间大小，一般batch size越大，越节约broker的disk space.</p>
-<h1 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h1><p>Offset<br>Heart beat for health checking</p>
+<p>Use ERE whenever possible.</p>
+<p>Regre support in GNU tools:</p>
+<ol>
+<li><code>grep -E</code> ERE</li>
+<li><code>sed -E</code> ERE</li>
+<li><code>sed</code> BRE</li>
+<li><code>awk</code> ERE</li>
+<li><code>[[ =~ ]]</code> ERE</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## match one char with zero to 3 occurances</span></span><br><span class="line">.&#123;,3&#125;</span><br><span class="line"><span class="comment">## match one char with 3 to 7 occurances</span></span><br><span class="line">.&#123;3,7&#125;</span><br><span class="line"><span class="comment">## match one char with 3 to more occurances</span></span><br><span class="line">.&#123;3,&#125;</span><br></pre></td></tr></table></figure>
+<p>POSIX ERE does not support backreferences, that is patterns stored in a buffer and recalled later<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## radar</span></span><br><span class="line"><span class="comment">## opapo</span></span><br><span class="line">^(.)(.).\2\1$</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -558,7 +600,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kafka/" rel="tag"># kafka</a>
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+            <a href="/tags/regular-expression/" rel="tag"># regular expression</a>
+          
+            <a href="/tags/parameter-expansion/" rel="tag"># parameter expansion</a>
           
         </div>
       
@@ -571,8 +617,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/27/k8s-feature-gates/" rel="next" title="Kubernetes Feature Gates">
-                <i class="fa fa-chevron-left"></i> Kubernetes Feature Gates
+              <a href="/2020/11/27/message-que-zookeeper-learn/" rel="next" title="Zookeeper Quick Start">
+                <i class="fa fa-chevron-left"></i> Zookeeper Quick Start
               </a>
             
           </div>
@@ -581,8 +627,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/29/message-que-zookeeper-learn/" rel="prev" title="Zookeeper Quick Start">
-                Zookeeper Quick Start <i class="fa fa-chevron-right"></i>
+              <a href="/2020/12/05/gitlab-ci/" rel="prev" title="Gitlab CI">
+                Gitlab CI <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,7 +701,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">209</span>
+                    <span class="site-state-item-count">210</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -744,7 +790,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1015,7 +1063,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">129</span>
+                      
+                    
+                    <span class="site-state-item-count">130</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1051,7 +1101,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-Start"><span class="nav-number">3.</span> <span class="nav-text">Quick Start</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Partition"><span class="nav-number">4.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Producer"><span class="nav-number">5.</span> <span class="nav-text">Producer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consumer"><span class="nav-number">6.</span> <span class="nav-text">Consumer</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Parameter-expansion"><span class="nav-number">1.</span> <span class="nav-text">Parameter expansion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-Globs"><span class="nav-number">2.</span> <span class="nav-text">Shell Globs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Wildcards"><span class="nav-number">2.1.</span> <span class="nav-text">Wildcards</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Character-Set"><span class="nav-number">2.2.</span> <span class="nav-text">Character Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Character-classes"><span class="nav-number">2.3.</span> <span class="nav-text">Character classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-globbing-Options"><span class="nav-number">2.4.</span> <span class="nav-text">Shell globbing Options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Extended-Globs"><span class="nav-number">3.</span> <span class="nav-text">Extended Globs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Brace-Expansion"><span class="nav-number">4.</span> <span class="nav-text">Brace Expansion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Regular-Expression"><span class="nav-number">5.</span> <span class="nav-text">Regular Expression</span></a></li></ol></div>
             
 
           </div>
@@ -1083,7 +1133,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">932k</span>
+    <span title="Symbols count total">939k</span>
   
 
   

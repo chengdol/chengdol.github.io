@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1e0ziORmoEx6zPk6J6qEid26aWl-zw21G">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Hy8vWUIBuo33oH976PNEkVzvAOzCuyKJ">
-<meta property="og:updated_time" content="2020-10-29T06:28:36.931Z">
+<meta property="og:updated_time" content="2020-12-06T08:06:01.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Linux Works, 2nd Edition">
 <meta name="twitter:description" content="Great book for all Linux developers and administrators! Just note for future quick revisit! Chapter1. The Big pictureThe most effective way to understand how an operating system works is through abstr">
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">129</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">130</span></a>
 
   </li>
         
@@ -282,7 +282,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">38</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">209</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">210</span></a>
 
   </li>
 
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-10-28 23:28:36" itemprop="dateModified" datetime="2020-10-28T23:28:36-07:00">2020-10-28</time>
+                <time title="Modified: 2020-12-06 00:06:01" itemprop="dateModified" datetime="2020-12-06T00:06:01-08:00">2020-12-06</time>
               
             
           </span>
@@ -890,13 +890,12 @@
 <p>Note: Avoid making changes to the system unit directory because your distribution will maintain it for you. Make your local changes to the system configuration directory.</p>
 </blockquote>
 <p>To see the system unit and configuration directories on your system, use the following commands:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg-config systemd --variable=systemdsystemunitdir</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg-config systemd --variable=systemdsystemconfdir</span><br></pre></td></tr></table></figure>
 <p>Let’s see Unit files in <code>/usr/lib/systemd/system</code>, there is a sshd.service file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=OpenSSH server daemon</span><br><span class="line">Documentation=man:sshd(8) man:sshd_config(5)</span><br><span class="line">After=network.target sshd-keygen.service</span><br><span class="line">Wants=sshd-keygen.service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">EnvironmentFile=/etc/sysconfig/sshd</span><br><span class="line">ExecStart=/usr/sbin/sshd -D $OPTIONS</span><br><span class="line">ExecReload=/bin/kill -HUP $MAINPID</span><br><span class="line">KillMode=process</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=42s</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure></p>
 <p>The [Unit] section gives some details about the unit and contains description and dependency information. </p>
 <p>You’ll find the details about the service in the [Service] section, including how to prepare, start, and reload the service. </p>
 <p>During normal operation, systemd ignores the [Install] section. However, consider the case when sshd.service is disabled on your system and you would like to turn it on. When you enable a unit, systemd reads the [Install] section.</p>
 <p>The [Install] section is usually responsible for the the .wants and .requires directories in the system configuration directory (<code>/etc/systemd/system</code>), see:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">basic.target.wants                                       getty.target.wants           remote-fs.target.wants</span><br><span class="line">default.target                                           local-fs.target.wants        sockets.target.wants</span><br><span class="line">default.target.wants                                     multi-user.target.wants      sysinit.target.wants</span><br><span class="line">dev-virtio\x2dports-org.qemu.guest_agent.0.device.wants  network-online.target.wants  system-update.target.wants</span><br></pre></td></tr></table></figure></p>
-<p>the  $OPTIONS in unit file is the variable, also specifier is another variable-like feature often found in unit files, like %n and %H.</p>
+<p>the $OPTIONS in unit file is the variable, also specifier is another variable-like feature often found in unit files, like %n and %H.</p>
 <h3 id="systemd-Operation"><a href="#systemd-Operation" class="headerlink" title="systemd Operation"></a>systemd Operation</h3><p>You’ll interact with systemd primarily through the <code>systemctl</code> command, which allows you to activate and deactivate services, list status, reload the configuration, and much more.</p>
 <p>List of active units:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl</span><br><span class="line"></span><br><span class="line">  UNIT                                           LOAD   ACTIVE SUB       DESCRIPTION</span><br><span class="line">...</span><br><span class="line">  sys-kernel-debug.mount                         loaded active mounted   Debug File System</span><br><span class="line">  var-lib-nfs-rpc_pipefs.mount                   loaded active mounted   RPC Pipe File System</span><br><span class="line">  brandbot.path                                  loaded active waiting   Flexible branding</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
 <p>List all units, includes inactives:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --all</span><br></pre></td></tr></table></figure></p>
@@ -1373,7 +1372,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">209</span>
+                    <span class="site-state-item-count">210</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1462,7 +1461,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1733,7 +1734,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">129</span>
+                      
+                    
+                    <span class="site-state-item-count">130</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1801,7 +1804,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">932k</span>
+    <span title="Symbols count total">939k</span>
   
 
   
