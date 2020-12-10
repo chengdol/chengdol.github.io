@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Sometimes if the local working branch mess up and you want to sync up with your remote branch, for example origin master: First remove all untracked files:1git clean -df you can have a dry-run first t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-29T00:11:49.000Z">
+<meta property="og:updated_time" content="2020-12-10T23:55:25.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Clean Local Working Branch">
 <meta name="twitter:description" content="Sometimes if the local working branch mess up and you want to sync up with your remote branch, for example origin master: First remove all untracked files:1git clean -df you can have a dry-run first t">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">210</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">211</span></a>
 
   </li>
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-06-28 16:34:05 / Modified: 17:11:49" itemprop="dateCreated datePublished" datetime="2019-06-28T16:34:05-07:00">2019-06-28</time>
+              <time title="Created: 2019-06-28 16:34:05" itemprop="dateCreated datePublished" datetime="2019-06-28T16:34:05-07:00">2019-06-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-12-10 15:55:25" itemprop="dateModified" datetime="2020-12-10T15:55:25-08:00">2020-12-10</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.9k</span>
+                <span title="Symbols count in article">4.2k</span>
               
 
               
@@ -497,21 +509,21 @@
 
       
         <p>Sometimes if the local working branch mess up and you want to sync up with your remote branch, for example origin master:</p>
-<p>First remove all untracked files:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clean -df</span><br></pre></td></tr></table></figure></p>
-<p>you can have a dry-run first to see what files will be removed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clean -dfn</span><br></pre></td></tr></table></figure></p>
+<p>First remove all untracked files:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clean -df</span><br></pre></td></tr></table></figure></p>
+<p>you can have a dry-run first to see what files will be removed<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clean -dfn</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Note <code>git clean -dfx</code> will remove ignored files as well!</p>
 </blockquote>
-<p>Check the commit logs:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --oneline --color -n 10</span><br></pre></td></tr></table></figure></p>
+<p>Check the commit logs:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline --color -n 10</span><br></pre></td></tr></table></figure></p>
 <p>This will list latest 20 commits<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">2065fc4 Merge branch &apos;master&apos; of github.ibm.com:InformationServer/cognitive-designer-api into chengdol_master</span><br><span class="line">980c539 disable git pull prompt message</span><br><span class="line">b508666 Merge pull request #7576 from InformationServer/b_kannu</span><br><span class="line">6d4b450 updating python and python-libs version for baseosimages</span><br><span class="line">8e68090 Merge pull request #7575 from InformationServer/issue7377</span><br><span class="line">8e3f0fa Merge pull request #7558 from InformationServer/Henry-FixDupValidation</span><br><span class="line">1fd5a7a Merge branch &apos;master&apos; into issue7377</span><br><span class="line">84472b1 Improve testcase</span><br><span class="line">3ea5bf8 Merge pull request #7571 from InformationServer/chu_template_changes_7529</span><br><span class="line">60551e0 Add step to source dsenv in dsadm .bashrc</span><br></pre></td></tr></table></figure></p>
-<p>Then properly select one good commit that also appears in remote master branch, run<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;good commit ID&gt;</span><br></pre></td></tr></table></figure></p>
-<p>All the commits and commit history will be gone after the specified good commit ID, then you can just run the command below to sync up with master branch.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
+<p>Then properly select one good commit that also appears in remote master branch, run<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;good commit ID&gt;</span><br></pre></td></tr></table></figure></p>
+<p>All the commits and commit history will be gone aboce the specified good commit ID, then you can just run the command below to sync up with master branch.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Note that it’s safe to do git reset here because only I use this branch and I want to clean</p>
 </blockquote>
-<p>Sometimes I see people use:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure></p>
+<p>Sometimes I see people use:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br><span class="line"><span class="comment"># HEAD~1: throw away current HEAD</span></span><br><span class="line">git reset --hard HEAD~1</span><br></pre></td></tr></table></figure></p>
 <p><code>HEAD</code> points to your current commit, check by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rev-parse --short HEAD</span><br></pre></td></tr></table></figure></p>
-<p>so all that <code>git reset --hard HEAD</code> will do is to throw away any uncommitted changes you have.</p>
+<p>so all that <code>git reset --hard HEAD</code> will do is to throw away any uncommitted changes you have and point to your latest commit.</p>
 
       
     </div>
@@ -623,7 +635,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">210</span>
+                    <span class="site-state-item-count">211</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1038,7 +1050,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">939k</span>
+    <span title="Symbols count total">944k</span>
   
 
   
