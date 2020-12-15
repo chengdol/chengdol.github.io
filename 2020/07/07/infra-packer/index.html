@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="[x] template user variable[x] builder google cloud, authentication, etc.[x] provisioner ansible Build Images for cloud and on-premise, Packer template is JSON format (easily source control).  variable">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-30T07:50:52.919Z">
+<meta property="og:updated_time" content="2020-12-15T07:36:49.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Packer Quick Start">
 <meta name="twitter:description" content="[x] template user variable[x] builder google cloud, authentication, etc.[x] provisioner ansible Build Images for cloud and on-premise, Packer template is JSON format (easily source control).  variable">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">211</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">212</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-29 23:50:52" itemprop="dateModified" datetime="2020-11-29T23:50:52-08:00">2020-11-29</time>
+                <time title="Modified: 2020-12-14 23:36:49" itemprop="dateModified" datetime="2020-12-14T23:36:49-08:00">2020-12-14</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.4k</span>
+                <span title="Symbols count in article">3.7k</span>
               
 
               
@@ -524,7 +524,8 @@
 <li><a href="https://stackoverflow.com/questions/47169353/how-are-docker-and-packer-different-and-which-one-should-i-prefer-when-provisio" target="_blank" rel="noopener">How docker and packer are different</a></li>
 </ul>
 <p>Transition from Packer to Docker is easy, but the docker builder may not efficient as the docker native tool.</p>
-<p>Some useful commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## illustrate packer.json file</span></span><br><span class="line">packer inspect</span><br><span class="line"></span><br><span class="line"><span class="comment">## validate packer.json syntax</span></span><br><span class="line">packer validate</span><br></pre></td></tr></table></figure></p>
+<p>Some useful commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># illustrate packer.json file</span></span><br><span class="line">packer inspect</span><br><span class="line"></span><br><span class="line"><span class="comment"># validate packer.json syntax</span></span><br><span class="line">packer validate &lt;file.json&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># build image</span></span><br><span class="line"><span class="comment"># -de<span class="doctag">bug:</span> pause for each step, clear</span></span><br><span class="line">packer build [-debug] &lt;file.json&gt;</span><br><span class="line"><span class="comment"># -force: delete existing artifact then build</span></span><br><span class="line">packer build -force &lt;file.json&gt;</span><br></pre></td></tr></table></figure></p>
+<p>When using <code>-debug</code> flag, Packer will show you the private pem file in current directory, you can use that pem file ssh to running VM, for example, in google cloud:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jenkins is the ssh_username you set in template</span></span><br><span class="line">ssh -i gce_googlecompute.pem jenkins@172.16.160.49</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -638,7 +639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">211</span>
+                    <span class="site-state-item-count">212</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1053,7 +1054,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">944k</span>
+    <span title="Symbols count total">947k</span>
   
 
   
