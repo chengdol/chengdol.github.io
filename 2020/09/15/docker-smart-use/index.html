@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="这里主要记录一下docker container 一些有意思的用法。  把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv: 12345docker run \      --rm \      -it \      -v pathto/chart:/">
+  <meta name="description" content="这里主要记录一下docker container 一些有意思的用法。 把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv:12345docker run \      --rm \      -it \      -v pathto/chart:/ch">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Smart Use">
 <meta property="og:url" content="http://yoursite.com/2020/09/15/docker-smart-use/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="这里主要记录一下docker container 一些有意思的用法。  把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv: 12345docker run \      --rm \      -it \      -v pathto/chart:/">
+<meta property="og:description" content="这里主要记录一下docker container 一些有意思的用法。 把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv:12345docker run \      --rm \      -it \      -v pathto/chart:/ch">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-19T01:58:57.026Z">
+<meta property="og:updated_time" content="2020-12-19T00:40:06.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Smart Use">
-<meta name="twitter:description" content="这里主要记录一下docker container 一些有意思的用法。  把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv: 12345docker run \      --rm \      -it \      -v pathto/chart:/">
+<meta name="twitter:description" content="这里主要记录一下docker container 一些有意思的用法。 把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:比如 helm linter cv:12345docker run \      --rm \      -it \      -v pathto/chart:/ch">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">212</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">213</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-09-18 18:58:57" itemprop="dateModified" datetime="2020-09-18T18:58:57-07:00">2020-09-18</time>
+                <time title="Modified: 2020-12-18 16:40:06" itemprop="dateModified" datetime="2020-12-18T16:40:06-08:00">2020-12-18</time>
               
             
           </span>
@@ -509,14 +509,10 @@
 
       
         <p>这里主要记录一下docker container 一些有意思的用法。</p>
-<ol>
-<li><p>把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:<br>比如 helm linter cv:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">      --rm \</span><br><span class="line">      -it \</span><br><span class="line">      -v pathto/chart:/chart \</span><br><span class="line">      cv:latest cv lint helm /chart</span><br></pre></td></tr></table></figure>
+<p>把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:<br>比如 helm linter cv:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">      --rm \</span><br><span class="line">      -it \</span><br><span class="line">      -v pathto/chart:/chart \</span><br><span class="line">      cv:latest cv lint helm /chart</span><br></pre></td></tr></table></figure></p>
 <p>Logs may also be captured by passing an additional volume: <code>-v ~/path/to/logs:/tmp/cv</code></p>
-<p>再比如jsonnet，搭建本地运行环境比较困难:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## convert chart.yaml.jsonnet to chart.yaml</span></span><br><span class="line"><span class="comment">## -V version="1": pass parameters to chart.yaml.jsonnet</span></span><br><span class="line"><span class="comment">## sed -e 's/"//g': remove double quotes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## the entrypoint of this image is running jsonnet command</span></span><br><span class="line">docker run \</span><br><span class="line">      --rm \</span><br><span class="line">      -v pathto/chart.yaml.jsonnet:/chart.yaml.jsonnet \</span><br><span class="line">      bitnami/jsonnet:latest /chart.yaml.jsonnet -V version=<span class="string">"1"</span> -S | sed -e <span class="string">'s/"//g'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>再比如jsonnet，搭建本地运行环境比较困难:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># convert chart.yaml.jsonnet to chart.yaml</span></span><br><span class="line"><span class="comment"># -V version="1": pass parameters to chart.yaml.jsonnet</span></span><br><span class="line"><span class="comment"># sed -e 's/"//g': remove double quotes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the entrypoint of this image is running jsonnet command</span></span><br><span class="line">docker run \</span><br><span class="line">      --rm \</span><br><span class="line">      -v pathto/chart.yaml.jsonnet:/chart.yaml.jsonnet \</span><br><span class="line">      bitnami/jsonnet:latest /chart.yaml.jsonnet -V version=<span class="string">"1"</span> -S | sed -e <span class="string">'s/"//g'</span></span><br></pre></td></tr></table></figure></p>
+<p>来到新组后发现对所有的repo 源码都是封装到docker 中，通过gitlab-ci pipeline 发布，然后在jenkins pipeline中使用。</p>
 
       
     </div>
@@ -628,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">212</span>
+                    <span class="site-state-item-count">213</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1043,7 +1039,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">947k</span>
+    <span title="Symbols count total">958k</span>
   
 
   

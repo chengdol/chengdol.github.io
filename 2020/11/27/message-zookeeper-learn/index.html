@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to which topic partition? depends on event key (hash).[x] topic has its own set of partitions, e">
-<meta name="keywords" content="kafka">
+  <meta name="description" content="//TODO:[ ] run as daemon The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level informat">
+<meta name="keywords" content="zookeeper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kafka Quick Start">
-<meta property="og:url" content="http://yoursite.com/2020/11/27/message-que-kafka-learn/index.html">
+<meta property="og:title" content="Zookeeper Quick Start">
+<meta property="og:url" content="http://yoursite.com/2020/11/27/message-zookeeper-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to which topic partition? depends on event key (hash).[x] topic has its own set of partitions, e">
+<meta property="og:description" content="//TODO:[ ] run as daemon The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level informat">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-06T08:06:01.323Z">
+<meta property="og:updated_time" content="2020-12-19T00:40:06.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kafka Quick Start">
-<meta name="twitter:description" content="TODO[ ] Kafka cluster communicate, how does the client know who is the leader?[x] producer send message to which topic partition? depends on event key (hash).[x] topic has its own set of partitions, e">
+<meta name="twitter:title" content="Zookeeper Quick Start">
+<meta name="twitter:description" content="//TODO:[ ] run as daemon The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level informat">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/11/27/message-que-kafka-learn/">
+  <link rel="canonical" href="http://yoursite.com/2020/11/27/message-zookeeper-learn/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Kafka Quick Start | 海胆阶段's Blog</title>
+  <title>Zookeeper Quick Start | 海胆阶段's Blog</title>
   
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">212</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">213</span></a>
 
   </li>
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/message-que-kafka-learn/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/message-zookeeper-learn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kafka Quick Start
+          <h1 class="post-title" itemprop="name headline">Zookeeper Quick Start
 
               
             
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2020-11-27 10:18:29" itemprop="dateCreated datePublished" datetime="2020-11-27T10:18:29-08:00">2020-11-27</time>
+              <time title="Created: 2020-11-27 16:18:35" itemprop="dateCreated datePublished" datetime="2020-11-27T16:18:35-08:00">2020-11-27</time>
             
 
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-06 00:06:01" itemprop="dateModified" datetime="2020-12-06T00:06:01-08:00">2020-12-06</time>
+                <time title="Modified: 2020-12-18 16:40:06" itemprop="dateModified" datetime="2020-12-18T16:40:06-08:00">2020-12-18</time>
               
             
           </span>
@@ -456,7 +456,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Zookeeper/" itemprop="url" rel="index"><span itemprop="name">Zookeeper</span></a></span>
 
                 
                 
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.5k</span>
+                <span title="Symbols count in article">17k</span>
               
 
               
@@ -508,35 +508,53 @@
       
 
       
-        <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>[ ] Kafka cluster communicate, how does the client know who is the leader?<br>[x] producer send message to which topic partition? depends on event key (hash).<br>[x] topic has its own set of partitions, each partiton is assigned subset of coming events.<br>[x] how to ensure the message order of a entire topic? cannot, but order is guarantee in partition.<br>[x] <a href="https://www.quora.com/What-is-the-actual-role-of-Zookeeper-in-Kafka-What-benefits-will-I-miss-out-on-if-I-don%E2%80%99t-use-Zookeeper-and-Kafka-together" target="_blank" rel="noopener">zookeeper role</a> in kafka.</p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="https://zhuanlan.zhihu.com/p/37405836" target="_blank" rel="noopener">Kafka简明教程</a><br><a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a><br><a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apach Kafka Official Doc</a><br><a href="https://www.ibm.com/cloud/learn/apache-kafka" target="_blank" rel="noopener">Learn Kafka Guide</a></p>
-<p>Youtube Kafka talks:</p>
+        <p>//TODO:<br>[ ] run as daemon</p>
+<p>The Vagrant demo file please see my git repo <a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-zk-kafka" target="_blank" rel="noopener">Infratree</a> </p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Zookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.<br>Hght level information about zk:</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=aj9CDZm0Glc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=aj9CDZm0Glc</a></li>
-<li><a href="https://www.youtube.com/watch?v=06iRM1Ghr1k" target="_blank" rel="noopener">https://www.youtube.com/watch?v=06iRM1Ghr1k</a></li>
+<li>distributed key value store</li>
+<li>has voting mechanism</li>
+<li>used by many big data tools</li>
 </ul>
-<p>Note that message ordering for the entire topic is not guaranteed.<br>Producers and consumers are both kafka clients.</p>
-<p>Terms:</p>
+<p><a href="https://www.quora.com/What-is-the-actual-role-of-Zookeeper-in-Kafka-What-benefits-will-I-miss-out-on-if-I-don%E2%80%99t-use-Zookeeper-and-Kafka-together" target="_blank" rel="noopener">Zookeeper role in Kafka</a>: </p>
 <ul>
-<li>topic (data send to or read from)</li>
-<li>producer (generate data)</li>
-<li>consumer (read data)</li>
-<li>broker (node in cluster)</li>
-<li>partition (divided from a topic)</li>
+<li>broker registration, heart-beating check</li>
+<li>maintaining a list of topics alongside</li>
+<li>leader election</li>
+<li>store kafka cluster id</li>
+<li>store ACLs if security is enabled</li>
+<li>quotas config if enabled</li>
 </ul>
-<p>A topic is similar to a folder in a filesystem, and the events are the files in that folder. An example topic name could be “payments”. Topics in Kafka are always multi-producer and multi-subscriber: a topic can have zero, one, or many producers that write events to it, as well as zero, one, or many consumers that subscribe to these events.</p>
-<p>Topics are partitioned, meaning a topic is spread over a number of “buckets” located on different Kafka brokers. This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to <code>one</code> of the topic’s partitions. Events with the same event key (e.g., a customer or vehicle ID) are written to the same partition, Kafka guarantees that any consumer of a given <code>topic-partition</code> will always read that partition’s events in exactly the same order as they were written.</p>
-<p>Kafka clents have 3 different levels of consistency, see <code>Consistency as a Kafka Client</code> in <a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a>.</p>
-<h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><p>Use Vanguard with Java installed to do the expirement:<br><a href="http://kafka.apache.org/quickstart" target="_blank" rel="noopener">http://kafka.apache.org/quickstart</a></p>
-<p>For cluster set up, Pluralsight deploy Kafka cluster course uses java with gradle to run demos, the kafka and zookeeper are deployed as docker containers in docker-compose.</p>
-<h1 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h1><p>Producer sends event to broker and broker places the event in one of the partitions.<br>比如这里有3个partitions, 2个consumers 在一个consumer group中，则consumer2 会对应到p2 p3处理事件，如果后来增加一个consumer3在这个consumer group中，则kafka 会partition rebalance p2 或 p3 到新增的消费者中，于是就变成了每个consumer 对应一个partiton。这样处理就不会因为consumer 数量的变化而导致event被重复处理或者没有被处理，也增加了throughput. </p>
-<p>如果# of consumer &gt; # of partition 则多余的consumer 被闲置了，因此partition 的数量几乎决定了consumer 可有的最大数量。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                              broker              consumer group</span><br><span class="line">                        +---------------+        +------------+</span><br><span class="line">                        |  partition1---|--------|-&gt;consumer1 |</span><br><span class="line">           (batch send) |/              |        |            |</span><br><span class="line">producer --------------&gt;|- partition2---|--------|-&gt;consumer2 |</span><br><span class="line">                        |\              |        |/           |</span><br><span class="line">                        |  partition3---|--------|            |</span><br><span class="line">                        +---------------+        +------------+</span><br></pre></td></tr></table></figure></p>
-<p>关于event送到哪个partition是producer中key 决定的，所以如何选择key 很重要，它决定了送到partition 中的event 数量是否平衡，还要注意，kafka event order matters only within a single partition. 所以如果要保重某一类event 的顺序，则需要把它们划分到同一个partition中。Custom partitioning is possible and is reserved for special cases.</p>
-<h1 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h1><p>Producer 中的message 在send后其实是到了一个buffer，然后满足一定条件再batch send, 可以设置batch size，compression等。This is a tradeoff between latency and throughput.</p>
-<p>In kafka host <code>/var/lib/kafka/data</code> folder, partitions are stored here. 可以通过设置batch size大小去观察固定数量的event增加的空间大小，一般batch size越大，越节约broker的disk space.</p>
-<h1 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h1><p>Offset<br>Heart beat for health checking</p>
-<h1 id="High-Availability"><a href="#High-Availability" class="headerlink" title="High Availability"></a>High Availability</h1><p>New Kafka node will register itself via zookeeper and learn about other broker in the cluster. In production zookeeper usually has 3 ~5 nodes to form a cluster. Kafka broker will discover each other through zookeeper.</p>
-<p>Producer should set acks to receive ack from broker for message comitted.</p>
+<p>使用kafka自带的zookeeper 还是 独立的zookeeper呢？见这个<a href="https://segmentfault.com/q/1010000021110446/a-1020000021113974" target="_blank" rel="noopener">回答</a>参考. 工作项目中还是用的独立的zk. Zookeeper is going to be removed from kafka, see this <a href="https://www.confluent.io/blog/removing-zookeeper-dependency-in-kafka/" target="_blank" rel="noopener">article</a>.</p>
+<p>More references please see <a href="https://zookeeper.apache.org/" target="_blank" rel="noopener">Zookeeper main page</a>.<br><a href="https://zookeeper.apache.org/doc/r3.6.2/zookeeperAdmin.html#sc_systemReq" target="_blank" rel="noopener">System Requirements</a> for version <code>3.6.2</code>: ZooKeeper (also Kafka) runs in <code>Java</code>, release 1.8 or greater (JDK 8 LTS, JDK 11 LTS, JDK 12 - Java 9 and 10 are not supported).</p>
+<p>Archive download <a href="https://archive.apache.org/dist/zookeeper/" target="_blank" rel="noopener">link</a>. For example, here uses Zookeeper version <code>3.6.2</code>.</p>
+<h1 id="Performance-Factors"><a href="#Performance-Factors" class="headerlink" title="Performance Factors"></a>Performance Factors</h1><p>Latency is key for zookeeper:</p>
+<ul>
+<li>fast disk</li>
+<li>no RAM swap</li>
+<li>separate disk for snapshots and logs</li>
+<li>high performance network</li>
+<li>resonable number of zk servers</li>
+<li>isolation zk process from others</li>
+</ul>
+<h1 id="Cluster-Setup"><a href="#Cluster-Setup" class="headerlink" title="Cluster Setup"></a>Cluster Setup</h1><h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><p><a href="https://zookeeper.apache.org/doc/r3.6.2/zookeeperAdmin.html" target="_blank" rel="noopener">Clustered (Multi-Server) Setup</a>.<br>这里面说了很多注意事项, 比如Java heap size to avoid swapping or disable swapping.</p>
+<p>The architecture diagram of this experiment, co-locate zk and kafka in the same node, this is not recommended on production.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// zk leader can be anyone of them</span></span><br><span class="line"></span><br><span class="line">  <span class="number">192.168</span><span class="number">.20</span><span class="number">.20</span>        <span class="number">192.168</span><span class="number">.20</span><span class="number">.21</span>         <span class="number">192.168</span><span class="number">.20</span><span class="number">.22</span></span><br><span class="line">|--------------|    |-----------------|    |----------------|</span><br><span class="line">| zk server1&lt;--|----|--&gt; zk server2&lt;--|----|--&gt;zk server3   | </span><br><span class="line">|  follower    |    |     leader      |    |    follower    |</span><br><span class="line">|              |    |     <span class="regexp">/  |  \     |    |                |</span></span><br><span class="line"><span class="regexp">|              |    |    /</span>   |   \    |    |                |</span><br><span class="line">|           <span class="regexp">/--|----|---/</span>    |    \---|----|--\             |</span><br><span class="line">|  kafka   /   |    |    kafka        |    |   \kafka       |</span><br><span class="line">|  broker1     |    |    broker2      |    |    broker3     |</span><br><span class="line">|--------------|    |-----------------|    |----------------|</span><br></pre></td></tr></table></figure></p>
+<h2 id="Config"><a href="#Config" class="headerlink" title="Config"></a>Config</h2><p>Generate <code>zoo.cfg</code> file in each node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># download release binary version 3.6.2</span></span><br><span class="line"><span class="built_in">cd</span> /root</span><br><span class="line">wget https://apache.osuosl.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz</span><br><span class="line">tar -zxf apache-zookeeper-3.6.2-bin.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /root/apache-zookeeper-3.6.2-bin/conf</span><br><span class="line">cp zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure></p>
+<p>Create zk data, log and conf directories in each zookeeper node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/zk/data</span><br><span class="line">mkdir -p /root/zk/<span class="built_in">log</span></span><br><span class="line">mkdir -p /root/zk/conf</span><br></pre></td></tr></table></figure></p>
+<p>Edit <code>zoo.cfg</code> file for each zookeeper instance, use the same configuration for them:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the basic time unit in milliseonds used by zk</span></span><br><span class="line">tickTime=2000</span><br><span class="line"><span class="comment">#Leader-Follower初始通信时限 tickTime * 10 = 20 seconds</span></span><br><span class="line">initLimit=10</span><br><span class="line"><span class="comment">#Leader-Follower同步通信时限 tickTime * 5 = 10 seconds</span></span><br><span class="line">syncLimit=5</span><br><span class="line"></span><br><span class="line"><span class="comment"># data dir</span></span><br><span class="line">dataDir=/root/zk/data</span><br><span class="line"><span class="comment"># log dir</span></span><br><span class="line">dataLogDir=/root/zk/<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># client port, 3 nodes use the same port number</span></span><br><span class="line">clientPort=2181</span><br><span class="line"><span class="comment">#maxClientCnxns=60</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># broker id and IP address, or using hostname from /etc/hosts</span></span><br><span class="line"><span class="comment"># for cluster, borker id must start from 1, not 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2888: connect the individual follower nodes to the leader node</span></span><br><span class="line"><span class="comment"># 3888: used for leader election in the ensemble</span></span><br><span class="line"><span class="comment"># can by any port number</span></span><br><span class="line">server.1=192.168.20.20:2888:3888</span><br><span class="line">server.2=192.168.20.21:2888:3888</span><br><span class="line">server.3=192.168.20.22:2888:3888</span><br></pre></td></tr></table></figure></p>
+<p>In zk data directory, create <code>myid</code> for each zk instance, much be unqiue:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># current in 192.168.20.20</span></span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /root/zk/data/myid</span><br><span class="line"><span class="comment"># run on 192.168.20.21</span></span><br><span class="line"><span class="built_in">echo</span> 2 &gt; /root/zk/data/myid</span><br><span class="line"><span class="comment"># run on 192.168.20.22</span></span><br><span class="line"><span class="built_in">echo</span> 3 &gt; /root/zk/data/myid</span><br></pre></td></tr></table></figure></p>
+<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><p>Run zk service commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/apache-zookeeper-3.6.2-bin/bin</span><br><span class="line"><span class="comment"># start</span></span><br><span class="line"><span class="comment"># default uses zoo.cfg config file</span></span><br><span class="line"><span class="comment"># run in background by default, has flag to run in foreground</span></span><br><span class="line">./zkServer.sh start</span><br><span class="line"><span class="comment"># stop</span></span><br><span class="line">./zkServer.sh stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># status check</span></span><br><span class="line"><span class="comment"># Mode: standalone, follower, leader</span></span><br><span class="line">./zkServer.sh status</span><br><span class="line"></span><br><span class="line"><span class="comment"># test zk is good</span></span><br><span class="line"><span class="comment"># ipv6 + port</span></span><br><span class="line">./zkCli.sh -server :2181</span><br><span class="line"><span class="comment"># then run</span></span><br><span class="line"><span class="comment"># you will see some output like [zookeeper], etc</span></span><br><span class="line">ls /</span><br></pre></td></tr></table></figure></p>
+<p>[x] why port 2181 is bound on ipv6? 其他环境上也是如此。</p>
+<p>After start zookeeper, check <code>./zkServer.sh status</code> to see if current node is leader or follower.<br>Run <code>./zkCli.sh</code>, you can execute zk CLI, see this <a href="https://zookeeper.apache.org/doc/r3.6.2/zookeeperCLI.html" target="_blank" rel="noopener">reference</a>.</p>
+<p><code>./zkCli.sh</code> 也可用于从外部连接一个zk server, 只要指定accessable IP 和 port即可，demo中由于就在本机，所以其实是localhost.</p>
+<p>If start failed, see <code>&lt;zk package&gt;/logs/zookeeper_audit.log</code>, If you don’t start another 2 zk instance, you will see periodically exception errors in <code>&lt;zk package&gt;/logs/zookeeper-root-server-kafka1.out</code>, it will be resolved after you start all of them. The log setting is by log4j configuration from <code>&lt;zk package&gt;/conf/log4j.properties</code>.</p>
+<p>After the cluster is up and running, you can check the ports:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># see 2181, 2888, 3888</span></span><br><span class="line"><span class="comment"># -i: network socket</span></span><br><span class="line"><span class="comment"># -P: show port number</span></span><br><span class="line"><span class="comment"># -n: shpw ip address</span></span><br><span class="line">lsof -i -P -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># scan 2181</span></span><br><span class="line"><span class="comment"># -z: scan only</span></span><br><span class="line"><span class="comment"># -v: verbose</span></span><br><span class="line">nc -zv &lt;zk instance ip&gt; 2181</span><br></pre></td></tr></table></figure></p>
+<p>在旧版本中，可以使用<a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_4lw" target="_blank" rel="noopener">four letter words</a>去检查一些状态，比如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># are you ok</span></span><br><span class="line"><span class="built_in">echo</span> ruok | nc locahost 2181</span><br></pre></td></tr></table></figure></p>
+<p>新版本已经切换到<a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_adminserver" target="_blank" rel="noopener">AdminServer</a>. The AdminServer is enabled by default, access by http 8080 port:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list all commands</span></span><br><span class="line">http://192.168.20.20:8080/commands</span><br><span class="line"></span><br><span class="line"><span class="comment"># for example:</span></span><br><span class="line"><span class="comment"># state</span></span><br><span class="line">http://192.168.20.20:8080/commands/<span class="built_in">stat</span></span><br><span class="line"><span class="comment"># config</span></span><br><span class="line">http://192.168.20.20:8080/commands/configuration</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/elkozmon/zoonavigator" target="_blank" rel="noopener">ZooNavigator</a> is a web based ZooKeeper UI and editor/browser with many features. You can launched it by docker container.</p>
+<h2 id="Run-as-Daemon"><a href="#Run-as-Daemon" class="headerlink" title="Run as Daemon"></a>Run as Daemon</h2><p>systemd zookeeper cluster setup on ubuntu:<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04</a></p>
+<p>It is easy to set zk running as daemon and start it on boot.</p>
+<p>start, stop, status:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -560,7 +578,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/kafka/" rel="tag"># kafka</a>
+            <a href="/tags/zookeeper/" rel="tag"># zookeeper</a>
           
         </div>
       
@@ -573,8 +591,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/11/15/golang-OOP/" rel="next" title="Golang OOP">
-                <i class="fa fa-chevron-left"></i> Golang OOP
+              <a href="/2020/11/27/message-kafka-learn/" rel="next" title="Kafka Quick Start">
+                <i class="fa fa-chevron-left"></i> Kafka Quick Start
               </a>
             
           </div>
@@ -583,8 +601,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/11/27/message-que-zookeeper-learn/" rel="prev" title="Zookeeper Quick Start">
-                Zookeeper Quick Start <i class="fa fa-chevron-right"></i>
+              <a href="/2020/11/28/shell-pattern-match/" rel="prev" title="Shell Pattern Matching">
+                Shell Pattern Matching <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -657,7 +675,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">212</span>
+                    <span class="site-state-item-count">213</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1057,7 +1075,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO"><span class="nav-number">1.</span> <span class="nav-text">TODO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-Start"><span class="nav-number">3.</span> <span class="nav-text">Quick Start</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Partition"><span class="nav-number">4.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Producer"><span class="nav-number">5.</span> <span class="nav-text">Producer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Consumer"><span class="nav-number">6.</span> <span class="nav-text">Consumer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#High-Availability"><span class="nav-number">7.</span> <span class="nav-text">High Availability</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Performance-Factors"><span class="nav-number">2.</span> <span class="nav-text">Performance Factors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cluster-Setup"><span class="nav-number">3.</span> <span class="nav-text">Cluster Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture"><span class="nav-number">3.1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config"><span class="nav-number">3.2.</span> <span class="nav-text">Config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commands"><span class="nav-number">3.3.</span> <span class="nav-text">Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-as-Daemon"><span class="nav-number">3.4.</span> <span class="nav-text">Run as Daemon</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1089,7 +1107,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">947k</span>
+    <span title="Symbols count total">958k</span>
   
 
   

@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="//TODO[x] Kafka cluster communicate, how does the client know who is the leader? leader is partition sprcified.[x] producer send message to which topic partition? depends on event key (hash).[x] topic">
+<meta name="keywords" content="kafka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka Quick Start">
+<meta property="og:url" content="http://yoursite.com/2020/11/27/message-kafka-learn/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="//TODO[x] Kafka cluster communicate, how does the client know who is the leader? leader is partition sprcified.[x] producer send message to which topic partition? depends on event key (hash).[x] topic">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-19T00:40:06.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kafka Quick Start">
+<meta name="twitter:description" content="//TODO[x] Kafka cluster communicate, how does the client know who is the leader? leader is partition sprcified.[x] producer send message to which topic partition? depends on event key (hash).[x] topic">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/11/27/message-kafka-learn/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Kafka Quick Start | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">130</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">213</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/message-kafka-learn/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kafka Quick Start
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-11-27 10:18:29" itemprop="dateCreated datePublished" datetime="2020-11-27T10:18:29-08:00">2020-11-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-12-18 16:40:06" itemprop="dateModified" datetime="2020-12-18T16:40:06-08:00">2020-12-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">25k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>//TODO<br>[x] Kafka cluster communicate, how does the client know who is the leader? leader is partition sprcified.<br>[x] producer send message to which topic partition? depends on event key (hash).<br>[x] topic has its own set of partitions, each partiton is assigned subset of coming events.<br>[x] how to ensure the message order that treats entire topic as a whole? cannot, but order is guarantee in partition.<br>[ ] run as daemon</p>
+<p>I took the course from PluralSight and Udemy, both are good, Udemy course is some what out-of-date.<br>Pluralsight deploy Kafka cluster course uses java with gradle to run demos, the kafka and zookeeper are deployed as docker containers in <code>docker-compose</code>, Here I use Vagrant.</p>
+<p>The Vagrant demo file please see my git repo <a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-zk-kafka" target="_blank" rel="noopener">Infratree</a>, reading with <a href="https://chengdol.github.io/2020/11/27/message-zookeeper-learn/" target="_blank" rel="noopener"><code>Zookeeper Quick Start</code></a></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="https://zhuanlan.zhihu.com/p/37405836" target="_blank" rel="noopener">Kafka简明教程</a><br><a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a><br><a href="http://kafka.apache.org/" target="_blank" rel="noopener">Apach Kafka Official Doc</a><br><a href="https://www.ibm.com/cloud/learn/apache-kafka" target="_blank" rel="noopener">Learn Kafka Guide</a></p>
+<p>Youtube Kafka talks:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=aj9CDZm0Glc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=aj9CDZm0Glc</a></li>
+<li><a href="https://www.youtube.com/watch?v=06iRM1Ghr1k" target="_blank" rel="noopener">https://www.youtube.com/watch?v=06iRM1Ghr1k</a></li>
+</ul>
+<p>Note that message ordering for the entire topic is not guaranteed.<br>Producers and consumers are both kafka clients.</p>
+<p>Terms:</p>
+<ul>
+<li>topic (data send to or read from)</li>
+<li>producer (generate data)</li>
+<li>consumer (read data)</li>
+<li>broker (node in cluster)</li>
+<li>partition (divided from a topic)</li>
+</ul>
+<p>A topic is similar to a folder in a filesystem, and the events are the files in that folder. An example topic name could be “payments”. Topics in Kafka are always multi-producer and multi-subscriber: a topic can have zero, one, or many producers that write events to it, as well as zero, one, or many consumers that subscribe to these events.</p>
+<p>Topics are partitioned, meaning a topic is spread over a number of “buckets” located on different Kafka brokers. This distributed placement of your data is very important for scalability because it allows client applications to both read and write the data from/to many brokers at the same time. When a new event is published to a topic, it is actually appended to <code>one</code> of the topic’s partitions. Events with the same event key (e.g., a customer or vehicle ID) are written to the same partition, Kafka guarantees that any consumer of a given <code>topic-partition</code> will always read that partition’s events in exactly the same order as they were written.</p>
+<p>Kafka clents have 3 different levels of consistency, see <code>Consistency as a Kafka Client</code> in <a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a>.</p>
+<h2 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h2><p>Producer sends event to broker and broker places the event in one of the partitions.<br>比如这里有3个partitions, 2个consumers 在一个consumer group中，则consumer2 会对应到p2, p3读取事件，如果后来增加一个consumer3在这个consumer group中，则kafka 会partition rebalance p2 或 p3 到新增的消费者中，于是就变成了每个consumer 对应一个partiton。这样处理就不会因为consumer 数量的变化而导致event被重复读取或者没有被处理，也增加了throughput. </p>
+<p>如果# of consumer &gt; # of partition 则多余的consumer 被闲置了，因此partition 的数量几乎决定了consumer 可有的最大数量。<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                              <span class="string">broker</span>              <span class="string">consumer</span> <span class="string">group</span></span><br><span class="line">                        <span class="string">+---------------+</span>        <span class="string">+------------+</span></span><br><span class="line">                        <span class="string">|  partition1---|--------|-&gt;consumer1 |</span></span><br><span class="line"><span class="string">           (batch send) |/              |        |            |</span></span><br><span class="line"><span class="string">producer --------------&gt;|- partition2---|--------|-&gt;consumer2 |</span></span><br><span class="line"><span class="string">                        |\              |        |/           |</span></span><br><span class="line"><span class="string">                        |  partition3---|--------|            |</span></span><br><span class="line"><span class="string">                        +---------------+        +------------+</span></span><br></pre></td></tr></table></figure></p>
+<p>关于event送到哪个partition是producer中key 决定的，所以如何选择key 很重要，它决定了送到partition 中的event 数量是否平衡，还要注意，kafka event order matters only within a single partition. 所以如果要保证某一类event 的顺序，则需要把它们划分到同一个partition中。Custom partitioning is possible and is reserved for special cases.</p>
+<h2 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h2><p>Producer 中的message 在send前其实是到了一个buffer，然后满足一定条件再batch send, 可以设置batch size，compression等。This is a tradeoff between latency and throughput.</p>
+<p>In kafka host data folder, partitions are stored here. 可以通过设置batch size大小去观察固定数量的event增加的空间大小，一般batch size越大，越节约broker的disk space.</p>
+<h2 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h2><p>Offset<br>Heart beat for health checking</p>
+<h2 id="High-Availability"><a href="#High-Availability" class="headerlink" title="High Availability"></a>High Availability</h2><p>New Kafka node will register itself via zookeeper and learn about other broker in the cluster. In production zookeeper usually has 3 ~ 5 nodes to form a cluster. Kafka broker will discover each other through zookeeper.</p>
+<p>Producer should set acks to receive ack from broker for message comitted.</p>
+<h2 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h2><p>It is related to disk I/O, network, RAM, CPU, OS, etc.</p>
+<p><code>export KAFKA_HEAP_OPTS=&quot;-Xmx4g&quot;</code>, to set the Java heap size for Kafka (max amount), then start the Kafka. You can monitor the heap size overtime, increase it if needed.</p>
+<p>Make sure swapping is disabled for Kafka entirely.</p>
+<p>Increase the file descriptor limits on your linux, at least 100,000 as a starting point.</p>
+<p>Run Kafka only on your macine, anything else will slow down the machine.</p>
+<h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="Single-node"><a href="#Single-node" class="headerlink" title="Single node"></a>Single node</h2><p>Use one Vanguard VM with Java pre-installed to do the expirement:<br><a href="http://kafka.apache.org/quickstart" target="_blank" rel="noopener">http://kafka.apache.org/quickstart</a><br>not using the self-contained zookeeper:<br><a href="https://dzone.com/articles/kafka-setup" target="_blank" rel="noopener">https://dzone.com/articles/kafka-setup</a></p>
+<h2 id="Cluster-Setup"><a href="#Cluster-Setup" class="headerlink" title="Cluster Setup"></a>Cluster Setup</h2><p>Follow up the zk cluster setup, I use the same cluster nodes, kafka version is <code>2.6.0</code>.<br>3 node IPs, sudo su to use root user.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// zk leader or follower not reflect real scenario</span></span><br><span class="line"></span><br><span class="line">  <span class="number">192.168</span><span class="number">.20</span><span class="number">.20</span>        <span class="number">192.168</span><span class="number">.20</span><span class="number">.21</span>         <span class="number">192.168</span><span class="number">.20</span><span class="number">.22</span></span><br><span class="line">|--------------|    |-----------------|    |----------------|</span><br><span class="line">| zk server1&lt;--|----|--&gt; zk server2&lt;--|----|--&gt;zk server3   | </span><br><span class="line">|  follower    |    |     leader      |    |    follower    |</span><br><span class="line">|              |    |     <span class="regexp">/  |  \     |    |                |</span></span><br><span class="line"><span class="regexp">|              |    |    /</span>   |   \    |    |                |</span><br><span class="line">|           <span class="regexp">/--|----|---/</span>    |    \---|----|--\             |</span><br><span class="line">|  kafka   /   |    |    kafka        |    |   \kafka       |</span><br><span class="line">|  broker1     |    |    broker2      |    |    broker3     |</span><br><span class="line">|--------------|    |-----------------|    |----------------|</span><br></pre></td></tr></table></figure></p>
+<p>Kafka archive download <a href="https://archive.apache.org/dist/kafka" target="_blank" rel="noopener">link</a>.</p>
+<p>Download kafka binary and untar:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.sonic.net/apache/kafka/2.6.0/kafka_2.12-2.6.0.tgz</span><br><span class="line">tar -zxf kafka_2.12-2.6.0.tgz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /root/kafka_2.12-2.6.0/config</span><br></pre></td></tr></table></figure></p>
+<p>Create custom <code>log.dir</code> folder, update in configuration file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/kafka/<span class="built_in">log</span></span><br></pre></td></tr></table></figure></p>
+<p>Updates <code>zookeeper.connect</code>, <code>num.partitions</code> and <code>log.dir</code>. they are the same for all brokers.<br><code>broker.id</code> and <code>advertised.listeners</code>, these two need to be unique for each broker, this is not a exhausted list, more info see <a href="https://kafka.apache.org/documentation/#configuration" target="_blank" rel="noopener">here</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">############################# Server Basics #############################</span></span><br><span class="line"><span class="comment"># The id of the broker. This must be set to a unique integer for each broker.</span></span><br><span class="line">broker.id=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># delete topic enable, default is true</span></span><br><span class="line">delete.topic.enable=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">############################# Socket Server Settings #############################</span></span><br><span class="line"><span class="comment"># Hostname and port the broker will advertise to producers and consumers. If not set,</span></span><br><span class="line"><span class="comment"># it uses the value for "listeners" if configured.  Otherwise, it will use the value</span></span><br><span class="line"><span class="comment"># returned from java.net.InetAddress.getCanonicalHostName().</span></span><br><span class="line">advertised.listeners=PLAINTEXT://192.168.20.20:9092</span><br><span class="line"></span><br><span class="line"><span class="comment">############################# Zookeeper #############################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Zookeeper connection string (see zookeeper docs for details).</span></span><br><span class="line"><span class="comment"># This is a comma separated host:port pairs, each corresponding to a zk</span></span><br><span class="line"><span class="comment"># server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002".</span></span><br><span class="line"><span class="comment"># You can also append an optional chroot string to the urls to specify the</span></span><br><span class="line"><span class="comment"># root directory for all kafka znodes.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># /kafka的作用就是把所有kafka相关的folder都放在zk的kafka目录下, 从zk CLI中可以看到</span></span><br><span class="line"><span class="comment"># zookeeper.connect=192.168.20.20:2181,192.168.20.21:2181,192.168.20.22:2181/kafka</span></span><br><span class="line">zookeeper.connect=192.168.20.20:2181,192.168.20.21:2181,192.168.20.22:2181</span><br><span class="line"></span><br><span class="line"><span class="comment">############################# Log Basics #############################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A comma separated list of directories under which to store log files</span></span><br><span class="line">log.dirs=/root/kafka/<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The default number of log partitions per topic. More partitions allow greater</span></span><br><span class="line"><span class="comment"># parallelism for consumption, but this will also result in more files across</span></span><br><span class="line"><span class="comment"># the brokers.</span></span><br><span class="line"><span class="comment"># 指的是每个topic 分成多少份partition</span></span><br><span class="line">num.partitions=5</span><br><span class="line"></span><br><span class="line"><span class="comment"># default replication factors for automatically created topics</span></span><br><span class="line"><span class="comment"># 3 brokers, can be 2 or 3</span></span><br><span class="line"><span class="comment"># 指的是每个partition 都多少备份, 小于或等于 broker的个数</span></span><br><span class="line">default.replication.factor=3</span><br><span class="line"></span><br><span class="line"><span class="comment"># specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.</span></span><br><span class="line">min.insync.replicas=2</span><br><span class="line"><span class="comment"># The number of acknowledgments the producer requires the leader to have received before considering a request complete.</span></span><br><span class="line"><span class="comment"># 0, 1, all, -1, default is 1</span></span><br><span class="line">acks=1</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/kafka_2.12-2.6.0</span><br><span class="line"><span class="comment"># create a log file</span></span><br><span class="line">touch /root/kafka/run.log</span><br><span class="line"><span class="comment"># start kafka</span></span><br><span class="line">bin/kafka-server-start.sh config/server.properties &gt; /root/kafka/run.log 2&gt;1 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># or run as daemon</span></span><br><span class="line">bin/kafka-server-start.sh -daemon config/server.properties</span><br><span class="line"><span class="comment"># stop kafka</span></span><br><span class="line">bin/kafka-server-stop.sh</span><br></pre></td></tr></table></figure>
+<p>Kafka log is configured by <code>conf/log4j.properties</code>, by default is under <code>&lt;kafka package&gt;/logs/server.log</code> file.</p>
+<p>Create and output topic description, can run in anyone of the nodes, <code>localhost</code> can be one of the broker IPs or list of IPs combination, separate by comma. In old version you use the <code>--zookeeper</code> option to list all zk <a href="ip:port" target="_blank" rel="noopener">ip:port</a> or <a href="ip:port" target="_blank" rel="noopener">ip:port</a>/kafka(if you use chroot).</p>
+<p>如果想从外部connect kafka broker, <code>advertised.listeners</code> 必须使用public IP or DNS hostname, 如果用集群内部的private IP 或者 localhost 则外部不能访问了。</p>
+<p>partition number and replic factor在command都可以override default的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create topic</span></span><br><span class="line"><span class="comment"># --bootstrap-server: Kafka server to connect to</span></span><br><span class="line">bin/kafka-topics.sh --create --topic <span class="built_in">test</span> --bootstrap-server localhost:9092</span><br><span class="line"><span class="comment"># verify</span></span><br><span class="line">bin/kafka-topics.sh --list --bootstrap-server localhost:9092</span><br><span class="line"><span class="comment"># topic verbose</span></span><br><span class="line">bin/kafka-topics.sh --describe --topic <span class="built_in">test</span> --bootstrap-server localhost:9092</span><br><span class="line"></span><br><span class="line"><span class="comment"># delete topic</span></span><br><span class="line"><span class="comment"># delete.topic.enable=true by default</span></span><br><span class="line"><span class="comment"># deletion is not reversible</span></span><br><span class="line">bin/kafka-topics.sh --delete --topic <span class="built_in">test</span> --bootstrap-server localhost:9092</span><br></pre></td></tr></table></figure></p>
+<p>Producer and consumer, can run on anyone of the nodes:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># produce message </span></span><br><span class="line">bin/kafka-console-producer.sh --topic <span class="built_in">test</span> --bootstrap-server localhost:9092</span><br><span class="line"><span class="comment"># consume message</span></span><br><span class="line"><span class="comment"># --from-beginning: read from beginning</span></span><br><span class="line">bin/kafka-console-consumer.sh --topic <span class="built_in">test</span> --from-beginning --bootstrap-server localhost:9092</span><br></pre></td></tr></table></figure></p>
+<p>Update topic settings:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># partition number can only be increase</span></span><br><span class="line">bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic <span class="built_in">test</span> --partitions 4</span><br></pre></td></tr></table></figure></p>
+<h2 id="Perf-Test"><a href="#Perf-Test" class="headerlink" title="Perf Test"></a>Perf Test</h2><p>To see the kafka resiliency, we can have a perf test:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># generate 10KB of random data</span></span><br><span class="line">base64 /dev/urandom | head -c 10000 | egrep -ao <span class="string">"\w"</span> | tr -d <span class="string">'\n'</span> &gt; file10KB.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># in a new shell: start a continuous random producer</span></span><br><span class="line">./kafka-producer-perf-test.sh --topic perf \</span><br><span class="line">    --num-records 10000 \</span><br><span class="line">    --throughput 10 \</span><br><span class="line">    --payload-file file10KB.txt \</span><br><span class="line">    --producer-props acks=1 bootstrap.servers=localhost:9092 \</span><br><span class="line">    --payload-delimiter A</span><br><span class="line"></span><br><span class="line"><span class="comment"># in a new shell: start a consumer</span></span><br><span class="line">bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic perf</span><br><span class="line"></span><br><span class="line"><span class="comment"># then do:</span></span><br><span class="line"><span class="comment"># kill one kafka server</span></span><br><span class="line"><span class="comment"># kill another kafka server</span></span><br><span class="line"><span class="comment"># kill the last server</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start back the servers one by one</span></span><br></pre></td></tr></table></figure></p>
+<p>Then open another terminal to consume the data, meanwhile go to kill the kafka broker one by one to see the result.</p>
+<h2 id="Kafka-Manager"><a href="#Kafka-Manager" class="headerlink" title="Kafka Manager"></a>Kafka Manager</h2><p>There is a open source Web UI tool for managing Kafka cluster, <a href="https://github.com/yahoo/CMAK" target="_blank" rel="noopener">CMAK</a>.<br>You can build a docker image of it.</p>
+<p>From README, it does not support recent Kafka version.</p>
+<h1 id="Run-as-Daemon"><a href="#Run-as-Daemon" class="headerlink" title="Run as Daemon"></a>Run as Daemon</h1>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kafka/" rel="tag"># kafka</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/15/golang-OOP/" rel="next" title="Golang OOP">
+                <i class="fa fa-chevron-left"></i> Golang OOP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/27/message-zookeeper-learn/" rel="prev" title="Zookeeper Quick Start">
+                Zookeeper Quick Start <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">213</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Partition"><span class="nav-number">1.1.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Producer"><span class="nav-number">1.2.</span> <span class="nav-text">Producer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consumer"><span class="nav-number">1.3.</span> <span class="nav-text">Consumer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#High-Availability"><span class="nav-number">1.4.</span> <span class="nav-text">High Availability</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance"><span class="nav-number">1.5.</span> <span class="nav-text">Performance</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-Start"><span class="nav-number">2.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-node"><span class="nav-number">2.1.</span> <span class="nav-text">Single node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cluster-Setup"><span class="nav-number">2.2.</span> <span class="nav-text">Cluster Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perf-Test"><span class="nav-number">2.3.</span> <span class="nav-text">Perf Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka-Manager"><span class="nav-number">2.4.</span> <span class="nav-text">Kafka Manager</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Run-as-Daemon"><span class="nav-number">3.</span> <span class="nav-text">Run as Daemon</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">958k</span>
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
