@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="//TODO:[ ] run as daemon The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level informat">
+  <meta name="description" content="The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level information about zk:  distribute">
 <meta name="keywords" content="zookeeper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zookeeper Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/11/27/message-zookeeper-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="//TODO:[ ] run as daemon The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level informat">
+<meta property="og:description" content="The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level information about zk:  distribute">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-21T08:14:50.425Z">
+<meta property="og:updated_time" content="2020-12-27T07:49:15.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zookeeper Quick Start">
-<meta name="twitter:description" content="//TODO:[ ] run as daemon The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level informat">
+<meta name="twitter:description" content="The Vagrant demo file please see my git repo Infratree  IntroductionZookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.Hght level information about zk:  distribute">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">130</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">133</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">213</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">217</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-21 00:14:50" itemprop="dateModified" datetime="2020-12-21T00:14:50-08:00">2020-12-21</time>
+                <time title="Modified: 2020-12-26 23:49:15" itemprop="dateModified" datetime="2020-12-26T23:49:15-08:00">2020-12-26</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">17k</span>
+                <span title="Symbols count in article">24k</span>
               
 
               
@@ -508,8 +508,7 @@
       
 
       
-        <p>//TODO:<br>[ ] run as daemon</p>
-<p>The Vagrant demo file please see my git repo <a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-zk-kafka" target="_blank" rel="noopener">Infratree</a> </p>
+        <p>The Vagrant demo file please see my git repo <a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-zk-kafka" target="_blank" rel="noopener">Infratree</a> </p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Zookeeper quorum architecture, at least 3 nodes cluster setup via Vagrant for Kafka use.<br>Hght level information about zk:</p>
 <ul>
 <li>distributed key value store</li>
@@ -543,7 +542,7 @@
 <p>Create zk data, log and conf directories in each zookeeper node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/zk/data</span><br><span class="line">mkdir -p /root/zk/<span class="built_in">log</span></span><br><span class="line">mkdir -p /root/zk/conf</span><br></pre></td></tr></table></figure></p>
 <p>Edit <code>zoo.cfg</code> file for each zookeeper instance, use the same configuration for them:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the basic time unit in milliseonds used by zk</span></span><br><span class="line">tickTime=2000</span><br><span class="line"><span class="comment">#Leader-Follower初始通信时限 tickTime * 10 = 20 seconds</span></span><br><span class="line">initLimit=10</span><br><span class="line"><span class="comment">#Leader-Follower同步通信时限 tickTime * 5 = 10 seconds</span></span><br><span class="line">syncLimit=5</span><br><span class="line"></span><br><span class="line"><span class="comment"># data dir</span></span><br><span class="line">dataDir=/root/zk/data</span><br><span class="line"><span class="comment"># log dir</span></span><br><span class="line">dataLogDir=/root/zk/<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># client port, 3 nodes use the same port number</span></span><br><span class="line">clientPort=2181</span><br><span class="line"><span class="comment">#maxClientCnxns=60</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># broker id and IP address, or using hostname from /etc/hosts</span></span><br><span class="line"><span class="comment"># for cluster, borker id must start from 1, not 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2888: connect the individual follower nodes to the leader node</span></span><br><span class="line"><span class="comment"># 3888: used for leader election in the ensemble</span></span><br><span class="line"><span class="comment"># can by any port number</span></span><br><span class="line">server.1=192.168.20.20:2888:3888</span><br><span class="line">server.2=192.168.20.21:2888:3888</span><br><span class="line">server.3=192.168.20.22:2888:3888</span><br></pre></td></tr></table></figure></p>
 <p>In zk data directory, create <code>myid</code> for each zk instance, much be unqiue:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># current in 192.168.20.20</span></span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /root/zk/data/myid</span><br><span class="line"><span class="comment"># run on 192.168.20.21</span></span><br><span class="line"><span class="built_in">echo</span> 2 &gt; /root/zk/data/myid</span><br><span class="line"><span class="comment"># run on 192.168.20.22</span></span><br><span class="line"><span class="built_in">echo</span> 3 &gt; /root/zk/data/myid</span><br></pre></td></tr></table></figure></p>
-<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><p>Run zk service commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/apache-zookeeper-3.6.2-bin/bin</span><br><span class="line"><span class="comment"># start</span></span><br><span class="line"><span class="comment"># default uses zoo.cfg config file</span></span><br><span class="line"><span class="comment"># run in background by default, has flag to run in foreground</span></span><br><span class="line">./zkServer.sh start</span><br><span class="line"><span class="comment"># stop</span></span><br><span class="line">./zkServer.sh stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># status check</span></span><br><span class="line"><span class="comment"># Mode: standalone, follower, leader</span></span><br><span class="line">./zkServer.sh status</span><br><span class="line"></span><br><span class="line"><span class="comment"># test zk is good</span></span><br><span class="line"><span class="comment"># ipv6 + port</span></span><br><span class="line">./zkCli.sh -server :2181</span><br><span class="line"><span class="comment"># then run</span></span><br><span class="line"><span class="comment"># you will see some output like [zookeeper], etc</span></span><br><span class="line">ls /</span><br></pre></td></tr></table></figure></p>
+<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><p>Run zk service commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root/apache-zookeeper-3.6.2-bin/bin</span><br><span class="line"><span class="comment"># start</span></span><br><span class="line"><span class="comment"># default uses zoo.cfg config file</span></span><br><span class="line"><span class="comment"># run in background by default, has flag to run in foreground</span></span><br><span class="line">./zkServer.sh start [path/to/zoo.cfg]</span><br><span class="line"><span class="comment"># stop</span></span><br><span class="line">./zkServer.sh stop [path/to/zoo.cfg]</span><br><span class="line"></span><br><span class="line"><span class="comment"># status check</span></span><br><span class="line"><span class="comment"># Mode: standalone, follower, leader</span></span><br><span class="line">./zkServer.sh status [path/to/zoo.cfg]</span><br><span class="line"></span><br><span class="line"><span class="comment"># test zk is good</span></span><br><span class="line"><span class="comment"># ipv6 + port</span></span><br><span class="line">./zkCli.sh -server :2181</span><br><span class="line"><span class="comment"># then run</span></span><br><span class="line"><span class="comment"># you will see some output like [zookeeper], etc</span></span><br><span class="line">ls /</span><br></pre></td></tr></table></figure></p>
 <p>[x] why port 2181 is bound on ipv6? 其他环境上也是如此。</p>
 <p>After start zookeeper, check <code>./zkServer.sh status</code> to see if current node is leader or follower.<br>Run <code>./zkCli.sh</code>, you can execute zk CLI, see this <a href="https://zookeeper.apache.org/doc/r3.6.2/zookeeperCLI.html" target="_blank" rel="noopener">reference</a>.</p>
 <p><code>./zkCli.sh</code> 也可用于从外部连接一个zk server, 只要指定accessable IP 和 port即可，demo中由于就在本机，所以其实是localhost.</p>
@@ -552,9 +551,13 @@
 <p>在旧版本中，可以使用<a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_4lw" target="_blank" rel="noopener">four letter words</a>去检查一些状态，比如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># are you ok</span></span><br><span class="line"><span class="built_in">echo</span> ruok | nc locahost 2181</span><br></pre></td></tr></table></figure></p>
 <p>新版本已经切换到<a href="https://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_adminserver" target="_blank" rel="noopener">AdminServer</a>. The AdminServer is enabled by default, access by http 8080 port:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list all commands</span></span><br><span class="line">http://192.168.20.20:8080/commands</span><br><span class="line"></span><br><span class="line"><span class="comment"># for example:</span></span><br><span class="line"><span class="comment"># state</span></span><br><span class="line">http://192.168.20.20:8080/commands/<span class="built_in">stat</span></span><br><span class="line"><span class="comment"># config</span></span><br><span class="line">http://192.168.20.20:8080/commands/configuration</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://github.com/elkozmon/zoonavigator" target="_blank" rel="noopener">ZooNavigator</a> is a web based ZooKeeper UI and editor/browser with many features. You can launched it by docker container.</p>
-<h2 id="Run-as-Daemon"><a href="#Run-as-Daemon" class="headerlink" title="Run as Daemon"></a>Run as Daemon</h2><p>systemd zookeeper cluster setup on ubuntu:<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04</a></p>
-<p>It is easy to set zk running as daemon and start it on boot.</p>
-<p>start, stop, status:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h1 id="Run-as-Daemon"><a href="#Run-as-Daemon" class="headerlink" title="Run as Daemon"></a>Run as Daemon</h1><p>Set zookeeper as system daemon so that it will be launched every time on system boots.</p>
+<p><code>systemd</code> zookeeper cluster setup on ubuntu, see <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an-apache-zookeeper-cluster-on-ubuntu-18-04" target="_blank" rel="noopener">here</a>.</p>
+<p>Basically speaking, first generate a zookeeper service file, for example <code>zookeeper.service</code>, the prefix <code>zookeeper</code> is the service name used in systemctl command. Place this file in <code>/etc/systemd/system</code> folder and owned by <code>root</code>.</p>
+<p>Double curly brackets is placeholder in jinja2 template.<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=Zookeeper Daemon</span><br><span class="line"><span class="attr">Documentation</span>=http://zookeeper.apache.org</span><br><span class="line"><span class="comment"># boot after these services</span></span><br><span class="line"><span class="comment"># for example, here we rely consul and dnsmasq services</span></span><br><span class="line"><span class="attr">After</span>=network-<span class="literal">on</span>line.target consul.service dnsmasq.service</span><br><span class="line"><span class="attr">StartLimitInterval</span>=<span class="number">200</span></span><br><span class="line"><span class="attr">StartLimitBurst</span>=<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span></span><br><span class="line"><span class="comment"># in zkServer.sh, it uses `&amp;` to fork and exec</span></span><br><span class="line"><span class="attr">Type</span>=forking</span><br><span class="line"><span class="comment"># systemd can identify the main process of the daemon</span></span><br><span class="line"><span class="comment"># in zkServer.sh it will echo pid to this file</span></span><br><span class="line"><span class="attr">PIDFile</span>=&#123;&#123; zookeeper_data_dir &#125;&#125;/zookeeper-server.pid</span><br><span class="line"></span><br><span class="line"><span class="attr">User</span>=&#123;&#123; zookeeper_user &#125;&#125;</span><br><span class="line"><span class="attr">Group</span>=&#123;&#123; zookeeper_group &#125;&#125;</span><br><span class="line"><span class="attr">WorkingDirectory</span>=/opt/zookeeper</span><br><span class="line"></span><br><span class="line"><span class="comment"># environment variables may be needed</span></span><br><span class="line"><span class="comment"># or configure in zoo.cfg file</span></span><br><span class="line"><span class="attr">Environment</span>=ZOOPIDFILE=&#123;&#123; zookeeper_data_dir &#125;&#125;/zookeeper-server.pid</span><br><span class="line"><span class="attr">Environment</span>=ZOOKEEPER_HOME=/opt/zookeeper</span><br><span class="line"><span class="attr">Environment</span>=ZOOKEEPER_CONF=&#123;&#123; zookeeper_conf_dir &#125;&#125;</span><br><span class="line"><span class="attr">Environment</span>=ZOOCFGDIR=&#123;&#123; zookeeper_conf_dir &#125;&#125;</span><br><span class="line"><span class="attr">Environment</span>=CLASSPATH=<span class="variable">$CLASSPATH</span>:<span class="variable">$ZOOKEEPER_CONF</span>:<span class="variable">$ZOOKEEPER_HOME</span>/*:<span class="variable">$ZOOKEEPER_HOME</span>/lib/*</span><br><span class="line"><span class="attr">Environment</span>=ZOO_LOG_DIR=&#123;&#123; zookeeper_log_dir &#125;&#125;</span><br><span class="line"><span class="attr">Environment</span>=ZOO_LOG4J_PROP=INFO,ROLLINGFILE</span><br><span class="line"><span class="attr">Environment</span>=JVMFLAGS=-Dzookeeper.log.threshold=INFO</span><br><span class="line"><span class="attr">Environment</span>=ZOO_DATADIR_AUTOCREATE_DISABLE=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># start, stop and reload commands</span></span><br><span class="line"><span class="attr">ExecStart</span>=/opt/zookeeper/bin/zkServer.sh start &#123;&#123; zookeeper_conf_dir &#125;&#125;/zoo.cfg</span><br><span class="line"><span class="attr">ExecStop</span>=/opt/zookeeper/bin/zkServer.sh stop &#123;&#123; zookeeper_conf_dir &#125;&#125;/zoo.cfg</span><br><span class="line"><span class="attr">ExecReload</span>=/opt/zookeeper/bin/zkServer.sh restart &#123;&#123; zookeeper_conf_dir &#125;&#125;/zoo.cfg</span><br><span class="line"></span><br><span class="line"><span class="comment"># OOM killer: -1000 disable ~ 1000 very likely</span></span><br><span class="line"><span class="attr">OOMScoreAdjust</span>=-<span class="number">500</span></span><br><span class="line"><span class="attr">Restart</span>=<span class="literal">on</span>-failure</span><br><span class="line"><span class="attr">RestartSec</span>=<span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span></span><br><span class="line"><span class="comment"># usually this is your system default target</span></span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure></p>
+<p>More detail about <code>systemd</code> please search and see my systemd blog.</p>
+<p>Then you must enable zookeeper starts on boot:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line"><span class="comment"># enable start on boot</span></span><br><span class="line">systemctl <span class="built_in">enable</span> zookeeper</span><br></pre></td></tr></table></figure></p>
+<p>Other systemd commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl start zookeeper</span><br><span class="line">systemctl stop zookeeper</span><br><span class="line">systemctl restart zookeeper</span><br><span class="line"></span><br><span class="line"><span class="comment"># reload config without restart</span></span><br><span class="line">systemctl reload zookeeper</span><br><span class="line"><span class="comment"># first try relaod, if not supports then restart</span></span><br><span class="line">systemctl reload-or-restart zookeeper</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -675,7 +678,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">213</span>
+                    <span class="site-state-item-count">217</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -766,7 +769,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1039,7 +1044,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">130</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">133</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1075,7 +1086,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Performance-Factors"><span class="nav-number">2.</span> <span class="nav-text">Performance Factors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cluster-Setup"><span class="nav-number">3.</span> <span class="nav-text">Cluster Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture"><span class="nav-number">3.1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config"><span class="nav-number">3.2.</span> <span class="nav-text">Config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commands"><span class="nav-number">3.3.</span> <span class="nav-text">Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-as-Daemon"><span class="nav-number">3.4.</span> <span class="nav-text">Run as Daemon</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Performance-Factors"><span class="nav-number">2.</span> <span class="nav-text">Performance Factors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cluster-Setup"><span class="nav-number">3.</span> <span class="nav-text">Cluster Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture"><span class="nav-number">3.1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config"><span class="nav-number">3.2.</span> <span class="nav-text">Config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commands"><span class="nav-number">3.3.</span> <span class="nav-text">Commands</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Run-as-Daemon"><span class="nav-number">4.</span> <span class="nav-text">Run as Daemon</span></a></li></ol></div>
             
 
           </div>
@@ -1107,7 +1118,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">959k</span>
+    <span title="Symbols count total">976k</span>
   
 
   
