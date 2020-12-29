@@ -96,23 +96,25 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
-<meta property="og:type" content="website">
-<meta property="og:title" content="海胆阶段&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/File-System/index.html">
+  <meta name="description" content="This blog only sets up one NFS server that may be single point of failure. NFS allows remote hosts to mount filesystems(can be any) over a network and interact with those filesystems as though they ar">
+<meta name="keywords" content="linux,filesystem,nfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NFS Server and Client Setup">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/fs-nfs/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="This blog only sets up one NFS server that may be single point of failure. NFS allows remote hosts to mount filesystems(can be any) over a network and interact with those filesystems as though they ar">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-29T07:30:06.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="海胆阶段&#39;s Blog">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:title" content="NFS Server and Client Setup">
+<meta name="twitter:description" content="This blog only sets up one NFS server that may be single point of failure. NFS allows remote hosts to mount filesystems(can be any) over a network and interact with those filesystems as though they ar">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/File-System/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/27/fs-nfs/">
 
 
 
@@ -122,7 +124,7 @@
   };
 </script>
 
-  <title>Category: File System | 海胆阶段's Blog</title>
+  <title>NFS Server and Client Setup | 海胆阶段's Blog</title>
   
 
 
@@ -170,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -265,7 +267,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -277,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
 
   </li>
         
@@ -315,28 +317,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -383,83 +363,248 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>File System<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/fs-nfs/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2020/01/20/fs-ceph/" itemprop="url">
-            
-              <span itemprop="name">Ceph</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">NFS Server and Client Setup
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-01-20T14:28:41-08:00" content="2020-01-20">
-          01-20
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-27 21:56:01" itemprop="dateCreated datePublished" datetime="2019-05-27T21:56:01-07:00">2019-05-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-12-28 23:30:06" itemprop="dateModified" datetime="2020-12-28T23:30:06-08:00">2020-12-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Storage/" itemprop="url" rel="index"><span itemprop="name">Storage</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/27/fs-nfs-setup/" itemprop="url">
-            
-              <span itemprop="name">NFS Server and Client Setup</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-27T21:56:01-07:00" content="2019-05-27">
-          05-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>This blog only sets up one NFS server that may be single point of failure.</p>
+<p>NFS allows remote hosts to mount <code>filesystems</code>(can be any) over a network and interact with those filesystems as though they are mounted locally. </p>
+<blockquote>
+<p>NFS是一个概念，它不是一个文件系统，它是一种文件系统的共享方式, 这里默认使用本地Linux的文件系统了。</p>
+</blockquote>
+<p>NFS lets you leverage storage space in a different location and allows you to write onto the same space from multiple servers or clients in an effortless manner. It, thus, works fairly well for directories that users need to access frequently.</p>
+<h1 id="Server-Setup"><a href="#Server-Setup" class="headerlink" title="Server Setup"></a>Server Setup</h1><p>Acutally there are many other package may needed, this <a href="https://www.youtube.com/watch?v=MBqZe5d9BNQ" target="_blank" rel="noopener">video</a> may give you more details.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nfs package</span></span><br><span class="line">yum -y install nfs-utils</span><br></pre></td></tr></table></figure></p>
+<p>Then enable and start nfs server:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the rpc by default should be on, but may not</span></span><br><span class="line"><span class="comment"># rpc is called remote producture call</span></span><br><span class="line"><span class="comment"># nfs server needs this to access and operate on others</span></span><br><span class="line">systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">systemctl start rpcbind</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> nfs-server.service</span><br><span class="line">systemctl start nfs-server.service</span><br><span class="line"><span class="comment"># create server side shared folder</span></span><br><span class="line">mkdir –p /data</span><br><span class="line">chmod –R 755 /data</span><br></pre></td></tr></table></figure></p>
+<p>Edit <code>/etc/exports</code> file to expose shared folder<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/exports </span><br><span class="line"></span><br><span class="line"><span class="comment"># any client can access this folder</span></span><br><span class="line">/data *(rw,insecure,async,no_root_squash)   </span><br><span class="line"><span class="comment"># or specific client can access this folder</span></span><br><span class="line">/data &lt;client ip&gt;(rw,insecure,async,no_root_squash)</span><br></pre></td></tr></table></figure></p>
+<p>Then export the shared folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exportfs -a</span><br><span class="line">systemctl restart nfs-server.service</span><br></pre></td></tr></table></figure></p>
+<p>Check shared folder is up <code>showmount -e &lt;server ip&gt;</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showmount -e localhost</span><br></pre></td></tr></table></figure></p>
+<p>If you change the content in <code>/etc/exports</code>, need to reload:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportfs -ra</span><br></pre></td></tr></table></figure></p>
+<p>Check mount options:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportfs -v</span><br></pre></td></tr></table></figure></p>
+<h1 id="Client-Setup"><a href="#Client-Setup" class="headerlink" title="Client Setup"></a>Client Setup</h1><p>First create or using existing folder as folder to mount, here I use <code>/mntiis</code> folder in client machine<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nfs package</span></span><br><span class="line">yum -y install nfs-utils</span><br><span class="line"></span><br><span class="line"><span class="comment"># create client side shared folder</span></span><br><span class="line">mkdir -p /mntiis</span><br><span class="line">chmod -R 0755 /mntiis</span><br></pre></td></tr></table></figure></p>
+<p>If you use non-persistent mount in command line, this connection will disappear after rebooting:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount &lt;server ip&gt;:/data     /mntiis</span><br></pre></td></tr></table></figure></p>
+<p>For persistent mount, go to <code>/etc/fstab</code> file, add this line<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;server ip&gt;:/data /mntiis nfs defaults 0 0</span><br><span class="line"><span class="comment"># or with other mount options</span></span><br><span class="line">&lt;server ip&gt;:/data /mntiis nfs defaults,timeo=10,retrans=3,rsize=1048576,wsize=1048576 0 0</span><br></pre></td></tr></table></figure></p>
+<p>Enable mount:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mount /mntiis</span><br><span class="line"><span class="comment"># or reload all in fstab file</span></span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure></p>
+<p>Verify all set, you can see the <code>/mntiis</code> in the output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -hk</span><br></pre></td></tr></table></figure></p>
+<p>When you remove the entry in <code>/etc/fstab</code> filem, also unmount the folder, otherwise you will see <code>/mntiis</code> is marked by <code>?</code> in filesystem:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mntiis</span><br></pre></td></tr></table></figure></p>
+<h1 id="Autofs"><a href="#Autofs" class="headerlink" title="Autofs"></a>Autofs</h1><p>You can set NFS auto mount on-demand via <code>autofs</code>, this can avoid wasting resources by unmounting mount point when not using and mounting it when access again.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y autofs</span><br><span class="line">systemctl start autofs</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/filesystem/" rel="tag"># filesystem</a>
+          
+            <a href="/tags/nfs/" rel="tag"># nfs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/27/music/" rel="next" title="Music in My Life">
+                <i class="fa fa-chevron-left"></i> Music in My Life
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/28/linux-cronjob/" rel="prev" title="Scheduling Recurring Tasks with cron">
+                Scheduling Recurring Tasks with cron <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -480,8 +625,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -589,9 +743,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -896,6 +1048,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Server-Setup"><span class="nav-number">1.</span> <span class="nav-text">Server Setup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Setup"><span class="nav-number">2.</span> <span class="nav-text">Client Setup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Autofs"><span class="nav-number">3.</span> <span class="nav-text">Autofs</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -921,7 +1090,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">976k</span>
+    <span title="Symbols count total">982k</span>
   
 
   
@@ -1026,6 +1195,10 @@
   
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 

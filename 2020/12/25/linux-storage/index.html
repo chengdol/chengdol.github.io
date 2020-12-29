@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="//TODO[ ] terraform mount disk /dev/sdb, why this name?[ ] how to demo or experiment?[ ] blkid, lsblk 如何使用[ ] fstab mount 设置 From Linkedin Learn Linux: Storage Systems.">
+  <meta name="description" content="[x] terraform mount disk /dev/sdb, why this name?[x] do experiment, using vagrant mount extra disk[x] blkid, lsblk 使用场景[x] fstab mount 设置 Vagrant demo please see vagrant-storage. This is for VirtualBo">
 <meta name="keywords" content="linux,storage">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Storage System">
 <meta property="og:url" content="http://yoursite.com/2020/12/25/linux-storage/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="//TODO[ ] terraform mount disk /dev/sdb, why this name?[ ] how to demo or experiment?[ ] blkid, lsblk 如何使用[ ] fstab mount 设置 From Linkedin Learn Linux: Storage Systems.">
+<meta property="og:description" content="[x] terraform mount disk /dev/sdb, why this name?[x] do experiment, using vagrant mount extra disk[x] blkid, lsblk 使用场景[x] fstab mount 设置 Vagrant demo please see vagrant-storage. This is for VirtualBo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-27T07:37:52.977Z">
+<meta property="og:updated_time" content="2020-12-29T07:30:06.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Storage System">
-<meta name="twitter:description" content="//TODO[ ] terraform mount disk /dev/sdb, why this name?[ ] how to demo or experiment?[ ] blkid, lsblk 如何使用[ ] fstab mount 设置 From Linkedin Learn Linux: Storage Systems.">
+<meta name="twitter:description" content="[x] terraform mount disk /dev/sdb, why this name?[x] do experiment, using vagrant mount extra disk[x] blkid, lsblk 使用场景[x] fstab mount 设置 Vagrant demo please see vagrant-storage. This is for VirtualBo">
 
 
 
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-26 23:37:52" itemprop="dateModified" datetime="2020-12-26T23:37:52-08:00">2020-12-26</time>
+                <time title="Modified: 2020-12-28 23:30:06" itemprop="dateModified" datetime="2020-12-28T23:30:06-08:00">2020-12-28</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">375</span>
+                <span title="Symbols count in article">19k</span>
               
 
               
@@ -508,8 +508,33 @@
       
 
       
-        <p>//TODO<br>[ ] terraform mount disk <code>/dev/sdb</code>, why this name?<br>[ ] how to demo or experiment?<br>[ ] blkid, lsblk 如何使用<br>[ ] fstab mount 设置</p>
+        <p>[x] terraform mount disk <code>/dev/sdb</code>, why this name?<br>[x] do experiment, using vagrant mount extra disk<br>[x] blkid, lsblk 使用场景<br>[x] fstab mount 设置</p>
+<p>Vagrant demo please see <a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-storage" target="_blank" rel="noopener">vagrant-storage</a>. This is for VirtualBox provider, at the time of writting this is a experimental <a href="https://www.vagrantup.com/docs/disks/usage" target="_blank" rel="noopener">feature</a>.</p>
+<p>After launch the machine:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># up</span></span><br><span class="line">VAGRANT_EXPERIMENTAL=<span class="string">"disks"</span> vagrant up</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check block device, their name, type, size and mount point</span></span><br><span class="line">lsblk</span><br><span class="line">NAME                    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda                       8:0    0  40G  0 disk</span><br><span class="line">├─sda1                    8:1    0   1G  0 part /boot</span><br><span class="line">└─sda2                    8:2    0  31G  0 part</span><br><span class="line">  ├─centos_centos7-root 253:0    0  29G  0 lvm  /</span><br><span class="line">  └─centos_centos7-swap 253:1    0   2G  0 lvm  [SWAP]</span><br><span class="line">sdb                       8:16   0   2G  0 disk</span><br><span class="line">sdc                       8:32   0   2G  0 disk</span><br><span class="line"></span><br><span class="line"><span class="comment"># /dev/sda is not used up, let's add one more partition of 3GB</span></span><br><span class="line">fdisk /dev/sda</span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): n</span><br><span class="line">Partition <span class="built_in">type</span>:</span><br><span class="line">   p   primary (2 primary, 0 extended, 2 free)</span><br><span class="line">   e   extended</span><br><span class="line">Select (default p):</span><br><span class="line">Using default response p</span><br><span class="line">Partition number (3,4, default 3):</span><br><span class="line">First sector (67108864-83886079, default 67108864):</span><br><span class="line">Using default value 67108864</span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G&#125; (67108864-83886079, default 83886079): +3GB</span><br><span class="line">Partition 3 of <span class="built_in">type</span> Linux and of size 2.8 GiB is <span class="built_in">set</span></span><br><span class="line"></span><br><span class="line">Command (m <span class="keyword">for</span> <span class="built_in">help</span>): w</span><br><span class="line">The partition table has been altered!</span><br><span class="line"></span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line"></span><br><span class="line">WARNING: Re-reading the partition table failed with error 16: Device or resource busy.</span><br><span class="line">The kernel still uses the old table. The new table will be used at</span><br><span class="line">the next reboot or after you run partprobe(8) or kpartx(8)</span><br><span class="line">Syncing disks.</span><br><span class="line"></span><br><span class="line"><span class="comment"># re-read partition for /dev/sda</span></span><br><span class="line">partprobe -s /dev/sda</span><br><span class="line"></span><br><span class="line"><span class="comment"># now see lsblk</span></span><br><span class="line">NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda                       8:0    0   40G  0 disk</span><br><span class="line">├─sda1                    8:1    0    1G  0 part /boot</span><br><span class="line">├─sda2                    8:2    0   31G  0 part</span><br><span class="line">│ ├─centos_centos7-root 253:0    0   29G  0 lvm  /</span><br><span class="line">│ └─centos_centos7-swap 253:1    0    2G  0 lvm  [SWAP]</span><br><span class="line">└─sda3                    8:3    0  2.8G  0 part</span><br><span class="line">sdb                       8:16   0    2G  0 disk</span><br><span class="line">sdc                       8:32   0    2G  0 disk</span><br><span class="line"></span><br><span class="line"><span class="comment"># format sda3</span></span><br><span class="line">mkfs -t ext4 /dev/sda3s</span><br><span class="line"></span><br><span class="line"><span class="comment"># see type</span></span><br><span class="line">blkid | grep sda3</span><br><span class="line">/dev/sda3: UUID=<span class="string">"7d4a365c-1639-41de-a7c7-ebe79ea2830c"</span> TYPE=<span class="string">"ext4"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># mount to /data3 folder</span></span><br><span class="line">mkdir /data3</span><br><span class="line">mount /dev/sda3 /data3</span><br><span class="line"><span class="comment"># check lsblk</span></span><br><span class="line"><span class="comment"># now see lsblk</span></span><br><span class="line">NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda                       8:0    0   40G  0 disk</span><br><span class="line">├─sda1                    8:1    0    1G  0 part /boot</span><br><span class="line">├─sda2                    8:2    0   31G  0 part</span><br><span class="line">│ ├─centos_centos7-root 253:0    0   29G  0 lvm  /</span><br><span class="line">│ └─centos_centos7-swap 253:1    0    2G  0 lvm  [SWAP]</span><br><span class="line">└─sda3                    8:3    0  2.8G  0 part /data3</span><br><span class="line">sdb                       8:16   0    2G  0 disk</span><br><span class="line">sdc                       8:32   0    2G  0 disk</span><br><span class="line"></span><br><span class="line"><span class="comment"># check space and inode usage</span></span><br><span class="line"><span class="built_in">cd</span> /data3</span><br><span class="line">df -k .</span><br><span class="line">df -i .</span><br></pre></td></tr></table></figure>
+<p>If you copy a big file to /data3, its use% may not change because flush does not happen, run <code>sync</code> to flush file system buffer.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># format whole disk sdb without partition</span></span><br><span class="line"><span class="comment"># use btrfs and mount with compress</span></span><br><span class="line">mkfs -t btrfs /dev/sdb</span><br><span class="line"></span><br><span class="line">mkdir /datab</span><br><span class="line">mount /dev/sdb -o compress /datab</span><br><span class="line"></span><br><span class="line">mount | grep sdb</span><br><span class="line">/dev/sdb on /datab <span class="built_in">type</span> btrfs (rw,relatime,seclabel,compress=zlib,space_cache,subvolid=5,subvol=/)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check lsblk</span></span><br><span class="line">NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda                       8:0    0   40G  0 disk</span><br><span class="line">├─sda1                    8:1    0    1G  0 part /boot</span><br><span class="line">├─sda2                    8:2    0   31G  0 part</span><br><span class="line">│ ├─centos_centos7-root 253:0    0   29G  0 lvm  /</span><br><span class="line">│ └─centos_centos7-swap 253:1    0    2G  0 lvm  [SWAP]</span><br><span class="line">└─sda3                    8:3    0  2.8G  0 part /data3</span><br><span class="line">sdb                       8:16   0    2G  0 disk /datab</span><br><span class="line">sdc                       8:32   0    2G  0 disk</span><br></pre></td></tr></table></figure>
 <p>From Linkedin Learn <a href="https://www.linkedin.com/learning/linux-storage-systems?trk=course_title&amp;upsellOrderOrigin=default_guest_learning" target="_blank" rel="noopener">Linux: Storage Systems</a>.</p>
+<p>首先需要理解加入一个新的disk到系统之后，发生了什么，以及需要做什么工作才能使用这个新加入的disk。可以参考一下<a href="https://www.techotopia.com/index.php/Adding_a_New_Disk_Drive_to_an_Ubuntu_Linux_System" target="_blank" rel="noopener">这篇文章</a>. 主要用到了<code>fdisk</code>(partition), <code>mkfs</code>(make filesystem), <code>mount or fstab</code>(make accessable)</p>
+<p>新加入的disk 的device file 如何命名的, Name conventions of device file, see <a href="https://en.wikipedia.org/wiki/Device_file#Naming_conventions" target="_blank" rel="noopener">here</a>, 比如<code>/dev/sda</code>, <code>/dev/sdb</code>, etc.</p>
+<p>总的来看，可以用这样的顺序去观察storage system:</p>
+<ul>
+<li>lsblk, blkid 查看block device的大致状态，fs, disk, part, mount point等</li>
+<li>/etc/fstab 查看是否persistent 以及 mount option 是否合适</li>
+<li>mount 查看一下defaults mount option 具体内容是什么</li>
+<li>df -k/-i 查看mount point space使用情况</li>
+<li>dd 测试I/O performance (或者结合iperf3如果是NFS 之类的分布式存储)</li>
+</ul>
+<h1 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h1><p><code>lsblk</code> and <code>blkid</code> are used to identify block storages (linux also has character device).<br>有一点要注意，使用<code>lsblk</code>的时候，比如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NAME                    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda                       <span class="number">8</span>:<span class="number">0</span>    <span class="number">0</span>  <span class="number">32</span>G  <span class="number">0</span> disk</span><br><span class="line">├─sda1                    <span class="number">8</span>:<span class="number">1</span>    <span class="number">0</span>   <span class="number">1</span>G  <span class="number">0</span> part /boot</span><br><span class="line">└─sda2                    <span class="number">8</span>:<span class="number">2</span>    <span class="number">0</span>  <span class="number">31</span>G  <span class="number">0</span> part</span><br><span class="line">  ├─centos_centos7-root <span class="number">253</span>:<span class="number">0</span>    <span class="number">0</span>  <span class="number">29</span>G  <span class="number">0</span> lvm  /</span><br><span class="line">  └─centos_centos7-swap <span class="number">253</span>:<span class="number">1</span>    <span class="number">0</span>   <span class="number">2</span>G  <span class="number">0</span> lvm  [SWAP]</span><br></pre></td></tr></table></figure></p>
+<p>区分<code>TYPE</code>的不同类型(也可以从缩进结构看出), <code>MOUNTPOINT</code>中有值得部分才会在<code>mount</code> command中显示。在<code>/etc/fstab</code>中也会看到对应的records.</p>
+<p>Check storage partition:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list partitions and see type of a disk</span></span><br><span class="line"><span class="comment"># type `p` to see part </span></span><br><span class="line"><span class="comment"># `n` to add new part</span></span><br><span class="line"><span class="comment"># `d` to delete part</span></span><br><span class="line"><span class="comment"># `w` to confirm</span></span><br><span class="line"><span class="comment"># `q` to quit</span></span><br><span class="line"><span class="comment"># /dev/sda is disk type</span></span><br><span class="line">fdisk /dev/sda</span><br><span class="line"></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">ls /dev/sda*</span><br></pre></td></tr></table></figure></p>
+<h1 id="Formating"><a href="#Formating" class="headerlink" title="Formating"></a>Formating</h1><p>Formatting partition or disk is to make a filesystem on it.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># format as ext4 type to /dev/sdb1 partition</span></span><br><span class="line">mkfs -t ext4 /dev/sdb1</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="comment"># Mounting</span></span><br><span class="line">Mounting is associating a filesystem(a partition) with a directory, mornally we would mount an empty directory, otherwise the content will be hidden.</span><br><span class="line">```bash</span><br><span class="line">mount /dev/sdb1 /data</span><br><span class="line"></span><br><span class="line"><span class="comment"># non-disk filesystem, system will mount for you</span></span><br><span class="line"><span class="comment"># -t: type</span></span><br><span class="line">mount -t proc proc /proc</span><br><span class="line">mount -t sysfs sysfs /sys</span><br><span class="line">mount -t debugfs debugfs /sys/kernel/debug</span><br><span class="line"><span class="comment"># NFS</span></span><br><span class="line">mount server:dir /nfs-data</span><br></pre></td></tr></table></figure></p>
+<p>[ ] Ordinary file can also be formatted and mounted.</p>
+<p>The persistent mounts are in <code>/etc/fstab</code> file on boot, If you type <code>mount</code> command on shell, you will see several mount points, like above <code>proc</code>, <code>sysfs</code>, <code>debugfs</code>. These are not in <code>/etc/fstab</code>, <code>systemd</code> mounts them on boot automatically.</p>
+<p>For the mount options specific to file system type, see <code>man</code> fstab and mount.</p>
+<p>You can unmount by <code>umount</code> command, filesystem cannot be unmounted while in use: files are open, process has dir in it. Can check by <code>lsof</code> command.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /data</span><br></pre></td></tr></table></figure></p>
+<h1 id="Filesystem-Types"><a href="#Filesystem-Types" class="headerlink" title="Filesystem Types"></a>Filesystem Types</h1><p>Commonly used ones: <code>ext2/3/4</code>, <code>xfs</code>, <code>Btrfs</code>. they have different properties.</p>
+<p>Note that sometime you cannot create file because of no space left on device, but when you check <code>df -k .</code>, it is not full, check <code>df -i .</code> may help, you may use up the inode capacity even if there are lots of space still.</p>
 
       
     </div>
@@ -601,8 +626,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -710,9 +744,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1017,6 +1049,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Partition"><span class="nav-number">1.</span> <span class="nav-text">Partition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Formating"><span class="nav-number">2.</span> <span class="nav-text">Formating</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filesystem-Types"><span class="nav-number">3.</span> <span class="nav-text">Filesystem Types</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1042,7 +1091,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">976k</span>
+    <span title="Symbols count total">982k</span>
   
 
   

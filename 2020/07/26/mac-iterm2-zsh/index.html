@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Q6qoOp8xFw6wa-XxCLEUp0jG9NebV_7W">
-<meta property="og:updated_time" content="2020-12-19T00:40:06.418Z">
+<meta property="og:updated_time" content="2020-12-29T07:30:06.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iTerm2 and Oh-My-Zsh Setup">
 <meta name="twitter:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Install iTermInstall iTerm2 on Machttps://www.ite">
@@ -282,7 +282,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
 
   </li>
         
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-18 16:40:06" itemprop="dateModified" datetime="2020-12-18T16:40:06-08:00">2020-12-18</time>
+                <time title="Modified: 2020-12-28 23:30:06" itemprop="dateModified" datetime="2020-12-28T23:30:06-08:00">2020-12-28</time>
               
             
           </span>
@@ -529,12 +529,11 @@
 </li>
 </ol>
 <h1 id="Configure-Oh-My-Zsh"><a href="#Configure-Oh-My-Zsh" class="headerlink" title="Configure Oh My Zsh"></a>Configure Oh My Zsh</h1><p>Install <code>ohmyz</code> on Mac:<br>Mac zsh is pre-installed, you can check by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zsh --version</span><br></pre></td></tr></table></figure></p>
-<p>If not, install zsh first:<br><a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH" target="_blank" rel="noopener">https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH</a></p>
-<p><a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">https://ohmyz.sh/#install</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure></p>
+<p>If not, <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH" target="_blank" rel="noopener">install zsh</a> first.<br>Then <a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">install ohmyzsh</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>Then install <code>Powerlevel10k</code> theme, this theme is what exactly I need:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/romkatv/powerlevel10k.git <span class="variable">$ZSH_CUSTOM</span>/themes/powerlevel10k</span><br></pre></td></tr></table></figure></p>
-<p>By default it uses <code>robbyrussell</code> theme, you can see it from <code>~/.zshrc</code> file, the theme files are located in <code>~/.oh-my-zsh/themes</code> folder<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set name of the theme to load --- if set to "random", it will</span></span><br><span class="line"><span class="comment"># load a random theme each time oh-my-zsh is loaded, in which case,</span></span><br><span class="line"><span class="comment"># to know which specific one was loaded, run: echo $RANDOM_THEME</span></span><br><span class="line"><span class="comment"># See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</span></span><br><span class="line">ZSH_THEME=<span class="string">"powerlevel10k/powerlevel10k"</span></span><br><span class="line"></span><br><span class="line">plugins=(git kubectl docker docker-compose gcloud)</span><br></pre></td></tr></table></figure></p>
+<p>By default it uses <code>robbyrussell</code> theme, you can see it from <code>~/.zshrc</code> file, the theme files are located in <code>~/.oh-my-zsh/themes</code> folder<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set name of the theme to load --- if set to "random", it will</span></span><br><span class="line"><span class="comment"># load a random theme each time oh-my-zsh is loaded, in which case,</span></span><br><span class="line"><span class="comment"># to know which specific one was loaded, run: echo $RANDOM_THEME</span></span><br><span class="line"><span class="comment"># See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</span></span><br><span class="line">ZSH_THEME=<span class="string">"powerlevel10k/powerlevel10k"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Which plugins would you like to load?</span></span><br><span class="line"><span class="comment"># Standard plugins can be found in $ZSH/plugins/</span></span><br><span class="line"><span class="comment"># Custom plugins may be added to $ZSH_CUSTOM/plugins/</span></span><br><span class="line"><span class="comment"># Example format: plugins=(rails git textmate ruby lighthouse)</span></span><br><span class="line"><span class="comment"># Add wisely, as too many plugins slow down shell startup.</span></span><br><span class="line">plugins=(git kubectl docker docker-compose gcloud)</span><br></pre></td></tr></table></figure></p>
 <p>Others you may like <code>agnoster</code>:<br><a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" target="_blank" rel="noopener">https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</a></p>
-<p>Once you do so, when you start a new terminal session, the <code>Powerlevel10</code> configure wizard will be launched to set your prompt, is will automatically check and install the font for you. When select encoding, choose <code>Unicode</code>, otherwise no icon will show.</p>
+<p>Next when you start a new terminal session, the <code>Powerlevel10</code> configure wizard will be launched to set your prompt, is will automatically check and install the font for you. When select encoding, choose <code>Unicode</code>, otherwise no icon will show.</p>
 <p>If you want to reset the configuration, simply run:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p10k configure</span><br></pre></td></tr></table></figure></p>
 <p><code>Powerlevel10</code> project web page:<br><a href="https://github.com/romkatv/powerlevel10k#extremely-customizable" target="_blank" rel="noopener">https://github.com/romkatv/powerlevel10k#extremely-customizable</a></p>
 <p>Then set <code>zsh</code> as the default shell` on Mac:<br><a href="https://askubuntu.com/questions/131823/how-to-make-zsh-the-default-shell" target="_blank" rel="noopener">https://askubuntu.com/questions/131823/how-to-make-zsh-the-default-shell</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chsh -s $(<span class="built_in">which</span> zsh)</span><br><span class="line"><span class="comment">## verify default shell setting</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line"><span class="comment">## show current running shell</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span></span><br></pre></td></tr></table></figure></p>
@@ -768,9 +767,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1117,7 +1114,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">976k</span>
+    <span title="Symbols count total">982k</span>
   
 
   
