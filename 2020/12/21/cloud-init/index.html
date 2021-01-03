@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="当时的项目用到了cloud-init 替代ansible的操作，在boot后进行本机系统的配置，加速到达可用状态。各大云厂商都支持cloud-init, cloud-init可以通过传递一个cloud-init.tpl metadata file to Terraform instance resource metadate中的 user-data 进行设置. 这样在instance 启动时，就会">
-<meta name="keywords" content="linux,cloud init">
+  <meta name="description" content="当时的项目用到了cloud-init 进行本机系统启动后的配置，替代之前ansible的配置操作(可以做ansible之前的一些更为基础的配置，比如设置network, SSH等)，使其在boot后加速到达可用状态。 这段话解释得很清楚了:Cloud images are operating system templates and every instance starts out as an">
+<meta name="keywords" content="linux,cloud,cloud-init">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cloud Init Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/12/21/cloud-init/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="当时的项目用到了cloud-init 替代ansible的操作，在boot后进行本机系统的配置，加速到达可用状态。各大云厂商都支持cloud-init, cloud-init可以通过传递一个cloud-init.tpl metadata file to Terraform instance resource metadate中的 user-data 进行设置. 这样在instance 启动时，就会">
+<meta property="og:description" content="当时的项目用到了cloud-init 进行本机系统启动后的配置，替代之前ansible的配置操作(可以做ansible之前的一些更为基础的配置，比如设置network, SSH等)，使其在boot后加速到达可用状态。 这段话解释得很清楚了:Cloud images are operating system templates and every instance starts out as an">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-29T07:30:06.007Z">
+<meta property="og:updated_time" content="2021-01-03T06:00:18.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cloud Init Quick Start">
-<meta name="twitter:description" content="当时的项目用到了cloud-init 替代ansible的操作，在boot后进行本机系统的配置，加速到达可用状态。各大云厂商都支持cloud-init, cloud-init可以通过传递一个cloud-init.tpl metadata file to Terraform instance resource metadate中的 user-data 进行设置. 这样在instance 启动时，就会">
+<meta name="twitter:description" content="当时的项目用到了cloud-init 进行本机系统启动后的配置，替代之前ansible的配置操作(可以做ansible之前的一些更为基础的配置，比如设置network, SSH等)，使其在boot后加速到达可用状态。 这段话解释得很清楚了:Cloud images are operating system templates and every instance starts out as an">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">219</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">220</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-28 23:30:06" itemprop="dateModified" datetime="2020-12-28T23:30:06-08:00">2020-12-28</time>
+                <time title="Modified: 2021-01-02 22:00:18" itemprop="dateModified" datetime="2021-01-02T22:00:18-08:00">2021-01-02</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.6k</span>
+                <span title="Symbols count in article">2.8k</span>
               
 
               
@@ -508,11 +508,12 @@
       
 
       
-        <p>当时的项目用到了cloud-init 替代ansible的操作，在boot后进行本机系统的配置，加速到达可用状态。<br>各大云厂商都支持cloud-init, cloud-init可以通过传递一个<code>cloud-init.tpl</code> metadata file to Terraform instance resource <code>metadate</code>中的 <code>user-data</code> 进行设置. 这样在instance 启动时，就会自动配置了。</p>
-<p>要点就是如何写这个<code>cloud-init.tpl</code> metadata file了。</p>
+        <p>当时的项目用到了cloud-init 进行本机系统启动后的配置，替代之前ansible的配置操作(可以做ansible之前的一些更为基础的配置，比如设置network, SSH等)，使其在boot后加速到达可用状态。</p>
+<p>这<a href="https://cloud-init.io/" target="_blank" rel="noopener">段话</a>解释得很清楚了:<br>Cloud images are operating system templates and every instance starts out as an identical clone of every other instance. It is the <code>user data</code> that gives every cloud instance its personality and cloud-init is the tool that applies user data to your instances automatically.</p>
+<p>目前各大云厂商都支持cloud-init, 在infra as code中，cloud-init可以通过传递一个<code>cloud-init.tpl</code> metadata file 到 Terraform instance resource <code>metadate</code>的 <code>user-data</code> 中进行设置. 这样在instance 启动时，相应的就会自动配置了。</p>
+<p>要点是如何写这个<code>cloud-init.tpl</code> metadata file。</p>
 <h1 id="Cloud-init"><a href="#Cloud-init" class="headerlink" title="Cloud-init"></a>Cloud-init</h1><p><a href="https://cloudinit.readthedocs.io/en/latest/" target="_blank" rel="noopener">cloud-init</a> official document, <a href="https://cloudinit.readthedocs.io/en/latest/topics/examples.html" target="_blank" rel="noopener">User data</a> config example.</p>
-<p>在构造user的password的时候，需要一个hash的数值:<br><a href="https://ma.ttias.be/how-to-generate-a-passwd-password-hash-via-the-command-line-on-linux/" target="_blank" rel="noopener">openssl passwd</a><br><a href="https://unix.stackexchange.com/questions/510990/why-is-the-output-of-openssl-passwd-different-each-time" target="_blank" rel="noopener">Why is the output of “openssl passwd” different each time?</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -1: MD5</span></span><br><span class="line">openssl passwd -l</span><br><span class="line"><span class="comment"># -salt: add salt</span></span><br><span class="line">openssl passwd -1 -salt yoursalt</span><br><span class="line"><span class="comment"># from stdin</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'admin'</span> | openssl passwd -1 -stdin -salt yoursalt</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://stackoverflow.com/questions/46173003/bootstrap-server-vs-zookeeper-in-kafka" target="_blank" rel="noopener">kafka command bootstrap-server vs zookeeper</a></p>
+<p>在构造user的password的时候，需要一个hash的数值:<br><a href="https://ma.ttias.be/how-to-generate-a-passwd-password-hash-via-the-command-line-on-linux/" target="_blank" rel="noopener">openssl passwd</a><br><a href="https://unix.stackexchange.com/questions/510990/why-is-the-output-of-openssl-passwd-different-each-time" target="_blank" rel="noopener">Why is the output of “openssl passwd” different each time?</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -1: MD5</span></span><br><span class="line">openssl passwd -1</span><br><span class="line"><span class="comment"># -salt: add salt</span></span><br><span class="line">openssl passwd -1 -salt yoursalt</span><br><span class="line"><span class="comment"># from stdin</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'admin'</span> | openssl passwd -1 -stdin -salt yoursalt</span><br></pre></td></tr></table></figure></p>
 <p>jinja2 template:<br><a href="https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template" target="_blank" rel="noopener">https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template</a><br><a href="https://stackoverflow.com/questions/60137669/using-a-dynamic-group-name-in-an-ansible-template" target="_blank" rel="noopener">https://stackoverflow.com/questions/60137669/using-a-dynamic-group-name-in-an-ansible-template</a></p>
 
       
@@ -539,7 +540,9 @@
           
             <a href="/tags/linux/" rel="tag"># linux</a>
           
-            <a href="/tags/cloud-init/" rel="tag"># cloud init</a>
+            <a href="/tags/cloud/" rel="tag"># cloud</a>
+          
+            <a href="/tags/cloud-init/" rel="tag"># cloud-init</a>
           
         </div>
       
@@ -636,7 +639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">219</span>
+                    <span class="site-state-item-count">220</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1064,7 +1067,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1076,7 +1079,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">989k</span>
+    <span title="Symbols count total">991k</span>
   
 
   
