@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-14T07:54:38.421Z">
+<meta property="og:updated_time" content="2021-01-04T05:24:36.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tar Command Daily Work Summary">
 <meta name="twitter:description" content="This article used to walk you through some commonly tar usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;emsp; &amp;ems">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">220</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">221</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-13 23:54:38" itemprop="dateModified" datetime="2020-11-13T23:54:38-08:00">2020-11-13</time>
+                <time title="Modified: 2021-01-03 21:24:36" itemprop="dateModified" datetime="2021-01-03T21:24:36-08:00">2021-01-03</time>
               
             
           </span>
@@ -519,7 +519,7 @@
 <p>The file path matters! see my <a href="https://chengdol.github.io/2019/07/03/linux-tar-path/" target="_blank" rel="noopener">blog</a>.</p>
 </blockquote>
 <h3 id="02-20-2019"><a href="#02-20-2019" class="headerlink" title="02/20/2019"></a>02/20/2019</h3><p>When untar multiple files, you cannot do this, it will fail<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf file1.tar.gz file2.tar.gz file3.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>The reason please see this <a href="https://stackoverflow.com/questions/583889/how-can-you-untar-more-than-one-file-at-a-time" target="_blank" rel="noopener">link</a>, the solution is to use <code>xargs</code> instead:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.tar.gz | xargs -i tar xzf &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>The reason please see this <a href="https://stackoverflow.com/questions/583889/how-can-you-untar-more-than-one-file-at-a-time" target="_blank" rel="noopener">link</a>, the solution is to use <code>xargs</code> instead:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -I: specify replace-str</span></span><br><span class="line"><span class="comment"># &#123;&#125;: placeholder</span></span><br><span class="line">ls *.tar.gz | xargs -I&#123;&#125; tar xzf &#123;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Or you can use <code>find</code> with <code>-exec</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -name <span class="string">"*.tar.gz"</span> -<span class="built_in">exec</span> tar zxf <span class="string">'&#123;&#125;'</span> \;</span><br></pre></td></tr></table></figure></p>
 <h3 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h3><p>For example, if you want to tar things inside a folder <code>foler1</code> but excluding some files:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 注意最后的`.` 目标必须放最后</span></span><br><span class="line"><span class="comment">## target directory: 进入</span></span><br><span class="line"><span class="built_in">cd</span> folder1</span><br><span class="line">tar czf folder1.tar.gz --exclude=<span class="string">"folder1.tar.gz"</span> --exclude=<span class="string">'file1'</span> --exclude=<span class="string">'file2'</span> *</span><br><span class="line"><span class="comment">## if you want to have hidden files</span></span><br><span class="line">tar czf folder1.tar.gz --exclude=<span class="string">"folder1.tar.gz"</span> --exclude=<span class="string">'file1'</span> --exclude=<span class="string">'file2'</span> * .file3 .file4</span><br></pre></td></tr></table></figure></p>
 <p>If you don’t exclude <code>folder1.tar.gz</code>, it will tar itself again.</p>
@@ -662,7 +662,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">220</span>
+                    <span class="site-state-item-count">221</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1102,7 +1102,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">991k</span>
+    <span title="Symbols count total">995k</span>
   
 
   

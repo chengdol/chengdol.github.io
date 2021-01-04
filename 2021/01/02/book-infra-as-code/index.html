@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-03T06:01:31.526Z">
+<meta property="og:updated_time" content="2021-01-04T05:24:36.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Infrastructure as Code">
 <meta name="twitter:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">220</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">221</span></a>
 
   </li>
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2021-01-02 17:56:23 / Modified: 22:01:31" itemprop="dateCreated datePublished" datetime="2021-01-02T17:56:23-08:00">2021-01-02</time>
+              <time title="Created: 2021-01-02 17:56:23" itemprop="dateCreated datePublished" datetime="2021-01-02T17:56:23-08:00">2021-01-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-01-03 21:24:36" itemprop="dateModified" datetime="2021-01-03T21:24:36-08:00">2021-01-03</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.1k</span>
+                <span title="Symbols count in article">5.4k</span>
               
 
               
@@ -497,7 +509,7 @@
 
       
         <p>This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather than to provide instruction.</p>
-<p>最开始介绍了作者之前的一些经历 from team Vmware virtual server farm，从这些经历中，慢慢领悟和学习到了IaC的必要性。puppet and chef 看来是很久之前的config automation tool了. 后来过渡到cloud，从其他IT Ops team 中学到很多new ideas, eye-opener:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The key idea of our new approach was that every server could be automatically rebuilt from scratch, and our</span><br><span class="line">configuration tooling would run continuously, not ad hoc. Every server added into our new infrastructure would</span><br><span class="line">fall under this approach. If automation broke on some edge case, we would either change the automation to handle</span><br><span class="line">it, or else fix the design of the service so it was no longer an edge case.</span><br></pre></td></tr></table></figure></p>
+<p>最开始介绍了作者之前的一些经历 starts from team Vmware virtual server farm，从这些经历中，慢慢领悟和学习到了IaC的必要性。puppet and chef 看来是很久之前的config automation tool了. 后来过渡到cloud，从其他IT Ops team 中学到很多new ideas, eye-opener: “The key idea of our new approach was that every server could be automatically rebuilt from scratch, and our configuration tooling would run continuously, not ad hoc. Every server added into our new infrastructure would fall under this approach. If automation broke on some edge case, we would either change the automation to handle it, or else fix the design of the service so it was no longer an edge case.”</p>
 <h1 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h1><p><code>Infrastructure as code</code> is an approach to infrastructure automation based on practices from software development. It emphasizes consistent, repeatable routines for provisioning and changing systems and their configuration. Changes are made to definitions and then rolled out to systems through unattended processes(指不需要人参与) that include thorough validation.</p>
 <p>The phrase <code>dynamic infrastructure</code> to refer to the ability to create and destroy servers programmatically.</p>
 <p>Challenges with dynamic infrastructure, the previous one can cause the next:</p>
@@ -507,19 +519,35 @@
 <li>Snowflake Server: can’t be replicated.</li>
 <li>Fragile Infrastructure: snowflake server problem expands.</li>
 <li>Automation Fear: lack of confidence.</li>
-<li>Erosion: infrastructure decays over time, such as components upgrades, patches, disk fill up, hardware failure.</li>
+<li>Erosion: infrastructure decays over time, such as components upgrade, patches, disk fill up, hardware failure.</li>
 </ul>
 <p>An operations team should be able to confidently and quickly rebuild any server in their infrastructure.</p>
 <p>Principles of Infrastruction as Code to mitigate above challenges:</p>
 <ul>
-<li>Systems can be easily reproduced</li>
-<li>Systems are disposable</li>
-<li>Systems are consistent</li>
-<li>Processes are repeatable</li>
-<li>Design is always changing</li>
+<li>Systems can be easily reproduced.</li>
+<li>Systems are disposable.</li>
+<li>Systems are consistent.</li>
+<li>Processes are repeatable.</li>
+<li>Design is always changing.</li>
 </ul>
 <p>Effective infrastructure teams have a strong <code>scripting culture</code>. If a task can be scripted, script it. If a task is hard to script, drill down and see if there’s a technique or tool that can help, or whether the problem the task is addressing can be handled in a different way.</p>
 <p>General practices of infrastructure as Code:</p>
+<ul>
+<li>Use definition files: to specify infra elements and config.</li>
+<li>Self-documented systems and processes: doc may leave gaps over time.</li>
+<li>Version all things.</li>
+<li>Continuously test systems and processes, how? see Chapter 11.</li>
+<li>Small changes rather than batches.</li>
+<li>Keep services available continuously, see chapter 14.</li>
+<li>Antifragility, beyond robust: When something goes wrong, the priority is not simply to fix it, but to improve the ability of the system to cope with similar incidents in the future.</li>
+</ul>
+<h1 id="Chapter-2"><a href="#Chapter-2" class="headerlink" title="Chapter 2"></a>Chapter 2</h1><p><code>Dynamic Infrastructure Platform</code>: is a system that provides computing resources, particularly servers, storage, and networking, in a way that they can be programmatically allocated and managed.</p>
+<p>主要讲了构造dynamic infra platform 的要求，比如programmable, on-demand, self-service。需要提供用户什么功能，比如compute, storage(block, storage storage, networked filesystem), network, anth, etc。</p>
+<p>这里有个概念要澄清一下: private cloud vs bare-metal cloud. 之前混淆了，bare-metal cloud is running an OS directly on server hardware rather than in a VM. There are many reasons why running directly on hardware may be the best choice for a given application or service. Virtualization adds performance overhead, because it inserts extra software layers between the application and the hardware resources it uses. Processes on one VM can impact the performance of other VMs running on the same host. 常用的tool for managing bare-metal: Cobbler, Foreman, etc.</p>
+<p>An IT professional, the deeper and stronger your understanding of how the system works down the stack and into the hardware, the more proficient you’ll be at getting the most from it.</p>
+<p>并不是说new instance就一定是well performance的，虚拟化也有很多不确定因素:<br>For example, the Netflix team knew that a percentage of AWS instances, when provi‐ sioned, will perform much worse than the average instance, whether because of hardware issues or simply because they happen to be sharing hardware with someone else’s poorly behaving systems. So they wrote their provisioning scripts to immedi‐ ately test the performance of each new instance. If it doesn’t meet their standards, the script destroys the instance and tries again with a new instance.</p>
+<p>This extends up and down the stack. Software and infrastructure should be architected, designed, and implemented with an understanding of the true architecture of the hardware, networking, storage, and the dynamic infrastructure platform.</p>
+<h1 id="Chapter-3"><a href="#Chapter-3" class="headerlink" title="Chapter 3"></a>Chapter 3</h1><p><code>Infrasturcture Definition Tools</code></p>
 
       
     </div>
@@ -565,6 +593,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/03/review-list/" rel="prev" title="Blog Review List">
+                Blog Review List <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -636,7 +668,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">220</span>
+                    <span class="site-state-item-count">221</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1044,7 +1076,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3</span></a></li></ol></div>
             
 
           </div>
@@ -1076,7 +1108,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">991k</span>
+    <span title="Symbols count total">995k</span>
   
 
   

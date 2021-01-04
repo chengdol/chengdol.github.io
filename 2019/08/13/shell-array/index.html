@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Reference:  https://wangdoc.com/bash/array.html  The first thing to do is to distinguish between bash indexed array and bash associative array. The former are arrays in which the keys are ordered inte">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-27T07:37:52.979Z">
+<meta property="og:updated_time" content="2021-01-04T05:24:36.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array in Script">
 <meta name="twitter:description" content="Reference:  https://wangdoc.com/bash/array.html  The first thing to do is to distinguish between bash indexed array and bash associative array. The former are arrays in which the keys are ordered inte">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">220</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">221</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-26 23:37:52" itemprop="dateModified" datetime="2020-12-26T23:37:52-08:00">2020-12-26</time>
+                <time title="Modified: 2021-01-03 21:24:36" itemprop="dateModified" datetime="2021-01-03T21:24:36-08:00">2021-01-03</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">12k</span>
+                <span title="Symbols count in article">13k</span>
               
 
               
@@ -520,7 +520,7 @@
 <p>Note that in the context where an assignment statement is assigning a value to a <code>shell variable</code> or <code>array</code> index (see Arrays), the <code>+=</code> operator can be used to append to or add to the variable’s previous value.</p>
 </blockquote>
 <p>Using <code>&quot;${array[@]}&quot;</code>(have double quotes) in for loop to fetch array item.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;array[@]&#125;</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$&#123;item&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
-<p>Or fetch item by index(key):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;!array[@]&#125;</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="comment"># $&#123;array[i]&#125; also OK</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$&#123;array[$i]&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<p>Or fetch item by index(key):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;!array[@]&#125;</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="comment"># $&#123;array[i]&#125; also OK</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$&#123;array[$i]&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="keyword">for</span>((i=1;i&lt;<span class="variable">$&#123;#array[@]&#125;</span>;i++))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$&#123;array[i]&#125;</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$&#123;array[i-1]&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="Create-Associated-Array"><a href="#Create-Associated-Array" class="headerlink" title="Create Associated Array"></a>Create Associated Array</h1><p>Statement <code>declare</code> is the only way to go, see reference for more details. Actually this is <code>Map</code> in shell script.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create all at once</span></span><br><span class="line"><span class="built_in">declare</span> -A array=([a]=xx [b]=yy [c]=zz)</span><br><span class="line"><span class="comment">## create separately</span></span><br><span class="line"><span class="built_in">declare</span> -A array</span><br><span class="line">array[a]=xx</span><br><span class="line">array[b]=yy</span><br><span class="line">array[c]=zz</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">array=([a]=xx [b]=yy [c]=zz)</span><br><span class="line"></span><br><span class="line"><span class="comment">## print</span></span><br><span class="line"><span class="built_in">declare</span> -p array</span><br><span class="line"><span class="comment">## delete item</span></span><br><span class="line"><span class="built_in">unset</span> array[2]</span><br><span class="line"><span class="comment">## empty array</span></span><br><span class="line"><span class="built_in">unset</span> array</span><br></pre></td></tr></table></figure></p>
 <p>Iterate over the associated array:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## The keys are accessed using an exclamation point</span></span><br><span class="line"><span class="comment"># can do this to index array as well!</span></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;!array[@]&#125;</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"key  : <span class="variable">$key</span>"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"value: <span class="variable">$&#123;array[$key]&#125;</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## assign all keys to other array</span></span><br><span class="line">array2=(<span class="string">"<span class="variable">$&#123;!array[@]&#125;</span>"</span>)</span><br><span class="line"><span class="comment">## copy whole array</span></span><br><span class="line">array3=(<span class="string">"<span class="variable">$&#123;array[@]&#125;</span>"</span>)</span><br></pre></td></tr></table></figure></p>
 <h1 id="Array-Counterpart"><a href="#Array-Counterpart" class="headerlink" title="Array Counterpart"></a>Array Counterpart</h1><p>Loop through comma separated string, or other delimiter.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var=<span class="string">"1,2,3,4,5"</span></span><br><span class="line"><span class="comment"># use sed</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(<span class="built_in">echo</span> <span class="variable">$var</span> | sed <span class="string">"s/,/ /g"</span>)</span><br><span class="line"><span class="comment"># use pattern match</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;var//,/ &#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
@@ -650,7 +650,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">220</span>
+                    <span class="site-state-item-count">221</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1090,7 +1090,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">991k</span>
+    <span title="Symbols count total">995k</span>
   
 
   
