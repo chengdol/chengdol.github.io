@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# Note that some commands have different behavior on MacOS
+# Note that some commands have different options on MacOS
 #
 # Author:       chengdol
 # Description:  Generate list of blogs for reviewing.
+# Usage:
+#   --local: generate local service URL
 #
 ###################################################################
 #set -ueo pipefail
@@ -13,7 +15,10 @@ declare -i day=14
 declare -a sha_list=($(git rev-list HEAD --since=${day}days))
 #declare -p sha_list
 
-URL_PREFIX="https://chengdol.github.io" #2021/01/02/book-infra-as-code/
+URL_PREFIX="https://chengdol.github.io" #/2021/01/02/book-infra-as-code/
+if [[ "${1##--}" == "local" ]]; then
+  URL_PREFIX="http://localhost:4000"
+fi
 REVIEW_FILE="./_posts/review-list.md"
 
 cat <<_EOF > ${REVIEW_FILE}
@@ -39,8 +44,13 @@ do
 done
 
 declare -a file_list=($(echo $files | tr " " "\n" | sort | uniq))
+#declare -p file_list
 for ((i=0;i<${#file_list[@]};i++))
 do
+  # sometimes I changed the file name, so original one non-exist
+  if ! [[ -f ${file_list[i]} ]]; then
+    continue
+  fi
   # retrieve specified line
   title=$(sed -n -e 2p ${file_list[i]})
 
@@ -51,8 +61,9 @@ do
 
   file_name=${file_list[i]##"_posts/"}
   file_name=${file_name%".md"}
-
   echo "- [${title##"title: "}](${URL_PREFIX}/${date}/${file_name})" >> ${REVIEW_FILE}
 done
 
-sed -i "" -e "s#{{ DATE }}#$(date '+%Y-%m-%d %H:%M:%S')#g; s#{{ NUM }}#${#file_list[@]}#g; s#{{ DAY }}#${day}#g" ${REVIEW_FILE}
+sed -i "" \
+    -e "s#{{ DATE }}#$(date '+%Y-%m-%d %H:%M:%S')#g; s#{{ NUM }}#${#file_list[@]}#g; s#{{ DAY }}#${day}#g" \
+    ${REVIEW_FILE}

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-04T05:24:36.873Z">
+<meta property="og:updated_time" content="2021-01-05T08:06:04.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Infrastructure as Code">
 <meta name="twitter:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">221</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-03 21:24:36" itemprop="dateModified" datetime="2021-01-03T21:24:36-08:00">2021-01-03</time>
+                <time title="Modified: 2021-01-05 00:06:04" itemprop="dateModified" datetime="2021-01-05T00:06:04-08:00">2021-01-05</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">5.4k</span>
+                <span title="Symbols count in article">10k</span>
               
 
               
@@ -510,9 +510,12 @@
       
         <p>This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather than to provide instruction.</p>
 <p>最开始介绍了作者之前的一些经历 starts from team Vmware virtual server farm，从这些经历中，慢慢领悟和学习到了IaC的必要性。puppet and chef 看来是很久之前的config automation tool了. 后来过渡到cloud，从其他IT Ops team 中学到很多new ideas, eye-opener: “The key idea of our new approach was that every server could be automatically rebuilt from scratch, and our configuration tooling would run continuously, not ad hoc. Every server added into our new infrastructure would fall under this approach. If automation broke on some edge case, we would either change the automation to handle it, or else fix the design of the service so it was no longer an edge case.”</p>
+<p>虚拟机和容器相辅相成。<br>Virtualization was one step, allowing you to add and remove VMs to scale your capacity to your load on a timescale of minutes. Containers take this to the next level, allowing you to scale your capacity up and down on a timescale of seconds.</p>
+<p>后来我想到了一个问题，如果把容器运行在虚拟机之上，不又多了一层overhead吗？有没有优化。比如GKE runs on GCE VM, any optimization on VM image for k8s? 是的，用的是<a href="https://cloud.google.com/container-optimized-os/docs/concepts/features-and-benefits?hl=en" target="_blank" rel="noopener">container-optimized OS</a>.</p>
+<p>这里还有一些文章，讲了k8s运行环境的比较:<br><a href="https://platform9.com/blog/where-to-install-kubernetes-bare-metal-vs-vms-vs-cloud/" target="_blank" rel="noopener">Where to Install Kubernetes? Bare-Metal vs. VMs. vs. Cloud</a>.<br><a href="https://www.stratoscale.com/blog/data-center/running-containers-on-bare-metal/" target="_blank" rel="noopener">Running Containers on Bare Metal vs. VMs: Performance and Benefits</a></p>
 <h1 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h1><p><code>Infrastructure as code</code> is an approach to infrastructure automation based on practices from software development. It emphasizes consistent, repeatable routines for provisioning and changing systems and their configuration. Changes are made to definitions and then rolled out to systems through unattended processes(指不需要人参与) that include thorough validation.</p>
 <p>The phrase <code>dynamic infrastructure</code> to refer to the ability to create and destroy servers programmatically.</p>
-<p>Challenges with dynamic infrastructure, the previous one can cause the next:</p>
+<p><code>Challenges</code> with dynamic infrastructure, the previous one can cause the next:</p>
 <ul>
 <li>Server Sprawl: servers growing faster then ability can control.</li>
 <li>Configuration drift: inconsistency across the servers, such as manual ad-hoc fixes, config.</li>
@@ -522,7 +525,7 @@
 <li>Erosion: infrastructure decays over time, such as components upgrade, patches, disk fill up, hardware failure.</li>
 </ul>
 <p>An operations team should be able to confidently and quickly rebuild any server in their infrastructure.</p>
-<p>Principles of Infrastruction as Code to mitigate above challenges:</p>
+<p><code>Principles</code> of Infrastruction as Code to mitigate above challenges:</p>
 <ul>
 <li>Systems can be easily reproduced.</li>
 <li>Systems are disposable.</li>
@@ -531,7 +534,7 @@
 <li>Design is always changing.</li>
 </ul>
 <p>Effective infrastructure teams have a strong <code>scripting culture</code>. If a task can be scripted, script it. If a task is hard to script, drill down and see if there’s a technique or tool that can help, or whether the problem the task is addressing can be handled in a different way.</p>
-<p>General practices of infrastructure as Code:</p>
+<p>General <code>practices</code> of infrastructure as Code:</p>
 <ul>
 <li>Use definition files: to specify infra elements and config.</li>
 <li>Self-documented systems and processes: doc may leave gaps over time.</li>
@@ -543,12 +546,28 @@
 </ul>
 <h1 id="Chapter-2"><a href="#Chapter-2" class="headerlink" title="Chapter 2"></a>Chapter 2</h1><p><code>Dynamic Infrastructure Platform</code>: is a system that provides computing resources, particularly servers, storage, and networking, in a way that they can be programmatically allocated and managed.</p>
 <p>主要讲了构造dynamic infra platform 的要求，比如programmable, on-demand, self-service。需要提供用户什么功能，比如compute, storage(block, storage storage, networked filesystem), network, anth, etc。</p>
-<p>这里有个概念要澄清一下: private cloud vs bare-metal cloud. 之前混淆了，bare-metal cloud is running an OS directly on server hardware rather than in a VM. There are many reasons why running directly on hardware may be the best choice for a given application or service. Virtualization adds performance overhead, because it inserts extra software layers between the application and the hardware resources it uses. Processes on one VM can impact the performance of other VMs running on the same host. 常用的tool for managing bare-metal: Cobbler, Foreman, etc.</p>
+<p>这里有个概念要澄清一下: private cloud vs bare-metal cloud. 之前认为意义相同，但并不是，bare-metal cloud is running an OS directly on server hardware rather than in a VM. There are many reasons why running directly on hardware may be the best choice for a given application or service. Virtualization adds performance overhead, because it inserts extra software layers between the application and the hardware resources it uses. Processes on one VM can impact the performance of other VMs running on the same host. 常用的tool for managing bare-metal: Cobbler, Foreman, etc.</p>
 <p>An IT professional, the deeper and stronger your understanding of how the system works down the stack and into the hardware, the more proficient you’ll be at getting the most from it.</p>
-<p>并不是说new instance就一定是well performance的，虚拟化也有很多不确定因素:<br>For example, the Netflix team knew that a percentage of AWS instances, when provi‐ sioned, will perform much worse than the average instance, whether because of hardware issues or simply because they happen to be sharing hardware with someone else’s poorly behaving systems. So they wrote their provisioning scripts to immedi‐ ately test the performance of each new instance. If it doesn’t meet their standards, the script destroys the instance and tries again with a new instance.</p>
-<p>This extends up and down the stack. Software and infrastructure should be architected, designed, and implemented with an understanding of the true architecture of the hardware, networking, storage, and the dynamic infrastructure platform.</p>
-<h1 id="Chapter-3"><a href="#Chapter-3" class="headerlink" title="Chapter 3"></a>Chapter 3</h1><p><code>Infrasturcture Definition Tools</code></p>
-
+<p>并不是说new instance就一定是well performance的，虚拟化也有很多不确定因素:<br>For example, the Netflix team knew that a percentage of AWS instances, when provisioned, will perform much worse than the average instance, whether because of hardware issues or simply because they happen to be sharing hardware with someone else’s poorly behaving systems. So they wrote their provisioning scripts to immediately test the performance of each new instance. If it doesn’t meet their standards, the script destroys the instance and tries again with a new instance.</p>
+<p>Software and infrastructure should be architected, designed, and implemented with an understanding of the true architecture of the hardware, networking, storage, and the dynamic infrastructure platform.</p>
+<h1 id="Chapter-3"><a href="#Chapter-3" class="headerlink" title="Chapter 3"></a>Chapter 3</h1><p><code>Infrasturcture Definition Tools</code>: This chapter has discussed the types of tools to manage high-level infrastructure according to the principles and practices of infrastructure as code.</p>
+<h1 id="Chapter-4"><a href="#Chapter-4" class="headerlink" title="Chapter 4"></a>Chapter 4</h1><p><code>Server Configuration Tools</code><br>主要讲了provisioning tools, such as chef, puppet and ansible, salt. Tools for packing server templates, such as Packer. Tools for running commands on server.</p>
+<p>Many server configuration tool vendors provide their own <code>configuration registry</code> to manage configuration definitions, for example, Chef Server, PuppetDB, and <code>Ansible Tower</code>.</p>
+<p>In many cases, new servers can be built using off-the-shelf <code>server template</code> images. Packaging common elements onto a template makes it <code>faster</code> to provision new servers. Some teams take this further by creating server templates for particular roles such as web servers and application servers. Chapter 7 discusses trade-offs and patterns around baking server elements into templates versus adding them when creating servers (这个是当时正在做的新项目)。</p>
+<p><a href="https://en.wikipedia.org/wiki/Unikernel" target="_blank" rel="noopener">Unikernel Server Templates</a>. an OS image that is custom-compiled with the application it will run. The image only includes the parts of the OS kernel needed for the application, so is small and fast. This image is run directly as a VM or container (see later in this chapter) but has a single address space.</p>
+<p>It’s important for an infrastructure team to build up and continuously improve their skills with scripting. Learn new languages, learn better techniques, learn new libraries and frameworks</p>
+<p><code>Server change management</code> models:</p>
+<ul>
+<li>Ad hoc change, lead to config drift, snowflake server and other evils.</li>
+<li>Configuration synchronization, may cause config drift on left parts</li>
+<li>Immutable infra, completely replacing, requires good templates management.</li>
+</ul>
+<p>Containerized services follows something similar to immutable infra, replace old container completely when apply changes. A container uses operating system features to isolate the processes, networking, and filesystem of the container, so it appears to be its own, self-contained server environment.</p>
+<p>There is actually some dependency between the host and container. In particular, container instances use the Linux kernel of the host system, so a given image could potentially behave differently, or even fail, when run on different versions of the kernel.</p>
+<p>A host server runs virtual machines using a hypervisor, Container instances share the operating system kernel of their host system, so they can’t run a different OS. Container has less overhead than a hardware virtual machine. Container image can be much smaller than a VM image, because it doesn’t need to include the entire OS. It can start up in seconds, as it doesn’t need to boot a kernel from scratch. And it consumes fewer system resources, because it doesn’t need to run its own kernel. So a given host can run more container processes than full VMs.</p>
+<p><a href="https://docs.docker.com/engine/security/" target="_blank" rel="noopener">Container security</a>, While containers isolate processes running on a host from one another, this isolation is not impossible to break. Different container implementations have different strengths and weaknesses. When using containers, a team should be sure to fully understand how the technology works, and where its vulnerabilities may lie.</p>
+<p>Teams should ensure the provenance of each image used within the infrastructure is well known, trusted, and can be verified and traced. (当时ICP4D image RedHat 也专门去扫描检测了)。</p>
+<h1 id="Cahpter-5"><a href="#Cahpter-5" class="headerlink" title="Cahpter 5"></a>Cahpter 5</h1>
       
     </div>
 
@@ -594,8 +613,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/01/03/review-list/" rel="prev" title="Blog Review List">
-                Blog Review List <i class="fa fa-chevron-right"></i>
+              <a href="/2021/01/04/infra-terraform-deep/" rel="prev" title="Terraform Deep Dive">
+                Terraform Deep Dive <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -668,7 +687,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">221</span>
+                    <span class="site-state-item-count">223</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1076,7 +1095,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-4"><span class="nav-number">4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cahpter-5"><span class="nav-number">5.</span> <span class="nav-text">Cahpter 5</span></a></li></ol></div>
             
 
           </div>
@@ -1108,7 +1127,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">995k</span>
+    <span title="Symbols count total">1m</span>
   
 
   
