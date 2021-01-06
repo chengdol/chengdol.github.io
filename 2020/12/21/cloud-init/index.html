@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="当时的项目用到了cloud-init 进行本机系统启动后的配置，替代之前ansible的配置操作(可以做ansible之前的一些更为基础的配置，比如设置network, SSH等)，使其在boot后加速到达可用状态。 这段话解释得很清楚了:Cloud images are operating system templates and every instance starts out as an">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-03T06:00:18.701Z">
+<meta property="og:updated_time" content="2021-01-06T08:44:22.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cloud Init Quick Start">
 <meta name="twitter:description" content="当时的项目用到了cloud-init 进行本机系统启动后的配置，替代之前ansible的配置操作(可以做ansible之前的一些更为基础的配置，比如设置network, SSH等)，使其在boot后加速到达可用状态。 这段话解释得很清楚了:Cloud images are operating system templates and every instance starts out as an">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-02 22:00:18" itemprop="dateModified" datetime="2021-01-02T22:00:18-08:00">2021-01-02</time>
+                <time title="Modified: 2021-01-06 00:44:22" itemprop="dateModified" datetime="2021-01-06T00:44:22-08:00">2021-01-06</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.8k</span>
+                <span title="Symbols count in article">3.3k</span>
               
 
               
@@ -512,9 +512,10 @@
 <p>这<a href="https://cloud-init.io/" target="_blank" rel="noopener">段话</a>解释得很清楚了:<br>Cloud images are operating system templates and every instance starts out as an identical clone of every other instance. It is the <code>user data</code> that gives every cloud instance its personality and cloud-init is the tool that applies user data to your instances automatically.</p>
 <p>目前各大云厂商都支持cloud-init, 在infra as code中，cloud-init可以通过传递一个<code>cloud-init.tpl</code> metadata file 到 Terraform instance resource <code>metadate</code>的 <code>user-data</code> 中进行设置. 这样在instance 启动时，相应的就会自动配置了。</p>
 <p>要点是如何写这个<code>cloud-init.tpl</code> metadata file。</p>
+<p>cloud-init can be installed by package manager, for example in CentOS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install -y cloud-init</span><br><span class="line"><span class="comment"># you can see these 2 services</span></span><br><span class="line">systemctl cat cloud-init-local</span><br><span class="line">systemctl cat cloud-init</span><br><span class="line">systemctl cat cloud-config.service</span><br><span class="line">systemctl cat cloud-final.service</span><br></pre></td></tr></table></figure></p>
+<p>See this IBM <a href="https://www.ibm.com/support/knowledgecenter/SSB27U_6.4.0/com.ibm.zvm.v640.hcpo5/instslesmore.htm" target="_blank" rel="noopener">post</a> for how to install cloud-init on Centos</p>
 <h1 id="Cloud-init"><a href="#Cloud-init" class="headerlink" title="Cloud-init"></a>Cloud-init</h1><p><a href="https://cloudinit.readthedocs.io/en/latest/" target="_blank" rel="noopener">cloud-init</a> official document, <a href="https://cloudinit.readthedocs.io/en/latest/topics/examples.html" target="_blank" rel="noopener">User data</a> config example.</p>
 <p>在构造user的password的时候，需要一个hash的数值:<br><a href="https://ma.ttias.be/how-to-generate-a-passwd-password-hash-via-the-command-line-on-linux/" target="_blank" rel="noopener">openssl passwd</a><br><a href="https://unix.stackexchange.com/questions/510990/why-is-the-output-of-openssl-passwd-different-each-time" target="_blank" rel="noopener">Why is the output of “openssl passwd” different each time?</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -1: MD5</span></span><br><span class="line">openssl passwd -1</span><br><span class="line"><span class="comment"># -salt: add salt</span></span><br><span class="line">openssl passwd -1 -salt yoursalt</span><br><span class="line"><span class="comment"># from stdin</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'admin'</span> | openssl passwd -1 -stdin -salt yoursalt</span><br></pre></td></tr></table></figure></p>
-<p>jinja2 template:<br><a href="https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template" target="_blank" rel="noopener">https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template</a><br><a href="https://stackoverflow.com/questions/60137669/using-a-dynamic-group-name-in-an-ansible-template" target="_blank" rel="noopener">https://stackoverflow.com/questions/60137669/using-a-dynamic-group-name-in-an-ansible-template</a></p>
 
       
     </div>

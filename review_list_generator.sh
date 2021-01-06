@@ -45,10 +45,12 @@ done
 
 declare -a file_list=($(echo $files | tr " " "\n" | sort | uniq))
 #declare -p file_list
+declare -i cnt=${#file_list[@]}
 for ((i=0;i<${#file_list[@]};i++))
 do
   # sometimes I changed the file name, so original one non-exist
   if ! [[ -f ${file_list[i]} ]]; then
+    let cnt--
     continue
   fi
   # retrieve specified line
@@ -65,5 +67,5 @@ do
 done
 
 sed -i "" \
-    -e "s#{{ DATE }}#$(date '+%Y-%m-%d %H:%M:%S')#g; s#{{ NUM }}#${#file_list[@]}#g; s#{{ DAY }}#${day}#g" \
+    -e "s#{{ DATE }}#$(date '+%Y-%m-%d %H:%M:%S')#g; s#{{ NUM }}#${cnt}#g; s#{{ DAY }}#${day}#g" \
     ${REVIEW_FILE}
