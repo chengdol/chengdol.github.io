@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-06T08:44:22.659Z">
+<meta property="og:updated_time" content="2021-01-12T08:26:59.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Infrastructure as Code">
 <meta name="twitter:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">134</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">135</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-06 00:44:22" itemprop="dateModified" datetime="2021-01-06T00:44:22-08:00">2021-01-06</time>
+                <time title="Modified: 2021-01-12 00:26:59" itemprop="dateModified" datetime="2021-01-12T00:26:59-08:00">2021-01-12</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">12k</span>
+                <span title="Symbols count in article">21k</span>
               
 
               
@@ -578,7 +578,63 @@
 <p><code>Service Discovery</code>: Applications and services running in an infrastructure often need to know how to find other applications and services. </p>
 <p><code>Distributed Process Management</code>: VMs or containers. K8s, Nomad, Openshift.</p>
 <p><code>Software Deployment</code>: Many have a series of environments for testing stages, including things like operational acceptance testing (<code>OAT</code>), <code>QA</code> (for humans to carry out exploratory testing), system integration testing (<code>SIT</code>), user acceptance testing (<code>UAT</code>), staging, preproduction, and performance.</p>
-<h1 id="Part-II-Patterns"><a href="#Part-II-Patterns" class="headerlink" title="Part II Patterns"></a>Part II Patterns</h1><h2 id="Chapter-6"><a href="#Chapter-6" class="headerlink" title="Chapter 6"></a>Chapter 6</h2>
+<h1 id="Part-II-Patterns"><a href="#Part-II-Patterns" class="headerlink" title="Part II Patterns"></a>Part II Patterns</h1><h2 id="Chapter-6"><a href="#Chapter-6" class="headerlink" title="Chapter 6"></a>Chapter 6</h2><p><code>Patterns for Provisioning Servers</code>.</p>
+<p>Provisioning is not only done for a new server. Sometimes an existing server is re- provisioned, changing its role from one to another.</p>
+<p>Server’s lifecycle:</p>
+<ol>
+<li>package a server template.</li>
+<li>create a new server</li>
+<li>update a server</li>
+<li>replace a server</li>
+<li>delete a server</li>
+</ol>
+<p>Zero-downtime replacement ensures that a new server is completely built and tested while the existing server is still running so it can be <code>hot-swapped</code> into service once ready.</p>
+<p>Advocates of immutable servers view making a change to the configuration of a production server as bad practice, no better than modifying the source code of software directly on a production server.</p>
+<ol start="6">
+<li>recover from failure, outage, maintenance</li>
+<li>resize server pool, add/remove instances</li>
+<li>reconfig hardware resources, for example, add CPU, RAM, mount new disks, etc.</li>
+</ol>
+<p><code>Server roles</code>:<br>Another pattern is to have a <code>role-inheritance hierarchy</code>(我们确实也是这么做的). The base role would have the software and configuration common to all servers, such as a monitoring agent, common user accounts, and common configuration like DNS and NTP server settings. Other roles would add more things on top of this, possibly at several levels.</p>
+<p>It can still be useful to have servers with multiple roles even with the role inheritance pattern. For example, although production deployments may have separate web, app, and db servers, for development and some test cases, it can be pragmatic to combine these onto a single server.</p>
+<p>Cloned server (similar to save container to image) suffers, because they have <code>runtime data</code> from the original server, which is not reproducible and it accumulate changes or data.</p>
+<p>Bootstrapping new servers:</p>
+<ul>
+<li>push bootstrapping: Ansible, Chef, Puppet</li>
+<li>pull bootstrapping: cloud-init</li>
+</ul>
+<p><code>Smoke test</code> every new server instance:</p>
+<ul>
+<li>Is the server running and accessible?</li>
+<li>Is the monitoring agent running?</li>
+<li>Has the server appeared in DNS, monitoring, and other network services?</li>
+<li>Are all of the necessary services (web, app, database, etc.) running?</li>
+<li>Are required user accounts in place?</li>
+<li>Are there any ports open that shouldn’t be?</li>
+<li>Are any user accounts enabled that shouldn’t be?</li>
+</ul>
+<p>Smoke tests could be integrated with monitoring systems. Most of the checks that would go into a smoke test would work great as routine monitoring checks, so the smoke test could just verify that the new server appears in the monitoring system, and that all of its checks are green.</p>
+<h2 id="Chapter-7"><a href="#Chapter-7" class="headerlink" title="Chapter 7"></a>Chapter 7</h2><p><code>Patterns for Managing Server Templates</code> 需要重点关注.</p>
+<p>这也是我们采取的前后2种方法，new generation采用第二种。也可以两者结合，把经常变化的部分放在creation time provisioning.<br>One end of the spectrum is minimizing what’s on the template and doing most of the provisioning work when a new server is created.</p>
+<p>Keeping templates minimal makes sense when there is a lot of variation in what may be installed on a server. For example, if people create servers by self-service, choosing from a large menu of configuration options, it makes sense to provision dynamically when the server is created. Otherwise, the library of prebuilt templates would need to be huge to include all of the variations that a user might select.</p>
+<p>At the other end of the provisioning spectrum is putting nearly everything into the server template.</p>
+<p>Doing all of the significant provisioning in the template, and disal‐ lowing changes to anything other than runtime data after a server is created, is the key idea of <code>immutable servers</code>. </p>
+<p><code>Process to build template</code><br>An alternative to booting the origin image is to mount the origin disk image in another server and apply changes to its <code>filesystem</code>. This tends to be much faster, but the customization process may be more complicated. </p>
+<p>Netflix’s Aminator tool builds AWS AMIs by mounting the origin image as a disk volume. The company’s blog post on <a href="https://netflixtechblog.com/ami-creation-with-aminator-98d627ca37b0" target="_blank" rel="noopener">Aminator</a> describes the process quite well. Packer offers the <a href="https://www.packer.io/docs/builders/amazon-chroot.html" target="_blank" rel="noopener">amazon-chroot builder</a> to support this approach.</p>
+<p>It could make sense to have server templates tuned for different pur‐ poses. Database server nodes could be built from one template that has been tuned for high-performance file access, while web servers may be tuned for network I/O throughput.(我们并没有考虑这么多)</p>
+<h2 id="Chapter-8"><a href="#Chapter-8" class="headerlink" title="Chapter 8"></a>Chapter 8</h2><p><code>Patterns for Updating and Changing Servers</code> 需要重点关注。<br>An effective change management process ensures that any new change is rolled out to all relevant existing servers and applied to newly created servers.</p>
+<p><code>Continuous Configuration Synchronization</code>, for example, google gcloud resource configuration has a central of truth repo(主要是针对API, role权限), the configuration process sync every one hour or so to elminiate config drift.</p>
+<p>Any areas not explicitly managed by configuration definitions may be changed outside the tooling, which leaves them vulnerable to configuration drift.</p>
+<p><code>Immutable Servers</code>, the practice is normally combined with keeping the lifespan of servers <code>short</code>, as with the Phoenix. So servers are rebuilt as frequently as every day, leaving little opportunity for unmanaged changes. Another approach to this issue is to set those parts of a server’s filesystems that should not change at runtime as read-only.</p>
+<p>Using the term “immutable” to describe this pattern can be misleading. “Immutable” means that a thing can’t be changed, so a truly immutable server would be useless. As soon as a server boots, its runtime state changes—processes run, entries are written to logfiles, and application data is added, updated, and removed.It’s more useful to think of the term “immutable” as applying to the server’s configu‐ ration, rather than to the server as a whole. </p>
+<p>Depending on the design of the configuration tool, a pull-based system may be more scalable than a push-based system. A push system needs the master to open connections to the systems it manages, which can become a bottleneck with infrastructures that scale to thousands of servers. Setting up clusters or pools of agents can help a push model scale. But a pull model can be designed to scale with fewer resources, and with less complexity.</p>
+<h1 id="Chapter-9"><a href="#Chapter-9" class="headerlink" title="Chapter 9"></a>Chapter 9</h1><p><code>Patterns for Defining Infrastructure</code><br>This chapter will look at how to provision and configure larger groups of infrastructure elements.</p>
+<p><code>Stack</code>: A stack is a collection of infrastructure elements that are defined as a unit.</p>
+<p>Use parameterized environment definitions, for example terraform brings up a stack with a single definition file for different environments.</p>
+<p>提到了Consul configuration registry, 里面存储了不同stack的资源，比如run time IP address，可以供stack之间相互引用，这样decouple了stack，于是可以各自为政.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># AWS, get vip_ip from consul</span></span><br><span class="line">resource "consul_keys" "app_server" &#123; </span><br><span class="line">  key &#123;</span><br><span class="line">  name = "vip_ip"</span><br><span class="line">  path = "myapp/$&#123;var.environment&#125;/appserver/vip_ip" </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>It’s better to ensure that infrastructure is provisioned and updated by running tools from centrally managed systems, such as an <code>orchestration agent</code>. An orchestration agent is a server that is used to execute tools for provisioning and updating infrastructure. These are often controlled by a CI or CD server, as part of a change management pipeline. 处于安全，一致性，依赖的原因，确实应该如此.</p>
+<h1 id="Part-III-Practice"><a href="#Part-III-Practice" class="headerlink" title="Part III Practice"></a>Part III Practice</h1><h2 id="Chapter-10"><a href="#Chapter-10" class="headerlink" title="Chapter 10"></a>Chapter 10</h2><p><code>Software Engineering Practices for Infrastructure</code></p>
+
       
     </div>
 
@@ -1070,7 +1126,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">134</span>
+                      
+                    
+                    <span class="site-state-item-count">135</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1106,7 +1164,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-I-Fundations"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-II-Patterns"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-I-Fundations"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-II-Patterns"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7"><span class="nav-number">2.2.</span> <span class="nav-text">Chapter 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8"><span class="nav-number">2.3.</span> <span class="nav-text">Chapter 8</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-9"><span class="nav-number">3.</span> <span class="nav-text">Chapter 9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-III-Practice"><span class="nav-number">4.</span> <span class="nav-text">Part III Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10"><span class="nav-number">4.1.</span> <span class="nav-text">Chapter 10</span></a></li></ol></li></ol></div>
             
 
           </div>

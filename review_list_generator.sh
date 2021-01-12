@@ -10,7 +10,7 @@
 #set -ueo pipefail
 #set -x
 
-# last day boundary
+# days to trace back, modify here
 declare -i day=14
 declare -a sha_list=($(git rev-list HEAD --since=${day}days))
 #declare -p sha_list
@@ -21,13 +21,15 @@ if [[ "${1##--}" == "local" ]]; then
 fi
 REVIEW_FILE="./_posts/review-list.md"
 
+# content
 cat <<_EOF > ${REVIEW_FILE}
 ---
 title: Blog Review List
 date: {{ DATE }}
 ---
 
-There are **{{ NUM }}** blogs written or updated in last **{{ DAY }}** days that need to be reviewed:
+**AUTO GENERATION**
+There are **{{ NUM }}** blogs written or updated in last **{{ DAY }}** days that need to review: 
 
 _EOF
 
@@ -35,6 +37,7 @@ files=""
 for((i=1;i<${#sha_list[@]};i++))
 do 
   # only count .md file
+  # excludes itself and todo list
   tmp=$(git diff --name-only --diff-filter=ACMR ${sha_list[i]} ${sha_list[i-1]} \
           | grep -E ".+\.md" \
           | grep -v -E "review-list\.md" \

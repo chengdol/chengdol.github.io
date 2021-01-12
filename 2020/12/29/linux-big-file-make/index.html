@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="最近在学习Linux storage的过程中，研究了一下几个创建大文件的命令，特别是它们的区别.可以参考这个提问Quickly create a large file on a Linux system. 12345678910111213141516171819202122232425cd /tmp# slowdd if=/dev/zero of=./ddfile bs=1G count=3#">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-31T00:12:01.934Z">
+<meta property="og:updated_time" content="2021-01-12T08:26:59.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Make Big Files">
 <meta name="twitter:description" content="最近在学习Linux storage的过程中，研究了一下几个创建大文件的命令，特别是它们的区别.可以参考这个提问Quickly create a large file on a Linux system. 12345678910111213141516171819202122232425cd /tmp# slowdd if=/dev/zero of=./ddfile bs=1G count=3#">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">134</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">135</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-30 16:12:01" itemprop="dateModified" datetime="2020-12-30T16:12:01-08:00">2020-12-30</time>
+                <time title="Modified: 2021-01-12 00:26:59" itemprop="dateModified" datetime="2021-01-12T00:26:59-08:00">2021-01-12</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.1k</span>
+                <span title="Symbols count in article">4.9k</span>
               
 
               
@@ -511,7 +511,8 @@
         <p>最近在学习Linux storage的过程中，研究了一下几个创建大文件的命令，特别是它们的区别.<br>可以参考这个提问<a href="https://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system" target="_blank" rel="noopener">Quickly create a large file on a Linux system</a>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line"><span class="comment"># slow</span></span><br><span class="line">dd <span class="keyword">if</span>=/dev/zero of=./ddfile bs=1G count=3</span><br><span class="line"><span class="comment"># fastest</span></span><br><span class="line">truncate -s 3G ./trunfile</span><br><span class="line"><span class="comment"># fast</span></span><br><span class="line">fallocate -l 3G ./fallfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># ls -ltrh</span></span><br><span class="line"><span class="comment">#in logical view, they are all 3GB</span></span><br><span class="line">-rw-r--r--. 1 root root 3.0G Dec 30 07:01 ddfile</span><br><span class="line">-rw-r--r--. 1 root root 3.0G Dec 30 07:02 trunfile</span><br><span class="line">-rw-r--r--. 1 root root 3.0G Dec 30 07:02 fallfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># truncate space almost does not count </span></span><br><span class="line"><span class="comment"># because of sparse</span></span><br><span class="line">df -h .</span><br><span class="line"></span><br><span class="line"><span class="comment"># time test</span></span><br><span class="line"><span class="comment"># several seconds</span></span><br><span class="line">time /bin/cp ./ddfile ~</span><br><span class="line">time /bin/cp ./fallfile ~</span><br><span class="line"></span><br><span class="line"><span class="comment"># near instant</span></span><br><span class="line">time /bin/cp ./trunfile ~</span><br></pre></td></tr></table></figure>
 <p>所以说，在需要实打实disk allocated的场景中，不要使用<code>truncate</code>, 比如测试network, IO performance. <code>dd</code>最耗时，占用CPU 以及IO最多，<code>fallocate</code>比<code>dd</code>稍微好些，创建大文件比较快，也确实占用了空间。</p>
-<p>其实<code>dd</code>也可以创建sparse file, see this <a href="https://stackoverflow.com/questions/43126760/what-is-a-sparse-file-and-why-do-we-need-it" target="_blank" rel="noopener">question</a>.</p>
+<p>其实<code>dd</code>也可以创建sparse file, with <code>seek</code> option:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=sparse_file bs=1 count=0 seek=3G</span><br><span class="line"><span class="comment"># Block is 0</span></span><br><span class="line"><span class="built_in">stat</span> sparse_file</span><br><span class="line">Size: 3221225472	Blocks: 0          IO Block: 4096   regular file</span><br></pre></td></tr></table></figure></p>
+<p>You can also shrink a file with many empty blocks with <code>fallocate</code> command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=./empty bs=1G count=3</span><br><span class="line"><span class="comment"># see the block number before and after change</span></span><br><span class="line"><span class="built_in">stat</span> ./empty</span><br><span class="line">Size: 3221225472	Blocks: 6291544    IO Block: 4096   regular file</span><br><span class="line"></span><br><span class="line"><span class="comment"># deallocate empty block</span></span><br><span class="line">fallocate -d ./empty</span><br><span class="line"></span><br><span class="line"><span class="built_in">stat</span> ./empty</span><br><span class="line">Size: 3221225472	Blocks: 0          IO Block: 4096   regular file</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -997,7 +998,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">134</span>
+                      
+                    
+                    <span class="site-state-item-count">135</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
