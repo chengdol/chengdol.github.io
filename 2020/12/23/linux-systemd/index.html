@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="VersionDifferent may have different syntax and options in unit file, check it first:1systemctl --version To see systemd service unit configuration:1man 5 systemd.service SystemdHow To Use Systemctl to">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-12T08:26:59.636Z">
+<meta property="og:updated_time" content="2021-01-19T04:29:22.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Systemd Essential">
 <meta name="twitter:description" content="VersionDifferent may have different syntax and options in unit file, check it first:1systemctl --version To see systemd service unit configuration:1man 5 systemd.service SystemdHow To Use Systemctl to">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">135</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-12 00:26:59" itemprop="dateModified" datetime="2021-01-12T00:26:59-08:00">2021-01-12</time>
+                <time title="Modified: 2021-01-18 20:29:22" itemprop="dateModified" datetime="2021-01-18T20:29:22-08:00">2021-01-18</time>
               
             
           </span>
@@ -520,6 +520,7 @@
 <p>Check system states managed by systemd:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list enabled units only</span></span><br><span class="line">systemctl [list-units]</span><br><span class="line"></span><br><span class="line"><span class="comment"># list all of the units that systemd has loaded or attempted to load into memory</span></span><br><span class="line"><span class="comment"># include not currently active</span></span><br><span class="line">systemctl list-units --all [--state=active|inactive] [--<span class="built_in">type</span>=service|target]</span><br><span class="line"></span><br><span class="line"><span class="comment"># show every available units installed on the system</span></span><br><span class="line">systemctl list-unit-files</span><br></pre></td></tr></table></figure></p>
 <p><code>list-unit-files</code> state column: The state will usually be <code>enabled</code>, <code>disabled</code>, <code>static</code>, or <code>masked</code>. In this context, <code>static</code> means that the unit file does not contain an <code>[Install]</code> section, which is used to enable a unit. As such, these units cannot be enabled. Usually, this means that the unit performs a one-off action or is used only as a dependency of another unit and should not be run by itself.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># after mask, cannot enable or start service</span></span><br><span class="line">sudo systemctl mask nginx.service</span><br><span class="line">sudo systemctl unmask nginx.service</span><br></pre></td></tr></table></figure></p>
 <p>To see full content and path of a unit file, vanilla unit files(don’t touch them, override them if needed in other places, for example <code>/etc/systemd/system</code>) are in <code>/usr/lib/systemd/system</code> and customized are in <code>/etc/systemd/system</code> folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show unit file content and path</span></span><br><span class="line"><span class="comment"># if has overriding snippet, will show them as well</span></span><br><span class="line">systemctl cat nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># list dependencies </span></span><br><span class="line">systemctl list-dependencies nginx.service [--all] [--reverse] [--before] [--after]</span><br><span class="line"></span><br><span class="line"><span class="comment"># low-level detail of unit</span></span><br><span class="line"><span class="comment"># all key=values</span></span><br><span class="line"><span class="comment"># -p: display a single property</span></span><br><span class="line">systemctl show nginx.service [-p ExecStart]</span><br><span class="line"></span><br><span class="line"><span class="comment"># edit unit file</span></span><br><span class="line">sudo systemctl edit --full nginx.service</span><br><span class="line"><span class="comment"># append unit file snippet</span></span><br><span class="line">sudo systemctl edit nginx.service</span><br><span class="line"><span class="comment"># then reload to pick up changes</span></span><br><span class="line">sodu systemctl daemon-reload</span><br></pre></td></tr></table></figure></p>
+<p>You can also further override by creating override.conf file in <code>/etc/systemd/system/xxx.service.d</code> folder, there are some principles for overriding, see <a href="https://unix.stackexchange.com/questions/398540/how-to-override-systemd-unit-file-settings" target="_blank" rel="noopener">here</a>.</p>
 <p>In systemd, service and other unit files can be tied to a <code>target</code>.</p>
 <p>Targets are special unit files that describe a system state or synchronization point. Like other units, the files that define targets can be identified by their suffix, which in this case is <code>.target</code>. Targets do not do much themselves, but are instead used to group other units together.</p>
 <p>This can be used in order to bring the system to certain states, much like other init systems use <code>runlevels</code>. (仍然可以显示系统的runlevel的)</p>
@@ -543,7 +544,7 @@
 <p>And because of no $PATH lookup, must use absolute path to binary or executable.</p>
 <p>Setting <code>PermissionsStartOnly=true</code> means that User &amp; Group are only applied to ExecStart. So switching to the new syntax will be :<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStartPre</span>=+/bin/bash -c <span class="string">'/bin/journalctl -b -u ntpdate | /bin/grep -q -e "adjust time server" -e "step time server"'</span></span><br><span class="line"><span class="attr">ExecStartPre</span>=+/bin/mkdir -p /path/to/somedir</span><br><span class="line"><span class="attr">ExecStart</span>=/path/to/myservice</span><br><span class="line"><span class="attr">ExecStop</span>=+/bin/kill -INT <span class="variable">$&#123;MAINPID&#125;</span></span><br><span class="line"><span class="attr">ExecReload</span>=+/bin/kill -INT <span class="variable">$&#123;MAINPID&#125;</span> &amp;&amp; /path/to/myservice</span><br></pre></td></tr></table></figure></p>
 <p>Prefix with <code>+</code> will be executed with higher privilege as root. 还需要注意的是每次ExecStartPre的运行环境都是独立的。 </p>
-<p>If needs to check the log of latest daemon start process, use, this will show you all log instead of only unit, I found if use <code>-u</code> to specify unit, some log will miss:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use `b` and `f` to move page</span></span><br><span class="line">jonrnalctl -e</span><br></pre></td></tr></table></figure></p>
+<p>If needs to check the log of latest daemon start process, use, this will show you all log instead of only unit, I found if use <code>-u</code> to specify unit, some log will miss:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use `b` and `f` to move page</span></span><br><span class="line"><span class="comment"># -e: tail</span></span><br><span class="line"><span class="comment"># -x: more details</span></span><br><span class="line">journalctl -ex</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://stackoverflow.com/questions/48195340/systemd-with-multiple-execstart" target="_blank" rel="noopener">Systemd with multiple execStart</a>: serivce type 和 ExecStart 个数有关.</p>
 
       
@@ -1039,7 +1040,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">135</span>
+                      
+                    
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

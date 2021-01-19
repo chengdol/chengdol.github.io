@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="目前使用的source code management tool 是gitlab, 除了行使git 的功能外，对每次 merge request 都做了额外的CI/CD操作，这里记录一下相关语法和总结 from course Continuous Delivery with GitLab CI: code and feature integraion, combining updates into">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-15T07:36:49.717Z">
+<meta property="og:updated_time" content="2021-01-19T04:29:22.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gitlab CI">
 <meta name="twitter:description" content="目前使用的source code management tool 是gitlab, 除了行使git 的功能外，对每次 merge request 都做了额外的CI/CD操作，这里记录一下相关语法和总结 from course Continuous Delivery with GitLab CI: code and feature integraion, combining updates into">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">135</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-14 23:36:49" itemprop="dateModified" datetime="2020-12-14T23:36:49-08:00">2020-12-14</time>
+                <time title="Modified: 2021-01-18 20:29:22" itemprop="dateModified" datetime="2021-01-18T20:29:22-08:00">2021-01-18</time>
               
             
           </span>
@@ -509,8 +509,7 @@
 
       
         <p>目前使用的source code management tool 是gitlab, 除了行使git 的功能外，对每次 merge request 都做了额外的CI/CD操作，这里记录一下相关语法和总结 from course <a href="https://www.linkedin.com/learning/continuous-delivery-with-gitlab/use-gitlab-for-code-management?u=56685617" target="_blank" rel="noopener">Continuous Delivery with GitLab</a></p>
-<p><code>CI</code>: code and feature integraion, combining updates into existing code base, testing with automation. </p>
-<p><code>CD</code>: delivery can mean deployment, the process of building and deploying the app, for example, upload the object to somewhere that customer can download.</p>
+<p><code>CI</code>: code and feature integraion, combining updates into existing code base, testing with automation.<br><code>CD</code>: delivery can mean deployment, the process of building and deploying the app, for example, upload the object to somewhere that customer can download.</p>
 <p>Gitlab uses pipelines to do both <code>CI/CD</code>, defined in <code>.gitlab-ci.yml</code> file at your branch.</p>
 <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><p>[x] To navigate the source code in gitlab repo, try launch the <code>Web IDE</code>, will show you a structure tree on left side of the files.<br>[x] Use snippet to share code or file block for issue solving, the same as gPaste.<br>[x] To-do list is someone mentions you in some events.<br>[x] Milestone is a goal that needs to track.<br>[x] Merge request (pull request in github) after merged can auto close the issue, deponds on setting.</p>
 <h1 id="Setup-self-managed-Gitlab"><a href="#Setup-self-managed-Gitlab" class="headerlink" title="Setup self-managed Gitlab"></a>Setup self-managed Gitlab</h1><p>You can experiment with gitlab community edition locally by bringing up a gitlab server through Vagrant.<br>For example, Vagrantfile, there are 2 VMs, one VM for configuring docker gitlab runner:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- mode: ruby -*-</span></span><br><span class="line"><span class="comment"># vi: set ft=ruby :</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># server static ip</span></span><br><span class="line">GITLAB_IP = <span class="string">"192.168.50.10"</span></span><br><span class="line"><span class="comment"># worker static ip</span></span><br><span class="line">GITLAB_RUNNER_IP = <span class="string">"192.168.50.11"</span></span><br><span class="line"></span><br><span class="line">Vagrant.configure(<span class="string">"2"</span>) <span class="keyword">do</span> <span class="params">|config|</span></span><br><span class="line">  <span class="comment"># gitlab server VM</span></span><br><span class="line">  config.vm.define <span class="string">"server"</span>, <span class="symbol">primary:</span> <span class="literal">true</span> <span class="keyword">do</span> <span class="params">| server|</span></span><br><span class="line">    server.vm.hostname = <span class="string">"gitlab"</span></span><br><span class="line">    server.vm.box = <span class="string">"bento/ubuntu-16.04"</span></span><br><span class="line">    <span class="comment">## private network</span></span><br><span class="line">    server.vm.network <span class="string">"private_network"</span>, <span class="symbol">ip:</span> GITLAB_IP</span><br><span class="line"></span><br><span class="line">    server.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> <span class="params">|v|</span></span><br><span class="line">      v.memory = <span class="number">2048</span></span><br><span class="line">      v.cpus = <span class="number">2</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># gitlab runner VM with docker installed</span></span><br><span class="line">  config.vm.define <span class="string">"runner"</span>, <span class="symbol">primary:</span> <span class="literal">true</span> <span class="keyword">do</span> <span class="params">| runner|</span></span><br><span class="line">    runner.vm.hostname = <span class="string">"runner"</span></span><br><span class="line">    runner.vm.box = <span class="string">"bento/ubuntu-16.04"</span></span><br><span class="line">    <span class="comment">## private network</span></span><br><span class="line">    runner.vm.network <span class="string">"private_network"</span>, <span class="symbol">ip:</span> GITLAB_RUNNER_IP</span><br><span class="line"></span><br><span class="line">    runner.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> <span class="params">|v|</span></span><br><span class="line">      v.memory = <span class="number">1024</span></span><br><span class="line">      v.cpus = <span class="number">2</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
@@ -1034,7 +1033,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">135</span>
+                      
+                    
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

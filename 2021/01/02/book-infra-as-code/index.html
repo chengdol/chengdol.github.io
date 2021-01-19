@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-12T08:26:59.629Z">
+<meta property="og:updated_time" content="2021-01-19T04:29:22.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Infrastructure as Code">
 <meta name="twitter:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">135</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-12 00:26:59" itemprop="dateModified" datetime="2021-01-12T00:26:59-08:00">2021-01-12</time>
+                <time title="Modified: 2021-01-18 20:29:22" itemprop="dateModified" datetime="2021-01-18T20:29:22-08:00">2021-01-18</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">21k</span>
+                <span title="Symbols count in article">29k</span>
               
 
               
@@ -628,12 +628,50 @@
 <p><code>Immutable Servers</code>, the practice is normally combined with keeping the lifespan of servers <code>short</code>, as with the Phoenix. So servers are rebuilt as frequently as every day, leaving little opportunity for unmanaged changes. Another approach to this issue is to set those parts of a server’s filesystems that should not change at runtime as read-only.</p>
 <p>Using the term “immutable” to describe this pattern can be misleading. “Immutable” means that a thing can’t be changed, so a truly immutable server would be useless. As soon as a server boots, its runtime state changes—processes run, entries are written to logfiles, and application data is added, updated, and removed.It’s more useful to think of the term “immutable” as applying to the server’s configu‐ ration, rather than to the server as a whole. </p>
 <p>Depending on the design of the configuration tool, a pull-based system may be more scalable than a push-based system. A push system needs the master to open connections to the systems it manages, which can become a bottleneck with infrastructures that scale to thousands of servers. Setting up clusters or pools of agents can help a push model scale. But a pull model can be designed to scale with fewer resources, and with less complexity.</p>
-<h1 id="Chapter-9"><a href="#Chapter-9" class="headerlink" title="Chapter 9"></a>Chapter 9</h1><p><code>Patterns for Defining Infrastructure</code><br>This chapter will look at how to provision and configure larger groups of infrastructure elements.</p>
+<h2 id="Chapter-9"><a href="#Chapter-9" class="headerlink" title="Chapter 9"></a>Chapter 9</h2><p><code>Patterns for Defining Infrastructure</code><br>This chapter will look at how to provision and configure larger groups of infrastructure elements.</p>
 <p><code>Stack</code>: A stack is a collection of infrastructure elements that are defined as a unit.</p>
 <p>Use parameterized environment definitions, for example terraform brings up a stack with a single definition file for different environments.</p>
 <p>提到了Consul configuration registry, 里面存储了不同stack的资源，比如run time IP address，可以供stack之间相互引用，这样decouple了stack，于是可以各自为政.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># AWS, get vip_ip from consul</span></span><br><span class="line">resource "consul_keys" "app_server" &#123; </span><br><span class="line">  key &#123;</span><br><span class="line">  name = "vip_ip"</span><br><span class="line">  path = "myapp/$&#123;var.environment&#125;/appserver/vip_ip" </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>It’s better to ensure that infrastructure is provisioned and updated by running tools from centrally managed systems, such as an <code>orchestration agent</code>. An orchestration agent is a server that is used to execute tools for provisioning and updating infrastructure. These are often controlled by a CI or CD server, as part of a change management pipeline. 处于安全，一致性，依赖的原因，确实应该如此.</p>
-<h1 id="Part-III-Practice"><a href="#Part-III-Practice" class="headerlink" title="Part III Practice"></a>Part III Practice</h1><h2 id="Chapter-10"><a href="#Chapter-10" class="headerlink" title="Chapter 10"></a>Chapter 10</h2><p><code>Software Engineering Practices for Infrastructure</code></p>
+<h1 id="Part-III-Practice"><a href="#Part-III-Practice" class="headerlink" title="Part III Practice"></a>Part III Practice</h1><h2 id="Chapter-10"><a href="#Chapter-10" class="headerlink" title="Chapter 10"></a>Chapter 10</h2><p><code>Software Engineering Practices for Infrastructure</code><br>Assume everything you deliver will need to change as the system evolves.</p>
+<p>The true measure of the quality of a system, and its code, is how quickly and safely changes are made to it.</p>
+<p>gitlab-ci上组里就是这么做的:<br>Although a CI tool can be used to run tests automatically on commits made to each separate branch, the integrated changes are only tested together when the branches are merged. Some teams find that this works well for them, generally by keeping branches very short-lived.<br>这里总结得很好，commit changes to short-lived branch and then merge to trunk, do both CI on before and after the merge for branch and trunk.</p>
+<p>这个CI/CD也解释得很好:<br><code>CI Continuous integration</code> addresses work done on a single codebase. <code>CD Continuous delivery</code> expands the scope of this continuous integration to the entire system, with all of its components.</p>
+<p>The idea behinds CD is to ensure that all of the deployable components, systems, and infrastructure are continuously validated to ensure that they are production ready. It is used to address the problems of the “integration phase.”</p>
+<p>One misconception about CD is that it means every change committed is applied to production immediately after passing automated tests. The point of CD is not to apply every change to production immediately, but to ensure that every change is ready to go to production.</p>
+<p><code>Code Quality</code><br>The key to a well-engineered system is simplicity. Build only what you need, then it becomes easier to make sure what you have built is correct. Reorganize code when doing so clearly adds value.</p>
+<p><code>Technical debt</code> is a metaphor for problems in a system that have been left unfixed. 最好不要积累technical debts，发现的时候就去修复.</p>
+<p>An optional feature that is no longer used, or whose development has been stopped, is technical debt. It should be pruned ruthlessly. Even if you decide later on that you need that code, it should be in the history of the VCS. If, in the future, you want to go back and dust it off, you’ve got it in the history in version control.</p>
+<h2 id="Chapter-11"><a href="#Chapter-11" class="headerlink" title="Chapter 11"></a>Chapter 11</h2><p><code>Testing Infrastructure Changes</code>，需要关注.<br>The pyramid puts tests with a broader scope toward the top, and those with a narrow scope at the bottom. The lower tiers validate smaller, individual things such as defini‐ tion files and scripts. The middle tiers test some of the lower-level elements together —for example, by creating a running server. The highest tiers test working systems together—for example, a service with multiple servers and their surrounding infrastructure.</p>
+<p>There are more tests at the lower levels of the pyramid and fewer at the top. Because the lower-level tests are smaller and more focused, they run very quickly. The higher- level tests tend to be more involved, taking longer to set up and then run, so they run slower.</p>
+<p>In order for CI and CD to be practical, the full test suite should run every time someone commits a change. The committer should be able to see the results of the test for their individual change in a matter of minutes. Slow test suites make this difficult to do, which often leads teams to decide to run the test suite periodically—every few hours, or even nightly.</p>
+<p>If running tests on every commit is too slow to be practical, the sol‐ ution is not to run the tests less often, but instead to fix the situa‐ tion so the test suite runs more quickly. This usually involves re- balancing the test suite, reducing the number of long-running tests and increasing the coverage of tests at the lower levels.</p>
+<p>This in turn may require rearchitecting the system being tested to be more modular and loosely coupled, so that individual compo‐ nents can be tested more quickly.</p>
+<p>其实test cases也不太好决定, 还是要根据实际需求去选择测试什么部分，经常变动或容易broken的组件，及时的更新。<br>Practice:</p>
+<ul>
+<li>Test at the Lowest Level Possible</li>
+<li>Only Implement the Layers You Need</li>
+<li>Prune the Test Suite Often</li>
+<li>Continuously Review Testing Effectiveness</li>
+</ul>
+<p>Whenever there is a major issue in production or even in testing, consider running a<br><a href="https://codeascraft.com/2012/05/22/blameless-postmortems/" target="_blank" rel="noopener"><code>blameless post-mortem</code></a>. 谷歌内部也提倡这个习惯。</p>
+<p><code>Low-level testing</code><br>对于ansible playbook, packer json file 之类的文件检查，有几个步骤:</p>
+<ul>
+<li>syntax check, ansible and others 自带有parser</li>
+<li>static code analysis: linting, Static analysis can be used to check for common errors and bad habits which, while syntactically correct, can lead to bugs, security holes, performance issues, or just code that is difficult to understand.</li>
+<li>unit testing, ansible has dedicate module for this, also puppet and chef.</li>
+</ul>
+<p><code>Mid-level testing</code><br>For example, starts building template via Packer and Ansible, the validation process would be to create a server instance using the new template, and then run some tests against it.</p>
+<p>Tools to test server configuration: <a href="https://serverspec.org/" target="_blank" rel="noopener">Serverspec</a>, 目前对于packer instance 都是自己去检查的, for example:<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">describe service(<span class="symbol">'login_service</span>') <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_running &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe host(<span class="symbol">'dbserver</span>') <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_reachable.with( :port =&gt; <span class="number">5432</span> ) &#125;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>Automatically tests that remotely logging into a server can be challenging to implement securely. These tests either need a hardcoded password, or else an SSH key or similar mechanism that authorizes unattended logins.</p>
+<p>One approach to mitigate this is to have tests execute on the test server and push their results to a central server. This could be combined with monitoring, so that servers can self-test and trigger an alert if they fail.</p>
+<p>Another approach is to generate one-off authentication credentials when launching a server to test.</p>
+<p><code>High-level testing</code><br>The higher levels of the test suite involve testing that multiple elements of the infra‐ structure work correctly when integrated together.</p>
+<p><code>Testing Operational Quality</code> 这部分也很重要，但是应该在QA的范围.<br>People managing projects to develop and deploy software have a bucket of requirements they call <code>non-functional requirements</code>, or <code>NFRs</code>; these are also sometimes referred to as cross-functional requirements (<code>CFRs</code>). Performance, availability, and security tend to be swept into this bucket.</p>
+<p>Operational testing can take place at multiple tiers of the testing pyramid, although the results at the top tiers are the most important. </p>
+<p>关于testing and monitoring 的关系:<br>Testing is aimed at detecting problems when making changes, before they are applied to production systems. Monitoring is aimed at detecting problems in running systems.</p>
+<p>In order to effectively test a component, it must be isolated from any dependencies during the test. A solution to this is to use a <code>stub server</code> instead of the application server. It’s important for the stub server to be simple to maintain and use. It only needs to return responses specific to the tests you write.</p>
+<p>Mocks, fakes, and stubs are all types of test doubles. A test double replaces a dependency needed by a component or service being tested, to simplify testing.</p>
 
       
     </div>
@@ -1128,7 +1166,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">135</span>
+                      
+                    
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1164,7 +1204,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-I-Fundations"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-II-Patterns"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7"><span class="nav-number">2.2.</span> <span class="nav-text">Chapter 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8"><span class="nav-number">2.3.</span> <span class="nav-text">Chapter 8</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-9"><span class="nav-number">3.</span> <span class="nav-text">Chapter 9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-III-Practice"><span class="nav-number">4.</span> <span class="nav-text">Part III Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10"><span class="nav-number">4.1.</span> <span class="nav-text">Chapter 10</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-I-Fundations"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-II-Patterns"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7"><span class="nav-number">2.2.</span> <span class="nav-text">Chapter 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8"><span class="nav-number">2.3.</span> <span class="nav-text">Chapter 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-9"><span class="nav-number">2.4.</span> <span class="nav-text">Chapter 9</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-III-Practice"><span class="nav-number">3.</span> <span class="nav-text">Part III Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10"><span class="nav-number">3.1.</span> <span class="nav-text">Chapter 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-11"><span class="nav-number">3.2.</span> <span class="nav-text">Chapter 11</span></a></li></ol></li></ol></div>
             
 
           </div>
