@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1e0ziORmoEx6zPk6J6qEid26aWl-zw21G">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Hy8vWUIBuo33oH976PNEkVzvAOzCuyKJ">
-<meta property="og:updated_time" content="2020-12-06T08:06:01.315Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Linux Works, 2nd Edition">
 <meta name="twitter:description" content="Great book for all Linux developers and administrators! Just note for future quick revisit! Chapter1. The Big pictureThe most effective way to understand how an operating system works is through abstr">
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
 
   </li>
 
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-06 00:06:01" itemprop="dateModified" datetime="2020-12-06T00:06:01-08:00">2020-12-06</time>
+                <time title="Modified: 2021-01-31 22:59:24" itemprop="dateModified" datetime="2021-01-31T22:59:24-08:00">2021-01-31</time>
               
             
           </span>
@@ -487,7 +487,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">185k</span>
+                <span title="Symbols count in article">189k</span>
               
 
               
@@ -1023,11 +1023,12 @@
 <h2 id="Chapter-8-A-Closer-Look-at-Processes-and-Resource-Utilization"><a href="#Chapter-8-A-Closer-Look-at-Processes-and-Resource-Utilization" class="headerlink" title="Chapter 8. A Closer Look at Processes and Resource Utilization"></a>Chapter 8. A Closer Look at Processes and Resource Utilization</h2><p>This chapter takes you deeper into the relationships between processes, the kernel, and system resources.</p>
 <p>Many of the tools that you see in this chapter are often thought of as performance-monitoring tools. They’re particularly helpful if your system is slowing to a crawl and you’re trying to figure out why.</p>
 <h3 id="Tracking-Processes"><a href="#Tracking-Processes" class="headerlink" title="Tracking Processes"></a>Tracking Processes</h3><p>The <code>top</code> program is often more useful than <code>ps</code> because it displays the current system status as well as many of the fields in a <code>ps</code> listing, and it updates the display every second.</p>
-<p>You can send commands to <code>top</code> with keystrokes. When you enter <code>top</code> command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Tasks: 382 total,   2 running, 380 sleeping,   0 stopped,   0 zombie</span><br><span class="line">%Cpu(s):  1.2 us,  0.5 sy,  0.0 ni, 96.4 id,  0.4 wa,  0.0 hi,  0.2 si,  1.3 st</span><br><span class="line">KiB Mem :  8009536 total,   441360 free,   930236 used,  6637940 buff/cache</span><br><span class="line">KiB Swap:        0 total,        0 free,        0 used.  6284448 avail Mem</span><br><span class="line"></span><br><span class="line">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line">10438 root      20   0  519148 282140  19392 S   4.6  3.5 586:19.28 kube-apiserver</span><br><span class="line">10449 root      20   0  275308  80184  14584 S   4.3  1.0 516:46.86 kube-controller</span><br><span class="line"> 9691 root      20   0 1648968 159104  30708 S   2.6  2.0 492:06.83 kubelet</span><br><span class="line">10206 root      20   0   10.1g  56568   7760 S   2.0  0.7 262:08.45 etcd</span><br><span class="line">19459 root      20   0   82100  53780   9392 S   1.7  0.7 209:35.52 calico-node</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>You can send commands to <code>top</code> with keystrokes. When you enter <code>top</code> command:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Tasks: <span class="number">382</span> total,   <span class="number">2</span> running, <span class="number">380</span> sleeping,   <span class="number">0</span> stopped,   <span class="number">0</span> zombie</span><br><span class="line">%Cpu(s):  <span class="number">1.2</span> us,  <span class="number">0.5</span> sy,  <span class="number">0.0</span> ni, <span class="number">96.4</span> id,  <span class="number">0.4</span> wa,  <span class="number">0.0</span> hi,  <span class="number">0.2</span> si,  <span class="number">1.3</span> st</span><br><span class="line">KiB Mem :  <span class="number">8009536</span> total,   <span class="number">441360</span> free,   <span class="number">930236</span> used,  <span class="number">6637940</span> buff/cache</span><br><span class="line">KiB Swap:        <span class="number">0</span> total,        <span class="number">0</span> free,        <span class="number">0</span> used.  <span class="number">6284448</span> avail Mem</span><br><span class="line"></span><br><span class="line">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line"><span class="number">10438</span> root      <span class="number">20</span>   <span class="number">0</span>  <span class="number">519148</span> <span class="number">282140</span>  <span class="number">19392</span> S   <span class="number">4.6</span>  <span class="number">3.5</span> <span class="number">586</span>:<span class="number">19.28</span> kube-apiserver</span><br><span class="line"><span class="number">10449</span> root      <span class="number">20</span>   <span class="number">0</span>  <span class="number">275308</span>  <span class="number">80184</span>  <span class="number">14584</span> S   <span class="number">4.3</span>  <span class="number">1.0</span> <span class="number">516</span>:<span class="number">46.86</span> kube-controller</span><br><span class="line"> <span class="number">9691</span> root      <span class="number">20</span>   <span class="number">0</span> <span class="number">1648968</span> <span class="number">159104</span>  <span class="number">30708</span> S   <span class="number">2.6</span>  <span class="number">2.0</span> <span class="number">492</span>:<span class="number">06.83</span> kubelet</span><br><span class="line"><span class="number">10206</span> root      <span class="number">20</span>   <span class="number">0</span>   <span class="number">10.1</span>g  <span class="number">56568</span>   <span class="number">7760</span> S   <span class="number">2.0</span>  <span class="number">0.7</span> <span class="number">262</span>:<span class="number">08.45</span> etcd</span><br><span class="line"><span class="number">19459</span> root      <span class="number">20</span>   <span class="number">0</span>   <span class="number">82100</span>  <span class="number">53780</span>   <span class="number">9392</span> S   <span class="number">1.7</span>  <span class="number">0.7</span> <span class="number">209</span>:<span class="number">35.52</span> calico-node</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>If you see task %CPU is larger than 100, it must be a multi-thread and leverages multi-core. You can use <code>H</code> to toggle thread display rather than task, you will see multi-thead and each of them %CPU.</p>
 <blockquote>
-<p>Note: if you want to see memory in MB, GB… Typing <code>shift + e</code> cycle through.</p>
+<p>Note: if you want to see memory in MB, GB… Typing <code>shift + e/E</code> cycle through.</p>
 </blockquote>
-<p>then type followings:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Spacebar: Updates the display immediately.</span><br><span class="line">M: Sorts by current resident memory usage.</span><br><span class="line">T: Sorts by total (cumulative) CPU usage.</span><br><span class="line">P: Sorts by current CPU usage (the default).</span><br><span class="line">u: Displays only one user’s processes.</span><br><span class="line">f: Selects different statistics to display. (use arrow to move and space to select)</span><br><span class="line">?: Displays a usage summary for all top commands.</span><br></pre></td></tr></table></figure></p>
+<p>then type followings:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Spacebar:</span> <span class="string">Updates</span> <span class="string">the</span> <span class="string">display</span> <span class="string">immediately.</span></span><br><span class="line"><span class="attr">H:</span> <span class="string">show</span> <span class="string">threads</span> <span class="string">in</span> <span class="string">stead</span> <span class="string">of</span> <span class="string">tasks.</span></span><br><span class="line"><span class="attr">M:</span> <span class="string">Sorts</span> <span class="string">by</span> <span class="string">current</span> <span class="string">resident</span> <span class="string">memory</span> <span class="string">usage.</span></span><br><span class="line"><span class="attr">T:</span> <span class="string">Sorts</span> <span class="string">by</span> <span class="string">total</span> <span class="string">(cumulative)</span> <span class="string">CPU</span> <span class="string">usage.</span></span><br><span class="line"><span class="attr">P:</span> <span class="string">Sorts</span> <span class="string">by</span> <span class="string">current</span> <span class="string">CPU</span> <span class="string">usage</span> <span class="string">(the</span> <span class="string">default).</span></span><br><span class="line"><span class="attr">u:</span> <span class="string">Displays</span> <span class="string">only</span> <span class="string">one</span> <span class="string">user’s</span> <span class="string">processes.</span></span><br><span class="line"><span class="attr">f:</span> <span class="string">Selects</span> <span class="string">different</span> <span class="string">statistics</span> <span class="string">to</span> <span class="string">display</span> <span class="string">and</span> <span class="string">sort.</span> <span class="string">(use</span> <span class="string">arrow</span> <span class="string">to</span> <span class="string">move</span> <span class="string">and</span> <span class="string">space</span> <span class="string">to</span> <span class="string">select)</span></span><br><span class="line"><span class="string">?:</span> <span class="string">Displays</span> <span class="string">a</span> <span class="string">usage</span> <span class="string">summary</span> <span class="string">for</span> <span class="string">all</span> <span class="string">top</span> <span class="string">commands.</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Finding-Open-Files-by-lsof"><a href="#Finding-Open-Files-by-lsof" class="headerlink" title="Finding Open Files by lsof"></a>Finding Open Files by lsof</h3><p>One use for this command is when a disk cannot be unmounted because (unspecified) files are in use. The listing of open files can be consulted (suitably filtered if necessary) to identify the process that is using the files.</p>
 <p>The <code>lsof</code> command lists open files and the processes using them. <code>lsof</code> doesn’t stop at regular files, it can list network resources, dynamic libraries, pipes, and more.</p>
 <p>For example:<br>Display entries for open files in <code>/usr</code> directory and successors.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof /usr/*</span><br></pre></td></tr></table></figure></p>
@@ -1047,7 +1048,7 @@
 <p><code>PR</code> is the priority value. <code>NI</code> (nice value), high nice value means nicer, more likely to give up CPU time.</p>
 <p>Alter the nice value:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">renice &lt;value&gt; &lt;pid&gt;</span><br></pre></td></tr></table></figure></p>
 <h4 id="Load-Averages"><a href="#Load-Averages" class="headerlink" title="Load Averages"></a>Load Averages</h4><p>The <code>load average</code> is the average number of processes currently ready to run. Keep in mind that most processes on your system are usually waiting for input (from the keyboard, mouse, or network, for example), meaning that most processes are not ready to run and should contribute nothing to the load average. Only processes that are actually doing something affect the load average.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># uptime</span><br><span class="line"></span><br><span class="line">... up 91 days, ... load average: 0.08, 0.03, 0.01</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># uptime</span></span><br><span class="line">... up 91 days, ... load average: 0.08, 0.03, 0.01</span><br></pre></td></tr></table></figure>
 <p>The three numbers are the load averages for the past 1 minute, 5 minutes, and 15 minutes, respectively. An average of only 0.01 processes have been running across all processors for the past 15 minutes. </p>
 <p>If a load average goes up to around 1, a single process is probably using the CPU nearly all of the time. To identify that process, use the top command; the process will usually rise to the the top of the display.</p>
 <p>If you have two cores, a load average of 1 means that only one of the cores is likely active at any given time, and a load average of 2 means that both cores have just enough to do all of the time.</p>
@@ -1372,7 +1373,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">223</span>
+                    <span class="site-state-item-count">224</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1748,7 +1749,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">136</span>
+                      
+                    
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

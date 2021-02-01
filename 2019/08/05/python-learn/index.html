@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Python3 Tutorial:https://www.tutorialspoint.com/python3/index.htmhttps://www.w3schools.com/python/default.asp TemplateWith Docstring, you can use help() command to get module information, for example:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-02T04:50:30.257Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3 Quick Start">
 <meta name="twitter:description" content="Python3 Tutorial:https://www.tutorialspoint.com/python3/index.htmhttps://www.w3schools.com/python/default.asp TemplateWith Docstring, you can use help() command to get module information, for example:">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-01 20:50:30" itemprop="dateModified" datetime="2020-11-01T20:50:30-08:00">2020-11-01</time>
+                <time title="Modified: 2021-01-31 22:59:24" itemprop="dateModified" datetime="2021-01-31T22:59:24-08:00">2021-01-31</time>
               
             
           </span>
@@ -528,6 +528,7 @@
 <p>You can check the attributes of an object:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show all methods</span></span><br><span class="line">dir(math)</span><br><span class="line">dir(time.ctime)</span><br><span class="line"><span class="comment">## show type</span></span><br><span class="line">type(math)</span><br><span class="line">type(time.ctime)</span><br></pre></td></tr></table></figure></p>
 <p>Commonly used modules:</p>
 <ul>
+<li><code>requests</code>: simple http library</li>
 <li><code>urllib</code>: urllib is a package that collects several modules for working with URLs</li>
 <li><code>sys</code>: access argv, stdin, stdout, etc.</li>
 <li><code>time</code>: principally for working with unix time stamps</li>
@@ -562,7 +563,7 @@
 <p>You can use <code>timeit</code> module <code>timeit</code> method to measure exection time.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## resolver.py file</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resolver</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._cache = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, host)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> host <span class="keyword">not</span> <span class="keyword">in</span> self._cache:</span><br><span class="line">            self._cache[host] = socket.gethostbyname(host)</span><br><span class="line">        <span class="keyword">return</span> self._cache[host]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._cache.clear()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_host</span><span class="params">(self, host)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> host <span class="keyword">in</span> self._cache</span><br></pre></td></tr></table></figure></p>
 <p>Run in REPL:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> resolver <span class="keyword">import</span> Resolver</span><br><span class="line">res = Resolver()</span><br><span class="line"><span class="comment">## just like call function</span></span><br><span class="line">res(<span class="string">"www.google.com"</span>)</span><br><span class="line"><span class="comment">## call second time, the execution time reduces a lot</span></span><br><span class="line">res(<span class="string">"www.google.com"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>How to know object is callable, use <code>callable()</code> function to test.</p>
-<h3 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h3><p>Create anonymous callable objects, syntax: <code>lambda [args]: expr</code>, the args are separated by commas or empty, the body is a <strong>single</strong> expression.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## the key is assigned a callable function</span></span><br><span class="line"><span class="comment">## similar to Java</span></span><br><span class="line">sort(name_list, key=<span class="keyword">lambda</span> name: name.split()[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure></p>
+<h3 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h3><p>Create anonymous callable objects, syntax: <code>lambda [args]: expr</code>, the args are separated by commas or empty, the body is a <strong>single</strong> expression.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## the key is assigned a callable function</span></span><br><span class="line"><span class="comment">## similar to Java</span></span><br><span class="line">sorted(name_list, key=<span class="keyword">lambda</span> name: name.split()[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure></p>
 <h3 id="Functional-style-Tools"><a href="#Functional-style-Tools" class="headerlink" title="Functional-style Tools"></a>Functional-style Tools</h3><p><code>map()</code>: maps function to a sequence, lazy implementation, return iterator.<br><code>filter()</code>: remove elements from sequence which don’t meet some criteria, lazily.<br><code>functools.reduce()</code>: 2-arguments function with a sequence, reduce the sequence to one result.</p>
 <h2 id="Local-Function"><a href="#Local-Function" class="headerlink" title="Local Function"></a>Local Function</h2><p>functions defined inside function.<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 实现了和前面lambda类似的功能</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort_by_last_letter</span><span class="params">(strings)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">last_letter</span><span class="params">(s)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> s[<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> sorted(strings, key=last_letter)</span><br><span class="line">sort_by_last_letter([<span class="string">"hesd"</span>, <span class="string">"sddn"</span>, <span class="string">"pplea"</span>])</span><br></pre></td></tr></table></figure></p>
 <p>Name resulation in the scope is checked by <code>LEGB</code> rule: Local -&gt; Enclosing (the containing function) -&gt; Global -&gt; Build-in:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">g = <span class="string">"global"</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">(p = <span class="string">"param"</span>)</span>:</span></span><br><span class="line">    l = <span class="string">"local"</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        print(g, p, l)</span><br><span class="line">    inner()</span><br><span class="line"></span><br><span class="line"><span class="comment">## global param local</span></span><br><span class="line">outer()</span><br><span class="line"><span class="comment">## this call is wrong!</span></span><br><span class="line">outer.inner()</span><br></pre></td></tr></table></figure></p>
@@ -779,7 +780,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">223</span>
+                    <span class="site-state-item-count">224</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1155,7 +1156,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">136</span>
+                      
+                    
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
+  <meta name="description" content="刚看完第一版，第二版就出来了, hmmm… -_-||| This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate conc">
 <meta name="keywords" content="book">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Infrastructure as Code">
 <meta property="og:url" content="http://yoursite.com/2021/01/02/book-infra-as-code/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
+<meta property="og:description" content="刚看完第一版，第二版就出来了, hmmm… -_-||| This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate conc">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-19T04:29:22.378Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Infrastructure as Code">
-<meta name="twitter:description" content="This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather t">
+<meta name="twitter:description" content="刚看完第一版，第二版就出来了, hmmm… -_-||| This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate conc">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-18 20:29:22" itemprop="dateModified" datetime="2021-01-18T20:29:22-08:00">2021-01-18</time>
+                <time title="Modified: 2021-01-31 22:59:24" itemprop="dateModified" datetime="2021-01-31T22:59:24-08:00">2021-01-31</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">29k</span>
+                <span title="Symbols count in article">42k</span>
               
 
               
@@ -508,7 +508,8 @@
       
 
       
-        <p>This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather than to provide instruction.</p>
+        <p>刚看完第一版，第二版就出来了, hmmm… -_-|||</p>
+<p>This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather than to provide instruction.</p>
 <p>最开始介绍了作者之前的一些经历 starts from team Vmware virtual server farm，从这些经历中，慢慢领悟和学习到了IaC的必要性。puppet and chef 看来是很久之前的config automation tool了. 后来过渡到cloud，从其他IT Ops team 中学到很多new ideas, eye-opener: “The key idea of our new approach was that every server could be automatically rebuilt from scratch, and our configuration tooling would run continuously, not ad hoc. Every server added into our new infrastructure would fall under this approach. If automation broke on some edge case, we would either change the automation to handle it, or else fix the design of the service so it was no longer an edge case.”</p>
 <p>虚拟机和容器相辅相成。<br>Virtualization was one step, allowing you to add and remove VMs to scale your capacity to your load on a timescale of minutes. Containers take this to the next level, allowing you to scale your capacity up and down on a timescale of seconds.</p>
 <p>后来我想到了一个问题，如果把容器运行在虚拟机之上，不又多了一层overhead吗？有没有优化。比如GKE runs on GCE VM, any optimization on VM image for k8s? 是的，用的是<a href="https://cloud.google.com/container-optimized-os/docs/concepts/features-and-benefits?hl=en" target="_blank" rel="noopener">container-optimized OS</a>.</p>
@@ -662,16 +663,101 @@
 <li>unit testing, ansible has dedicate module for this, also puppet and chef.</li>
 </ul>
 <p><code>Mid-level testing</code><br>For example, starts building template via Packer and Ansible, the validation process would be to create a server instance using the new template, and then run some tests against it.</p>
-<p>Tools to test server configuration: <a href="https://serverspec.org/" target="_blank" rel="noopener">Serverspec</a>, 目前对于packer instance 都是自己去检查的, for example:<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">describe service(<span class="symbol">'login_service</span>') <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_running &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe host(<span class="symbol">'dbserver</span>') <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_reachable.with( :port =&gt; <span class="number">5432</span> ) &#125;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>Tools to test server configuration: <a href="https://serverspec.org/" target="_blank" rel="noopener">Serverspec</a>, 目前对于packer instance 都是自己去检查的, for example:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">describe service(<span class="string">'login_service'</span>) <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_running &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe host(<span class="string">'dbserver'</span>) <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_reachable.with( :<span class="function"><span class="params">port</span> =&gt;</span> <span class="number">5432</span> ) &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment">// </span></span><br><span class="line">describe <span class="string">'install and configure web server'</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">let</span>(:chef_run) &#123; <span class="attr">ChefSpec</span>::SoloRunner.converge(nginx_configuration_recipe) &#125;</span><br><span class="line"></span><br><span class="line">  it <span class="string">'installs nginx'</span> <span class="keyword">do</span></span><br><span class="line">    expect(chef_run).to install_package(<span class="string">'nginx'</span>)</span><br><span class="line">  end </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe <span class="string">'home page is working'</span> <span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">let</span>(:chef_run) &#123;</span><br><span class="line">    ChefSpec::SoloRunner.converge(nginx_configuration_recipe,</span><br><span class="line">                                  home_page_deployment_recipe)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  it <span class="string">'loads correctly'</span> <span class="keyword">do</span></span><br><span class="line">    response = Net::HTTP.new(<span class="string">'localhost'</span>,<span class="number">80</span>).get(<span class="string">'/'</span>) </span><br><span class="line">    expect(response.body).to include(<span class="string">'Welcome to the home page'</span>)</span><br><span class="line">  end </span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
 <p>Automatically tests that remotely logging into a server can be challenging to implement securely. These tests either need a hardcoded password, or else an SSH key or similar mechanism that authorizes unattended logins.</p>
 <p>One approach to mitigate this is to have tests execute on the test server and push their results to a central server. This could be combined with monitoring, so that servers can self-test and trigger an alert if they fail.</p>
 <p>Another approach is to generate one-off authentication credentials when launching a server to test.</p>
 <p><code>High-level testing</code><br>The higher levels of the test suite involve testing that multiple elements of the infra‐ structure work correctly when integrated together.</p>
 <p><code>Testing Operational Quality</code> 这部分也很重要，但是应该在QA的范围.<br>People managing projects to develop and deploy software have a bucket of requirements they call <code>non-functional requirements</code>, or <code>NFRs</code>; these are also sometimes referred to as cross-functional requirements (<code>CFRs</code>). Performance, availability, and security tend to be swept into this bucket.</p>
 <p>Operational testing can take place at multiple tiers of the testing pyramid, although the results at the top tiers are the most important. </p>
-<p>关于testing and monitoring 的关系:<br>Testing is aimed at detecting problems when making changes, before they are applied to production systems. Monitoring is aimed at detecting problems in running systems.</p>
+<p><code>关于testing and monitoring 的关系:</code><br>Testing is aimed at detecting problems when making changes, before they are applied to production systems. Monitoring is aimed at detecting problems in running systems.</p>
 <p>In order to effectively test a component, it must be isolated from any dependencies during the test. A solution to this is to use a <code>stub server</code> instead of the application server. It’s important for the stub server to be simple to maintain and use. It only needs to return responses specific to the tests you write.</p>
-<p>Mocks, fakes, and stubs are all types of test doubles. A test double replaces a dependency needed by a component or service being tested, to simplify testing.</p>
+<p>Mocks, fakes, and stubs are all types of <code>test doubles</code>. A test double replaces a dependency needed by a component or service being tested, to simplify testing.</p>
+<p><code>QA</code> tester means: quality analyst/assurance.</p>
+<p><code>story</code>: a small piece of work (Jira 中的分类), 可能是这个意思.</p>
+<h2 id="Chapter-12"><a href="#Chapter-12" class="headerlink" title="Chapter 12"></a>Chapter 12</h2><p><code>Change Management Pipelines for Infrastructure</code><br>This chapter explains how to implement continuous delivery for infrastructure by building a change management pipeline. 讲了如何设计，集成，测试CD pipeline.</p>
+<p>A change management pipeline could be described as the automated manifestation of your infrastructure change management process. 就理解成CD pipeline.</p>
+<p>Guidelines for Designing Pipelines:</p>
+<ul>
+<li>Ensure Consistency Across Stages, e.g:  server operating system versions and configuration should be the same across environments. Make sure that the essential characteristics are the same.</li>
+<li>Get Immediate Feedback for Every Change</li>
+<li>Run Automated Stages Before Manual Stages</li>
+<li>Get Production-Like Sooner Rather Than Later</li>
+</ul>
+<p>My colleague Chris Bird described this as <code>DevOops</code>; the ability to automatically configure many machines at once gives us the ability to automatically break many machines at once. 也就是说利害是hand by hand的。</p>
+<p>这里有recap了一下一个CI/CD的流程:</p>
+<ol>
+<li>local development stage, make code and test on local virtualization, then commit to VSC.</li>
+<li>build stage, syntax checking, unit tests, test doubles, publish reports, packaging and upload code/template image, etc.</li>
+</ol>
+<p>如果不是用的immutable server的模式，则你会需要一个configuration master (chef server, puppet master or <code>ansibel tower</code>)去配置环境，所以在CI pipeline的最后，会打包上传一个configuration artifact 供这些config master 使用去配置running server，或者是masterless configuration, running server 会自动从一个file server 下载.</p>
+<p>如果使用的是immutable server模式，则内容都在image template中配置好了，比如使用packer，不在需要configuration master or masterless.</p>
+<ol start="3">
+<li>automated test stage, refer to test pyramid</li>
+<li>manual validation stage</li>
+<li>apply to live, any significant risk or uncertainty at this stage should be modeled and addressed in upstream stages.</li>
+</ol>
+<p>还要注意的是，并不是每个commit 都会走所有的流程，可能commit 1/2/3 走到一个stage，然后合起来进入下一个stage, the earlier stages of the pipeline will run more often than the later stages. not every change, even ones that pass testing and demo, are necessarily deployed immediately to production.</p>
+<p><code>Pipeline for complex system</code>:<br>fan-in pattern: The fan-in pattern is a common one, useful for building a system that is composed of multiple components. Each component starts out with its own pipeline to build and test it in isolation. Then the component pipelines are joined so that the components are tested together. A system with multiple layers of components may have multiple joins. 这个流程图就如同fan-in的扇形.</p>
+<p><code>Contract tests</code> are automated tests that check whether a provider interface behaves as consumers expect. This is a much smaller set of tests than full functional tests, purely focused on the API that the service has committed to provide to its consumers.</p>
+<h2 id="Chapter-13"><a href="#Chapter-13" class="headerlink" title="Chapter 13"></a>Chapter 13</h2><p><code>Workflow for the Infrastructure Team</code> 这章描述用语很好.<br>An infrastructure engineer can no longer just log onto a server to make a change. Instead, they make changes to the tools and definitions, and then allow the change management pipeline to roll the changes out to the server.</p>
+<p>A <code>sandbox</code> is an environment where a team member can try out changes before com‐ mitting them into the pipeline. It may be run on a local workstation, using virtualiza‐ tion, or could be run on the virtualization platform.</p>
+<p><code>Autonomic Automation Workflow</code><br>Using local sandbox for testing:<br>A <code>sandbox</code> is an environment where a team member can try out changes before com‐ mitting them into the pipeline. It may be run on a local workstation, using virtualiza‐ tion, or could be run on the virtualization platform.</p>
+<p>Keeping the whole change/commit cycle short needs some habits around how to structure the changes so they don’t break production even when the whole task isn’t finished. Feature toggles and similar techniques mentioned in Chapter 12 can help.</p>
+<h2 id="Chapter-14"><a href="#Chapter-14" class="headerlink" title="Chapter 14"></a>Chapter 14</h2><p><code>Continuity with Dynamic Infrastructure</code><br>This chapter is concerned with the operational quality of production infrastructure.<br>Many IT service providers use availability as a key performance metric or <code>SLA</code>(service level agreement). This is a percentage, often expressed as a number of nines: “five nines availability” means that the system is available 99.999% of the time.</p>
+<p><code>Service continuity</code><br>Keeping services available to end users in the face of problems and changes</p>
+<p>A pitfall of using <code>dynamic pools</code> to automatically replace failed servers is that it can mask a problem. If an application has a bug that causes it to crash frequently, it may take a while for people to notice. So it is important to implement metrics and alerting on the pool’s activity. The team should be sent critical alerts when the frequency of server failures exceeds a threshold.</p>
+<p>Software that has been designed and implemented with the assumption that servers and other infrastructure elements are routinely added and removed is sometimes referred to as <code>cloud native</code>. Cloud-native software handles constantly changing and shifting infrastructure seamlessly.</p>
+<p>The team at Heroku published a list of guidelines for applications to work well in the context of a dynamic infrastructure, called the <a href="https://12factor.net/" target="_blank" rel="noopener">12-factor application</a>.</p>
+<p>Some characteristics of <code>non-cloud-native</code> software that require lift and shift migrations:</p>
+<ul>
+<li>Stateful sessions</li>
+<li>Storing data on the local filesystem</li>
+<li>Slow-running startup routines</li>
+<li>Static configuration of infrastructure parameters</li>
+</ul>
+<p><code>Zero-Downtime Changes</code><br>Many changes require taking elements of the infrastructure offline, or completely replacing them. Examples include upgrading an OS kernel, reconfiguring a network, or deploying a new version of application software. However, it’s often possible to carry out these changes without interrupting service.</p>
+<ul>
+<li>Blue-Green Replacement</li>
+<li>Phoenix Replacement</li>
+<li>Canary Replacement</li>
+<li><a href="http://agiletesting.blogspot.com/2009/07/dark-launching-and-other-lessons-from.html" target="_blank" rel="noopener">dark launching</a></li>
+</ul>
+<p>Routing Traffic for Zero-Downtime Replacements. Zero-downtime change patterns involve fine-grained control to switch usage between system components.</p>
+<p>Zero-Downtime Changes with Data. The problem comes when the new version of the component involves a change to data formats so that it’s not possible to have both versions share the same data stor‐ age without issues. An effective way to approach data for zero-downtime deployments is to decouple data format changes from software releases.</p>
+<p><code>Data continuity</code><br>Keeping data available and consistent on infrastructure that isn’t.<br>There are many techniques that can be applied to this problem. A few include:</p>
+<ul>
+<li>Replicating data redundantly</li>
+<li>Regenerating data</li>
+<li>Delegating data persistence</li>
+<li>Backing up to persistent storage</li>
+</ul>
+<p><code>Disaster recovery</code><br>Coping well when the worst happens</p>
+<p>Iron-age IT organizations usually optimize for mean time between failures (MTBF), whereas cloud-age organizations optimize for mean time to recover (MTTR).</p>
+<p><code>Security</code><br>Keeping bad actors at bay</p>
+<ul>
+<li>Reliable Updates as a Defense</li>
+<li>Provenance of Packages</li>
+<li>Automated Hardening</li>
+</ul>
+<p>Common vulnerabilities list from <a href="https://cve.mitre.org/index.html" target="_blank" rel="noopener">CVE</a>.</p>
+<p><code>Hardening</code> refers to configuring a system to make it more secure than it would be out of the box. Typical activities include:</p>
+<ul>
+<li>Configuring security policies (e.g., firewall rules, SSH key use, password policies, sudoers files, etc.).</li>
+<li>Removing all but the most essential user accounts, services, software packages, and so on.</li>
+<li>Auditing user accounts, system settings, and checking installed software against known vulnerabilities.</li>
+</ul>
+<p>Frameworks and scripts for hardening system, see <a href="https://github.com/dev-sec" target="_blank" rel="noopener">here</a>. It is essential that the members of the team review and understand the changes made by externally created hardening scripts before applying them to their own infrastructure.</p>
+<h2 id="Chapter-15"><a href="#Chapter-15" class="headerlink" title="Chapter 15"></a>Chapter 15</h2><p><code>Organizing for Infrastructure as Code</code><br>This final chapter takes a look at implementing it from an organizational point of view.</p>
+<p>The organizaitional principles that enable this include:</p>
+<ul>
+<li>A continuous approach to the design, implementation, and improvement of services</li>
+<li>Empowering teams to continuously deliver and improve their services</li>
+<li>Ensuring high levels of quality and compliance while delivering rapidly and continuously</li>
+</ul>
+<p>A <code>kanban board</code> is a powerful tool to make the value stream visible. This is a variation of an agile story wall, set up to mirror the value stream map for work.</p>
+<p>A <code>retrospective</code> is a session that can be held regularly, or after major events like the completion of a project. Everyone involved in the process gathers together to discuss what is working well, and what is not working well, and then decide on changes that could be made to processes and systems in order to get better outcomes.</p>
+<p><code>Post-mortems</code> are typically conducted after an incident or some sort of major prob‐ lem. The goal is to understand the root causes of the issue, and decide on actions to reduce the change of similar issues happening.</p>
 
       
     </div>
@@ -792,7 +878,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">223</span>
+                    <span class="site-state-item-count">224</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1168,7 +1254,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">136</span>
+                      
+                    
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1204,7 +1292,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-I-Fundations"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-II-Patterns"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7"><span class="nav-number">2.2.</span> <span class="nav-text">Chapter 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8"><span class="nav-number">2.3.</span> <span class="nav-text">Chapter 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-9"><span class="nav-number">2.4.</span> <span class="nav-text">Chapter 9</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-III-Practice"><span class="nav-number">3.</span> <span class="nav-text">Part III Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10"><span class="nav-number">3.1.</span> <span class="nav-text">Chapter 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-11"><span class="nav-number">3.2.</span> <span class="nav-text">Chapter 11</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-I-Fundations"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-II-Patterns"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7"><span class="nav-number">2.2.</span> <span class="nav-text">Chapter 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8"><span class="nav-number">2.3.</span> <span class="nav-text">Chapter 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-9"><span class="nav-number">2.4.</span> <span class="nav-text">Chapter 9</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-III-Practice"><span class="nav-number">3.</span> <span class="nav-text">Part III Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10"><span class="nav-number">3.1.</span> <span class="nav-text">Chapter 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-11"><span class="nav-number">3.2.</span> <span class="nav-text">Chapter 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-12"><span class="nav-number">3.3.</span> <span class="nav-text">Chapter 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-13"><span class="nav-number">3.4.</span> <span class="nav-text">Chapter 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-14"><span class="nav-number">3.5.</span> <span class="nav-text">Chapter 14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-15"><span class="nav-number">3.6.</span> <span class="nav-text">Chapter 15</span></a></li></ol></li></ol></div>
             
 
           </div>

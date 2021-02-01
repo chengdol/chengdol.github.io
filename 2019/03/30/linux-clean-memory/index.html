@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="When deploying DS, I find the compute pod that assigned to the second node is always in CreateContainer status and hangs there. I ssh into that node and find its memory is occupied heavily by some oth">
+  <meta name="description" content="When deploying DS, I find the compute pod that assigned to the second node is hanging in CreateContainer status. I SSH into that node and find node memory is occupied heavily by some other processes s">
 <meta name="keywords" content="linux,memory">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Clean Memory Cache">
 <meta property="og:url" content="http://yoursite.com/2019/03/30/linux-clean-memory/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="When deploying DS, I find the compute pod that assigned to the second node is always in CreateContainer status and hangs there. I ssh into that node and find its memory is occupied heavily by some oth">
+<meta property="og:description" content="When deploying DS, I find the compute pod that assigned to the second node is hanging in CreateContainer status. I SSH into that node and find node memory is occupied heavily by some other processes s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-15T20:33:13.000Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Clean Memory Cache">
-<meta name="twitter:description" content="When deploying DS, I find the compute pod that assigned to the second node is always in CreateContainer status and hangs there. I ssh into that node and find its memory is occupied heavily by some oth">
+<meta name="twitter:description" content="When deploying DS, I find the compute pod that assigned to the second node is hanging in CreateContainer status. I SSH into that node and find node memory is occupied heavily by some other processes s">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-15 13:33:13" itemprop="dateModified" datetime="2019-08-15T13:33:13-07:00">2019-08-15</time>
+                <time title="Modified: 2021-01-31 22:59:24" itemprop="dateModified" datetime="2021-01-31T22:59:24-08:00">2021-01-31</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">5.1k</span>
+                <span title="Symbols count in article">5.5k</span>
               
 
               
@@ -508,18 +508,22 @@
       
 
       
-        <p>When deploying DS, I find the compute pod that assigned to the second node is always in <code>CreateContainer</code> status and hangs there. I ssh into that node and find its memory is occupied heavily by some other processes so the command response is so slow, and the cpu% is also busy with the swap daemon.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        8168772      105152      295732     7491216     7767888      273448</span><br><span class="line">Swap:             0           0           0</span><br></pre></td></tr></table></figure></p>
-<p>Compare the normal node:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">  Mem:        8168772      123504     7041388      270836     1003880     7424612</span><br><span class="line">  Swap:             0           0           0</span><br></pre></td></tr></table></figure></p>
+        <p>When deploying DS, I find the compute pod that assigned to the second node is hanging in <code>CreateContainer</code> status. I SSH into that node and find node memory is occupied heavily by some other processes so the command response is extremely slow, and the %CPU is also high with the swapping daemon.</p>
+<blockquote>
+<p>马后炮: 当时应该仔细研究一下这个swapping daemon在做什么，因为swap space是关闭了的，估计是node有什么问题，导致了内存不够使用了。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        8168772      105152      295732     7491216     7767888      273448</span><br><span class="line">Swap:             0           0           0</span><br></pre></td></tr></table></figure>
+<p>see the <code>available</code> is small, Compare the normal node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">  Mem:        8168772      123504     7041388      270836     1003880     7424612</span><br><span class="line">  Swap:             0           0           0</span><br></pre></td></tr></table></figure></p>
 <p>You see the shared and buff/cache parts are huge, I need to flush and clean it.</p>
 <blockquote>
 <p>Note: <code>free -h</code> is more readable</p>
 </blockquote>
-<p>If you have to clear the disk cache, this command is safest in enterprise and production, will clear the <code>PageCache</code> only:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; echo 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>This <a href="https://www.blackmoreops.com/2014/10/28/delete-clean-cache-to-free-up-memory-on-your-slow-linux-server-vps/" target="_blank" rel="noopener">post</a> is good to reference.<br>If you have to clear the disk cache, this command is safest in enterprise and production, will clear the <code>PageCache</code> only:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; <span class="built_in">echo</span> 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>What is <code>sync</code> command?<br>writes any data buffered in memory out to disk.</p>
+<p>What is <code>sync</code> command: flush any data buffered in memory out to disk.</p>
 </blockquote>
-<p>More aggressively, Clear <code>dentries</code> and <code>inodes</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; echo 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
-<p>Clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; echo 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>More aggressively, Clear <code>dentries</code> and <code>inodes</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; <span class="built_in">echo</span> 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>Clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># do all above</span></span><br><span class="line">sync; <span class="built_in">echo</span> 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
 <p>It is not recommended to use this in production until you know what you are doing, as it will clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>. Because just after your run drop_caches, your server will get busy re-populating memory with <code>inodes</code> and <code>dentries</code>, original Kernel documentation recommends not to run this command outside of a testing or debugging environment. But what if you are a home user or your server is getting too busy and almost filling up it’s memory. You need to be able trade the benefits with the risk.</p>
 <blockquote>
 <p>what is <code>dirty cache</code>?<br>Dirty Cache refers to data which has not yet been committed to the database (or disk), and is currently held in computer memory. In short, the new/old data is available in Memory and it is different to what you have in database/disk.</p>
@@ -533,8 +537,7 @@
 <blockquote>
 <p>what is <code>drop_caches</code>?<br>Writing to this will cause the kernel to drop <code>clean caches</code>, as well as reclaimable slab objects like dentries and inodes.  Once dropped, their memory becomes free. It will not kill any process.</p>
 </blockquote>
-<p>This <a href="https://www.blackmoreops.com/2014/10/28/delete-clean-cache-to-free-up-memory-on-your-slow-linux-server-vps/" target="_blank" rel="noopener">post</a> is good to reference.</p>
-<p>If you want to clean swap space:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure></p>
+<p>BYT, if you want to clean swap space (actually here we don’t have swap enabled):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -648,7 +651,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">223</span>
+                    <span class="site-state-item-count">224</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1024,7 +1027,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">136</span>
+                      
+                    
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

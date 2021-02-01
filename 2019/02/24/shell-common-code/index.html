@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="More information please see man bash, it has comprehensive information. This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. se">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-01T06:10:51.123Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Common Code Snippets">
 <meta name="twitter:description" content="More information please see man bash, it has comprehensive information. This blog collects the commonly used code snippets based on my daily work, also do summary from related stackoverflow topics. se">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-31 23:10:51" itemprop="dateModified" datetime="2020-07-31T23:10:51-07:00">2020-07-31</time>
+                <time title="Modified: 2021-01-31 22:59:24" itemprop="dateModified" datetime="2021-01-31T22:59:24-08:00">2021-01-31</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">49k</span>
+                <span title="Symbols count in article">50k</span>
               
 
               
@@ -558,6 +558,7 @@
 <p>If you want to use index of array element<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get length of an array</span></span><br><span class="line">arraylength=<span class="variable">$&#123;#array[@]&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># use for loop to read all values and indexes</span></span><br><span class="line"><span class="keyword">for</span> (( i=0; i&lt;<span class="variable">$&#123;arraylength&#125;</span>; i++ ));</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="comment">## $&#123;array[$i]&#125; 这里注意，先解析的$i</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span> <span class="string">" / "</span> <span class="variable">$&#123;arraylength&#125;</span> <span class="string">" : "</span> <span class="variable">$&#123;array[$i]&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
 <p>If we use <code>declare</code> to define a integer variable:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">declare</span> -i x=10</span><br><span class="line"><span class="keyword">while</span> (( x &gt; 0 ));</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$x</span></span><br><span class="line">  <span class="comment">## no need to use 'let x=x-1'</span></span><br><span class="line">  x=x-1</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
 <p>In ZSH shell, you can use foreach loop:<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## () is a must</span></span><br><span class="line">foreach item (`ls /tmp`)</span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$item</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>Another index loop using <code>seq</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 10);</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$i</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h1><p><code>chmod</code> recursively for directory and it’s content<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 0755 &lt;target directory&gt;</span><br></pre></td></tr></table></figure></p>
 <p>Or only add executable for file<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">'&lt;file name&gt;'</span> -<span class="built_in">type</span> f | xargs chmod +x</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x ...</span><br></pre></td></tr></table></figure>
@@ -693,7 +694,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">223</span>
+                    <span class="site-state-item-count">224</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1069,7 +1070,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">136</span>
+                      
+                    
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

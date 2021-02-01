@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="之前用VNC的目的之一是为了keep long running task on remote machine via SSH, prevent it drops and work lost, the alternative is screen command. Virtual Network Computing (VNC) is a graphical desktop-sharing system">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-19T04:29:22.386Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VNC and Screen Setup">
 <meta name="twitter:description" content="之前用VNC的目的之一是为了keep long running task on remote machine via SSH, prevent it drops and work lost, the alternative is screen command. Virtual Network Computing (VNC) is a graphical desktop-sharing system">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-18 20:29:22" itemprop="dateModified" datetime="2021-01-18T20:29:22-08:00">2021-01-18</time>
+                <time title="Modified: 2021-01-31 22:59:24" itemprop="dateModified" datetime="2021-01-31T22:59:24-08:00">2021-01-31</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">13k</span>
+                <span title="Symbols count in article">15k</span>
               
 
               
@@ -534,8 +534,10 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install -y screen</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">yum install -y screen</span><br><span class="line"></span><br><span class="line"><span class="comment"># start a screen session with description</span></span><br><span class="line"><span class="comment"># and enter into it</span></span><br><span class="line">screen -S remote_playbook</span><br></pre></td></tr></table></figure>
 <p>You can create multiple windows in one session<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+a c         Create a new window (with shell)</span><br><span class="line">Ctrl+a Ctrl+a    Toggle between the current and previous region</span><br><span class="line">Ctrl+a &quot;         List all window</span><br><span class="line">Ctrl+a 0         Switch to window 0 (by number )</span><br><span class="line">Ctrl+a A         Rename the current window</span><br><span class="line"></span><br><span class="line">Ctrl+a S         Split current region horizontally into two regions</span><br><span class="line">Ctrl+a |         Split current region vertically into two regions</span><br><span class="line">Ctrl+a tab       Switch the input focus to the next region</span><br><span class="line">Ctrl+a Q         Close all regions but the current one</span><br><span class="line">Ctrl+a X         Close the current region</span><br><span class="line"></span><br><span class="line">Ctrl+a k         Kill current window or `exit`</span><br><span class="line">Ctrl+a \         Kill all windows</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list running sessions</span></span><br><span class="line">screen -ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># detach session</span></span><br><span class="line">screen -d [session name]</span><br><span class="line"><span class="comment"># detach current session</span></span><br><span class="line">Ctrl+a d</span><br><span class="line"></span><br><span class="line"><span class="comment"># attach session</span></span><br><span class="line">screen -r [session name]</span><br><span class="line"><span class="comment"># attach to a running session</span></span><br><span class="line">screen -x</span><br><span class="line"></span><br><span class="line"><span class="comment"># quit current session</span></span><br><span class="line">Ctrl+a :quit</span><br><span class="line"><span class="comment"># detach and logout all sessions</span></span><br><span class="line">Ctrl+a D D</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list running sessions</span></span><br><span class="line">screen -ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># detach session</span></span><br><span class="line">screen -d [session name]</span><br><span class="line"><span class="comment"># detach current session</span></span><br><span class="line">Ctrl+a d</span><br><span class="line"></span><br><span class="line"><span class="comment"># attach session</span></span><br><span class="line">screen -r [session name]</span><br><span class="line"><span class="comment"># attach to a running session</span></span><br><span class="line">screen -x</span><br><span class="line"></span><br><span class="line"><span class="comment"># detach and logout all sessions</span></span><br><span class="line"><span class="comment"># will not terminate session</span></span><br><span class="line">Ctrl+a D D</span><br><span class="line"></span><br><span class="line"><span class="comment"># quit and terminate current session</span></span><br><span class="line">Ctrl+a :quit</span><br><span class="line"><span class="comment"># or kill all window on sessions</span></span><br><span class="line">Ctrl+a k</span><br></pre></td></tr></table></figure>
 <p>How do I know I am in screen and which session:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show session id if you are in screen</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$STY</span> </span><br><span class="line"><span class="comment"># return screen if you are in screen</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$TERM</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h1><p>Why the work gets lost when SSH session drops is because the signal SIGHUP will be sent to foreground process. If we let the process ignore this signal, then it can keep running when connection drops.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nohup will redirect the stdin from /dev/null</span></span><br><span class="line"><span class="comment"># stdout/err to FILE $HOME/nohup.out</span></span><br><span class="line">nohup [bash|sh] &lt;script&gt; &amp;</span><br><span class="line"><span class="comment"># similar to</span></span><br><span class="line">&lt;script&gt; &lt;/dev/null &amp;&gt;/dev/null &amp;</span><br></pre></td></tr></table></figure></p>
+<p>You can use <code>jobs</code>, <code>bg</code> and <code>fg</code> command to operate on it.</p>
 
       
     </div>
@@ -660,7 +662,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">223</span>
+                    <span class="site-state-item-count">224</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1036,7 +1038,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">136</span>
+                      
+                    
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1072,7 +1076,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VNC"><span class="nav-number">1.</span> <span class="nav-text">VNC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-VNC-Server"><span class="nav-number">1.1.</span> <span class="nav-text">Install VNC Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-VNC-viewer"><span class="nav-number">1.2.</span> <span class="nav-text">Install VNC viewer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copy-and-Paste"><span class="nav-number">1.3.</span> <span class="nav-text">Copy and Paste</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Settings"><span class="nav-number">1.4.</span> <span class="nav-text">Other Settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Screen-resolution"><span class="nav-number">1.5.</span> <span class="nav-text">Screen resolution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Screen"><span class="nav-number">2.</span> <span class="nav-text">Screen</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VNC"><span class="nav-number">1.</span> <span class="nav-text">VNC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-VNC-Server"><span class="nav-number">1.1.</span> <span class="nav-text">Install VNC Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-VNC-viewer"><span class="nav-number">1.2.</span> <span class="nav-text">Install VNC viewer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copy-and-Paste"><span class="nav-number">1.3.</span> <span class="nav-text">Copy and Paste</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Settings"><span class="nav-number">1.4.</span> <span class="nav-text">Other Settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Screen-resolution"><span class="nav-number">1.5.</span> <span class="nav-text">Screen resolution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Screen"><span class="nav-number">2.</span> <span class="nav-text">Screen</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nohup"><span class="nav-number">3.</span> <span class="nav-text">nohup</span></a></li></ol></div>
             
 
           </div>

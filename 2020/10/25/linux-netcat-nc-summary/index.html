@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection.https://www.tecmint.com/netc">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-15T07:36:49.720Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nc&#x2F;netcat Command">
 <meta name="twitter:description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection.https://www.tecmint.com/netc">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">223</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-14 23:36:49" itemprop="dateModified" datetime="2020-12-14T23:36:49-08:00">2020-12-14</time>
+                <time title="Modified: 2021-01-31 22:59:24" itemprop="dateModified" datetime="2021-01-31T22:59:24-08:00">2021-01-31</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.2k</span>
+                <span title="Symbols count in article">7.1k</span>
               
 
               
@@ -513,9 +513,10 @@
 <p>Port scanning<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -v: verbose</span></span><br><span class="line"><span class="comment"># -z: just scan for listening daemons, without sending any data to them</span></span><br><span class="line"><span class="comment"># -w: timeout second</span></span><br><span class="line"><span class="comment"># scan port 22 and 8080</span></span><br><span class="line">nc -v -w 2 -z 127.0.0.1 22 8080</span><br><span class="line"><span class="comment"># range scan</span></span><br><span class="line">nc -v -w 2 -z 127.0.0.1 1-10004</span><br></pre></td></tr></table></figure></p>
 <p>Connection check:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check if port is open, no need to go to server and run ps aux or netstat -tunlp</span></span><br><span class="line">nc -vvv baidu.com 443</span><br><span class="line">nc -vvv baidu.com 80</span><br></pre></td></tr></table></figure></p>
 <p>Data transfer, also see <code>man nc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># file will write to out</span></span><br><span class="line">nc -l 1234 &gt; filename.out</span><br><span class="line"></span><br><span class="line"><span class="comment"># file input</span></span><br><span class="line"><span class="comment"># -N: disconnet when finish</span></span><br><span class="line">nc -N host.example.com 1234 &lt; filename.in</span><br></pre></td></tr></table></figure></p>
-<p>For folder transfer:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># - in tar </span></span><br><span class="line"><span class="comment"># destination</span></span><br><span class="line"><span class="comment"># after done you will see the folder</span></span><br><span class="line">nc -v -l 1234 | tar zxf -</span><br><span class="line"><span class="comment"># source</span></span><br><span class="line">tar czf - file | nc -N -v &lt;ip&gt; 1234</span><br></pre></td></tr></table></figure></p>
+<p>For folder transfer:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># note there is a - after tar command</span></span><br><span class="line"><span class="comment"># destination</span></span><br><span class="line"><span class="comment"># after done you will see the folder</span></span><br><span class="line">nc -v -l 1234 | tar zxf -</span><br><span class="line"><span class="comment"># source</span></span><br><span class="line">tar czf - file | nc -N -v &lt;ip&gt; 1234</span><br></pre></td></tr></table></figure></p>
 <p>Other ways to transfer files: scp, sftp, python http server.</p>
 <p>Client/Server model, a chat server, can talk either way:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server </span></span><br><span class="line"><span class="comment"># -l: listening</span></span><br><span class="line"><span class="comment"># -vv: verbose</span></span><br><span class="line">nc -l -vv -p 3000</span><br><span class="line"><span class="comment"># client</span></span><br><span class="line"><span class="comment"># -p: source port to establish connection</span></span><br><span class="line">nc localhost -p 6666 3000</span><br></pre></td></tr></table></figure></p>
+<p>Actually you can use it in script:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># it well block until get the message</span></span><br><span class="line">message=$(nc -l -p 1234)</span><br><span class="line"></span><br><span class="line"><span class="comment"># in another script, interesting</span></span><br><span class="line"><span class="built_in">echo</span> hi &gt; /dev/tcp/localhost/1234</span><br></pre></td></tr></table></figure></p>
 <p>Execute command on remote via backdoor opened by <code>nc</code>, see nc’s manual<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server side</span></span><br><span class="line">rm -f /tmp/f; mkfifo /tmp/f</span><br><span class="line"><span class="comment"># -i: interactive shell</span></span><br><span class="line">cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc -l 0.0.0.0 1234 &gt; /tmp/f</span><br><span class="line"><span class="comment"># remove after done</span></span><br><span class="line">rm -f /tmp/f</span><br><span class="line"></span><br><span class="line"><span class="comment"># client side</span></span><br><span class="line">nc &lt;server ip&gt; 1234</span><br><span class="line"><span class="comment"># prompt a interactive shell </span></span><br><span class="line"><span class="comment"># then run command on remote server</span></span><br></pre></td></tr></table></figure></p>
 
       
@@ -632,7 +633,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">223</span>
+                    <span class="site-state-item-count">224</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1008,7 +1009,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">136</span>
+                      
+                    
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
