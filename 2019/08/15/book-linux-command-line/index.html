@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This is the latest version and the second time I read this book, record something that I forget, just for future quick review. When we speak of the command line, we are really referring to the shell.">
+  <meta name="description" content="距离第一次看这本书的第一版已经快2年了，当时还完全是个newbie. 这是看第二遍，第二版，重新整理一下笔记，巩固一下不太常用的内容。— 2021/02/06. Part 1When we speak of the command line, we are really referring to the shell. The shell is a program that takes keyboa">
 <meta name="keywords" content="book,linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The Linux Command Line">
+<meta property="og:title" content="The Linux Command Line 2nd">
 <meta property="og:url" content="http://yoursite.com/2019/08/15/book-linux-command-line/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This is the latest version and the second time I read this book, record something that I forget, just for future quick review. When we speak of the command line, we are really referring to the shell.">
+<meta property="og:description" content="距离第一次看这本书的第一版已经快2年了，当时还完全是个newbie. 这是看第二遍，第二版，重新整理一下笔记，巩固一下不太常用的内容。— 2021/02/06. Part 1When we speak of the command line, we are really referring to the shell. The shell is a program that takes keyboa">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-27T07:37:52.972Z">
+<meta property="og:updated_time" content="2021-02-16T01:48:34.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The Linux Command Line">
-<meta name="twitter:description" content="This is the latest version and the second time I read this book, record something that I forget, just for future quick review. When we speak of the command line, we are really referring to the shell.">
+<meta name="twitter:title" content="The Linux Command Line 2nd">
+<meta name="twitter:description" content="距离第一次看这本书的第一版已经快2年了，当时还完全是个newbie. 这是看第二遍，第二版，重新整理一下笔记，巩固一下不太常用的内容。— 2021/02/06. Part 1When we speak of the command line, we are really referring to the shell. The shell is a program that takes keyboa">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>The Linux Command Line | 海胆阶段's Blog</title>
+  <title>The Linux Command Line 2nd | 海胆阶段's Blog</title>
   
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">224</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">225</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">The Linux Command Line
+          <h1 class="post-title" itemprop="name headline">The Linux Command Line 2nd
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-26 23:37:52" itemprop="dateModified" datetime="2020-12-26T23:37:52-08:00">2020-12-26</time>
+                <time title="Modified: 2021-02-15 17:48:34" itemprop="dateModified" datetime="2021-02-15T17:48:34-08:00">2021-02-15</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7.2k</span>
+                <span title="Symbols count in article">16k</span>
               
 
               
@@ -508,31 +508,52 @@
       
 
       
-        <p>This is the latest version and the second time I read this book, record something that I forget, just for future quick review.</p>
-<p>When we speak of the command line, we are really referring to the shell. The shell is a program that takes keyboard commands and passes them to the operating system to carry out.</p>
-<p>If the last character of the prompt is a <code>hash mark(#)</code> rather than a <code>dollar sign</code>, the terminal session has superuser privileges.</p>
-<h1 id="Chapter-2-Navigation"><a href="#Chapter-2-Navigation" class="headerlink" title="Chapter 2 Navigation"></a>Chapter 2 Navigation</h1><p><code>pwd, cd, ls</code>, basic things, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -ltrhF</span><br><span class="line">ls -lSrhF</span><br><span class="line">ls -Rla</span><br><span class="line">ls -ld</span><br></pre></td></tr></table></figure></p>
-<h1 id="Chapter-3-Exploring-the-System"><a href="#Chapter-3-Exploring-the-System" class="headerlink" title="Chapter 3 Exploring the System"></a>Chapter 3 Exploring the System</h1><p>determine file type:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
-<p><code>less -N</code> is more.</p>
-<p>This is the supplement of <code>&lt;&lt;How Linux Works&gt;&gt;</code><br><strong>/boot</strong><br>Contains the <code>Linux kernel</code>, initial RAM disk image (for drivers needed at boot time), and the boot loader. Interesting files include <code>/boot/grub/grub.conf</code>, or <code>menu.lst</code>, which is used to configure the boot loader, and <code>/boot/vmlinuz</code> (or something similar), the Linux kernel.</p>
-<p><strong>/dev</strong><br>This is a special directory that contains device nodes. “Everything is a file” also applies to devices. Here is where the kernel maintains a list of all the devices it understands.</p>
-<p><strong>/etc</strong><br>The /etc directory contains all the system-wide configuration files. It also contains a collection of shell scripts that start each of the system services at boot time. Everything in this directory should be readable text. While everything in <code>/etc</code> is interesting, here are some all-time favorites: <code>/etc/crontab</code>, a file that defines when automated jobs will run; <code>/etc/fstab</code>, a table of storage devices and their associated mount points; and <code>/etc/passwd</code>, a list of the user accounts.</p>
-<p><strong>/proc</strong><br>The <code>/proc</code> directory is special. It’s not a real file system in the sense of files stored on your hard drive. Rather, it is a <code>virtual file system</code> maintained by the Linux kernel. The <code>files</code> it contains are peepholes into the kernel itself. The files are readable and will give you a picture of how the kernel sees your computer.</p>
-<p><strong>/var/log</strong><br><code>/var/log</code> contains log files, records of various system activity. These are important and should be monitored from time to time. The most useful ones are <code>/var/log/</code> messages and <code>/var/log/syslog</code>. Note that for security reasons on some systems, you must be the superuser to view log files.</p>
-<h1 id="Chapter-4-Manipluating-Files-and-Directories"><a href="#Chapter-4-Manipluating-Files-and-Directories" class="headerlink" title="Chapter 4 Manipluating Files and Directories"></a>Chapter 4 Manipluating Files and Directories</h1><p><code>cp</code> command useful options:<br><code>-a</code>: same as <code>-dR --preserve=all</code><br><code>-u</code>: copy only when the SOURCE file is newer than the destination file or when the destination file is missing<br><code>-r/R</code>: copy directories recursively<br><code>-f</code>: if  an  existing destination file cannot be opened, remove it and try again, will overwrite existing files.<br><code>-p</code>: same as –preserve=mode,ownership,timestamps</p>
-<p><code>hard link:</code><br>A hard link is indistinguishable from the file itself. Unlike a symbolic link, when you list a directory containing a hard link, you will see <strong>no</strong> special indication of the link. When a hard link is deleted, the link is removed, but the contents of the file itself continue to exist (that is, its space is not deallocated) <strong>until</strong> all links to the file are deleted.</p>
-<blockquote>
-<p>Hard links cannot reference directories, only files.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -li</span><br><span class="line"></span><br><span class="line">269191713 -rw-------  2 root root      6614 Jul 28 20:53 config-hard.json</span><br><span class="line">269191713 -rw-------  2 root root      6614 Jul 28 20:53 config.json</span><br></pre></td></tr></table></figure>
-<p>The first field is the inode number, they are the same.</p>
-<p><code>symbolic link:</code><br>The same way as a Windows shortcut:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /root/config.json /tmp/config-link.json</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>Note that should use absolute path! although relative is fine. <code>/root/config.yaml</code> is   the source<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  lrwxrwxrwx 1 root root 17 Aug 16 10:10 config-link.json -&gt; /root/config.json</span><br><span class="line">  ``` </span><br><span class="line"></span><br><span class="line">remove symbolic link:</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>rm -f /tmp/config-link.json<br><code>`</code></p>
-<h1 id="Chapter-5-Working-with-Commands"><a href="#Chapter-5-Working-with-Commands" class="headerlink" title="Chapter 5 Working with Commands"></a>Chapter 5 Working with Commands</h1><p><code>type</code>: Indicate how a command name is interpreted<br><code>which</code>: Display which executable program will be executed<br><code>help</code>: Get help for shell builtins<br><code>man</code>: Display a command’s manual page<br><code>apropos</code>: Display a list of appropriate commands<br><code>info</code>: Display a command’s info entry<br><code>whatis</code>: Display one-line manual page descriptions<br><code>alias</code>: Create an alias for a command</p>
-<h1 id="Chapter-6-Redirection"><a href="#Chapter-6-Redirection" class="headerlink" title="Chapter 6 Redirection"></a>Chapter 6 Redirection</h1>
+        <p>距离第一次看这本书的第一版已经快2年了，当时还完全是个newbie. 这是看第二遍，第二版，重新整理一下笔记，巩固一下不太常用的内容。<br>— 2021/02/06.</p>
+<h1 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h1><p>When we speak of the command line, we are really referring to the shell. The shell is a program that takes keyboard commands and passes them to the operating system to carry out.</p>
+<p>If the last character of the prompt is a <code>hash mark(#)</code> rather than a <code>$</code>, the terminal session has superuser privileges.</p>
+<p>Terminal emulator，想想为啥叫emulator, 因为它是从GUI中提供的，并不是系统boot后直接进入terminal的形式。</p>
+<p>Unix-like systems such as Linux always have a single file system tree, regardless of how many drives or storage devices are attached to the computer. Starts from <code>/</code>.</p>
+<p>Linux has no concept of a <code>file extension</code> like some other operating systems. Although Unix-like operating systems don’t use file extensions to determine the contents/purpose of files, many application programs do.</p>
+<p>Some options and arguments unknown to me or not common:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd to home of vagrant user</span></span><br><span class="line"><span class="built_in">cd</span> ~vagrant</span><br><span class="line"><span class="comment"># list multiple directories</span></span><br><span class="line">ls ~ /usr /opt</span><br><span class="line"></span><br><span class="line"><span class="comment"># A: list all but . and ..</span></span><br><span class="line"><span class="comment"># F: append / for directories</span></span><br><span class="line">ls -AF</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3: number of existing hard link to this file data part</span></span><br><span class="line">drwxr-xr-x 3 root root  24 Jun  6  2020 mnt</span><br><span class="line"></span><br><span class="line"><span class="comment"># h: display help screen</span></span><br><span class="line">less /file</span><br><span class="line"></span><br><span class="line"><span class="comment"># re-initialize the terminal, deeper than clear</span></span><br><span class="line"><span class="comment"># 很少用到</span></span><br><span class="line">reset</span><br><span class="line"></span><br><span class="line"><span class="comment"># -u: When copying files from one directory to another</span></span><br><span class="line"><span class="comment"># only copy files that either don’t exist or are newer</span></span><br><span class="line"><span class="comment"># than the existing corresponding files in the destination directory. </span></span><br><span class="line">cp -u|--update</span><br><span class="line"></span><br><span class="line"><span class="comment"># Normally, copies take on the default attributes of the user performing the copy.</span></span><br><span class="line"><span class="comment"># a: preserve the original permission and user/group</span></span><br><span class="line"><span class="comment"># for example, root user cp oridinary user file</span></span><br><span class="line">cp -a</span><br></pre></td></tr></table></figure></p>
+<p>Remember that a file will always have at least one hard link because the file’s name is created by a link. When we create hard links, we are actually creating additional name parts that all refer to the same data part.</p>
+<p>Directory 是不能有hard link的，一个文件夹的hardlink 部分数字一般是2+n, 2代表文件夹内部<code>.</code>, <code>..</code>, n 代表subdirectories数量。</p>
+<p>The <code>type</code> command is a shell builtin that displays the kind of command the shell will execute, command can be categorized as:</p>
+<ul>
+<li>executable binary</li>
+<li>script</li>
+<li>function</li>
+<li>alias</li>
+</ul>
+<p><code>which</code> is for locating executables only.<br><code>apropos</code> is the same as <code>man -k</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apropos partition</span><br><span class="line">man -k partition</span><br></pre></td></tr></table></figure></p>
+<p>Modern version of redirection:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &amp;&gt; is equal to 2&gt;&amp;1</span></span><br><span class="line">ls -l /bin/usr &amp;&gt; ls-output.txt</span><br><span class="line"><span class="comment"># append</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"123"</span> &amp;&gt;&gt; ls-output.txt</span><br></pre></td></tr></table></figure></p>
+<p>Interesting accident, The lesson here is that the redirection operator silently creates or overwrites files, so you need to treat it with a lot of respect:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/bin</span><br><span class="line"><span class="comment"># overwrite less program under /usr/bin</span></span><br><span class="line"><span class="comment"># instead use ls | less</span></span><br><span class="line">ls &gt; less</span><br></pre></td></tr></table></figure></p>
+<p>Expansion, 我有blog专门记录了shell globings, pattern match, recalling:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list hidden files without . and ..</span></span><br><span class="line"><span class="built_in">echo</span> .[!.]*</span><br><span class="line"></span><br><span class="line"><span class="comment"># arithmetic</span></span><br><span class="line"><span class="built_in">echo</span> $((3 + 4))</span><br><span class="line"><span class="comment"># can use single parentheses inside without $ prefix</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$(((5**2)</span> * 3))"</span></span><br></pre></td></tr></table></figure></p>
+<p>Remember, parameter expansion “$USER”, arithmetic expansion, and command substitution still take place within double quotes. If we need to suppress all expansions, we use single quotes.</p>
+<p>Command history quick rerun:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># execute last command</span></span><br><span class="line">!!</span><br><span class="line"><span class="comment"># execute command at 123 line in hsitory</span></span><br><span class="line">!123</span><br><span class="line"></span><br><span class="line"><span class="comment"># be cautious</span></span><br><span class="line"><span class="comment"># last command starts with echo</span></span><br><span class="line">!string</span><br><span class="line"><span class="comment"># last command contains echo</span></span><br><span class="line">!?string</span><br></pre></td></tr></table></figure></p>
+<p>Mentioned a new command <code>script</code>, used to record the command line typing as a hardcopy into a file, for example for students learning. The history is controlled by env vars:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ignore duplicates command</span></span><br><span class="line"><span class="built_in">export</span> HISTCONTROL=ignoredups</span><br><span class="line"><span class="built_in">export</span> HISTSIZE=1000</span><br></pre></td></tr></table></figure></p>
+<p>Load average in <code>top</code> command: refers to the number of processes that are waiting to run; that is, the number of processes that are in a runnable state and are sharing the CPU. Three values are shown, each for a different period of time. The first is the average for the last 60 seconds, the next the previous 5 min- utes, and finally the previous 15 minutes. Values less than 1.0 indicate that the machine is not busy.</p>
+<p>Other commands for <code>top</code> useful are <code>?/h</code> for help <code>f</code> for column and sort selection.</p>
+<p>About signal (这部分解释得比较好):</p>
+<ul>
+<li>HUP: also used by many daemon programs to cause a <code>reinitialization</code>. This means that when a daemon is sent this signal, it will restart and reread its configuration file. The Apache web server is an example of a daemon that uses the HUP signal in this way.</li>
+<li>INT: Interrupt. This performs the same function as ctrl-c sent from the terminal. It will usually terminate a program.</li>
+<li>TERM: Terminate. This is the default signal sent by the kill command. If a program is still “alive” enough to receive signals, it will terminate.</li>
+<li>STOP: Stop. This signal causes a process to pause without terminating. Like the KILL signal, it is not sent to the target process, and thus it cannot be ignored.</li>
+<li>TSTP: Terminal stop. This is the signal sent by the terminal when ctrl-Z is pressed. Unlike the STOP signal, the TSTP signal is received by the program, but the program may choose to ignore it.</li>
+<li>CONT: Continue. This will restore a process after a STOP or TSTP signal. This signal is sent by the bg and fg commands.</li>
+</ul>
+<h1 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h1><p>The <code>set</code> command will show both the shell and environment variables as well as any defined shell functions, while <code>printenv</code> will display only the environment variables. </p>
+<p>Environment variables:<br><code>PS1</code>: Stands for <code>prompt string 1</code>. This defines the contents of the shell prompt. Also prompt can be customized by shell function and scripts.</p>
+<h1 id="Part-3"><a href="#Part-3" class="headerlink" title="Part 3"></a>Part 3</h1><p>High- and Low-Level Package Tools<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Distributions              | Low-level tools       |  High-level tools</span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line">Debian-style               | dpkg                  |  apt-get, apt, aptitude</span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line">Fedora,                    | rpm                   |  yum, dnf</span><br><span class="line">Red Hat Enterprise Linux,  |                       |</span><br><span class="line">CentOS                     |                       |</span><br></pre></td></tr></table></figure></p>
+<p>Low-level tools that handle tasks such as installing and removing package files.<br>High-level tools that perform metadata searching and dependency resolution.</p>
+<p>主要了解安装，更新，删除，查找这几个操作即可，low/high level都有相关的选项.</p>
+<p>Linux storage device names convention:<br><code>/dev/fd*</code> Floppy disk drives<br><code>/dev/hd*</code> IDE (PATA) disks on older systems<br><code>/dev/lp*</code> printer<br><code>/dev/sd*</code> SCSI disks. On modern Linux systems, the kernel treats all disk-like device as SCSI disks<br><code>/dev/sr*</code> Optical drives (CD/DVD readers and burners)</p>
+<p><code>/var/log/messages</code> vs <code>/var/log/syslog</code>, <code>/var/log/messages</code> is the syslog on non-Debian/non-Ubuntu systems such as RHEL or CentOS systems usually. <code>/var/log/messages</code> instead aims at storing valuable, non-debug and non-critical messages. This log should be considered the “general system activity” log.<br><code>/var/log/syslog</code> in turn logs everything, except auth related messages.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a great way to watch what the system is doing in near real-time.</span></span><br><span class="line">tail -f /var/<span class="built_in">log</span>/messages</span><br></pre></td></tr></table></figure></p>
+<p>The last digit in <code>/etc/fstab</code> file is used to specify integrity checking privilege when system boots by <code>fsck</code> (file system check), <code>0</code> means not routinely checked:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sdb /data xfs defaults 0 0</span><br></pre></td></tr></table></figure></p>
+<p><code>fsck</code> can also repair corrupt file systems with varying degrees of success, depending on the amount of damage. On Unix-like file systems, recovered portions of files are placed in the <code>lost+found</code> directory, located in the root of each file system.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># unmount /dev/sdb1 first</span></span><br><span class="line">sudo fsck /dev/sdb1</span><br></pre></td></tr></table></figure></p>
+<p><code>dd</code> (data definition) can be used to copy block of data:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># backup sdb to sdc</span></span><br><span class="line">dd <span class="keyword">if</span>=/dev/sdb of=/dev/sdc</span><br><span class="line"><span class="comment"># backup to ordinary file</span></span><br><span class="line">dd <span class="keyword">if</span>=/dev/sdb of=/tmp/sdb.bk</span><br></pre></td></tr></table></figure></p>
+<p>When it comes to networking, there is probably nothing that cannot be done with Linux. Linux is used to build all sorts of networking systems and appliances, including firewalls, routers, name servers, network-attached storage (NAS) boxes, and on and on.</p>
+
       
     </div>
 
@@ -654,7 +675,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">224</span>
+                    <span class="site-state-item-count">225</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1068,7 +1089,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-Navigation"><span class="nav-number">1.</span> <span class="nav-text">Chapter 2 Navigation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3-Exploring-the-System"><span class="nav-number">2.</span> <span class="nav-text">Chapter 3 Exploring the System</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-4-Manipluating-Files-and-Directories"><span class="nav-number">3.</span> <span class="nav-text">Chapter 4 Manipluating Files and Directories</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-5-Working-with-Commands"><span class="nav-number">4.</span> <span class="nav-text">Chapter 5 Working with Commands</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-6-Redirection"><span class="nav-number">5.</span> <span class="nav-text">Chapter 6 Redirection</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-1"><span class="nav-number">1.</span> <span class="nav-text">Part 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-2"><span class="nav-number">2.</span> <span class="nav-text">Part 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-3"><span class="nav-number">3.</span> <span class="nav-text">Part 3</span></a></li></ol></div>
             
 
           </div>
