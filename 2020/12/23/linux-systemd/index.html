@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="VersionDifferent may have different syntax and options in unit file, check it first:1systemctl --version To see systemd service unit configuration:1man 5 systemd.service SystemdHow To Use Systemctl to">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-19T04:29:22.386Z">
+<meta property="og:updated_time" content="2021-03-16T07:37:43.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Systemd Essential">
 <meta name="twitter:description" content="VersionDifferent may have different syntax and options in unit file, check it first:1systemctl --version To see systemd service unit configuration:1man 5 systemd.service SystemdHow To Use Systemctl to">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-18 20:29:22" itemprop="dateModified" datetime="2021-01-18T20:29:22-08:00">2021-01-18</time>
+                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
               
             
           </span>
@@ -544,7 +544,7 @@
 <p>And because of no $PATH lookup, must use absolute path to binary or executable.</p>
 <p>Setting <code>PermissionsStartOnly=true</code> means that User &amp; Group are only applied to ExecStart. So switching to the new syntax will be :<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStartPre</span>=+/bin/bash -c <span class="string">'/bin/journalctl -b -u ntpdate | /bin/grep -q -e "adjust time server" -e "step time server"'</span></span><br><span class="line"><span class="attr">ExecStartPre</span>=+/bin/mkdir -p /path/to/somedir</span><br><span class="line"><span class="attr">ExecStart</span>=/path/to/myservice</span><br><span class="line"><span class="attr">ExecStop</span>=+/bin/kill -INT <span class="variable">$&#123;MAINPID&#125;</span></span><br><span class="line"><span class="attr">ExecReload</span>=+/bin/kill -INT <span class="variable">$&#123;MAINPID&#125;</span> &amp;&amp; /path/to/myservice</span><br></pre></td></tr></table></figure></p>
 <p>Prefix with <code>+</code> will be executed with higher privilege as root. 还需要注意的是每次ExecStartPre的运行环境都是独立的。 </p>
-<p>If needs to check the log of latest daemon start process, use, this will show you all log instead of only unit, I found if use <code>-u</code> to specify unit, some log will miss:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use `b` and `f` to move page</span></span><br><span class="line"><span class="comment"># -e: tail</span></span><br><span class="line"><span class="comment"># -x: more details</span></span><br><span class="line">journalctl -ex</span><br></pre></td></tr></table></figure></p>
+<p>If needs to check the log of latest daemon start process, this will show you all log instead of only unit, I found if use <code>-u</code> to specify unit, some log will miss:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use `b` and `f` to move page</span></span><br><span class="line"><span class="comment"># -e: tail</span></span><br><span class="line"><span class="comment"># -x: more details</span></span><br><span class="line">journalctl -ex</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://stackoverflow.com/questions/48195340/systemd-with-multiple-execstart" target="_blank" rel="noopener">Systemd with multiple execStart</a>: serivce type 和 ExecStart 个数有关.</p>
 
       
@@ -757,7 +757,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1044,7 +1046,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">137</span>
+                      
+                    
+                    <span class="site-state-item-count">138</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1112,7 +1116,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1m</span>
+    <span title="Symbols count total">1.1m</span>
   
 
   

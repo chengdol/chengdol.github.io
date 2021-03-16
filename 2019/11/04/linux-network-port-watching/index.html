@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This issue is from a machine without net-tools.x86_64 : Basic networking tools pre-installed, so netstat command does not exist. When watching docker registry pod setup, ansible runs netstat -tunlp |">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-05T00:22:00.000Z">
+<meta property="og:updated_time" content="2021-03-16T07:37:43.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Network Port Watching">
 <meta name="twitter:description" content="This issue is from a machine without net-tools.x86_64 : Basic networking tools pre-installed, so netstat command does not exist. When watching docker registry pod setup, ansible runs netstat -tunlp |">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
 
   </li>
         
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-11-04 15:47:11 / Modified: 16:22:00" itemprop="dateCreated datePublished" datetime="2019-11-04T15:47:11-08:00">2019-11-04</time>
+              <time title="Created: 2019-11-04 15:47:11" itemprop="dateCreated datePublished" datetime="2019-11-04T15:47:11-08:00">2019-11-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.2k</span>
+                <span title="Symbols count in article">3.4k</span>
               
 
               
@@ -497,7 +509,7 @@
 
       
         <p>This issue is from a machine without <code>net-tools.x86_64 : Basic networking tools</code> pre-installed, so <code>netstat</code> command does not exist. When watching docker registry pod setup, ansible runs <code>netstat -tunlp | grep 5000</code> to check 5000 port, failed.</p>
-<p>Is there other way around to check if the 5000 port is up or not? Yes.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- name:</span> <span class="string">Wait</span> <span class="string">for</span> <span class="string">docker</span> <span class="string">registry</span> <span class="string">to</span> <span class="string">come</span> <span class="string">up</span></span><br><span class="line"><span class="attr">  any_errors_fatal:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  shell:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    declare -a array=($(cat /proc/net/tcp6 | cut -d":" -f"3"|cut -d" " -f"1"))</span></span><br><span class="line"><span class="string">    for port in $&#123;array[@]&#125;;</span></span><br><span class="line"><span class="string">    do</span></span><br><span class="line"><span class="string">      val=$(echo $((0x$port)) | grep 5000)</span></span><br><span class="line"><span class="string">      if ! [[ "X$&#123;val&#125;" == "X" ]]; then</span></span><br><span class="line"><span class="string">        break</span></span><br><span class="line"><span class="string">      fi</span></span><br><span class="line"><span class="string">    done</span></span><br><span class="line"><span class="string">    echo $&#123;val&#125; | grep 5000</span></span><br><span class="line"><span class="string"></span><span class="attr">  register:</span> <span class="string">docker_registry</span></span><br><span class="line"><span class="attr">  until:</span> <span class="string">docker_registry.rc</span> <span class="string">==</span> <span class="number">0</span></span><br><span class="line"><span class="attr">  retries:</span> <span class="string">"<span class="template-variable">&#123;&#123; 10 &#125;&#125;</span>"</span></span><br></pre></td></tr></table></figure></p>
+<p>Is there other way around to check if the 5000 port is up or not? Yes.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- name:</span> <span class="string">Wait</span> <span class="string">for</span> <span class="string">docker</span> <span class="string">registry</span> <span class="string">to</span> <span class="string">come</span> <span class="string">up</span></span><br><span class="line"><span class="attr">  any_errors_fatal:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  shell:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    declare -a array=($(cat /proc/net/tcp6 | cut -d":" -f"3"|cut -d" " -f"1"))</span></span><br><span class="line"><span class="string">    for port in $&#123;array[@]&#125;;</span></span><br><span class="line"><span class="string">    do</span></span><br><span class="line"><span class="string">      # $((0x$port)) is 16 based, will output 10 based</span></span><br><span class="line"><span class="string">      val=$(echo $((0x$port)) | grep 5000)</span></span><br><span class="line"><span class="string">      if ! [[ "X$&#123;val&#125;" == "X" ]]; then</span></span><br><span class="line"><span class="string">        break</span></span><br><span class="line"><span class="string">      fi</span></span><br><span class="line"><span class="string">    done</span></span><br><span class="line"><span class="string">    echo $&#123;val&#125; | grep 5000</span></span><br><span class="line"><span class="string"></span><span class="attr">  register:</span> <span class="string">docker_registry</span></span><br><span class="line"><span class="attr">  until:</span> <span class="string">docker_registry.rc</span> <span class="string">==</span> <span class="number">0</span></span><br><span class="line"><span class="attr">  retries:</span> <span class="string">"<span class="template-variable">&#123;&#123; 10 &#125;&#125;</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>Here I watch <code>/proc/net/tcp6</code> kernel file to see what ipv6 port is running (docker registry port is in ipv6 scope here). for ipv4, use <code>/proc/net/tcp</code>. </p>
 <p>This file is not plain text, after use <code>cut</code> to extra the port field, then convert the number to decimal. see <a href="https://www.kernel.org/doc/Documentation/networking/proc_net_tcp.txt" target="_blank" rel="noopener">https://www.kernel.org/doc/Documentation/networking/proc_net_tcp.txt</a></p>
 
@@ -702,7 +714,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -989,7 +1003,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">137</span>
+                      
+                    
+                    <span class="site-state-item-count">138</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1040,7 +1056,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1m</span>
+    <span title="Symbols count total">1.1m</span>
   
 
   

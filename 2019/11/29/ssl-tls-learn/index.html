@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi">
-<meta property="og:updated_time" content="2020-11-30T07:50:52.924Z">
+<meta property="og:updated_time" content="2021-03-16T07:37:43.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL&#x2F;TLS Demystify">
 <meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may n">
@@ -265,7 +265,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
 
   </li>
         
@@ -284,7 +284,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
 
   </li>
         
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-29 23:50:52" itemprop="dateModified" datetime="2020-11-29T23:50:52-08:00">2020-11-29</time>
+                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
               
             
           </span>
@@ -489,7 +489,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">24k</span>
+                <span title="Symbols count in article">27k</span>
               
 
               
@@ -526,9 +526,13 @@
 <blockquote>
 <p>Interesting, from <code>Network</code> I see the the chrome browser sometime uses IPV6 address talk to server, for example facebook and some other sites. see this <a href="https://superuser.com/questions/1199129/how-web-browser-determines-when-to-use-ipv4-or-ipv6-to-connect-to-the-destinatio" target="_blank" rel="noopener">question</a></p>
 </blockquote>
-<p><strong>大概总结一下:</strong><br>openssl 目前有command 一次性生成(或分开生成 private key -&gt; CSR -&gt; self-signed certificate) private key 和 (self-signed) certificate, 一般用pem 的格式。这2个东西是放在web server上的，也可以把private key 和 certificate 合并到一个pem 文件中。还要注意的是，这里没有用到public key，但public key可以从 private key 中生成(其实里面已经包含了public key的信息)。还要注意，web server 给 client的certificate 就只是certificate，不会有private key尽管它们可能在一个pem file中。</p>
+<p><strong>大概总结一下:</strong><br>openssl 目前有command 一次性生成(或分开生成 private key -&gt; CSR -&gt; self-signed certificate) private key 和 (self-signed) certificate, 一般用pem 的格式。这2个东西是放在web server上的，也可以把private key 和 certificate 合并到一个pem 文件中。还要注意的是，这里没有用到public key，但public key可以从 private key 中生成(其实里面已经包含了public key的信息)。此外，web server给 client的certificate 就只是certificate，不会有private key尽管它们可能在一个pem file中。</p>
 <p>在client部分，对于slef-signed certificate, 需要设置操作系统trust it，但如果是用的let’s encrypt，已经OK了。联想一下TLS handshake, 得到web serverd的certificate 后，会逐层验证到root CA(会下载所有相关的certificates), 由于client自身已经携带了well-known root CA的证书了，并且也知道CA的public key，所以就会知道这个root CA是否合法。如果合法，就会进行symmetric key的生成和交换，用于之后的数据传输。</p>
 <p>具体命令操作可以参考: <code>&lt;&lt;Set up Secure Docker Registry Container&gt;&gt;</code><br>如果要把这个过程自动化，比如自动给网站安排证书，更新，撤销等，需要用到一些框架机制，比如certbot，见下面一章:</p>
+<p>然后再来看看crt/key 文件和它们的内容, 一般来说会用到形如<code>tls.crt</code>, <code>tls.key</code>的文件，其中<code>tls.key</code> 一般就是private key的内容了, 比如:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">///</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br></pre></td></tr></table></figure></p>
+<p><code>tls.crt</code> 就是certificate, 它是一种<code>PEM</code> formatted file, <code>PEM</code> means <code>Privacy Enhanced Mail</code> (concatenated certificate container files), can have different extension like: <code>tls.cert</code>, <code>tls.cer</code>, <code>tls.pem</code>, etc. <code>PEM</code> is a container format that may include just the public certificate, or may include an entire certificate chain including public key, private key, and root certificates. Confusingly, it may also encode a CSR, for example, here it contains 2 blocks certificate:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// can also contain private key</span><br><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">(Your Private Key: your_domain_name.key)</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br><span class="line">// trust chain</span><br><span class="line">// 一般顺序是从上到下: your domain cert -&gt; intermediate cert -&gt; root cert</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Primary SSL certificate: your_domain_name.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Intermediate certificate: DigiCertCA.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Root certificate: TrustedRoot.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure></p>
+<p>阅读以下这些文章:<br><a href="https://www.ssl.com/guide/pem-der-crt-and-cer-x-509-encodings-and-conversions/" target="_blank" rel="noopener">PEM, DER, CRT, and CER: X.509 Encodings and Conversions</a><br><a href="https://www.digicert.com/kb/ssl-support/pem-ssl-creation.htm" target="_blank" rel="noopener">Creating a .pem File for SSL Certificate Installations</a></p>
+<p>Decode PEM encoded ssl/tls certificate to verify it contains correct information:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果有多个certificate block in one file, 则解析的是第一个</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> &lt;crt file&gt; -text -noout</span><br></pre></td></tr></table></figure></p>
 <h1 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h1><p>Get free HTTPs certificates forever, it utilizes <code>Let&#39;s Encrypt</code> CA to automatically refresh the certificate for your web site:<br><a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a></p>
 <p>How it works:<br><a href="https://letsencrypt.org/getting-started/" target="_blank" rel="noopener">https://letsencrypt.org/getting-started/</a><br><a href="https://letsencrypt.org/how-it-works/" target="_blank" rel="noopener">https://letsencrypt.org/how-it-works/</a><br>This is accomplished by running a certificate management agent on the web server.</p>
 <p>To understand how the technology works, let’s walk through the process of setting up <code>https://example.com/</code> with a certificate management agent that supports Let’s Encrypt.</p>
@@ -843,7 +847,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1130,7 +1136,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">137</span>
+                      
+                    
+                    <span class="site-state-item-count">138</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1198,7 +1206,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1m</span>
+    <span title="Symbols count total">1.1m</span>
   
 
   

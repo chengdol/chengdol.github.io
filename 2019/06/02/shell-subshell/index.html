@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
+  <meta name="description" content="Understanding how SHELL works under the hood is a must to me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its rel">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell Process Demystify">
 <meta property="og:url" content="http://yoursite.com/2019/06/02/shell-subshell/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
+<meta property="og:description" content="Understanding how SHELL works under the hood is a must to me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its rel">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-09T18:42:07.000Z">
+<meta property="og:updated_time" content="2021-03-16T07:37:43.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell Process Demystify">
-<meta name="twitter:description" content="Understanding how SHELL works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its re">
+<meta name="twitter:description" content="Understanding how SHELL works under the hood is a must to me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its rel">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-04-09 11:42:07" itemprop="dateModified" datetime="2020-04-09T11:42:07-07:00">2020-04-09</time>
+                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
               
             
           </span>
@@ -508,11 +508,11 @@
       
 
       
-        <p>Understanding how <code>SHELL</code> works under the hood is a must for me, I have encountered several interesting and confusing issues in my daily work about <code>SHELL</code>. Let’s dive deeply into shell process and its relationships to explore how subshells are created and their relationship to the parent shell; The varied commands that create child processes are explored as well as built-in commands.</p>
+        <p>Understanding how <code>SHELL</code> works under the hood is a must to me, I have encountered several interesting and confusing issues in my daily work about <code>SHELL</code>. Let’s dive deeply into shell process and its relationships to explore how subshells are created and the relationship between parent and child shell.</p>
 <h2 id="Shell-Type"><a href="#Shell-Type" class="headerlink" title="Shell Type"></a>Shell Type</h2><p>Due to the <code>bash</code> shell’s popularity, it’s rare to use any other shell as a default shell.</p>
 <p>The <code>default interactive shell</code> starts whenever a user logs into a virtual console terminal or starts a terminal emulator in the GUI. Another default shell, <code>/bin/sh</code>, is the <code>default system shell</code>. The <code>default system shell</code> is used for system shell scripts, such as those needed at startup.</p>
 <p>In my Redhat and CentOS system, actually they are the same:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx. 1 root root 4 Apr 13  2018 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure></p>
-<p>To see the default user login shell, go to see <code>/etc/passwd</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fyre:x:1000:1000::/home/fyre:/bin/bash</span><br><span class="line">demo:x:1001:1001::/home/demo:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>To see the user default login shell, go to see <code>/etc/passwd</code>, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fyre:x:1000:1000::/home/fyre:/bin/bash</span><br><span class="line">demo:x:1001:1001::/home/demo:/bin/bash</span><br></pre></td></tr></table></figure></p>
 <h2 id="Shell-Relationships"><a href="#Shell-Relationships" class="headerlink" title="Shell Relationships"></a>Shell Relationships</h2><p>You can use <code>ps -f</code> to see difference before you run <code>bash</code>(child) in a shell(parent):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root      7762  7758  0 Jun03 pts/0    00:00:00 -bash</span><br><span class="line">root     14957  7762  0 17:12 pts/0    00:00:00 bash</span><br><span class="line">root     15028 14957  0 17:13 pts/0    00:00:00 ps -f</span><br></pre></td></tr></table></figure></p>
 <p>Here PID <code>14957</code> has parent <code>7762</code>.</p>
 <p>A child shell is also called a <strong>subshell</strong>. A subshell can be created from a parent shell, and a subshell can be created from another subshell:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps --forest</span><br></pre></td></tr></table></figure></p>
@@ -523,29 +523,23 @@
 </blockquote>
 <p>A subshell is typically implemented by <code>forking</code> a new process (but some shells may optimize this in some cases).</p>
 <ul>
-<li><p>Subshell for grouping: <code>(...)</code> does nothing but create a subshell and <strong>wait</strong> for it to terminate. Contrast with <code>{...}</code> which groups commands purely for syntactic purposes and does not create a subshell.</p>
-</li>
-<li><p>Background <code>&amp;</code>: creates a subshell and does not wait for it to terminate.</p>
-</li>
-<li><p>Pipeline: <code>|</code> creates two subshells, one for the left-hand side and one for the right-hand side, and waits for both to terminate. The shell creates a pipe and connects the left-hand side’s standard output to the write end of the pipe and the right-hand side’s standard input to the read end. In some shells (ksh88, ksh93, zsh, bash with the lastpipe option set and effective), the right-hand side runs in the original shell, so the pipeline construct only creates one subshell.</p>
-</li>
-<li><p>Command substitution: <code>$()</code> creates a subshell with its standard output set to a pipe, collects the output in the parent and expands to that output, minus its trailing newlines. (And the output may be further subject to splitting and globbing, but that’s another story.)</p>
-</li>
-<li><p>Process substitution: <code>&lt;()</code> creates a subshell with its standard output set to a pipe and expands to the name of the pipe. The parent (or some other process) may open the pipe to communicate with the subshell. <code>&gt;()</code> does the same but with the pipe on standard input.</p>
-</li>
-<li><p>Coprocess: <code>coproc</code> creates a subshell and does not wait for it to terminate. The subshell’s standard input and output are each set to a pipe with the parent being connected to the other end of each pipe.</p>
-</li>
+<li>Subshell for grouping: <code>(...)</code> does nothing but create a subshell and <strong>wait</strong> for it to terminate. Contrast with <code>{...}</code> which groups commands purely for syntactic purposes and does not create a subshell.</li>
+<li>Background <code>&amp;</code>: creates a subshell and does not wait for it to terminate.</li>
+<li>Pipeline: <code>|</code> creates two subshells, one for the left-hand side and one for the right-hand side, and waits for both to terminate. The shell creates a pipe and connects the left-hand side’s standard output to the write end of the pipe and the right-hand side’s standard input to the read end. In some shells (ksh88, ksh93, zsh, bash with the lastpipe option set and effective), the right-hand side runs in the original shell, so the pipeline construct only creates one subshell.</li>
+<li>Command substitution: <code>$()</code> creates a subshell with its standard output set to a pipe, collects the output in the parent and expands to that output, minus its trailing newlines. (And the output may be further subject to splitting and globbing, but that’s another story.)</li>
+<li>Process substitution: <code>&lt;(cmd)</code> creates a subshell with its standard output set to a pipe and expands to the name of the pipe. The parent (or some other process) may open the pipe to communicate with the subshell. <code>&gt;(cmd)</code> does the same but with the pipe on standard input.</li>
+<li>Coprocess: <code>coproc</code> creates a subshell and does not wait for it to terminate. The subshell’s standard input and output are each set to a pipe with the parent being connected to the other end of each pipe.</li>
 </ul>
-<h3 id="Process-List"><a href="#Process-List" class="headerlink" title="Process List"></a>Process List</h3><p>For a command list to be considered a <code>process list</code> (a grouping), the commands must be encased in parentheses <code>()</code>. Adding parentheses and turning the command list into a process list created a subshell to execute the commands.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># echo $BASH_SUBSHELL</span><br><span class="line">0</span><br><span class="line"></span><br><span class="line"># (echo $BASH_SUBSHELL)</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line"># ( (echo $BASH_SUBSHELL) ) </span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<h3 id="Process-List"><a href="#Process-List" class="headerlink" title="Process List"></a>Process List</h3><p>For a command list to be considered a <code>process list</code> (a grouping), the commands must be encased in parentheses <code>()</code>. Adding parentheses and turning the command list into a process list created a subshell to execute the commands.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo $BASH_SUBSHELL</span></span><br><span class="line">0</span><br><span class="line"><span class="comment"># (echo $BASH_SUBSHELL)</span></span><br><span class="line">1</span><br><span class="line"><span class="comment"># ( (echo $BASH_SUBSHELL) ) </span></span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
 <p>For parent variables act in subshell <code>()</code>, from <a href="https://stackoverflow.com/questions/26079488/bash-subshell-mystery" target="_blank" rel="noopener">this</a>, <a href="https://unix.stackexchange.com/questions/157957/why-is-a-variable-visible-in-a-subshell?noredirect=1&amp;lq=1" target="_blank" rel="noopener">this</a> and <a href="https://unix.stackexchange.com/questions/138463/do-parentheses-really-put-the-command-in-a-subshell?noredirect=1&amp;lq=1" target="_blank" rel="noopener">this</a> posts, long story short: Subshell <code>()</code> inherit all variables. Even <code>$$</code> (the PID of the original shell) is kept. The reason is that for a subshell, the shell just <strong>forks</strong> and doesn’t execute a new shell (such as run a script <code>./xx</code>)</p>
 <blockquote>
 <p>Note, usually use subshell <code>()</code> with <code>&amp;</code>.</p>
 </blockquote>
-<h3 id="Background-mode"><a href="#Background-mode" class="headerlink" title="Background mode"></a>Background mode</h3><p>Background mode is very handy. And it provides a method for creating useful subshells at the CLI.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># jobs -l</span><br><span class="line"></span><br><span class="line">[1]+  7552 Running                 sleep 40 &amp;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Background-mode"><a href="#Background-mode" class="headerlink" title="Background mode"></a>Background mode</h3><p>Background mode is very handy. And it provides a method for creating useful subshells at the CLI.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jobs -l</span></span><br><span class="line">[1]+  7552 Running                 sleep 40 &amp;</span><br></pre></td></tr></table></figure></p>
 <p><code>[1]</code> is job number, <code>7552</code> is PID, then <code>Running</code> is job status. The <code>jobs</code> command displays <strong>any</strong> user’s processes (jobs) currently running in background mode:</p>
 <p>Using a <code>process list</code> in background mode is one creative method for using subshells at the CLI. Remember we start Jetty in conductor container? <code>docker load</code> and <code>scp</code> are also suitable for background execution sometimes.</p>
-<h3 id="Co-processing"><a href="#Co-processing" class="headerlink" title="Co-processing"></a>Co-processing</h3><p>Co-processing performs almost identically to putting a command in background mode, <strong>except</strong> for the fact that it creates a subshell.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># coproc sleep 2</span><br><span class="line">[1] 8174</span><br><span class="line"></span><br><span class="line">[1]+  Done                    coproc COPROC sleep 2</span><br></pre></td></tr></table></figure></p>
-<p>it the same as:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># (sleep2) &amp;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Co-processing"><a href="#Co-processing" class="headerlink" title="Co-processing"></a>Co-processing</h3><p>Co-processing performs almost identically to putting a command in background mode, <strong>except</strong> for the fact that it creates a subshell.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coproc sleep 2</span></span><br><span class="line">[1] 8174</span><br><span class="line">[1]+  Done                    coproc COPROC sleep 2</span><br></pre></td></tr></table></figure></p>
+<p>it the same as:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># (sleep 2) &amp;</span></span><br></pre></td></tr></table></figure></p>
 <p>The <code>COPROC</code> is a name given to the porcess, you can change it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># coproc My_Job &#123; sleep 10; &#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>The only time you need to name a co-process is when you have multiple co-processes running, and you need to communicate with them all. Otherwise, just let the coproc command set the name to the default, <code>COPROC</code>.</p>
@@ -768,7 +762,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1055,7 +1051,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">137</span>
+                      
+                    
+                    <span class="site-state-item-count">138</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1123,7 +1121,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1m</span>
+    <span title="Symbols count total">1.1m</span>
   
 
   

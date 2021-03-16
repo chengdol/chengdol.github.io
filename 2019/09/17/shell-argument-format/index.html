@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="When I check the cmd and entrypoint of one image, I see something like this:12cmd: zkServer.sh start-foregroundentrypoint: /docker-entrypoint.sh That means cmd part will be passed into entrypoint as a">
+  <meta name="description" content="When I check the cmd and entrypoint of one docker image, I see something like this:12cmd: zkServer.sh start-foregroundentrypoint: /docker-entrypoint.sh It actually by default works as:1/docker-entrypo">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell Arguments Format">
 <meta property="og:url" content="http://yoursite.com/2019/09/17/shell-argument-format/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="When I check the cmd and entrypoint of one image, I see something like this:12cmd: zkServer.sh start-foregroundentrypoint: /docker-entrypoint.sh That means cmd part will be passed into entrypoint as a">
+<meta property="og:description" content="When I check the cmd and entrypoint of one docker image, I see something like this:12cmd: zkServer.sh start-foregroundentrypoint: /docker-entrypoint.sh It actually by default works as:1/docker-entrypo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-21T00:43:54.000Z">
+<meta property="og:updated_time" content="2021-03-16T07:37:43.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell Arguments Format">
-<meta name="twitter:description" content="When I check the cmd and entrypoint of one image, I see something like this:12cmd: zkServer.sh start-foregroundentrypoint: /docker-entrypoint.sh That means cmd part will be passed into entrypoint as a">
+<meta name="twitter:description" content="When I check the cmd and entrypoint of one docker image, I see something like this:12cmd: zkServer.sh start-foregroundentrypoint: /docker-entrypoint.sh It actually by default works as:1/docker-entrypo">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">137</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">40</span></a>
 
   </li>
         
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-20 16:43:54" itemprop="dateModified" datetime="2020-02-20T16:43:54-08:00">2020-02-20</time>
+                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.9k</span>
+                <span title="Symbols count in article">6.2k</span>
               
 
               
@@ -508,13 +508,15 @@
       
 
       
-        <p>When I check the <code>cmd</code> and <code>entrypoint</code> of one image, I see something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmd: zkServer.sh start-foreground</span><br><span class="line">entrypoint: /docker-entrypoint.sh</span><br></pre></td></tr></table></figure></p>
-<p>That means <code>cmd</code> part will be passed into entrypoint as argument, let’s see what is inside <code>/docker-entrypoint.sh</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generate Zookeeper configuration</span></span><br><span class="line">[ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">'zkServer.sh'</span> ] &amp;&amp; (zkGenConfig.sh || <span class="built_in">exit</span> 1)</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure></p>
-<p>It just like a wrapper and executes the passed parameters as a new command. This pattern gives me some inspirations.</p>
-<p>About <code>$@</code>, reference from <a href="https://stackoverflow.com/questions/9994295/what-does-mean-in-a-shell-script" target="_blank" rel="noopener">https://stackoverflow.com/questions/9994295/what-does-mean-in-a-shell-script</a>:<br><code>$@</code> is nearly the same as <code>$*</code>, both meaning “all command line arguments”. They are often used to simply pass all arguments to another program (thus forming a wrapper around that other program).</p>
-<p>The difference between the two syntaxes shows up when you have an argument with spaces in it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wrappedProgram <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="comment"># ^^^ this is correct and will hand over all arguments in the way</span></span><br><span class="line"><span class="comment">#     we received them, i. e. as several arguments, each of them</span></span><br><span class="line"><span class="comment">#     containing all the spaces and other uglinesses they have.</span></span><br><span class="line">wrappedProgram <span class="string">"$*"</span></span><br><span class="line"><span class="comment"># ^^^ this will hand over exactly one argument, containing all</span></span><br><span class="line"><span class="comment">#     original arguments, separated by single spaces.</span></span><br><span class="line">wrappedProgram $*</span><br><span class="line"><span class="comment"># ^^^ this will join all arguments by single spaces as well and</span></span><br><span class="line"><span class="comment">#     will then split the string as the shell does on the command</span></span><br><span class="line"><span class="comment">#     line, thus it will split an argument containing spaces into</span></span><br><span class="line"><span class="comment">#     several arguments.</span></span><br></pre></td></tr></table></figure></p>
-<p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wrapper &quot;one two    three&quot; four five &quot;six seven&quot;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;$@&quot;: wrappedProgram &quot;one two    three&quot; four five &quot;six seven&quot;</span><br><span class="line">&quot;$*&quot;: wrappedProgram &quot;one two    three four five six seven&quot;</span><br><span class="line">                             ^^^^ These spaces are part of the first</span><br><span class="line">                                  argument and are not changed.</span><br><span class="line">$*:   wrappedProgram one two three four five six seven</span><br></pre></td></tr></table></figure>
+        <p>When I check the <code>cmd</code> and <code>entrypoint</code> of one docker image, I see something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmd: zkServer.sh start-foreground</span><br><span class="line">entrypoint: /docker-entrypoint.sh</span><br></pre></td></tr></table></figure></p>
+<p>It actually by default works as:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/docker-entrypoint.sh zkServer.sh start-foreground</span><br></pre></td></tr></table></figure></p>
+<p>Let’s see what is inside <code>/docker-entrypoint.sh</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generate Zookeeper configuration</span></span><br><span class="line"><span class="comment"># zkGenConfig.sh is in PATH, it will be executed if condition matches</span></span><br><span class="line">[ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">'zkServer.sh'</span> ] &amp;&amp; (zkGenConfig.sh || <span class="built_in">exit</span> 1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># execute zkServer.sh start-foreground in current process</span></span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure></p>
+<p>It just like a wrapper and executes the passed parameters as a new command. This pattern gives me some inspirations. Actually lots of containers use this pattern, like Envoy, please search my blog <code>&lt;&lt;Docker Entrypoint Script&gt;&gt;</code></p>
+<p>About <code>$@</code>, reference from <a href="https://stackoverflow.com/questions/9994295/what-does-mean-in-a-shell-script" target="_blank" rel="noopener">https://stackoverflow.com/questions/9994295/what-does-mean-in-a-shell-script</a>:<br><code>$@</code> is nearly the same as <code>$*</code>, both meaning all command line arguments. They are often used to simply pass all arguments to another program (thus forming a wrapper around that other program).</p>
+<p>The difference between the two syntaxes shows up when you have an argument with spaces in it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wrappedProgram <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="comment"># ^^^ this is correct and will hand over all arguments in the way</span></span><br><span class="line"><span class="comment">#     we received them, i. e. as several arguments, each of them</span></span><br><span class="line"><span class="comment">#     containing all the spaces and other uglinesses they have.</span></span><br><span class="line">wrappedProgram <span class="string">"$*"</span></span><br><span class="line"><span class="comment"># ^^^ this will hand over exactly one argument, containing all</span></span><br><span class="line"><span class="comment">#     original arguments, separated by single spaces.</span></span><br><span class="line">wrappedProgram $*</span><br><span class="line"><span class="comment"># ^^^ this will join all arguments by single spaces (IFS)as well and</span></span><br><span class="line"><span class="comment">#     will then split the string as the shell does on the command</span></span><br><span class="line"><span class="comment">#     line, thus it will split an argument containing spaces into</span></span><br><span class="line"><span class="comment">#     several arguments.</span></span><br></pre></td></tr></table></figure></p>
+<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in terminal, type:</span></span><br><span class="line">wrapper <span class="string">"one two    three"</span> four five <span class="string">"six seven"</span></span><br></pre></td></tr></table></figure></p>
+<p>What you will get:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the same format as we passed</span></span><br><span class="line"><span class="string">"<span class="variable">$@</span>"</span>:  <span class="string">"one two    three"</span> <span class="string">"four"</span> <span class="string">"five"</span> <span class="string">"six seven"</span></span><br><span class="line"><span class="comment"># joined each argument by IFS shell variable and produce one final argument</span></span><br><span class="line"><span class="string">"$*"</span>:  <span class="string">"one two    three four five six seven"</span></span><br><span class="line"><span class="comment"># all separated</span></span><br><span class="line">$*:  one two three four five six seven</span><br><span class="line"><span class="variable">$@</span>:  one two three four five six seven</span><br></pre></td></tr></table></figure></p>
+<p><code>&quot;$@&quot;</code> is by far the most useful for most situations because it preserves the integrity of each positional parameter.</p>
 
       
     </div>
@@ -717,7 +719,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1004,7 +1008,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">137</span>
+                      
+                    
+                    <span class="site-state-item-count">138</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1055,7 +1061,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1m</span>
+    <span title="Symbols count total">1.1m</span>
   
 
   
