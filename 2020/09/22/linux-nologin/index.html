@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Previously I had a post talked about the login and non-login shell, please note that is a different concept with nologin user here. Take envoy image as an example, pull it and launch the container:123">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-23T05:17:29.235Z">
+<meta property="og:updated_time" content="2021-05-06T07:42:52.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nologin User">
 <meta name="twitter:description" content="Previously I had a post talked about the login and non-login shell, please note that is a different concept with nologin user here. Take envoy image as an example, pull it and launch the container:123">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">225</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">230</span></a>
 
   </li>
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2020-09-22 17:41:30 / Modified: 22:17:29" itemprop="dateCreated datePublished" datetime="2020-09-22T17:41:30-07:00">2020-09-22</time>
+              <time title="Created: 2020-09-22 17:41:30" itemprop="dateCreated datePublished" datetime="2020-09-22T17:41:30-07:00">2020-09-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
               
             
           </span>
@@ -501,7 +513,7 @@
 <p>Get into the container by (note this is not a <code>login</code> operation! see below my question):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it <span class="built_in">test</span> bash</span><br></pre></td></tr></table></figure></p>
 <p>Check <code>/etc/passwd</code> file, the <code>envoy</code> is a nologin user:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">envoy:x:101:101::/home/envoy:/usr/sbin/nologin</span><br></pre></td></tr></table></figure></p>
 <p>If you run <code>su - envoy</code> from any other users (even you enter the login password), you get error:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># su - envoy</span></span><br><span class="line">This account is currently not available</span><br></pre></td></tr></table></figure></p>
-<p>From nologin man page, the description is clear: nologin displays a message that an account is not available and exits<br>non-zero. It is intended as a replacement shell field to <strong>deny login access</strong> to an account. If the file <code>/etc/nologin.txt</code> exists, nologin displays its contents to the user instead of the default message. The exit status returned by nologin is always <code>1</code>.</p>
+<p>From nologin man page, the description is clear: nologin displays a message that an account is not available and exits non-zero. It is intended as a replacement shell field to <strong>deny login access</strong> to an account. If the file <code>/etc/nologin.txt</code> exists, nologin displays its contents to the user instead of the default message. The exit code returned by nologin is always <code>1</code>.</p>
 <p>Sometimes you will also see <code>/bin/false</code> is used:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syslog:x:101:104::/home/syslog:/bin/false</span><br></pre></td></tr></table></figure></p>
 <p>They both have the same purpose, but <code>nologin</code> is preferred since it give you a friendly message. <code>ssh</code>, <code>scp</code> and other login services will not work if the user is <code>nologin</code> type.</p>
 <p>BTY, You still can execute command as a nologin user:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -u &lt;nologin user name&gt; bash -c <span class="string">"ls -ltr /tmp"</span></span><br><span class="line"><span class="comment">## or launch a shell</span></span><br><span class="line">sudo -u &lt;nologin user name&gt; bash</span><br></pre></td></tr></table></figure></p>
@@ -631,7 +643,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">225</span>
+                    <span class="site-state-item-count">230</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1009,11 +1021,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

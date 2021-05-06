@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Understanding how SHELL works under the hood is a must to me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its rel">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-03-16T07:37:43.061Z">
+<meta property="og:updated_time" content="2021-05-06T07:42:52.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell Process Demystify">
 <meta name="twitter:description" content="Understanding how SHELL works under the hood is a must to me, I have encountered several interesting and confusing issues in my daily work about SHELL. Let’s dive deeply into shell process and its rel">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">225</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">230</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
+                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">13k</span>
+                <span title="Symbols count in article">14k</span>
               
 
               
@@ -509,15 +509,14 @@
 
       
         <p>Understanding how <code>SHELL</code> works under the hood is a must to me, I have encountered several interesting and confusing issues in my daily work about <code>SHELL</code>. Let’s dive deeply into shell process and its relationships to explore how subshells are created and the relationship between parent and child shell.</p>
-<h2 id="Shell-Type"><a href="#Shell-Type" class="headerlink" title="Shell Type"></a>Shell Type</h2><p>Due to the <code>bash</code> shell’s popularity, it’s rare to use any other shell as a default shell.</p>
+<h1 id="Shell-Type"><a href="#Shell-Type" class="headerlink" title="Shell Type"></a>Shell Type</h1><p>Due to the <code>bash</code> shell’s popularity, it’s rare to use any other shell as a default shell.</p>
 <p>The <code>default interactive shell</code> starts whenever a user logs into a virtual console terminal or starts a terminal emulator in the GUI. Another default shell, <code>/bin/sh</code>, is the <code>default system shell</code>. The <code>default system shell</code> is used for system shell scripts, such as those needed at startup.</p>
-<p>In my Redhat and CentOS system, actually they are the same:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx. 1 root root 4 Apr 13  2018 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure></p>
+<p>In my Redhat and CentOS system, they are the same:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx. 1 root root 4 Apr 13  2018 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure></p>
 <p>To see the user default login shell, go to see <code>/etc/passwd</code>, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fyre:x:1000:1000::/home/fyre:/bin/bash</span><br><span class="line">demo:x:1001:1001::/home/demo:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<h2 id="Shell-Relationships"><a href="#Shell-Relationships" class="headerlink" title="Shell Relationships"></a>Shell Relationships</h2><p>You can use <code>ps -f</code> to see difference before you run <code>bash</code>(child) in a shell(parent):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root      7762  7758  0 Jun03 pts/0    00:00:00 -bash</span><br><span class="line">root     14957  7762  0 17:12 pts/0    00:00:00 bash</span><br><span class="line">root     15028 14957  0 17:13 pts/0    00:00:00 ps -f</span><br></pre></td></tr></table></figure></p>
+<h1 id="Shell-Relationships"><a href="#Shell-Relationships" class="headerlink" title="Shell Relationships"></a>Shell Relationships</h1><p>You can use <code>ps -f</code> to see difference before you run several times <code>bash</code>(child) in a shell(parent):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># run bash</span></span><br><span class="line"><span class="comment"># then run ps -f</span></span><br><span class="line"></span><br><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root      7762  7758  0 Jun03 pts/0    00:00:00 -bash</span><br><span class="line">root     14957  7762  0 17:12 pts/0    00:00:00 bash</span><br><span class="line">root     15028 14957  0 17:13 pts/0    00:00:00 ps -f</span><br></pre></td></tr></table></figure></p>
 <p>Here PID <code>14957</code> has parent <code>7762</code>.</p>
-<p>A child shell is also called a <strong>subshell</strong>. A subshell can be created from a parent shell, and a subshell can be created from another subshell:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps --forest</span><br></pre></td></tr></table></figure></p>
-<p>can be used to show the nesting of the subshells. For example, run <code>bash</code> 3 times:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ps --forest -f</span><br><span class="line"></span><br><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root      7762  7758  0 Jun03 pts/0    00:00:00 -bash</span><br><span class="line">root      2264  7762  0 23:52 pts/0    00:00:00  \_ bash</span><br><span class="line">root      2467  2264  0 23:55 pts/0    00:00:00      \_ bash</span><br><span class="line">root      2487  2467  0 23:55 pts/0    00:00:00          \_ bash</span><br><span class="line">root      2510  2487  0 23:55 pts/0    00:00:00              \_ ps --forest -f</span><br></pre></td></tr></table></figure></p>
-<h2 id="Constructs-Create-SubShell"><a href="#Constructs-Create-SubShell" class="headerlink" title="Constructs Create SubShell"></a>Constructs Create SubShell</h2><p>Refer to this <a href="https://unix.stackexchange.com/questions/442692/is-a-subshell" target="_blank" rel="noopener">what is a subshell</a></p>
+<p>A child shell is also called a <strong>subshell</strong>. A subshell can be created from a parent shell or from another subshell. For example, run <code>bash</code> 3 times:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bash bash bash</span></span><br><span class="line">ps --forest -f</span><br><span class="line"></span><br><span class="line">UID        PID  PPID  C STIME TTY          TIME CMD</span><br><span class="line">root      7762  7758  0 Jun03 pts/0    00:00:00 -bash</span><br><span class="line">root      2264  7762  0 23:52 pts/0    00:00:00  \_ bash</span><br><span class="line">root      2467  2264  0 23:55 pts/0    00:00:00      \_ bash</span><br><span class="line">root      2487  2467  0 23:55 pts/0    00:00:00          \_ bash</span><br><span class="line">root      2510  2487  0 23:55 pts/0    00:00:00              \_ ps --forest -f</span><br></pre></td></tr></table></figure></p>
+<h1 id="Constructs-Create-SubShell"><a href="#Constructs-Create-SubShell" class="headerlink" title="Constructs Create SubShell"></a>Constructs Create SubShell</h1><p>Refer to this article <a href="https://unix.stackexchange.com/questions/442692/is-a-subshell" target="_blank" rel="noopener">what is a subshell</a></p>
 <blockquote>
 <p>Note subshells are often used for multi-processing in shell scripts. However, entering into a subshell is an expensive method and can significantly slow down processing.</p>
 </blockquote>
@@ -530,24 +529,25 @@
 <li>Process substitution: <code>&lt;(cmd)</code> creates a subshell with its standard output set to a pipe and expands to the name of the pipe. The parent (or some other process) may open the pipe to communicate with the subshell. <code>&gt;(cmd)</code> does the same but with the pipe on standard input.</li>
 <li>Coprocess: <code>coproc</code> creates a subshell and does not wait for it to terminate. The subshell’s standard input and output are each set to a pipe with the parent being connected to the other end of each pipe.</li>
 </ul>
-<h3 id="Process-List"><a href="#Process-List" class="headerlink" title="Process List"></a>Process List</h3><p>For a command list to be considered a <code>process list</code> (a grouping), the commands must be encased in parentheses <code>()</code>. Adding parentheses and turning the command list into a process list created a subshell to execute the commands.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo $BASH_SUBSHELL</span></span><br><span class="line">0</span><br><span class="line"><span class="comment"># (echo $BASH_SUBSHELL)</span></span><br><span class="line">1</span><br><span class="line"><span class="comment"># ( (echo $BASH_SUBSHELL) ) </span></span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
-<p>For parent variables act in subshell <code>()</code>, from <a href="https://stackoverflow.com/questions/26079488/bash-subshell-mystery" target="_blank" rel="noopener">this</a>, <a href="https://unix.stackexchange.com/questions/157957/why-is-a-variable-visible-in-a-subshell?noredirect=1&amp;lq=1" target="_blank" rel="noopener">this</a> and <a href="https://unix.stackexchange.com/questions/138463/do-parentheses-really-put-the-command-in-a-subshell?noredirect=1&amp;lq=1" target="_blank" rel="noopener">this</a> posts, long story short: Subshell <code>()</code> inherit all variables. Even <code>$$</code> (the PID of the original shell) is kept. The reason is that for a subshell, the shell just <strong>forks</strong> and doesn’t execute a new shell (such as run a script <code>./xx</code>)</p>
+<h2 id="Process-List"><a href="#Process-List" class="headerlink" title="Process List"></a>Process List</h2><p>For a command list to be considered a <code>process list</code> (a grouping), the commands must be encased in parentheses <code>()</code>. Adding parentheses and turning the command list into a process list created a subshell to execute the commands.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo $BASH_SUBSHELL</span></span><br><span class="line">0</span><br><span class="line"><span class="comment"># (echo $BASH_SUBSHELL)</span></span><br><span class="line">1</span><br><span class="line"><span class="comment"># ( (echo $BASH_SUBSHELL) ) </span></span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<p>For parent variables act in subshell <code>()</code>, from <a href="https://stackoverflow.com/questions/26079488/bash-subshell-mystery" target="_blank" rel="noopener">this</a>, <a href="https://unix.stackexchange.com/questions/157957/why-is-a-variable-visible-in-a-subshell?noredirect=1&amp;lq=1" target="_blank" rel="noopener">this</a> and <a href="https://unix.stackexchange.com/questions/138463/do-parentheses-really-put-the-command-in-a-subshell?noredirect=1&amp;lq=1" target="_blank" rel="noopener">this</a> posts, long story short: subshell <code>()</code> inherit all variables. Even <code>$$</code> (the PID of the original shell) is kept. The reason is that for a subshell, the shell just <strong>forks</strong> and doesn’t execute a new shell (such as run a script <code>./xx</code>)</p>
 <blockquote>
 <p>Note, usually use subshell <code>()</code> with <code>&amp;</code>.</p>
 </blockquote>
-<h3 id="Background-mode"><a href="#Background-mode" class="headerlink" title="Background mode"></a>Background mode</h3><p>Background mode is very handy. And it provides a method for creating useful subshells at the CLI.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jobs -l</span></span><br><span class="line">[1]+  7552 Running                 sleep 40 &amp;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Background-mode"><a href="#Background-mode" class="headerlink" title="Background mode"></a>Background mode</h2><p>Background mode is very handy. And it provides a method for creating useful subshells at the CLI.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jobs -l</span></span><br><span class="line">[1]+  7552 Running                 sleep 40 &amp;</span><br></pre></td></tr></table></figure></p>
 <p><code>[1]</code> is job number, <code>7552</code> is PID, then <code>Running</code> is job status. The <code>jobs</code> command displays <strong>any</strong> user’s processes (jobs) currently running in background mode:</p>
 <p>Using a <code>process list</code> in background mode is one creative method for using subshells at the CLI. Remember we start Jetty in conductor container? <code>docker load</code> and <code>scp</code> are also suitable for background execution sometimes.</p>
-<h3 id="Co-processing"><a href="#Co-processing" class="headerlink" title="Co-processing"></a>Co-processing</h3><p>Co-processing performs almost identically to putting a command in background mode, <strong>except</strong> for the fact that it creates a subshell.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coproc sleep 2</span></span><br><span class="line">[1] 8174</span><br><span class="line">[1]+  Done                    coproc COPROC sleep 2</span><br></pre></td></tr></table></figure></p>
+<h2 id="Co-processing"><a href="#Co-processing" class="headerlink" title="Co-processing"></a>Co-processing</h2><p>Co-processing performs almost identically to putting a command in background mode, <strong>except</strong> for the fact that it creates a subshell.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coproc sleep 2</span></span><br><span class="line">[1] 8174</span><br><span class="line">[1]+  Done                    coproc COPROC sleep 2</span><br></pre></td></tr></table></figure></p>
 <p>it the same as:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># (sleep 2) &amp;</span></span><br></pre></td></tr></table></figure></p>
 <p>The <code>COPROC</code> is a name given to the porcess, you can change it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># coproc My_Job &#123; sleep 10; &#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>The only time you need to name a co-process is when you have multiple co-processes running, and you need to communicate with them all. Otherwise, just let the coproc command set the name to the default, <code>COPROC</code>.</p>
 </blockquote>
 <p>This will create a nested subshell:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># coproc ( sleep 10; sleep 2 )</span><br></pre></td></tr></table></figure></p>
-<h3 id="My-question"><a href="#My-question" class="headerlink" title="My question"></a>My question</h3><p>Remember in conductor container we start Jetty using the <code>(...) &amp;</code>. We want to run it in a separate process in background. Why not just <code>&amp;</code>? So If I want to run something in background, should I use <code>&amp;</code> to put command in background or <code>()&amp;</code> to put subshell in background?</p>
-<p>I haven’t fully understaned it, refer to my <a href="https://unix.stackexchange.com/questions/523675/run-script-in-background-using-or" target="_blank" rel="noopener">post</a>.</p>
-<h2 id="Shell-Build-in-Commands"><a href="#Shell-Build-in-Commands" class="headerlink" title="Shell Build-in Commands"></a>Shell Build-in Commands</h2><p>An external command, sometimes called a filesystem command, is a program that exists outside of the bash shell. They are not built into the shell program. An external command program is typically located in <code>/bin</code>, <code>/usr/bin</code>, <code>/sbin</code>, or <code>/usr/sbin</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># which ps</span><br><span class="line">/usr/bin/ps</span><br><span class="line"></span><br><span class="line"># type -a ps</span><br><span class="line">ps is /usr/bin/ps</span><br></pre></td></tr></table></figure></p>
+<h2 id="My-question"><a href="#My-question" class="headerlink" title="My question"></a>My question</h2><p>Remember in conductor container we start Jetty using the <code>(...) &amp;</code>. We want to run it in a separate process in background. Why not just <code>&amp;</code>? So If I want to run something in background, should I use <code>&amp;</code> to put command in background or <code>()&amp;</code> to put subshell in background?</p>
+<p>Referring to my <a href="https://unix.stackexchange.com/questions/523675/run-script-in-background-using-or" target="_blank" rel="noopener">question</a>. I am testing in these 2 cases but did not see difference:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sleep 1 &amp; ps -f</span><br><span class="line">(sleep 1)&amp; ps -f</span><br></pre></td></tr></table></figure></p>
+<p>May be different Linux distro has different result, check it first. For now, using <code>&amp;</code> directly on command is fine.</p>
+<h1 id="Shell-Build-in-Commands"><a href="#Shell-Build-in-Commands" class="headerlink" title="Shell Build-in Commands"></a>Shell Build-in Commands</h1><p>An external command, sometimes called a filesystem command, is a program that exists outside of the bash shell. They are not built into the shell program. An external command program is typically located in <code>/bin</code>, <code>/usr/bin</code>, <code>/sbin</code>, or <code>/usr/sbin</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># which ps</span></span><br><span class="line">/usr/bin/ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># type -a ps</span></span><br><span class="line">ps is /usr/bin/ps</span><br></pre></td></tr></table></figure></p>
 <p>Whenever an external command is executed, a child process is created. This action is termed <code>forking</code>. It takes time and effort to set up the new child process’s environment. Thus, external commands can be a little expensive.</p>
 <p>When using a built-in command, no forking is required. Therefore, built-in commands are less expensive.</p>
 <p>Built-in commands are different in that they do not need a child process to execute. They were compiled into the shell and thus are part of the shell’s toolkit.</p>
@@ -597,8 +597,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/05/linux-defunct-process/" rel="prev" title="Kill Defunct Process">
-                Kill Defunct Process <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/05/linux-defunct-process/" rel="prev" title="Zombie and Orphan Process">
+                Zombie and Orphan Process <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -671,7 +671,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">225</span>
+                    <span class="site-state-item-count">230</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1049,11 +1049,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1089,7 +1085,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-Type"><span class="nav-number">1.</span> <span class="nav-text">Shell Type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-Relationships"><span class="nav-number">2.</span> <span class="nav-text">Shell Relationships</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constructs-Create-SubShell"><span class="nav-number">3.</span> <span class="nav-text">Constructs Create SubShell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Process-List"><span class="nav-number">3.1.</span> <span class="nav-text">Process List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Background-mode"><span class="nav-number">3.2.</span> <span class="nav-text">Background mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Co-processing"><span class="nav-number">3.3.</span> <span class="nav-text">Co-processing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#My-question"><span class="nav-number">3.4.</span> <span class="nav-text">My question</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-Build-in-Commands"><span class="nav-number">4.</span> <span class="nav-text">Shell Build-in Commands</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-Type"><span class="nav-number">1.</span> <span class="nav-text">Shell Type</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-Relationships"><span class="nav-number">2.</span> <span class="nav-text">Shell Relationships</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constructs-Create-SubShell"><span class="nav-number">3.</span> <span class="nav-text">Constructs Create SubShell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Process-List"><span class="nav-number">3.1.</span> <span class="nav-text">Process List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background-mode"><span class="nav-number">3.2.</span> <span class="nav-text">Background mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Co-processing"><span class="nav-number">3.3.</span> <span class="nav-text">Co-processing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-question"><span class="nav-number">3.4.</span> <span class="nav-text">My question</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-Build-in-Commands"><span class="nav-number">4.</span> <span class="nav-text">Shell Build-in Commands</span></a></li></ol></div>
             
 
           </div>

@@ -97,14 +97,14 @@
 
 
   <meta name="description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明">
-<meta name="keywords" content="envoy,proxy">
+<meta name="keywords" content="proxy,envoy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Envoy">
 <meta property="og:url" content="http://yoursite.com/2020/08/30/proxy-envoy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-19T00:40:06.419Z">
+<meta property="og:updated_time" content="2021-05-06T07:42:52.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
 <meta name="twitter:description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">225</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">230</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-18 16:40:06" itemprop="dateModified" datetime="2020-12-18T16:40:06-08:00">2020-12-18</time>
+                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
               
             
           </span>
@@ -566,7 +566,7 @@
 <p>Envoy can be controlled via API (control/data plane). 这个其实也是生产环境中主要的调节方式。Envoy admin 面板有很多选项，也有项目专门为Envoy开发control plane.</p>
 <p>Using golang write tcp, http server.<br>Using <code>nc</code>(netcat) command to test envoy tcp proxy:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## envoy listening on port 10000 and upstream is a TCP server</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello"</span> | nc localhost 10000</span><br></pre></td></tr></table></figure></p>
 <p>Or you can write a tcp client and the client talks to envoy.<br><code>fuser -k</code> command to kill processes.</p>
-<p>Access envoy admin API from a docker container, expose the port <code>9901</code> and in browser hits <code>http://localhost:9901</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  access_log_path: /dev/stdout</span><br><span class="line">  address:</span><br><span class="line">    socket_address:</span><br><span class="line">      protocol: TCP</span><br><span class="line">      <span class="comment">## 127.0.0.1 is more secure,  can only be accessed when you are from within the network</span></span><br><span class="line">      <span class="comment">## 0.0.0.0 then everyone can access</span></span><br><span class="line">      address: 0.0.0.0</span><br><span class="line">      port_value: 9901</span><br></pre></td></tr></table></figure></p>
+<p>Access envoy admin API from a docker container, expose the port <code>9901</code> and in browser hits <code>http://localhost:9901</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  access_log_path: /dev/stdout</span><br><span class="line">  address:</span><br><span class="line">    socket_address:</span><br><span class="line">      protocol: TCP</span><br><span class="line">      <span class="comment">## 127.0.0.1 is more secure, can only be accessed when you are from within the network</span></span><br><span class="line">      <span class="comment">## 0.0.0.0 then everyone can access</span></span><br><span class="line">      address: 0.0.0.0</span><br><span class="line">      port_value: 9901</span><br></pre></td></tr></table></figure></p>
 <p>In the dashboard, there are lots of metrics sections, important ones are <code>logging</code>, <code>stats</code>, <code>clusters</code>, <code>config_dump</code>,etc. For example, set debug mode in Envoy through curl command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## get help</span></span><br><span class="line">curl http://localhost:9901/<span class="built_in">help</span></span><br><span class="line"><span class="comment">## operation</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=trace"</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=debug"</span></span><br><span class="line">curl -X POST <span class="string">"localhost:9901/logging?level=info"</span></span><br></pre></td></tr></table></figure></p>
 <p>Envoy status has native format support to Prometheus, Jaeger.</p>
 <p>Overload manager:<br><a href="https://www.envoyproxy.io/docs/envoy/v1.16.0/intro/arch_overview/operations/overload_manager#" target="_blank" rel="noopener">https://www.envoyproxy.io/docs/envoy/v1.16.0/intro/arch_overview/operations/overload_manager#</a><br>for example, limits envoy host system resource occupation. 资源使用限制。</p>
@@ -608,9 +608,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/envoy/" rel="tag"># envoy</a>
-          
             <a href="/tags/proxy/" rel="tag"># proxy</a>
+          
+            <a href="/tags/envoy/" rel="tag"># envoy</a>
           
         </div>
       
@@ -707,7 +707,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">225</span>
+                    <span class="site-state-item-count">230</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1085,11 +1085,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -11,7 +11,7 @@
 #set -x
 
 # days to trace back, modify here
-declare -i day=45
+declare -i day=60
 declare -a sha_list=($(git rev-list HEAD --since=${day}days))
 #declare -p sha_list
 

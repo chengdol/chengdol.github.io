@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">136</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">225</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">230</span></a>
 
   </li>
 
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">8.1k</span>
+                <span title="Symbols count in article">8k</span>
               
 
               
@@ -525,7 +525,7 @@
 </ul>
 <p>Transition from Packer to Docker is easy, but the docker builder may not efficient as the docker native tool.</p>
 <p>Example of packer json file, use ansibe as provisioner on google cloud:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"variables"</span>: &#123;</span><br><span class="line">    <span class="attr">"project_id"</span>: <span class="string">"xxxxxx"</span>,</span><br><span class="line">    <span class="attr">"source_image"</span>: <span class="string">"xxxxxx"</span>,</span><br><span class="line">    <span class="attr">"subnetwork"</span>: <span class="string">"xxxxxx"</span>,</span><br><span class="line">    <span class="attr">"zone"</span>: <span class="string">"xxxxxx"</span>,</span><br><span class="line">    <span class="attr">"image_name"</span>: <span class="string">"xxxxxx"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"builders"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"googlecompute"</span>,</span><br><span class="line">      <span class="attr">"project_id"</span>: <span class="string">"&#123;&#123;user `project_id`&#125;&#125;"</span>,</span><br><span class="line">      <span class="attr">"source_image"</span>: <span class="string">"&#123;&#123;user `source_image`&#125;&#125;"</span>,</span><br><span class="line">      <span class="attr">"subnetwork"</span>: <span class="string">"&#123;&#123;user `subnetwork`&#125;&#125;"</span>,</span><br><span class="line">      <span class="attr">"ssh_username"</span>: <span class="string">"xxxxxx"</span>,</span><br><span class="line">      <span class="attr">"zone"</span>: <span class="string">"&#123;&#123;user `zone`&#125;&#125;"</span>,</span><br><span class="line">      <span class="attr">"use_internal_ip"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">"omit_external_ip"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">"image_description"</span>: <span class="string">"xxxxxx"</span>,</span><br><span class="line">      <span class="attr">"image_name"</span>: <span class="string">"&#123;&#123;user `image_name`&#125;&#125;"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"provisioners"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"type"</span>: <span class="string">"ansible"</span>,</span><br><span class="line">      <span class="attr">"max_retries"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">"pause_before"</span>: <span class="string">"5s"</span>,</span><br><span class="line">      <span class="attr">"playbook_file"</span>: <span class="string">"setup.yml"</span>,</span><br><span class="line">      // acts on target instance</span><br><span class="line">      "extra_arguments": ["--become", "-e ansible_python_interpreter=/usr/bin/python3", "-v"],</span><br><span class="line">      "user": "xxxxxx"</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Some useful commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># illustrate packer.json file</span></span><br><span class="line">packer inspect</span><br><span class="line"></span><br><span class="line"><span class="comment"># validate packer.json syntax</span></span><br><span class="line">packer validate &lt;file.json&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># build image</span></span><br><span class="line"><span class="comment"># -de<span class="doctag">bug:</span> pause for each step, clear</span></span><br><span class="line">packer build [-debug] &lt;file.json&gt;</span><br><span class="line"><span class="comment"># -force: delete existing artifact then build</span></span><br><span class="line">packer build -force [-debug] &lt;file.json&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Some useful commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># illustrate packer.json file</span></span><br><span class="line">packer inspect</span><br><span class="line"></span><br><span class="line"><span class="comment"># validate packer.json syntax</span></span><br><span class="line">packer validate &lt;file.json&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># build image</span></span><br><span class="line"><span class="comment"># -debug: pause for each step, clear</span></span><br><span class="line">packer build [-debug] &lt;file.json&gt;</span><br><span class="line"><span class="comment"># -force: delete existing artifact then build</span></span><br><span class="line">packer build -force [-debug] &lt;file.json&gt;</span><br></pre></td></tr></table></figure></p>
 <p>When using <code>-debug</code> flag, Packer will show you the private pem file in current directory, you can use that pem file ssh to running VM, for example, in google cloud:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># jenkins is the ssh_username you set in template</span></span><br><span class="line">ssh -i gce_googlecompute.pem jenkins@172.16.160.49</span><br></pre></td></tr></table></figure></p>
 
       
@@ -640,7 +640,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">225</span>
+                    <span class="site-state-item-count">230</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1018,11 +1018,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
