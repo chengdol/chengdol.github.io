@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="DNS is the phonebook of internet.Comparison of DNS server software, be aware of alternatives.Cloudflare DNS course 内容很不错。 Issue这个问题很有意思，最开始我并没有意识到这其实是个DNS问题，后来随着逐步深入排查，解决了一些有干扰的边边角角的错误，才发现。 问题的开始是当集群中">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-19T04:29:22.382Z">
+<meta property="og:updated_time" content="2021-05-31T19:37:48.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux DNS Exploration">
 <meta name="twitter:description" content="DNS is the phonebook of internet.Comparison of DNS server software, be aware of alternatives.Cloudflare DNS course 内容很不错。 Issue这个问题很有意思，最开始我并没有意识到这其实是个DNS问题，后来随着逐步深入排查，解决了一些有干扰的边边角角的错误，才发现。 问题的开始是当集群中">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">232</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">234</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-18 20:29:22" itemprop="dateModified" datetime="2021-01-18T20:29:22-08:00">2021-01-18</time>
+                <time title="Modified: 2021-05-31 12:37:48" itemprop="dateModified" datetime="2021-05-31T12:37:48-07:00">2021-05-31</time>
               
             
           </span>
@@ -535,7 +535,8 @@
 <p>Run syntax checks on configuration and zone files:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># no parameters needed</span></span><br><span class="line">sudo named-checkconf -v</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="comment"># check zone file syntax</span></span><br><span class="line">sudo named-checkzone &lt;zone name&gt; &lt;paht to zone file&gt;</span><br></pre></td></tr></table></figure></p>
 <p>Then you can create <code>db.example</code> file accordingly, for example:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$TTL <span class="number">3</span>h</span><br><span class="line">$ORIGIN example.com.</span><br><span class="line">example.com. IN SOA master.example.com root.example.com. (</span><br><span class="line">  <span class="number">2020012323</span> ; Serial</span><br><span class="line">  <span class="number">8</span>h ; Refresh</span><br><span class="line">  <span class="number">4</span>h ; Retry</span><br><span class="line">  <span class="number">1</span>w ; Expire</span><br><span class="line">  <span class="number">1</span>h ; Negative TTL</span><br><span class="line">)</span><br><span class="line">example.com. IN NS master.example.com.</span><br><span class="line">master      IN  A <span class="number">10.0</span><span class="number">.2</span><span class="number">.4</span></span><br><span class="line">gw          IN  A <span class="number">10.0</span><span class="number">.2</span><span class="number">.1</span></span><br><span class="line">mail        IN  A <span class="number">10.0</span><span class="number">.2</span><span class="number">.2</span></span><br><span class="line">$GENERATE <span class="number">101</span><span class="number">-200</span> student-$ IN A <span class="number">10.0</span><span class="number">.2</span>.$</span><br><span class="line">; Alias</span><br><span class="line">ns1         IN  CNAME master.example.com.</span><br><span class="line"></span><br><span class="line">; Mail Servers</span><br><span class="line">nexample.com. IN  MX <span class="number">5</span> mail.example.com.</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check syntax</span></span><br><span class="line">named-checkzone example.com db.example</span><br></pre></td></tr></table></figure>
-<h1 id="Dnsmasq"><a href="#Dnsmasq" class="headerlink" title="Dnsmasq"></a>Dnsmasq</h1><p><a href="https://medium.com/linode-cube/want-faster-easier-to-manage-dns-use-dnsmasq-a02517234d5f" target="_blank" rel="noopener">Want Faster, Easier-to-Manage DNS? Use Dnsmasq</a><br>Dnsmasq (short for DNS masquerade) is a lightweight, easy to configure DNS forwarder, designed to provide DNS (and optionally DHCP and TFTP) services to a small-scale network. It can serve the names of local machines which are not in the global DNS.</p>
+<h1 id="Dnsmasq"><a href="#Dnsmasq" class="headerlink" title="Dnsmasq"></a>Dnsmasq</h1><p>dnsmasq 是最常用的 DNS 缓存服务之一，还经常作为 DHCP 服务来使用。它的安装和配置都比较简单，性能也可以满足绝大多数应用程序对 DNS 缓存的需求.</p>
+<p><a href="https://medium.com/linode-cube/want-faster-easier-to-manage-dns-use-dnsmasq-a02517234d5f" target="_blank" rel="noopener">Want Faster, Easier-to-Manage DNS? Use Dnsmasq</a><br>Dnsmasq (short for DNS masquerade) is a lightweight, easy to configure DNS forwarder, designed to provide DNS (and optionally DHCP and TFTP) services to a small-scale network. It can serve the names of local machines which are not in the global DNS.</p>
 <p>Dnsmasq accepts DNS queries and either answers them from a small, local <code>cache</code> or forwards them to a real, recursive DNS server. It loads the contents of <code>/etc/hosts</code>, so that local host names which do not appear in the global DNS can be resolved.</p>
 <p>By default, Dnsmasq will use the DNS servers setup in your <code>/etc/resolv.conf</code> file.</p>
 <p>Dnsmasq will only access the first three sites listed in the resolv.conf file. I usually add one of the Google Public DNS servers, <code>8.8.8.8</code> or <code>8.8.4.4</code> and one of Cisco’s OpenDNS servers, <code>208.67.222.222</code> or <code>208.67.220.220</code>, and <code>1.1.1.1</code> operated by cloudflare to the default DNS site</p>
@@ -663,7 +664,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">232</span>
+                    <span class="site-state-item-count">234</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

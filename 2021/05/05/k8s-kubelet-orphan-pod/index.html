@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This error is derived from a P1 incident which is itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not abl">
+  <meta name="description" content="This error is derived from a P1 incident which itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not able t">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kubelet Complain Orphan Pod">
+<meta property="og:title" content="Kubelet Complains Orphan Pod">
 <meta property="og:url" content="http://yoursite.com/2021/05/05/k8s-kubelet-orphan-pod/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This error is derived from a P1 incident which is itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not abl">
+<meta property="og:description" content="This error is derived from a P1 incident which itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not able t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.067Z">
+<meta property="og:updated_time" content="2021-05-31T19:37:48.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kubelet Complain Orphan Pod">
-<meta name="twitter:description" content="This error is derived from a P1 incident which is itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not abl">
+<meta name="twitter:title" content="Kubelet Complains Orphan Pod">
+<meta name="twitter:description" content="This error is derived from a P1 incident which itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not able t">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Kubelet Complain Orphan Pod | 海胆阶段's Blog</title>
+  <title>Kubelet Complains Orphan Pod | 海胆阶段's Blog</title>
   
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">232</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">234</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kubelet Complain Orphan Pod
+          <h1 class="post-title" itemprop="name headline">Kubelet Complains Orphan Pod
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2021-05-31 12:37:48" itemprop="dateModified" datetime="2021-05-31T12:37:48-07:00">2021-05-31</time>
               
             
           </span>
@@ -508,7 +508,7 @@
       
 
       
-        <p>This error is derived from a P1 incident which is itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not able to update node status and other metrics. The node was changed to <code>NotReady</code> and some customer services went down.</p>
+        <p>This error is derived from a P1 incident which itself originated from a emerging Google regional network issue. 3 gke nodes in that region were impacted, the kubelet daemon in each node was not able to update node status and other metrics. The node was changed to <code>NotReady</code> and some customer services went down.</p>
 <p>After the nodes went back to ready state as the root cause mitigated, from GCP <code>Log Explorer</code> one gke node kubelet kept posting error:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E0505 <span class="number">03</span>:<span class="number">59</span>:<span class="number">46.470928</span>    <span class="number">1543</span> kubelet_volumes.go:<span class="number">154</span>] orphaned pod <span class="string">"7935559a-a41b-4b44-960b-6a31fcab81f8"</span> found, but volume paths are still present on disk : There were a total <span class="keyword">of</span> <span class="number">2</span> errors similar to <span class="keyword">this</span>. Turn up verbosity to see them.</span><br></pre></td></tr></table></figure></p>
 <h1 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h1><p>The solution for this error is simple but let’s understand some concepts:<br>Why we have orphan pods, see <a href="https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/" target="_blank" rel="noopener">kubernetes Garbage Collection</a>:</p>
 <p>Some Kubernetes objects are owners of other objects. For example, a ReplicaSet is the owner of a set of Pods. The owned objects are called dependents of the owner object.</p>
@@ -637,7 +637,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">232</span>
+                    <span class="site-state-item-count">234</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

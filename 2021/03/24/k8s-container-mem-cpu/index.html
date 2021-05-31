@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="TODO:[ ] see issue at end of the page[ ] proc mem vs cgroup mem difference[ ] daemonset and hostPID is true, how to know the mem used by process inside pod? If run top which utilizes cat /proc/meminfo">
+  <meta name="description" content="//TODO:[ ] see issue at end of the page[ ] proc mem vs cgroup mem difference[ ] daemonset and hostPID is true, how to know the mem used by process inside pod? If run top which utilizes cat /proc/memin">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pod&#x2F;Container Memory&#x2F;CPU Usage">
 <meta property="og:url" content="http://yoursite.com/2021/03/24/k8s-container-mem-cpu/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="TODO:[ ] see issue at end of the page[ ] proc mem vs cgroup mem difference[ ] daemonset and hostPID is true, how to know the mem used by process inside pod? If run top which utilizes cat /proc/meminfo">
+<meta property="og:description" content="//TODO:[ ] see issue at end of the page[ ] proc mem vs cgroup mem difference[ ] daemonset and hostPID is true, how to know the mem used by process inside pod? If run top which utilizes cat /proc/memin">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.065Z">
+<meta property="og:updated_time" content="2021-05-31T19:37:48.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pod&#x2F;Container Memory&#x2F;CPU Usage">
-<meta name="twitter:description" content="TODO:[ ] see issue at end of the page[ ] proc mem vs cgroup mem difference[ ] daemonset and hostPID is true, how to know the mem used by process inside pod? If run top which utilizes cat /proc/meminfo">
+<meta name="twitter:description" content="//TODO:[ ] see issue at end of the page[ ] proc mem vs cgroup mem difference[ ] daemonset and hostPID is true, how to know the mem used by process inside pod? If run top which utilizes cat /proc/memin">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">232</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">234</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2021-05-31 12:37:48" itemprop="dateModified" datetime="2021-05-31T12:37:48-07:00">2021-05-31</time>
               
             
           </span>
@@ -508,7 +508,7 @@
       
 
       
-        <p>TODO:<br>[ ] see issue at end of the page<br>[ ] proc mem vs cgroup mem difference<br>[ ] daemonset and hostPID is true, how to know the mem used by process inside pod?</p>
+        <p>//TODO:<br>[ ] see issue at end of the page<br>[ ] proc mem vs cgroup mem difference<br>[ ] daemonset and hostPID is true, how to know the mem used by process inside pod?</p>
 <p>If run <code>top</code> which utilizes <code>cat /proc/meminfo</code> in container, it displays the state and capacity of the host machine instead of the container, they are not aware of the <code>cgroup</code> where it runs. Containers inside pods partially share <code>/proc</code> with the host system include path about a memory and CPU information.</p>
 <p>To check without , can get memory and cpu usage from <code>cgroup</code>. Make Sure you have added the resources section (<code>requests</code> and <code>limits</code>) to deployment so that it can calculate the usage based on cgroup and container will respect the limits set on pod level, <a href="https://stackoverflow.com/questions/54531646/checking-kubernetes-pod-cpu-and-memory" target="_blank" rel="noopener">reference issue</a>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cpu</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/cpu; cat cpuacct.usage</span><br><span class="line"><span class="comment"># memory in bytes</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/memory; cat memory.usage_in_bytes</span><br></pre></td></tr></table></figure></p>
 <p>还要注意如果使用了monitoring system such prometheus, 看看PQL是从何处取得memory 数据的.</p>
@@ -636,7 +636,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">232</span>
+                    <span class="site-state-item-count">234</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
