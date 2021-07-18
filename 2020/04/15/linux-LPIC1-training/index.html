@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="//TODO这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat. EssentialsReading OS data123456789# system versio">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.068Z">
+<meta property="og:updated_time" content="2021-07-18T04:23:35.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux LPIC-1 Training">
 <meta name="twitter:description" content="//TODO这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat. EssentialsReading OS data123456789# system versio">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">234</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">237</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2021-07-17 21:23:35" itemprop="dateModified" datetime="2021-07-17T21:23:35-07:00">2021-07-17</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">31k</span>
+                <span title="Symbols count in article">32k</span>
               
 
               
@@ -531,6 +531,7 @@
 <p>监控load or output<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># execute a program periodically, showing output fullscreen</span></span><br><span class="line"><span class="comment"># 这里的例子是每隔4秒 运行 uptime</span></span><br><span class="line">watch -n 4 uptime</span><br><span class="line"></span><br><span class="line"><span class="comment"># graphic representation of system load average</span></span><br><span class="line"><span class="comment"># 如果此时运行一个tar，会看到loadavg显著变化</span></span><br><span class="line">tload</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -b 使用batch mode 输出所有process情况</span></span><br><span class="line"><span class="comment"># -n2 运行2回合</span></span><br><span class="line">top -b -n2 &gt; file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># run 3 time, gap 5 seconds</span></span><br><span class="line"><span class="comment"># reports information about processes, memory, paging, block IO, traps, disks and cpu activity</span></span><br><span class="line">vmstat 5 3</span><br><span class="line">procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line"> r  b   swpd   free   buff  cache   si   so    bi    bo   <span class="keyword">in</span>   cs us sy id wa st</span><br><span class="line"> 1  0    520  90576   4176 1601932    0    0     4   188   18   19  0  1 93  4  2</span><br><span class="line"> 0  0    520  90460   4176 1601956    0    0     0    46  514  348  0  0 98  2  1</span><br><span class="line"> 0  0    520  88972   4176 1603692    0    0     0   542  707  589  0  1 97  2  1</span><br></pre></td></tr></table></figure>
 <h2 id="sysstat-toolkit"><a href="#sysstat-toolkit" class="headerlink" title="sysstat toolkit"></a>sysstat toolkit</h2><p>The package contains many performance measurement tools.<br>Install <code>sysstat</code> (a bunch of command: <code>iostat</code>, <code>netstat</code>, etc).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sysstat</span><br><span class="line"></span><br><span class="line"><span class="comment"># then check executable</span></span><br><span class="line">rpm -ql | grep <span class="string">"^/usr/bin"</span></span><br><span class="line"></span><br><span class="line">/usr/bin/cifsiostat</span><br><span class="line">/usr/bin/iostat</span><br><span class="line">/usr/bin/mpstat</span><br><span class="line">/usr/bin/nfsiostat-sysstat</span><br><span class="line">/usr/bin/pidstat</span><br><span class="line">/usr/bin/sadf</span><br><span class="line">/usr/bin/sar</span><br><span class="line">/usr/bin/tapestat</span><br></pre></td></tr></table></figure></p>
+<p>The config file for sysstat can be found by:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -q: query</span></span><br><span class="line"><span class="comment"># -c: config file</span></span><br><span class="line">rpm -qc sysstat</span><br></pre></td></tr></table></figure></p>
 <p>在安装后，其实用的cron在背后操作收集数据, configuration is in file <code>cat /etc/sysconfig/sysstat</code>，这里面可以设置记录的周期，默认是28天。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cron config for sysstat</span></span><br><span class="line">cat /etc/cron.d/sysstat </span><br><span class="line"></span><br><span class="line"><span class="comment"># Run system activity accounting tool every 10 minutes</span></span><br><span class="line">*/10 * * * * root /usr/lib64/sa/sa1 1 1</span><br><span class="line"><span class="comment"># 0 * * * * root /usr/lib64/sa/sa1 600 6 &amp;</span></span><br><span class="line"><span class="comment"># Generate a daily summary of process accounting at 23:53</span></span><br><span class="line">53 23 * * * root /usr/lib64/sa/sa2 -A</span><br></pre></td></tr></table></figure></p>
 <p>start and enable:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start sysstat</span><br><span class="line">systemctl <span class="built_in">enable</span> sysstat</span><br></pre></td></tr></table></figure></p>
 <p>来看看sysstat下的工具命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show in mega byte</span></span><br><span class="line"><span class="comment"># run 3 times 5 seconds in between</span></span><br><span class="line">iostat -m 5 3</span><br><span class="line"><span class="comment"># others</span></span><br><span class="line">pidstat</span><br><span class="line">mpstat</span><br></pre></td></tr></table></figure></p>
@@ -666,7 +667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">234</span>
+                    <span class="site-state-item-count">237</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注3个方面: CPU, Memory, Disk. 其实很多时候，alerts or incidents are derived from performance issues, of course we have measure for services themselve">
+  <meta name="description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注4个方面: CPU, Memory, Disk and FileSystem IO, Network. 其实很多时候，alerts or incidents are derived from performance issues, of course we have ins">
 <meta name="keywords" content="linux,performance">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Performance Tuning">
 <meta property="og:url" content="http://yoursite.com/2021/01/23/linux-performance/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注3个方面: CPU, Memory, Disk. 其实很多时候，alerts or incidents are derived from performance issues, of course we have measure for services themselve">
+<meta property="og:description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注4个方面: CPU, Memory, Disk and FileSystem IO, Network. 其实很多时候，alerts or incidents are derived from performance issues, of course we have ins">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-05-31T19:37:48.030Z">
+<meta property="og:updated_time" content="2021-07-18T04:23:35.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Performance Tuning">
-<meta name="twitter:description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注3个方面: CPU, Memory, Disk. 其实很多时候，alerts or incidents are derived from performance issues, of course we have measure for services themselve">
+<meta name="twitter:description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注4个方面: CPU, Memory, Disk and FileSystem IO, Network. 其实很多时候，alerts or incidents are derived from performance issues, of course we have ins">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">234</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">237</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-31 12:37:48" itemprop="dateModified" datetime="2021-05-31T12:37:48-07:00">2021-05-31</time>
+                <time title="Modified: 2021-07-17 21:23:35" itemprop="dateModified" datetime="2021-07-17T21:23:35-07:00">2021-07-17</time>
               
             
           </span>
@@ -508,7 +508,7 @@
       
 
       
-        <p>最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注3个方面: CPU, Memory, Disk. 其实很多时候，alerts or incidents are derived from performance issues, of course we have measure for services themselves. 建议阅读 <code>&lt;&lt;How linux works&gt;&gt;</code>这本书，里面都讲到了。</p>
+        <p>最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注4个方面: CPU, Memory, Disk and FileSystem IO, Network. 其实很多时候，alerts or incidents are derived from performance issues, of course we have insight checks for services themselves. 建议阅读 <code>&lt;&lt;How linux works&gt;&gt;</code>这本书，里面都讲到了。</p>
 <p>此外，极客时间的课程<code>&lt;&lt;Linux性能优化实战&gt;&gt;</code>非常好，受益匪浅。</p>
 <h1 id="From-极客时间"><a href="#From-极客时间" class="headerlink" title="From 极客时间"></a>From 极客时间</h1><p><a href="http://www.brendangregg.com/" target="_blank" rel="noopener">性能领域大师布伦丹·格雷格 personal website</a></p>
 <h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><p>Understand the meaning of <code>uptime</code> command(check man). Load average is <strong>not</strong> CPU usage. 平均负载是指单位时间内，系统处于可运行状态(R)和不可中断状态(D)的平均进程数，也就是平均活跃进程数(可以这么理解，但源码它实际上是活跃进程数的指数衰减平均值)，它和 CPU 使用率并<strong>没有</strong>直接关系. (有时需要对比系统的运行时间，有的故障可能是系统重启导致的)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check CPU number</span></span><br><span class="line">lscpu</span><br><span class="line"><span class="comment"># check load average</span></span><br><span class="line">uptime</span><br><span class="line"><span class="comment"># or using top with 1 to show each cpu</span></span><br><span class="line"><span class="comment"># and load average</span></span><br><span class="line">top</span><br></pre></td></tr></table></figure></p>
@@ -617,6 +617,7 @@
 <p>在实际分析网络性能时，先用 tcpdump 抓包，后用 Wireshark 分析，也是一种常用的方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁止接收从DNS服务器发送过来并包含googleusercontent的包</span></span><br><span class="line">iptables -I INPUT -p udp --sport 53 -m string --string googleusercontent --algo bm -j DROP</span><br><span class="line"></span><br><span class="line"><span class="comment"># packet catch</span></span><br><span class="line">tcpdump -nn udp port 53 or host 35.190.27.188</span><br><span class="line"></span><br><span class="line"><span class="comment"># -n: forbid ptr</span></span><br><span class="line">ping -n -c2 google.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># ptr 查询35.190.27.188的域名</span></span><br><span class="line">nslookup -<span class="built_in">type</span>=PTR 35.190.27.188 8.8.8.8</span><br></pre></td></tr></table></figure></p>
 <p>实际上，根据 IP 地址反查域名、根据端口号反查协议名称，是很多网络工具默认的行为，而这往往会导致性能工具的工作缓慢.</p>
 <p>[ ] <a href="https://www.computerhope.com/unix/dmesg.htm" target="_blank" rel="noopener">Linux ring buffer with dmesg</a><br>[ ] <a href="https://stackoverflow.com/questions/47450231/what-is-the-relationship-of-dma-ring-buffer-and-tx-rx-ring-for-a-network-card" target="_blank" rel="noopener">DMA ring</a><br>[ ] <a href="https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows/" target="_blank" rel="noopener">conntrack module</a><br>[ ] <a href="https://mp.weixin.qq.com/s/VYBs8iqf0HsNg9WAxktzYQ" target="_blank" rel="noopener">Diagnose NAT issue</a><br>[ ] <a href="https://coolshell.cn/about" target="_blank" rel="noopener">酷壳</a><br>[ ] <a href="https://www.tcpdump.org/manpages/tcpdump.1.html" target="_blank" rel="noopener">tcpdump man</a><br>[ ] <a href="https://www.wireshark.org/docs/" target="_blank" rel="noopener">wireshark doc</a><br>[ ] <a href="https://www.quora.com/What-is-the-difference-between-the-edge-trigger-and-the-level-trigger-in-epoll" target="_blank" rel="noopener">level-triggered vs edge-triggered</a><br>[ ] <a href="https://www.zhihu.com/question/22756773" target="_blank" rel="noopener">thundering herd 惊群</a><br>[ ] 不懂的很多。。可以从go network programming开始学习? 网络学习吃力的同学，先去把林沛满老师两本Wireshark分析网络看完<br>[ ] hping3 a network penetration test tool, security auditiing, fw test</p>
+<p>[ ] blog <a href="https://blog.openresty.com.cn/cn/dynamic-tracing/#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E8%BF%BD%E8%B8%AA" target="_blank" rel="noopener">动态追踪技术漫谈</a></p>
 <h1 id="From-LinkedIn-Learning"><a href="#From-LinkedIn-Learning" class="headerlink" title="From LinkedIn Learning"></a>From LinkedIn Learning</h1><p><code>time</code> in shell is a keyword, it is also a command, they have different output.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">yum install -y time</span><br><span class="line"></span><br><span class="line"><span class="comment"># use time yum installed</span></span><br><span class="line"><span class="comment"># also show major and minor page faults</span></span><br><span class="line">$(<span class="built_in">which</span> time) sleep 1</span><br><span class="line">0.00user 0.00system 0:01.00elapsed 0%CPU (0avgtext+0avgdata 644maxresident)k</span><br><span class="line">0inputs+0outputs (0major+205minor)pagefaults 0swaps</span><br><span class="line"></span><br><span class="line"><span class="comment"># use shell keyword time</span></span><br><span class="line">time sleep 1</span><br><span class="line"><span class="comment"># user and sys is cpu time on user and system space</span></span><br><span class="line"><span class="comment"># user + sys could be larger than real time if your program</span></span><br><span class="line"><span class="comment"># uses multi-cores</span></span><br><span class="line">real	0m1.002s</span><br><span class="line">user	0m0.000s</span><br><span class="line">sys	0m0.001s</span><br></pre></td></tr></table></figure></p>
 <p>If you want to test performance of 2 similar commands, put each in a loop and <code>time</code> it as a whole to see the differences, or using <code>strace -c -o /tmp/result.out ./script</code> and <code>head</code> the first several lines of the result to see what system calls cost much.</p>
 <p><code>/proc</code> is mounted at boot time, see mount detail by <code>mount | grep proc</code> command. proc files provide kernel info, printing the contents of the proc file causes the corresponding function in the kernel to be called to produce fresh value. we can also write to proc file to change kernal parameters. <code>/proc</code> is a pseudo filesystem, so <code>ls -l</code> the length may be 0.</p>
@@ -764,7 +765,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">234</span>
+                    <span class="site-state-item-count">237</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

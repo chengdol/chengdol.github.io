@@ -96,24 +96,25 @@
 
 
 
-  <meta name="description" content="AUTO GENERATIONThere are 13 blogs written or updated in last 60 days that need to review:   The Linux Command Line 2nd The Manager’s Path Containerd Runtime Bird View Elastic Stack Quick Start Pod/Con">
+  <meta name="description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的安装工作比较耗时，如果大部分工作都在">
+<meta name="keywords" content="python,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog Review List">
-<meta property="og:url" content="http://yoursite.com/2021/05/31/review-list/index.html">
+<meta property="og:title" content="Docker Base Image Choice">
+<meta property="og:url" content="http://yoursite.com/2021/07/10/docker-base-image/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="AUTO GENERATIONThere are 13 blogs written or updated in last 60 days that need to review:   The Linux Command Line 2nd The Manager’s Path Containerd Runtime Bird View Elastic Stack Quick Start Pod/Con">
+<meta property="og:description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的安装工作比较耗时，如果大部分工作都在">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-05-31T19:38:01.474Z">
+<meta property="og:updated_time" content="2021-07-18T04:27:44.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog Review List">
-<meta name="twitter:description" content="AUTO GENERATIONThere are 13 blogs written or updated in last 60 days that need to review:   The Linux Command Line 2nd The Manager’s Path Containerd Runtime Bird View Elastic Stack Quick Start Pod/Con">
+<meta name="twitter:title" content="Docker Base Image Choice">
+<meta name="twitter:description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的安装工作比较耗时，如果大部分工作都在">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/05/31/review-list/">
+  <link rel="canonical" href="http://yoursite.com/2021/07/10/docker-base-image/">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title>Blog Review List | 海胆阶段's Blog</title>
+  <title>Docker Base Image Choice | 海胆阶段's Blog</title>
   
 
 
@@ -297,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">234</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">237</span></a>
 
   </li>
 
@@ -378,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/31/review-list/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/10/docker-base-image/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -395,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Blog Review List
+          <h1 class="post-title" itemprop="name headline">Docker Base Image Choice
 
               
             
@@ -421,12 +422,46 @@
                 
               
 
-              <time title="Created: 2021-05-31 12:38:01" itemprop="dateCreated datePublished" datetime="2021-05-31T12:38:01-07:00">2021-05-31</time>
+              <time title="Created: 2021-07-10 14:28:00" itemprop="dateCreated datePublished" datetime="2021-07-10T14:28:00-07:00">2021-07-10</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-07-17 21:27:44" itemprop="dateModified" datetime="2021-07-17T21:27:44-07:00">2021-07-17</time>
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -449,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.9k</span>
+                <span title="Symbols count in article">2.2k</span>
               
 
               
@@ -473,21 +508,32 @@
       
 
       
-        <p><strong>AUTO GENERATION</strong><br>There are <strong>13</strong> blogs written or updated in last <strong>60</strong> days that need to review: </p>
+        <p>最近针对目前的pipeline 有2个优化:</p>
+<ol>
+<li>把deployer base image 单独分出来，在这一阶段安装一些general common packages.</li>
+<li>把base image flavor 从Alpine 换到 Debian.</li>
+</ol>
+<p>对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的安装工作比较耗时，如果大部分工作都在common base image中安装好了，剩余的工作量就少很多。</p>
+<p>对于2，以前我没有想到这一点，怎么选择合适的base image 以及为什么需要切换base image呢？首先从Python image的各种类型开始了解(不同的Application 情况不同，这里只讨论Python).</p>
+<p><a href="https://hub.docker.com/_/python" target="_blank" rel="noopener">Python Image Variants</a><br>There are 4 types:</p>
 <ul>
-<li><a href="https://chengdol.github.io/2019/08/15/book-linux-command-line" target="_blank" rel="noopener">The Linux Command Line 2nd</a></li>
-<li><a href="https://chengdol.github.io/2021/05/19/book-manager-path" target="_blank" rel="noopener">The Manager’s Path</a></li>
-<li><a href="https://chengdol.github.io/2021/05/10/containerd-first-glance" target="_blank" rel="noopener">Containerd Runtime</a></li>
-<li><a href="https://chengdol.github.io/2019/12/04/drone-view" target="_blank" rel="noopener">Bird View</a></li>
-<li><a href="https://chengdol.github.io/2020/05/20/elasticsearch-stack" target="_blank" rel="noopener">Elastic Stack Quick Start</a></li>
-<li><a href="https://chengdol.github.io/2021/03/24/k8s-container-mem-cpu" target="_blank" rel="noopener">Pod/Container Memory/CPU Usage</a></li>
-<li><a href="https://chengdol.github.io/2021/05/05/k8s-kubelet-orphan-pod" target="_blank" rel="noopener">Kubelet Complains Orphan Pod</a></li>
-<li><a href="https://chengdol.github.io/2019/11/04/linux-dns" target="_blank" rel="noopener">Linux DNS Exploration</a></li>
-<li><a href="https://chengdol.github.io/2021/01/23/linux-performance" target="_blank" rel="noopener">Linux Performance Tuning</a></li>
-<li><a href="https://chengdol.github.io/2019/05/27/music" target="_blank" rel="noopener">Music in My Life</a></li>
-<li><a href="https://chengdol.github.io/2021/05/03/oncall-vm-reboot" target="_blank" rel="noopener">Cloud VM Instance Reboot</a></li>
-<li><a href="https://chengdol.github.io/2019/02/24/shell-common-code" target="_blank" rel="noopener">Common Code Snippets</a></li>
-<li><a href="https://chengdol.github.io/2019/04/11/softskill-daily-talk" target="_blank" rel="noopener">Daily Talk</a></li>
+<li>python:[version]</li>
+<li>python:[version]-slim</li>
+<li>python:[version]-alpine</li>
+<li>python:[version]-windowsservercore</li>
+</ul>
+<p>前2种都是Debian-based, 只是内部安装的packages 数量不同，slim 只安装了运行Python所需的最小packages数量. 关于Debain release code name, such as buster, stretch. See this <a href="https://wiki.debian.org/DebianReleases" target="_blank" rel="noopener">reference</a>.</p>
+<p>可以查看使用的Python image Dockerfile 了解哪些packages 已经安装，避免重复，比如slim <a href="https://github.com/docker-library/python/blob/master/3.9/buster/slim/Dockerfile" target="_blank" rel="noopener">Dockerfile</a>.</p>
+<p>To write your custom Dockerfile to add additional packages, see <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_blank" rel="noopener">Dockerfile best practices</a>.</p>
+<p>至于为什么对于Python image需要从Alpine 切换到 Debian呢？这篇文章总结到了: <a href="https://pythonspeed.com/articles/alpine-docker-python/" target="_blank" rel="noopener">Using Alpine can make Python Docker builds 50× slower</a>. 针对我们使用的Python image, 我也做了比较，确实debian based image对于PIP 安装要更快，但随着Alpine base的更新以后情况可能会改变。</p>
+<p>这篇文章所在网站的其他内容也很有参考价值:</p>
+<ul>
+<li><a href="https://pythonspeed.com/articles/base-image-python-docker-images/" target="_blank" rel="noopener">Best Docker Base Image for Python Applciation 2021</a></li>
+<li><a href="https://pythonspeed.com/docker/" target="_blank" rel="noopener">Overall articles list for Python production-ready practices</a></li>
+</ul>
+<p>Other good articles:</p>
+<ul>
+<li><a href="http://crunchtools.com/comparison-linux-container-images/" target="_blank" rel="noopener">A Comparison Of Linux Container Images</a>,这篇稳重的table很不错。</li>
 </ul>
 
       
@@ -510,6 +556,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
 
       
       
@@ -528,6 +582,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/16/python-hash/" rel="prev" title="Python Hash">
+                Python Hash <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -590,7 +648,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">234</span>
+                    <span class="site-state-item-count">237</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
