@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Sometimes if the local working branch mess up and you want to sync up with your remote branch, for example origin master, first remove all untracked files:12345# -d: remove untracked dirs# -f: forcegi">
+  <meta name="description" content="Sometimes if the local working branch messes up but you want to sync up with your remote branch, for example origin master, first remove all untracked files:12345# -d: remove untracked dirs# -f: force">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Clean Local Working Branch">
 <meta property="og:url" content="http://yoursite.com/2019/06/28/git-clean-reset/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Sometimes if the local working branch mess up and you want to sync up with your remote branch, for example origin master, first remove all untracked files:12345# -d: remove untracked dirs# -f: forcegi">
+<meta property="og:description" content="Sometimes if the local working branch messes up but you want to sync up with your remote branch, for example origin master, first remove all untracked files:12345# -d: remove untracked dirs# -f: force">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-15T07:36:49.717Z">
+<meta property="og:updated_time" content="2021-09-04T23:00:54.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Clean Local Working Branch">
-<meta name="twitter:description" content="Sometimes if the local working branch mess up and you want to sync up with your remote branch, for example origin master, first remove all untracked files:12345# -d: remove untracked dirs# -f: forcegi">
+<meta name="twitter:description" content="Sometimes if the local working branch messes up but you want to sync up with your remote branch, for example origin master, first remove all untracked files:12345# -d: remove untracked dirs# -f: force">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">138</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">139</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">237</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">239</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-14 23:36:49" itemprop="dateModified" datetime="2020-12-14T23:36:49-08:00">2020-12-14</time>
+                <time title="Modified: 2021-09-04 16:00:54" itemprop="dateModified" datetime="2021-09-04T16:00:54-07:00">2021-09-04</time>
               
             
           </span>
@@ -508,15 +508,15 @@
       
 
       
-        <p>Sometimes if the local working branch mess up and you want to sync up with your remote branch, for example origin master, first remove all untracked files:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -d: remove untracked dirs</span></span><br><span class="line"><span class="comment"># -f: force</span></span><br><span class="line">git clean -df</span><br><span class="line"><span class="comment"># -x: remove ignored files as well</span></span><br><span class="line">git clean -dfx</span><br></pre></td></tr></table></figure></p>
+        <p>Sometimes if the local working branch messes up but you want to sync up with your remote branch, for example origin master, first remove all untracked files:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -d: remove untracked dirs</span></span><br><span class="line"><span class="comment"># -f: force</span></span><br><span class="line">git clean -df</span><br><span class="line"><span class="comment"># -x: remove ignored files as well</span></span><br><span class="line">git clean -dfx</span><br></pre></td></tr></table></figure></p>
 <p>you can have a dry-run first to see what files will be removed<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -n: dry run</span></span><br><span class="line">git clean -dfn</span><br></pre></td></tr></table></figure></p>
-<p>Check the commit logsin current branch:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># verbose</span></span><br><span class="line"><span class="comment"># -n: commit number</span></span><br><span class="line">git <span class="built_in">log</span> -n 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># oneline and color</span></span><br><span class="line"><span class="comment"># color: show color</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --color -n 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># -p: show diff for each commit</span></span><br><span class="line">git <span class="built_in">log</span> -p --oneline --color -n 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># show branch relationship</span></span><br><span class="line"><span class="comment"># --graph: show ascii graph</span></span><br><span class="line">git <span class="built_in">log</span> --graph --oneline --color -n 10</span><br></pre></td></tr></table></figure></p>
+<p>Check the commit logs in current branch:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># verbose</span></span><br><span class="line"><span class="comment"># -n: commit number</span></span><br><span class="line">git <span class="built_in">log</span> -n 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># oneline and color</span></span><br><span class="line"><span class="comment"># color: show color</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --color -n 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># -p: show diff for each commit</span></span><br><span class="line">git <span class="built_in">log</span> -p --oneline --color -n 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># show branch relationship</span></span><br><span class="line"><span class="comment"># --graph: show ascii graph</span></span><br><span class="line">git <span class="built_in">log</span> --graph --oneline --color -n 10</span><br></pre></td></tr></table></figure></p>
 <p>Then properly select one good commit that also appears in remote master branch, run<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;good commit <span class="built_in">hash</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<p>All the commits after the specified good commit hash will be removed, then you can just run the command below to sync up remote master branch.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
+<p>All the commits later than the good commit hash will be removed, then you can just run the command below to sync up remote master branch.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Note that it’s safe to do git reset here because only I use this branch and I want to clean</p>
 </blockquote>
-<p>Sometimes I see people use:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reset to current commit, discard all uncommitted changes</span></span><br><span class="line">git reset --hard HEAD</span><br><span class="line"><span class="comment"># HEAD~1: move to the commit immediately before HEAD</span></span><br><span class="line">git reset --hard HEAD~1</span><br></pre></td></tr></table></figure></p>
+<p>Sometimes I see people use:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reset to current commit, discard all uncommitted changes</span></span><br><span class="line">git reset --hard HEAD</span><br><span class="line"><span class="comment"># HEAD~1: move to the commit right before HEAD</span></span><br><span class="line">git reset --hard HEAD~1</span><br></pre></td></tr></table></figure></p>
 <p><code>HEAD</code> points to your current commit, check by:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get HEAD short hash</span></span><br><span class="line">git rev-parse --short HEAD</span><br></pre></td></tr></table></figure></p>
 <p>so all that <code>git reset --hard HEAD</code> will do is to throw away any uncommitted changes you have and point to your latest commit.</p>
 
@@ -630,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">237</span>
+                    <span class="site-state-item-count">239</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1016,7 +1016,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">138</span>
+                      
+                    
+                    <span class="site-state-item-count">139</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
