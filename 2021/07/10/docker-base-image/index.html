@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从 Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的packages 安装工作比较耗时">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-09-04T23:00:54.575Z">
+<meta property="og:updated_time" content="2021-09-07T05:38:47.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Base Image Choice">
 <meta name="twitter:description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从 Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的packages 安装工作比较耗时">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">239</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">241</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-09-04 16:00:54" itemprop="dateModified" datetime="2021-09-04T16:00:54-07:00">2021-09-04</time>
+                <time title="Modified: 2021-09-06 22:38:47" itemprop="dateModified" datetime="2021-09-06T22:38:47-07:00">2021-09-06</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">8k</span>
+                <span title="Symbols count in article">8.1k</span>
               
 
               
@@ -538,7 +538,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --no-cache: do not rely on last build cache</span></span><br><span class="line"><span class="comment"># -f: specify dockerfile</span></span><br><span class="line"><span class="comment"># context: build context location, usually .(current dir)</span></span><br><span class="line">docker build --no-cache -t helloapp:v2 -f dockerfiles/Dockerfile context</span><br></pre></td></tr></table></figure>
 <p>Pipe in dockerfile, no build context sent:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># no COPY is used, will fail if uses</span></span><br><span class="line"><span class="comment"># -: read Dockerfilr from stdin</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'FROM busybox\nRUN echo "hello world"'</span> | docker build -</span><br><span class="line"><span class="comment"># here document</span></span><br><span class="line">docker build -&lt;&lt;EOF</span><br><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"hello world"</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></p>
 <p>Omitting the build context can be useful in situations where your Dockerfile does not require files to be copied into the image, and improves the build-speed, as no files are sent to the daemon. Or using <code>.dockeringore</code> to exclude files from build context.</p>
-<p><a href="https://docs.docker.com/develop/develop-images/multistage-build/" target="_blank" rel="noopener">Multi-stage builds</a> allow you to drastically reduce the size of your final image, without struggling to reduce the number of intermediate layers and files.</p>
+<p><a href="https://docs.docker.com/develop/develop-images/multistage-build/" target="_blank" rel="noopener">Multi-stage builds</a> allow you to drastically reduce the size of your final image, without struggling to reduce the number of intermediate layers and files. For example, the Elasticserach curator <a href="https://github.com/elastic/curator/blob/master/Dockerfile" target="_blank" rel="noopener">Dockerfile</a>.</p>
 <p>To reduce complexity, dependencies, file sizes, and build times, avoid installing extra or unnecessary packages just because they might be “nice to have.” For example, you don’t need to include a text editor in a database image.</p>
 <p>Only the instructions <code>RUN</code>, <code>COPY</code>, <code>ADD</code> create layers. Other instructions create temporary intermediate images, and do not increase the size of the build.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Docker executes these commands using the /bin/sh -c interpreter</span></span><br><span class="line">RUN <span class="built_in">set</span> -o pipefail &amp;&amp; wget -O - https://some.site | wc -l &gt; /number</span><br><span class="line"><span class="comment"># or explicitly specify shell to support -o pipefail</span></span><br><span class="line">RUN [<span class="string">"/bin/bash"</span>, <span class="string">"-c"</span>, <span class="string">"set -o pipefail &amp;&amp; wget -O - https://some.site | wc -l &gt; /number"</span>]</span><br></pre></td></tr></table></figure>
@@ -673,7 +673,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">239</span>
+                    <span class="site-state-item-count">241</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
