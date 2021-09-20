@@ -96,23 +96,25 @@
 
 
 
-  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
-<meta property="og:type" content="website">
-<meta property="og:title" content="海胆阶段&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/Prometheus/index.html">
+  <meta name="description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
+<meta name="keywords" content="grafana">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grafana Quick Start">
+<meta property="og:url" content="http://yoursite.com/2020/09/19/monitor-grafana/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-09-20T05:10:36.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="海胆阶段&#39;s Blog">
-<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta name="twitter:title" content="Grafana Quick Start">
+<meta name="twitter:description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Prometheus/">
+  <link rel="canonical" href="http://yoursite.com/2020/09/19/monitor-grafana/">
 
 
 
@@ -122,7 +124,7 @@
   };
 </script>
 
-  <title>Category: Prometheus | 海胆阶段's Blog</title>
+  <title>Grafana Quick Start | 海胆阶段's Blog</title>
   
 
 
@@ -170,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -258,14 +260,14 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">139</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
 
   </li>
         
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -296,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">241</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">243</span></a>
 
   </li>
 
@@ -315,28 +317,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -383,57 +363,242 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Prometheus<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/monitor-grafana/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2020/05/18/monitor-prometheus/" itemprop="url">
-            
-              <span itemprop="name">Prometheus Quick Start</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Grafana Quick Start
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-05-18T17:01:32-07:00" content="2020-05-18">
-          05-18
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-09-19 19:33:32" itemprop="dateCreated datePublished" datetime="2020-09-19T19:33:32-07:00">2020-09-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-09-19 22:10:36" itemprop="dateModified" datetime="2021-09-19T22:10:36-07:00">2021-09-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Monitor/" itemprop="url" rel="index"><span itemprop="name">Monitor</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Docker-Compose-Demo"><a href="#Docker-Compose-Demo" class="headerlink" title="Docker Compose Demo"></a>Docker Compose Demo</h1><p>Github repo:<br><a href="https://github.com/chengdol/InfraTree/tree/master/docker-monitoring" target="_blank" rel="noopener">https://github.com/chengdol/InfraTree/tree/master/docker-monitoring</a></p>
+<p>The steps are in README.</p>
+<h1 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h1><p>Grafana document:<br><a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/</a></p>
+<p>Grafana docker image:<br><a href="https://grafana.com/docs/grafana/latest/installation/docker/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/installation/docker/</a></p>
+<ul>
+<li>Running in container</li>
+<li>Connecting to Prometheus</li>
+<li>Visualizing query results</li>
+<li>Packaging the dashboard</li>
+</ul>
+<p>Grafana support querying time-series database like <strong>prometheus</strong> and influxdb, also support <strong>Elasticsearch</strong> logging &amp; analytics database.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## pull image alpine based</span></span><br><span class="line">docker pull grafana/grafana:7.0.0</span><br><span class="line">docker run --detach --name=grafana --publish-all grafana/grafana:7.0.0</span><br></pre></td></tr></table></figure>
+<p>The default login is <code>admin/admin</code>. After login, go to set <code>Data Sources</code>, select prometheus and specify the url, then import data in dashboard.</p>
+<h1 id="Query-Example"><a href="#Query-Example" class="headerlink" title="Query Example"></a>Query Example</h1><p>One query example for system load average dashboard:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $&#123;interval&#125;, $load, $servicem, $env: variables can be seen from URI</span></span><br><span class="line"><span class="comment"># or in dropdown list at top</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># $1 is to match first group in regex (.+)</span></span><br><span class="line">label_replace(avg_over_time(node_load<span class="variable">$&#123;load&#125;</span>&#123;instance=~<span class="string">"^.+-<span class="variable">$&#123;service:regex&#125;</span>-[0-9]+$"</span>&#125;[<span class="variable">$&#123;interval&#125;</span>]), <span class="string">"name"</span>, <span class="string">"<span class="variable">$1</span>"</span>, <span class="string">"instance"</span>, <span class="string">"<span class="variable">$env</span>-(.+)"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Above varaibles are Query type:<br><a href="https://grafana.com/docs/grafana/latest/variables/variable-types/add-query-variable/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/variables/variable-types/add-query-variable/</a></p>
+<h1 id="Readings"><a href="#Readings" class="headerlink" title="Readings"></a>Readings</h1><ul>
+<li><a href="https://logz.io/blog/grafana-vs-kibana/" target="_blank" rel="noopener">Grafana vs. Kibana: The Key Differences to Know</a><br>The key difference between the two visualization tools stems from their purpose. Grafana is designed for analyzing and visualizing metrics such as system CPU, memory, disk and I/O utilization. Grafana does not allow full-text data querying. Kibana, on the other hand, runs on top of Elasticsearch and is used primarily for analyzing log messages.</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/grafana/" rel="tag"># grafana</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/15/docker-smart-use/" rel="next" title="Docker Smart Use">
+                <i class="fa fa-chevron-left"></i> Docker Smart Use
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/20/mac-chrome-plugins/" rel="prev" title="Useful Chrome Extensions">
+                Useful Chrome Extensions <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -454,8 +619,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -472,7 +646,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">241</span>
+                    <span class="site-state-item-count">243</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -860,7 +1034,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">139</span>
+                      
+                    
+                    <span class="site-state-item-count">140</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -885,6 +1061,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Compose-Demo"><span class="nav-number">1.</span> <span class="nav-text">Docker Compose Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Grafana"><span class="nav-number">2.</span> <span class="nav-text">Grafana</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Query-Example"><span class="nav-number">3.</span> <span class="nav-text">Query Example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Readings"><span class="nav-number">4.</span> <span class="nav-text">Readings</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1016,6 +1209,10 @@
   
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
