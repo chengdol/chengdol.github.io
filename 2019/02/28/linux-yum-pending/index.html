@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transactions from? Sometimes th">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T16:51:10.000Z">
+<meta property="og:updated_time" content="2021-10-06T00:56:32.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yum Pending Transaction">
 <meta name="twitter:description" content="I need to clean yum pending or unfinished transactions before our installer start to work, otherwise the yum update or yum install may fail. But where are these pending transactions from? Sometimes th">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-10 09:51:10" itemprop="dateModified" datetime="2019-06-10T09:51:10-07:00">2019-06-10</time>
+                <time title="Modified: 2021-10-05 17:56:32" itemprop="dateModified" datetime="2021-10-05T17:56:32-07:00">2021-10-05</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.6k</span>
+                <span title="Symbols count in article">3.6k</span>
               
 
               
@@ -515,6 +515,7 @@
 <p>If it finds more than one unfinished transaction it will attempt to complete the most recent one first. You can run it more than once to clean up all unfinished transactions.</p>
 <p>Then just issue the following command to do a cleanup:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-complete-transaction --cleanup-only</span><br></pre></td></tr></table></figure></p>
 <p>You can also check how many pending transactions exist:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/lib/yum -maxdepth 1 -<span class="built_in">type</span> f -name <span class="string">'transaction-all*'</span> -not -name <span class="string">'*disabled'</span> -<span class="built_in">printf</span> . | wc -c</span><br></pre></td></tr></table></figure></p>
+<p>In Ansible playbookk add task:<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ensure existence of yum-utils first</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">clean</span> <span class="string">yum</span> <span class="string">pending</span> <span class="string">transactions</span></span><br><span class="line"><span class="attr">  command:</span> <span class="string">yum-complete-transaction</span> <span class="bullet">--cleanup-only</span></span><br><span class="line"><span class="attr">  become:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  args:</span></span><br><span class="line"><span class="attr">    warn:</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>

@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Just a kindly reminder that Python built-in hash() uses random seed in some specific version, that leads to different hash value from the same input in different sessions. See questions and comments h">
-<meta name="keywords" content="python">
+  <meta name="description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
+<meta name="keywords" content="grafana">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python Hash">
-<meta property="og:url" content="http://yoursite.com/2021/07/16/python-hash/index.html">
+<meta property="og:title" content="Grafana Quick Start">
+<meta property="og:url" content="http://yoursite.com/2021/09/19/monitor-grafana/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Just a kindly reminder that Python built-in hash() uses random seed in some specific version, that leads to different hash value from the same input in different sessions. See questions and comments h">
+<meta property="og:description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-07-18T04:23:35.803Z">
+<meta property="og:updated_time" content="2021-10-06T00:56:32.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python Hash">
-<meta name="twitter:description" content="Just a kindly reminder that Python built-in hash() uses random seed in some specific version, that leads to different hash value from the same input in different sessions. See questions and comments h">
+<meta name="twitter:title" content="Grafana Quick Start">
+<meta name="twitter:description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/07/16/python-hash/">
+  <link rel="canonical" href="http://yoursite.com/2021/09/19/monitor-grafana/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Python Hash | 海胆阶段's Blog</title>
+  <title>Grafana Quick Start | 海胆阶段's Blog</title>
   
 
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/16/python-hash/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/19/monitor-grafana/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python Hash
+          <h1 class="post-title" itemprop="name headline">Grafana Quick Start
 
               
             
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2021-07-16 17:27:58" itemprop="dateCreated datePublished" datetime="2021-07-16T17:27:58-07:00">2021-07-16</time>
+              <time title="Created: 2021-09-19 19:33:32" itemprop="dateCreated datePublished" datetime="2021-09-19T19:33:32-07:00">2021-09-19</time>
             
 
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-07-17 21:23:35" itemprop="dateModified" datetime="2021-07-17T21:23:35-07:00">2021-07-17</time>
+                <time title="Modified: 2021-10-05 17:56:32" itemprop="dateModified" datetime="2021-10-05T17:56:32-07:00">2021-10-05</time>
               
             
           </span>
@@ -456,7 +456,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Monitor/" itemprop="url" rel="index"><span itemprop="name">Monitor</span></a></span>
 
                 
                 
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.2k</span>
+                <span title="Symbols count in article">4k</span>
               
 
               
@@ -508,9 +508,24 @@
       
 
       
-        <p>Just a kindly reminder that Python built-in <code>hash()</code> uses random seed in some specific version, that leads to different hash value from the same input in different sessions.</p>
-<p>See questions and comments <a href="https://stackoverflow.com/questions/27522626/hash-function-in-python-3-3-returns-different-results-between-sessions" target="_blank" rel="noopener">here</a>.</p>
-<p>You can use <code>export PYTHONHASHSEED=1</code> or fixed integer seed to avoid the randomness, or using <code>import hashlib</code> module, for example:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">hash_output = hashlib.md5(<span class="string">"input"</span>.encode()).hexdigest()</span><br><span class="line"><span class="comment"># or usign differet algorithm</span></span><br><span class="line">hash_output = hashlib.sha256(<span class="string">"input"</span>.encode()).hexdigest()</span><br></pre></td></tr></table></figure></p>
+        <h1 id="Docker-Compose-Demo"><a href="#Docker-Compose-Demo" class="headerlink" title="Docker Compose Demo"></a>Docker Compose Demo</h1><p>Github repo:<br><a href="https://github.com/chengdol/InfraTree/tree/master/docker-monitoring" target="_blank" rel="noopener">https://github.com/chengdol/InfraTree/tree/master/docker-monitoring</a></p>
+<p>The steps are in README.</p>
+<h1 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h1><p>Grafana document:<br><a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/</a></p>
+<p>Grafana docker image:<br><a href="https://grafana.com/docs/grafana/latest/installation/docker/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/installation/docker/</a></p>
+<ul>
+<li>Running in container</li>
+<li>Connecting to Prometheus</li>
+<li>Visualizing query results</li>
+<li>Packaging the dashboard</li>
+</ul>
+<p>Grafana support querying time-series database like <strong>prometheus</strong> and influxdb, also support <strong>Elasticsearch</strong> logging &amp; analytics database.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## pull image alpine based</span></span><br><span class="line">docker pull grafana/grafana:7.0.0</span><br><span class="line">docker run --detach --name=grafana --publish-all grafana/grafana:7.0.0</span><br></pre></td></tr></table></figure>
+<p>The default login is <code>admin/admin</code>. After login, go to set <code>Data Sources</code>, select prometheus and specify the url, then import data in dashboard.</p>
+<h1 id="Query-Example"><a href="#Query-Example" class="headerlink" title="Query Example"></a>Query Example</h1><p>One query example for system load average dashboard:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># $&#123;interval&#125;, $load, $servicem, $env: variables can be seen from URI</span></span><br><span class="line"><span class="comment"># or in dropdown list at top</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># $1 is to match first group in regex (.+)</span></span><br><span class="line">label_replace(avg_over_time(node_load<span class="variable">$&#123;load&#125;</span>&#123;instance=~<span class="string">"^.+-<span class="variable">$&#123;service:regex&#125;</span>-[0-9]+$"</span>&#125;[<span class="variable">$&#123;interval&#125;</span>]), <span class="string">"name"</span>, <span class="string">"<span class="variable">$1</span>"</span>, <span class="string">"instance"</span>, <span class="string">"<span class="variable">$env</span>-(.+)"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Above varaibles are Query type:<br><a href="https://grafana.com/docs/grafana/latest/variables/variable-types/add-query-variable/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/variables/variable-types/add-query-variable/</a></p>
+<h1 id="Readings"><a href="#Readings" class="headerlink" title="Readings"></a>Readings</h1><ul>
+<li><a href="https://logz.io/blog/grafana-vs-kibana/" target="_blank" rel="noopener">Grafana vs. Kibana: The Key Differences to Know</a><br>The key difference between the two visualization tools stems from their purpose. Grafana is designed for analyzing and visualizing metrics such as system CPU, memory, disk and I/O utilization. Grafana does not allow full-text data querying. Kibana, on the other hand, runs on top of Elasticsearch and is used primarily for analyzing log messages.</li>
+</ul>
 
       
     </div>
@@ -534,7 +549,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/grafana/" rel="tag"># grafana</a>
           
         </div>
       
@@ -547,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/05/19/book-manager-path/" rel="next" title="The Manager's Path">
-                <i class="fa fa-chevron-left"></i> The Manager's Path
+              <a href="/2021/09/19/k8s-container-mem-cpu/" rel="next" title="Pod/Container Memory/CPU Usage">
+                <i class="fa fa-chevron-left"></i> Pod/Container Memory/CPU Usage
               </a>
             
           </div>
@@ -557,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/07/17/linux-network-tunable/" rel="prev" title="Linux Networking Tunable">
-                Linux Networking Tunable <i class="fa fa-chevron-right"></i>
+              <a href="/2021/09/24/docker-base-image/" rel="prev" title="Docker Base Image Choice">
+                Docker Base Image Choice <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -604,8 +619,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1037,6 +1061,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Compose-Demo"><span class="nav-number">1.</span> <span class="nav-text">Docker Compose Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Grafana"><span class="nav-number">2.</span> <span class="nav-text">Grafana</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Query-Example"><span class="nav-number">3.</span> <span class="nav-text">Query Example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Readings"><span class="nav-number">4.</span> <span class="nav-text">Readings</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

@@ -105,7 +105,7 @@
 <meta property="og:description" content="//TODO:[ ] see reading section[ ] series https://blog.freshtracks.io/a-deep-dive-into-kubernetes-metrics-b190cc97f0f6[ ] prom config with service discovry, for example consul Docker Compose DemoGithub">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WrobLras0BsfiVB_RphmprnA6-6Dm83U">
-<meta property="og:updated_time" content="2021-09-20T05:10:36.371Z">
+<meta property="og:updated_time" content="2021-10-06T00:56:32.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus Quick Start">
 <meta name="twitter:description" content="//TODO:[ ] see reading section[ ] series https://blog.freshtracks.io/a-deep-dive-into-kubernetes-metrics-b190cc97f0f6[ ] prom config with service discovry, for example consul Docker Compose DemoGithub">
@@ -424,12 +424,24 @@
                 
               
 
-              <time title="Created: 2021-09-19 14:01:32 / Modified: 22:10:36" itemprop="dateCreated datePublished" datetime="2021-09-19T14:01:32-07:00">2021-09-19</time>
+              <time title="Created: 2021-09-19 14:01:32" itemprop="dateCreated datePublished" datetime="2021-09-19T14:01:32-07:00">2021-09-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2021-10-05 17:56:32" itemprop="dateModified" datetime="2021-10-05T17:56:32-07:00">2021-10-05</time>
               
             
           </span>
@@ -474,7 +486,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7k</span>
+                <span title="Symbols count in article">7.1k</span>
               
 
               
@@ -529,7 +541,7 @@
 </code></pre>
 <p>Run identical Prometheus servers on two or more separate machines. Identical alerts will be deduplicated by the Alertmanager.</p>
 <p>For high availability of the Alertmanager, you can run multiple instances in a Mesh cluster and configure the Prometheus servers to send notifications to each of them.</p>
-<p>To silence one alert, using <strong>New Silence</strong> and in matcher use <code>alertname</code> as key and alertname vaule as value. If silence multiple alerts, using regex. Preview silence can show you how many alerts are affected.</p>
+<p>To silence one alert, using <strong>New Silence</strong> and in matcher use <code>alertname</code> as key and alertname vaule as value(can add more key-value to filter more). If silence multiple alerts, using regex. Preview silence can show you how many current active alerts are affected, or you can just silence it so no new alert will come.</p>
 <h1 id="Integrated-with-K8s"><a href="#Integrated-with-K8s" class="headerlink" title="Integrated with K8s"></a>Integrated with K8s</h1><p><a href="https://www.youtube.com/watch?v=bErGEHf6GCc&amp;list=PLpbcUe4chE7-HuslXKj1MB10ncorfzEGa" target="_blank" rel="noopener">https://www.youtube.com/watch?v=bErGEHf6GCc&amp;list=PLpbcUe4chE7-HuslXKj1MB10ncorfzEGa</a><br><a href="https://www.youtube.com/watch?v=CmPdyvgmw-A" target="_blank" rel="noopener">https://www.youtube.com/watch?v=CmPdyvgmw-A</a><br><a href="https://www.youtube.com/watch?v=h4Sl21AKiDg" target="_blank" rel="noopener">https://www.youtube.com/watch?v=h4Sl21AKiDg</a></p>
 <p><a href="https://www.youtube.com/watch?v=5o37CGlNLr8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=5o37CGlNLr8</a><br><a href="https://www.youtube.com/watch?v=LQpmeb7idt8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=LQpmeb7idt8</a></p>
 <h1 id="Readings"><a href="#Readings" class="headerlink" title="Readings"></a>Readings</h1><ul>
