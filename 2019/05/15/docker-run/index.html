@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-02T23:20:37.000Z">
+<meta property="og:updated_time" content="2021-10-11T06:12:32.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Run Reference">
 <meta name="twitter:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">139</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">243</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">244</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-02 15:20:37" itemprop="dateModified" datetime="2019-12-02T15:20:37-08:00">2019-12-02</time>
+                <time title="Modified: 2021-10-10 23:12:32" itemprop="dateModified" datetime="2021-10-10T23:12:32-07:00">2021-10-10</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">13k</span>
+                <span title="Symbols count in article">14k</span>
               
 
               
@@ -510,9 +510,9 @@
       
         <p>This is a summary from <a href="https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime" target="_blank" rel="noopener">Docker run reference</a></p>
 <p>Docker runs processes in isolated containers. <strong>A container is a process</strong> which runs on a host. The host may be local or remote. When an operator executes <code>docker run</code>, the container process that runs is isolated in that it has its own file system, its own networking, and its own isolated process tree separate from the host.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
-<p>The <code>docker run</code> command can override nearly all the defaults set by the Docker runtime itself.</p>
-<p>Let’s first see the <code>docker run</code> command I encountered:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">      --name=$&#123;DB2_XMETA_HOST&#125; \</span><br><span class="line">      --restart=always \</span><br><span class="line">      --privileged=false \</span><br><span class="line">      --cap-add=SYS_NICE --cap-add=IPC_OWNER --cap-add=SETFCAP  \</span><br><span class="line">      --user 1000 \</span><br><span class="line">      -e MY_POD_NAMESPACE=$&#123;MY_POD_NAMESPACE&#125; \</span><br><span class="line">      -e SHARED_VOL=$&#123;SHARED_REPOS_VOLPATH&#125; \</span><br><span class="line">      --hostname=$&#123;DB2_XMETA_HOST&#125; \</span><br><span class="line">      -p $&#123;DB2_XMETA_PORT&#125;:$&#123;DB2_XMETA_PORT&#125; \</span><br><span class="line">      -v $&#123;SHARED_VOL&#125;:$&#123;SHARED_VOL&#125; \</span><br><span class="line">      is-xmetadocker:11.7.1 \</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+<p>The <code>docker run</code> command can override nearly all the defaults set from docker image.</p>
+<p>Let’s first see the <code>docker run</code> command I encountered:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">--name=<span class="variable">$&#123;DB2_XMETA_HOST&#125;</span> \</span><br><span class="line">--restart=always \</span><br><span class="line">--privileged=<span class="literal">false</span> \</span><br><span class="line">--<span class="built_in">cap</span>-add=SYS_NICE \</span><br><span class="line">--<span class="built_in">cap</span>-add=IPC_OWNER \</span><br><span class="line">--<span class="built_in">cap</span>-add=SETFCAP  \</span><br><span class="line">--user 1000 \</span><br><span class="line">-e MY_POD_NAMESPACE=<span class="variable">$&#123;MY_POD_NAMESPACE&#125;</span> \</span><br><span class="line">-e SHARED_VOL=<span class="variable">$&#123;SHARED_REPOS_VOLPATH&#125;</span> \</span><br><span class="line">--hostname=<span class="variable">$&#123;DB2_XMETA_HOST&#125;</span> \</span><br><span class="line">-p <span class="variable">$&#123;DB2_XMETA_PORT&#125;</span>:<span class="variable">$&#123;DB2_XMETA_PORT&#125;</span> \</span><br><span class="line">-v <span class="variable">$&#123;SHARED_VOL&#125;</span>:<span class="variable">$&#123;SHARED_VOL&#125;</span> \</span><br><span class="line">is-xmetadocker:11.7.1 \</span><br></pre></td></tr></table></figure></p>
 <h2 id="Detched-d"><a href="#Detched-d" class="headerlink" title="Detched [-d]"></a>Detched [-d]</h2><p>To start a container in detached mode, you use <code>-d=true</code> or just <code>-d</code> option. By design, containers started in detached mode exit when the root process used to run the container exits, unless you also specify the <code>--rm</code> option. If you use <code>-d</code> with <code>--rm</code>, the container is removed when it exits or when the daemon exits, whichever happens first.</p>
 <blockquote>
 <p>This is why we specify <code>tail -f /dev/null</code> at end of start script in container.</p>
@@ -537,7 +537,7 @@
 </ul>
 <p>If not specified, daemon default is used, which can either be <code>private</code> or <code>shareable</code>, depending on the daemon version and configuration.</p>
 <p>If these types of applications are broken into multiple containers, you might need to share the IPC mechanisms of the containers, using “shareable” mode for the main container, and <code>container:&lt;donor-name-or-ID&gt;</code> for other containers.</p>
-<h2 id="Network-settings"><a href="#Network-settings" class="headerlink" title="Network settings"></a>Network settings</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--dns=[]           : Set custom dns servers for the container</span><br><span class="line">--network=&quot;bridge&quot; : Connect a container to a network</span><br><span class="line">                      &apos;bridge&apos;: create a network stack on the default Docker bridge</span><br><span class="line">                      &apos;none&apos;: no networking</span><br><span class="line">                      &apos;container:&lt;name|id&gt;&apos;: reuse another container&apos;s network stack</span><br><span class="line">                      &apos;host&apos;: use the Docker host network stack</span><br><span class="line">                      &apos;&lt;network-name&gt;|&lt;network-id&gt;&apos;: connect to a user-defined network</span><br><span class="line">--network-alias=[] : Add network-scoped alias for the container</span><br><span class="line">--add-host=&quot;&quot;      : Add a line to /etc/hosts (host:IP)</span><br><span class="line">--mac-address=&quot;&quot;   : Sets the container&apos;s Ethernet device&apos;s MAC address</span><br><span class="line">--ip=&quot;&quot;            : Sets the container&apos;s Ethernet device&apos;s IPv4 address</span><br><span class="line">--ip6=&quot;&quot;           : Sets the container&apos;s Ethernet device&apos;s IPv6 address</span><br><span class="line">--link-local-ip=[] : Sets one or more container&apos;s Ethernet device&apos;s link local IPv4/IPv6 addresses</span><br></pre></td></tr></table></figure>
+<h2 id="Network-settings"><a href="#Network-settings" class="headerlink" title="Network settings"></a>Network settings</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--dns=[]           : Set custom dns servers <span class="keyword">for</span> the container</span><br><span class="line">--network=<span class="string">"bridge"</span> : Connect a container to a network</span><br><span class="line">                      <span class="string">'bridge'</span>: create a network stack on the default Docker bridge</span><br><span class="line">                      <span class="string">'none'</span>: no networking</span><br><span class="line">                      <span class="comment"># set this to join other's network</span></span><br><span class="line">                      <span class="string">'container:&lt;name|id&gt;'</span>: reuse another container<span class="string">'s network stack</span></span><br><span class="line"><span class="string">                      '</span>host<span class="string">': use the Docker host network stack</span></span><br><span class="line"><span class="string">                      '</span>&lt;network-name&gt;|&lt;network-id&gt;<span class="string">': connect to a user-defined network</span></span><br><span class="line"><span class="string">--network-alias=[] : Add network-scoped alias for the container</span></span><br><span class="line"><span class="string">--add-host=""      : Add a line to /etc/hosts (host:IP)</span></span><br><span class="line"><span class="string">--mac-address=""   : Sets the container'</span>s Ethernet device<span class="string">'s MAC address</span></span><br><span class="line"><span class="string">--ip=""            : Sets the container'</span>s Ethernet device<span class="string">'s IPv4 address</span></span><br><span class="line"><span class="string">--ip6=""           : Sets the container'</span>s Ethernet device<span class="string">'s IPv6 address</span></span><br><span class="line"><span class="string">--link-local-ip=[] : Sets one or more container'</span>s Ethernet device<span class="string">'s link local IPv4/IPv6 addresses</span></span><br></pre></td></tr></table></figure>
 <p>I meet <code>--add-host</code> flag in service docker:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;SERVICES_HOST_IP&#125; \</span><br></pre></td></tr></table></figure></p>
 <h2 id="Restart-policies-restart"><a href="#Restart-policies-restart" class="headerlink" title="Restart policies (--restart)"></a>Restart policies (<code>--restart</code>)</h2><p>Using the <code>--restart</code> flag on Docker run you can specify a restart policy for how a container should or should not be restarted on exit.</p>
 <p>When a restart policy is active on a container, it will be shown as either <code>Up</code> or <code>Restarting</code> in <code>docker ps</code>.</p>
@@ -674,7 +674,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">243</span>
+                    <span class="site-state-item-count">244</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -769,9 +769,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1062,9 +1060,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-count">139</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
