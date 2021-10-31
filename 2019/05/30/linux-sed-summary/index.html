@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Normally we use a interactive text editor, like vim. The command sed is one of the most commonly used command line editor in Linux world. sed stands for the stream editor, it uses the roles supplied t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-10T23:55:25.362Z">
+<meta property="og:updated_time" content="2021-10-31T01:42:09.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sed Command Daily Work Summary">
 <meta name="twitter:description" content="Normally we use a interactive text editor, like vim. The command sed is one of the most commonly used command line editor in Linux world. sed stands for the stream editor, it uses the roles supplied t">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">139</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">244</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">246</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-10 15:55:25" itemprop="dateModified" datetime="2020-12-10T15:55:25-08:00">2020-12-10</time>
+                <time title="Modified: 2021-10-30 18:42:09" itemprop="dateModified" datetime="2021-10-30T18:42:09-07:00">2021-10-30</time>
               
             
           </span>
@@ -545,7 +545,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using Java print hello world and hello tree.</span><br><span class="line">Using Java print hi world and hi tree.</span><br><span class="line">Using Java print hi world and hi tree.</span><br><span class="line">Using Java print hello world and hello tree.</span><br></pre></td></tr></table></figure>
 <p>can also use text pattern to filter lines, this will apply one line contains <code>print</code> word.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">'/print/s#and#or#'</span> sedtxt</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Using Java print hello world or hello tree.</span><br><span class="line">Using Java print hello world or hello tree.</span><br><span class="line">Using Java print hello world or hello tree.</span><br><span class="line">Using Java print hello world or hello tree.</span><br></pre></td></tr></table></figure>
-<h2 id="Deletion"><a href="#Deletion" class="headerlink" title="Deletion"></a>Deletion</h2><p>I have a text file <code>seddel</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The 1st line is 1</span><br><span class="line">The 2rd line is 2</span><br><span class="line">The 3rd line is 3</span><br><span class="line">The 4th line is 4</span><br></pre></td></tr></table></figure></p>
+<h2 id="Deletion"><a href="#Deletion" class="headerlink" title="Deletion"></a>Deletion</h2><p><a href="https://stackoverflow.com/questions/38497896/delete-4-consecutive-lines-after-a-match-in-a-file" target="_blank" rel="noopener">Delete consecutive lines after match</a></p>
+<p>I have a text file <code>seddel</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The 1st line is 1</span><br><span class="line">The 2rd line is 2</span><br><span class="line">The 3rd line is 3</span><br><span class="line">The 4th line is 4</span><br></pre></td></tr></table></figure></p>
 <p>Delete line 2 to end:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">'2,$d'</span> seddel</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The 1st line is 1</span><br></pre></td></tr></table></figure>
 <p>can also use pattern matching, delete <code>3rd</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">'/3rd/d'</span> seddel</span><br></pre></td></tr></table></figure></p>
@@ -696,7 +697,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">244</span>
+                    <span class="site-state-item-count">246</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1082,7 +1083,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">139</span>
+                      
+                    
+                    <span class="site-state-item-count">140</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
