@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="中文|English">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,8 +103,8 @@
 <meta property="og:url" content="http://yoursite.com/2021/01/23/linux-performance/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注4个方面: CPU, Memory, Disk and FileSystem IO, Network. 其实很多时候，alerts or incidents are derived from performance issues, of course we have ins">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-10-11T06:12:32.077Z">
+<meta property="og:locale" content="中文|English">
+<meta property="og:updated_time" content="2021-12-27T06:42:53.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Performance Tuning">
 <meta name="twitter:description" content="最近一周在on-call，这里整理一下Linkedin Learn: Linux performance的内容. 这里主要关注4个方面: CPU, Memory, Disk and FileSystem IO, Network. 其实很多时候，alerts or incidents are derived from performance issues, of course we have ins">
@@ -165,7 +165,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="中文|English">
 
   
   
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">246</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-10-10 23:12:32" itemprop="dateModified" datetime="2021-10-10T23:12:32-07:00">2021-10-10</time>
+                <time title="Modified: 2021-12-26 22:42:53" itemprop="dateModified" datetime="2021-12-26T22:42:53-08:00">2021-12-26</time>
               
             
           </span>
@@ -570,7 +570,7 @@
 <p>不过要注意，Buffers 和 Cache 都是操作系统来管理的，应用程序并不能直接控制这些缓存的内容和生命周期。所以，在应用程序开发中，一般要用专门的缓存组件，来进一步提升性能。比如，程序内部可以使用堆或者栈明确声明内存空间，来存储需要缓存的数据。再或者，使用 Redis 这类外部缓存服务，优化数据的访问效率。</p>
 <p><code>dd</code>命令也支持直接IO的 有选项oflag和iflag 所以dd也可以用来绕过cache buff做测试, 注意直接IO和裸IO 不一样，直接IO是跳过Buffer，裸IO是跳过文件系统(还是有buffer的)。</p>
 <p>还要注意的是，就算是第一次读，也会有缓存命中，因为系统会预读一部分到内存中，直接IO虽然跳过了buffer, 但cache hit rate is 100%，根据缓存命中次数(每次命中就是one page 4K size)，计算出在当时时间间隔中的命中大小: HITS <em> 1024 </em> 4K, 在除以时间间隔，就可知速率K/s.</p>
-<p><code>dd</code> command <code>bs(block size)</code> option <a href="https://unix.stackexchange.com/questions/9432/is-there-a-way-to-determine-the-optimal-value-for-the-bs-parameter-to-dd" target="_blank" rel="noopener">value</a>, 4K is fine, for large storage hard drive, 1M is good to go.</p>
+<p><code>dd</code> command <code>bs(block size)</code> option <a href="https://unix.stackexchange.com/questions/9432/is-there-a-way-to-determine-the-optimal-value-for-the-bs-parameter-to-dd" target="_blank" rel="noopener">value</a>, 4K is fine, for large storage hard drive, 1M is good to go, <code>bs</code> vaule deponds on your RAM size, it is the size that processed of each operation.</p>
 <p>Memory leak, 理解内存的分配与回收，哪些虚拟内存段容易发生泄漏问题: heap and 内存映射段(包括动态链接库和共享内存，其中共享内存由程序动态分配和管理)。所以，如果程序在分配后忘了回收，就会导致跟堆内存类似的泄漏问题。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -r: mem statistic</span></span><br><span class="line"><span class="comment"># -S: swap statistic</span></span><br><span class="line"><span class="comment"># 3: refresh rate second</span></span><br><span class="line">sar -r -S 3</span><br><span class="line"><span class="comment"># in bcc-tools with cachestat and cachetop</span></span><br><span class="line">memleak -a -p $(pidof app_name)</span><br></pre></td></tr></table></figure></p>
 <p>memleak的输出结果中addr 表示分配的地址，然后后面会给出哪个stack请求的分配，列出了相关调用。<br>还有一个常见的内存debug tool: <code>valgrind</code>.</p>
 <p>文件页(file-backed page) 和 匿名页(anonymous page)的区别和回收.</p>
@@ -765,7 +765,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">246</span>
+                    <span class="site-state-item-count">250</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1153,7 +1153,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">140</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1221,7 +1225,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">1.2m</span>
   
 
   

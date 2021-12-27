@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="中文|English">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses /ibm/unicorn_rsa as the key to ssh, we can generate a new k">
+  <meta name="description" content="More information about ssh and scp can refer this post. This is about how to set up SSH public key authentication, after that you will not prompt to input password for ssh connection. We need to setup">
 <meta name="keywords" content="linux,ssh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Setup SSH Passwordless">
+<meta property="og:title" content="Setup SSH Pub Key Authentication">
 <meta property="og:url" content="http://yoursite.com/2019/10/30/linux-ssh-passwordless-setup/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses /ibm/unicorn_rsa as the key to ssh, we can generate a new k">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-29T05:16:55.029Z">
+<meta property="og:description" content="More information about ssh and scp can refer this post. This is about how to set up SSH public key authentication, after that you will not prompt to input password for ssh connection. We need to setup">
+<meta property="og:locale" content="中文|English">
+<meta property="og:updated_time" content="2021-12-11T20:07:44.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Setup SSH Passwordless">
-<meta name="twitter:description" content="We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses /ibm/unicorn_rsa as the key to ssh, we can generate a new k">
+<meta name="twitter:title" content="Setup SSH Pub Key Authentication">
+<meta name="twitter:description" content="More information about ssh and scp can refer this post. This is about how to set up SSH public key authentication, after that you will not prompt to input password for ssh connection. We need to setup">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Setup SSH Passwordless | 海胆阶段's Blog</title>
+  <title>Setup SSH Pub Key Authentication | 海胆阶段's Blog</title>
   
 
 
@@ -165,7 +165,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="中文|English">
 
   
   
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">246</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Setup SSH Passwordless
+          <h1 class="post-title" itemprop="name headline">Setup SSH Pub Key Authentication
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-28 22:16:55" itemprop="dateModified" datetime="2020-08-28T22:16:55-07:00">2020-08-28</time>
+                <time title="Modified: 2021-12-11 12:07:44" itemprop="dateModified" datetime="2021-12-11T12:07:44-08:00">2021-12-11</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.7k</span>
+                <span title="Symbols count in article">3.1k</span>
               
 
               
@@ -508,9 +508,15 @@
       
 
       
-        <p>We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses <code>/ibm/unicorn_rsa</code> as the key to ssh, we can generate a new key and utilize it to communicate.</p>
+        <p>More information about ssh and scp can refer this <a href="https://chengdol.github.io/2019/02/21/linux-ssh-scp-summary/" target="_blank" rel="noopener">post</a>.</p>
+<p>This is about how to set up SSH public key authentication, after that you will not prompt to input password for ssh connection.</p>
+<p>We need to setup ssh passwordless in softlayer cluster, otherwise our Datastage installer wouldn’t work. Now the master node in cluster uses <code>/ibm/unicorn_rsa</code> as the key to ssh, we can generate a new key and utilize it to communicate.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## "yes" will overwrite existing rsa key</span></span><br><span class="line"><span class="comment">## -t specify the type of key to create</span></span><br><span class="line"><span class="comment">## -N provides the new passphrase</span></span><br><span class="line"><span class="comment">## -f specifies the filename of the key file</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"yes"</span> | ssh-keygen -t rsa -N <span class="string">""</span> -f ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment">## then append the id_rsa.pub content to authorized_keys in each node</span></span><br><span class="line"><span class="built_in">declare</span> -a nodes=($(cat /etc/hosts | grep -i ibmcloud | awk &#123;<span class="string">'print $2'</span>&#125;))</span><br><span class="line">key=$(cat ~/.ssh/id_rsa.pub)</span><br><span class="line"><span class="keyword">for</span> node <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;nodes[@]&#125;</span>"</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"[INFO] copy ssh public to <span class="variable">$&#123;node&#125;</span>"</span></span><br><span class="line">  ssh -i /ibm/unicorn_rsa -o StrictHostKeyChecking=no <span class="variable">$&#123;node&#125;</span> <span class="string">"echo <span class="variable">$&#123;key&#125;</span> &gt;&gt; ~/.ssh/authorized_keys"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>More information about ssh and scp can refer this <a href="https://chengdol.github.io/2019/02/21/linux-ssh-scp-summary/" target="_blank" rel="noopener">post</a>.</p>
+<p>Notice that:</p>
+<ol>
+<li>the <code>~/.ssh/authorized_keys</code> permission on target machine should be <code>644</code> or <code>600</code> and file owner should be the right user</li>
+<li>public key authentication on target machine must be allowed <code>PubKeyAuthentication yes</code></li>
+</ol>
 
       
     </div>
@@ -624,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">246</span>
+                    <span class="site-state-item-count">250</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1012,7 +1018,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">140</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1063,7 +1073,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">1.2m</span>
   
 
   

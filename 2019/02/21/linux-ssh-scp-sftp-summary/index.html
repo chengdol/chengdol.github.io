@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="中文|English">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,7 +103,7 @@
 <meta property="og:url" content="http://yoursite.com/2019/02/21/linux-ssh-scp-sftp-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="中文|English">
 <meta property="og:image" content="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV">
 <meta property="og:image" content="https://drive.google.com/uc?id=1rgH7Eu7Qzw2icZQzroTT1_J7LH0G3EBP">
 <meta property="og:image" content="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ">
@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2021-09-04T23:00:54.584Z">
+<meta property="og:updated_time" content="2021-12-11T19:30:38.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH SCP SFTP Daily Work Summary">
 <meta name="twitter:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
@@ -174,7 +174,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="中文|English">
 
   
   
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">246</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
 
   </li>
 
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-09-04 16:00:54" itemprop="dateModified" datetime="2021-09-04T16:00:54-07:00">2021-09-04</time>
+                <time title="Modified: 2021-12-11 11:30:38" itemprop="dateModified" datetime="2021-12-11T11:30:38-08:00">2021-12-11</time>
               
             
           </span>
@@ -521,7 +521,7 @@
 <p><strong>Aside:</strong><br><a href="https://security.stackexchange.com/questions/29876/what-are-the-differences-between-ssh-generated-keysssh-keygen-and-openssl-keys" target="_blank" rel="noopener">difference between OpenSSH vs OpenSSL</a><br>The file format is different but they both encode the same kind of keys. Moreover, they are both generated with the same code.</p>
 <p>Notice that restart sshd daemon will not disconnect current ssh connection, even if you stop the sshd daemon for a short time or restart the network daemon(don’t stop it!), the current ssh session is still working, see this <a href="https://unix.stackexchange.com/questions/27636/how-does-ssh-connection-survive-a-network-restart" target="_blank" rel="noopener">issue</a>: The reason is, sshd fork a child process on each connection, the child process will not die if either sshd or the whole network is restarted. sshd listens on port 22 for incoming connections.  When someone connects it spawns a new process for that connection and goes back to listening.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check pid and ppid of current ssh child process</span></span><br><span class="line">ps -ef | grep -v grep | grep ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># restart some daemon</span></span><br><span class="line">systemctl restart sshd</span><br><span class="line">systemctl restart network</span><br><span class="line"></span><br><span class="line"><span class="comment"># the old child ssh session ppid was changed to 1</span></span><br><span class="line">ps -ef | grep -v grep | grep ssh</span><br></pre></td></tr></table></figure></p>
 <h1 id="Install-SSH-SCP-SFTP"><a href="#Install-SSH-SCP-SFTP" class="headerlink" title="Install SSH (SCP SFTP)"></a>Install SSH (SCP SFTP)</h1><p>Notice that <code>ssh</code>, <code>scp</code> and <code>sftp</code> are all installed from <code>openssh-clients</code> package. 操作的目标机器的用户以及密码就是目标机器上在<code>/etc/passwd</code>中对应的用户及其密码。</p>
-<p>First, understand that there are openssh client and openssh server: <a href="https://phoenixnap.com/kb/how-to-enable-ssh-centos-7" target="_blank" rel="noopener">Installing and Enabling OpenSSH on CentOS 7</a>, this article briefly introduce openssh configuration and firewall setting for it.</p>
+<p>First, understand that there are openssh client and openssh server: <a href="https://phoenixnap.com/kb/how-to-enable-ssh-centos-7" target="_blank" rel="noopener">Installing and Enabling OpenSSH on CentOS 7</a>, this article briefly introduces openssh configuration and firewall setting for it.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum –y install openssh-server openssh-clients</span><br></pre></td></tr></table></figure>
 <p>If only install <code>openssh-clients</code>, you can ssh to others but others cannot ssh to you, since you don’t have ssh server listening at port 22.</p>
 <p>After installing openssh-server, enable and start the sshd daemon<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> sshd</span><br><span class="line">systemctl start sshd</span><br><span class="line"><span class="comment"># check status</span></span><br><span class="line">systemctl status sshd</span><br></pre></td></tr></table></figure></p>
@@ -731,7 +731,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">246</span>
+                    <span class="site-state-item-count">250</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1119,7 +1119,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">140</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1187,7 +1191,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">1.2m</span>
   
 
   

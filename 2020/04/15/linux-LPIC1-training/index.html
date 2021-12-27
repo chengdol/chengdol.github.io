@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="中文|English">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,8 +103,8 @@
 <meta property="og:url" content="http://yoursite.com/2020/04/15/linux-LPIC1-training/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="//TODO这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat. EssentialsReading OS data123456789# system versio">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-07-18T04:23:35.799Z">
+<meta property="og:locale" content="中文|English">
+<meta property="og:updated_time" content="2021-12-27T06:42:53.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux LPIC-1 Training">
 <meta name="twitter:description" content="//TODO这篇总结是来自PluralSight上的LPIC-1课程的Essential章节。备注:2020年4月份pluralsight在搞活动，免费注册学习！这次lock down是个机会补补课。 Environment: CentOS 7 Enterprise Linux or RedHat. EssentialsReading OS data123456789# system versio">
@@ -165,7 +165,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="中文|English">
 
   
   
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">246</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-07-17 21:23:35" itemprop="dateModified" datetime="2021-07-17T21:23:35-07:00">2021-07-17</time>
+                <time title="Modified: 2021-12-26 22:42:53" itemprop="dateModified" datetime="2021-12-26T22:42:53-08:00">2021-12-26</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">32k</span>
+                <span title="Symbols count in article">33k</span>
               
 
               
@@ -543,8 +543,8 @@
 <p>我会专门总结一下awk的笔记，这个挺有用的。</p>
 <p><code>journalctl</code>是一个常用的system log查询工具。当时查看一些docker的log在里面也能看到。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show last 10 lines</span></span><br><span class="line">journalctl -n 10</span><br><span class="line"><span class="comment"># ses real time appending</span></span><br><span class="line">journalctl -f</span><br><span class="line"><span class="comment"># -u: systemd unit</span></span><br><span class="line">journalctl -u sshd</span><br><span class="line"><span class="comment"># timestamp</span></span><br><span class="line">journalctl --since <span class="string">"10 minutes ago"</span></span><br><span class="line">journalctl --since <span class="string">"2020-04-26 13:00:00"</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Selinux"><a href="#Selinux" class="headerlink" title="Selinux"></a>Selinux</h2><p>O’Reilly有过相关的课程，在我工作邮件中连接还在。目前只需要知道什么是selinux，如何打开，关闭它即可。<br>SELINUX= can take one of these three values:<br><code>enforcing</code> - SELinux security policy is enforced.<br><code>permissive</code> - SELinux prints warnings instead of enforcing.<br><code>disabled</code> - No SELinux policy is loaded.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># see if selinux is permissive, enforcing or disabled</span></span><br><span class="line">getenforce</span><br><span class="line"><span class="comment"># more clear</span></span><br><span class="line">sestatus</span><br></pre></td></tr></table></figure></p>
-<p>如果最开始是disabled的，则要去config file <code>/etc/selinux/config</code> 设置permissive，然后重启。<br>不能setenforce 去disable，也只能在config文件中disable然后重启机器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># setenforce [ Enforcing | Permissive | 1 | 0 ]</span></span><br><span class="line"><span class="comment"># 成为permissive后就可以用setenforce切换了，但都不是永久的</span></span><br><span class="line">setenforce 0</span><br><span class="line">setenforce 1</span><br></pre></td></tr></table></figure></p>
-<p>显示selinux的labels, <code>Z</code>对于其他命令也有用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ps -Zp $(pgrep sshd)</span><br><span class="line"></span><br><span class="line">LABEL                             PID TTY      STAT   TIME COMMAND</span><br><span class="line">system_u:system_r:kernel_t:s0     968 ?        Ss     0:00 /usr/sbin/sshd -D</span><br><span class="line">unconfined_u:unconfined_r:unconfined_t:s0 1196 ? Ss   0:00 sshd: root@pts/0</span><br></pre></td></tr></table></figure></p>
+<p>如果最开始是disabled的，则要去config file <code>/etc/selinux/config</code> 设置permissive，然后重启。<br>不能setenforce 去disable，也只能在config文件中disable然后重启机器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># setenforce [ Enforcing 1| Permissive 0]</span></span><br><span class="line"><span class="comment"># 成为permissive后就可以用setenforce切换了，但都不是永久的</span></span><br><span class="line">setenforce 0</span><br><span class="line">setenforce 1</span><br></pre></td></tr></table></figure></p>
+<p>显示selinux的labels, flag <code>Z</code>对于其他命令也有用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># see user selinux config</span></span><br><span class="line">id -Z</span><br><span class="line"><span class="comment"># user, role, type</span></span><br><span class="line">unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023</span><br><span class="line"><span class="comment"># see files selinux config</span></span><br><span class="line">/bin/ls -Z</span><br><span class="line"><span class="comment"># see process selinux config</span></span><br><span class="line">ps -Zp $(pgrep sshd)</span><br><span class="line">LABEL                             PID TTY      STAT   TIME COMMAND</span><br><span class="line">system_u:system_r:kernel_t:s0     968 ?        Ss     0:00 /usr/sbin/sshd -D</span><br><span class="line">unconfined_u:unconfined_r:unconfined_t:s0 1196 ? Ss   0:00 sshd: root@pts/0</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -667,7 +667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">246</span>
+                    <span class="site-state-item-count">250</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1055,7 +1055,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">140</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1123,7 +1127,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">1.2m</span>
   
 
   

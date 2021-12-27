@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="中文|English">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,12 +103,12 @@
 <meta property="og:url" content="http://yoursite.com/2019/11/29/ssl-tls-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may n">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="中文|English">
 <meta property="og:image" content="https://drive.google.com/uc?id=1BqEQwaHXUIBIJguBGifnGIc_AnHJtoBB">
 <meta property="og:image" content="https://drive.google.com/uc?id=1eLDoipLHyJ72aXeUPv5ERcSLHlAYNU1N">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lC9yZ5vy1T-geCDnJoN1aq--QZIe3eOm">
 <meta property="og:image" content="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi">
-<meta property="og:updated_time" content="2021-03-16T07:37:43.066Z">
+<meta property="og:updated_time" content="2021-12-27T06:42:53.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL&#x2F;TLS Demystify">
 <meta name="twitter:description" content="This is all about securing servers with SSL/TLS certificates from udemy course SSL complete guide. The quality of SSL varies, you have SSL setup doesn’t mean your site is good secured. The HTTPS may n">
@@ -170,7 +170,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="中文|English">
 
   
   
@@ -265,7 +265,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
 
   </li>
         
@@ -303,7 +303,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">246</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
 
   </li>
 
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
+                <time title="Modified: 2021-12-26 22:42:53" itemprop="dateModified" datetime="2021-12-26T22:42:53-08:00">2021-12-26</time>
               
             
           </span>
@@ -489,7 +489,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">27k</span>
+                <span title="Symbols count in article">28k</span>
               
 
               
@@ -526,19 +526,18 @@
 <blockquote>
 <p>Interesting, from <code>Network</code> I see the the chrome browser sometime uses IPV6 address talk to server, for example facebook and some other sites. see this <a href="https://superuser.com/questions/1199129/how-web-browser-determines-when-to-use-ipv4-or-ipv6-to-connect-to-the-destinatio" target="_blank" rel="noopener">question</a></p>
 </blockquote>
-<p><strong>大概总结一下:</strong><br>openssl 目前有command 一次性生成(或分开生成 private key -&gt; CSR -&gt; self-signed certificate) private key 和 (self-signed) certificate, 一般用pem 的格式。这2个东西是放在web server上的，也可以把private key 和 certificate 合并到一个pem 文件中。还要注意的是，这里没有用到public key，但public key可以从 private key 中生成(其实里面已经包含了public key的信息)。此外，web server给 client的certificate 就只是certificate，不会有private key尽管它们可能在一个pem file中。</p>
-<p>在client部分，对于slef-signed certificate, 需要设置操作系统trust it，但如果是用的let’s encrypt，已经OK了。联想一下TLS handshake, 得到web serverd的certificate 后，会逐层验证到root CA(会下载所有相关的certificates), 由于client自身已经携带了well-known root CA的证书了，并且也知道CA的public key，所以就会知道这个root CA是否合法。如果合法，就会进行symmetric key的生成和交换，用于之后的数据传输。</p>
-<p>具体命令操作可以参考: <code>&lt;&lt;Set up Secure Docker Registry Container&gt;&gt;</code><br>如果要把这个过程自动化，比如自动给网站安排证书，更新，撤销等，需要用到一些框架机制，比如certbot，见下面一章:</p>
-<p>然后再来看看crt/key 文件和它们的内容, 一般来说会用到形如<code>tls.crt</code>, <code>tls.key</code>的文件，其中<code>tls.key</code> 一般就是private key的内容了, 比如:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">///</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br></pre></td></tr></table></figure></p>
-<p><code>tls.crt</code> 就是certificate, 它是一种<code>PEM</code> formatted file, <code>PEM</code> means <code>Privacy Enhanced Mail</code> (concatenated certificate container files), can have different extension like: <code>tls.cert</code>, <code>tls.cer</code>, <code>tls.pem</code>, etc. <code>PEM</code> is a container format that may include just the public certificate, or may include an entire certificate chain including public key, private key, and root certificates. Confusingly, it may also encode a CSR, for example, here it contains 2 blocks certificate:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// can also contain private key</span><br><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">(Your Private Key: your_domain_name.key)</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br><span class="line">// trust chain</span><br><span class="line">// 一般顺序是从上到下: your domain cert -&gt; intermediate cert -&gt; root cert</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Primary SSL certificate: your_domain_name.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Intermediate certificate: DigiCertCA.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Root certificate: TrustedRoot.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure></p>
+<p><strong>大概总结一下:</strong><br>openssl 目前有command 一次性生成(或分开生成 private key -&gt; CSR(certificate signing request) -&gt; self-signed certificate) private key 和 (self-signed) certificate, 一般用pem 的格式。这2个东西是放在web server上的，也可以把private key 和 certificate 合并到一个pem 文件中。还要注意的是，这里没有用到public key，但public key可以从private key中生成(其实里面已经包含了public key的信息)。此外，web server给 client的certificate 就只是certificate，不会有private key尽管它们可能在一个pem file中。</p>
+<p>在client部分，对于self-signed certificate, 需要设置操作系统trust it，但如果是用的let’s encrypt（或其他well-known CA) 则很可能已经支持了。联想一下TLS handshake, 得到web server的certificate 后，会逐层验证到root CA(会下载所有相关的certificates), 由于client自身已经携带了well-known root CA的证书了，并且也知道CA的public key，所以就会知道这个root CA是否合法。如果合法，就会进行symmetric key的生成和交换，用于之后的数据传输。</p>
+<p>具体命令操作可以参考: <code>&lt;&lt;Set up Secure Docker Registry Container&gt;&gt;</code><br>如果要把这个过程自动化，比如自动给网站request安排证书，renew更新，revoke撤销等，需要用到一些automation，比如certbot, or cert-manager in K8s，见下面一章:</p>
+<p>然后再来看看crt/key 文件和它们的内容, 一般来说会用到形如<code>tls.crt</code>, <code>tls.key</code>的文件，其中<code>tls.key</code> 一般就是private key的内容了, 比如:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">///xxxxx</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br></pre></td></tr></table></figure></p>
+<p><code>tls.crt</code> 就是certificate, 它是一种<code>PEM</code> formatted file, <code>PEM</code> means <code>Privacy Enhanced Mail</code> (concatenated certificate container files), can have different extension like: <code>tls.cert</code>, <code>tls.cer</code>, <code>tls.pem</code>, etc. <code>PEM</code> is a container format that may include just the public certificate, or may include an entire certificate chain including public key, private key, and root certificates. Confusingly, it may also encode a CSR, for example, here it contains 2 block certificates:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// can also contain private key</span><br><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">(Your Private Key: your_domain_name.key)</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br><span class="line">// trust chain</span><br><span class="line">// 一般顺序是从上到下: your domain cert -&gt; intermediate cert -&gt; root cert</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Primary SSL certificate: your_domain_name.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Intermediate certificate: DigiCertCA.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">(Your Root certificate: TrustedRoot.crt)</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure></p>
 <p>阅读以下这些文章:<br><a href="https://www.ssl.com/guide/pem-der-crt-and-cer-x-509-encodings-and-conversions/" target="_blank" rel="noopener">PEM, DER, CRT, and CER: X.509 Encodings and Conversions</a><br><a href="https://www.digicert.com/kb/ssl-support/pem-ssl-creation.htm" target="_blank" rel="noopener">Creating a .pem File for SSL Certificate Installations</a></p>
 <p>Decode PEM encoded ssl/tls certificate to verify it contains correct information:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果有多个certificate block in one file, 则解析的是第一个</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> &lt;crt file&gt; -text -noout</span><br></pre></td></tr></table></figure></p>
-<h1 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h1><p>Get free HTTPs certificates forever, it utilizes <code>Let&#39;s Encrypt</code> CA to automatically refresh the certificate for your web site:<br><a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a></p>
-<p>How it works:<br><a href="https://letsencrypt.org/getting-started/" target="_blank" rel="noopener">https://letsencrypt.org/getting-started/</a><br><a href="https://letsencrypt.org/how-it-works/" target="_blank" rel="noopener">https://letsencrypt.org/how-it-works/</a><br>This is accomplished by running a certificate management agent on the web server.</p>
-<p>To understand how the technology works, let’s walk through the process of setting up <code>https://example.com/</code> with a certificate management agent that supports Let’s Encrypt.</p>
-<p>There are two steps to this process. First, the agent proves to the CA that the web server controls a domain. Then, the agent can request, renew, and revoke certificates for that domain.</p>
+<h1 id="Cert-manager"><a href="#Cert-manager" class="headerlink" title="Cert-manager"></a>Cert-manager</h1><p>Used in K8s to secure for example ingress, search this post: <code>&lt;&lt;Cert-manager Light Note&gt;&gt;</code>.</p>
+<h1 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h1><p>Get free HTTPs certificates forever, it utilizes <code>Let&#39;s Encrypt</code> CA to automatically refresh the certificate for your web site:<br><a href="https://letsencrypt.org/docs/" target="_blank" rel="noopener">https://letsencrypt.org/docs/</a><br><a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a></p>
+<p>How it works in detail:<br><a href="https://letsencrypt.org/how-it-works/" target="_blank" rel="noopener">https://letsencrypt.org/how-it-works/</a><br>This is accomplished by running a certificate management agent on the web server.</p>
 <h1 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h1><p><code>symmetric</code> encryption, the same key is used by both sides, for example: <code>AES</code>. This algorithm is embedded in SSL with HTTPS protocol.<br><code>asymmetric</code> encryption, for example: <code>RSA</code>.</p>
-<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>How does hash work to verify data integrity:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data + hash(data)  ---------&gt; data + hash(data)</span><br><span class="line">                                |         |</span><br><span class="line">                                |--hash--&gt;| (compare if they are the same)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>How does hash work to verify data integrity:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data + hash(data)  ---------&gt; data + hash(data)</span><br><span class="line">                                |         |</span><br><span class="line">                                |--hash--&gt;| (compare <span class="keyword">if</span> they are the same)</span><br></pre></td></tr></table></figure></p>
 <p>Notice that in database the password is hashed, not plain text.</p>
 <p>Hash algorithms: <code>MD5</code>, <code>SHA</code>…</p>
 <ul>
@@ -548,11 +547,11 @@
 <ul>
 <li>SHA-1: 160 bits</li>
 <li>SHA-256: 256 bits</li>
-<li><p>SHA-512: 512 bits</p>
+<li>SHA-512: 512 bits</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## SHA-256</span></span><br><span class="line">shasum -a 256 -t test.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>HMAC: can be used with md5 or sha. In cryptography, an HMAC (sometimes expanded as either keyed-hash message authentication code or hash-based message authentication code) is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic <code>key</code>. It may be used to simultaneously verify <code>both</code> the data integrity and the authenticity of a message, as with any MAC. Any cryptographic hash function, such as SHA-256 or SHA-3, may be used in the calculation of an HMAC.</p>
-</li>
+<ul>
+<li>HMAC: can be used with md5 or sha. In cryptography, an HMAC (sometimes expanded as either keyed-hash message authentication code or hash-based message authentication code) is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic <code>key</code>. It may be used to simultaneously verify <code>both</code> the data integrity and the authenticity of a message, as with any MAC. Any cryptographic hash function, such as SHA-256 or SHA-3, may be used in the calculation of an HMAC.</li>
 </ul>
 <h2 id="Asymmetric-Keys"><a href="#Asymmetric-Keys" class="headerlink" title="Asymmetric Keys"></a>Asymmetric Keys</h2><p><code>Encryption</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data -------------&gt; code =========&gt;  code -------------&gt; data  (owner side)</span><br><span class="line">      public key                          private key</span><br><span class="line">      encryption                          decryption</span><br></pre></td></tr></table></figure></p>
 <p>Usually(but not necessarily), the keys are <code>interchangeable</code>, in the sense that if key A encrypts a message, then B can decrypt it, and if key B encrypts a message, then key A can decrypt it. While common, this property is not essential to asymmetric encryption.</p>
@@ -573,20 +572,21 @@
 <p>Such root CAs have certificates with long period of validity and their main responsibility is simple create “source of trust”. That’s why they don’t issue certificates to end users to avoid additional work and minimize risk that their private keys will be compromised. Intermediate CAs certificates don’t necessarily need to be in the list of trusted certificates in the OS or browser. They need simply be issued by trusted root CA.</p>
 <h1 id="Chain-of-Trust"><a href="#Chain-of-Trust" class="headerlink" title="Chain of Trust"></a>Chain of Trust</h1><p>Let’s see <code>openssl</code> command, generate RSA private key and public key:<br>这里没有谈到self-signed certificate,见后面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check help for sub-command genrsa</span></span><br><span class="line">openssl genrsa -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate private.pem file private key with aes256 encryption method</span></span><br><span class="line"><span class="comment">## will ask you input pass phrase </span></span><br><span class="line"><span class="comment">## 实际上private.pem 包含了public key 的信息了！</span></span><br><span class="line">openssl genrsa -aes256 -out private.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">## generate public key from above private key</span></span><br><span class="line"><span class="comment">## will ask you pass phrase from private key</span></span><br><span class="line">openssl rsa -<span class="keyword">in</span> private.pem -outform PEM -pubout -out public.pem</span><br></pre></td></tr></table></figure></p>
 <h2 id="Root-CAs-in-OS"><a href="#Root-CAs-in-OS" class="headerlink" title="Root CAs in OS"></a>Root CAs in OS</h2><p>How does web browser trust the root CAs and certificates?<br>The OS ships a list of trusted certificates, in Mac search <code>Keychain Access</code>. </p>
-<p>In Linux, see this <a href="https://blog.confirm.ch/adding-a-new-trusted-certificate-authority/" target="_blank" rel="noopener">link</a>: On Red Hat/Centos, It includes all trusted certificate authorities under <code>/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt</code>. Just add your new certificate authority file(s) to the directory <code>/etc/pki/ca-trust/source/anchors</code>, then run <code>/bin/update-ca-trust</code> for update the certificate authority file.</p>
-<h2 id="Verify-chain-of-trust"><a href="#Verify-chain-of-trust" class="headerlink" title="Verify chain of trust"></a>Verify chain of trust</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           <span class="string">root</span> <span class="string">CA</span>         <span class="string">|     intermediate CA       |        end user</span></span><br><span class="line"><span class="string">----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="string">  self-singed certificate  |     signed by root CA     |   signed by intermediate CA</span></span><br><span class="line"><span class="string">----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="string"></span><span class="attr">   signature:</span> <span class="string">encrpty</span>      <span class="string">|    signature: encrpty     |       signature: encrpty</span></span><br><span class="line"><span class="string"> by private key of root CA | by private key of root CA |  by private key of intermediate</span></span><br><span class="line"><span class="string">                           |                           |  CA</span></span><br></pre></td></tr></table></figure>
+<p>In Linux, see this <a href="https://blog.confirm.ch/adding-a-new-trusted-certificate-authority/" target="_blank" rel="noopener">link</a>: On Red Hat/Centos, It includes all trusted certificate authorities under <code>/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt</code>. Just add your new certificate authority file(s) to the directory <code>/etc/pki/ca-trust/source/anchors</code>, then run <code>/bin/update-ca-trust</code> to update the certificate authority file.</p>
+<h2 id="Verify-chain-of-trust"><a href="#Verify-chain-of-trust" class="headerlink" title="Verify chain of trust"></a>Verify chain of trust</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           <span class="string">root</span> <span class="string">CA</span>         <span class="string">|     intermediate CA       |        end user</span></span><br><span class="line"><span class="string">----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="string">  self-singed certificate  |     signed by root CA     |   signed by intermediate CA</span></span><br><span class="line"><span class="string">----------------------------------------------------------------------------------------</span></span><br><span class="line"><span class="string"></span><span class="attr">   signature:</span> <span class="string">encrpted</span>     <span class="string">|    signature: encrpted    |       signature: encrpted</span></span><br><span class="line"><span class="string"> by private key of root CA | by private key of root CA |  by private key of intermediate</span></span><br><span class="line"><span class="string">                           |                           |  CA</span></span><br></pre></td></tr></table></figure>
 <p><code>CSR</code>: certificate signing request (the root CA receive CSR from intermediate CA, the signature of intermediate CA is signed by root CA, the root CA also provide issuer info for intermediate CA. Similarly, end user is signed by intermediate CA)</p>
-<p>Web server (the end user) sends you its certificate and all intermediate certificates. Then on your side start the verification process from end user certificates back to top intermediate certificate then root certificate. 这里如何验证的: To verify a certificate, a browser will obtain a sequence of certificates, each one having signed the next certificate in the sequence, connecting the signing CA’s root to the server’s certificate.</p>
+<p>Web server (the end user) sends you its certificate and all intermediate certificates. Then on your side start the verification process from end user certificates back to top intermediate certificate then root certificate. </p>
+<p>这里如何验证的: To verify a certificate, a browser will obtain a sequence of certificates, each one having signed the next certificate in the sequence, connecting the signing CA’s root to the server’s certificate.</p>
 <p>There is a online tool to check the certificates chain:<br><a href="https://www.geocerts.com/ssl-checker" target="_blank" rel="noopener">https://www.geocerts.com/ssl-checker</a>.</p>
 <h1 id="Create-Self-signed-Certificate"><a href="#Create-Self-signed-Certificate" class="headerlink" title="Create Self-signed Certificate"></a>Create Self-signed Certificate</h1><p><a href="https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs#generating-csrs" target="_blank" rel="noopener">Openssl Essential, several ways to generate certificates</a></p>
 <p>Before creating certificate, you need <code>CSR</code>, and before <code>CSR</code>, you need first generate asymmetric keys. (Becuase certificate needs to include signature from upstream and also your public key)</p>
 <blockquote>
-<p>Choose common name (CN) according to the main domain where certificate will be used. (for example, in secure docker registry, CN is the registry address)</p>
+<p>Choose common name (CN) according to the main domain where certificate will be used. (for example, in secure docker registry, CN is the registry address), actually CN is deprecated and Alternative Name(SAN) is used instead.</p>
 </blockquote>
 <blockquote>
 <p>What is <code>/etc/ssl/certs</code> directory? Actually this is a softlink to <code>/etc/pki/tls/certs</code>.</p>
 </blockquote>
-<p>Generate self-signed certificate, see this <a href="https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl" target="_blank" rel="noopener">post</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openssl req \</span><br><span class="line">        -newkey rsa:4096 -nodes -x509 -sha256\</span><br><span class="line">        -keyout key.pem -out cert.pem -days 365 \</span><br><span class="line">        -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=Company Name/OU=Org/CN=&lt;domain&gt;"</span></span><br></pre></td></tr></table></figure></p>
+<p>Generate self-signed certificate, see this <a href="https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl" target="_blank" rel="noopener">post</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this is CN certificate, if you want to have SAN(Subject Alternative Name), see below</span></span><br><span class="line">openssl req \</span><br><span class="line">        -newkey rsa:4096 -nodes -x509 -sha256\</span><br><span class="line">        -keyout key.pem -out cert.pem -days 365 \</span><br><span class="line">        -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=Company Name/OU=Org/CN=&lt;domain&gt;"</span></span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>-nodes: short for No DES, if you don’t want to protect your private key with a passphrase.</li>
 <li>Add <code>-subj &#39;/CN=localhost&#39;</code> to suppress questions about the contents of the certificate (replace localhost with your desired domain).</li>
@@ -596,6 +596,7 @@
 <blockquote>
 <p>注意有时遇到的cert 文件中可能包含多个CERTIFICATE 块，其中有intermediate CA. 在kubernetes 中构造tls secret的时候，直接使用即可。</p>
 </blockquote>
+<p>To generate <code>SAN</code> certificate, see this <a href="https://geekflare.com/san-ssl-certificate/" target="_blank" rel="noopener">post</a>. 主要是注意如何构造 san.cnf 文件给 openssl 使用. <code>SAN</code>主要是为了一证多用，注意这个和wildcard tls certificate不一样, wildcard tls certificate 主要是为了包容subdomains.</p>
 <h1 id="SSL-TLS-and-HTTPS"><a href="#SSL-TLS-and-HTTPS" class="headerlink" title="SSL/TLS and HTTPS"></a>SSL/TLS and HTTPS</h1><p>Both are cryptographic protocols used in HTTPS:</p>
 <ul>
 <li><code>SSL</code>: Secure Socket Layer</li>
@@ -609,9 +610,10 @@
 <li>bi-directional data encryption requires RSA key pairs on both sides.<br>We encrypt data use symmetic key after setup secure connection.</li>
 </ol>
 <blockquote>
-<p>Why need rsa key pairs on both sides? If the key is interchangeable, everyone has public key can decrypt data encrypted by private key!</p>
+<p>Why need rsa key pairs on both sides? Because the key is interchangeable, everyone has public key can decrypt data encrypted by private key!</p>
 </blockquote>
-<h2 id="Establish-TLS-Session"><a href="#Establish-TLS-Session" class="headerlink" title="Establish TLS Session"></a>Establish TLS Session</h2><ol>
+<h2 id="Establish-TLS-Session"><a href="#Establish-TLS-Session" class="headerlink" title="Establish TLS Session"></a>Establish TLS Session</h2><p>You can see verbose from curl command<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -I: fetch header only</span></span><br><span class="line"><span class="comment"># -v: verbose</span></span><br><span class="line">curl -Iv https://www.google.com</span><br></pre></td></tr></table></figure></p>
+<ol>
 <li>establish tcp session</li>
 <li>establish tls session (negotiate protocol)</li>
 <li>web server sends its <strong>certifiate</strong> (intermediate and others) to browser</li>
@@ -626,7 +628,7 @@
 <p>SSL handshakes are now called TLS handshakes, although the “SSL” name is still in wide use.</p>
 <p>A TLS handshake also happens whenever any other communications use HTTPS, including API calls and DNS over HTTPS queries.</p>
 <p>这里讲到了2种不同的TLS handshake过程，一个是public-private key参与，另一个是Diffie–Hellman handshake. 对于第一种方式，提到了client从server cerficiate extract public key:<br><a href="https://stackoverflow.com/questions/17143606/how-to-save-public-key-from-a-certificate-in-pem-format" target="_blank" rel="noopener">https://stackoverflow.com/questions/17143606/how-to-save-public-key-from-a-certificate-in-pem-format</a></p>
-<p>–&gt;&gt; <a href="https://security.stackexchange.com/questions/115762/how-is-it-possible-to-do-tls-through-proxy-without-anyone-noticing/115764" target="_blank" rel="noopener">How does proxy handle TLS handshakes</a><br>HTTPS knows how to tunnel the TLS handshake even through the proxy.<br>也就说TLS/SSL through proxy就是通过HTTP CONNECT tunnel去实现的, 特别是看一下第二个回答, comments:</p>
+<p>–&gt;&gt; <a href="https://security.stackexchange.com/questions/115762/how-is-it-possible-to-do-tls-through-proxy-without-anyone-noticing/115764" target="_blank" rel="noopener">How does proxy handle TLS handshakes</a> (还记得envoy吗?)<br>HTTPS knows how to tunnel the TLS handshake even through the proxy.<br>也就说TLS/SSL through proxy就是通过HTTP CONNECT tunnel去实现的, 特别是看一下第二个回答, comments:</p>
 <p>So, the proxy is not MITM’ing the HTTPS connection, by replacing the server’s certificate with its own - it’s simply passing the HTTPS connection straight through between the client and the server. Is that right?</p>
 <p>Normally, when HTTPS is done through a proxy, this is done with the CONNECT mechanism: the client talks to the proxy and asks it to provide a bidirectional tunnel for bytes with the target system. In that case, the certificate that the client sees is really from the server, not from the proxy. In that situation, the proxy is kept on the outside of the SSL/TLS session – it can see that some SSL/TLS is taking place, but it has no access to the encryption keys.</p>
 <h2 id="Diffie–Hellman"><a href="#Diffie–Hellman" class="headerlink" title="Diffie–Hellman"></a>Diffie–Hellman</h2><p>Diffie–Hellman uses one-way function, for example, mod operation.<br><img src="https://drive.google.com/uc?id=1lXCys7VAEXJxZ-sytIWUVQGXgxxRTCTi" alt=""><br>See, here <code>a</code>, <code>b</code> are priviate keys on both side, <code>g</code>, <code>p</code> are public key. <code>A</code>, <code>B</code> are mod result, <code>K</code> is the final result that both side can get use to encrypt the data.</p>
@@ -756,7 +758,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">246</span>
+                    <span class="site-state-item-count">250</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1144,7 +1146,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">140</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1180,7 +1186,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Certbot"><span class="nav-number">1.</span> <span class="nav-text">Certbot</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">2.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">2.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">2.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">2.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">2.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">2.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">3.</span> <span class="nav-text">Chain of Trust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-CAs-in-OS"><span class="nav-number">3.1.</span> <span class="nav-text">Root CAs in OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify-chain-of-trust"><span class="nav-number">3.2.</span> <span class="nav-text">Verify chain of trust</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Self-signed-Certificate"><span class="nav-number">4.</span> <span class="nav-text">Create Self-signed Certificate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-TLS-and-HTTPS"><span class="nav-number">5.</span> <span class="nav-text">SSL/TLS and HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Establish-TLS-Session"><span class="nav-number">5.1.</span> <span class="nav-text">Establish TLS Session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Readings"><span class="nav-number">5.1.1.</span> <span class="nav-text">Other Readings</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diffie–Hellman"><span class="nav-number">5.2.</span> <span class="nav-text">Diffie–Hellman</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Custom-Domain"><span class="nav-number">6.</span> <span class="nav-text">Custom Domain</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cert-manager"><span class="nav-number">1.</span> <span class="nav-text">Cert-manager</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Certbot"><span class="nav-number">2.</span> <span class="nav-text">Certbot</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Encryption"><span class="nav-number">3.</span> <span class="nav-text">Encryption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">3.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asymmetric-Keys"><span class="nav-number">3.2.</span> <span class="nav-text">Asymmetric Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKI"><span class="nav-number">3.3.</span> <span class="nav-text">PKI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate"><span class="nav-number">3.4.</span> <span class="nav-text">Certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-we-need-intermediary-CAs"><span class="nav-number">3.5.</span> <span class="nav-text">Why we need intermediary CAs?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chain-of-Trust"><span class="nav-number">4.</span> <span class="nav-text">Chain of Trust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-CAs-in-OS"><span class="nav-number">4.1.</span> <span class="nav-text">Root CAs in OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify-chain-of-trust"><span class="nav-number">4.2.</span> <span class="nav-text">Verify chain of trust</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Self-signed-Certificate"><span class="nav-number">5.</span> <span class="nav-text">Create Self-signed Certificate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-TLS-and-HTTPS"><span class="nav-number">6.</span> <span class="nav-text">SSL/TLS and HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Establish-TLS-Session"><span class="nav-number">6.1.</span> <span class="nav-text">Establish TLS Session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Readings"><span class="nav-number">6.1.1.</span> <span class="nav-text">Other Readings</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diffie–Hellman"><span class="nav-number">6.2.</span> <span class="nav-text">Diffie–Hellman</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Custom-Domain"><span class="nav-number">7.</span> <span class="nav-text">Custom Domain</span></a></li></ol></div>
             
 
           </div>
@@ -1212,7 +1218,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">1.2m</span>
   
 
   

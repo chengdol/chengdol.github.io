@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="中文|English">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,8 +103,8 @@
 <meta property="og:url" content="http://yoursite.com/2020/12/23/linux-systemd/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="VersionDifferent may have different syntax and options in unit file, check it first:1systemctl --version To see systemd service unit configuration:1man 5 systemd.service SystemdHow To Use Systemctl to">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-03-16T07:37:43.053Z">
+<meta property="og:locale" content="中文|English">
+<meta property="og:updated_time" content="2021-12-27T06:42:53.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Systemd Essential">
 <meta name="twitter:description" content="VersionDifferent may have different syntax and options in unit file, check it first:1systemctl --version To see systemd service unit configuration:1man 5 systemd.service SystemdHow To Use Systemctl to">
@@ -165,7 +165,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="中文|English">
 
   
   
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">140</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">246</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
+                <time title="Modified: 2021-12-26 22:42:53" itemprop="dateModified" datetime="2021-12-26T22:42:53-08:00">2021-12-26</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">28k</span>
+                <span title="Symbols count in article">29k</span>
               
 
               
@@ -514,10 +514,10 @@
 <p>History:<br>SysV Init -&gt; Upstart -&gt; Systemd</p>
 <p>The <code>systemd</code>, system and service manager, is an init system used to bootstrap the user space and to manage system processes after boot. Use <code>systemctl</code> command to manage the service on a systemd enabled system.</p>
 <p>The fundamental purpose of an init system is to initialize the components that must be started after the Linux kernel is booted (traditionally known as “userland” components). The init system is also used to manage services and daemons for the server at any point while the system is running.</p>
-<p>main commands, for example using nginx, some commands have to use <code>sudo</code> if you are non-root user, since it will affect te state of the operating system, you can leave off the <code>.service</code> suffix.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># start on boot</span></span><br><span class="line"><span class="comment"># This hooks it up to a certain boot “target”</span></span><br><span class="line"><span class="comment"># causing it to be triggered when that target is started.</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> nginx.service</span><br><span class="line">sudo systemctl <span class="built_in">disable</span> nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># start and stop</span></span><br><span class="line">sudo systemctl start nginx.service</span><br><span class="line">sudo systemctl stop nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># To attempt to reload the service without </span></span><br><span class="line"><span class="comment"># interrupting normal functionality</span></span><br><span class="line">sudo systemctl reload nginx.service</span><br><span class="line">sudo systemctl reload-or-restart nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># status overview</span></span><br><span class="line"><span class="comment"># you can see:</span></span><br><span class="line"><span class="comment"># unit file path</span></span><br><span class="line"><span class="comment"># enabled or disabled at vendor and custom</span></span><br><span class="line"><span class="comment"># up time</span></span><br><span class="line"><span class="comment"># Cgroup</span></span><br><span class="line">systemctl status nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># find overriden config files for all units</span></span><br><span class="line"><span class="comment"># 查看哪unit有drop in config snippets</span></span><br><span class="line">sudo systemd-delta</span><br></pre></td></tr></table></figure></p>
+<p>main commands, for example using nginx, some commands have to use <code>sudo</code> if you are non-root user, since it will affect te state of the operating system, you can leave off the <code>.service</code> suffix.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># start on boot</span></span><br><span class="line"><span class="comment"># This hooks it up to a certain boot “target”</span></span><br><span class="line"><span class="comment"># causing it to be triggered when that target is started.</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> nginx.service</span><br><span class="line">sudo systemctl <span class="built_in">disable</span> nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># start and stop</span></span><br><span class="line">sudo systemctl start nginx.service</span><br><span class="line">sudo systemctl stop nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># when changes the configuration of service</span></span><br><span class="line"><span class="comment"># To attempt to reload the service without </span></span><br><span class="line"><span class="comment"># interrupting normal functionality</span></span><br><span class="line">sudo systemctl reload nginx.service</span><br><span class="line"><span class="comment"># is reload is not available, restart instead</span></span><br><span class="line">sudo systemctl reload-or-restart nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># status overview</span></span><br><span class="line"><span class="comment"># you can see:</span></span><br><span class="line"><span class="comment"># unit file path</span></span><br><span class="line"><span class="comment"># drop-in</span></span><br><span class="line"><span class="comment"># enabled or disabled at vendor and custom</span></span><br><span class="line"><span class="comment"># up time</span></span><br><span class="line"><span class="comment"># Cgroup</span></span><br><span class="line">systemctl status nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># find overriden config files for all units</span></span><br><span class="line"><span class="comment"># 查看哪unit有drop in config snippets</span></span><br><span class="line">sudo systemd-delta</span><br></pre></td></tr></table></figure></p>
 <p><code>enable</code> will create a soft link into the location on disk where systemd looks for autostart files (usually <code>/etc/systemd/system/some_target.target.wants</code>).</p>
 <p>Some command exit code result used for shell script:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># may need sudo</span></span><br><span class="line">systemctl is-active nginx.service</span><br><span class="line">systemctl is-enabled nginx.service</span><br><span class="line">systemctl is-failed nginx.service</span><br></pre></td></tr></table></figure></p>
-<p>Check system states managed by systemd:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list enabled units only</span></span><br><span class="line">systemctl [list-units]</span><br><span class="line"></span><br><span class="line"><span class="comment"># list all of the units that systemd has loaded or attempted to load into memory</span></span><br><span class="line"><span class="comment"># include not currently active</span></span><br><span class="line">systemctl list-units --all [--state=active|inactive] [--<span class="built_in">type</span>=service|target]</span><br><span class="line"></span><br><span class="line"><span class="comment"># show every available units installed on the system</span></span><br><span class="line">systemctl list-unit-files</span><br></pre></td></tr></table></figure></p>
+<p>Check system states managed by systemd:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list enabled units only</span></span><br><span class="line">systemctl [list-units]</span><br><span class="line"></span><br><span class="line"><span class="comment"># list all of the units that systemd has loaded or attempted to load into memory</span></span><br><span class="line"><span class="comment"># include not currently active</span></span><br><span class="line">systemctl list-units --all [--state=active|inactive|failed] [--<span class="built_in">type</span>=service|target]</span><br><span class="line"><span class="comment"># list failed daemons, this is useful when reboot VM but daemons not</span></span><br><span class="line">systemctl list-units --state failed</span><br><span class="line"></span><br><span class="line"><span class="comment"># show every available units installed on the system</span></span><br><span class="line">systemctl list-unit-files</span><br></pre></td></tr></table></figure></p>
 <p><code>list-unit-files</code> state column: The state will usually be <code>enabled</code>, <code>disabled</code>, <code>static</code>, or <code>masked</code>. In this context, <code>static</code> means that the unit file does not contain an <code>[Install]</code> section, which is used to enable a unit. As such, these units cannot be enabled. Usually, this means that the unit performs a one-off action or is used only as a dependency of another unit and should not be run by itself.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># after mask, cannot enable or start service</span></span><br><span class="line">sudo systemctl mask nginx.service</span><br><span class="line">sudo systemctl unmask nginx.service</span><br></pre></td></tr></table></figure></p>
 <p>To see full content and path of a unit file, vanilla unit files(don’t touch them, override them if needed in other places, for example <code>/etc/systemd/system</code>) are in <code>/usr/lib/systemd/system</code> and customized are in <code>/etc/systemd/system</code> folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show unit file content and path</span></span><br><span class="line"><span class="comment"># if has overriding snippet, will show them as well</span></span><br><span class="line">systemctl cat nginx.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># list dependencies </span></span><br><span class="line">systemctl list-dependencies nginx.service [--all] [--reverse] [--before] [--after]</span><br><span class="line"></span><br><span class="line"><span class="comment"># low-level detail of unit</span></span><br><span class="line"><span class="comment"># all key=values</span></span><br><span class="line"><span class="comment"># -p: display a single property</span></span><br><span class="line">systemctl show nginx.service [-p ExecStart]</span><br><span class="line"></span><br><span class="line"><span class="comment"># edit unit file</span></span><br><span class="line">sudo systemctl edit --full nginx.service</span><br><span class="line"><span class="comment"># append unit file snippet</span></span><br><span class="line">sudo systemctl edit nginx.service</span><br><span class="line"><span class="comment"># then reload to pick up changes</span></span><br><span class="line">sodu systemctl daemon-reload</span><br></pre></td></tr></table></figure></p>
 <p>You can also further override by creating override.conf file in <code>/etc/systemd/system/xxx.service.d</code> folder, there are some principles for overriding, see <a href="https://unix.stackexchange.com/questions/398540/how-to-override-systemd-unit-file-settings" target="_blank" rel="noopener">here</a>.</p>
@@ -666,7 +666,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">246</span>
+                    <span class="site-state-item-count">250</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1054,7 +1054,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">140</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">142</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1122,7 +1126,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">1.1m</span>
+    <span title="Symbols count total">1.2m</span>
   
 
   
