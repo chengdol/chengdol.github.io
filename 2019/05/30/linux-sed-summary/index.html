@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Normally we use a interactive text editor, like vim. The command sed is one of the most commonly used command line editor in Linux world. sed stands for the stream editor, it uses the roles supplied t">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-10-31T01:42:09.154Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sed Command Daily Work Summary">
 <meta name="twitter:description" content="Normally we use a interactive text editor, like vim. The command sed is one of the most commonly used command line editor in Linux world. sed stands for the stream editor, it uses the roles supplied t">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-10-30 18:42:09" itemprop="dateModified" datetime="2021-10-30T18:42:09-07:00">2021-10-30</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -558,7 +558,7 @@
 <p>I have a text file <code>sedins</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The 1st line is 1</span><br><span class="line">The 2rd line is 2</span><br><span class="line">The 3rd line is 3</span><br><span class="line">The 4th line is 4</span><br></pre></td></tr></table></figure></p>
 <p>Insert at first line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">'1iNew line coming!'</span> sedins</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">New line coming!</span><br><span class="line">The 1st line is 1</span><br><span class="line">The 2rd line is 2</span><br><span class="line">The 3rd line is 3</span><br><span class="line">The 4th line is 4</span><br></pre></td></tr></table></figure>
-<p>Append at 3rd line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">'2aNew line coming!'</span> sedins</span><br></pre></td></tr></table></figure></p>
+<p>Append at 3rd line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -e <span class="string">'2aNew line coming!'</span> sedins</span><br><span class="line"><span class="comment"># using regexp</span></span><br><span class="line">sed -e <span class="string">'/The 2rd line is 2/a New line coming!'</span> sedins</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The 1st line is 1</span><br><span class="line">The 2rd line is 2</span><br><span class="line">New line coming!</span><br><span class="line">The 3rd line is 3</span><br><span class="line">The 4th line is 4</span><br></pre></td></tr></table></figure>
 <h3 id="Insert-with-white-spaces"><a href="#Insert-with-white-spaces" class="headerlink" title="Insert with white spaces"></a>Insert with white spaces</h3><p>For example, When developing non-root, I want to add <code>runAsUser: 1000</code> right after <code>securityContext:</code> with correct alignment:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i -e <span class="string">'/securityContext/a\         runAsUser: 1000'</span> xxx.yml</span><br></pre></td></tr></table></figure></p>
 <p>Only to escape the first space. <code>sed</code> can automatically recognize the rest of the spaces.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">       securityContext:</span><br><span class="line">         runAsUser: 1000</span><br><span class="line">         privileged: false</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
@@ -697,7 +697,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -792,7 +792,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1089,7 +1091,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1145,7 +1149,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

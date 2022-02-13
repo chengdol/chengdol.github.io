@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When we design a large, complicated script, it is important to consider what happens if the user logs off or shuts down the computer while the script is running. When such an event occurs, a signal wi">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.071Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Signals and Trap">
 <meta name="twitter:description" content="When we design a large, complicated script, it is important to consider what happens if the user logs off or shuts down the computer while the script is running. When such an event occurs, a signal wi">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7.2k</span>
+                <span title="Symbols count in article">8.5k</span>
               
 
               
@@ -514,20 +514,30 @@
 <p>Kill process in command line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> -9 &lt;pid&gt;</span><br><span class="line"><span class="built_in">kill</span> -s 9 &lt;pid&gt;</span><br><span class="line"><span class="built_in">kill</span> -SIGKILL &lt;pid&gt;</span><br></pre></td></tr></table></figure></p>
 <p>Some commonly use signals:</p>
 <ul>
-<li><strong>SIGHUP</strong>: Hang up detected on controlling terminal or death of controlling process. Many daemons will <code>reload</code> their configuration files and reopen their logfiles instead of exiting when receiving this signal.</li>
-<li><strong>SIGINT</strong>: Issued if the user sends an interrupt signal (Ctrl + C)</li>
-<li><strong>SIGQUIT</strong>: Issued if the user sends a quit signal (Ctrl + D)</li>
+<li><strong>SIGHUP</strong>: Many daemons will <code>reload</code> their configuration instead of exiting when receiving this signal, see here for <a href="https://stackoverflow.com/questions/19052354/sighup-for-reloading-configuration" target="_blank" rel="noopener">explanation</a></li>
+<li><strong>SIGINT</strong>: Issued if the user sends an interrupt signal (Ctrl + C), usually will terminate a program</li>
+<li><strong>SIGQUIT</strong>: Issued if the user sends a quit signal (Ctrl + D), it will dump core</li>
 <li><strong>SIGKILL</strong>: If a process gets this signal it must quit immediately and will not perform any clean-up operations, this one cannot be ignored or trapped! (这里提一下，force kill会导致程序，比如Python中finally clauses 和 exit handler 无法工作)</li>
 <li><strong>SIGTERM</strong>: Software termination signal (sent by kill by default)</li>
-<li><strong>SIGSTOP</strong>: Stop process</li>
+<li><strong>SIGSTOP</strong>: Stop process (Ctrl + Z), for example, stop fg mode, see SIGCONT below</li>
+<li><strong>SIGCONT</strong>: Continue if stopped, for example, after stop fg mode by (Ctrl + Z), switch to bg will trigger this signal</li>
 <li><strong>SIGSTP</strong>: Stop typed at terminal</li>
-<li><strong>SIGCONT</strong>: Continue if stopped</li>
 <li><strong>SIGCHLD</strong>: When a child process stops or terminates, SIGCHLD is sent to the parent process. (这个可以用来trap回收subprocess的资源)</li>
 </ul>
-<p>About trap the signals in script, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Set a Trap for Signals for graceful shutdown</span></span><br><span class="line"><span class="built_in">declare</span> -a SIGNALS_TRAPPED=(INT HUP QUIT TERM STOP)</span><br><span class="line"><span class="function"><span class="title">shudown_hook</span></span>() &#123;</span><br><span class="line">  ...</span><br><span class="line">  (/opt/servers/stop.sh)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Shutdown and Cleanup Successful..."</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> <span class="string">'shudown_hook'</span> <span class="string">"<span class="variable">$&#123;SIGNALS_TRAPPED[@]&#125;</span>"</span></span><br></pre></td></tr></table></figure></p>
+<p>For signal default behavior, see <code>man 7 signal</code>!!</p>
+<blockquote>
+<p>Note that process cannot define handler for <code>SIGKILL</code> and <code>SIGSTOP</code>, the default behavior is in use.</p>
+</blockquote>
+<blockquote>
+<p>Note that non-init process cannot ignore <code>SIGKILL</code> and <code>SIGSTOP</code>, they are used for root user and kernel for process management. But, remember, process in <code>D</code> state is uninterruptable even with <code>SIGKILL</code> and <code>SIGSTOP</code>.</p>
+</blockquote>
+<blockquote>
+<p>Note that you cannot kill init process(PID 1) by <code>kill -9 1</code>, this is the exception as described in <code>man 2 kill</code>: “The only signals that can be sent to process ID 1, the init process, are those for which init has explicitly installed signal handlers. This is done to assure the system is not brought down accidentally.” See here for <a href="https://www.quora.com/Is-it-possible-to-kill-the-init-process-in-Linux-by-the-kill-9-command" target="_blank" rel="noopener">hint</a>.</p>
+</blockquote>
+<p>About trap the signals in script, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Set a Trap for Signals for graceful shutdown</span></span><br><span class="line"><span class="built_in">declare</span> -a SIGNALS_TRAPPED=(INT TERM)</span><br><span class="line"><span class="function"><span class="title">shudown_hook</span></span>() &#123;</span><br><span class="line">  ...</span><br><span class="line">  (/opt/servers/stop.sh)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Shutdown and Cleanup Successful..."</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">trap</span> <span class="string">'shudown_hook'</span> <span class="string">" <span class="variable">$&#123;SIGNALS_TRAPPED[@]&#125;</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>The general format is <code>trap command signals</code>, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> <span class="string">"rm -rf /tmp/peek.txt; exit 0"</span> 1 2</span><br></pre></td></tr></table></figure></p>
 <p>To ignore signals, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> <span class="string">""</span> 2 3 15</span><br></pre></td></tr></table></figure></p>
-<p>If you ignore a signal, all subshells also ignore that signal. However, if you specify an action to be taken on the receipt of a signal, all subshells will still take the default action on receipt of that signal.</p>
+<p>If main process ignore a signal, all subshells also ignore that signal. However, if you specify an action to be taken on the receipt of a signal, all subshells will still take the default action on receipt of that signal.</p>
 <p>Reset the traps to default:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">trap</span> 2 3 15</span><br></pre></td></tr></table></figure></p>
 
       
@@ -642,7 +652,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -737,7 +747,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1034,7 +1046,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1073,7 +1087,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When deploying DS, I find the compute pod that assigned to the second node is hanging in CreateContainer status. I SSH into that node and find node memory is occupied heavily by some other processes s">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-10-31T01:42:09.152Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Clean Memory Cache">
 <meta name="twitter:description" content="When deploying DS, I find the compute pod that assigned to the second node is hanging in CreateContainer status. I SSH into that node and find node memory is occupied heavily by some other processes s">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-10-30 18:42:09" itemprop="dateModified" datetime="2021-10-30T18:42:09-07:00">2021-10-30</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7.4k</span>
+                <span title="Symbols count in article">7.9k</span>
               
 
               
@@ -515,9 +515,9 @@
 <li><a href="https://unix.stackexchange.com/questions/2658/why-use-swap-when-there-is-more-than-enough-free-space-in-ram" target="_blank" rel="noopener">why swapping when there is more than enough free memory</a></li>
 <li><a href="https://unix.stackexchange.com/questions/415814/memory-runs-full-over-time-high-buffer-cache-usage-low-available-memory" target="_blank" rel="noopener">memory runs full over time</a></li>
 </ul>
-<p>The memory usage on bad node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        8168772      105152      295732     7491216     7767888      273448</span><br><span class="line">Swap:             0           0           0</span><br></pre></td></tr></table></figure></p>
-<p>See the <code>available</code> size is too low, Comparing with the good node:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">  Mem:        8168772      123504     7041388      270836     1003880     7424612</span><br><span class="line">  Swap:             0           0           0</span><br></pre></td></tr></table></figure></p>
-<p>You see the shared(Memory used mostly by tmpfs) and buff/cache parts are huge on bad node, I need to flush and clean it. (当时还未理解这些column的具体含义, 特别是shared, buff/cache, available). 还应该用memory leak相关分析工具去查看哪个调用栈导致了内存紧张(memleak).</p>
+<p>The memory usage on bad node:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        <span class="number">8168772</span>      <span class="number">105152</span>      <span class="number">295732</span>     <span class="number">7491216</span>     <span class="number">7767888</span>      <span class="number">273448</span></span><br><span class="line">Swap:             <span class="number">0</span>           <span class="number">0</span>           <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>See the <code>available</code> size is too low, Comparing with the good node:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        <span class="number">8168772</span>      <span class="number">123504</span>     <span class="number">7041388</span>      <span class="number">270836</span>     <span class="number">1003880</span>     <span class="number">7424612</span></span><br><span class="line">Swap:             <span class="number">0</span>           <span class="number">0</span>           <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>You see the shared(Memory used mostly by tmpfs) and buff/cache parts are huge on bad node, I need to flush and clean it. (当时还未理解这些column的具体含义, 特别是shared, buff/cache, available). 还应该用memory leak相关分析工具去查看哪个调用栈导致了内存紧张 or memleak).</p>
 <p>马后炮, 应该去调查为什么这个node shared, buff/cache size 异常的高，以及为什么[kswapd]操作失败，原因可能是tmpfs(shared)仍然在被使用，需要调查. 后面介绍了如何释放cache by writing to <code>drop_caches</code>，但是我记得当时作用不大，this second comment may help:<br><a href="https://serverfault.com/questions/968020/why-cant-i-release-memory-cache-by-proc-sys-vm-drop-caches" target="_blank" rel="noopener">Why can’t I release memory cache by /proc/sys/vm/drop_caches</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -t: type</span></span><br><span class="line">df -t tmpfs --total -h</span><br><span class="line"><span class="comment"># check one of the tmpfs mount status</span></span><br><span class="line">lsof -nP +L1 /dev/shm | grep DEL</span><br></pre></td></tr></table></figure></p>
 <p>The general solution to release cache intentionally, this <a href="https://www.blackmoreops.com/2014/10/28/delete-clean-cache-to-free-up-memory-on-your-slow-linux-server-vps/" target="_blank" rel="noopener">post</a> is good to reference.<br>If you have to clear the disk cache, this command is safest in enterprise and production, will clear the <code>PageCache</code> only:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># modify kernel behavior by proc file</span></span><br><span class="line">sync; <span class="built_in">echo</span> 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -650,7 +650,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -745,7 +745,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1042,7 +1044,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1081,7 +1085,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

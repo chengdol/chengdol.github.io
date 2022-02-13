@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2021-12-11T19:30:38.743Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH SCP SFTP Daily Work Summary">
 <meta name="twitter:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside:difference between OpenSSH vs OpenSSLThe file format is different but they both encode the same kind of keys. Moreo">
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-12-11 11:30:38" itemprop="dateModified" datetime="2021-12-11T11:30:38-08:00">2021-12-11</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -593,8 +593,8 @@
 <p>It’s useful to set password-less at first time, combine all of these, no prompt will show up:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no ...</span><br></pre></td></tr></table></figure></p>
 <h2 id="02-21-2019"><a href="#02-21-2019" class="headerlink" title="02/21/2019"></a>02/21/2019</h2><p>scp <code>source</code> directory and it’s content recursively to <code>root</code> user home directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ~/<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure></p>
 <p>scp all files in <code>source</code> directory to <code>target</code> directory in <code>example.com</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no ./<span class="built_in">source</span>/* root@example.com:~/target</span><br></pre></td></tr></table></figure></p>
-<h2 id="03-11-2019"><a href="#03-11-2019" class="headerlink" title="03/11/2019"></a>03/11/2019</h2><p>The <code>ssh</code> command has <code>-i</code> option, you associate private key with this flags:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa xxx</span><br></pre></td></tr></table></figure></p>
-<p>Note that SSH never send private key over the network, <code>-i</code> merely used to answer challenge that is generated using the corresponding public key from target machine, you don’t need to explicitly use <code>-i</code> if you use default private key in right location.</p>
+<h2 id="03-11-2019"><a href="#03-11-2019" class="headerlink" title="03/11/2019"></a>03/11/2019</h2><p>The <code>ssh</code> command has <code>-i</code> option, you associate <strong>private</strong> key with this flags:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa xxx</span><br></pre></td></tr></table></figure></p>
+<p>Note that SSH <strong>never</strong> send private key over the network, <code>-i</code> merely used to answer challenge that is generated using the corresponding public key from target machine, you don’t need to explicitly use <code>-i</code> if you use default private key in right location.</p>
 <h2 id="03-12-2019"><a href="#03-12-2019" class="headerlink" title="03/12/2019"></a>03/12/2019</h2><p>If public key is lost, you can use existing private key to generate one:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -y -f ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
 <p>Or just create new key pair<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"yes"</span> | ssh-keygen -t rsa -N <span class="string">""</span> -f ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
 <h2 id="09-05-2020"><a href="#09-05-2020" class="headerlink" title="09/05/2020"></a>09/05/2020</h2><p><code>sftp</code> server is up when install <code>openssh-server</code> package, and can be configured in <code>/etc/ssh/sshd_config</code> file:<br><a href="https://www.techrepublic.com/article/how-to-set-up-an-sftp-server-on-linux/" target="_blank" rel="noopener">https://www.techrepublic.com/article/how-to-set-up-an-sftp-server-on-linux/</a></p>
@@ -731,7 +731,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -826,7 +826,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1123,7 +1125,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1179,7 +1183,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

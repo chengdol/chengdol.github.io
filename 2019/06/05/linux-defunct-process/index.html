@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="这里记录了一下orphan 和 zombie process 的区别和表现形式，以及在bash中怎么制造它们 和 处理long live zombie. Today after killing a running process, it didn’t disappear but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s th">
+  <meta name="description" content="这里记录了一下 orphan 和 zombie process 的区别和表现形式，以及在 bash 中怎么制造它们和处理 zombie. Today after killing a running process, it didn’t get removed but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s this? Zo">
 <meta name="keywords" content="linux,process">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zombie and Orphan Process">
 <meta property="og:url" content="http://yoursite.com/2019/06/05/linux-defunct-process/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="这里记录了一下orphan 和 zombie process 的区别和表现形式，以及在bash中怎么制造它们 和 处理long live zombie. Today after killing a running process, it didn’t disappear but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s th">
+<meta property="og:description" content="这里记录了一下 orphan 和 zombie process 的区别和表现形式，以及在 bash 中怎么制造它们和处理 zombie. Today after killing a running process, it didn’t get removed but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s this? Zo">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.069Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zombie and Orphan Process">
-<meta name="twitter:description" content="这里记录了一下orphan 和 zombie process 的区别和表现形式，以及在bash中怎么制造它们 和 处理long live zombie. Today after killing a running process, it didn’t disappear but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s th">
+<meta name="twitter:description" content="这里记录了一下 orphan 和 zombie process 的区别和表现形式，以及在 bash 中怎么制造它们和处理 zombie. Today after killing a running process, it didn’t get removed but was marked as &amp;lt;defunct&amp;gt; (run ps can see it). What’s this? Zo">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.1k</span>
+                <span title="Symbols count in article">4.5k</span>
               
 
               
@@ -508,17 +508,18 @@
       
 
       
-        <p>这里记录了一下orphan 和 zombie process 的区别和表现形式，以及在bash中怎么制造它们 和 处理long live zombie.</p>
-<p>Today after killing a running process, it didn’t disappear but was marked as <code>&lt;defunct&gt;</code> (run <code>ps</code> can see it). What’s this?</p>
+        <p>这里记录了一下 orphan 和 zombie process 的区别和表现形式，以及在 bash 中怎么制造它们和处理 zombie.</p>
+<p>Today after killing a running process, it didn’t get removed but was marked as <code>&lt;defunct&gt;</code> (run <code>ps</code> can see it). What’s this?</p>
 <p><a href="https://en.wikipedia.org/wiki/Zombie_process" target="_blank" rel="noopener">Zombie vs Orphan process</a><br>On Unix and Unix-like computer operating systems, a <code>zombie process</code> or <code>defunct process</code> is a process that has completed execution but still has an entry in the <code>process table</code>. This entry is still needed to allow the parent process to read its child’s exit status.</p>
 <p><code>Zombie processes</code> should not be confused with <code>orphan processes</code>: an orphan process is a process that is still <strong>executing</strong>, but whose parent has <strong>died</strong>. When the parent dies, the orphaned child process is adopted by <strong>init</strong> (process ID 1). When orphan processes die, they do not remain as zombie processes; instead, they are waited on by init. The result is that a process that is both a zombie and an orphan will be reaped automatically.</p>
-<p>To create orphan in bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this subshell spawn a new subshell sleep run on backgrund</span></span><br><span class="line"><span class="comment"># and print the pid then die immediately</span></span><br><span class="line">(sleep 10 &amp; <span class="built_in">echo</span> orphan pid $!)</span><br><span class="line"><span class="comment"># check pid and ppid</span></span><br><span class="line">ps axo pid,ppid,comm | grep &lt;orphan pid&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Notice <code>&amp;</code> is background sign, don’t append <code>;</code> after it.</p>
-<p>To make zombie in bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(sleep 1 &amp; <span class="built_in">echo</span> zombie pid $!; <span class="built_in">exec</span> /bin/sleep 60)</span><br><span class="line"><span class="comment"># check zombie pid and ppid</span></span><br><span class="line">ps axo pid,ppid,comm | grep &lt;zombie pid&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Analysis: in subshell we first spawn <code>sleep 1</code> on background and output the child pid, then we <code>exec</code> to replace the parent shell, so <code>sleep 1</code> will not get reaped by the original parent, thus become a zombie. Eventually they both are reaped by init.</p>
+<p>To create orphan in bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this subshell spawns a new process sleep in background</span></span><br><span class="line"><span class="comment"># and print the child pid then die immediately</span></span><br><span class="line">(sleep 10 &amp; <span class="built_in">echo</span> orphan pid $!)</span><br><span class="line"><span class="comment"># now the ppid is took over by init process</span></span><br><span class="line">ps axo pid,ppid,comm | grep &lt;orphan pid&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Notice that <code>&amp;</code> is background sign, don’t append <code>;</code> after it.</p>
+<p>To make zombie in bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(sleep 1 &amp; <span class="built_in">echo</span> zombie pid $!; <span class="built_in">exec</span> /bin/sleep 60) &amp;</span><br><span class="line"><span class="comment"># check &lt;defunct&gt; mark</span></span><br><span class="line">ps axo pid,ppid,comm | grep &lt;zombie pid&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Analysis: in subshell we first spawn <code>sleep 1</code> on background and output the child pid, then we <code>exec</code> to replace the parent shell, so <code>sleep 1</code> will not be reaped by the original parent, neither of init process because its parent does not die, thus become a zombie. Eventually they both are reaped by init.</p>
 <p>There is no harm in letting such processes be unless there are many of them. Processes that stay zombies for a long time are generally an error and cause a resource leak, but the only resource they occupy is the process table entry – process ID.</p>
+<p>To check the maximum number of process can be created:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/sys/kernel/pid_max</span><br></pre></td></tr></table></figure></p>
 <p>Usually zombie process will last a very short time, it will be reaped by its parent or init as mentioned above. But if not, need to reap them manually.</p>
-<p>I checked the PPID of that <code>defunct</code> process, it’s not PID 1 but other shell process. By killing its <strong>parent</strong> process, the zombie will be gone. Just check the PPID:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps axo pid,ppid | grep defunct</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">ps -ef | grep defunct</span><br></pre></td></tr></table></figure></p>
+<p>I checked the PPID of that <code>defunct</code> process, it’s not PID 1 but other shell process. By killing its <strong>parent</strong> process, the zombie will be handed over to init and reaped. Just check the PPID:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps axo pid,ppid | grep defunct</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">ps -ef | grep defunct</span><br></pre></td></tr></table></figure></p>
 <p>You can also use this command to verify defunct process is gone.</p>
 <blockquote>
 <p>Notice you cannot kill zombie because by <code>kill -9</code> since it is already dead!</p>
@@ -636,7 +637,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -731,7 +732,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1028,7 +1031,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1067,7 +1072,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

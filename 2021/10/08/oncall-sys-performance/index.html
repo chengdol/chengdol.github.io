@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="BenchmarkNeed to first install stress, stress-ng packages, benchmark with multi-process. 123456789# stress cpu with 1 processstress --cpu 1 --timeout 600# stress cpu with 8 processesstress -c 8 --time">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-12-27T06:42:53.473Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="On-Call System Performance">
 <meta name="twitter:description" content="BenchmarkNeed to first install stress, stress-ng packages, benchmark with multi-process. 123456789# stress cpu with 1 processstress --cpu 1 --timeout 600# stress cpu with 8 processesstress -c 8 --time">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-12-26 22:42:53" itemprop="dateModified" datetime="2021-12-26T22:42:53-08:00">2021-12-26</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">27k</span>
+                <span title="Symbols count in article">28k</span>
               
 
               
@@ -518,12 +518,15 @@
 <p>Versatile tool for generating system resource statistics<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># combination of cpu, disk, net, system</span></span><br><span class="line"><span class="comment"># when CPU iowait high, can use it to compare</span></span><br><span class="line"><span class="comment"># iowait vs disk read/wirte vs network rec/send</span></span><br><span class="line">dstat</span><br></pre></td></tr></table></figure></p>
 <p>Context switch check:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># process context switch metrics</span></span><br><span class="line"><span class="comment"># -w: context switch</span></span><br><span class="line"><span class="comment"># cswch: voluntary, 系统资源不足时，就会发生自愿上下文切换</span></span><br><span class="line"><span class="comment"># nvcswch: non-voluntary, 大量进程都在争抢 CPU 时，就容易发生非自愿上下文切换</span></span><br><span class="line"><span class="comment"># -t: thread</span></span><br><span class="line">pidstat -t -w 1 -p &lt;pid number&gt;</span><br></pre></td></tr></table></figure></p>
 <p>Interrupts check:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hard interrupts</span></span><br><span class="line"><span class="comment"># RES: 重调度中断</span></span><br><span class="line">watch -d cat /proc/interrupts</span><br><span class="line"></span><br><span class="line"><span class="comment"># acculumated soft interrupt </span></span><br><span class="line"><span class="comment"># big change *rate* is usually from:</span></span><br><span class="line"><span class="comment"># RCU: kernel ready-copy update lock</span></span><br><span class="line"><span class="comment"># NET_TX</span></span><br><span class="line"><span class="comment"># NET_RX</span></span><br><span class="line"><span class="comment"># TIMER</span></span><br><span class="line"><span class="comment"># SCHED</span></span><br><span class="line">watch -d cat /proc/softirqs</span><br><span class="line"><span class="comment"># soft interrupt kernel thread</span></span><br><span class="line"><span class="comment"># [ksoftirqd/&lt;CPU id&gt;]</span></span><br><span class="line">ps aux | grep ksoftirq</span><br><span class="line"></span><br><span class="line"><span class="comment"># if softiq NET_RX/NET_TX is too high</span></span><br><span class="line"><span class="comment"># -n DEV: statistics of network device</span></span><br><span class="line"><span class="comment"># PPS: rxpck/s txpck/s    </span></span><br><span class="line"><span class="comment"># BPS: rxkB/s  txkB/s</span></span><br><span class="line">sar -n DEV 1</span><br></pre></td></tr></table></figure></p>
-<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>To check process memory usage, using <code>top</code>(VIRT, RES, SHR) and <code>ps</code>(VSZ, RSS)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># adjust oom score [-17,15], kill-prone bigger</span></span><br><span class="line"><span class="built_in">echo</span> -16 &gt; /proc/$(pidof &lt;process name&gt;)/oom_adj</span><br></pre></td></tr></table></figure></p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><p>To check process memory usage, using <code>top</code>(VIRT, RES, SHR) and <code>ps</code>(VSZ, RSS)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># adjust oom score [-17,15], the higher the kill-prone</span></span><br><span class="line"><span class="built_in">echo</span> -16 &gt; /proc/$(pidof &lt;process name&gt;)/oom_adj</span><br></pre></td></tr></table></figure></p>
 <p>Check OOM killed process:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmesg |grep -iE <span class="string">"kill|oom|out of memory"</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check memory</span></span><br><span class="line"><span class="comment"># -h: readable</span></span><br><span class="line"><span class="comment"># -w: wide display</span></span><br><span class="line">free -hw</span><br><span class="line"></span><br><span class="line"><span class="comment"># buffer is from /proc/meminfo Buffers</span></span><br><span class="line">cat /proc/meminfo | grep -E <span class="string">"Buffers"</span></span><br><span class="line"><span class="comment"># cache is from /proc/meminfo Cached + SReclaimable</span></span><br><span class="line">cat /proc/meminfo | grep -E <span class="string">"SReclaimable|Cached"</span></span><br><span class="line"><span class="comment"># understand what is buffer and cache, man proc</span></span><br><span class="line"><span class="comment"># --Buffers: </span></span><br><span class="line"><span class="comment"># Relatively temporary storage for raw disk blocks that shouldn't get tremendously large (20MB or so)</span></span><br><span class="line"><span class="comment"># --Cached:</span></span><br><span class="line"><span class="comment"># In-memory cache for files read from the disk (the page cache).  Doesn't include SwapCached</span></span><br><span class="line"><span class="comment"># --Slab:</span></span><br><span class="line"><span class="comment"># In-kernel data structures cache.</span></span><br><span class="line"><span class="comment"># --SReclaimable:</span></span><br><span class="line"><span class="comment"># Part of Slab, that might be reclaimed, such as caches.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -w: wide display</span></span><br><span class="line"><span class="comment"># -S: unit m(mb)</span></span><br><span class="line"><span class="comment"># 2: profile interval</span></span><br><span class="line">vmstat -w -Sm 2</span><br></pre></td></tr></table></figure>
-<p>Check cache hits (need to install from BCC):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cachestat</span><br><span class="line">cachetop</span><br></pre></td></tr></table></figure></p>
+<p>Check cache hits (need to install from BCC):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># system overall cache hit</span></span><br><span class="line">cachestat</span><br><span class="line"><span class="comment"># process level cache hit</span></span><br><span class="line">cachetop</span><br></pre></td></tr></table></figure></p>
 <p>Check memory leak:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># or valgrind</span></span><br><span class="line"><span class="comment"># in bcc-tools with cachestat and cachetop</span></span><br><span class="line">memleak -a -p $(pidof app_name)</span><br></pre></td></tr></table></figure></p>
-<p>Check kernel slab details:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use carefully</span></span><br><span class="line"><span class="comment"># drop both inode and dentry cache</span></span><br><span class="line">sync; <span class="built_in">echo</span> 3 &gt; /proc/sys/vm/drop_caches</span><br><span class="line"></span><br><span class="line"><span class="comment"># man slabinfo</span></span><br><span class="line"><span class="comment"># pay attendtion to dentry and inode_cache</span></span><br><span class="line">cat /proc/slabinfo | grep -E <span class="string">'^#|dentry|inode'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># real time kernel slab usage</span></span><br><span class="line"><span class="comment"># -s c: sort by cache size</span></span><br><span class="line">slabtop -s c</span><br></pre></td></tr></table></figure></p>
+<p>If swap is enabled, we can adjust the swappiness:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [0, 100], the higher the swappiness-prone</span></span><br><span class="line"><span class="comment"># reclaim anonymous page from heap</span></span><br><span class="line"><span class="built_in">echo</span> 90 &gt; /proc/sys/vm/swappiness</span><br></pre></td></tr></table></figure></p>
+<p>As oppose to swappiness, another reclamation is for file-backed page from cache/buffer.</p>
+<p>Release caches, used carefully in production:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sync: flush dirty pages to disk</span></span><br><span class="line"><span class="comment"># use carefully, drop both inode and dentry cache</span></span><br><span class="line">sync; <span class="built_in">echo</span> &lt;1 or 2 or 3&gt; &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>Check kernel slab details:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># man slabinfo</span></span><br><span class="line"><span class="comment"># pay attendtion to dentry and inode_cache</span></span><br><span class="line">cat /proc/slabinfo | grep -E <span class="string">'^#|dentry|inode'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># real time kernel slab usage</span></span><br><span class="line"><span class="comment"># -s c: sort by cache size</span></span><br><span class="line">slabtop -s c</span><br></pre></td></tr></table></figure></p>
 <h2 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h2><ol>
 <li>Check <code>top</code> for overall iowait performance</li>
 <li>Check <code>iostat/sar</code> for device performance</li>
@@ -668,7 +671,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -763,7 +766,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1060,7 +1065,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1116,7 +1123,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

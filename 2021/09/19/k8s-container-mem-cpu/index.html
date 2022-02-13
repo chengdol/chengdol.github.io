@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="//TODO:[ ] k9s https://github.com/derailed/k9s If run top which utilizes cat /proc/meminfo in container, it displays metrics of the host machine instead of the container, they are not aware of the cgr">
+  <meta name="description" content="top command ran in container within the pod shows the host machine overview metrics and container level process metrics. The reason is containers inside pod partially share /proc with the host system">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pod&#x2F;Container Memory&#x2F;CPU Usage">
 <meta property="og:url" content="http://yoursite.com/2021/09/19/k8s-container-mem-cpu/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="//TODO:[ ] k9s https://github.com/derailed/k9s If run top which utilizes cat /proc/meminfo in container, it displays metrics of the host machine instead of the container, they are not aware of the cgr">
+<meta property="og:description" content="top command ran in container within the pod shows the host machine overview metrics and container level process metrics. The reason is containers inside pod partially share /proc with the host system">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-09-20T05:10:36.369Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pod&#x2F;Container Memory&#x2F;CPU Usage">
-<meta name="twitter:description" content="//TODO:[ ] k9s https://github.com/derailed/k9s If run top which utilizes cat /proc/meminfo in container, it displays metrics of the host machine instead of the container, they are not aware of the cgr">
+<meta name="twitter:description" content="top command ran in container within the pod shows the host machine overview metrics and container level process metrics. The reason is containers inside pod partially share /proc with the host system">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2021-09-19 14:11:18 / Modified: 22:10:36" itemprop="dateCreated datePublished" datetime="2021-09-19T14:11:18-07:00">2021-09-19</time>
+              <time title="Created: 2021-09-19 14:11:18" itemprop="dateCreated datePublished" datetime="2021-09-19T14:11:18-07:00">2021-09-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">10k</span>
+                <span title="Symbols count in article">13k</span>
               
 
               
@@ -496,23 +508,22 @@
       
 
       
-        <p>//TODO:<br>[ ] k9s <a href="https://github.com/derailed/k9s" target="_blank" rel="noopener">https://github.com/derailed/k9s</a></p>
-<p>If run <code>top</code> which utilizes <code>cat /proc/meminfo</code> in container, it displays metrics of the host machine instead of the container, they are not aware of the <code>cgroup</code>. Containers inside pods partially share <code>/proc</code> with the host system include path about a memory and CPU information.</p>
-<p>Make Sure you have added the resources section (<code>requests</code> and <code>limits</code>) to deployment so that it can calculate the usage based on cgroup and container will respect the limits set on pod level.</p>
+        <p><code>top</code> command ran in container within the pod shows the host machine overview metrics and container level process metrics. The reason is containers inside pod partially share <code>/proc</code> with the host system includes path about a memory and CPU information. The <code>top</code> utilizes <code>/proc/stat</code>(host machine), <code>/proc/&lt;pid&gt;/stat</code>(container process), they are not aware of the <code>namespace</code>. </p>
+<p>P.S: <a href="https://github.com/lxc/lxcfs" target="_blank" rel="noopener">lxcfs</a> this FUSE filesystem can create container native <code>/proc</code>! Make container more likes a VM.</p>
 <p>The two methods below collect data from <strong>different</strong> sources and they are also referring to <strong>different</strong> metrics.</p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/54531646/checking-kubernetes-pod-cpu-and-memory" target="_blank" rel="noopener">k8s pod cpu and memory</a>.</li>
 <li><a href="https://www.ibm.com/support/pages/kubectl-top-pods-and-docker-stats-show-different-memory-statistics" target="_blank" rel="noopener">kubectl top vs docker stats</a></li>
 </ul>
-<p>For K8s OOMKiller, using <code>kubectl top</code> to predicate and track is more accurate.</p>
+<p>For k8s OOMKiller event, using <code>kubectl top</code> to predicate and track is more accurate.</p>
 <h1 id="Kubectl-Top"><a href="#Kubectl-Top" class="headerlink" title="Kubectl Top"></a>Kubectl Top</h1><p>K8s OOMkiller uses <code>container_memory_working_set_bytes</code>(from <strong>cadviosr</strong> metrics, can also show in prometheus if deployed) as base line to decide the pod kill or not. It is an estimate of how much memory cannot be evicted, the <code>kubectl top</code> uses this metrics as well.</p>
-<p>After metrics-server is installed:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show all containers resource usage insdie a pod</span></span><br><span class="line">kubectl top pod &lt;pod name&gt; --containers</span><br><span class="line"><span class="comment"># show pod resource usage</span></span><br><span class="line">kubectl top pod</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># show node resource usage</span></span><br><span class="line">kubectl top node</span><br></pre></td></tr></table></figure></p>
+<p>After metrics-server is installed:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show all containers resource usage insdie a pod</span></span><br><span class="line">kubectl top pod &lt;pod name&gt; --containers</span><br><span class="line"><span class="comment"># show pod resource usage</span></span><br><span class="line">kubectl top pod</span><br><span class="line"><span class="comment"># show node resource usage</span></span><br><span class="line">kubectl top node</span><br></pre></td></tr></table></figure></p>
 <p>In prometheus expression browser, you can get the same value as <code>kubectl top</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># value in Mib</span></span><br><span class="line"><span class="comment"># pod, container are the label name, depends on your case</span></span><br><span class="line">container_memory_working_set_bytes&#123;pod=~<span class="string">"&lt;pod name&gt;"</span>,container=~<span class="string">"&lt;container name&gt;"</span>&#125; / 1024 / 1024</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>看看Prom alert是从何处取得 container/pod memory 数据的，注意数据源是来自哪个 metrics，以及使用 grafana 也是如此.</p>
 </blockquote>
 <h1 id="Docker-Stats"><a href="#Docker-Stats" class="headerlink" title="Docker Stats"></a>Docker Stats</h1><p><code>docker stats</code> memory display collects data from path <code>/sys/fs/cgroup/memory</code> with some calculations, see below explanation.</p>
-<p>On host machine, display the container stats (CPU and Memory usages)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stats --no-stream &lt;container id&gt;</span><br></pre></td></tr></table></figure></p>
+<p>On host machine, display the container stats (CPU and Memory usages)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># similar to top</span></span><br><span class="line">docker stats --no-stream &lt;container id&gt;</span><br></pre></td></tr></table></figure></p>
 <p>Actually docker CLIs fetch data from <a href="https://docs.docker.com/engine/api/" target="_blank" rel="noopener">Docker API</a>, for instance <code>v1.41</code> (run <code>docker version</code> to know API supported verion), you can get stats data by using curl command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --unix-socket /var/run/docker.sock <span class="string">"http:/v1.41/containers/&lt;container id&gt;/stats?stream=false"</span> | jq</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"memory_stats"</span>: &#123;</span><br><span class="line">  <span class="string">"usage"</span>: <span class="number">80388096</span>,</span><br><span class="line">  <span class="string">"max_usage"</span>: <span class="number">148967424</span>,</span><br><span class="line">  <span class="string">"stats"</span>: &#123;</span><br><span class="line">    <span class="string">"active_anon"</span>: <span class="number">9678848</span>,</span><br><span class="line">    <span class="string">"active_file"</span>: <span class="number">13766656</span>,</span><br><span class="line">    <span class="string">"cache"</span>: <span class="number">31219712</span>,</span><br><span class="line">    <span class="string">"inactive_file"</span>: <span class="number">17829888</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"total_inactive_file"</span>: <span class="number">17829888</span>,</span><br></pre></td></tr></table></figure>
 <p>From this <a href="https://docs.docker.com/engine/reference/commandline/stats/" target="_blank" rel="noopener">docker stats description</a>:<br>On Linux, the Docker CLI reports memory usage by subtracting cache usage from the total memory usage. The API does not perform such a calculation but rather provides the total memory usage and the amount from the cache so that clients can use the data as needed. The cache usage is defined as the value of <code>total_inactive_file</code> field in the <code>memory.stat</code> file on cgroup v1 hosts.</p>
@@ -520,7 +531,11 @@
 <p>memory_stats.usage is from <code>/sys/fs/cgroup/memory/memory.usage_in_bytes</code>.<br>memory_stats.stats.inactive_file is from <code>/sys/fs/cgroup/memory/memory.stat</code>.</p>
 <p>So here it is:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">80388096 - 17829888 = 62558208 =&gt; 59.66s Mib</span><br></pre></td></tr></table></figure></p>
 <p>This does perfectly match <code>docker stats</code> value in <code>MEM USAGE</code> column.</p>
-<p>To see the container memory usage as <code>docker stats</code> in the pod without installing third party tool:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cpu</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/cpu; cat cpuacct.usage</span><br><span class="line"></span><br><span class="line"><span class="comment"># memory in Mib: used</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/memory</span><br><span class="line"><span class="built_in">echo</span> $(($(cat memory.usage_in_bytes)/1024/1024))</span><br><span class="line"></span><br><span class="line"><span class="comment"># memory in Mib: used - inactive</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/memory</span><br><span class="line">used=$(cat memory.usage_in_bytes)</span><br><span class="line">inactive=$(grep -w inactive_file memory.stat | awk &#123;<span class="string">'print $2'</span>&#125;)</span><br><span class="line"><span class="built_in">echo</span> $(((<span class="variable">$used</span>-<span class="variable">$inactive</span>)/1024/1024))</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>The <code>dockershim</code> is deprecated in k8s!! If <code>containerd</code> runtime is used instead, to explore metrics usage you can check <code>cgroup</code> in host machine or go into container check <code>/sys/fs/cgroup/cpu</code>.</p>
+</blockquote>
+<p>To calculate the container memory usage as <code>docker stats</code> in the pod without installing third party tool:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># memory in Mib: used</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/memory</span><br><span class="line">cat memory.usage_in_bytes | numfmt --to=iec</span><br><span class="line"></span><br><span class="line"><span class="comment"># memory in Mib: used - inactive(cache)</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/memory</span><br><span class="line">used=$(cat memory.usage_in_bytes)</span><br><span class="line">inactive=$(grep -w inactive_file memory.stat | awk &#123;<span class="string">'print $2'</span>&#125;)</span><br><span class="line"><span class="comment"># numfmt: readable format</span></span><br><span class="line"><span class="built_in">echo</span> $((<span class="variable">$used</span>-<span class="variable">$inactive</span>)) | numfmt --to=iec</span><br></pre></td></tr></table></figure></p>
+<p>To calculate the container cpu usage as <code>docker stats</code> in the pod without installing third party tool:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cpu, cpuacct dir are softlinks</span></span><br><span class="line"><span class="built_in">cd</span> /sys/fs/cgroup/cpu,cpuacct</span><br><span class="line"><span class="comment"># cpuacct.stat:</span></span><br><span class="line"><span class="comment"># Reports the total CPU time in nanoseconds </span></span><br><span class="line"><span class="comment"># spent in user and system mode by all tasks in the cgroup.</span></span><br><span class="line">utime_start=$(cat cpuacct.stat| grep user | awk <span class="string">'&#123;print $2&#125;'</span>)</span><br><span class="line">stime_start=$(cat cpuacct.stat| grep system | awk <span class="string">'&#123;print $2&#125;'</span>)</span><br><span class="line">sleep 1</span><br><span class="line">utime_end=$(cat cpuacct.stat| grep user | awk <span class="string">'&#123;print $2&#125;'</span>)</span><br><span class="line">stime_end=$(cat cpuacct.stat| grep system | awk <span class="string">'&#123;print $2&#125;'</span>)</span><br><span class="line"><span class="comment"># getconf CLK_TCK aka sysconf(_SC_CLK_TCK) returns USER_HZ </span></span><br><span class="line"><span class="comment"># aka CLOCKS_PER_SEC which seems to be always </span></span><br><span class="line"><span class="comment"># 100 independent of the kernel configuration.</span></span><br><span class="line">HZ=$(getconf CLK_TCK)</span><br><span class="line"><span class="comment"># get container cpu usage</span></span><br><span class="line"><span class="comment"># on top of user/system cpu time</span></span><br><span class="line"><span class="built_in">echo</span> $(( (utime_end+stime_end-utime_start-stime_start)*100/HZ/1 )) <span class="string">"%"</span></span><br><span class="line"><span class="comment"># if the outcome is 200%, means 2 cpu usage, so on and so forth</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="Readings"><a href="#Readings" class="headerlink" title="Readings"></a>Readings</h1><ul>
 <li><p><a href="https://faun.pub/how-much-is-too-much-the-linux-oomkiller-and-used-memory-d32186f29c9d" target="_blank" rel="noopener">How much is too much? The Linux OOMKiller and “used” memory</a><br>We can see from this experiment that <code>container_memory_usage_bytes</code> does account for some filesystem pages that are being cached. We can also see that OOMKiller is tracking <code>container_memory_working_set_bytes</code>. This makes sense as shared filesystem cache pages can be evicted from memory at any time. There’s no point in killing the process just for using disk I/O.</p>
 </li>
@@ -649,7 +664,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -744,7 +759,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1041,7 +1058,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1097,7 +1116,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

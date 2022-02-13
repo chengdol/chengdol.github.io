@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="How to be a contribution beginner on k8s?https://youtu.be/o68ff5NokR8  find issues, search label good first issue communication build relationships  Kubernetes version 1.13.2This article mainly talks">
-<meta name="keywords" content="kubernetes,calico,kubeadm">
+<meta name="keywords" content="kubernetes,kubeadm,calico">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K8s Cluster Setup by Kubeadm">
 <meta property="og:url" content="http://yoursite.com/2018/12/17/k8s-kubeadm-setup/index.html">
@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1pl6EV9YwD604U1ItoMKnqlAp0cjwEOAd">
 <meta property="og:image" content="https://drive.google.com/uc?id=11R3h2G2oknDcN3sY1cTdwUHQCnxwRysn">
 <meta property="og:image" content="https://drive.google.com/uc?id=1bPLxrrlLLyFvNn6cBdSIJbWpANy-ht4h">
-<meta property="og:updated_time" content="2021-01-03T06:00:18.706Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K8s Cluster Setup by Kubeadm">
 <meta name="twitter:description" content="How to be a contribution beginner on k8s?https://youtu.be/o68ff5NokR8  find issues, search label good first issue communication build relationships  Kubernetes version 1.13.2This article mainly talks">
@@ -264,7 +264,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -283,7 +283,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -302,7 +302,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -443,7 +443,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-02 22:00:18" itemprop="dateModified" datetime="2021-01-02T22:00:18-08:00">2021-01-02</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -488,7 +488,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">39k</span>
+                <span title="Symbols count in article">38k</span>
               
 
               
@@ -549,7 +549,7 @@
 </blockquote>
 <h4 id="Install-Docker-CE"><a href="#Install-Docker-CE" class="headerlink" title="Install Docker CE"></a>Install Docker CE</h4><p>currently Docker version <code>18.06.2</code> is recommended, but 1.11, 1.12, 1.13 and 17.03 are known to work as well. Keep track of the latest verified Docker version in the Kubernetes release notes<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set up the repository</span></span><br><span class="line">yum install yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add docker repository.</span></span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install docker ce.</span></span><br><span class="line">yum update &amp;&amp; yum install docker-ce-18.06.2.ce</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create /etc/docker directory.</span></span><br><span class="line">mkdir /etc/docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># Setup daemon.</span></span><br><span class="line">cat &gt; /etc/docker/daemon.json &lt;&lt;EOF</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"exec-opts"</span>: [<span class="string">"native.cgroupdriver=systemd"</span>],</span><br><span class="line">  <span class="string">"log-driver"</span>: <span class="string">"json-file"</span>,</span><br><span class="line">  <span class="string">"log-opts"</span>: &#123;</span><br><span class="line">    <span class="string">"max-size"</span>: <span class="string">"100m"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"storage-driver"</span>: <span class="string">"overlay2"</span>,</span><br><span class="line">  <span class="string">"storage-opts"</span>: [</span><br><span class="line">    <span class="string">"overlay2.override_kernel_check=true"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">mkdir -p /etc/systemd/system/docker.service.d</span><br><span class="line"></span><br><span class="line"><span class="comment"># Restart docker.</span></span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
 <p>check result<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@myk8s1 ~] docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:           18.06.2-ce</span><br><span class="line"> API version:       1.38</span><br><span class="line"> Go version:        go1.10.3</span><br><span class="line"> Git commit:        6d37f41</span><br><span class="line"> Built:             Sun Feb 10 03:46:03 2019</span><br><span class="line"> OS/Arch:           linux/amd64</span><br><span class="line"> Experimental:      false</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:          18.06.2-ce</span><br><span class="line">  API version:      1.38 (minimum version 1.12)</span><br><span class="line">  Go version:       go1.10.3</span><br><span class="line">  Git commit:       6d37f41</span><br><span class="line">  Built:            Sun Feb 10 03:48:29 2019</span><br><span class="line">  OS/Arch:          linux/amd64</span><br><span class="line">  Experimental:     false</span><br></pre></td></tr></table></figure></p>
-<h3 id="Disable-swap"><a href="#Disable-swap" class="headerlink" title="Disable swap"></a>Disable swap</h3><p><a href="https://serverfault.com/questions/881517/why-disable-swap-on-kubernetes" target="_blank" rel="noopener"><strong>why we need to disable swap?</strong> </a><br>The idea of Kubernetes is to tightly pack instances to as close to 100% utilized as possible. All deployments should be pinned with CPU/memory limits. So if the scheduler sends a pod to a machine it should never use swap at all. You don’t want to swap since it’ll slow things down. It’s mainly for performance.</p>
+<h3 id="Disable-swap"><a href="#Disable-swap" class="headerlink" title="Disable swap"></a>Disable swap</h3><p><a href="https://serverfault.com/questions/881517/why-disable-swap-on-kubernetes" target="_blank" rel="noopener"><strong>why we need to disable swap?</strong> </a><br>Swap brings disk IO overhead, as well as breaking cgroups for pod memory control.</p>
 <p>in <code>/etc/fstab</code> file, comment out swap setting<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/mapper/centos-swap swap                    swap    defaults        0 0</span><br></pre></td></tr></table></figure></p>
 <p>activate new configuration and check<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@myk8s3 ~] free -h</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           7.6G        189M        5.7G        136M        1.8G        7.0G</span><br><span class="line">Swap:            0B          0B          0B</span><br></pre></td></tr></table></figure>
@@ -608,9 +608,9 @@
           
             <a href="/tags/kubernetes/" rel="tag"># kubernetes</a>
           
-            <a href="/tags/calico/" rel="tag"># calico</a>
-          
             <a href="/tags/kubeadm/" rel="tag"># kubeadm</a>
+          
+            <a href="/tags/calico/" rel="tag"># calico</a>
           
         </div>
       
@@ -707,7 +707,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -802,7 +802,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1099,7 +1101,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1155,7 +1159,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

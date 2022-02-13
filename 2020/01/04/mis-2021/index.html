@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="2021/01/04 GoCD, the CI/CD tool like Jenkins  2021/01/17 !&amp;lt;command prefix letter&amp;gt; will rerun the last command that starts with this prefix.  2021/01/23 runbook/playbook is for commonly problems">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-12-27T06:42:53.471Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea 2021">
 <meta name="twitter:description" content="2021/01/04 GoCD, the CI/CD tool like Jenkins  2021/01/17 !&amp;lt;command prefix letter&amp;gt; will rerun the last command that starts with this prefix.  2021/01/23 runbook/playbook is for commonly problems">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-12-26 22:42:53" itemprop="dateModified" datetime="2021-12-26T22:42:53-08:00">2021-12-26</time>
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.2k</span>
+                <span title="Symbols count in article">3.9k</span>
               
 
               
@@ -534,8 +534,12 @@
 <li><code>docker container run</code> = <code>docker container create</code> + <code>docker container start</code> + [<code>docker container attach</code>]</li>
 </ul>
 <h3 id="2021-10-06"><a href="#2021-10-06" class="headerlink" title="2021/10/06"></a>2021/10/06</h3><ul>
-<li><a href="https://stackoverflow.com/questions/53542498/in-docker-from-scratch-which-os-will-run" target="_blank" rel="noopener">Docker has OS or not? </a>, obviously no, remember docker vs virtual machine. Docker is lightweight virtualization, For Linux docker, the container always runs/shares on linux/host kernel, docker image supplies the necessary files, libs, utilities, etc.</li>
-<li><a href="https://stackoverflow.com/questions/43383276/how-does-docker-run-a-linux-kernel-under-macos-host" target="_blank" rel="noopener">Docker run on MacOS</a>, Docker on Mac actually creates a Linux VM by <code>LinuxKit</code> and containers run on it.</li>
+<li><p><a href="https://stackoverflow.com/questions/53542498/in-docker-from-scratch-which-os-will-run" target="_blank" rel="noopener">Docker has OS or not? </a>, obviously no, remember docker vs virtual machine. Docker is lightweight virtualization, For Linux docker, the container always runs/shares on linux/host kernel, docker image supplies the necessary files, libs, utilities, etc.</p>
+</li>
+<li><p>We have ubuntu, centos, alpine docker image, they can run in the same host OS, the key differences are filesystem/libraries, they share the host OS kernel. see this <a href="https://stackoverflow.com/questions/33112137/run-different-linux-os-in-docker-container" target="_blank" rel="noopener">post</a>, also see the second answer: “Since the core kernel is common technology, the system calls are expected to be compatible even when the call is made from an Ubuntu user space code to a Redhat kernel code. This compatibility make it possible to share the kernel across containers which may all have different base OS images.”</p>
+</li>
+<li><p><a href="https://stackoverflow.com/questions/43383276/how-does-docker-run-a-linux-kernel-under-macos-host" target="_blank" rel="noopener">Docker run on MacOS</a>, Docker on Mac actually creates a Linux VM by <code>LinuxKit</code> and containers run on it.</p>
+</li>
 </ul>
 <h3 id="2021-10-31"><a href="#2021-10-31" class="headerlink" title="2021/10/31"></a>2021/10/31</h3><ul>
 <li>DNS record type <code>TXT</code> and <code>A</code>: <code>TXT</code> is for owner custom info, <code>A</code> is IP hostname mapping.</li>
@@ -663,7 +667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -758,7 +762,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1055,7 +1061,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1111,7 +1119,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

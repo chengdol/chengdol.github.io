@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it: ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networkin">
+  <meta name="description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networki">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Network Interface">
 <meta property="og:url" content="http://yoursite.com/2019/11/04/linux-network-interface/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it: ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networkin">
+<meta property="og:description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networki">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2019-11-04T23:46:32.000Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Network Interface">
-<meta name="twitter:description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it: ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networkin">
+<meta name="twitter:description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networki">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">142</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">41</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">250</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
 
   </li>
 
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2019-11-04 15:32:54 / Modified: 15:46:32" itemprop="dateCreated datePublished" datetime="2019-11-04T15:32:54-08:00">2019-11-04</time>
+              <time title="Created: 2019-11-04 15:32:54" itemprop="dateCreated datePublished" datetime="2019-11-04T15:32:54-08:00">2019-11-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">956</span>
+                <span title="Symbols count in article">1k</span>
               
 
               
@@ -498,8 +510,14 @@
       
         <p>Sometimes I need to fetch IP from specified network interface, for example <code>eth0</code>.</p>
 <p>There are several ways to do it:</p>
-<p><code>ifconfig</code> command, but you need to first yum install <code>net-tools.x86_64 : Basic networking tools</code> if it is not present.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 | grep &quot;inet&quot; | awk &apos;&#123;print $2&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p><code>ip</code> command, this command is pre-installed in most linux machine and powerful.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show eth0 | grep &quot;inet\b&quot; | awk &apos;&#123;print $2&#125;&apos; | cut -d/ -f1</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p><code>ifconfig</code> command, but you need to first yum install <code>net-tools.x86_64 : Basic networking tools</code> if it does not present.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 | grep <span class="string">"inet"</span> | awk <span class="string">'&#123;print $2&#125;'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>ip</code> command, this command is pre-installed in most linux machine and powerful.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show eth0 | grep &quot;inet\b&quot; | awk &apos;&#123;print $2&#125;&apos; | cut -d/ -f1</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -611,7 +629,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">250</span>
+                    <span class="site-state-item-count">255</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -706,7 +724,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1003,7 +1023,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">142</span>
+                      
+                    
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1042,7 +1064,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
