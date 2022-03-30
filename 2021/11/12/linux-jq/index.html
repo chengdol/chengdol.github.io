@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Summary of some jq use cases and caveats daily.Reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual   quote the expressionFor example: 12# -r: raw s">
-<meta name="keywords" content="linux,jq">
+  <meta name="description" content="Summary of some jq use cases and caveats daily.Quick reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
+<meta name="keywords" content="linux,jq,yq">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jq Cheat Sheet">
+<meta property="og:title" content="jq&#x2F;yq Cheat Sheet">
 <meta property="og:url" content="http://yoursite.com/2021/11/12/linux-jq/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Summary of some jq use cases and caveats daily.Reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual   quote the expressionFor example: 12# -r: raw s">
+<meta property="og:description" content="Summary of some jq use cases and caveats daily.Quick reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-12-27T06:42:53.464Z">
+<meta property="og:updated_time" content="2022-03-30T04:05:55.322Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jq Cheat Sheet">
-<meta name="twitter:description" content="Summary of some jq use cases and caveats daily.Reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual   quote the expressionFor example: 12# -r: raw s">
+<meta name="twitter:title" content="jq&#x2F;yq Cheat Sheet">
+<meta name="twitter:description" content="Summary of some jq use cases and caveats daily.Quick reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>jq Cheat Sheet | 海胆阶段's Blog</title>
+  <title>jq/yq Cheat Sheet | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">144</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">257</span></a>
 
   </li>
 
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jq Cheat Sheet
+          <h1 class="post-title" itemprop="name headline">jq/yq Cheat Sheet
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-12-26 22:42:53" itemprop="dateModified" datetime="2021-12-26T22:42:53-08:00">2021-12-26</time>
+                <time title="Modified: 2022-03-29 21:05:55" itemprop="dateModified" datetime="2022-03-29T21:05:55-07:00">2022-03-29</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.8k</span>
+                <span title="Symbols count in article">3.8k</span>
               
 
               
@@ -508,7 +508,7 @@
       
 
       
-        <p>Summary of some <code>jq</code> use cases and caveats daily.<br>Reference: </p>
+        <p>Summary of some <code>jq</code> use cases and caveats daily.<br>Quick reference: </p>
 <ul>
 <li><a href="https://lzone.de/cheat-sheet/jq" target="_blank" rel="noopener">cheat sheet</a></li>
 </ul>
@@ -517,15 +517,21 @@
 <li><a href="https://stedolan.github.io/jq/tutorial/" target="_blank" rel="noopener">official tutorial</a></li>
 <li><a href="https://stedolan.github.io/jq/manual/" target="_blank" rel="noopener">official manual</a></li>
 </ul>
+<p><a href="https://github.com/mikefarah/yq" target="_blank" rel="noopener"><code>yq</code></a> is another open source tool relies on <code>jq</code> to query yaml file, tt has most common operations available and syntactically like <code>jq</code>.</p>
 <ol>
-<li><p>quote the expression<br>For example:</p>
+<li><p>Must quote the expression<br>For example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -r: raw string</span></span><br><span class="line">k get pod banzai-vault-0 -o json | jq -r <span class="string">'.spec.containers[].name'</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>replace field values<br>Using <code>|=</code> operator, see <a href="https://stedolan.github.io/jq/manual/#Assignment" target="_blank" rel="noopener">here</a>.</p>
+<li><p>Filter out null value<br>For example, I want to get the configMap name from a deployment, the volumes may have multiple subitems and one of them is config map, we need to filter out <code>null</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy nwiaas -o json | jq -r <span class="string">'.spec.template.spec.volumes[].configMap.name | select(. != null)'</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>This is a simple case to introduce <a href="https://stedolan.github.io/jq/manual/#select(boolean_expression" target="_blank" rel="noopener"><code>select</code> function</a>)</p>
+<ol start="2">
+<li>Replace field values<br>Using <code>|=</code> operator, see <a href="https://stedolan.github.io/jq/manual/#Assignment" target="_blank" rel="noopener">here</a>.</li>
+</ol>
 <p>For example, I want to create one job from cronjob but with different args:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --dry-run=client: print without sending object</span></span><br><span class="line">kubectl create job \</span><br><span class="line">--from=cronjob/&lt;cronjob name&gt; \</span><br><span class="line">&lt;job name&gt; \</span><br><span class="line">--dry-run=client \</span><br><span class="line">--output json &gt; original.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># use jq docker</span></span><br><span class="line">docker run -it --rm \</span><br><span class="line">-v $(<span class="built_in">pwd</span>)/original.json:/original.json \</span><br><span class="line">--entrypoint=/bin/bash \</span><br><span class="line">stedolan/jq \</span><br><span class="line">-c <span class="string">"cat /original.json |jq -r '.spec.template.spec.containers[].args |= [\"python\", \"make.py\", \"do_something\"]' | cat"</span> \</span><br><span class="line">| kubectl apply -f -</span><br></pre></td></tr></table></figure></p>
-<p>Here I use <code>cat</code> at end to remove color chars, otherwise kubectl apply will fail.</p>
+<p>Here I use <code>cat</code> at end to remove color supplement, otherwise kubectl apply will fail.</p>
 
       
     </div>
@@ -552,6 +558,8 @@
             <a href="/tags/linux/" rel="tag"># linux</a>
           
             <a href="/tags/jq/" rel="tag"># jq</a>
+          
+            <a href="/tags/yq/" rel="tag"># yq</a>
           
         </div>
       
@@ -639,7 +647,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">255</span>
+                    <span class="site-state-item-count">257</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1035,7 +1043,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">143</span>
+                      
+                    
+                    <span class="site-state-item-count">144</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 为了方便，这里使用python virtu">
+  <meta name="description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 Lint Steps为了方便，这里使用py">
 <meta name="keywords" content="linter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Linter">
 <meta property="og:url" content="http://yoursite.com/2020/12/29/python-linter/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 为了方便，这里使用python virtu">
+<meta property="og:description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 Lint Steps为了方便，这里使用py">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-01-05T08:06:04.217Z">
+<meta property="og:updated_time" content="2022-03-30T04:05:55.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Linter">
-<meta name="twitter:description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 为了方便，这里使用python virtu">
+<meta name="twitter:description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 Lint Steps为了方便，这里使用py">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">143</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">144</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">255</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">257</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-01-05 00:06:04" itemprop="dateModified" datetime="2021-01-05T00:06:04-08:00">2021-01-05</time>
+                <time title="Modified: 2022-03-29 21:05:55" itemprop="dateModified" datetime="2022-03-29T21:05:55-07:00">2022-03-29</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.8k</span>
+                <span title="Symbols count in article">5.4k</span>
               
 
               
@@ -509,7 +509,11 @@
 
       
         <p>最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。</p>
-<p>为了方便，这里使用python virtualenv, 也可以使用docker 环境，mount整个repo 然后处理.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># virtualenv -p python3 venv</span></span><br><span class="line">pip install yamllint==1.17.0</span><br><span class="line">pip install pylint==2.4.3</span><br><span class="line"></span><br><span class="line"><span class="comment"># filter and get updated yaml and python file name list</span></span><br><span class="line"><span class="comment"># diff between HEAD~1 HEAD, order matters!</span></span><br><span class="line"><span class="comment"># the between is for endpoint not for range!</span></span><br><span class="line">YAML_FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD | grep -E <span class="string">"(.+\.yaml$|.+\.yml$)"</span> || <span class="built_in">echo</span> <span class="string">""</span>)</span><br><span class="line">PY_FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD | grep -E <span class="string">".+\.py"</span> || <span class="built_in">echo</span> <span class="string">""</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># .pylintrc and .yamllint</span></span><br><span class="line"><span class="comment"># should be in the code repo</span></span><br><span class="line"><span class="comment"># -r: no run if input is empty</span></span><br><span class="line"><span class="comment"># xargs default input will be placed at end</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PY_FILES</span> | xargs -r pylint -sn --rcfile=.pylintrc &gt;&gt; linter_results_tmp</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$YAML_FILES</span> | xargs -r yamllint -c .yamllint &gt;&gt; linter_results_tmp</span><br><span class="line"></span><br><span class="line">cat linter_results_tmp &amp;&amp; rm -f linter_results_tmp</span><br></pre></td></tr></table></figure></p>
+<h2 id="Lint-Steps"><a href="#Lint-Steps" class="headerlink" title="Lint Steps"></a>Lint Steps</h2><p>为了方便，这里使用python virtualenv, 也可以使用docker 环境，mount整个repo 然后处理.  work on a python virtual env, for example <code>virtualenv -p python3 venv</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># activate the venv first</span></span><br><span class="line"><span class="comment"># need to be the same yamllint pylint version as the team use</span></span><br><span class="line"><span class="comment"># different version has different output maybe </span></span><br><span class="line">pip install yamllint==1.17.0</span><br><span class="line">pip install pylint==2.12.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># filter and get updated yaml and python file name list</span></span><br><span class="line"><span class="comment"># diff between HEAD~1 HEAD, order matters!</span></span><br><span class="line"><span class="comment"># the between is for endpoint not for range!</span></span><br><span class="line">YAML_FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD | grep -E <span class="string">"(.+\.yaml$|.+\.yml$)"</span> || <span class="built_in">echo</span> <span class="string">""</span>)</span><br><span class="line">PY_FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD | grep -E <span class="string">".+\.py"</span> || <span class="built_in">echo</span> <span class="string">""</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># .pylintrc and .yamllint</span></span><br><span class="line"><span class="comment"># should be in the code repo</span></span><br><span class="line"><span class="comment"># -r: no run if input is empty</span></span><br><span class="line"><span class="comment"># xargs default input will be placed at end</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PY_FILES</span> | xargs -r pylint -sn --rcfile=.pylintrc &gt;&gt; linter_results_tmp</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$YAML_FILES</span> | xargs -r yamllint -c .yamllint &gt;&gt; linter_results_tmp</span><br><span class="line"></span><br><span class="line">cat linter_results_tmp &amp;&amp; rm -f linter_results_tmp</span><br></pre></td></tr></table></figure></p>
+<h2 id="Disable-PyLint"><a href="#Disable-PyLint" class="headerlink" title="Disable PyLint"></a>Disable PyLint</h2><p>You may need to update .pylintrc setting to skip warnings/errors, edit disable line to add error code or statement, for example:<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disable</span>=C0103,missing-docstring,too-many-branches</span><br></pre></td></tr></table></figure></p>
+<p>Or disabling the pylint check inline:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    run() <span class="comment"># click command, pylint: disable=E1120</span></span><br></pre></td></tr></table></figure></p>
+<p>Or more readable, use the symbolic name:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    run() <span class="comment"># click command, pylint: disable=no-value-for-parameter</span></span><br></pre></td></tr></table></figure></p>
+<p>And disable in a function level, for example:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wont_raise_pylint</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="comment"># pylint: disable=W0212</span></span><br><span class="line">  some_module._protected_member()</span><br><span class="line">  some_module._protected_member()</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -603,8 +607,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -621,7 +634,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">255</span>
+                    <span class="site-state-item-count">257</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1017,7 +1030,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">143</span>
+                      
+                    
+                    <span class="site-state-item-count">144</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1042,6 +1057,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lint-Steps"><span class="nav-number">1.</span> <span class="nav-text">Lint Steps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Disable-PyLint"><span class="nav-number">2.</span> <span class="nav-text">Disable PyLint</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
