@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 Lint Steps为了方便，这里使用py">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-03-30T04:05:55.326Z">
+<meta property="og:updated_time" content="2022-04-20T05:39:33.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Linter">
 <meta name="twitter:description" content="最近项目codebase 迁移到了GoB/Gerrit 的体系中，提交代码后CI 会做code linting 操作并且提示错误信息，最好是在提交前在本地先自检，但目前似乎没有集成本地linting 的功能, 经过观察，可以自己搭建linting 的环境去对任意2次commits 之间改动过的py, yaml or other 文件进行语法，格式的检查。 Lint Steps为了方便，这里使用py">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">144</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">257</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-03-29 21:05:55" itemprop="dateModified" datetime="2022-03-29T21:05:55-07:00">2022-03-29</time>
+                <time title="Modified: 2022-04-19 22:39:33" itemprop="dateModified" datetime="2022-04-19T22:39:33-07:00">2022-04-19</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">5.4k</span>
+                <span title="Symbols count in article">6k</span>
               
 
               
@@ -514,6 +514,7 @@
 <p>Or disabling the pylint check inline:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    run() <span class="comment"># click command, pylint: disable=E1120</span></span><br></pre></td></tr></table></figure></p>
 <p>Or more readable, use the symbolic name:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    run() <span class="comment"># click command, pylint: disable=no-value-for-parameter</span></span><br></pre></td></tr></table></figure></p>
 <p>And disable in a function level, for example:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wont_raise_pylint</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="comment"># pylint: disable=W0212</span></span><br><span class="line">  some_module._protected_member()</span><br><span class="line">  some_module._protected_member()</span><br></pre></td></tr></table></figure></p>
+<p>And disable in a file or bigger scoup, the following part will be disabled by this rule, you can enable it again:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pylint: disable=use-implicit-booleaness-not-comparison</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># pylint: enable=use-implicit-booleaness-not-comparison</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -634,7 +635,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">257</span>
+                    <span class="site-state-item-count">259</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1032,7 +1033,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">144</span>
+                      
+                    
+                    <span class="site-state-item-count">145</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

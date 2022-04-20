@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I have seen something like this in permission bits, What do these s/S and t/T stand for?1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16">
+  <meta name="description" content="I have seen something like this in permission bits, What do these s/S and t/T stand for?12345# s bit-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start# s/t/T bitdrwxrwsr-t 1 db2inst1 db2iad">
 <meta name="keywords" content="linux,setuid,setgid,sticky">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Special Permission Bits">
 <meta property="og:url" content="http://yoursite.com/2019/05/11/linux-setuid-sticky-bit/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I have seen something like this in permission bits, What do these s/S and t/T stand for?1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16">
+<meta property="og:description" content="I have seen something like this in permission bits, What do these s/S and t/T stand for?12345# s bit-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start# s/t/T bitdrwxrwsr-t 1 db2inst1 db2iad">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-02-16T01:48:34.024Z">
+<meta property="og:updated_time" content="2022-04-20T05:39:33.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Special Permission Bits">
-<meta name="twitter:description" content="I have seen something like this in permission bits, What do these s/S and t/T stand for?1-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start 12drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16">
+<meta name="twitter:description" content="I have seen something like this in permission bits, What do these s/S and t/T stand for?12345# s bit-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start# s/t/T bitdrwxrwsr-t 1 db2inst1 db2iad">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">144</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">257</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-02-15 17:48:34" itemprop="dateModified" datetime="2021-02-15T17:48:34-08:00">2021-02-15</time>
+                <time title="Modified: 2022-04-19 22:39:33" itemprop="dateModified" datetime="2022-04-19T22:39:33-07:00">2022-04-19</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">10k</span>
+                <span title="Symbols count in article">11k</span>
               
 
               
@@ -508,31 +508,35 @@
       
 
       
-        <p>I have seen something like this in permission bits, What do these <code>s/S</code> and <code>t/T</code> stand for?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllib</span><br><span class="line">drwxr-x--T 1 wasadmin dstage    21 Mar 21 03:56 usr</span><br></pre></td></tr></table></figure>
+        <p>I have seen something like this in permission bits, What do these <code>s/S</code> and <code>t/T</code> stand for?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># s bit</span></span><br><span class="line">-r-sr-sr-x 1 root     db2iadm1   115555 Mar 21 03:19 db2start</span><br><span class="line"><span class="comment"># s/t/T bit</span></span><br><span class="line">drwxrwsr-t 1 db2inst1 db2iadm1 212 May 10 17:16 sqllib</span><br><span class="line">drwxr-x--T 1 wasadmin dstage    21 Mar 21 03:56 usr</span><br></pre></td></tr></table></figure></p>
 <h1 id="Basic-Permission-Bits"><a href="#Basic-Permission-Bits" class="headerlink" title="Basic Permission Bits"></a>Basic Permission Bits</h1><ul>
 <li><code>Read</code> - a readable permission allows the contents of the file to be viewed. A read permission on a directory allows you to list the contents of a directory.</li>
 <li><code>Write</code> - a write permission on a file allows you to modify the contents of that file. For a directory, the write permission allows you to edit the contents of a directory (e.g. add/delete files).</li>
 <li><code>Execute</code> - for a file, the executable permission allows you to run the file and execute a program or script. For a directory, the execute permission allows you to change to a different directory and make it your current working directory.</li>
 </ul>
-<h1 id="Setuid-and-Setgid-Bits"><a href="#Setuid-and-Setgid-Bits" class="headerlink" title="Setuid and Setgid Bits"></a>Setuid and Setgid Bits</h1><p>Assigning the <code>setuid</code> bit to binaries, most often this is given to a few programs owned by the superuser. When an ordinary user runs a program that is setuid root, the program runs with the effective privileges of the superuser. <code>Linux capabilities</code> is a great alternative to reduce the usage of setuid.</p>
+<h1 id="Setuid-and-Setgid-Bits"><a href="#Setuid-and-Setgid-Bits" class="headerlink" title="Setuid and Setgid Bits"></a>Setuid and Setgid Bits</h1><p>Note that <code>setuid</code> and <code>setgid</code> have an effect <strong>only</strong> on binary executable files and not on scripts (e.g., Bash, Perl, Python), see <a href="https://en.wikipedia.org/wiki/Setuid" target="_blank" rel="noopener">wiki</a>.</p>
+<p>Assigning the <code>setuid</code> bit to binaries, most often this is given to a few programs owned by the superuser. When an ordinary user runs a program that is setuid root, the program runs with the effective privileges of the superuser. <code>Linux capabilities</code> is a great alternative to reduce the usage of setuid.</p>
 <p>Capabilities break up root privileges in smaller units, so root access is no longer needed. Most of the binaries that have a setuid flag, can be changed to use capabilities instead.</p>
-<p><a href="https://linux-audit.com/linux-capabilities-hardening-linux-binaries-by-removing-setuid/" target="_blank" rel="noopener">Harden Linux Binaries by Removing setuid</a></p>
 <h2 id="Apply-on-File"><a href="#Apply-on-File" class="headerlink" title="Apply on File"></a>Apply on File</h2><p>When the <code>setuid</code> or <code>setgid</code> attributes are set on an executable file, then any users able to execute the file will automatically execute the file with the privileges of the file’s owner (usually root) and/or the file’s group, depending upon the flags set. This may pose potential security risks in some cases and executables should be properly evaluated before set.</p>
-<p>For example the <code>passwd</code> file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ordinary use can run this binary effectively as root</span></span><br><span class="line">-rwsr-xr-x. 1 root root 27832 Jan 29  2014 /usr/bin/passwd</span><br></pre></td></tr></table></figure></p>
-<p>set setuid on file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod u+s script.sh</span><br><span class="line"><span class="comment"># remove setuid on file:</span></span><br><span class="line">chmod u<span class="_">-s</span> script.sh</span><br></pre></td></tr></table></figure></p>
+<p>For example the <code>passwd</code> file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ordinary user can run this binary effectively as root</span></span><br><span class="line"><span class="comment"># this is a binary executable</span></span><br><span class="line">-rwsr-xr-x. 1 root root 27832 Jan 29  2014 /usr/bin/passwd</span><br></pre></td></tr></table></figure></p>
+<p>set setuid on binary executable:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod u+s &lt;executable&gt;</span><br><span class="line"><span class="comment"># remove setuid on file:</span></span><br><span class="line">chmod u<span class="_">-s</span> &lt;executable&gt;</span><br></pre></td></tr></table></figure></p>
+<p>This <a href="https://unix.stackexchange.com/questions/364/allow-setuid-on-shell-scripts" target="_blank" rel="noopener">post</a> explains why <code>setuid/setgid</code> is usually ignored on shell script.</p>
+<p>Another thing is about <code>ping</code>, it is a binary executable, for now, it may not have <code>setuid</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x 1 root root 81608 Feb  5 04:37 /usr/bin/ping</span><br></pre></td></tr></table></figure></p>
+<p>Instead, it may have capability see <a href="https://linux-audit.com/linux-capabilities-hardening-linux-binaries-by-removing-setuid/" target="_blank" rel="noopener">hardening Linux binaries by removing setuid</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># getcap /usr/bin/ping</span></span><br><span class="line">/usr/bin/ping cap_net_raw=ep</span><br></pre></td></tr></table></figure></p>
+<p>我也总结了一篇关于 Linux capabilities 的博客.</p>
+<p>Or not at all, see this<a href="https://stackoverflow.com/questions/63177554/linux-why-am-i-able-to-use-ping-if-neither-setuid-nor-capabilities-are-set" target="_blank" rel="noopener">ping without SETUID and Capabilities</a>: Creating (normal) ICMP packets does not require special permissions anymore.</p>
 <h2 id="Apply-on-Directory"><a href="#Apply-on-Directory" class="headerlink" title="Apply on Directory"></a>Apply on Directory</h2><p>Setting the <code>setgid</code> permission on a directory causes new files and subdirectories created within it to inherit its <code>group ID</code>, rather than the primary group ID of the user who created the file (the owner ID is <strong>never</strong> affected, only the group ID).</p>
 <p>set setgid on directory:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod g+s dir</span><br><span class="line"><span class="comment"># remove setgid on directory:</span></span><br><span class="line">chmod g<span class="_">-s</span> dir</span><br></pre></td></tr></table></figure></p>
 <p>The <code>setuid</code> permission set on a directory is ignored on most UNIX and Linux systems.However FreeBSD can be configured to interpret <code>setuid</code> in a manner similar to setgid, in which case it forces all files and sub-directories created in a directory to be owned by that directory’s owner - a simple form of inheritance.</p>
 <p>Note that both the <code>setuid</code> and <code>setgit</code> bits have <strong>no effect</strong> if the executable bit is not set. if executable bit is not set, <code>s</code> changes to <code>S</code>.</p>
 <h2 id="Chown-Removes-Setuid"><a href="#Chown-Removes-Setuid" class="headerlink" title="Chown Removes Setuid"></a>Chown Removes Setuid</h2><p>If you run <code>chown</code> on a <code>setuid</code> script, you will find that the <code>s</code> is gone. This is a reasonable design, otherwise the <code>s</code> will apply to the new owner, a big security hole.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">The `chown&apos; command sometimes clears the set-user-ID or set-group-ID</span><br><span class="line">permission bits.  This behavior depends on the policy and functionality</span><br><span class="line">of the underlying `chown&apos; system call, which may make system-dependent</span><br><span class="line">file mode modifications outside the control of the `chown&apos; command.</span><br><span class="line">For example, the `chown&apos; command might not affect those bits when</span><br><span class="line">invoked by a user with appropriate privileges, or when the bits signify</span><br><span class="line">some function other than executable permission (e.g., mandatory</span><br><span class="line">locking).  When in doubt, check the underlying system behavior.</span><br></pre></td></tr></table></figure>
-<p>Note that if you want to have setuid and owner no change when copy, for example last time deal with <code>sqllib</code>, please perserve when you do copy like: <code>/bin/cp -rfp /home/dfdcdc/sqllib /tmp</code></p>
+<p>The <code>chown</code> command sometimes clears the set-user-ID or set-group-ID permission bits.  This behavior depends on the policy and functionality of the underlying <code>chown</code> system call, which may make system-dependent file mode modifications outside the control of the <code>chown</code> command. For example, the <code>chown</code> command might not affect those bits when<br>invoked by a user with appropriate privileges, or when the bits signify some function other than executable permission (e.g., mandatory locking).  When in doubt, check the underlying system behavior.</p>
+<p>Note that if you want to have setuid and owner no change when copy, for example last time deal with <code>sqllib</code>, please perserve when you do copy like:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/cp -rfp /home/dfdcdc/sqllib /tmp</span><br></pre></td></tr></table></figure></p>
 <h1 id="Sticky-Bit"><a href="#Sticky-Bit" class="headerlink" title="Sticky Bit"></a>Sticky Bit</h1><p>When set on a file or directory, the <code>sticky bit</code>, or <code>+t</code> mode, means that only the <code>owner</code> (or <code>root</code>) can delete the file (or files under the directory), <strong>regardless of</strong> which users have write access to this file or directory by way of group membership or ownership! This is often used to control access to a shared directory, such as <code>/tmp</code>.</p>
 <p>This is useful when a file or directory is owned by a group through which a number of users share write access to a given set of files.</p>
-<p>set sticky bit:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +t script.sh</span><br></pre></td></tr></table></figure></p>
-<p>remove sticky bit, note that to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -t script.sh</span><br></pre></td></tr></table></figure></p>
-<p>Sometimes you see <code>T</code> instead of <code>t</code>, usually <code>t</code> sits with execute <code>x</code>, but if the execute bit is not set then the <code>t</code> is flagged up as a capital, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch file</span><br><span class="line">chmod u=rwx,go=rx file    <span class="comment"># "-rwxr-xr-x 1 roaima 0 Sep 10 23:13 file"</span></span><br><span class="line">chmod +t file             <span class="comment"># "-rwxr-xr-t 1 roaima 0 Sep 10 23:13 file"</span></span><br><span class="line">chmod o-x file            <span class="comment"># "-rwxr-xr-T 1 roaima 0 Sep 10 23:13 file"</span></span><br><span class="line">chmod u=rwx,go=,+t file   <span class="comment"># "-rwx-----T 1 roaima 0 Sep 10 23:13 file"</span></span><br></pre></td></tr></table></figure></p>
+<p>Set sticky bit:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +t script.sh</span><br></pre></td></tr></table></figure></p>
+<p>Remove sticky bit, note that to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -t script.sh</span><br></pre></td></tr></table></figure></p>
+<p>Sometimes you see <code>T</code> instead of <code>t</code>, usually <code>t</code> sits with all fields <code>x</code>, but if the executable bit is not set then the <code>t</code> is flagged up as a capital, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch file</span><br><span class="line">chmod u=rwx,go=rx file    <span class="comment"># "-rwxr-xr-x 1 roaima 0 Sep 10 23:13 file"</span></span><br><span class="line">chmod +t file             <span class="comment"># "-rwxr-xr-t 1 roaima 0 Sep 10 23:13 file"</span></span><br><span class="line">chmod o-x file            <span class="comment"># "-rwxr-xr-T 1 roaima 0 Sep 10 23:13 file"</span></span><br><span class="line">chmod u=rwx,go=,+t file   <span class="comment"># "-rwx-----T 1 roaima 0 Sep 10 23:13 file"</span></span><br></pre></td></tr></table></figure></p>
 <p>Now if a user is not in that group, it cannot even enter the directory.</p>
 <h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h1><p><a href="https://en.wikipedia.org/wiki/Setuid#SGID" target="_blank" rel="noopener">wiki setuid and setgid</a><br><a href="https://unix.stackexchange.com/questions/228925/how-do-you-set-the-t-bit" target="_blank" rel="noopener">how to set <code>T</code> bit</a><br><a href="https://unix.stackexchange.com/questions/53665/chown-removes-setuid-bit-bug-or-feature" target="_blank" rel="noopener">chown remove setuid</a></p>
 
@@ -661,7 +665,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">257</span>
+                    <span class="site-state-item-count">259</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1059,7 +1063,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">144</span>
+                      
+                    
+                    <span class="site-state-item-count">145</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

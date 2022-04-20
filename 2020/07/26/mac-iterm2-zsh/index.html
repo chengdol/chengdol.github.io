@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Install iTermInstall iTerm2 on Machttps://www.ite">
+  <meta name="description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Note zsh cat command appends ‘%’ in line end if n">
 <meta name="keywords" content="mac,iterm2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iTerm2 and Oh-My-Zsh Setup">
 <meta property="og:url" content="http://yoursite.com/2020/07/26/mac-iterm2-zsh/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Install iTermInstall iTerm2 on Machttps://www.ite">
+<meta property="og:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Note zsh cat command appends ‘%’ in line end if n">
 <meta property="og:locale" content="中文|English">
 <meta property="og:image" content="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Q6qoOp8xFw6wa-XxCLEUp0jG9NebV_7W">
-<meta property="og:updated_time" content="2020-12-29T07:30:06.011Z">
+<meta property="og:updated_time" content="2022-04-20T05:39:33.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iTerm2 and Oh-My-Zsh Setup">
-<meta name="twitter:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Install iTermInstall iTerm2 on Machttps://www.ite">
+<meta name="twitter:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference:https://gist.github.com/kevin-smets/8568070 Note zsh cat command appends ‘%’ in line end if n">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2">
 
 
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">144</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">257</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
 
   </li>
 
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-12-28 23:30:06" itemprop="dateModified" datetime="2020-12-28T23:30:06-08:00">2020-12-28</time>
+                <time title="Modified: 2022-04-19 22:39:33" itemprop="dateModified" datetime="2022-04-19T22:39:33-07:00">2022-04-19</time>
               
             
           </span>
@@ -487,7 +487,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">19k</span>
+                <span title="Symbols count in article">20k</span>
               
 
               
@@ -513,6 +513,9 @@
       
         <p>This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh.</p>
 <p>Reference:<br><a href="https://gist.github.com/kevin-smets/8568070" target="_blank" rel="noopener">https://gist.github.com/kevin-smets/8568070</a></p>
+<h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><ul>
+<li><a href="https://unix.stackexchange.com/questions/649739/why-am-i-seeing-as-the-line-end-when-running-cat-file-cmd" target="_blank" rel="noopener">zsh cat command appends ‘%’ in line end</a> if no newline at end.</li>
+</ul>
 <h1 id="Install-iTerm"><a href="#Install-iTerm" class="headerlink" title="Install iTerm"></a>Install iTerm</h1><p>Install iTerm2 on Mac<br><a href="https://www.iterm2.com/" target="_blank" rel="noopener">https://www.iterm2.com/</a></p>
 <h2 id="Configure-iTerm2"><a href="#Configure-iTerm2" class="headerlink" title="Configure iTerm2"></a>Configure iTerm2</h2><p>Solarized Dark is bad for some syntax highlighting, to import other themes, download from there, zip file, you can put the downloaded folder to your home directory.<br><a href="https://iterm2colorschemes.com/" target="_blank" rel="noopener">https://iterm2colorschemes.com/</a></p>
 <p>The theme I select is <code>Chalk</code>, import itermcolors file(s) in the scheme(s) directory:<br><img src="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2" alt=""></p>
@@ -553,7 +556,7 @@
 <p>Install by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://starship.rs/install.sh | bash</span><br></pre></td></tr></table></figure></p>
 <p>After install, append this line in <code>~/.bashrc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(starship init bash)</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>My config file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.config &amp;&amp; touch ~/.config/starship.toml</span><br></pre></td></tr></table></figure></p>
-<p>My current <code>~/.config/starship.toml</code> file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Disable the newline at the start of the prompt</span></span><br><span class="line">add_newline = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[line_break]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[character]</span><br><span class="line">symbol = <span class="string">"➜"</span></span><br><span class="line">error_symbol = <span class="string">"✗"</span></span><br><span class="line">use_symbol_for_status = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[battery]</span><br><span class="line">full_symbol = <span class="string">"🔋"</span></span><br><span class="line">charging_symbol = <span class="string">"⚡️"</span></span><br><span class="line">discharging_symbol = <span class="string">"💀"</span></span><br><span class="line"></span><br><span class="line">[time]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line">format = <span class="string">"🕙[ %T ]"</span></span><br><span class="line">utc_time_offset = <span class="string">"-5"</span></span><br><span class="line">time_range = <span class="string">"10:00:00-14:00:00"</span></span><br><span class="line"></span><br><span class="line">[directory]</span><br><span class="line">truncation_length = 8</span><br><span class="line"></span><br><span class="line"><span class="comment">## show virtual environments</span></span><br><span class="line">[python]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[docker_context]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line">symbol = <span class="string">"🐋 "</span></span><br><span class="line">only_with_files = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[kubernetes]</span><br><span class="line">symbol = <span class="string">"⛵ "</span></span><br><span class="line">style = <span class="string">"dimmed green"</span></span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[terraform]</span><br><span class="line">symbol = <span class="string">"🏎💨 "</span></span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[package]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[ruby]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[rust]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[nodejs]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[java]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[golang]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[aws]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## add more</span></span><br></pre></td></tr></table></figure></p>
+<p>My current <code>~/.config/starship.toml</code> file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Disable the newline at the start of the prompt</span></span><br><span class="line">add_newline = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[line_break]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[character]</span><br><span class="line">symbol = <span class="string">"➜"</span></span><br><span class="line">error_symbol = <span class="string">"✗"</span></span><br><span class="line">use_symbol_for_status = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[battery]</span><br><span class="line">full_symbol = <span class="string">"🔋"</span></span><br><span class="line">charging_symbol = <span class="string">"⚡️"</span></span><br><span class="line">discharging_symbol = <span class="string">"💀"</span></span><br><span class="line"></span><br><span class="line">[time]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line">format = <span class="string">"🕙[ %T ]"</span></span><br><span class="line">utc_time_offset = <span class="string">"-5"</span></span><br><span class="line">time_range = <span class="string">"10:00:00-14:00:00"</span></span><br><span class="line"></span><br><span class="line">[directory]</span><br><span class="line">truncation_length = 8</span><br><span class="line"></span><br><span class="line"><span class="comment">## show virtual environments</span></span><br><span class="line">[python]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[docker_context]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line">symbol = <span class="string">"🐋 "</span></span><br><span class="line">only_with_files = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[kubernetes]</span><br><span class="line">symbol = <span class="string">"⛵ "</span></span><br><span class="line">style = <span class="string">"dimmed green"</span></span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[terraform]</span><br><span class="line">symbol = <span class="string">"🏎💨 "</span></span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[package]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[ruby]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[rust]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[nodejs]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[java]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[golang]</span><br><span class="line">disabled = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">[aws]</span><br><span class="line">disabled = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## add more</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -592,8 +595,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/17/cloud-azure/" rel="next" title="Azure Cloud">
-                <i class="fa fa-chevron-left"></i> Azure Cloud
+              <a href="/2020/07/17/cloud-aws/" rel="next" title="AWS Cloud">
+                <i class="fa fa-chevron-left"></i> AWS Cloud
               </a>
             
           </div>
@@ -676,7 +679,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">257</span>
+                    <span class="site-state-item-count">259</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1074,7 +1077,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">144</span>
+                      
+                    
+                    <span class="site-state-item-count">145</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1110,7 +1115,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-iTerm"><span class="nav-number">1.</span> <span class="nav-text">Install iTerm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-iTerm2"><span class="nav-number">1.1.</span> <span class="nav-text">Configure iTerm2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">iTerm2 Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Configure-Oh-My-Zsh"><span class="nav-number">2.</span> <span class="nav-text">Configure Oh My Zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Alternatives"><span class="nav-number">2.1.</span> <span class="nav-text">Other Alternatives</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bash-with-Starship"><span class="nav-number">3.</span> <span class="nav-text">Bash with Starship</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Note"><span class="nav-number">1.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-iTerm"><span class="nav-number">2.</span> <span class="nav-text">Install iTerm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-iTerm2"><span class="nav-number">2.1.</span> <span class="nav-text">Configure iTerm2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2-Tips"><span class="nav-number">2.2.</span> <span class="nav-text">iTerm2 Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Configure-Oh-My-Zsh"><span class="nav-number">3.</span> <span class="nav-text">Configure Oh My Zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Alternatives"><span class="nav-number">3.1.</span> <span class="nav-text">Other Alternatives</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bash-with-Starship"><span class="nav-number">4.</span> <span class="nav-text">Bash with Starship</span></a></li></ol></div>
             
 
           </div>
