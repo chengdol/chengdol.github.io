@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="On any Kafka node to run following commands. Topic12345678910# list topics createdbin/kafka-topics.sh --bootstrap-server localhost:9092 --list # topic verbose# display number of partitions of this top">
+  <meta name="description" content="On any Kafka node to run following commands. Topic1234567891011121314151617181920212223242526272829# list topics createdbin/kafka-topics.sh --bootstrap-server localhost:9092 --list # topic verbose# di">
 <meta name="keywords" content="oncall">
 <meta property="og:type" content="article">
 <meta property="og:title" content="On-Call Kafka Quick Check">
 <meta property="og:url" content="http://yoursite.com/2021/09/13/oncall-kafka/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="On any Kafka node to run following commands. Topic12345678910# list topics createdbin/kafka-topics.sh --bootstrap-server localhost:9092 --list # topic verbose# display number of partitions of this top">
+<meta property="og:description" content="On any Kafka node to run following commands. Topic1234567891011121314151617181920212223242526272829# list topics createdbin/kafka-topics.sh --bootstrap-server localhost:9092 --list # topic verbose# di">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-10-11T06:12:32.081Z">
+<meta property="og:updated_time" content="2022-05-04T04:02:21.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="On-Call Kafka Quick Check">
-<meta name="twitter:description" content="On any Kafka node to run following commands. Topic12345678910# list topics createdbin/kafka-topics.sh --bootstrap-server localhost:9092 --list # topic verbose# display number of partitions of this top">
+<meta name="twitter:description" content="On any Kafka node to run following commands. Topic1234567891011121314151617181920212223242526272829# list topics createdbin/kafka-topics.sh --bootstrap-server localhost:9092 --list # topic verbose# di">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-10-10 23:12:32" itemprop="dateModified" datetime="2021-10-10T23:12:32-07:00">2021-10-10</time>
+                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">4.7k</span>
+                <span title="Symbols count in article">6.7k</span>
               
 
               
@@ -509,7 +509,7 @@
 
       
         <p>On any Kafka node to run following commands.</p>
-<h1 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list topics created</span></span><br><span class="line">bin/kafka-topics.sh --bootstrap-server localhost:9092 --list </span><br><span class="line"></span><br><span class="line"><span class="comment"># topic verbose</span></span><br><span class="line"><span class="comment"># display number of partitions of this topic</span></span><br><span class="line">bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 \</span><br><span class="line">--topic &lt;topic name&gt; </span><br><span class="line"></span><br><span class="line"><span class="comment"># list all consumer groups of a topic</span></span><br><span class="line"><span class="comment"># no direct command</span></span><br></pre></td></tr></table></figure>
+<h1 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list topics created</span></span><br><span class="line">bin/kafka-topics.sh --bootstrap-server localhost:9092 --list </span><br><span class="line"></span><br><span class="line"><span class="comment"># topic verbose</span></span><br><span class="line"><span class="comment"># display number of partitions of this topic</span></span><br><span class="line">bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 \</span><br><span class="line">--topic &lt;topic name&gt; </span><br><span class="line"></span><br><span class="line"><span class="comment">## the output for example:</span></span><br><span class="line"><span class="comment">## Isr is a status, means now all replicas are in-sync which is good</span></span><br><span class="line">Topic: apple	PartitionCount: 3	ReplicationFactor: 3	Configs: cleanup.policy=delete,segment.bytes=536870912,retention.ms=172800000,retention.bytes=2000000000</span><br><span class="line">	Topic: apple	Partition: 0	Leader: 28	Replicas: 28,29,27	Isr: 28,29,27</span><br><span class="line">	Topic: apple	Partition: 1	Leader: 29	Replicas: 29,27,28	Isr: 29,27,28</span><br><span class="line">	Topic: apple	Partition: 2	Leader: 27	Replicas: 27,28,29	Isr: 27,28,29</span><br><span class="line"></span><br><span class="line"><span class="comment"># only show overridden config</span></span><br><span class="line">bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 \</span><br><span class="line">--topics-with-overrides \</span><br><span class="line">--topic &lt;topic name&gt; </span><br><span class="line"></span><br><span class="line"><span class="comment"># alter config</span></span><br><span class="line">bin/kafka-topics.sh \</span><br><span class="line">--alter \</span><br><span class="line">--zookeeper &lt;zk IP&gt;:2181 \</span><br><span class="line">--topic apple \</span><br><span class="line">--config <span class="string">'min.insync.replicas=2'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># list all consumer groups of a topic</span></span><br><span class="line"><span class="comment"># no direct command</span></span><br></pre></td></tr></table></figure>
 <h1 id="Consumer-Group"><a href="#Consumer-Group" class="headerlink" title="Consumer Group"></a>Consumer Group</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list consumer groups</span></span><br><span class="line">bin/kafka-consumer-groups.sh  --bootstrap-server localhost:9092 --list </span><br><span class="line"></span><br><span class="line"><span class="comment"># read last one message in topic of consumer group</span></span><br><span class="line"><span class="comment"># note that one topic can be consumed by different consumer group</span></span><br><span class="line"><span class="comment"># each has separate offset</span></span><br><span class="line">bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \</span><br><span class="line">--max-messages 1 \</span><br><span class="line">--topic &lt;topic name&gt; \</span><br><span class="line">--group &lt;consumer group name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># check partition/offset/lag messages in each consumer group/topic</span></span><br><span class="line"><span class="comment"># also see topics consumed by the group</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Consumer lag indicates the lag between Kafka producers and consumers. If the rate of</span></span><br><span class="line"><span class="comment"># production of data far exceeds the rate at which it is getting consumed, consumer</span></span><br><span class="line"><span class="comment"># groups will exhibit lag.</span></span><br><span class="line">bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 \</span><br><span class="line">--describe  \</span><br><span class="line">--group &lt;consumer group name&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># update partition number</span></span><br><span class="line"><span class="comment"># partition number can only be increase</span></span><br><span class="line">bin/kafka-topics.sh --bootstrap-server localhost:9092 \</span><br><span class="line">--alter \</span><br><span class="line">--topic &lt;topic name&gt; \</span><br><span class="line">--partitions &lt;new partition number&gt;</span><br></pre></td></tr></table></figure>
       
@@ -631,7 +631,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">259</span>
+                    <span class="site-state-item-count">260</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1031,7 +1031,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">145</span>
+                      
+                    
+                    <span class="site-state-item-count">146</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

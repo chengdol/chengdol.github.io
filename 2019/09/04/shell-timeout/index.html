@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="timeout command used to run command with a time limit. One case is when you know exactly how long you want a process to run for. A common use-case is to have timeout control a logging or data-capture">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.075Z">
+<meta property="og:updated_time" content="2022-05-04T04:02:21.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell timeout Command">
 <meta name="twitter:description" content="timeout command used to run command with a time limit. One case is when you know exactly how long you want a process to run for. A common use-case is to have timeout control a logging or data-capture">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">5.3k</span>
+                <span title="Symbols count in article">5.7k</span>
               
 
               
@@ -512,9 +512,9 @@
 <p>Another case is when you don’t know how long you want a process to run for, but you do know you don’t want it to run indefinitely. You might have a habit of setting processes running, minimizing the terminal window, and forgetting about them. For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timeout 12 ping 127.0.0.1</span><br></pre></td></tr></table></figure></p>
 <p>By default 12 is second unit, to use a time value measured in minutes, hours or days append an <code>m</code>, <code>h</code> or a <code>d</code>.</p>
 <h1 id="Send-Right-Signal"><a href="#Send-Right-Signal" class="headerlink" title="Send Right Signal"></a>Send Right Signal</h1><p>When <code>timeout</code> wants to stop a program it sends the <code>SIGTERM</code> signal. This politely asks the program to terminate. Some programs may choose to ignore the <code>SIGTERM</code> signal. When that happens, we need to tell timeout to be a little more forceful.</p>
-<p>Send <code>KILL</code> signal if program is still running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timeout -s SIGKILL 10 sudo tcpdump &gt; capture.txt</span><br></pre></td></tr></table></figure></p>
+<p>Send <code>KILL</code> signal if program is still running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -s: signal</span></span><br><span class="line">timeout -s SIGKILL 10 tcpdump -i eth0 host 172.18 and tcp 32050</span><br><span class="line">timeout -s SIGKILL 10 tcpdump -w chengdol.pcap &amp;&gt; /dev/null &amp;</span><br></pre></td></tr></table></figure></p>
 <p>We can use the <code>-s (signal)</code> option to tell timeout to send the <code>SIGKILL</code> signal.</p>
-<p>Or give it a buffer:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timeout -k 20 10 sudo tcpdump &gt; capture.txt</span><br></pre></td></tr></table></figure></p>
+<p>Or give it a buffer:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -k 20: kill with 20 tolerance</span></span><br><span class="line">timeout -k 20 10 tcpdump -w chengdol.pcap &amp;&gt; /dev/null &amp;</span><br></pre></td></tr></table></figure></p>
 <p>we use the <code>-k (kill after)</code> option. The <code>-k</code> option requires a time value as a parameter. If tcpdump is still running after 20 seconds, it means the <code>SIGTERM</code> was ignored and timeout should send in <code>SIGKILL</code> to finish the job.</p>
 <h1 id="Retrieving-the-Program’s-Exit-Code"><a href="#Retrieving-the-Program’s-Exit-Code" class="headerlink" title="Retrieving the Program’s Exit Code"></a>Retrieving the Program’s Exit Code</h1><p><code>timeout</code> provides its own exit code, The exit code is <code>124</code>. This is the value timeout uses to indicate the program was terminated using SIGTERM.</p>
 <p>But we may not care about that. We are probably more interested in the exit code from the process that timeout is controlling.</p>
@@ -640,7 +640,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">259</span>
+                    <span class="site-state-item-count">260</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1040,7 +1040,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">145</span>
+                      
+                    
+                    <span class="site-state-item-count">146</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

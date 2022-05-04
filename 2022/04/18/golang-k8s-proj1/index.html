@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Porj1 description: build a small go docker app to fetch and display service A’s token from specified GKE cluster through port forwarding. The arguments in token request path are from configMap in the">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-04-20T15:51:18.629Z">
+<meta property="og:updated_time" content="2022-05-04T04:02:21.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang K8s Proj1">
 <meta name="twitter:description" content="Porj1 description: build a small go docker app to fetch and display service A’s token from specified GKE cluster through port forwarding. The arguments in token request path are from configMap in the">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-04-20 08:51:18" itemprop="dateModified" datetime="2022-04-20T08:51:18-07:00">2022-04-20</time>
+                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
               
             
           </span>
@@ -535,7 +535,7 @@
 <p>From the sample code, the required field structure is the same as the REST API path:<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The name (project, location, cluster) of the cluster to retrieve.</span></span><br><span class="line"><span class="comment">// Specified in the format `projects/*/locations/*/clusters/*`.</span></span><br><span class="line">Name <span class="keyword">string</span> <span class="string">`protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`</span></span><br></pre></td></tr></table></figure></p>
 <p>Now ready, I have <code>GOOGLE_APPLICATION_CREDENTIALS</code> exported and gcloud K8s go client library, it is easy to get what <code>gcloud container clusters get-credentials</code> does for us and make the kubeconfig yaml file from template.</p>
 <h2 id="What-is-OAuth2-0"><a href="#What-is-OAuth2-0" class="headerlink" title="What is OAuth2.0"></a>What is OAuth2.0</h2><p>The OAuth(open authorization) 2.0 <a href="https://cloud.google.com/docs/authentication" target="_blank" rel="noopener">google doc and example</a>.</p>
-<p>Usage: uthorization between services, OAuth access token is JWT.</p>
+<p>Usage: authorization between services, OAuth access token is JWT.</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=t4-416mg6iU" target="_blank" rel="noopener">Intro OAuth</a>, access delegation, limited access.</li>
 <li><a href="https://www.youtube.com/watch?v=3pZ3Nh8tgTE" target="_blank" rel="noopener">OAuth deeper</a>: terms: resource, resource owner, resource server, client, authorization server(issue access token)</li>
@@ -567,7 +567,7 @@
 <p>For single JSON object, <a href="https://ahmet.im/blog/golang-json-decoder-pitfalls/" target="_blank" rel="noopener">don’t use json.Decoder</a>, please use <code>json.Unmarshal</code> instead.</p>
 <h1 id="How-to-reduce-go-docker-image-size"><a href="#How-to-reduce-go-docker-image-size" class="headerlink" title="How to reduce go docker image size?"></a>How to reduce go docker image size?</h1><p>Lastly, I want to build a go docker app to simplify use and has minimum image size.</p>
 <p>The docker official <a href="https://docs.docker.com/language/golang/build-images/" target="_blank" rel="noopener">doc</a> for building go docker image is not good, end up with a big size image.</p>
-<p>The solution is easy: using multi-stage Dockerfile, build go binary in one go docker image and copy the binary to a new base image of the same Linux distro but has much less image size:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Need to have google-cloud-sdk-gke-gcloud-auth-plugin</span></span><br><span class="line"><span class="comment"># for go-client to access GKE resource</span></span><br><span class="line"><span class="comment"># https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke</span></span><br><span class="line"><span class="keyword">FROM</span> golang:<span class="number">1.18</span>-buster AS auth-plugin</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"deb https://packages.cloud.google.com/apt cloud-sdk main"</span> \</span></span><br><span class="line"><span class="bash">    | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \</span></span><br><span class="line"><span class="bash">    &amp;&amp; \</span></span><br><span class="line"><span class="bash">    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg \</span></span><br><span class="line"><span class="bash">    | apt-key add -</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN apt-get update \</span></span><br><span class="line"><span class="bash">    &amp;&amp; \</span></span><br><span class="line"><span class="bash">    apt-get install google-cloud-sdk-gke-gcloud-auth-plugin</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># build binary executable base on alpine image</span></span></span><br><span class="line"><span class="bash">FROM golang:1.18-alpine AS binary</span></span><br><span class="line"><span class="bash">WORKDIR /deployment</span></span><br><span class="line"><span class="bash">COPY cmd ./cmd</span></span><br><span class="line"><span class="bash">COPY go.mod ./</span></span><br><span class="line"><span class="bash">COPY go.sum ./</span></span><br><span class="line"><span class="bash">RUN go mod download</span></span><br><span class="line"><span class="bash">RUN go build -o ./cmd/app ./cmd</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># minimum app image creation</span></span></span><br><span class="line"><span class="bash">FROM alpine:3.15</span></span><br><span class="line"><span class="bash">WORKDIR /deployment</span></span><br><span class="line"><span class="bash">COPY --from=binary \</span></span><br><span class="line"><span class="bash">    /deployment/cmd/app \</span></span><br><span class="line"><span class="bash">    ./cmd/app</span></span><br><span class="line"><span class="bash">COPY --from=auth-plugin \</span></span><br><span class="line"><span class="bash">    /usr/lib/google-cloud-sdk/bin/gke-gcloud-auth-plugin \</span></span><br><span class="line"><span class="bash">    /usr/<span class="built_in">local</span>/bin/gke-gcloud-auth-plugin</span></span><br><span class="line"><span class="bash">COPY config ./config</span></span><br><span class="line"><span class="bash">COPY template ./template</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /deployment/cmd</span></span><br><span class="line"><span class="bash">ENTRYPOINT [ <span class="string">"./app"</span>]</span></span><br><span class="line"><span class="bash">CMD [<span class="string">"--help"</span>]</span></span><br></pre></td></tr></table></figure></p>
+<p>The solution is easy: using multi-stage Dockerfile, build go binary in one go docker image and copy the binary to a new base image of the same Linux distro but has much less image size:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Need to have google-cloud-sdk-gke-gcloud-auth-plugin</span></span><br><span class="line"><span class="comment"># for go-client to access GKE resource</span></span><br><span class="line"><span class="comment"># https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke</span></span><br><span class="line"><span class="keyword">FROM</span> golang:<span class="number">1.18</span>-buster AS auth-plugin</span><br><span class="line"><span class="comment"># version &gt; 381.0.0-0 asks to install gcloud cli</span></span><br><span class="line"><span class="comment"># which is not desired and make image size bigger!</span></span><br><span class="line"><span class="keyword">ENV</span> AUTH_VERSION=<span class="string">"381.0.0-0"</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"deb https://packages.cloud.google.com/apt cloud-sdk main"</span> \</span></span><br><span class="line"><span class="bash">    | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \</span></span><br><span class="line"><span class="bash">    &amp;&amp; \</span></span><br><span class="line"><span class="bash">    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg \</span></span><br><span class="line"><span class="bash">    | apt-key add -</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">RUN apt-get update \</span></span><br><span class="line"><span class="bash">    &amp;&amp; \</span></span><br><span class="line"><span class="bash">    apt-get install google-cloud-sdk-gke-gcloud-auth-plugin=<span class="variable">$AUTH_VERSION</span></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># build binary executable base on alpine image</span></span></span><br><span class="line"><span class="bash">FROM golang:1.18-alpine AS binary</span></span><br><span class="line"><span class="bash">WORKDIR /deployment</span></span><br><span class="line"><span class="bash">COPY cmd ./cmd</span></span><br><span class="line"><span class="bash">COPY go.mod ./</span></span><br><span class="line"><span class="bash">COPY go.sum ./</span></span><br><span class="line"><span class="bash">RUN go mod download</span></span><br><span class="line"><span class="bash">RUN go build -o ./cmd/app ./cmd</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># minimum app image creation</span></span></span><br><span class="line"><span class="bash">FROM alpine:3.15</span></span><br><span class="line"><span class="bash">WORKDIR /deployment</span></span><br><span class="line"><span class="bash">COPY --from=binary \</span></span><br><span class="line"><span class="bash">    /deployment/cmd/app \</span></span><br><span class="line"><span class="bash">    ./cmd/app</span></span><br><span class="line"><span class="bash">COPY --from=auth-plugin \</span></span><br><span class="line"><span class="bash">    /usr/lib/google-cloud-sdk/bin/gke-gcloud-auth-plugin \</span></span><br><span class="line"><span class="bash">    /usr/<span class="built_in">local</span>/bin/gke-gcloud-auth-plugin</span></span><br><span class="line"><span class="bash">COPY config ./config</span></span><br><span class="line"><span class="bash">COPY template ./template</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">WORKDIR /deployment/cmd</span></span><br><span class="line"><span class="bash">ENTRYPOINT [ <span class="string">"./app"</span>]</span></span><br><span class="line"><span class="bash">CMD [<span class="string">"--help"</span>]</span></span><br></pre></td></tr></table></figure></p>
 <p>This approach helps me reduce the docker image size from near 2GB to 60MB.</p>
 <p>There is a post has similar idea:<br><a href="https://dev.to/chseki/build-a-super-minimalistic-docker-image-to-run-your-golang-app-33j0" target="_blank" rel="noopener">Build a super minimalistic Docker Image to run your Golang App</a>.</p>
 
@@ -618,8 +618,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/04/20/review-list/" rel="prev" title="Blog Review List">
-                Blog Review List <i class="fa fa-chevron-right"></i>
+              <a href="/2022/04/21/message-kafka-learn/" rel="prev" title="Kafka Quick Start">
+                Kafka Quick Start <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -692,7 +692,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">259</span>
+                    <span class="site-state-item-count">260</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1092,7 +1092,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">145</span>
+                      
+                    
+                    <span class="site-state-item-count">146</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

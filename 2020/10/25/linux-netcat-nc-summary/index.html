@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection. 12345# install nc (netcat)#">
+  <meta name="description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection. Install12345# install nc (n">
 <meta name="keywords" content="linux,nc,netcat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nc&#x2F;netcat Command">
 <meta property="og:url" content="http://yoursite.com/2020/10/25/linux-netcat-nc-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection. 12345# install nc (netcat)#">
+<meta property="og:description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection. Install12345# install nc (n">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.070Z">
+<meta property="og:updated_time" content="2022-05-04T04:02:21.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nc&#x2F;netcat Command">
-<meta name="twitter:description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection. 12345# install nc (netcat)#">
+<meta name="twitter:description" content="I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. nc can also be a TCP server that listening on port and waiting for connection. Install12345# install nc (n">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">9.3k</span>
+                <span title="Symbols count in article">11k</span>
               
 
               
@@ -509,17 +509,22 @@
 
       
         <p>I almost forget this command, but recently I used it as a TCP client to test Envoy TCP proxy. <code>nc</code> can also be a TCP server that listening on port and waiting for connection.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nc (netcat)</span></span><br><span class="line"><span class="comment"># on centos</span></span><br><span class="line">yum install -y nc</span><br><span class="line"><span class="comment"># on ubuntu</span></span><br><span class="line">apt install -y netcat</span><br></pre></td></tr></table></figure>
-<p>Note that some nc version may support different features and options, please read man first.</p>
-<p>Test network connection is good:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># default is tcp</span></span><br><span class="line"><span class="comment"># -l: listen</span></span><br><span class="line"><span class="comment"># -k: keep connection</span></span><br><span class="line">nc -lk 1555</span><br><span class="line"></span><br><span class="line"><span class="comment"># on another machine</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"from client"</span> | nc &lt;ip&gt; 1555</span><br></pre></td></tr></table></figure></p>
-<p>Connection via proxy, see <code>man nc</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https connect</span></span><br><span class="line">nc -x10.2.3.4:8080 -Xconnect host.example.com 42</span><br><span class="line"></span><br><span class="line"><span class="comment"># proxy authentication</span></span><br><span class="line"><span class="comment"># -P: proxy user</span></span><br><span class="line">nc -x10.2.3.4:8080 -Xconnect -Pruser host.example.com 42</span><br></pre></td></tr></table></figure></p>
-<p>Port scanning to know which ports are open and running services on target machine:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -v: verbose</span></span><br><span class="line"><span class="comment"># -z: Zero-I/O mode, report connection status only</span></span><br><span class="line"><span class="comment"># -w: timeout second</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># scan port 22 and 8080</span></span><br><span class="line">nc -v -w 2 -z 127.0.0.1 22 8080</span><br><span class="line"></span><br><span class="line"><span class="comment"># range scan</span></span><br><span class="line">nc -v -w 2 -z 127.0.0.1 1-10004</span><br><span class="line"></span><br><span class="line"><span class="comment"># -n: don't perform DNS resolution</span></span><br><span class="line">nc -v -w 2 -n -z 8.8.8.8 53</span><br><span class="line"><span class="comment"># Connection to 8.8.8.8 53 port [tcp/domain] succeeded</span></span><br></pre></td></tr></table></figure></p>
-<p>Data transfer, also see <code>man nc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># content will be put to filename.out</span></span><br><span class="line">nc -l 1234 &gt; filename.out</span><br><span class="line"></span><br><span class="line"><span class="comment"># feed it with filename.in</span></span><br><span class="line"><span class="comment"># -N: disconnet when finish</span></span><br><span class="line">nc -N host.example.com 1234 &lt; filename.in</span><br></pre></td></tr></table></figure></p>
+<h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nc (netcat)</span></span><br><span class="line"><span class="comment"># on centos</span></span><br><span class="line">yum install -y nc</span><br><span class="line"><span class="comment"># on ubuntu</span></span><br><span class="line">apt install -y netcat</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note that some nc version may support different features and options, please read man first!!</p>
+</blockquote>
+<h1 id="Usage-Example"><a href="#Usage-Example" class="headerlink" title="Usage Example"></a>Usage Example</h1><p>Test networking between 2 machines is good:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># on one machine, set up listener</span></span><br><span class="line"><span class="comment"># default is tcp</span></span><br><span class="line"><span class="comment"># -l: listen</span></span><br><span class="line"><span class="comment"># -k: keep connection</span></span><br><span class="line">nc -lk 1555</span><br><span class="line"></span><br><span class="line"><span class="comment"># on another machine</span></span><br><span class="line"><span class="comment"># talk to listener</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"from client"</span> | nc &lt;ip&gt; 1555</span><br></pre></td></tr></table></figure></p>
+<p>I used to set up a UDP client to test logstash input UDP plugin and pipeline.</p>
+<h1 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h1><p>Connection via proxy, see <code>man nc</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https connect</span></span><br><span class="line">nc -x10.2.3.4:8080 -Xconnect host.example.com 42</span><br><span class="line"></span><br><span class="line"><span class="comment"># proxy authentication</span></span><br><span class="line"><span class="comment"># -P: proxy user</span></span><br><span class="line">nc -x10.2.3.4:8080 -Xconnect -Pruser host.example.com 42</span><br></pre></td></tr></table></figure></p>
+<h1 id="Port-Scan"><a href="#Port-Scan" class="headerlink" title="Port Scan"></a>Port Scan</h1><p>Port scanning to know which ports are open and running services on target machine:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -v: verbose</span></span><br><span class="line"><span class="comment"># -z: Zero-I/O mode, report connection status only</span></span><br><span class="line"><span class="comment"># -w: timeout second</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># scan port 22 and 8080</span></span><br><span class="line">nc -v -w 2 -z 127.0.0.1 22 8080</span><br><span class="line"></span><br><span class="line"><span class="comment"># range scan</span></span><br><span class="line">nc -v -w 2 -z 127.0.0.1 1-10004</span><br><span class="line"></span><br><span class="line"><span class="comment"># -n: don't perform DNS resolution</span></span><br><span class="line">nc -v -w 2 -n -z 8.8.8.8 53</span><br><span class="line"><span class="comment"># Connection to 8.8.8.8 53 port [tcp/domain] succeeded</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Transfer"><a href="#Transfer" class="headerlink" title="Transfer"></a>Transfer</h1><p>Data transfer, also see <code>man nc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># content will be put to filename.out</span></span><br><span class="line">nc -l 1234 &gt; filename.out</span><br><span class="line"></span><br><span class="line"><span class="comment"># feed it with filename.in</span></span><br><span class="line"><span class="comment"># -N: disconnet when finish</span></span><br><span class="line">nc -N host.example.com 1234 &lt; filename.in</span><br></pre></td></tr></table></figure></p>
 <p>For folder transfer:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># note there is a - after tar command, used as input</span></span><br><span class="line"><span class="comment"># after done you will see the folder</span></span><br><span class="line">nc -v -l 1234 | tar zxf -</span><br><span class="line"></span><br><span class="line"><span class="comment"># - here is used as output</span></span><br><span class="line"><span class="comment"># -N: close connection when is done</span></span><br><span class="line">tar czf - folder | nc -N -v &lt;ip&gt; 1234</span><br></pre></td></tr></table></figure></p>
 <p>Other ways to transfer files: scp, sftp, python http server.</p>
-<p>Client/Server model, a chat server, can talk either way:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server </span></span><br><span class="line"><span class="comment"># -l: listening</span></span><br><span class="line"><span class="comment"># -vv: verbose</span></span><br><span class="line">nc -l -vv -p 3000</span><br><span class="line"><span class="comment"># client</span></span><br><span class="line"><span class="comment"># -p: source port to establish connection</span></span><br><span class="line">nc localhost -p 6666 3000</span><br></pre></td></tr></table></figure></p>
+<h1 id="Server-Client"><a href="#Server-Client" class="headerlink" title="Server Client"></a>Server Client</h1><p>Client/Server model, a chat server, can talk in either way:</p>
+<p>TCP server and client<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server </span></span><br><span class="line"><span class="comment"># -l: listening</span></span><br><span class="line"><span class="comment"># -vv: verbose</span></span><br><span class="line"><span class="comment"># -p: listening on port 3000</span></span><br><span class="line">nc -lk -vv -p 3000</span><br><span class="line"><span class="comment"># client</span></span><br><span class="line"><span class="comment"># -p: use port 6666 to connect to 3000</span></span><br><span class="line">nc localhost -p 6666 3000</span><br></pre></td></tr></table></figure></p>
+<p>UDP server and client<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server</span></span><br><span class="line">nc -u -lk localhost 515</span><br><span class="line"><span class="comment"># client</span></span><br><span class="line">nc -u localhost 515</span><br></pre></td></tr></table></figure></p>
 <p>Actually you can use it in script:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># it well block until get the message</span></span><br><span class="line">message=$(nc -l -p 1234)</span><br><span class="line"></span><br><span class="line"><span class="comment"># in another script, interesting</span></span><br><span class="line"><span class="built_in">echo</span> hi &gt; /dev/tcp/localhost/1234</span><br></pre></td></tr></table></figure></p>
-<p>Execute command on remote via backdoor opened by <code>nc</code>, see nc’s manual<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server side, mk a named pipe</span></span><br><span class="line">rm -f /tmp/f; mkfifo /tmp/f</span><br><span class="line"><span class="comment"># -i: interactive shell</span></span><br><span class="line"><span class="comment"># cat pipe's content sent by client to interactive shell</span></span><br><span class="line"><span class="comment"># then redirect the output to pipe to show it on client side</span></span><br><span class="line">cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc -l 0.0.0.0 1234 &gt; /tmp/f</span><br><span class="line"><span class="comment"># remove after done</span></span><br><span class="line">rm -f /tmp/f</span><br><span class="line"></span><br><span class="line"><span class="comment"># client side</span></span><br><span class="line">nc &lt;server ip&gt; 1234</span><br><span class="line"><span class="comment"># prompt a interactive shell </span></span><br><span class="line"><span class="comment"># then run command on remote server</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Backdoor"><a href="#Backdoor" class="headerlink" title="Backdoor"></a>Backdoor</h1><p>Execute command on remote via backdoor opened by <code>nc</code>, see nc’s manual<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># server side, mk a named pipe</span></span><br><span class="line">rm -f /tmp/f; mkfifo /tmp/f</span><br><span class="line"><span class="comment"># -i: interactive shell</span></span><br><span class="line"><span class="comment"># cat pipe's content sent by client to interactive shell</span></span><br><span class="line"><span class="comment"># then redirect the output to pipe to show it on client side</span></span><br><span class="line">cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc -l 0.0.0.0 1234 &gt; /tmp/f</span><br><span class="line"><span class="comment"># remove after done</span></span><br><span class="line">rm -f /tmp/f</span><br><span class="line"></span><br><span class="line"><span class="comment"># client side</span></span><br><span class="line">nc &lt;server ip&gt; 1234</span><br><span class="line"><span class="comment"># prompt a interactive shell </span></span><br><span class="line"><span class="comment"># then run command on remote server</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -617,8 +622,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -635,7 +649,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">259</span>
+                    <span class="site-state-item-count">260</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1035,7 +1049,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">145</span>
+                      
+                    
+                    <span class="site-state-item-count">146</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1060,6 +1076,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Install"><span class="nav-number">1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Usage-Example"><span class="nav-number">2.</span> <span class="nav-text">Usage Example</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Proxy"><span class="nav-number">3.</span> <span class="nav-text">Proxy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Port-Scan"><span class="nav-number">4.</span> <span class="nav-text">Port Scan</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transfer"><span class="nav-number">5.</span> <span class="nav-text">Transfer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Server-Client"><span class="nav-number">6.</span> <span class="nav-text">Server Client</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Backdoor"><span class="nav-number">7.</span> <span class="nav-text">Backdoor</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

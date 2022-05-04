@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="之前在IBM工作的时候，用Fyre 申请了一个专门的cluster 做Ansible 学习用，后来跳槽了。方便起见，用Vagrant在本地搭建自己的集群来继续学习，更加方便了。 Please check Vagrant Ansible testing cluster repo. Follow the README to set up and play with ansible. 当时遇到的问题是主">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.058Z">
+<meta property="og:updated_time" content="2022-05-04T04:02:21.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Quick Test">
 <meta name="twitter:description" content="之前在IBM工作的时候，用Fyre 申请了一个专门的cluster 做Ansible 学习用，后来跳槽了。方便起见，用Vagrant在本地搭建自己的集群来继续学习，更加方便了。 Please check Vagrant Ansible testing cluster repo. Follow the README to set up and play with ansible. 当时遇到的问题是主">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">145</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">259</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.1k</span>
+                <span title="Symbols count in article">6.5k</span>
               
 
               
@@ -525,7 +525,7 @@
 <li><a href="https://www.jeffgeerling.com/blog/2018/use-ansibles-yaml-callback-plugin-better-cli-experience" target="_blank" rel="noopener">ansible callback plugin</a>: use <code>stdout_callback = debug</code> is fine in most cases.</li>
 </ul>
 <h1 id="Ansible-Run"><a href="#Ansible-Run" class="headerlink" title="Ansible Run"></a>Ansible Run</h1><p><a href="https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html" target="_blank" rel="noopener">Ad-hoc command</a> example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -v: verbose, display output</span></span><br><span class="line"><span class="comment"># can specify single machine</span></span><br><span class="line">ansible -v -i vagrant_ansible_inventory.ini worker1 -m ping</span><br><span class="line"><span class="comment"># all</span></span><br><span class="line">ansible -v -i vagrant_ansible_inventory.ini all -m shell -a <span class="string">'echo $(whoami)'</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_intro.html" target="_blank" rel="noopener">Playbook</a><br><a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_reuse_roles.html" target="_blank" rel="noopener">Role</a>, check role directory structure and how to <a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_reuse_roles.html#using-roles" target="_blank" rel="noopener">use role</a>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -e|--extra-vars: pass extra variables</span></span><br><span class="line"><span class="comment"># -b: become</span></span><br><span class="line"><span class="comment"># -v: verbose</span></span><br><span class="line">ansible-playbook [-b] -v -i vagrant_ansible_inventory.ini setup.yml \</span><br><span class="line">  -e <span class="string">'&#123;"version":"1.10.5",</span></span><br><span class="line"><span class="string">       "other_variable":"foo"&#125;'</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_intro.html" target="_blank" rel="noopener">Playbook</a><br><a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_reuse_roles.html" target="_blank" rel="noopener">Role</a>, check role directory structure and how to <a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_reuse_roles.html#using-roles" target="_blank" rel="noopener">use role</a>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -e|--extra-vars: pass extra variables</span></span><br><span class="line"><span class="comment"># -b: become</span></span><br><span class="line"><span class="comment"># -v: verbose</span></span><br><span class="line">ansible-playbook [-b] -v -i vagrant_ansible_inventory.ini setup.yml \</span><br><span class="line">-e <span class="string">'&#123;"version":"1.10.5","other_variable":"foo"&#125;'</span> <span class="comment"># json format</span></span><br><span class="line"></span><br><span class="line">ansible-playbook [-b] -v -i vagrant_ansible_inventory.ini setup.yml \</span><br><span class="line">-e <span class="string">"foo=23"</span> \</span><br><span class="line">-e <span class="string">"bar=hello"</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -646,7 +646,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">259</span>
+                    <span class="site-state-item-count">260</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1046,7 +1046,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">145</span>
+                      
+                    
+                    <span class="site-state-item-count">146</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
