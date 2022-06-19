@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="//TODO[ ] ip vs iptables 各自用在什么地方? ip command in Linux is present in the iproute package which is used for performing several network administration tasks. IP stands for Internet Protocol. ifconfig is">
+  <meta name="description" content="//TODO[ ] ip vs iptables 各自用在什么地方?my question: https://unix.stackexchange.com/questions/608560/what-is-the-difference-between-iptables-and-ip-route-table ip command in Linux is present in the iproute">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ip Command">
 <meta property="og:url" content="http://yoursite.com/2020/02/04/linux-ip-command/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="//TODO[ ] ip vs iptables 各自用在什么地方? ip command in Linux is present in the iproute package which is used for performing several network administration tasks. IP stands for Internet Protocol. ifconfig is">
+<meta property="og:description" content="//TODO[ ] ip vs iptables 各自用在什么地方?my question: https://unix.stackexchange.com/questions/608560/what-is-the-difference-between-iptables-and-ip-route-table ip command in Linux is present in the iproute">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-03-16T07:37:43.049Z">
+<meta property="og:updated_time" content="2022-06-19T18:49:28.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ip Command">
-<meta name="twitter:description" content="//TODO[ ] ip vs iptables 各自用在什么地方? ip command in Linux is present in the iproute package which is used for performing several network administration tasks. IP stands for Internet Protocol. ifconfig is">
+<meta name="twitter:description" content="//TODO[ ] ip vs iptables 各自用在什么地方?my question: https://unix.stackexchange.com/questions/608560/what-is-the-difference-between-iptables-and-ip-route-table ip command in Linux is present in the iproute">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">147</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">263</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
+                <time title="Modified: 2022-06-19 11:49:28" itemprop="dateModified" datetime="2022-06-19T11:49:28-07:00">2022-06-19</time>
               
             
           </span>
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.1k</span>
+                <span title="Symbols count in article">6.4k</span>
               
 
               
@@ -508,7 +508,7 @@
       
 
       
-        <p>//TODO<br>[ ] <code>ip</code> vs <code>iptables</code> 各自用在什么地方?</p>
+        <p>//TODO<br>[ ] <code>ip</code> vs <code>iptables</code> 各自用在什么地方?<br>my question: <a href="https://unix.stackexchange.com/questions/608560/what-is-the-difference-between-iptables-and-ip-route-table" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/608560/what-is-the-difference-between-iptables-and-ip-route-table</a></p>
 <p><code>ip</code> command in Linux is present in the <code>iproute</code> package which is used for performing several network administration tasks. IP stands for Internet Protocol.</p>
 <p><code>ifconfig</code> is obsolete, <code>ip</code> is preferred.</p>
 <p>It can perform several tasks like configuring and modifying the default and static routing, setting up tunnel over IP, listing IP addresses and property information, modifying the status of the interface, assigning, deleting and setting up IP addresses and routes.</p>
@@ -522,8 +522,8 @@
 <li>netns - deal with network namespace</li>
 </ul>
 <p>The configurations set with the ip command are <strong>not</strong> persistent. After a system restart, all changes are lost. For permanent settings, you need to edit the distro-specific configuration files or add the commands to a startup script.</p>
-<h2 id="address"><a href="#address" class="headerlink" title="address"></a>address</h2><p>Show all IP address associated with all interfaces that are available<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br><span class="line"><span class="comment">## abbr</span></span><br><span class="line">ip a</span><br><span class="line"><span class="comment">## only show ipv4</span></span><br><span class="line">ip -4 a</span><br><span class="line"><span class="comment">## show specified device</span></span><br><span class="line">ip addr show eth0</span><br><span class="line"><span class="comment">## abbr</span></span><br><span class="line">ip a s eth0</span><br><span class="line"><span class="comment">## assign an IP address to an interface. (need append netmask)</span></span><br><span class="line"><span class="comment">## can assign multiple ip address to an interface</span></span><br><span class="line"><span class="comment">## not persistent</span></span><br><span class="line">ip addr add 192.168.1.50/24 dev eth0</span><br><span class="line"><span class="comment">## delete an assigned IP address to an interface. (need append netmask)</span></span><br><span class="line">ip addr del 192.168.1.50/24 dev eth0</span><br></pre></td></tr></table></figure></p>
-<h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><p>It is used to display <code>link layer</code> information, like MAC address, it will fetch characteristics of the link layer devices currently available. Any networking device which has a driver loaded can be classified as an available device.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ip link</span><br><span class="line"><span class="comment">## show statistic of device with human readable format</span></span><br><span class="line"><span class="comment">## 显示有多少error, drop packets来看是不是网络由问题</span></span><br><span class="line">ip -s -h link</span><br><span class="line">ip -s -h link show eth0</span><br><span class="line"><span class="comment">## bring up</span></span><br><span class="line">ip link <span class="built_in">set</span> eth0 up</span><br><span class="line"><span class="comment">## bring down</span></span><br><span class="line">ip link <span class="built_in">set</span> eth0 down</span><br></pre></td></tr></table></figure></p>
+<h2 id="address"><a href="#address" class="headerlink" title="address"></a>address</h2><p>Show all IP address associated with all interfaces that are available<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## ip address</span></span><br><span class="line">ip addr</span><br><span class="line">ip a</span><br><span class="line"><span class="comment">## only show ipv4</span></span><br><span class="line">ip -4 a</span><br><span class="line"><span class="comment">## show specified device</span></span><br><span class="line">ip addr show eth0</span><br><span class="line"><span class="comment">## abbr</span></span><br><span class="line">ip a s eth0</span><br><span class="line"><span class="comment">## assign an IP address to an interface. (need append netmask)</span></span><br><span class="line"><span class="comment">## can assign multiple ip address to an interface</span></span><br><span class="line"><span class="comment">## not persistent</span></span><br><span class="line">ip addr add 192.168.1.50/24 dev eth0</span><br><span class="line"><span class="comment">## delete an assigned IP address to an interface. (need append netmask)</span></span><br><span class="line">ip addr del 192.168.1.50/24 dev eth0</span><br></pre></td></tr></table></figure></p>
+<h2 id="link"><a href="#link" class="headerlink" title="link"></a>link</h2><p>It is used to display <code>link layer</code> information, like MAC address, it will fetch characteristics of the link layer devices currently available. Any networking device which has a driver loaded can be classified as an available device.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## show statistic of device with human readable format</span></span><br><span class="line"><span class="comment">## 显示有多少error, drop packets来看是不是网络由问题</span></span><br><span class="line"><span class="comment">## double -s will show error details</span></span><br><span class="line">ip -s -s -h link</span><br><span class="line">ip -s -h link show eth0</span><br><span class="line"><span class="comment">## bring up</span></span><br><span class="line">ip link <span class="built_in">set</span> eth0 up</span><br><span class="line"><span class="comment">## bring down</span></span><br><span class="line">ip link <span class="built_in">set</span> eth0 down</span><br></pre></td></tr></table></figure></p>
 <h2 id="route"><a href="#route" class="headerlink" title="route"></a>route</h2><p>This command helps you to see the route packets your network will take as set in your <strong>kernel routing table</strong>. The first entry is the default route.<br>Other commands perform the same: <code>route</code>, <code>netstat -r</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ip route</span><br><span class="line"><span class="comment">## route for a specific network</span></span><br><span class="line">ip route list 9.30.204.0/22</span><br><span class="line"><span class="comment">## add a route to 192.168.121.0/24 via the gateway at 192.168.121.1</span></span><br><span class="line">ip route add 192.168.121.0/24 via 192.168.121.1</span><br><span class="line"><span class="comment">## add a route to 192.168.121.0/24 that can be reached on device eth0.</span></span><br><span class="line">ip route add 192.168.121.0/24 dev eth0</span><br></pre></td></tr></table></figure></p>
 <h2 id="neigh"><a href="#neigh" class="headerlink" title="neigh"></a>neigh</h2><h2 id="netns"><a href="#netns" class="headerlink" title="netns"></a>netns</h2>
       
@@ -645,7 +645,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">260</span>
+                    <span class="site-state-item-count">263</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1047,7 +1047,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">146</span>
+                      
+                    
+                    <span class="site-state-item-count">147</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

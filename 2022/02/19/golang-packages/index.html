@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Regarding Logstash introduction recaps, please have a look at Elastic Stack Quick Start Issue description: Over the past few months, we found some logs that were indeed generated, but they lost in Ela">
-<meta name="keywords" content="logstash">
+  <meta name="description" content="Search standard Go packages here:https://pkg.go.dev/std What are packages belong to golang.org/x:These packages) are part of the Go Project but outside the main Go tree. They are developed under loose">
+<meta name="keywords" content="go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logstash UDP Input Data Lost">
-<meta property="og:url" content="http://yoursite.com/2022/05/01/elastic-logstash-udp/index.html">
+<meta property="og:title" content="Golang Packages">
+<meta property="og:url" content="http://yoursite.com/2022/02/19/golang-packages/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Regarding Logstash introduction recaps, please have a look at Elastic Stack Quick Start Issue description: Over the past few months, we found some logs that were indeed generated, but they lost in Ela">
+<meta property="og:description" content="Search standard Go packages here:https://pkg.go.dev/std What are packages belong to golang.org/x:These packages) are part of the Go Project but outside the main Go tree. They are developed under loose">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-05-04T04:02:21.796Z">
+<meta property="og:updated_time" content="2022-06-19T18:49:28.456Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Logstash UDP Input Data Lost">
-<meta name="twitter:description" content="Regarding Logstash introduction recaps, please have a look at Elastic Stack Quick Start Issue description: Over the past few months, we found some logs that were indeed generated, but they lost in Ela">
+<meta name="twitter:title" content="Golang Packages">
+<meta name="twitter:description" content="Search standard Go packages here:https://pkg.go.dev/std What are packages belong to golang.org/x:These packages) are part of the Go Project but outside the main Go tree. They are developed under loose">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2022/05/01/elastic-logstash-udp/">
+  <link rel="canonical" href="http://yoursite.com/2022/02/19/golang-packages/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Logstash UDP Input Data Lost | 海胆阶段's Blog</title>
+  <title>Golang Packages | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">147</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">263</span></a>
 
   </li>
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/05/01/elastic-logstash-udp/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/02/19/golang-packages/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Logstash UDP Input Data Lost
+          <h1 class="post-title" itemprop="name headline">Golang Packages
 
               
             
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2022-05-01 19:04:40" itemprop="dateCreated datePublished" datetime="2022-05-01T19:04:40-07:00">2022-05-01</time>
+              <time title="Created: 2022-02-19 18:21:04" itemprop="dateCreated datePublished" datetime="2022-02-19T18:21:04-08:00">2022-02-19</time>
             
 
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
+                <time title="Modified: 2022-06-19 11:49:28" itemprop="dateModified" datetime="2022-06-19T11:49:28-07:00">2022-06-19</time>
               
             
           </span>
@@ -456,7 +456,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Elastic/" itemprop="url" rel="index"><span itemprop="name">Elastic</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a></span>
 
                 
                 
@@ -484,7 +484,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">15k</span>
+                <span title="Symbols count in article">2.8k</span>
               
 
               
@@ -508,34 +508,17 @@
       
 
       
-        <p>Regarding Logstash introduction recaps, please have a look at <a href="https://chengdol.github.io/2020/05/20/elastic-stack/" target="_blank" rel="noopener">Elastic Stack Quick Start</a></p>
-<p>Issue description: Over the past few months, we found some logs that were indeed generated, but they lost in Elasticsearch Database, which result in false PD alert as the alert expression will use the missing logs.</p>
-<p>The data path is common and typical:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Data</span> <span class="string">source</span> </span><br><span class="line"><span class="string">=&gt;</span> <span class="string">Logstash(UDP</span> <span class="string">input</span> <span class="string">+</span> <span class="string">filter</span> <span class="string">+</span> <span class="string">Kafka</span> <span class="string">output)</span></span><br><span class="line"><span class="string">=&gt;</span> <span class="string">Kafka</span> </span><br><span class="line"><span class="string">=&gt;</span> <span class="string">Logstash(Kafka</span> <span class="string">input</span> <span class="string">+</span> <span class="string">filter</span> <span class="string">+</span> <span class="string">Elasticsearch</span> <span class="string">output)</span> </span><br><span class="line"><span class="string">=&gt;</span> <span class="string">Elasticsearch(Kibana)</span></span><br></pre></td></tr></table></figure></p>
-<p>The lost could happen in transit at any point, let’s check and narrow the scope down.</p>
-<h1 id="Does-The-UDP-Packet-Reach-VM"><a href="#Does-The-UDP-Packet-Reach-VM" class="headerlink" title="Does The UDP Packet Reach VM?"></a>Does The UDP Packet Reach VM?</h1><p>As UDP transfer is not reliable, the packets could be lost before they reached Logstash VM, we can have background tcpdump to sniff the UDP packets from target host and port over 12 hours, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># time limit the process run</span></span><br><span class="line"><span class="comment"># -k/--kill-after: send kill after 5s if TERM signal does not work</span></span><br><span class="line"><span class="comment"># 12h: duration, run tcpdump 12 hours</span></span><br><span class="line">timeout -k 5 12h \</span><br><span class="line"><span class="comment"># -i: interface</span></span><br><span class="line"><span class="comment"># -nn: don't convert protocol and port numbers to name</span></span><br><span class="line"><span class="comment"># -w: write to pcap file</span></span><br><span class="line"><span class="comment"># -U: with -w, write packet to file immediately</span></span><br><span class="line"><span class="comment"># -C: file size limit: 200MB</span></span><br><span class="line">tcpdump -i eth0 \</span><br><span class="line"><span class="comment"># filter capturing with src IP started from 172.16 and port 514 only</span></span><br><span class="line">-nn src 172.16 and port 514 \</span><br><span class="line">-wU /home/example/logstash-0.pcap \</span><br><span class="line">-C 200 \</span><br><span class="line">&amp;&gt; /dev/null &amp;</span><br></pre></td></tr></table></figure></p>
-<p>It is important to limit the pcap file size and roll over new file if necessary, for example, the pcap file generated from above command will be:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># suffix number starts from 1, auto appended.</span></span><br><span class="line">/home/example/logstash-0.pcap</span><br><span class="line">/home/example/logstash-0.pcap1</span><br><span class="line">/home/example/logstash-0.pcap2</span><br><span class="line">/home/example/logstash-0.pcap3</span><br></pre></td></tr></table></figure></p>
-<p>Each will have file size &lt;= 200MB as <code>-C</code> specified.</p>
-<p>Then you can use Wireshark or tcpdump itself to read the packet and filter target info<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -r: read pcap file</span></span><br><span class="line"><span class="comment"># -v: show verbose packet info</span></span><br><span class="line">tcpdump -r /home/example/logstash-0.pcap2 \</span><br><span class="line"><span class="comment"># filter expression</span></span><br><span class="line">src 172.16.53.4 and port 514 \</span><br><span class="line">-nn \</span><br><span class="line">-v  \</span><br><span class="line">| grep <span class="string">"target info"</span></span><br></pre></td></tr></table></figure></p>
-<p>Then we know the UDP packets actually reached the VM, move to the next question.</p>
-<h2 id="Other-tcpdump-Usages"><a href="#Other-tcpdump-Usages" class="headerlink" title="Other tcpdump Usages"></a>Other tcpdump Usages</h2><p>If you want to have file creation in a strict time interval manner:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -G: rotated every 1800s duration</span></span><br><span class="line"><span class="comment"># must use strftime filename, otherwise new file will overwrite the previous</span></span><br><span class="line">tcpdump -i eth0 -G 1800 -w /tmp/trace-%Y-%m-%d-%H:%M:%S.pcap</span><br><span class="line"><span class="comment"># -W: limit the file number to 3, and exit 0</span></span><br><span class="line"><span class="comment"># so it will only create 3 files and each 30 mins</span></span><br><span class="line">tcpdump -i eth0 -W 3 -G 1800 -w /tmp/trace-%Y-%m-%d-%H:%M:%S.pcap</span><br></pre></td></tr></table></figure></p>
-<p>We can have <code>-C</code>(size) and <code>-G</code>(time) together, but need the timestamp file name! For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i eth0 -w /tmp/trace-%Y-%m-%d-%H:%M:%S.pcap -G 3 -C 2</span><br></pre></td></tr></table></figure></p>
-<p>The file creation is either every 3s or 2MB, whichever comes first, look the size rollover is a subset of time:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--. 1 tcpdump              2.0M May  2 06:30 trace-2022-05-02-06:30:20.pcap</span><br><span class="line">-rw-r--r--. 1 tcpdump              2.0M May  2 06:30 trace-2022-05-02-06:30:20.pcap1</span><br><span class="line">-rw-r--r--. 1 tcpdump             1003K May  2 06:30 trace-2022-05-02-06:30:20.pcap2</span><br><span class="line">-rw-r--r--. 1 tcpdump              2.0M May  2 06:30 trace-2022-05-02-06:30:23.pcap</span><br><span class="line">-rw-r--r--. 1 tcpdump              2.0M May  2 06:30 trace-2022-05-02-06:30:23.pcap1</span><br><span class="line">-rw-r--r--. 1 tcpdump              1.1M May  2 06:30 trace-2022-05-02-06:30:23.pcap2</span><br><span class="line">-rw-r--r--. 1 tcpdump              1.5M May  2 06:30 trace-2022-05-02-06:30:26.pcap</span><br><span class="line">-rw-r--r--. 1 tcpdump              1.7M May  2 06:30 trace-2022-05-02-06:30:29.pcap</span><br><span class="line">-rw-r--r--. 1 tcpdump              301K May  2 06:30 trace-2022-05-02-06:30:32.pcap</span><br></pre></td></tr></table></figure></p>
-<p>If you want to limit the number of file created, you can rotate the file by size:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -W: file count limit 3</span></span><br><span class="line">tcpdump -i eth0 -w /tmp/trace.pcap -W 3 -C 2</span><br></pre></td></tr></table></figure></p>
-<p>The result could be:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rotated among these 3 files</span></span><br><span class="line">-rw-r--r--. 1 tcpdump             tcpdump             2.0M May  2 06:55 trace.pcap1</span><br><span class="line">-rw-r--r--. 1 tcpdump             tcpdump             2.0M May  2 06:55 trace.pcap2</span><br><span class="line">-rw-r--r--. 1 tcpdump             tcpdump             1.5M May  2 06:55 trace.pcap0</span><br></pre></td></tr></table></figure></p>
-<p>or by time and size both, note that rotation happens only within the timeslice: 3s if the size exceeds!<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># must use timestamp file name</span></span><br><span class="line">tcpdump -i eth0 -w /tmp/trace-%Y-%m-%d-%H:%M:%S.pcap -W 5 -C 2 -G 3</span><br></pre></td></tr></table></figure></p>
-<h1 id="Does-Logstash-UDP-Input-Drop-Packet"><a href="#Does-Logstash-UDP-Input-Drop-Packet" class="headerlink" title="Does Logstash UDP Input Drop Packet?"></a>Does Logstash UDP Input Drop Packet?</h1><p>This can be verified by adding another output plugin <code>file</code> to store target info to a local file, for example in logstash config file:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">input &#123;&#125;</span><br><span class="line">filter &#123;&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    kafka &#123;&#125;</span><br><span class="line">    if "target info" in [message] &#123;</span><br><span class="line">      file &#123;</span><br><span class="line">        <span class="comment"># 'sourceip' is a field from record</span></span><br><span class="line">        path =&gt; "/var/log/logstash/highlight/%&#123;sourceip&#125;.log"</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>By checking the log file, I know the output does not send the message out, plus the filter is good, so it must be <code>input {}</code> UDP dropped the data.</p>
-<h1 id="Why-Does-UDP-Drop-Packet"><a href="#Why-Does-UDP-Drop-Packet" class="headerlink" title="Why Does UDP Drop Packet?"></a>Why Does UDP Drop Packet?</h1><p>UDP is not a reliable transport. By design, it will drop messages if it does not have space to buffer them. </p>
-<h1 id="How-to-Solve-It"><a href="#How-to-Solve-It" class="headerlink" title="How to Solve It?"></a>How to Solve It?</h1><p>Luckly, we can increase the queue size and buffer size, for example:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">  udp &#123;</span><br><span class="line">    port =&gt; 514</span><br><span class="line">    type =&gt; syslog</span><br><span class="line">    queue_size =&gt; 60000 # default is 2000</span><br><span class="line">    receive_buffer_bytes =&gt; 20971520 # 20MB, default is system sysctl value</span><br><span class="line">    workers =&gt; 4 # depends on the vcpu number, default is 2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>The value really depends on your traffc, you can run <code>sar -n DEV 1</code> to find a reasonable estimation. Moreover, you need to uplift system socket receive buffer in order to set Logstash <code>receive_buffer_bytes</code> correctly if it is larger than system default buffer, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"net.core.rmem_max=20971520"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure></p>
-<p>Finally, increase the Logstash JVM heap size accordingly, usually half of the RAM size for both <code>Xms</code> and <code>Xmx</code>.</p>
-<p>Then restart and check the status of new config:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart logstash</span><br><span class="line"><span class="comment"># verbose to see the config change</span></span><br><span class="line">systemctl status logstash -l</span><br></pre></td></tr></table></figure></p>
-<h1 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h1><p>There are other things I practiced:</p>
-<ol>
-<li>Logstash config and syntax for input, filter, output plugin</li>
-<li>Using <code>nc</code> as UDP client to test Logstash UDP input and filter</li>
-<li>Revisit Kafka config and know possible data loss in Kafka side</li>
-</ol>
+        <p>Search standard Go packages here:<br><a href="https://pkg.go.dev/std" target="_blank" rel="noopener">https://pkg.go.dev/std</a></p>
+<p>What are packages belong to <code>golang.org/x</code>:<br><a href="(https://pkg.go.dev/golang.org/x">These packages</a>) are part of the Go Project but outside the main Go tree. They are developed under looser compatibility requirements than the Go core. Install them with “go get”.</p>
+<p><strong>List of commonly used packages</strong><br><code>fmt</code>:<br>Common use placeholder: %q, %v, %d, %c(one string), %T(type), %p(address).<br>fmt.Errorf()<br>fmt.Sprintf()<br><code>logrus</code>:<br>structured logger for Go<br><code>strings</code>:<br>strings.LastIndex(s,”/“), strings([]byte{‘a’,’b’})<br><code>strconv</code>:<br>strconv.Itoa(55), strconv.Atoi(“1”), strconv.ParseInt(“23”, 10, 64)<br><code>bytes</code>:<br>bytes.Buffer, []byte(“hello”)<br><code>unicode/utf8</code>:<br>utf8.RuneCountInString(“Hello, 世界”)</p>
+<p><code>kubernetes</code>:<br><a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes</a><br><code>kubernetes/client-go</code>:<br><a href="https://pkg.go.dev/k8s.io/client-go/kubernetes" target="_blank" rel="noopener">https://pkg.go.dev/k8s.io/client-go/kubernetes</a></p>
+<p><code>os</code>:<br>os.Args, os.Stdin, os.Open, os.Exit(1)<br><code>flag</code>:<br>extract options/flags from CLI, like Python Click<br><code>cobra</code>:<br>powerful CLI for modern app: k8s, etcd, istio, etc<br><code>viper</code>:<br>a complete configuration solution for Go app<br><code>path/filepath</code></p>
+<p><code>httpRouter</code><br><code>net/http</code>:<br>minimal server, http.Handlefunc(x,handler), http.ListenAndServe(x,x)<br>func handler(w http.ResponseWriter, r *http.Request) {}<br><code>net/url</code><br><code>context</code><br><code>encoding/json</code><br><a href="https://pkg.go.dev/encoding/json" target="_blank" rel="noopener">https://pkg.go.dev/encoding/json</a><br>json.Marshal(), json.MarshalIndent()<br><code>yaml</code>:<br>gopkg.in/yaml.v3</p>
+<p><code>math/rand</code>:<br>rand is a subdirectory in math package.<br><code>bufio</code>:<br>Some help for textual I/O: bufio.NewScanner(os.Stdin), bufio.NewReader(os.Stdin)<br><code>runtime</code><br>runtime.Stack()<br><code>io/ioutil</code>:<br>ioutil.ReadAll()<br><code>sync</code>:<br>sync.Mutex</p>
+<p><code>sort</code>:<br>sort.Interface<br>sort.Strings(&lt;[]string&gt;)<br>sort.Ints(&lt;[]int&gt;)<br>sort.Reverse(sort.IntSlice(&lt;[]int&gt;))<br>sort.IsSorted()<br><code>text/template</code><br><code>text/tabwriter</code><br><code>html/template</code></p>
+<p><code>errors</code><br><code>time</code>:<br>time.Now(), time.Since(xx).Seconds()</p>
+<p><code>testify</code></p>
+<p><code>hugo</code>:<br>a static site website generator</p>
 
       
     </div>
@@ -559,7 +542,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/logstash/" rel="tag"># logstash</a>
+            <a href="/tags/go/" rel="tag"># go</a>
           
         </div>
       
@@ -572,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/04/21/message-kafka-learn/" rel="next" title="Kafka Quick Start">
-                <i class="fa fa-chevron-left"></i> Kafka Quick Start
+              <a href="/2022/01/29/ansible-tower/" rel="next" title="Ansible Tower">
+                <i class="fa fa-chevron-left"></i> Ansible Tower
               </a>
             
           </div>
@@ -582,8 +565,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/05/03/review-list/" rel="prev" title="Blog Review List">
-                Blog Review List <i class="fa fa-chevron-right"></i>
+              <a href="/2022/02/27/docker-daemon-fail/" rel="prev" title="Docker Daemon Start Failure">
+                Docker Daemon Start Failure <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -629,17 +612,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -656,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">260</span>
+                    <span class="site-state-item-count">263</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1058,7 +1032,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">146</span>
+                      
+                    
+                    <span class="site-state-item-count">147</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1083,23 +1059,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Does-The-UDP-Packet-Reach-VM"><span class="nav-number">1.</span> <span class="nav-text">Does The UDP Packet Reach VM?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-tcpdump-Usages"><span class="nav-number">1.1.</span> <span class="nav-text">Other tcpdump Usages</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Does-Logstash-UDP-Input-Drop-Packet"><span class="nav-number">2.</span> <span class="nav-text">Does Logstash UDP Input Drop Packet?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-Does-UDP-Drop-Packet"><span class="nav-number">3.</span> <span class="nav-text">Why Does UDP Drop Packet?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-Solve-It"><span class="nav-number">4.</span> <span class="nav-text">How to Solve It?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Postscript"><span class="nav-number">5.</span> <span class="nav-text">Postscript</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

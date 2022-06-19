@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="[x] how does the producer know who is the leader? Ask zk, leader is partition based.[x] topic has its own set of partitions, each partiton is assigned subset of coming events.[x] producer send message">
+  <meta name="description" content="[x] how does the producer know who is the leader? Ask zookeeper, leader is partition based.[x] each topic has its own set of partitions, each partiton is assigned subset of coming events.[x] producer">
 <meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kafka Quick Start">
 <meta property="og:url" content="http://yoursite.com/2022/04/21/message-kafka-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="[x] how does the producer know who is the leader? Ask zk, leader is partition based.[x] topic has its own set of partitions, each partiton is assigned subset of coming events.[x] producer send message">
+<meta property="og:description" content="[x] how does the producer know who is the leader? Ask zookeeper, leader is partition based.[x] each topic has its own set of partitions, each partiton is assigned subset of coming events.[x] producer">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-05-04T04:02:21.802Z">
+<meta property="og:updated_time" content="2022-06-19T18:49:28.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka Quick Start">
-<meta name="twitter:description" content="[x] how does the producer know who is the leader? Ask zk, leader is partition based.[x] topic has its own set of partitions, each partiton is assigned subset of coming events.[x] producer send message">
+<meta name="twitter:description" content="[x] how does the producer know who is the leader? Ask zookeeper, leader is partition based.[x] each topic has its own set of partitions, each partiton is assigned subset of coming events.[x] producer">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">147</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">263</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
+                <time title="Modified: 2022-06-19 11:49:28" itemprop="dateModified" datetime="2022-06-19T11:49:28-07:00">2022-06-19</time>
               
             
           </span>
@@ -508,7 +508,7 @@
       
 
       
-        <p>[x] how does the producer know who is the leader? Ask zk, leader is partition based.<br>[x] topic has its own set of partitions, each partiton is assigned subset of coming events.<br>[x] producer send message to which topic partition leader? depends on parition stragegies.<br>[x] how to ensure the message order that treats entire topic as a whole? cannot, but order is guarantee in partition.<br>[x] kafka run as daemon<br>[x] <a href="https://stackoverflow.com/questions/46173003/bootstrap-server-vs-zookeeper-in-kafka" target="_blank" rel="noopener">kafka command bootstrap-server vs zookeeper</a></p>
+        <p>[x] how does the producer know who is the leader? Ask zookeeper, leader is partition based.<br>[x] each topic has its own set of partitions, each partiton is assigned subset of coming events.<br>[x] producer send message to which topic partition leader? depends on parition stragegies.<br>[x] how to ensure the message order that treats entire topic as a whole? impossible, but order is guarantee in partition level.<br>[x] <a href="https://stackoverflow.com/questions/46173003/bootstrap-server-vs-zookeeper-in-kafka" target="_blank" rel="noopener">kafka command bootstrap-server vs zookeeper</a></p>
 <p>The Vagrant demo file please see my git repo <a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-zk-kafka" target="_blank" rel="noopener">Infratree</a>, reading with <a href="https://chengdol.github.io/2020/11/27/message-zookeeper-learn/" target="_blank" rel="noopener"><code>Zookeeper Quick Start</code></a></p>
 <p>I took the course from PluralSight and Udemy, both are good, Udemy course is some what out-of-date.<br>There are other tutorial videos:</p>
 <ul>
@@ -536,7 +536,8 @@
 <p>Kafka clents have 3 different levels of consistency, see <code>Consistency as a Kafka Client</code> in <a href="https://sookocheff.com/post/kafka/kafka-in-a-nutshell/" target="_blank" rel="noopener">Kafka in a Nutshell</a>.</p>
 <h2 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h2><p>Producer sends event to broker and broker places the event in one of the partitions.<br>比如这里有3个partitions, 2个consumers 在一个consumer group中，则consumer2 会对应到p2, p3读取事件，如果后来增加一个consumer3在这个consumer group中，则kafka 会partition rebalance p2 或 p3 到新增的消费者中，于是就变成了每个consumer 对应一个partiton。这样处理就不会因为consumer 数量的变化而导致event被重复读取或者没有被处理，也增加了throughput. </p>
 <p>如果number of consumer &gt; number of partition 则多余的consumer 被闲置了，因此partition 的数量几乎决定了consumer 可有的最大数量。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                              broker              consumer group</span><br><span class="line">                        +---------------+        +------------+</span><br><span class="line">                        |  partition1---|--------|-&gt;consumer1 |</span><br><span class="line">           (batch send) |<span class="regexp">/              |        |            |</span></span><br><span class="line"><span class="regexp">producer --------------&gt;|- partition2---|--------|-&gt;consumer2 |</span></span><br><span class="line"><span class="regexp">                        |\              |        |/</span>           |</span><br><span class="line">                        |  partition3---|--------|            |</span><br><span class="line">                        +---------------+        +------------+</span><br></pre></td></tr></table></figure></p>
-<p>关于event送到哪个 partition 是 producer 中 key 决定的，所以如何选择 key 很重要，它决定了送到partition 中的event 数量是否平衡，还要注意，kafka event order matters only within a single partition. 所以如果要保证某一类event 的顺序，则需要把它们划分到同一个partition中, so custom partitioning is possible and is reserved for special cases.</p>
+<p>关于event送到哪个 partition 是 Partition strategy 决定的，for example, in the logstash Kafka output plugin it has <a href="https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html#plugins-outputs-kafka-partitioner" target="_blank" rel="noopener">partitioner</a> config, the default is round-robin, if message key is specified, then hash will be used. 所以如何选择 key 很重要，它决定了送到partition 中的event 数量是否平衡，还要注意，kafka event order matters only within a single partition. 所以如果要保证某一类event 的顺序，则需要把它们划分到同一个partition中, so custom partitioning is possible and is reserved for special cases.</p>
+<p>I have encountered the issue that uneven districution of message among partitions with round-robin strategy, the discussion and possible cause can be seen <a href="https://stackoverflow.com/questions/50893130/uneven-distribution-of-messages-in-kafka-partitions" target="_blank" rel="noopener">here</a></p>
 <p>Multiple consumer groups can consume the same topic, each group is isolated: A topic can be consumed by many consumer groups and each consumer group will have many consumers. Also see this <a href="https://stackoverflow.com/questions/45175424/how-multiple-consumer-group-consumers-work-across-partition-on-the-same-topic-in" target="_blank" rel="noopener">question</a>.</p>
 <h2 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h2><p>For example: the logstash output kafka plugin is the producer client that sends log/message to kafka cluster.</p>
 <p>The producer has its own set of configuration, for example the logstash kafka output <a href="https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html#plugins-outputs-kafka" target="_blank" rel="noopener">config</a>, they are aligned with the kafka producer <a href="https://kafka.apache.org/documentation/#producerconfigs" target="_blank" rel="noopener">config</a></p>
@@ -623,7 +624,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2022/05/01/elastic-logstash-udp/" rel="prev" title="Logstash UDP Input Data Lost">
+              <a href="/2022/05/01/elastic-logstash-udp-drop/" rel="prev" title="Logstash UDP Input Data Lost">
                 Logstash UDP Input Data Lost <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -697,7 +698,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">260</span>
+                    <span class="site-state-item-count">263</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1099,7 +1100,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">146</span>
+                      
+                    
+                    <span class="site-state-item-count">147</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

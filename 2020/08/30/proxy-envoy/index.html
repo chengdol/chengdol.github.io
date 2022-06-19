@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明">
+  <meta name="description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA GitHub repoThis github repo contains demos for some popular proxies:https://github.com/chengdo">
 <meta name="keywords" content="envoy,proxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Envoy">
 <meta property="og:url" content="http://yoursite.com/2020/08/30/proxy-envoy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明">
+<meta property="og:description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA GitHub repoThis github repo contains demos for some popular proxies:https://github.com/chengdo">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.074Z">
+<meta property="og:updated_time" content="2022-06-19T18:49:28.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
-<meta name="twitter:description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA General Proxy and Network Concepts由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明">
+<meta name="twitter:description" content="//TODO[ ] docker compose http reverse proxy with flask apps[ ] envoy series: https://youtu.be/KsO4pw4tEGA GitHub repoThis github repo contains demos for some popular proxies:https://github.com/chengdo">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">146</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">147</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">260</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">263</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-05-06 00:42:52" itemprop="dateModified" datetime="2021-05-06T00:42:52-07:00">2021-05-06</time>
+                <time title="Modified: 2022-06-19 11:49:28" itemprop="dateModified" datetime="2022-06-19T11:49:28-07:00">2022-06-19</time>
               
             
           </span>
@@ -509,6 +509,7 @@
 
       
         <p>//TODO<br>[ ] docker compose http reverse proxy with flask apps<br>[ ] envoy series: <a href="https://youtu.be/KsO4pw4tEGA" target="_blank" rel="noopener">https://youtu.be/KsO4pw4tEGA</a></p>
+<h1 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h1><p>This github repo contains demos for some popular proxies:<br><a href="https://github.com/chengdol/proxy/tree/main/envoy" target="_blank" rel="noopener">https://github.com/chengdol/proxy/tree/main/envoy</a></p>
 <h1 id="General-Proxy-and-Network-Concepts"><a href="#General-Proxy-and-Network-Concepts" class="headerlink" title="General Proxy and Network Concepts"></a>General Proxy and Network Concepts</h1><p>由于第一次实际使用Proxy是从Envoy入手的，所以把关于Proxy的基本概念记录在这一章下, 在解决问题时，首先要明白需要的是哪种Proxy 以及要实现什么样的功能?</p>
 <p><a href="https://www.youtube.com/playlist?list=PLQnljOFTspQVMeBmWI2AhxULWEeo7AaMC" target="_blank" rel="noopener">Youtube Proxy Channel</a><br>这个channel讲了很多关于Proxy的知识点，总结如下：</p>
 <ol>
@@ -521,14 +522,12 @@
 <blockquote>
 <p>Note: reverse proxy is not necessarily to be a load balancer. Load balancer is just an instance of reverse proxy.</p>
 </blockquote>
-<p><strong>FAQ:</strong><br><a href="https://stackoverflow.com/questions/45874515/what-is-https-proxy" target="_blank" rel="noopener">What is HTTPS Proxy</a><br>depends on the context:<br>[1] HTTP proxy that supports CONNECT method<br>[2] Connecting proxy over ssl/tls.<br>这里要注意区别curl 和 wget 对HTTPS proxy的定义，curl 新版本支持了connect proxy over ssl/tls, 比如用<code>-x https://&lt;proxy-url&gt;:&lt;port&gt;</code>, 否则默认<code>-x &lt;proxy-url&gt;:&lt;port&gt;</code> 是<code>http://</code>, 而wget 中指定proxy的环境变量<code>-e https_proxy=&lt;proxy-url&gt;:&lt;port&gt;</code> 指的是HTTP proxy that supports CONNECT method.</p>
+<p><strong>FAQ:</strong><br><a href="https://stackoverflow.com/questions/45874515/what-is-https-proxy" target="_blank" rel="noopener">What is HTTPS Proxy</a><br>depends on the context:<br>[1] HTTP proxy that supports CONNECT method<br>[2] Connecting proxy over ssl/tls.<br>这里要注意区别curl 和 wget 对HTTPS proxy的定义，curl 新版本支持了connect to proxy over ssl/tls, 比如用<code>-x https://&lt;proxy-url&gt;:&lt;port&gt;</code>, 否则默认<code>-x &lt;proxy-url&gt;:&lt;port&gt;</code> 是<code>http://</code>, 而wget 中指定 proxy 的环境变量<code>-e https_proxy=&lt;proxy-url&gt;:&lt;port&gt;</code> 指的是HTTP proxy that supports CONNECT method.</p>
+<p>Can proxy &amp; reverse proxy used in the same time? Yes, for example, service mesh.<br>Is Proxy just for HTTP traffic? No, many types, for example, HTTP proxy, HTTPS proxy, SOCKS proxy..</p>
+<p>How does forward proxy know the final destination? via the <code>HOST</code> header, start from HTTP/1.1.<br><code>ping</code> will not go through HTTP proxy, it is a lower protocol L3. 也就是说，不是所有traffic都走的proxy. 你也可以设置哪些访问用proxy, 哪些不用。</p>
+<p>Proxy can add its header to tell server where is the originating IP: <code>X-Forwarded-For</code> header.<br>Proxy is dedicated: HTTP proxy(for HTTP but can upgarde to support tunnel), SOCKS proxy(only for L4).</p>
+<p><code>Transparent proxy(gateway)</code> you don’t need to do configiration, you are not aware of.</p>
 </li>
-</ol>
-<p>  Can proxy &amp; reverse proxy used in the same time? Yes, for example, service mesh.<br>  Is Proxy just for HTTP traffic? No, many types, for example, HTTP proxy, HTTPS proxy, SOCKS proxy..</p>
-<p>  How does forward proxy know the final destination? via the <code>HOST</code> header, start from HTTP/1.1.<br>  <code>ping</code> will not go through HTTP proxy, it is a lower protocol L3. 也就是说，不是所有traffic都走的proxy. 你也可以设置哪些访问用proxy, 哪些不用。</p>
-<p>  Proxy can add its header to tell server where is the originating IP: <code>X-Forwarded-For</code> header.<br>  Proxy is dedicated: HTTP proxy(for HTTP but can upgarde to support tunnel), SOCKS proxy(only for L4).</p>
-<p>  <code>Transparent proxy(gateway)</code> you don’t need to do configiration, you are not aware of.</p>
-<ol start="2">
 <li><p>VPN vs Forward proxy, pros and cons.<br>In VPN, the client becomes a part of network as VPN server, different from originating network. The VPN server acts as an intermediary of sorts as you connect to the internet, thereby hiding your IP address.</p>
 <p>VPN Pros:<br>[1] Anonymity (but VPN knows you).<br>[2] Encrypts traffic.<br>[3] Redirect all traffic at the lowest level (layer 2).<br>[4] Access restricted content.<br>[5] Access Private networks (work).<br>VPN Cons:<br>[1] Slow because extra hops .<br>[2] Double Encryption (already have TLS/SSL).<br>[3] VPN can log your data (DNS).<br>[4] No caching.</p>
 <p>Proxy Pros:<br>[1] Anonymity (proxy knows you).<br>[2] Caching L7.<br>[3] Work on Layer 7 &amp; Layer 3/4.<br>[4] Blocking Websites (transparent proxy).<br>[5] Control and many applications (varnish http accelerator, load balancing, service mesh, firewall proxy security).<br>Proxy Cons:<br>[1] Applications can bypass proxy.<br>[2] Not all traffic is routed via proxy, dedicated.<br>[3] No encryption by default.<br>[4] More dangerous than VPN, for example MITM, so check your certificate.</p>
@@ -554,7 +553,6 @@
 <p><code>IP masquerading</code> is a technique that hides an entire IP address space, usually consisting of private IP addresses, behind a single IP address in another, usually public address space. The hidden addresses are changed into a single (public) IP address as the source address of the outgoing IP packets so they appear as originating not from the hidden host but from the routing device itself. Because of the popularity of this technique to conserve IPv4 address space, the term NAT has become virtually synonymous with IP masquerading.</p>
 </li>
 </ol>
-<h1 id="GitHub-repo"><a href="#GitHub-repo" class="headerlink" title="GitHub repo"></a>GitHub repo</h1><p>This github repo contains demos for some popular proxies:<br><a href="https://github.com/chengdol/proxy/tree/main/envoy" target="_blank" rel="noopener">https://github.com/chengdol/proxy/tree/main/envoy</a></p>
 <h1 id="Envoy"><a href="#Envoy" class="headerlink" title="Envoy"></a>Envoy</h1><p>首先要理解proxy的各种概念，类型，否则在配置时会一头雾水，不知所以然。</p>
 <p>Chinese web site: <a href="https://www.servicemesher.com/envoy/about_docs.html" target="_blank" rel="noopener">https://www.servicemesher.com/envoy/about_docs.html</a><br>Web site: <a href="https://www.envoyproxy.io/" target="_blank" rel="noopener">https://www.envoyproxy.io/</a></p>
 <p>选定Envoy的版本，进入文档，了解Envoy的terminology, for example: host, downstream, upstream, listener, cluster, mesh, etc.<br>了解envoy architecture，这对于理解配置很有帮助，对于Inbound 流量，指定有Listener, 每个Listener 有filter chains, 其中包含各种类型的filters. 对于Outbound 流量，设置upstream clusters, 流量会根据配置送到对应的upstream中去。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">downstream clients -----&gt; listeners -----&gt; filters -----&gt; upstream clusters</span><br><span class="line">     (app)                            (routing decision)</span><br></pre></td></tr></table></figure></p>
@@ -580,7 +578,7 @@
 <h2 id="HTTP-s-Reverse-Proxy"><a href="#HTTP-s-Reverse-Proxy" class="headerlink" title="HTTP(s) Reverse Proxy"></a>HTTP(s) Reverse Proxy</h2><p>Good video:<br><a href="https://youtu.be/D0cuv1AEftE" target="_blank" rel="noopener">Load balancing and HTTP Routing with Envoy Proxy</a><br><a href="https://youtu.be/40gKzHQWgP0" target="_blank" rel="noopener">Envoy Proxy Crash Course, Architecture, L7 &amp; L4 Proxying, HTTP/2, Enabling TLS 1.2/1.3 and more</a> </p>
 <p><a href="https://www.katacoda.com/envoyproxy/scenarios/getting-started" target="_blank" rel="noopener">Envoy online codelab</a></p>
 <p>对于reverse proxy, 直接访问即可, 比如如果envoy在本地运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http(s)://localhost:80(443)</span><br></pre></td></tr></table></figure></p>
-<h2 id="HTTP-s-Forward-Proxy"><a href="#HTTP-s-Forward-Proxy" class="headerlink" title="HTTP(s) Forward Proxy"></a>HTTP(s) Forward Proxy</h2><p>Forward proxy support on envoy is still baisc, 当时遇到的几个问题:<br>CONNECT with domain match:<br><a href="https://github.com/envoyproxy/envoy/pull/13630" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/pull/13630</a><br>Block or allow downstream source IPs:<br><a href="https://github.com/envoyproxy/envoy/issues/8388" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/issues/8388</a></p>
+<h2 id="HTTP-s-Forward-Proxy"><a href="#HTTP-s-Forward-Proxy" class="headerlink" title="HTTP(s) Forward Proxy"></a>HTTP(s) Forward Proxy</h2><p>Forward proxy support on envoy is still basic, 当时遇到的几个问题:<br>CONNECT with domain match:<br><a href="https://github.com/envoyproxy/envoy/pull/13630" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/pull/13630</a><br>Block or allow downstream source IPs:<br><a href="https://github.com/envoyproxy/envoy/issues/8388" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/issues/8388</a></p>
 <p>对于forward proxy, 则需要在curl中指定使用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -v -x localhost:10000 http(s)://www.httpbin.org</span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">http(s)_proxy=localhost:10000 curl -v http(s)://www.httpbin.org</span><br></pre></td></tr></table></figure></p>
 <p>I was thinking what if I use <code>-x</code> with a reverse proxy, what will happen? For example, using this envoy config:<br><a href="https://github.com/envoyproxy/envoy/blob/v1.16.0/configs/google_com_proxy.v2.yaml" target="_blank" rel="noopener">https://github.com/envoyproxy/envoy/blob/v1.16.0/configs/google_com_proxy.v2.yaml</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v -x localhost:10000 http://&lt;some valid or invalid url&gt;</span><br></pre></td></tr></table></figure></p>
 <p>From test, it will not show error but ignore the url I provide, still act as a reverse proxy and forward traffic to specified upstream cluster.</p>
@@ -707,7 +705,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">260</span>
+                    <span class="site-state-item-count">263</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1109,7 +1107,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">146</span>
+                      
+                    
+                    <span class="site-state-item-count">147</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1145,7 +1145,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Proxy-and-Network-Concepts"><span class="nav-number">1.</span> <span class="nav-text">General Proxy and Network Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-repo"><span class="nav-number">2.</span> <span class="nav-text">GitHub repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Envoy"><span class="nav-number">3.</span> <span class="nav-text">Envoy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Envoy-Series-Training"><span class="nav-number">3.1.</span> <span class="nav-text">Envoy Series Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNCF-Envoy-Talk"><span class="nav-number">3.2.</span> <span class="nav-text">CNCF Envoy Talk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-s-Reverse-Proxy"><span class="nav-number">3.3.</span> <span class="nav-text">HTTP(s) Reverse Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-s-Forward-Proxy"><span class="nav-number">3.4.</span> <span class="nav-text">HTTP(s) Forward Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-Proxy"><span class="nav-number">3.5.</span> <span class="nav-text">TCP Proxy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-repo"><span class="nav-number">1.</span> <span class="nav-text">GitHub repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#General-Proxy-and-Network-Concepts"><span class="nav-number">2.</span> <span class="nav-text">General Proxy and Network Concepts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Envoy"><span class="nav-number">3.</span> <span class="nav-text">Envoy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Envoy-Series-Training"><span class="nav-number">3.1.</span> <span class="nav-text">Envoy Series Training</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNCF-Envoy-Talk"><span class="nav-number">3.2.</span> <span class="nav-text">CNCF Envoy Talk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-s-Reverse-Proxy"><span class="nav-number">3.3.</span> <span class="nav-text">HTTP(s) Reverse Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-s-Forward-Proxy"><span class="nav-number">3.4.</span> <span class="nav-text">HTTP(s) Forward Proxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-Proxy"><span class="nav-number">3.5.</span> <span class="nav-text">TCP Proxy</span></a></li></ol></li></ol></div>
             
 
           </div>
