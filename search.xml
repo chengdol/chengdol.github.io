@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ansible Module Reference</title>
+    <url>/2019/03/22/ansible-module-refer/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Ansible</category>
+      </categories>
+      <tags>
+        <tag>ansible</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ansible Galaxy Modules</title>
     <url>/2020/12/16/ansible-galaxy/</url>
     <content><![CDATA[]]></content>
@@ -23,25 +34,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Ansible Module Reference</title>
-    <url>/2019/03/22/ansible-module-refer/</url>
+    <title>Docker Advanced</title>
+    <url>/2019/06/22/book-docker-concept/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Ansible</category>
+        <category>Book</category>
       </categories>
       <tags>
-        <tag>ansible</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ansible Tower</title>
-    <url>/2022/01/29/ansible-tower/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Ansible</category>
-      </categories>
-      <tags>
-        <tag>ansible</tag>
+        <tag>docker</tag>
+        <tag>book</tag>
       </tags>
   </entry>
   <entry>
@@ -52,8 +53,8 @@
         <category>Book</category>
       </categories>
       <tags>
-        <tag>system design</tag>
         <tag>book</tag>
+        <tag>system design</tag>
       </tags>
   </entry>
   <entry>
@@ -104,6 +105,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Kubernetes Operators</title>
+    <url>/2020/06/03/book-k8s-operator/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Book</category>
+      </categories>
+      <tags>
+        <tag>book</tag>
+        <tag>kubernetes</tag>
+        <tag>operator</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>The Linux Command Line 2nd</title>
     <url>/2019/08/15/book-linux-command-line/</url>
     <content><![CDATA[]]></content>
@@ -113,18 +127,6 @@
       <tags>
         <tag>book</tag>
         <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Modern Java in Action</title>
-    <url>/2019/12/06/book-modern-java/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Book</category>
-      </categories>
-      <tags>
-        <tag>book</tag>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -175,14 +177,37 @@
       </tags>
   </entry>
   <entry>
-    <title>The Grand Chessboard 大棋局</title>
-    <url>/2021/05/14/book-%E5%A4%A7%E6%A3%8B%E5%B1%80/</url>
+    <title>Modern Java in Action</title>
+    <url>/2019/12/06/book-modern-java/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Book</category>
       </categories>
       <tags>
         <tag>book</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Car Insurance</title>
+    <url>/2020/06/04/car-insurance/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Car</category>
+      </categories>
+      <tags>
+        <tag>car</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Renew Driver License</title>
+    <url>/2019/09/19/car-driver-license/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Car</category>
+      </categories>
+      <tags>
+        <tag>car</tag>
       </tags>
   </entry>
   <entry>
@@ -198,19 +223,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Renew Driver License</title>
-    <url>/2019/09/19/car-driver-license/</url>
+    <title>The Grand Chessboard 大棋局</title>
+    <url>/2021/05/14/book-%E5%A4%A7%E6%A3%8B%E5%B1%80/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Car</category>
+        <category>Book</category>
       </categories>
       <tags>
-        <tag>car</tag>
+        <tag>book</tag>
       </tags>
   </entry>
   <entry>
-    <title>Car Insurance</title>
-    <url>/2020/06/04/car-insurance/</url>
+    <title>汽车的日常</title>
+    <url>/2019/10/18/car-repair/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Car</category>
@@ -222,17 +247,6 @@
   <entry>
     <title>Car Registration Renewal</title>
     <url>/2020/09/13/car-registration-renewal/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Car</category>
-      </categories>
-      <tags>
-        <tag>car</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>汽车的日常</title>
-    <url>/2019/10/18/car-repair/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Car</category>
@@ -301,6 +315,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Ansible Tower</title>
+    <url>/2022/01/29/ansible-tower/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Ansible</category>
+      </categories>
+      <tags>
+        <tag>ansible</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Google Cloud</title>
+    <url>/2020/07/10/cloud-gcp/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Cloud</category>
+      </categories>
+      <tags>
+        <tag>cloud</tag>
+        <tag>gcp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cloud Init Quick Start</title>
     <url>/2020/12/21/cloud-init/</url>
     <content><![CDATA[]]></content>
@@ -322,18 +359,6 @@
       </categories>
       <tags>
         <tag>containerd</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Google Cloud</title>
-    <url>/2020/07/10/cloud-gcp/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Cloud</category>
-      </categories>
-      <tags>
-        <tag>cloud</tag>
-        <tag>gcp</tag>
       </tags>
   </entry>
   <entry>
@@ -400,8 +425,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>docker</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -439,8 +464,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker Compose Quick Start</title>
-    <url>/2020/09/01/docker-compose-learn/</url>
+    <title>Configuring Container DNS</title>
+    <url>/2019/07/30/docker-dnsdomainname/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Docker</category>
@@ -461,31 +486,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Configuring Container DNS</title>
-    <url>/2019/07/30/docker-dnsdomainname/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker Entrypoint Script</title>
-    <url>/2020/09/23/docker-entrypoint/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker Image Default Parameters</title>
-    <url>/2019/05/15/docker-image-default/</url>
+    <title>Docker Compose Quick Start</title>
+    <url>/2020/09/01/docker-compose-learn/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Docker</category>
@@ -506,6 +508,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker Entrypoint Script</title>
+    <url>/2020/09/23/docker-entrypoint/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker Image Default Parameters</title>
+    <url>/2019/05/15/docker-image-default/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker Container IPC Share</title>
     <url>/2019/07/31/docker-ipc/</url>
     <content><![CDATA[]]></content>
@@ -513,8 +538,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>docker</tag>
+        <tag>linux</tag>
         <tag>ipc</tag>
       </tags>
   </entry>
@@ -567,18 +592,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker Registry Configure</title>
-    <url>/2019/06/16/docker-registry-config/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>registry</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker Registry API</title>
     <url>/2019/06/10/docker-registry-api/</url>
     <content><![CDATA[]]></content>
@@ -591,14 +604,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker Run Reference</title>
-    <url>/2019/05/15/docker-run/</url>
+    <title>Docker Registry Configure</title>
+    <url>/2019/06/16/docker-registry-config/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Docker</category>
       </categories>
       <tags>
         <tag>docker</tag>
+        <tag>registry</tag>
       </tags>
   </entry>
   <entry>
@@ -614,8 +628,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker Mount Access Permission Deny</title>
-    <url>/2021/12/25/docker-selinux/</url>
+    <title>Docker Run Reference</title>
+    <url>/2019/05/15/docker-run/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Docker</category>
@@ -648,6 +662,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Index Lifecycle Management</title>
+    <url>/2022/08/08/elastic-ILM/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Elastic</category>
+      </categories>
+      <tags>
+        <tag>elastic</tag>
+        <tag>ILM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Bird View</title>
     <url>/2019/12/04/drone-view/</url>
     <content><![CDATA[]]></content>
@@ -656,6 +682,41 @@
       </categories>
       <tags>
         <tag>drone</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elasticsearch Corrupted Shards</title>
+    <url>/2021/12/24/elastic-corrupt/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Elastic</category>
+      </categories>
+      <tags>
+        <tag>elastic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Data Stream, ILM and Data Tiers</title>
+    <url>/2022/08/05/elastic-data-stream/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Elastic</category>
+      </categories>
+      <tags>
+        <tag>elastic</tag>
+        <tag>datastream</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cerebro for ELK</title>
+    <url>/2021/08/10/elastic-cerebro/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Elastic</category>
+      </categories>
+      <tags>
+        <tag>elastic</tag>
+        <tag>cerebro</tag>
       </tags>
   </entry>
   <entry>
@@ -671,37 +732,26 @@
       </tags>
   </entry>
   <entry>
-    <title>Cerebro for ELK</title>
-    <url>/2021/08/10/elasticsearch-cerebro/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Elastic</category>
-      </categories>
-      <tags>
-        <tag>elastic</tag>
-        <tag>cerebro</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Elasticsearch Corrupted Shards</title>
-    <url>/2021/12/24/elasticsearch-corrupt/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Elastic</category>
-      </categories>
-      <tags>
-        <tag>elastic</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python Curator for Elasticsearch</title>
-    <url>/2021/09/06/elasticsearch-python/</url>
+    <url>/2021/09/06/elastic-python/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Elastic</category>
       </categories>
       <tags>
         <tag>elastic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rollover Alias, ILM and Data Tiers</title>
+    <url>/2022/08/06/elastic-rollover-alias/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Elastic</category>
+      </categories>
+      <tags>
+        <tag>elastic</tag>
+        <tag>alias</tag>
       </tags>
   </entry>
   <entry>
@@ -729,6 +779,19 @@
       </tags>
   </entry>
   <entry>
+    <title>NFS Server and Client Setup</title>
+    <url>/2019/05/27/fs-nfs/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Storage</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>filesystem</tag>
+        <tag>nfs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Adding commits to Others&#39; PR</title>
     <url>/2021/04/16/git-add-commits-other-pr/</url>
     <content><![CDATA[]]></content>
@@ -748,19 +811,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NFS Server and Client Setup</title>
-    <url>/2019/05/27/fs-nfs/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Storage</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>filesystem</tag>
-        <tag>nfs</tag>
       </tags>
   </entry>
   <entry>
@@ -797,29 +847,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git Repository Browser</title>
-    <url>/2019/06/28/git-gitk/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>gitk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Issue Layout</title>
-    <url>/2020/02/26/git-issue-layout/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Versioning Large File in Git</title>
     <url>/2019/02/24/git-lfs/</url>
     <content><![CDATA[]]></content>
@@ -831,8 +858,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker Mount Access Permission Deny</title>
+    <url>/2021/12/25/docker-selinux/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git Merge and Rebase</title>
     <url>/2019/09/11/git-merge-rebase/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Issue Layout</title>
+    <url>/2020/02/26/git-issue-layout/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Git</category>
@@ -864,17 +913,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git Partial Merge</title>
-    <url>/2019/07/10/git-partial-merge/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git Pull Not Clean</title>
     <url>/2019/06/14/git-pull-not-clean/</url>
     <content><![CDATA[]]></content>
@@ -883,6 +921,17 @@
       </categories>
       <tags>
         <tag>gitattributes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Partial Merge</title>
+    <url>/2019/07/10/git-partial-merge/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -908,8 +957,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Golang OOP</title>
-    <url>/2020/11/15/golang-OOP/</url>
+    <title>Golang Quick Start</title>
+    <url>/2020/08/22/golang-learn/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Golang Packages</title>
+    <url>/2022/02/19/golang-packages/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Go</category>
@@ -930,6 +990,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Golang OOP</title>
+    <url>/2020/11/15/golang-OOP/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Golang K8s Proj1</title>
     <url>/2022/04/18/golang-k8s-proj1/</url>
     <content><![CDATA[]]></content>
@@ -938,17 +1009,6 @@
       </categories>
       <tags>
         <tag>kubernetes</tag>
-        <tag>go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Golang Packages</title>
-    <url>/2022/02/19/golang-packages/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Go</category>
-      </categories>
-      <tags>
         <tag>go</tag>
       </tags>
   </entry>
@@ -965,14 +1025,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Golang Quick Start</title>
-    <url>/2020/08/22/golang-learn/</url>
+    <title>Terraform Deep Dive</title>
+    <url>/2021/01/04/infra-terraform-deep/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Go</category>
+        <category>Infra</category>
       </categories>
       <tags>
-        <tag>go</tag>
+        <tag>infra</tag>
+        <tag>terraform</tag>
       </tags>
   </entry>
   <entry>
@@ -1011,8 +1072,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Terraform Deep Dive</title>
-    <url>/2021/01/04/infra-terraform-deep/</url>
+    <title>Terraform Quick Start</title>
+    <url>/2020/05/16/infra-terraform-start/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Infra</category>
@@ -1023,15 +1084,25 @@
       </tags>
   </entry>
   <entry>
-    <title>Terraform Quick Start</title>
-    <url>/2020/05/16/infra-terraform-start/</url>
+    <title>Inprogress</title>
+    <url>/2019/01/01/inprogress/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Infra</category>
+        <category>InPorgress</category>
       </categories>
       <tags>
-        <tag>infra</tag>
-        <tag>terraform</tag>
+        <tag>inprogress</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java Deque</title>
+    <url>/2020/04/11/java-deque/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1047,53 +1118,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Vault Quick Start</title>
-    <url>/2020/06/21/infra-vault/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Infra</category>
-      </categories>
-      <tags>
-        <tag>infra</tag>
-        <tag>vault</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Inprogress</title>
-    <url>/2019/01/01/inprogress/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>InPorgress</category>
-      </categories>
-      <tags>
-        <tag>inprogress</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java Exception</title>
     <url>/2020/04/11/java-exception/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java Deque</title>
-    <url>/2020/04/11/java-deque/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java LinkedList</title>
-    <url>/2019/11/07/java-linkedlist/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Java</category>
@@ -1125,17 +1151,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kubernetes API curl Access</title>
-    <url>/2019/11/06/k8s-api/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Calico Bandwidth Explore</title>
     <url>/2019/07/30/k8s-calico-bandwidth/</url>
     <content><![CDATA[]]></content>
@@ -1148,15 +1163,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Kubernetes Cert-manager</title>
-    <url>/2021/11/30/k8s-cert-manager/</url>
+    <title>Java LinkedList</title>
+    <url>/2019/11/07/java-linkedlist/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Kubernetes</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
-        <tag>cert-manager</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -1168,6 +1182,41 @@
       </categories>
       <tags>
         <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vault Quick Start</title>
+    <url>/2020/06/21/infra-vault/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Infra</category>
+      </categories>
+      <tags>
+        <tag>infra</tag>
+        <tag>vault</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes API curl Access</title>
+    <url>/2019/11/06/k8s-api/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes Cert-manager</title>
+    <url>/2021/11/30/k8s-cert-manager/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>cert-manager</tag>
       </tags>
   </entry>
   <entry>
@@ -1193,18 +1242,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kubernetes NodePort vs LoadBalancer vs Ingress</title>
-    <url>/2019/03/26/k8s-external-access/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-        <tag>ingress</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Completely Delete K8s Cluster</title>
     <url>/2019/03/02/k8s-delete-cluster/</url>
     <content><![CDATA[]]></content>
@@ -1215,6 +1252,18 @@
         <tag>kubernetes</tag>
         <tag>kubeadm</tag>
         <tag>drain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kubernetes NodePort vs LoadBalancer vs Ingress</title>
+    <url>/2019/03/26/k8s-external-access/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>ingress</tag>
       </tags>
   </entry>
   <entry>
@@ -1253,6 +1302,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Helm Quick Start</title>
+    <url>/2020/04/30/k8s-helm-quick-start/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>helm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Helm Tiller Server Deploy</title>
     <url>/2019/07/19/k8s-helm-tiller/</url>
     <content><![CDATA[]]></content>
@@ -1265,15 +1326,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Helm Quick Start</title>
-    <url>/2020/04/30/k8s-helm-quick-start/</url>
+    <title>Kubernetes Ingress</title>
+    <url>/2019/10/21/k8s-ingress/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Kubernetes</category>
       </categories>
       <tags>
         <tag>kubernetes</tag>
-        <tag>helm</tag>
       </tags>
   </entry>
   <entry>
@@ -1289,8 +1349,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Kubernetes Ingress</title>
-    <url>/2019/10/21/k8s-ingress/</url>
+    <title>Kubernetes Job and CronJob</title>
+    <url>/2019/08/12/k8s-job-cronjob/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Kubernetes</category>
@@ -1309,17 +1369,6 @@
       <tags>
         <tag>k8s</tag>
         <tag>istio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kubernetes Job and CronJob</title>
-    <url>/2019/08/12/k8s-job-cronjob/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
       </tags>
   </entry>
   <entry>
@@ -1391,6 +1440,17 @@
       </tags>
   </entry>
   <entry>
+    <title>K8s No Route to Host</title>
+    <url>/2019/08/19/k8s-no-route-to-host/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kubernetes Managed NFS</title>
     <url>/2020/01/21/k8s-nfs-example/</url>
     <content><![CDATA[]]></content>
@@ -1400,17 +1460,6 @@
       <tags>
         <tag>kubernetes</tag>
         <tag>nfs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>K8s No Route to Host</title>
-    <url>/2019/08/19/k8s-no-route-to-host/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
       </tags>
   </entry>
   <entry>
@@ -1449,8 +1498,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Rook Storage Orchestrator</title>
+    <url>/2020/01/20/k8s-rook/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+        <tag>rook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Rebinding Release PV with PVC</title>
     <url>/2021/02/12/k8s-rebind-pv/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Set up Secure Docker Registry in K8s</title>
+    <url>/2020/01/06/k8s-secure-registry/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Kubernetes</category>
@@ -1473,18 +1545,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rook Storage Orchestrator</title>
-    <url>/2020/01/20/k8s-rook/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-        <tag>rook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kubernetes Security</title>
     <url>/2019/06/24/k8s-security/</url>
     <content><![CDATA[]]></content>
@@ -1497,17 +1557,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Set up Secure Docker Registry in K8s</title>
-    <url>/2020/01/06/k8s-secure-registry/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Lose Connection to K8s Server</title>
     <url>/2019/06/11/k8s-server-missing/</url>
     <content><![CDATA[]]></content>
@@ -1516,18 +1565,6 @@
       </categories>
       <tags>
         <tag>kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Set systemd as Cgroup Driver</title>
-    <url>/2019/03/09/k8s-systemd-cgroup-driver/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kubernetes</category>
-      </categories>
-      <tags>
-        <tag>systemd</tag>
-        <tag>cgroup driver</tag>
       </tags>
   </entry>
   <entry>
@@ -1543,14 +1580,27 @@
       </tags>
   </entry>
   <entry>
-    <title>K8s NFS Mount Volume Permission</title>
-    <url>/2019/08/20/k8s-volumeMount-permission-problem/</url>
+    <title>Set systemd as Cgroup Driver</title>
+    <url>/2019/03/09/k8s-systemd-cgroup-driver/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Kubernetes</category>
       </categories>
       <tags>
-        <tag>kubernetes</tag>
+        <tag>systemd</tag>
+        <tag>cgroup driver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux LPIC-1 Training</title>
+    <url>/2020/04/15/linux-LPIC1-training/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>LPIC-1</tag>
       </tags>
   </entry>
   <entry>
@@ -1576,15 +1626,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux LPIC-1 Training</title>
-    <url>/2020/04/15/linux-LPIC1-training/</url>
+    <title>K8s NFS Mount Volume Permission</title>
+    <url>/2019/08/20/k8s-volumeMount-permission-problem/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Linux</category>
+        <category>Kubernetes</category>
       </categories>
       <tags>
-        <tag>linux</tag>
-        <tag>LPIC-1</tag>
+        <tag>kubernetes</tag>
       </tags>
   </entry>
   <entry>
@@ -1597,6 +1646,18 @@
       <tags>
         <tag>linux</tag>
         <tag>awk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>What&#39;s New in CentOS 8</title>
+    <url>/2020/07/05/linux-centos8-new/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>centos</tag>
       </tags>
   </entry>
   <entry>
@@ -1617,6 +1678,17 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>Linux Commands Collect</title>
+    <url>/2020/03/19/linux-cmd-collect/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux Capability</title>
     <url>/2019/05/13/linux-capability/</url>
     <content><![CDATA[]]></content>
@@ -1629,40 +1701,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Kubernetes Operators</title>
-    <url>/2020/06/03/book-k8s-operator/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Book</category>
-      </categories>
-      <tags>
-        <tag>book</tag>
-        <tag>kubernetes</tag>
-        <tag>operator</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker Advanced</title>
-    <url>/2019/06/22/book-docker-concept/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Book</category>
-      </categories>
-      <tags>
-        <tag>book</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>What&#39;s New in CentOS 8</title>
-    <url>/2020/07/05/linux-centos8-new/</url>
+    <title>cURL Use Case Summary</title>
+    <url>/2019/05/23/linux-curl-summary/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
         <tag>linux</tag>
-        <tag>centos</tag>
+        <tag>curl</tag>
       </tags>
   </entry>
   <entry>
@@ -1678,8 +1725,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux Commands Collect</title>
-    <url>/2020/03/19/linux-cmd-collect/</url>
+    <title>Linux CPU Info</title>
+    <url>/2019/11/14/linux-cpuinfo/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
@@ -1698,52 +1745,6 @@
       <tags>
         <tag>linux</tag>
         <tag>cronjob</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux CPU Info</title>
-    <url>/2019/11/14/linux-cpuinfo/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>cURL Use Case Summary</title>
-    <url>/2019/05/23/linux-curl-summary/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>curl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Zombie and Orphan Process</title>
-    <url>/2019/06/05/linux-defunct-process/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>process</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux Check Disk Space</title>
-    <url>/2019/08/11/linux-disk-check/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1770,25 +1771,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Double Level Softlink</title>
-    <url>/2019/09/27/linux-double-softlink/</url>
+    <title>Zombie and Orphan Process</title>
+    <url>/2019/06/05/linux-defunct-process/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
         <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux getfacl and setfacl Commands</title>
-    <url>/2019/09/25/linux-getfacl-setfacl/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
+        <tag>process</tag>
       </tags>
   </entry>
   <entry>
@@ -1816,8 +1807,30 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux Kernel Parameters</title>
-    <url>/2019/05/01/linux-kernel-param/</url>
+    <title>Linux Check Disk Space</title>
+    <url>/2019/08/11/linux-disk-check/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux getfacl and setfacl Commands</title>
+    <url>/2019/09/25/linux-getfacl-setfacl/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Double Level Softlink</title>
+    <url>/2019/09/27/linux-double-softlink/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
@@ -1841,21 +1854,8 @@
       </tags>
   </entry>
   <entry>
-    <title>nc/netcat Command</title>
-    <url>/2020/10/25/linux-netcat-nc-summary/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>nc</tag>
-        <tag>netcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux Network Interface</title>
-    <url>/2019/11/04/linux-network-interface/</url>
+    <title>Linux Kernel Parameters</title>
+    <url>/2019/05/01/linux-kernel-param/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
@@ -1876,6 +1876,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux Network Interface</title>
+    <url>/2019/11/04/linux-network-interface/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux Network Timeout</title>
     <url>/2022/01/15/linux-network-timeout/</url>
     <content><![CDATA[]]></content>
@@ -1884,6 +1895,19 @@
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nc/netcat Command</title>
+    <url>/2020/10/25/linux-netcat-nc-summary/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>nc</tag>
+        <tag>netcat</tag>
       </tags>
   </entry>
   <entry>
@@ -1896,6 +1920,20 @@
       <tags>
         <tag>linux</tag>
         <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Offline Package Installation II</title>
+    <url>/2019/02/26/linux-offline-package-install-2/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>linux</tag>
+        <tag>yum</tag>
+        <tag>rpm</tag>
       </tags>
   </entry>
   <entry>
@@ -1912,19 +1950,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nologin User</title>
-    <url>/2020/09/22/linux-nologin/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>docker</tag>
-        <tag>nologin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Offline Package Installation I</title>
     <url>/2019/02/25/linux-offline-package-install-1/</url>
     <content><![CDATA[]]></content>
@@ -1938,29 +1963,27 @@
       </tags>
   </entry>
   <entry>
-    <title>Offline Package Installation II</title>
-    <url>/2019/02/26/linux-offline-package-install-2/</url>
+    <title>nologin User</title>
+    <url>/2020/09/22/linux-nologin/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>docker</tag>
-        <tag>yum</tag>
-        <tag>rpm</tag>
+        <tag>linux</tag>
+        <tag>nologin</tag>
       </tags>
   </entry>
   <entry>
-    <title>Linux PAM Module Configuration</title>
-    <url>/2019/04/01/linux-pam/</url>
+    <title>/proc/$$ and /proc/self</title>
+    <url>/2020/02/03/linux-proc-$$-self/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
         <tag>linux</tag>
-        <tag>pam</tag>
       </tags>
   </entry>
   <entry>
@@ -1976,14 +1999,15 @@
       </tags>
   </entry>
   <entry>
-    <title>/proc/$$ and /proc/self</title>
-    <url>/2020/02/03/linux-proc-$$-self/</url>
+    <title>Linux PAM Module Configuration</title>
+    <url>/2019/04/01/linux-pam/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
         <tag>linux</tag>
+        <tag>pam</tag>
       </tags>
   </entry>
   <entry>
@@ -1996,29 +2020,6 @@
       <tags>
         <tag>linux</tag>
         <tag>rsync</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sed Command Daily Work Summary</title>
-    <url>/2019/05/30/linux-sed-summary/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>sed</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SELinux</title>
-    <url>/2019/06/23/linux-selinux/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2048,15 +2049,26 @@
       </tags>
   </entry>
   <entry>
-    <title>Symbolic Link Operations</title>
-    <url>/2019/04/13/linux-soft-link/</url>
+    <title>sed Command Daily Work Summary</title>
+    <url>/2019/05/30/linux-sed-summary/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
         <tag>linux</tag>
-        <tag>soft link</tag>
+        <tag>sed</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SELinux</title>
+    <url>/2019/06/23/linux-selinux/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2069,6 +2081,18 @@
       <tags>
         <tag>linux</tag>
         <tag>rpm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Symbolic Link Operations</title>
+    <url>/2019/04/13/linux-soft-link/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>soft link</tag>
       </tags>
   </entry>
   <entry>
@@ -2121,17 +2145,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux System Admin</title>
-    <url>/2020/12/25/linux-system-admin/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>system admin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Systemd Essential</title>
     <url>/2020/12/23/linux-systemd/</url>
     <content><![CDATA[]]></content>
@@ -2155,6 +2168,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux System Admin</title>
+    <url>/2020/12/25/linux-system-admin/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>system admin</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tar Command Daily Work Summary</title>
     <url>/2019/02/21/linux-tar-summary/</url>
     <content><![CDATA[]]></content>
@@ -2164,17 +2188,6 @@
       <tags>
         <tag>linux</tag>
         <tag>tar</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>User ID Valid Range</title>
-    <url>/2019/07/26/linux-uid-range/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2202,8 +2215,31 @@
       </tags>
   </entry>
   <entry>
+    <title>User ID Valid Range</title>
+    <url>/2019/07/26/linux-uid-range/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yum Pending Transaction</title>
     <url>/2019/02/28/linux-yum-pending/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>yum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Yum Package Version Lock</title>
+    <url>/2021/03/29/linux-yum-versionlock/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Linux</category>
@@ -2240,18 +2276,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Yum Package Version Lock</title>
-    <url>/2021/03/29/linux-yum-versionlock/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>yum</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Useful Chrome Extensions</title>
     <url>/2020/09/20/mac-chrome-plugins/</url>
     <content><![CDATA[]]></content>
@@ -2261,6 +2285,17 @@
       <tags>
         <tag>mac</tag>
         <tag>chrome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kafka Quick Start</title>
+    <url>/2022/04/21/message-kafka-learn/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Kafka</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -2298,17 +2333,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kafka Quick Start</title>
-    <url>/2022/04/21/message-kafka-learn/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Kafka</category>
-      </categories>
-      <tags>
-        <tag>kafka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Zookeeper Quick Start</title>
     <url>/2020/11/27/message-zookeeper-learn/</url>
     <content><![CDATA[]]></content>
@@ -2320,30 +2344,31 @@
       </tags>
   </entry>
   <entry>
-    <title>Miscellanea 2019</title>
-    <url>/2019/03/03/mis-2019/</url>
+    <title>Miscellanea 2021</title>
+    <url>/2020/01/04/mis-2021/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Miscellanea</category>
       </categories>
       <tags>
         <tag>miscellanea</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Repository Browser</title>
+    <url>/2019/06/28/git-gitk/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>gitk</tag>
       </tags>
   </entry>
   <entry>
     <title>Miscellanea 2020</title>
     <url>/2020/01/22/mis-2020/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Miscellanea</category>
-      </categories>
-      <tags>
-        <tag>miscellanea</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Miscellanea 2021</title>
-    <url>/2020/01/04/mis-2021/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Miscellanea</category>
@@ -2364,12 +2389,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Gain from People</title>
-    <url>/2019/04/30/mis-gain-from-people/</url>
+    <title>Miscellanea 2019</title>
+    <url>/2019/03/03/mis-2019/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Miscellanea</category>
       </categories>
+      <tags>
+        <tag>miscellanea</tag>
+      </tags>
   </entry>
   <entry>
     <title>Grafana Quick Start</title>
@@ -2394,27 +2422,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Music in My Life</title>
-    <url>/2019/05/27/music/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Music</category>
-      </categories>
-  </entry>
-  <entry>
     <title>On-Call Elasticsearch Quick Check</title>
     <url>/2021/09/06/oncall-elasticsearch/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Oncall</category>
-      </categories>
-      <tags>
-        <tag>oncall</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>On-Call Kafka Quick Check</title>
-    <url>/2021/09/13/oncall-kafka/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Oncall</category>
@@ -2435,8 +2444,8 @@
       </tags>
   </entry>
   <entry>
-    <title>On-Call System Performance</title>
-    <url>/2021/10/08/oncall-sys-performance/</url>
+    <title>On-Call Kafka Quick Check</title>
+    <url>/2021/09/13/oncall-kafka/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Oncall</category>
@@ -2446,8 +2455,8 @@
       </tags>
   </entry>
   <entry>
-    <title>On-Call Cloud VM Instance Reboot</title>
-    <url>/2021/05/03/oncall-vm-reboot/</url>
+    <title>On-Call System Performance</title>
+    <url>/2021/10/08/oncall-sys-performance/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Oncall</category>
@@ -2462,6 +2471,33 @@
     <content><![CDATA[]]></content>
       <categories>
         <category>Open Source</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Music in My Life</title>
+    <url>/2019/05/27/music/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Music</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>On-Call Cloud VM Instance Reboot</title>
+    <url>/2021/05/03/oncall-vm-reboot/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Oncall</category>
+      </categories>
+      <tags>
+        <tag>oncall</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gain from People</title>
+    <url>/2019/04/30/mis-gain-from-people/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Miscellanea</category>
       </categories>
   </entry>
   <entry>
@@ -2489,18 +2525,6 @@
       </tags>
   </entry>
   <entry>
-    <title>OpenShift RBAC</title>
-    <url>/2020/02/20/openshift-rbac/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>OpenShift</category>
-      </categories>
-      <tags>
-        <tag>kubernetes</tag>
-        <tag>openshift</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OpenShift SCC Customized</title>
     <url>/2019/07/16/openshift-scc-customized/</url>
     <content><![CDATA[]]></content>
@@ -2513,28 +2537,15 @@
       </tags>
   </entry>
   <entry>
-    <title>OpenShift Security Context Constraint</title>
-    <url>/2019/06/21/openshift-scc/</url>
+    <title>OpenShift RBAC</title>
+    <url>/2020/02/20/openshift-rbac/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>OpenShift</category>
       </categories>
       <tags>
+        <tag>kubernetes</tag>
         <tag>openshift</tag>
-        <tag>scc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jenkins Git Check in</title>
-    <url>/2020/06/02/pipeline-jenkins-git-checkin/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Pipeline</category>
-      </categories>
-      <tags>
-        <tag>infra</tag>
-        <tag>jenkins</tag>
-        <tag>pipeline</tag>
       </tags>
   </entry>
   <entry>
@@ -2551,6 +2562,18 @@
       </tags>
   </entry>
   <entry>
+    <title>OpenShift Security Context Constraint</title>
+    <url>/2019/06/21/openshift-scc/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>OpenShift</category>
+      </categories>
+      <tags>
+        <tag>openshift</tag>
+        <tag>scc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins Quick Start</title>
     <url>/2020/05/12/pipeline-jenkins-learn/</url>
     <content><![CDATA[]]></content>
@@ -2561,6 +2584,31 @@
         <tag>infra</tag>
         <tag>jenkins</tag>
         <tag>pipeline</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jenkins Git Check in</title>
+    <url>/2020/06/02/pipeline-jenkins-git-checkin/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Pipeline</category>
+      </categories>
+      <tags>
+        <tag>infra</tag>
+        <tag>jenkins</tag>
+        <tag>pipeline</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Proxy Envoy</title>
+    <url>/2020/08/30/proxy-envoy/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Proxy</category>
+      </categories>
+      <tags>
+        <tag>envoy</tag>
+        <tag>proxy</tag>
       </tags>
   </entry>
   <entry>
@@ -2590,6 +2638,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Proxy Squid</title>
+    <url>/2020/08/30/proxy-squid/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Proxy</category>
+      </categories>
+      <tags>
+        <tag>proxy</tag>
+        <tag>squid</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins X Quick Start</title>
     <url>/2020/06/25/pipeline-jenkinsX-learn/</url>
     <content><![CDATA[]]></content>
@@ -2603,27 +2663,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Proxy Envoy</title>
-    <url>/2020/08/30/proxy-envoy/</url>
+    <title>Python Concurrency</title>
+    <url>/2020/09/27/python-concurrency/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Proxy</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>envoy</tag>
-        <tag>proxy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Proxy Squid</title>
-    <url>/2020/08/30/proxy-squid/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Proxy</category>
-      </categories>
-      <tags>
-        <tag>proxy</tag>
-        <tag>squid</tag>
+        <tag>python</tag>
+        <tag>concurrency</tag>
       </tags>
   </entry>
   <entry>
@@ -2636,18 +2684,6 @@
       <tags>
         <tag>python</tag>
         <tag>click</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python Concurrency</title>
-    <url>/2020/09/27/python-concurrency/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>concurrency</tag>
       </tags>
   </entry>
   <entry>
@@ -2673,19 +2709,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Python Linter</title>
-    <url>/2020/12/29/python-linter/</url>
+    <title>Python3 Quick Start</title>
+    <url>/2019/08/05/python-learn/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Python</category>
       </categories>
       <tags>
-        <tag>linter</tag>
+        <tag>python3</tag>
       </tags>
   </entry>
   <entry>
-    <title>Python3 Quick Start</title>
-    <url>/2019/08/05/python-learn/</url>
+    <title>Python3 Package</title>
+    <url>/2020/10/31/python-package/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Python</category>
@@ -2707,25 +2743,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Python3 Package</title>
-    <url>/2020/10/31/python-package/</url>
+    <title>Python Linter</title>
+    <url>/2020/12/29/python-linter/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Python</category>
       </categories>
       <tags>
-        <tag>python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python3 Scripting</title>
-    <url>/2020/08/14/python-scripting/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
+        <tag>linter</tag>
       </tags>
   </entry>
   <entry>
@@ -2738,6 +2763,22 @@
       <tags>
         <tag>python</tag>
         <tag>server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Blog Review List</title>
+    <url>/2022/08/27/review-list/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Python3 Scripting</title>
+    <url>/2020/08/14/python-scripting/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>python3</tag>
       </tags>
   </entry>
   <entry>
@@ -2762,11 +2803,6 @@
       <tags>
         <tag>python</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Blog Review List</title>
-    <url>/2022/06/19/review-list/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Apache Server</title>
@@ -2815,39 +2851,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Background Sign Caution</title>
-    <url>/2019/09/09/shell-background-sign-caution/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Common Code Snippets</title>
-    <url>/2019/02/24/shell-common-code/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Login and Non-login Shell</title>
-    <url>/2019/05/27/shell-login-nonlogin/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Shell Pattern Matching</title>
     <url>/2020/11/28/shell-pattern-match/</url>
     <content><![CDATA[]]></content>
@@ -2861,8 +2864,8 @@
       </tags>
   </entry>
   <entry>
-    <title>BASH Pipeline Demo</title>
-    <url>/2019/02/24/shell-pipeline/</url>
+    <title>Background Sign Caution</title>
+    <url>/2019/09/09/shell-background-sign-caution/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Shell</category>
@@ -2894,8 +2897,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Shell timeout Command</title>
-    <url>/2019/09/04/shell-timeout/</url>
+    <title>Common Code Snippets</title>
+    <url>/2019/02/24/shell-common-code/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Shell</category>
@@ -2905,8 +2908,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Shell Process Demystify</title>
-    <url>/2019/06/02/shell-subshell/</url>
+    <title>BASH Pipeline Demo</title>
+    <url>/2019/02/24/shell-pipeline/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Shell</category>
@@ -2916,8 +2919,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Variables in Shell</title>
-    <url>/2019/06/02/shell-variables/</url>
+    <title>Login and Non-login Shell</title>
+    <url>/2019/05/27/shell-login-nonlogin/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Shell</category>
@@ -2938,27 +2941,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Daily Talk</title>
-    <url>/2019/04/11/softskill-daily-talk/</url>
+    <title>Variables in Shell</title>
+    <url>/2019/06/02/shell-variables/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Soft Skill</category>
+        <category>Shell</category>
       </categories>
       <tags>
-        <tag>soft skill</tag>
-        <tag>daily talk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Effective Email</title>
-    <url>/2020/05/24/softskill-email/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Soft Skill</category>
-      </categories>
-      <tags>
-        <tag>soft skill</tag>
-        <tag>email</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2974,16 +2964,48 @@
       </tags>
   </entry>
   <entry>
-    <title>SSL/TLS Demystify</title>
-    <url>/2019/11/29/ssl-tls-learn/</url>
+    <title>Shell Process Demystify</title>
+    <url>/2019/06/02/shell-subshell/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>SSL/TLS</category>
+        <category>Shell</category>
       </categories>
       <tags>
-        <tag>linux</tag>
-        <tag>ssl</tag>
-        <tag>tls</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell timeout Command</title>
+    <url>/2019/09/04/shell-timeout/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Daily Talk</title>
+    <url>/2019/04/11/softskill-daily-talk/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Soft Skill</category>
+      </categories>
+      <tags>
+        <tag>soft skill</tag>
+        <tag>daily talk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WebSocket Quick Start</title>
+    <url>/2020/09/13/websocket-learn/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>websocket</tag>
       </tags>
   </entry>
   <entry>
@@ -2998,14 +3020,28 @@
       </tags>
   </entry>
   <entry>
-    <title>WebSocket Quick Start</title>
-    <url>/2020/09/13/websocket-learn/</url>
+    <title>Effective Email</title>
+    <url>/2020/05/24/softskill-email/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>Network</category>
+        <category>Soft Skill</category>
       </categories>
       <tags>
-        <tag>websocket</tag>
+        <tag>soft skill</tag>
+        <tag>email</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSL/TLS Demystify</title>
+    <url>/2019/11/29/ssl-tls-learn/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>SSL/TLS</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ssl</tag>
+        <tag>tls</tag>
       </tags>
   </entry>
   <entry>
