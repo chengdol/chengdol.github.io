@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="最近在做migrating Squid to Envoy的工作，其中涉及到了很多HTTP的内容。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。 Introduction非常不错的Tutorial, 把各部分都讲得很详细:MDN web docs: HTTP 很快速的把基础部分过了一下:HTTP Crash Course &amp;amp; ExplorationThe ty">
+  <meta name="description" content="最近在做migrating Squid to Envoy的工作，其中涉及到了很多HTTP的内容。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。 Introduction 非常不错的Tutorial, 把各部分都讲得很详细: MDN web docs: HTTP 很快速的把基础部分过了一下: HTTP Crash Course &amp;amp; Exploration Th">
 <meta name="keywords" content="http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP Quick Start">
 <meta property="og:url" content="http://yoursite.com/2020/08/27/http-learn/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="最近在做migrating Squid to Envoy的工作，其中涉及到了很多HTTP的内容。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。 Introduction非常不错的Tutorial, 把各部分都讲得很详细:MDN web docs: HTTP 很快速的把基础部分过了一下:HTTP Crash Course &amp;amp; ExplorationThe ty">
+<meta property="og:description" content="最近在做migrating Squid to Envoy的工作，其中涉及到了很多HTTP的内容。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。 Introduction 非常不错的Tutorial, 把各部分都讲得很详细: MDN web docs: HTTP 很快速的把基础部分过了一下: HTTP Crash Course &amp;amp; Exploration Th">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-09-18T07:29:01.372Z">
+<meta property="og:updated_time" content="2020-09-18T07:29:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP Quick Start">
-<meta name="twitter:description" content="最近在做migrating Squid to Envoy的工作，其中涉及到了很多HTTP的内容。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。 Introduction非常不错的Tutorial, 把各部分都讲得很详细:MDN web docs: HTTP 很快速的把基础部分过了一下:HTTP Crash Course &amp;amp; ExplorationThe ty">
+<meta name="twitter:description" content="最近在做migrating Squid to Envoy的工作，其中涉及到了很多HTTP的内容。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。 Introduction 非常不错的Tutorial, 把各部分都讲得很详细: MDN web docs: HTTP 很快速的把基础部分过了一下: HTTP Crash Course &amp;amp; Exploration Th">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">5.7k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,8 +491,13 @@
 
       
         <p>最近在做migrating Squid to Envoy的工作，其中涉及到了很多HTTP的内容。趁着这次机会深入学习一下，还有就是一些proxy的内容，已经单独拿出来总结了。</p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>非常不错的Tutorial, 把各部分都讲得很详细:<br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN web docs: HTTP</a></p>
-<p>很快速的把基础部分过了一下:<br><a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0" target="_blank" rel="noopener">HTTP Crash Course &amp; Exploration</a><br>The typical HTTP format:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">METHOD PATH PROTOCOL</span><br><span class="line">HEADERS</span><br><span class="line"></span><br><span class="line">BODY</span><br></pre></td></tr></table></figure></p>
+<h1>Introduction</h1>
+<p>非常不错的Tutorial, 把各部分都讲得很详细:
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener">MDN web docs: HTTP</a></p>
+<p>很快速的把基础部分过了一下:
+<a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0" target="_blank" rel="noopener">HTTP Crash Course &amp; Exploration</a>
+The typical HTTP format:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">METHOD PATH PROTOCOL</span><br><span class="line">HEADERS</span><br><span class="line"></span><br><span class="line">BODY</span><br></pre></td></tr></table></figure>
 <p>HTTP status code:</p>
 <ul>
 <li>1xx, informational</li>
@@ -520,26 +507,37 @@
 <li>5xx, server error</li>
 </ul>
 <p>HTTP/2, faster and more efficient &amp; secure, request and response multiplexing.</p>
-<h2 id="Other-Tools"><a href="#Other-Tools" class="headerlink" title="Other Tools"></a>Other Tools</h2><ol>
+<h2 id="Other-Tools">Other Tools</h2>
+<ol>
 <li><a href="https://github.com/postmanlabs/httpbin" target="_blank" rel="noopener">httpbin</a>: A simple HTTP/HTTPS Request &amp; Response Service.</li>
 <li><a href="http://ip4.me/" target="_blank" rel="noopener">ip4.me</a>: check your public IPv4 address.</li>
-<li><a href="https://www.noip.com/" target="_blank" rel="noopener">noip.com</a>, free hostame + domain <-> public IP mapping. 如果要配置这个hostname对应到router的public IP, 需要设置router把这个流量转移到自己的笔记本某个端口上。</-></li>
+<li><a href="https://www.noip.com/" target="_blank" rel="noopener">noip.com</a>, free hostame + domain &lt;-&gt; public IP mapping. 如果要配置这个hostname对应到router的public IP, 需要设置router把这个流量转移到自己的笔记本某个端口上。</li>
 </ol>
-<h1 id="CONNECT-Method"><a href="#CONNECT-Method" class="headerlink" title="CONNECT Method"></a>CONNECT Method</h1><p>Connect主要是用在建立Tunnel. Tunneling can allow communication using a protocol that normally wouldn’t be supported on the restricted network. Tunnel 只是一个通道，里面可以支持一些传输协议, 并不是说tunnel 必须是ssl/tls. 举个例子，你通过一个forward proxy 访问一个服务器，使用HTTPS协议，假设Proxy是一个善良的中间人，它并不知道加密后的流量内容是什么，就不可能像HTTP一样去窥探，拆解packet，于是client会发送一个CONNECT HTTP请求，设立一个Tunnel经过proxy和server进行通信。</p>
-<p>–&gt;&gt; <a href="https://stackoverflow.com/questions/11697943/when-should-one-use-connect-and-get-http-methods-at-http-proxy-server" target="_blank" rel="noopener">When should one use CONNECT</a><br>With SSL(HTTPS), only the two remote end-points understand the requests, and the proxy cannot decipher them. Hence, all it does is open that tunnel using CONNECT, and lets the two end-points (webserver and client) talk to each other directly.</p>
-<p>–&gt;&gt; <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT" target="_blank" rel="noopener">MDN web docs: CONNECT</a><br>Some proxy servers might need authority to create a tunnel. See also the <code>Proxy-Authorization</code> header.</p>
+<h1>CONNECT Method</h1>
+<p>Connect主要是用在建立Tunnel. Tunneling can allow communication using a protocol that normally wouldn’t be supported on the restricted network. Tunnel 只是一个通道，里面可以支持一些传输协议, 并不是说tunnel 必须是ssl/tls. 举个例子，你通过一个forward proxy 访问一个服务器，使用HTTPS协议，假设Proxy是一个善良的中间人，它并不知道加密后的流量内容是什么，就不可能像HTTP一样去窥探，拆解packet，于是client会发送一个CONNECT HTTP请求，设立一个Tunnel经过proxy和server进行通信。</p>
+<p>–&gt;&gt; <a href="https://stackoverflow.com/questions/11697943/when-should-one-use-connect-and-get-http-methods-at-http-proxy-server" target="_blank" rel="noopener">When should one use CONNECT</a>
+With SSL(HTTPS), only the two remote end-points understand the requests, and the proxy cannot decipher them. Hence, all it does is open that tunnel using CONNECT, and lets the two end-points (webserver and client) talk to each other directly.</p>
+<p>–&gt;&gt; <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT" target="_blank" rel="noopener">MDN web docs: CONNECT</a>
+Some proxy servers might need authority to create a tunnel. See also the <code>Proxy-Authorization</code> header.</p>
 <p>For example, the CONNECT method can be used to access websites that use SSL (HTTPS). The client asks an HTTP Proxy server to <code>tunnel</code> the TCP connection to the desired destination. The server then proceeds to make the connection on behalf of the client. Once the connection has been established by the server, the Proxy server continues to proxy the TCP stream to and from the client.</p>
-<p>这篇文章很不错:<br>–&gt;&gt; <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling" target="_blank" rel="noopener">MDN web docs: proxy servers and tunneling</a><br>There are two types of proxies: forward proxies (or tunnel, or gateway) and reverse proxies (used to control and protect access to a server for load-balancing, authentication, decryption or caching).</p>
+<p>这篇文章很不错:
+–&gt;&gt; <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling" target="_blank" rel="noopener">MDN web docs: proxy servers and tunneling</a>
+There are two types of proxies: forward proxies (or tunnel, or gateway) and reverse proxies (used to control and protect access to a server for load-balancing, authentication, decryption or caching).</p>
 <p>Forward proxies can hide the identities of clients whereas reverse proxies can hide the identities of servers.</p>
 <p>The HTTP protocol specifies a request method called CONNECT. It starts two-way communications with the requested resource and can be used to open a <code>tunnel</code>. This is how a client behind an HTTP proxy can access websites using SSL (i.e. HTTPS, port 443). Note, however, that not all proxy servers support the CONNECT method or limit it to port 443 only.</p>
-<h1 id="Basic-Authorization"><a href="#Basic-Authorization" class="headerlink" title="Basic Authorization"></a>Basic Authorization</h1><p>这里提一下<code>authz</code> and <code>authn</code>的区别:</p>
+<h1>Basic Authorization</h1>
+<p>这里提一下<code>authz</code> and <code>authn</code>的区别:</p>
 <ul>
 <li><code>authz</code>: authorization，授权, what are allowed to do.</li>
 <li><code>authn</code>: authentication, 鉴权, who you are.</li>
 </ul>
-<p>这里是讲了HTTP 基本的<code>authz</code>操作.<br><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication</a><br>HTTP provides a general framework for access control and authentication. This page is an introduction to the HTTP framework for authentication, and shows how to restrict access to your server using the HTTP “Basic” schema.</p>
-<p>The Basic authz is not secure, send in plain text, although base64. can be decode for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> &lt;base64 string&gt; | base64 --decode</span><br></pre></td></tr></table></figure></p>
-<p>But if over https, the traffic is encrypted. You can demonstrate it in wireshark locally.<br><a href="https://security.stackexchange.com/questions/988/is-basic-auth-secure-if-done-over-https" target="_blank" rel="noopener">Is BASIC-Auth secure if done over HTTPS?</a></p>
+<p>这里是讲了HTTP 基本的<code>authz</code>操作.
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication</a>
+HTTP provides a general framework for access control and authentication. This page is an introduction to the HTTP framework for authentication, and shows how to restrict access to your server using the HTTP “Basic” schema.</p>
+<p>The Basic authz is not secure, send in plain text, although base64. can be decode for example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> &lt;base64 string&gt; | base64 --decode</span><br></pre></td></tr></table></figure>
+<p>But if over https, the traffic is encrypted. You can demonstrate it in wireshark locally.
+<a href="https://security.stackexchange.com/questions/988/is-basic-auth-secure-if-done-over-https" target="_blank" rel="noopener">Is BASIC-Auth secure if done over HTTPS?</a></p>
 
       
     </div>
@@ -660,7 +658,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -757,7 +755,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1070,7 +1070,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1106,7 +1108,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Tools"><span class="nav-number">1.1.</span> <span class="nav-text">Other Tools</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CONNECT-Method"><span class="nav-number">2.</span> <span class="nav-text">CONNECT Method</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Authorization"><span class="nav-number">3.</span> <span class="nav-text">Basic Authorization</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Tools"><span class="nav-number">1.1.</span> <span class="nav-text">Other Tools</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">CONNECT Method</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Basic Authorization</span></a></li></ol></div>
             
 
           </div>
@@ -1132,13 +1134,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

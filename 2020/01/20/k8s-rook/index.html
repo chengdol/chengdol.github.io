@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.1k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -512,13 +494,18 @@
 <p><a href="https://rook.io/" target="_blank" rel="noopener">Rook</a> turns distributed storage systems into self-managing, self-scaling, self-healing storage services. It automates the tasks of a storage administrator: deployment, bootstrapping, configuration, provisioning, scaling, upgrading, migration, disaster recovery, monitoring, and resource management.</p>
 <p>Rook uses the power of the Kubernetes platform to deliver its services: cloud-native container management, scheduling, and orchestration.</p>
 <p>Another similar tool is <a href="https://chengdol.github.io/2019/12/10/k8s-external-provisioner/" target="_blank" rel="noopener">Kubernetes External Provisioner</a>.</p>
-<h2 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h2><p>Now is <strong>alpha version</strong><br>in order to use rool NFS, we must have a NFS provisioner or PV first, then rook will work on top of that, manage the NFS storage and provision it again to other application.</p>
-<p><a href="https://rook.io/docs/rook/v1.2/nfs.html" target="_blank" rel="noopener">https://rook.io/docs/rook/v1.2/nfs.html</a><br>好好理解一下这段话：<br>The desired volume to export needs to be attached to the NFS server pod via a PVC. Any type of PVC can be attached and exported, such as Host Path, AWS Elastic Block Store, GCP Persistent Disk, CephFS, Ceph RBD, etc. The limitations of these volumes also apply while they are shared by NFS. You can read further about the details and limitations of these volumes in the Kubernetes docs.</p>
+<h2 id="NFS">NFS</h2>
+<p>Now is <strong>alpha version</strong>
+in order to use rool NFS, we must have a NFS provisioner or PV first, then rook will work on top of that, manage the NFS storage and provision it again to other application.</p>
+<p><a href="https://rook.io/docs/rook/v1.2/nfs.html" target="_blank" rel="noopener">https://rook.io/docs/rook/v1.2/nfs.html</a>
+好好理解一下这段话：
+The desired volume to export needs to be attached to the NFS server pod via a PVC. Any type of PVC can be attached and exported, such as Host Path, AWS Elastic Block Store, GCP Persistent Disk, CephFS, Ceph RBD, etc. The limitations of these volumes also apply while they are shared by NFS. You can read further about the details and limitations of these volumes in the Kubernetes docs.</p>
 <blockquote>
 <p>NFS is just a pattern, the file system can be any.</p>
 </blockquote>
 <p>NFS client packages must be installed on all nodes where Kubernetes might run pods with NFS mounted. Install nfs-utils on CentOS nodes or nfs-common on Ubuntu nodes.</p>
-<h2 id="Ceph"><a href="#Ceph" class="headerlink" title="Ceph"></a>Ceph</h2><p>rook will create a soft ceph cluster for us.</p>
+<h2 id="Ceph">Ceph</h2>
+<p>rook will create a soft ceph cluster for us.</p>
 
       
     </div>
@@ -641,7 +628,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -738,7 +725,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1051,7 +1040,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1113,13 +1104,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

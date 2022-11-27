@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This series contains something that is too short to be a blog, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in containers">
+  <meta name="description" content="This series contains something that is too short to be a blog, so put them all here, chronologically. 02/25/2019  hostPath in PersistentVolume is the mount path in host machine. mountPath in container">
 <meta name="keywords" content="miscellanea">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Miscellanea 2019">
 <meta property="og:url" content="http://yoursite.com/2019/03/03/mis-2019/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This series contains something that is too short to be a blog, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in containers">
+<meta property="og:description" content="This series contains something that is too short to be a blog, so put them all here, chronologically. 02/25/2019  hostPath in PersistentVolume is the mount path in host machine. mountPath in container">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-10-11T06:12:32.079Z">
+<meta property="og:updated_time" content="2021-10-11T06:12:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miscellanea 2019">
-<meta name="twitter:description" content="This series contains something that is too short to be a blog, so put them all here, chronologically. 02/25/2019 hostPath in PersistentVolume is the mount path in host machine. mountPath in containers">
+<meta name="twitter:description" content="This series contains something that is too short to be a blog, so put them all here, chronologically. 02/25/2019  hostPath in PersistentVolume is the mount path in host machine. mountPath in container">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">37k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,92 +491,127 @@
 
       
         <p>This series contains something that is too short to be a blog, so put them all here, chronologically.</p>
-<h3 id="02-25-2019"><a href="#02-25-2019" class="headerlink" title="02/25/2019"></a>02/25/2019</h3><ul>
+<h3 id="02-25-2019">02/25/2019</h3>
+<ul>
 <li><code>hostPath</code> in <code>PersistentVolume</code> is the mount path in host machine. <code>mountPath</code> in <code>containers</code> field is the mount path inside the container.</li>
 </ul>
-<h3 id="02-27-2019"><a href="#02-27-2019" class="headerlink" title="02/27/2019"></a>02/27/2019</h3><ul>
-<li><p>Docker uses <code>/var/lib/docker</code> to store your images, containers, and local named volumes. Deleting this can result in data loss and possibly stop the engine from running. The <code>overlay2</code> subdirectory specifically contains the various <a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers" target="_blank" rel="noopener">filesystem layers</a> for images and containers.</p>
+<h3 id="02-27-2019">02/27/2019</h3>
+<ul>
+<li>
+<p>Docker uses <code>/var/lib/docker</code> to store your images, containers, and local named volumes. Deleting this can result in data loss and possibly stop the engine from running. The <code>overlay2</code> subdirectory specifically contains the various <a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers" target="_blank" rel="noopener">filesystem layers</a> for images and containers.</p>
 </li>
-<li><p><strong>Vim</strong> readonly mode, can open the same file in multiple windows:</p>
+<li>
+<p><strong>Vim</strong> readonly mode, can open the same file in multiple windows:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -R file</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="02-28-2019"><a href="#02-28-2019" class="headerlink" title="02/28/2019"></a>02/28/2019</h3><ul>
-<li><p>reboot machine rightnow, <code>-r</code> means reboot, for example:</p>
+<h3 id="02-28-2019">02/28/2019</h3>
+<ul>
+<li>
+<p>reboot machine rightnow, <code>-r</code> means reboot, for example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r now</span><br></pre></td></tr></table></figure>
 <p>If you execute remotely, use <code>ssh example.com</code> to test if it bring up.</p>
 </li>
-<li><p><strong>Jenkins</strong>: the exit code of last command of the Jenkin’s Execute Shell build step is what determines the success/failure, now it’s better to wrap the code snippet as a script and execute it. Need to do more search on it.</p>
+<li>
+<p><strong>Jenkins</strong>: the exit code of last command of the Jenkin’s Execute Shell build step is what determines the success/failure, now it’s better to wrap the code snippet as a script and execute it. Need to do more search on it.</p>
 </li>
 </ul>
-<h3 id="03-02-2019"><a href="#03-02-2019" class="headerlink" title="03/02/2019"></a>03/02/2019</h3><ul>
-<li><p>For <code>ls</code> command: If no operands are given, the contents of the current directory are displayed.  If more than one operand is given, non-directory operands are displayed first; directory and non-directory operands are sorted separately and in <strong>lexicographical order</strong>.</p>
-<p> I use this feature with <code>tail</code> command to pick latest package, for example:</p>
+<h3 id="03-02-2019">03/02/2019</h3>
+<ul>
+<li>
+<p>For <code>ls</code> command: If no operands are given, the contents of the current directory are displayed.  If more than one operand is given, non-directory operands are displayed first; directory and non-directory operands are sorted separately and in <strong>lexicographical order</strong>.</p>
+<p>I use this feature with <code>tail</code> command to pick latest package, for example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls | grep ansible-* | tail -1</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>ansible</code> has <code>log_path</code> setting in <code>~/.ansible.cfg</code> file, for example:</p>
+<li>
+<p><code>ansible</code> has <code>log_path</code> setting in <code>~/.ansible.cfg</code> file, for example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[defaults]</span><br><span class="line">log_path = /ibm-test/DS-Kube-Installer/logs/ds_installer_20190301_1645.log</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="03-04-2019"><a href="#03-04-2019" class="headerlink" title="03/04/2019"></a>03/04/2019</h3><ul>
-<li><p><a href="https://www.gluster.org/" target="_blank" rel="noopener">Gluster file system</a> with RedHat?</p>
+<h3 id="03-04-2019">03/04/2019</h3>
+<ul>
+<li>
+<p><a href="https://www.gluster.org/" target="_blank" rel="noopener">Gluster file system</a> with RedHat?</p>
 </li>
-<li><p>when run <code>systemctl start docker</code>, these directories are created: <code>/var/lib/docker</code>, <code>/run/docker</code>, <code>etc/docker</code>.</p>
+<li>
+<p>when run <code>systemctl start docker</code>, these directories are created: <code>/var/lib/docker</code>, <code>/run/docker</code>, <code>etc/docker</code>.</p>
 </li>
 </ul>
-<h3 id="03-05-2019"><a href="#03-05-2019" class="headerlink" title="03/05/2019"></a>03/05/2019</h3><ul>
+<h3 id="03-05-2019">03/05/2019</h3>
+<ul>
 <li>Find Red Hat or CentOS version:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/os-release</span><br><span class="line"></span><br><span class="line">Red Hat Enterprise Linux Server release 7.6 (Maipo)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="03-13-2019"><a href="#03-13-2019" class="headerlink" title="03/13/2019"></a>03/13/2019</h3><ul>
-<li><p>I see people sometimes use <code>/bin/cp</code>, <code>/bin/rm</code> in script, why they don’t use <code>cp</code> or <code>rm</code> directly? The answer is <code>cp</code> or <code>rm</code> may be an alias in target machine! For example:</p>
+<h3 id="03-13-2019">03/13/2019</h3>
+<ul>
+<li>
+<p>I see people sometimes use <code>/bin/cp</code>, <code>/bin/rm</code> in script, why they don’t use <code>cp</code> or <code>rm</code> directly? The answer is <code>cp</code> or <code>rm</code> may be an alias in target machine! For example:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias cp=&apos;cp -i&apos;</span><br><span class="line">alias mv=&apos;mv -i&apos;</span><br><span class="line">alias rm=&apos;rm -i&apos;</span><br></pre></td></tr></table></figure>
 <p>So when use <code>cp -f source target</code> it will still prompt you the overwrite confirm if target and source are the same. <code>/bin/cp -f source target</code> is correct way to go.</p>
 </li>
 </ul>
-<h3 id="03-16-2019"><a href="#03-16-2019" class="headerlink" title="03/16/2019"></a>03/16/2019</h3><p>These are from <code>Ansible: Up and Running, 2nd Edition</code> book:</p>
+<h3 id="03-16-2019">03/16/2019</h3>
+<p>These are from <code>Ansible: Up and Running, 2nd Edition</code> book:</p>
 <ul>
-<li><p><a href="https://gunicorn.org/" target="_blank" rel="noopener">Gunicorn</a>: a Python WSGI HTTP Server for UNIX.</p>
+<li>
+<p><a href="https://gunicorn.org/" target="_blank" rel="noopener">Gunicorn</a>: a Python WSGI HTTP Server for UNIX.</p>
 </li>
-<li><p><a href="https://www.tablesgenerator.com/markdown_tables" target="_blank" rel="noopener">Markdown table generator</a></p>
+<li>
+<p><a href="https://www.tablesgenerator.com/markdown_tables" target="_blank" rel="noopener">Markdown table generator</a></p>
 </li>
-<li><p><a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Encrypt</a>: a free, automated, and open Certificate Authority.</p>
+<li>
+<p><a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s Encrypt</a>: a free, automated, and open Certificate Authority.</p>
 </li>
-<li><p><a href="http://www.celeryproject.org/" target="_blank" rel="noopener">Celery</a>: a distributed task queue.</p>
+<li>
+<p><a href="http://www.celeryproject.org/" target="_blank" rel="noopener">Celery</a>: a distributed task queue.</p>
 </li>
-<li><p><a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">RabbitMQ</a>: open source message broker</p>
+<li>
+<p><a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">RabbitMQ</a>: open source message broker</p>
 </li>
-<li><p>A <strong>staging environment</strong> (stage) is a nearly exact replica of a production environment for software testing. Staging environments are made to test codes, builds, and updates to ensure quality under a production-like environment before application deployment.</p>
+<li>
+<p>A <strong>staging environment</strong> (stage) is a nearly exact replica of a production environment for software testing. Staging environments are made to test codes, builds, and updates to ensure quality under a production-like environment before application deployment.</p>
 </li>
 </ul>
-<h3 id="03-17-2019"><a href="#03-17-2019" class="headerlink" title="03/17/2019"></a>03/17/2019</h3><p>These are from <code>Ansible: Up and Running, 2nd Edition</code> book:</p>
+<h3 id="03-17-2019">03/17/2019</h3>
+<p>These are from <code>Ansible: Up and Running, 2nd Edition</code> book:</p>
 <ul>
-<li><p><a href="http://mezzanine.jupo.org/" target="_blank" rel="noopener">Mezzanine</a>: similar in spirit to WordPress. Mezzanine is built on top of Django, the free Python-based framework for writing web applications.</p>
+<li>
+<p><a href="http://mezzanine.jupo.org/" target="_blank" rel="noopener">Mezzanine</a>: similar in spirit to WordPress. Mezzanine is built on top of Django, the free Python-based framework for writing web applications.</p>
 </li>
-<li><p><a href="http://www.fabfile.org/" target="_blank" rel="noopener">Fabric</a>: a Python-based tool that helps automate running tasks via SSH.</p>
+<li>
+<p><a href="http://www.fabfile.org/" target="_blank" rel="noopener">Fabric</a>: a Python-based tool that helps automate running tasks via SSH.</p>
 </li>
-<li><p><a href="https://www.sqlite.org/serverless.html" target="_blank" rel="noopener">SQLite is serveless database</a>: Most SQL database engines are implemented as a separate server process. Programs that want to access the database communicate with the server using some kind of interprocess communication (typically TCP/IP) to send requests to the server and to receive back results. SQLite does not work this way. With SQLite, the process that wants to access the database reads and writes directly from the database files on disk. There is no intermediary server process.</p>
+<li>
+<p><a href="https://www.sqlite.org/serverless.html" target="_blank" rel="noopener">SQLite is serveless database</a>: Most SQL database engines are implemented as a separate server process. Programs that want to access the database communicate with the server using some kind of interprocess communication (typically TCP/IP) to send requests to the server and to receive back results. SQLite does not work this way. With SQLite, the process that wants to access the database reads and writes directly from the database files on disk. There is no intermediary server process.</p>
 </li>
 </ul>
-<h3 id="03-18-2019"><a href="#03-18-2019" class="headerlink" title="03/18/2019"></a>03/18/2019</h3><ul>
-<li><p>Today after Fyre maintenance, one of my VM cannot resolve hostname, when I run</p>
+<h3 id="03-18-2019">03/18/2019</h3>
+<ul>
+<li>
+<p>Today after Fyre maintenance, one of my VM cannot resolve hostname, when I run</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping google.com</span><br></pre></td></tr></table></figure>
-<p>it hangs, also <code>nslookup</code> doesn’t work as well.<br>Let’s check <code>/etc/resolv.conf</code> file, it is good:</p>
+<p>it hangs, also <code>nslookup</code> doesn’t work as well.
+Let’s check <code>/etc/resolv.conf</code> file, it is good:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">; generated by /usr/sbin/dhclient-script</span><br><span class="line">search fyre.ibm.com. svl.ibm.com.</span><br><span class="line">nameserver 172.16.200.52</span><br><span class="line">nameserver 172.16.200.50</span><br></pre></td></tr></table></figure>
 <p>Then reboot VM again it works, sometimes Fyre generates weird problem.</p>
 </li>
 </ul>
-<h3 id="03-22-2019"><a href="#03-22-2019" class="headerlink" title="03/22/2019"></a>03/22/2019</h3><ul>
+<h3 id="03-22-2019">03/22/2019</h3>
+<ul>
 <li><a href="https://kb.iu.edu/d/afiz" target="_blank" rel="noopener">Corn job</a></li>
 </ul>
-<h3 id="03-23-2019"><a href="#03-23-2019" class="headerlink" title="03/23/2019"></a>03/23/2019</h3><ul>
+<h3 id="03-23-2019">03/23/2019</h3>
+<ul>
 <li>From IBM developer website, <a href="https://developer.ibm.com/tutorials/l-lpic1-102-5/" target="_blank" rel="noopener">RPM and YUM package management</a></li>
 </ul>
-<h3 id="03-25-2019"><a href="#03-25-2019" class="headerlink" title="03/25/2019"></a>03/25/2019</h3><ul>
+<h3 id="03-25-2019">03/25/2019</h3>
+<ul>
 <li><a href="https://electronjs.org/" target="_blank" rel="noopener">ELECTRON</a>: Build cross platform desktop apps with JavaScript, HTML, and CSS</li>
 </ul>
-<h3 id="03-27-2019"><a href="#03-27-2019" class="headerlink" title="03/27/2019"></a>03/27/2019</h3><ul>
-<li><p>This is from a issue I encountered: when we setup a NFS server as storage in K8s cluster with the <code>/etc/exports</code> file, we need to  restrict the clients who is able to access the NFS mount instead of something like:</p>
+<h3 id="03-27-2019">03/27/2019</h3>
+<ul>
+<li>
+<p>This is from a issue I encountered: when we setup a NFS server as storage in K8s cluster with the <code>/etc/exports</code> file, we need to  restrict the clients who is able to access the NFS mount instead of something like:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data *(rw,insecure,async,no_root_squash)</span><br></pre></td></tr></table></figure>
 <p>Correct way is to specify which NFS client can access:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/data example1.com(rw,insecure,async,no_root_squash)</span><br><span class="line">/data example1.com(rw,insecure,async,no_root_squash)</span><br><span class="line">/data example1.com(rw,insecure,async,no_root_squash)</span><br></pre></td></tr></table></figure>
@@ -604,42 +621,55 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Important</span><br><span class="line"></span><br><span class="line">The format of the /etc/exports file is very precise, particularly in </span><br><span class="line">regards to use of the space character. Remember to always separate exported</span><br><span class="line">file systems from hosts and hosts from one another with a space character. </span><br><span class="line">However, there should be no other space characters in the file except on </span><br><span class="line">comment lines.</span><br><span class="line"></span><br><span class="line">For example, the following two lines do not mean the same thing:</span><br><span class="line"></span><br><span class="line">/home bob.example.com(rw)</span><br><span class="line">/home bob.example.com (rw)</span><br><span class="line"></span><br><span class="line">The first line allows only users from bob.example.com read and write access </span><br><span class="line">to the /home directory. The second line allows users from bob.example.com </span><br><span class="line">to mount the directory as read-only (the default), while the rest of the </span><br><span class="line">world can mount it read/write.</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="03-28-2019"><a href="#03-28-2019" class="headerlink" title="03/28/2019"></a>03/28/2019</h3><ul>
-<li><p><code>ps aux</code> command will not show full outputs and the lines are truncated, if you are in a lightweight Linux distributions like <code>BusyBox</code>, you can try:</p>
+<h3 id="03-28-2019">03/28/2019</h3>
+<ul>
+<li>
+<p><code>ps aux</code> command will not show full outputs and the lines are truncated, if you are in a lightweight Linux distributions like <code>BusyBox</code>, you can try:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | cat</span><br></pre></td></tr></table></figure>
 <p>otherwise try:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps auxw</span><br><span class="line">ps auxww</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="03-29-2019"><a href="#03-29-2019" class="headerlink" title="03/29/2019"></a>03/29/2019</h3><ul>
+<h3 id="03-29-2019">03/29/2019</h3>
+<ul>
 <li>open terminal run <code>vimtutor</code>, haha.</li>
 </ul>
-<h3 id="03-30-2019"><a href="#03-30-2019" class="headerlink" title="03/30/2019"></a>03/30/2019</h3><ul>
-<li><p>see memory usage</p>
+<h3 id="03-30-2019">03/30/2019</h3>
+<ul>
+<li>
+<p>see memory usage</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -h</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>clean swap space</p>
+<li>
+<p>clean swap space</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="https://www.nagios.org/about/overview/" target="_blank" rel="noopener">Nagios</a>: open source Industry Standard In IT Infrastructure Monitoring</p>
+<li>
+<p><a href="https://www.nagios.org/about/overview/" target="_blank" rel="noopener">Nagios</a>: open source Industry Standard In IT Infrastructure Monitoring</p>
 </li>
-<li><p><a href="http://www.haproxy.org/" target="_blank" rel="noopener">HAProxy</a>:The Reliable, High Performance TCP/HTTP Load Balancer</p>
+<li>
+<p><a href="http://www.haproxy.org/" target="_blank" rel="noopener">HAProxy</a>:The Reliable, High Performance TCP/HTTP Load Balancer</p>
 </li>
-<li><p><code>/bin/false</code> is a system command that is used anytime you need to pass a command to a program that should do nothing more than exit with an error. It’s the companion to <code>/bin/true</code>. Both of these are very old and standard POSIX utilities and neither produce any output by definition. <code>true</code> is sometimes used for a shell script that should loop indefinitely, like:</p>
+<li>
+<p><code>/bin/false</code> is a system command that is used anytime you need to pass a command to a program that should do nothing more than exit with an error. It’s the companion to <code>/bin/true</code>. Both of these are very old and standard POSIX utilities and neither produce any output by definition. <code>true</code> is sometimes used for a shell script that should loop indefinitely, like:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while true; do</span><br><span class="line">    ...</span><br><span class="line">    # Waste time</span><br><span class="line">    if [ $wasted_time -gt 100000 ]; then</span><br><span class="line">        exit 0</span><br><span class="line">    fi</span><br><span class="line">    ...</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <p><code>/usr/sbin/nologin</code> is specifically designed to replace a shell and produces output complaining you can’t log-in. Before it existed, it was common to use <code>/bin/false</code> for dummy users, but could be confusing since the user doesn’t know why they’re kicked off.</p>
 </li>
 </ul>
-<h3 id="04-01-2019"><a href="#04-01-2019" class="headerlink" title="04/01/2019"></a>04/01/2019</h3><ul>
-<li><p>Sometimes when I login to a user home, the prompt is like:</p>
+<h3 id="04-01-2019">04/01/2019</h3>
+<ul>
+<li>
+<p>Sometimes when I login to a user home, the prompt is like:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2$</span><br></pre></td></tr></table></figure>
-<p>instead of </p>
+<p>instead of</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[demo@myk8s1 ~]$</span><br></pre></td></tr></table></figure>
 <p>the reason is <code>.bash_history  .bash_logout  .bash_profile  .bashrc</code> under <code>/home/demo</code> are missing!</p>
 </li>
 </ul>
-<h3 id="04-02-2019"><a href="#04-02-2019" class="headerlink" title="04/02/2019"></a>04/02/2019</h3><ul>
-<li><p>docker <a href="https://docs.docker.com/storage/bind-mounts/" target="_blank" rel="noopener">bind mounts</a> and <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">volume</a>, in our application, we use mount type in docker run command:</p>
+<h3 id="04-02-2019">04/02/2019</h3>
+<ul>
+<li>
+<p>docker <a href="https://docs.docker.com/storage/bind-mounts/" target="_blank" rel="noopener">bind mounts</a> and <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">volume</a>, in our application, we use mount type in docker run command:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker inspect &lt;container name&gt;</span><br><span class="line"></span><br><span class="line">&quot;Mounts&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">              &quot;Type&quot;: &quot;bind&quot;,</span><br><span class="line">              &quot;Source&quot;: &quot;/opt/builds&quot;,</span><br><span class="line">              &quot;Destination&quot;: &quot;/opt/builds&quot;,</span><br><span class="line">              &quot;Mode&quot;: &quot;&quot;,</span><br><span class="line">              &quot;RW&quot;: true,</span><br><span class="line">              &quot;Propagation&quot;: &quot;rprivate&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>I use <code>busybox</code> does a bind mount test, in the Dockerfile, I create a <code>/tmp/bb</code> folder and put <code>test.txt</code> file in it</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER chengdol@ibm.com</span><br><span class="line"></span><br><span class="line">COPY ./hello.txt /</span><br><span class="line">RUN sh -c &quot;mkdir /tmp/bb&quot; &amp;&amp; \</span><br><span class="line">  touch /tmp/bb/test.txt &amp;&amp; \</span><br><span class="line">  sh -c &quot;echo &apos;123&apos; &gt; /tmp/bb/test.txt&quot;</span><br><span class="line"></span><br><span class="line">CMD tail -f /hello.txt</span><br></pre></td></tr></table></figure>
@@ -647,113 +677,154 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name mybb -v /tmp/bb:/tmp/bb mybb:v1</span><br></pre></td></tr></table></figure>
 <p>Then I get into the container, the <code>test.txt</code> is missing. But if we first put something in the host <code>/tmp/bb</code> folder, it will show up inside container.</p>
 </li>
-<li><p>occasionally find a online drawing tool, <a href="https://www.draw.io/" target="_blank" rel="noopener">draw.io</a>, but this cloud service may not approved by company use.</p>
+<li>
+<p>occasionally find a online drawing tool, <a href="https://www.draw.io/" target="_blank" rel="noopener">draw.io</a>, but this cloud service may not approved by company use.</p>
 </li>
 </ul>
-<h3 id="04-03-2019"><a href="#04-03-2019" class="headerlink" title="04/03/2019"></a>04/03/2019</h3><ul>
-<li><p><code>echo -n</code> will disable the newline, <code>echo -e</code> will enable the escape, so if you run</p>
+<h3 id="04-03-2019">04/03/2019</h3>
+<ul>
+<li>
+<p><code>echo -n</code> will disable the newline, <code>echo -e</code> will enable the escape, so if you run</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -e &quot;\n&quot;</span><br></pre></td></tr></table></figure>
 <p>it will output a newline</p>
 </li>
 </ul>
-<h3 id="04-04-2019"><a href="#04-04-2019" class="headerlink" title="04/04/2019"></a>04/04/2019</h3><ul>
-<li><p>Linux capability, how to know what capabilities a process required to work properly?</p>
+<h3 id="04-04-2019">04/04/2019</h3>
+<ul>
+<li>
+<p>Linux capability, how to know what capabilities a process required to work properly?</p>
 </li>
-<li><p>Linux user and group with permission problem</p>
+<li>
+<p>Linux user and group with permission problem</p>
 </li>
-<li><p><code>docker commit</code>, commit what</p>
+<li>
+<p><code>docker commit</code>, commit what</p>
 </li>
-<li><p><code>docker save</code>, <code>docker export</code> difference</p>
+<li>
+<p><code>docker save</code>, <code>docker export</code> difference</p>
 </li>
-<li><p>suid <code>rws</code> bit field for file and <code>t</code> sometimes, <a href="https://www.linode.com/docs/tools-reference/linux-users-and-groups/#additional-file-permissions" target="_blank" rel="noopener">link</a></p>
+<li>
+<p>suid <code>rws</code> bit field for file and <code>t</code> sometimes, <a href="https://www.linode.com/docs/tools-reference/linux-users-and-groups/#additional-file-permissions" target="_blank" rel="noopener">link</a></p>
 </li>
-<li><p><code>usermod</code>, specify or change home directory</p>
+<li>
+<p><code>usermod</code>, specify or change home directory</p>
 </li>
-<li><p><code>useradd</code>/<code>userdel</code>, <code>groupadd</code>/<code>groupdel</code> usage, <code>passwd</code> add password for user</p>
+<li>
+<p><code>useradd</code>/<code>userdel</code>, <code>groupadd</code>/<code>groupdel</code> usage, <code>passwd</code> add password for user</p>
 </li>
-<li><p>sudo run process will be root USER</p>
+<li>
+<p>sudo run process will be root USER</p>
 </li>
-<li><p><code>cp -p</code>, don’t change permission, owner and timestamps of the file</p>
+<li>
+<p><code>cp -p</code>, don’t change permission, owner and timestamps of the file</p>
 </li>
 </ul>
-<h3 id="04-09-2019"><a href="#04-09-2019" class="headerlink" title="04/09/2019"></a>04/09/2019</h3><ul>
+<h3 id="04-09-2019">04/09/2019</h3>
+<ul>
 <li>find files owned by particular user<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -user &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>###04/10/2019</p>
 <ul>
-<li><p>check the parent of the process, show <code>PPID</code> (parent id) in ps command:</p>
+<li>
+<p>check the parent of the process, show <code>PPID</code> (parent id) in ps command:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -efj</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>setuid <strong>only</strong> set when owner is <strong>root</strong>, and other user with permission to run the file will be the owner of that process:</p>
+<li>
+<p>setuid <strong>only</strong> set when owner is <strong>root</strong>, and other user with permission to run the file will be the owner of that process:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rwsr-xr-x 1 root  root  62 Apr 10 15:40 hang.sh</span><br></pre></td></tr></table></figure>
 <p>if I’m <code>demo</code> user to run it, the process is owned by demo</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">demo     32403  0.0  0.0 113176  1388 pts/1    S+   10:13   0:00 /bin/bash ./hang.sh</span><br></pre></td></tr></table></figure>
 <p>There is also <code>setgid</code> concept.</p>
 </li>
 </ul>
-<h3 id="04-11-2019"><a href="#04-11-2019" class="headerlink" title="04/11/2019"></a>04/11/2019</h3><ul>
+<h3 id="04-11-2019">04/11/2019</h3>
+<ul>
 <li>copy with hidden files and directories</li>
 </ul>
-<h3 id="04-21-2019"><a href="#04-21-2019" class="headerlink" title="04/21/2019"></a>04/21/2019</h3><ul>
-<li><p>global user start file: <code>/etc/bashrc</code>, the <code>umask</code> is inside it. </p>
+<h3 id="04-21-2019">04/21/2019</h3>
+<ul>
+<li>
+<p>global user start file: <code>/etc/bashrc</code>, the <code>umask</code> is inside it.</p>
 <blockquote>
 <p>Note that <code>umask</code> uses subtraction.</p>
 </blockquote>
 </li>
-<li><p>tools which preserve permissions apply the appropriate mode and ignore umask: <code>cp -p</code>, <code>tar -p</code>.</p>
+<li>
+<p>tools which preserve permissions apply the appropriate mode and ignore umask: <code>cp -p</code>, <code>tar -p</code>.</p>
 </li>
 </ul>
-<h3 id="04-24-2019"><a href="#04-24-2019" class="headerlink" title="04/24/2019"></a>04/24/2019</h3><ul>
-<li><p>I find sometimes I use <code>grep -r XXX .</code> cannot find the pattern in files in current and subdirectories. The reason is <code>-r</code> flag will not process symbolic link except it’s on the command link. you can use:</p>
+<h3 id="04-24-2019">04/24/2019</h3>
+<ul>
+<li>
+<p>I find sometimes I use <code>grep -r XXX .</code> cannot find the pattern in files in current and subdirectories. The reason is <code>-r</code> flag will not process symbolic link except it’s on the command link. you can use:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -Rn XXX .</span><br></pre></td></tr></table></figure>
-<p><code>-R</code> will follow symbolic links<br><code>-n</code> will show line number for each matched result<br><code>-i</code> make it case-insensitive<br><code>-F</code> used looking for fixed string to save time</p>
+<p><code>-R</code> will follow symbolic links
+<code>-n</code> will show line number for each matched result
+<code>-i</code> make it case-insensitive
+<code>-F</code> used looking for fixed string to save time</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -Rn --include &quot;*.txt&quot; XXX .</span><br></pre></td></tr></table></figure>
 <p>if you know the pattern of the file, you can specify that using <code>--include</code>, you can also mention using <code>--exclude</code> option.</p>
 </li>
 </ul>
-<h3 id="05-10-2019"><a href="#05-10-2019" class="headerlink" title="05/10/2019"></a>05/10/2019</h3><ul>
-<li><p>scp from linux to windows machine</p>
+<h3 id="05-10-2019">05/10/2019</h3>
+<ul>
+<li>
+<p>scp from linux to windows machine</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/PXSmokeTest_outputs.dsx Administrator@indraniwindows1.fyre.ibm.com:</span><br></pre></td></tr></table></figure>
 <p>the file will be put in <code>C:\Users\Administrator&gt;</code> folder in windows.</p>
 </li>
-<li><p>How to scp files from remote host to container in k8s?<br>inside the container, install <code>openssh-clients</code></p>
+<li>
+<p>How to scp files from remote host to container in k8s?
+inside the container, install <code>openssh-clients</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install openssh-clients</span><br></pre></td></tr></table></figure>
 <p>then just like normal:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scp root@mycentctl1:/GitRepos/cognitive-designer-api/DSNexus_Build/Docker_Scripts/Kubernetes_11.7.DS/buildengine/opt/IBM/InformationServer/initScripts/* .</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="05-20-2019"><a href="#05-20-2019" class="headerlink" title="05/20/2019"></a>05/20/2019</h3><ul>
+<h3 id="05-20-2019">05/20/2019</h3>
+<ul>
 <li><code>Coordinated Universal Time (UTC)</code> is 7 hours ahead of <code>Pacific Time</code>.</li>
 </ul>
-<h3 id="06-12-2019"><a href="#06-12-2019" class="headerlink" title="06/12/2019"></a>06/12/2019</h3><ul>
-<li><p>grep exclude pattern use <code>-v</code>:</p>
+<h3 id="06-12-2019">06/12/2019</h3>
+<ul>
+<li>
+<p>grep exclude pattern use <code>-v</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images | grep -E <span class="string">"xmeta|services|engine|compute"</span> | grep -v <span class="string">"mycluster"</span> | awk <span class="string">'&#123;print $1&#125;'</span></span><br></pre></td></tr></table></figure>
 <p>this will exclude results have <code>mycluster</code>.</p>
 </li>
 </ul>
-<h3 id="06-19-2019"><a href="#06-19-2019" class="headerlink" title="06/19/2019"></a>06/19/2019</h3><ul>
+<h3 id="06-19-2019">06/19/2019</h3>
+<ul>
 <li>workaround when you cannot find rpm or package to install in linux, download the binary and put it in working PATH, for example, to use <code>jq</code>, download binaries from <a href="https://stedolan.github.io/jq/download/" target="_blank" rel="noopener">here</a>. Add executable bit and move to <code>/usr/bin</code>.</li>
 </ul>
-<h3 id="07-01-2019"><a href="#07-01-2019" class="headerlink" title="07/01/2019"></a>07/01/2019</h3><ul>
-<li><p>check directory current used size:</p>
+<h3 id="07-01-2019">07/01/2019</h3>
+<ul>
+<li>
+<p>check directory current used size:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -s: total</span></span><br><span class="line"><span class="comment"># -h: human</span></span><br><span class="line">du -sh &lt;path to directory&gt;</span><br></pre></td></tr></table></figure>
 <p>if you want to know the partition size associated with this directory, for example <code>/var/lib/docker</code>, use</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h /var</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="07-02-2019"><a href="#07-02-2019" class="headerlink" title="07/02/2019"></a>07/02/2019</h3><ul>
-<li><p>change file or directory time stamp to <code>1969-12-31 16:00</code></p>
+<h3 id="07-02-2019">07/02/2019</h3>
+<ul>
+<li>
+<p>change file or directory time stamp to <code>1969-12-31 16:00</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch -a -m -t 196912311600 xx.txt</span><br></pre></td></tr></table></figure>
-<p><code>-a</code>: change the access time of a file. By default it will take the current system time and update the atime field.<br><code>-m</code>: change the modification time of a file.<br><code>-t</code>: explicitly specify the time</p>
+<p><code>-a</code>: change the access time of a file. By default it will take the current system time and update the atime field.
+<code>-m</code>: change the modification time of a file.
+<code>-t</code>: explicitly specify the time</p>
 <p>Check status by <code>stat</code> command:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">stat xx.txt</span><br><span class="line"></span><br><span class="line">File: `xx.txt&apos;</span><br><span class="line">Size: 3         	Blocks: 8          IO Block: 4096   regular file</span><br><span class="line">Device: 801h/2049d	Inode: 394283      Links: 1</span><br><span class="line">Access: (0644/-rw-r--r--)  Uid: ( 1000/lakshmanan)   Gid: ( 1000/lakshmanan)</span><br><span class="line">Access: 2038-01-18 12:05:09.000000000 +0530</span><br><span class="line">Modify: 2038-01-18 12:05:09.000000000 +0530</span><br><span class="line">Change: 2012-10-19 00:40:58.763514502 +0530</span><br></pre></td></tr></table></figure>
+<p>reference and update the time stamp of file a.txt from the time stamp of b.txt file</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch a.txt -r b.txt</span><br></pre></td></tr></table></figure>
+<p>Change time stamp recursively</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -exec touch -a -m -t 196912311600 &#123;&#125; +</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>  reference and update the time stamp of file a.txt from the time stamp of b.txt file<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch a.txt -r b.txt</span><br></pre></td></tr></table></figure></p>
-<p>  Change time stamp recursively<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -exec touch -a -m -t 196912311600 &#123;&#125; +</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>Convert format from <code>DOS</code> to <code>UNIX</code>:<br>If you open a file via <code>vim</code> and see there are many <code>^M</code>:</p>
+<li>
+<p>Convert format from <code>DOS</code> to <code>UNIX</code>:
+If you open a file via <code>vim</code> and see there are many <code>^M</code>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NOTICE^M</span><br><span class="line">^M</span><br><span class="line">This document includes License Information documents below for multiple Programs. Each License Information document identifies the Program(s) to which it applies. Only those License Information documents for the Program(s) for which Licensee has acquired entitlements apply.^M</span><br><span class="line">^M</span><br><span class="line">^M</span><br></pre></td></tr></table></figure>
 <p>This is because it’s <code>DOS</code> format:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file LA_en.ORIG</span><br><span class="line"></span><br><span class="line">LA_en.ORIG: ASCII text, with very long lines, with CRLF, LF line terminators</span><br></pre></td></tr></table></figure>
@@ -761,46 +832,60 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y dos2unix</span><br><span class="line">dos2unix &lt;file name&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="07-12-2019"><a href="#07-12-2019" class="headerlink" title="07/12/2019"></a>07/12/2019</h3><ul>
-<li>Previously I use<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -ltr --block-size=M</span><br></pre></td></tr></table></figure>
-</li>
+<h3 id="07-12-2019">07/12/2019</h3>
+<ul>
+<li>Previously I use</li>
 </ul>
-<p>to see the human readable size for each file, actually use<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -ltrh</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -ltr --block-size=M</span><br></pre></td></tr></table></figure>
+<p>to see the human readable size for each file, actually use</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -ltrh</span><br></pre></td></tr></table></figure>
 <p>is enough!</p>
-<h3 id="07-15-2019"><a href="#07-15-2019" class="headerlink" title="07/15/2019"></a>07/15/2019</h3><ul>
+<h3 id="07-15-2019">07/15/2019</h3>
+<ul>
 <li>new tech word <code>linting</code>: the process of running a program that will analyse code for potential errors. For example, <code>PHPLint</code>, <code>JSLint</code>.</li>
 </ul>
-<h3 id="07-24-2019"><a href="#07-24-2019" class="headerlink" title="07/24/2019"></a>07/24/2019</h3><ul>
-<li><p>if run script using <code>sudo</code>, for example:</p>
+<h3 id="07-24-2019">07/24/2019</h3>
+<ul>
+<li>
+<p>if run script using <code>sudo</code>, for example:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo script.sh</span><br></pre></td></tr></table></figure>
 <p>then every command in scipt is executed with sudo.</p>
 </li>
 </ul>
-<h3 id="08-05-2019"><a href="#08-05-2019" class="headerlink" title="08/05/2019"></a>08/05/2019</h3><ul>
-<li><p>find file owned by a particular user or group</p>
+<h3 id="08-05-2019">08/05/2019</h3>
+<ul>
+<li>
+<p>find file owned by a particular user or group</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; -user &lt;dsadm&gt; -group &lt;dstage&gt;</span><br></pre></td></tr></table></figure>
 <p>find file by case-insensitive name and use <code>-ls</code> format</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; -iname &lt;name&gt; -type f -ls</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>find particular files and change the chown or chmod</p>
+<li>
+<p>find particular files and change the chown or chmod</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &lt;path&gt; -user &lt;dsadm&gt; -group &lt;dstage&gt; -exec chmod 755 &#123;&#125; /;</span><br></pre></td></tr></table></figure>
-<p>explain:<br><code>chmod 755 {} \;</code> specifies the command that will be executed by find for each file. <code>{}</code> is replaced by the file path, and the <code>semicolon(;)</code> denotes the end of the command (escaped, otherwise it would be interpreted by the shell instead of find).</p>
+<p>explain:
+<code>chmod 755 {} \;</code> specifies the command that will be executed by find for each file. <code>{}</code> is replaced by the file path, and the <code>semicolon(;)</code> denotes the end of the command (escaped, otherwise it would be interpreted by the shell instead of find).</p>
 </li>
 </ul>
-<h3 id="08-09-2019"><a href="#08-09-2019" class="headerlink" title="08/09/2019"></a>08/09/2019</h3><ul>
+<h3 id="08-09-2019">08/09/2019</h3>
+<ul>
 <li>if var is not set, use default value <code>123456</code>:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var=$&#123;var:-&quot;123456&quot;&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="08-28-2019"><a href="#08-28-2019" class="headerlink" title="08/28/2019"></a>08/28/2019</h3><ul>
+<h3 id="08-28-2019">08/28/2019</h3>
+<ul>
 <li>docker commit will not apply <code>chmod 777 /</code> in new image, the permission mode of <code>/</code> directory is still original. Not sure why.</li>
 </ul>
-<h3 id="09-05-2019"><a href="#09-05-2019" class="headerlink" title="09/05/2019"></a>09/05/2019</h3><ul>
+<h3 id="09-05-2019">09/05/2019</h3>
+<ul>
 <li><code>curl</code> can be used to verbose request in detail, to check the RESTful API content.</li>
 </ul>
-<h3 id="11-13-2019"><a href="#11-13-2019" class="headerlink" title="11/13/2019"></a>11/13/2019</h3><ul>
-<li><code>uniq</code> <a href="https://www.geeksforgeeks.org/uniq-command-in-linux-with-examples/" target="_blank" rel="noopener">command</a>, used to deduplicates </li>
+<h3 id="11-13-2019">11/13/2019</h3>
+<ul>
+<li><code>uniq</code> <a href="https://www.geeksforgeeks.org/uniq-command-in-linux-with-examples/" target="_blank" rel="noopener">command</a>, used to deduplicates</li>
 </ul>
-<h3 id="11-30-2019"><a href="#11-30-2019" class="headerlink" title="11/30/2019"></a>11/30/2019</h3><ul>
+<h3 id="11-30-2019">11/30/2019</h3>
+<ul>
 <li><code>https://distrowatch.com/</code> linux forum, contains lots of different linux distribtions and release informations.</li>
 </ul>
 
@@ -923,7 +1008,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1020,7 +1105,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1333,7 +1420,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1395,13 +1484,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

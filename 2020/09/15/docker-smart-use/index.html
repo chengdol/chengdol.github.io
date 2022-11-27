@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="这里主要记录一下docker container 一些有意思的用法。 Version Release可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。 Run in Background之前一直通过更改">
+  <meta name="description" content="这里主要记录一下docker container 一些有意思的用法。 Version Release 可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。 Run in Background 之前一直通过">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Smart Use">
 <meta property="og:url" content="http://yoursite.com/2020/09/15/docker-smart-use/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="这里主要记录一下docker container 一些有意思的用法。 Version Release可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。 Run in Background之前一直通过更改">
+<meta property="og:description" content="这里主要记录一下docker container 一些有意思的用法。 Version Release 可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。 Run in Background 之前一直通过">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-10-31T01:42:09.148Z">
+<meta property="og:updated_time" content="2021-10-31T01:42:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Smart Use">
-<meta name="twitter:description" content="这里主要记录一下docker container 一些有意思的用法。 Version Release可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。 Run in Background之前一直通过更改">
+<meta name="twitter:description" content="这里主要记录一下docker container 一些有意思的用法。 Version Release 可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。 Run in Background 之前一直通过">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.1k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,11 +491,18 @@
 
       
         <p>这里主要记录一下docker container 一些有意思的用法。</p>
-<h2 id="Version-Release"><a href="#Version-Release" class="headerlink" title="Version Release"></a>Version Release</h2><p>可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。</p>
-<h2 id="Run-in-Background"><a href="#Run-in-Background" class="headerlink" title="Run in Background"></a>Run in Background</h2><p>之前一直通过更改<code>--entrypoint</code> 为<code>/bin/sh</code> 加上 <code>-c &quot;tail -f /dev/null&quot;</code>的方式，使容器在后台running，其实可以默认使用 <code>-d</code>(detach) 的方式，但必须了解entrypoint/cmd的设置，比如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the busybox build with CMD ["sh"], here it run as default sh</span></span><br><span class="line"><span class="comment"># and with -it, this container hang in background</span></span><br><span class="line">docker run -itd busybox</span><br><span class="line"></span><br><span class="line"><span class="comment"># if image has entrypoint different than sh or bash, to make it idle</span></span><br><span class="line"><span class="comment"># we have to reset the entrypoint</span></span><br><span class="line">docker run -itd --entrypoint=/bin/sh &lt;image&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Wrap-Dependencies"><a href="#Wrap-Dependencies" class="headerlink" title="Wrap Dependencies"></a>Wrap Dependencies</h2><p>把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:<br>比如 helm linter cv:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it \</span><br><span class="line">-v pathto/chart:/chart \</span><br><span class="line">cv:latest cv lint helm /chart</span><br></pre></td></tr></table></figure></p>
+<h2 id="Version-Release">Version Release</h2>
+<p>可以将源码封装到 docker(tag) 或者 helm chart 中，通过check-in pre/post-CI/CD pipeline 发布，然后在 K8s or Jenkins pipeline 中使用，这样整个流程就非常规范，易于管理。</p>
+<h2 id="Run-in-Background">Run in Background</h2>
+<p>之前一直通过更改<code>--entrypoint</code> 为<code>/bin/sh</code> 加上 <code>-c &quot;tail -f /dev/null&quot;</code>的方式，使容器在后台running，其实可以默认使用 <code>-d</code>(detach) 的方式，但必须了解entrypoint/cmd的设置，比如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the busybox build with CMD ["sh"], here it run as default sh</span></span><br><span class="line"><span class="comment"># and with -it, this container hang in background</span></span><br><span class="line">docker run -itd busybox</span><br><span class="line"></span><br><span class="line"><span class="comment"># if image has entrypoint different than sh or bash, to make it idle</span></span><br><span class="line"><span class="comment"># we have to reset the entrypoint</span></span><br><span class="line">docker run -itd --entrypoint=/bin/sh &lt;image&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Wrap-Dependencies">Wrap Dependencies</h2>
+<p>把一些需要依赖的tool build到docker image中，然后运行docker container去工作，把需要处理的资源mount到container中:
+比如 helm linter cv:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it \</span><br><span class="line">-v pathto/chart:/chart \</span><br><span class="line">cv:latest cv lint helm /chart</span><br></pre></td></tr></table></figure>
 <p>Logs may also be captured by passing an additional volume: <code>-v ~/path/to/logs:/tmp/cv</code></p>
-<p>再比如jsonnet，搭建本地运行环境比较困难:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check jsonnet help</span></span><br><span class="line">docker run --rm -it bitnami/jsonnet:latest --<span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert Chart.yaml.jsonnet to Chart.yaml</span></span><br><span class="line"><span class="comment"># -V: pass parameters to chart.yaml.jsonnet</span></span><br><span class="line"><span class="comment"># -S: plain text display</span></span><br><span class="line"><span class="comment"># sed -e 's/"//g': remove double quotes, but need to quote the version number</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the entrypoint is jsonnet cli</span></span><br><span class="line">docker run \</span><br><span class="line">--rm \</span><br><span class="line">--user root \</span><br><span class="line">-v pathto/Chart.yaml.jsonnet:/Chart.yaml.jsonnet \</span><br><span class="line">bitnami/jsonnet:latest /Chart.yaml.jsonnet -V version=<span class="string">"1.0.0"</span> -S | sed -e <span class="string">'s/"//g'</span></span><br></pre></td></tr></table></figure></p>
+<p>再比如jsonnet，搭建本地运行环境比较困难:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check jsonnet help</span></span><br><span class="line">docker run --rm -it bitnami/jsonnet:latest --<span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert Chart.yaml.jsonnet to Chart.yaml</span></span><br><span class="line"><span class="comment"># -V: pass parameters to chart.yaml.jsonnet</span></span><br><span class="line"><span class="comment"># -S: plain text display</span></span><br><span class="line"><span class="comment"># sed -e 's/"//g': remove double quotes, but need to quote the version number</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the entrypoint is jsonnet cli</span></span><br><span class="line">docker run \</span><br><span class="line">--rm \</span><br><span class="line">--user root \</span><br><span class="line">-v pathto/Chart.yaml.jsonnet:/Chart.yaml.jsonnet \</span><br><span class="line">bitnami/jsonnet:latest /Chart.yaml.jsonnet -V version=<span class="string">"1.0.0"</span> -S | sed -e <span class="string">'s/"//g'</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -634,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -731,7 +720,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1044,7 +1035,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1106,13 +1099,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

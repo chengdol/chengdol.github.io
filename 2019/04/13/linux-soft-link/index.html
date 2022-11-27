@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="首先了解softlink 解决了hardlink什么问题:  Hard links cannot span physical devices or partitions. Hard links cannot reference directories, only files.  Same hard links are spotted by inode value, if a file has mu">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.072Z">
+<meta property="og:updated_time" content="2021-05-06T07:42:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Symbolic Link Operations">
 <meta name="twitter:description" content="首先了解softlink 解决了hardlink什么问题:  Hard links cannot span physical devices or partitions. Hard links cannot reference directories, only files.  Same hard links are spotted by inode value, if a file has mu">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">6.1k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -516,19 +498,39 @@
 <p>Same hard links are spotted by inode value, if a file has mutlipel hard links, then delete all of them in any order would delete the file. You can use <code>stat &lt;file&gt;</code> to check inode and hard links if a file.</p>
 <p>A symbolic link, also known as a <strong>symlink</strong> or a <strong>soft link</strong>, is a special kind of file (entry) that points to the actual file or directory on a disk (like a shortcut in Windows).</p>
 <p>Symbolic links are used all the time to link libraries and often used to link files and folders on mounted NFS (Network File System) shares.</p>
-<p>Generally, the <code>ln</code> syntax is similar to the <code>cp</code> or <code>mv</code> syntax:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="built_in">source</span> destination</span><br><span class="line">ln -s <span class="built_in">source</span> destination</span><br></pre></td></tr></table></figure></p>
+<p>Generally, the <code>ln</code> syntax is similar to the <code>cp</code> or <code>mv</code> syntax:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp <span class="built_in">source</span> destination</span><br><span class="line">ln -s <span class="built_in">source</span> destination</span><br></pre></td></tr></table></figure>
 <p>But if the destination is an directory, soft link will be created inside destination directory.</p>
-<h1 id="Create-Softlink"><a href="#Create-Softlink" class="headerlink" title="Create Softlink"></a>Create Softlink</h1><p>For example, create a symbolic link to a file and directory:<br><code>-s</code>: soft link<br><code>-n</code>: treat LINK_NAME as a normal file if it is a symbolic link to a directory. 意思是如果LINK_NAME存在并且是一个文件夹softlink，那么还是当做一个普通文件对待，这样就不会再文件夹softlink内部去构造软连接了，一般配合<code>-f</code>使用去replace已经存在的软连接。<br><code>-f</code>: remove existing link, otherwise if the link is exist, get error like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># you need to remove the link first</span></span><br><span class="line"><span class="comment"># but with -f, no need</span></span><br><span class="line">ln: failed to create symbolic link ‘xxxx’: File exists</span><br></pre></td></tr></table></figure></p>
-<p>Link path can be absolute or relative, relative is more desirable since the path may be changed.<br>Softlink size is the length of the link path, see in <code>ls -l</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># link a file</span></span><br><span class="line">ln -nfs &lt;path to file&gt; &lt;path to link&gt;</span><br><span class="line"><span class="comment"># link a directory</span></span><br><span class="line">ln -nfs &lt;path to dir&gt; &lt;path to link&gt;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Delete-Softlink"><a href="#Delete-Softlink" class="headerlink" title="Delete Softlink"></a>Delete Softlink</h1><p>There are 2 ways to undo or delete the soft link:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unlink &lt;link name&gt;</span><br><span class="line">rm [-rf] &lt;link name&gt;</span><br></pre></td></tr></table></figure></p>
+<h1>Create Softlink</h1>
+<p>For example, create a symbolic link to a file and directory:
+<code>-s</code>: soft link
+<code>-n</code>: treat LINK_NAME as a normal file if it is a symbolic link to a directory. 意思是如果LINK_NAME存在并且是一个文件夹softlink，那么还是当做一个普通文件对待，这样就不会再文件夹softlink内部去构造软连接了，一般配合<code>-f</code>使用去replace已经存在的软连接。
+<code>-f</code>: remove existing link, otherwise if the link is exist, get error like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># you need to remove the link first</span></span><br><span class="line"><span class="comment"># but with -f, no need</span></span><br><span class="line">ln: failed to create symbolic link ‘xxxx’: File exists</span><br></pre></td></tr></table></figure>
+<p>Link path can be absolute or relative, relative is more desirable since the path may be changed.
+Softlink size is the length of the link path, see in <code>ls -l</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># link a file</span></span><br><span class="line">ln -nfs &lt;path to file&gt; &lt;path to link&gt;</span><br><span class="line"><span class="comment"># link a directory</span></span><br><span class="line">ln -nfs &lt;path to dir&gt; &lt;path to link&gt;</span><br></pre></td></tr></table></figure>
+<h1>Delete Softlink</h1>
+<p>There are 2 ways to undo or delete the soft link:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unlink &lt;link name&gt;</span><br><span class="line">rm [-rf] &lt;link name&gt;</span><br></pre></td></tr></table></figure>
 <p>Note that, the <code>rm</code> command just removes the link. It will not delete the origin.</p>
-<h1 id="Broken-Softlink"><a href="#Broken-Softlink" class="headerlink" title="Broken Softlink"></a>Broken Softlink</h1><p>Find broken symbolic link:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -xtype l</span><br></pre></td></tr></table></figure></p>
-<p>If you want to delete in one go:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -xtype l -delete</span><br></pre></td></tr></table></figure></p>
-<p>A bit of explanation:<br><code>-xtype l</code> tests for links that are broken (it is the opposite of <code>-type</code>)<br><code>-delete</code> deletes the files directly, no need for further bothering with <code>xargs</code> or <code>-exec</code></p>
-<h1 id="Ownership-of-Softlink"><a href="#Ownership-of-Softlink" class="headerlink" title="Ownership of Softlink"></a>Ownership of Softlink</h1><p><a href="https://unix.stackexchange.com/questions/218557/how-to-change-ownership-from-symbolic-links" target="_blank" rel="noopener">How to change ownership from symbolic links?</a><br><a href="https://unix.stackexchange.com/questions/87200/change-permissions-for-a-symbolic-link" target="_blank" rel="noopener">Change permissions for a symbolic link</a></p>
+<h1>Broken Softlink</h1>
+<p>Find broken symbolic link:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -xtype l</span><br></pre></td></tr></table></figure>
+<p>If you want to delete in one go:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -xtype l -delete</span><br></pre></td></tr></table></figure>
+<p>A bit of explanation:
+<code>-xtype l</code> tests for links that are broken (it is the opposite of <code>-type</code>)
+<code>-delete</code> deletes the files directly, no need for further bothering with <code>xargs</code> or <code>-exec</code></p>
+<h1>Ownership of Softlink</h1>
+<p><a href="https://unix.stackexchange.com/questions/218557/how-to-change-ownership-from-symbolic-links" target="_blank" rel="noopener">How to change ownership from symbolic links?</a>
+<a href="https://unix.stackexchange.com/questions/87200/change-permissions-for-a-symbolic-link" target="_blank" rel="noopener">Change permissions for a symbolic link</a></p>
 <p>On most system, softlink ownership does not matter, usually the link permission is <code>777</code>, for example: <code>lrwxrwxrwx</code>, when using, the softlink origin’s permission will be checked.</p>
 <p>How to change the ownership or permission of softlink, <code>chown/chmod -h &lt;link&gt;</code>, if no <code>-h</code>, the chown/chmod will change the ownership of the link origin.</p>
-<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources:"></a>Resources:</h1><p><a href="https://www.shellhacks.com/symlink-create-symbolic-link-linux/" target="_blank" rel="noopener">SymLink – HowTo: Create a Symbolic Link – Linux</a><br><a href="https://unix.stackexchange.com/questions/34248/how-can-i-find-broken-symlinks" target="_blank" rel="noopener">How can I find broken symlinks</a><br><a href="https://unix.stackexchange.com/questions/314974/how-to-delete-broken-symlinks-in-one-go" target="_blank" rel="noopener">How to delete broken symlinks in one go?</a></p>
+<h1>Resources:</h1>
+<p><a href="https://www.shellhacks.com/symlink-create-symbolic-link-linux/" target="_blank" rel="noopener">SymLink – HowTo: Create a Symbolic Link – Linux</a>
+<a href="https://unix.stackexchange.com/questions/34248/how-can-i-find-broken-symlinks" target="_blank" rel="noopener">How can I find broken symlinks</a>
+<a href="https://unix.stackexchange.com/questions/314974/how-to-delete-broken-symlinks-in-one-go" target="_blank" rel="noopener">How to delete broken symlinks in one go?</a></p>
 
       
     </div>
@@ -651,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -748,7 +750,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1061,7 +1065,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1097,7 +1103,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Softlink"><span class="nav-number">1.</span> <span class="nav-text">Create Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Delete-Softlink"><span class="nav-number">2.</span> <span class="nav-text">Delete Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Broken-Softlink"><span class="nav-number">3.</span> <span class="nav-text">Broken Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ownership-of-Softlink"><span class="nav-number">4.</span> <span class="nav-text">Ownership of Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Resources"><span class="nav-number">5.</span> <span class="nav-text">Resources:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Create Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Delete Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Broken Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Ownership of Softlink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Resources:</span></a></li></ol></div>
             
 
           </div>
@@ -1123,13 +1129,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

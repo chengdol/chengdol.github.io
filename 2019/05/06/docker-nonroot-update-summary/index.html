@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">11k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -510,46 +492,58 @@
       
         <p>I haven’t got time to learn Docker systematically so far, but I still gain a lot from daily tasks. This post is a brief summary for what I have done to upgrade the container from owned by root to noon-root for security reason required by our customers.</p>
 <p>I will talk the development workflow instead of the detail about how to set and modify the configurations inside the container:</p>
-<p>I have a base image at beginning, let’s say <code>root_is_engine.tar.gz</code>, load it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i root_is_engine.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>you can check the loaded image by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
+<p>I have a base image at beginning, let’s say <code>root_is_engine.tar.gz</code>, load it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i root_is_engine.tar.gz</span><br></pre></td></tr></table></figure>
+<p>you can check the loaded image by running:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 <p>Now I am going to create the container from this image, but wait, I don’t want the container to run any script or program when it starts, what I need is it just hangs without doing anything.</p>
-<p>That means I need to override the default <code>entrypoint</code> (entrypoint sets the command and parameters that will be executed first when spin up a container) in docker run command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">         --cap-add=SYS_ADMIN \</span><br><span class="line">         --privileged=false --name=$&#123;ENGINE_HOST&#125; --hostname=$&#123;ENGINE_HOST&#125; \</span><br><span class="line">         --restart=always --add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;ENGINE_HOST_IP&#125; \</span><br><span class="line">         -p 8449:8449 \</span><br><span class="line">         -v $&#123;DEDICATED_ENGINE_VOLPATH&#125;/$&#123;ENGINE_HOST&#125;/EngineClients/db2_client/dsadm:/home/dsadm \</span><br><span class="line">         --entrypoint=/bin/sh \</span><br><span class="line">         $&#123;DOCKER_IMAGE_TAG_ENGINE&#125;:$&#123;DOCKER_IMAGE_VERSION&#125; \</span><br><span class="line">         -c &apos;tail -f /dev/null&apos;</span><br></pre></td></tr></table></figure></p>
+<p>That means I need to override the default <code>entrypoint</code> (entrypoint sets the command and parameters that will be executed first when spin up a container) in docker run command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">         --cap-add=SYS_ADMIN \</span><br><span class="line">         --privileged=false --name=$&#123;ENGINE_HOST&#125; --hostname=$&#123;ENGINE_HOST&#125; \</span><br><span class="line">         --restart=always --add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;ENGINE_HOST_IP&#125; \</span><br><span class="line">         -p 8449:8449 \</span><br><span class="line">         -v $&#123;DEDICATED_ENGINE_VOLPATH&#125;/$&#123;ENGINE_HOST&#125;/EngineClients/db2_client/dsadm:/home/dsadm \</span><br><span class="line">         --entrypoint=/bin/sh \</span><br><span class="line">         $&#123;DOCKER_IMAGE_TAG_ENGINE&#125;:$&#123;DOCKER_IMAGE_VERSION&#125; \</span><br><span class="line">         -c &apos;tail -f /dev/null&apos;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Note that place the arguments to your entrypoint at the <strong>end</strong> of your docker command <code>-c &#39;tail -f /dev/null&#39;</code></p>
+<p>Note that place the arguments to your entrypoint at the <strong>end</strong> of your docker command <code>-c 'tail -f /dev/null'</code></p>
 </blockquote>
-<p>Run <code>docker ps</code> command, you can see under <code>COMMAND</code> column the entrypoint is what I specified:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">b462f6123684        is-engine-image:1       &quot;/bin/sh -c &apos;tail -f...&quot;   2 days ago          Up 2 days           0.0.0.0:8449-&gt;8449/tcp   is-en-conductor-0.en-cond</span><br></pre></td></tr></table></figure></p>
-<p>Then get into the container by running:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it &lt;container id or container name&gt; [bash|sh]</span><br></pre></td></tr></table></figure></p>
-<p>Then if you check the process status, you can see the init process with PID #1 is running <code>tail</code> command to track <code>/dev/null</code> device file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br><span class="line"></span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         1  0.0  0.0   5968   616 ?        Ss   16:47   0:00 tail -f /dev/null</span><br><span class="line">root        27  1.5  0.0  13420  1992 pts/0    Ss   16:50   0:00 bash</span><br><span class="line">root        45  0.0  0.0  53340  1864 pts/0    R+   16:50   0:00 ps aux</span><br></pre></td></tr></table></figure></p>
+<p>Run <code>docker ps</code> command, you can see under <code>COMMAND</code> column the entrypoint is what I specified:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">b462f6123684        is-engine-image:1       &quot;/bin/sh -c &apos;tail -f...&quot;   2 days ago          Up 2 days           0.0.0.0:8449-&gt;8449/tcp   is-en-conductor-0.en-cond</span><br></pre></td></tr></table></figure>
+<p>Then get into the container by running:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it &lt;container id or container name&gt; [bash|sh]</span><br></pre></td></tr></table></figure>
+<p>Then if you check the process status, you can see the init process with PID #1 is running <code>tail</code> command to track <code>/dev/null</code> device file:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br><span class="line"></span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         1  0.0  0.0   5968   616 ?        Ss   16:47   0:00 tail -f /dev/null</span><br><span class="line">root        27  1.5  0.0  13420  1992 pts/0    Ss   16:50   0:00 bash</span><br><span class="line">root        45  0.0  0.0  53340  1864 pts/0    R+   16:50   0:00 ps aux</span><br></pre></td></tr></table></figure>
 <p>OK, now I can make changes, for example, create and switch to ordinary user with specified user id and group id, grant them privileges, modify the owner and permission of some files, run and update startup script line by line to see if the applications setup correctly with non-root.</p>
 <blockquote>
 <p>Note if you have mount path in host machine, you may need to <code>chown</code> correct uid and gid, otherwise ordinary user in container may get permission denied issue.</p>
 </blockquote>
-<p>After running some tests and they succeed, I need to <strong>commit</strong> the changes into a new image. </p>
+<p>After running some tests and they succeed, I need to <strong>commit</strong> the changes into a new image.</p>
 <ul>
-<li><p>First understand how does <code>docker commit</code> work? what will be committed into new image?</p>
+<li>
+<p>First understand how does <code>docker commit</code> work? what will be committed into new image?</p>
 <p>The container has a writable layer that stacks on top of the image layers. This writable layer allows you to <em>make changes</em> to the container since the lower layers in the image are read-only.</p>
 <p>From the docker documentation, it said: It can be useful to commit a container’s <strong>file</strong> changes or <strong>settings</strong> into a new image.</p>
 <p>The commit operation will <strong>not</strong> include any data contained in volumes mounted inside the container.</p>
 <p>By default, the container being committed and its processes will be paused while the image is committed. This reduces the likelihood of encountering data corruption during the process of creating the commit. If this behavior is undesired, set the <code>--pause</code> option to false.</p>
 <p>The <code>--change</code> option will apply Dockerfile instructions to the image that is created. Supported Dockerfile instructions: <code>CMD|ENTRYPOINT|ENV|EXPOSE|LABEL|ONBUILD|USER|VOLUME|WORKDIR</code></p>
 </li>
-<li><p>How about processes in the running container?</p>
+<li>
+<p>How about processes in the running container?</p>
 <p>When you start container from image then process will start here - processes exists <strong>only</strong> in executing container, when container stops there are no processes anymore - only files from container’s filesystem.</p>
 </li>
 </ul>
 <blockquote>
 <p>Note that before committing, you need to quiesce the services and remove the mount path content to unlink all broken symbolic links.</p>
 </blockquote>
-<p>Also remember to put the old entrypoint back:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker commit \</span><br><span class="line">       --change &apos;ENTRYPOINT [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;/opt/xx/initScripts/startcontainer.sh&quot;]&apos; \</span><br><span class="line">       &lt;container ID&gt; is-engine-image:1</span><br></pre></td></tr></table></figure></p>
+<p>Also remember to put the old entrypoint back:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker commit \</span><br><span class="line">       --change &apos;ENTRYPOINT [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;/opt/xx/initScripts/startcontainer.sh&quot;]&apos; \</span><br><span class="line">       &lt;container ID&gt; is-engine-image:1</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Note that <code>podman</code> commit format is different.</p>
 </blockquote>
 <blockquote>
 <p>Note that you may use <code>bin/sh</code> instead of <code>/bin/bash</code>.</p>
 </blockquote>
-<p>OK, now start to run the new image with non-root user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">         --user 1000 \</span><br><span class="line">         --cap-add=SYS_ADMIN \</span><br><span class="line">         --privileged=false --name=$&#123;ENGINE_HOST&#125; --hostname=$&#123;ENGINE_HOST&#125; \</span><br><span class="line">         --restart=always --add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;ENGINE_HOST_IP&#125; \</span><br><span class="line">         -p 8449:8449 \</span><br><span class="line">         -v $&#123;DEDICATED_ENGINE_VOLPATH&#125;/$&#123;ENGINE_HOST&#125;/EngineClients/db2_client/dsadm:/home/dsadm \</span><br><span class="line">         $&#123;DOCKER_IMAGE_TAG_ENGINE&#125;:$&#123;DOCKER_IMAGE_VERSION&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Let’s see the processes in the non-root container:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">dsadm        1  0.0  0.0  13288  1604 ?        Ss   18:29   0:00 /bin/bash /opt/xx/initScripts/startcontainer.sh</span><br><span class="line">dsadm      540  0.0  0.0   5968   620 ?        S    18:29   0:00 tail -f /dev/null</span><br><span class="line">dsadm      568  0.1  0.3 2309632 24792 ?       Sl   18:29   0:00 /opt/xx/../../jdk</span><br><span class="line">dsadm      589  2.5  0.0  13420  2012 pts/0    Ss   18:36   0:00 bash</span><br><span class="line">dsadm      610  0.0  0.0  53340  1868 pts/0    R+   18:36   0:00 ps aux</span><br></pre></td></tr></table></figure></p>
-<p>If all things are in good shape, save the image into tar.gz format, of course you can use a new tag before saving:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save is-engine-image:1 | gzip &gt; ~/nonroot_is_engine.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>OK, now start to run the new image with non-root user:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">         --user 1000 \</span><br><span class="line">         --cap-add=SYS_ADMIN \</span><br><span class="line">         --privileged=false --name=$&#123;ENGINE_HOST&#125; --hostname=$&#123;ENGINE_HOST&#125; \</span><br><span class="line">         --restart=always --add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;ENGINE_HOST_IP&#125; \</span><br><span class="line">         -p 8449:8449 \</span><br><span class="line">         -v $&#123;DEDICATED_ENGINE_VOLPATH&#125;/$&#123;ENGINE_HOST&#125;/EngineClients/db2_client/dsadm:/home/dsadm \</span><br><span class="line">         $&#123;DOCKER_IMAGE_TAG_ENGINE&#125;:$&#123;DOCKER_IMAGE_VERSION&#125;</span><br></pre></td></tr></table></figure>
+<p>Let’s see the processes in the non-root container:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">dsadm        1  0.0  0.0  13288  1604 ?        Ss   18:29   0:00 /bin/bash /opt/xx/initScripts/startcontainer.sh</span><br><span class="line">dsadm      540  0.0  0.0   5968   620 ?        S    18:29   0:00 tail -f /dev/null</span><br><span class="line">dsadm      568  0.1  0.3 2309632 24792 ?       Sl   18:29   0:00 /opt/xx/../../jdk</span><br><span class="line">dsadm      589  2.5  0.0  13420  2012 pts/0    Ss   18:36   0:00 bash</span><br><span class="line">dsadm      610  0.0  0.0  53340  1868 pts/0    R+   18:36   0:00 ps aux</span><br></pre></td></tr></table></figure>
+<p>If all things are in good shape, save the image into tar.gz format, of course you can use a new tag before saving:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save is-engine-image:1 | gzip &gt; ~/nonroot_is_engine.tar.gz</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Note that there is a <code>gzip</code> to compress the image.</p>
 </blockquote>
@@ -670,7 +664,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -767,7 +761,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1080,7 +1076,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1125,13 +1123,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

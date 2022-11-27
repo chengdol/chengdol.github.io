@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 后续还可以添加basic auth service, 甚至SSL/TLS support, 作为其他服务的测试工具。 How">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-09-19T01:58:57.029Z">
+<meta property="og:updated_time" content="2020-09-19T01:58:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Simple Http(s) Server">
 <meta name="twitter:description" content="最近为了在局域网中传输文件，用Python搭建了一个很简单的HTTP web server to serve files, 其实有其他软件也可以完成类似功能，甚至scp command也行。不过这个简单的HTTP web server里面的文件结构一目了然，下载非常方便。 后续还可以添加basic auth service, 甚至SSL/TLS support, 作为其他服务的测试工具。 How">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">5.9k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -515,11 +497,18 @@
 <li>用<code>virtualenvwrapper</code> 先搭建一个python3 项目和对应的环境。</li>
 <li>激活环境后, 写一个shell script，输出运行时的网址和端口</li>
 </ol>
-<p>比如在Mac中，使用如下脚本:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## use 8000 as port number</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$(ifconfig | grep -A 10 ^en0 | grep inet | grep -v inet6 | cut -d" " -f2)</span>"</span>:8000</span><br><span class="line"><span class="comment">## http.server module</span></span><br><span class="line"><span class="comment">## port number: 8000</span></span><br><span class="line"><span class="comment">## --directory: old version python may not support this option</span></span><br><span class="line">python3 -m http.server 8000 --<span class="built_in">bind</span> 0.0.0.0 --directory &lt;absolute path to share folder&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Basic-Auth"><a href="#Basic-Auth" class="headerlink" title="Basic Auth"></a>Basic Auth</h2><p><a href="https://gist.github.com/fxsjy/5465353" target="_blank" rel="noopener">https://gist.github.com/fxsjy/5465353</a><br>You can package it in container or run on virtualenv.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## works on python2</span></span><br><span class="line"><span class="comment">## port: 8080</span></span><br><span class="line"><span class="comment">## auth: user:password</span></span><br><span class="line">python2 -m main.py 8080 chengdol:123456</span><br></pre></td></tr></table></figure></p>
+<p>比如在Mac中，使用如下脚本:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## use 8000 as port number</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$(ifconfig | grep -A 10 ^en0 | grep inet | grep -v inet6 | cut -d" " -f2)</span>"</span>:8000</span><br><span class="line"><span class="comment">## http.server module</span></span><br><span class="line"><span class="comment">## port number: 8000</span></span><br><span class="line"><span class="comment">## --directory: old version python may not support this option</span></span><br><span class="line">python3 -m http.server 8000 --<span class="built_in">bind</span> 0.0.0.0 --directory &lt;absolute path to share folder&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Basic-Auth">Basic Auth</h2>
+<p><a href="https://gist.github.com/fxsjy/5465353" target="_blank" rel="noopener">https://gist.github.com/fxsjy/5465353</a>
+You can package it in container or run on virtualenv.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## works on python2</span></span><br><span class="line"><span class="comment">## port: 8080</span></span><br><span class="line"><span class="comment">## auth: user:password</span></span><br><span class="line">python2 -m main.py 8080 chengdol:123456</span><br></pre></td></tr></table></figure>
 <p>This script is modified and integrate to below pip module.</p>
-<h2 id="HTTPS-Basic-Auth"><a href="#HTTPS-Basic-Auth" class="headerlink" title="HTTPS Basic Auth"></a>HTTPS Basic Auth</h2><p><a href="https://github.com/tianhuil/SimpleHTTPAuthServer" target="_blank" rel="noopener">https://github.com/tianhuil/SimpleHTTPAuthServer</a><br>You can run the pip in python2 virtualenv or build a docker container.</p>
-<p>Modify to build a image with https auth server, for example:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## works on python2</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/app</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">USER root</span></span><br><span class="line"><span class="bash"><span class="comment">## pip install</span></span></span><br><span class="line"><span class="bash">RUN pip install SimpleHTTPAuthServer</span></span><br><span class="line"><span class="bash"><span class="comment">## to setup self-signed certificate, need to pre-generated key and cert</span></span></span><br><span class="line"><span class="bash">RUN mkdir -p /root/.ssh</span></span><br><span class="line"><span class="bash">RUN openssl req \</span></span><br><span class="line"><span class="bash">    -newkey rsa:2048 -new -nodes -x509 -days 3650 \</span></span><br><span class="line"><span class="bash">    -keyout /root/.ssh/key.pem -out /root/.ssh/cert.pem \</span></span><br><span class="line"><span class="bash">    -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=GOOG/OU=Org/CN=localhost"</span></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">## copy other files to WORKDIR</span></span></span><br><span class="line"><span class="bash">COPY file.txt .</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">EXPOSE 8080</span></span><br><span class="line"><span class="bash"><span class="comment">## start with https</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"python"</span>, <span class="string">"-m"</span>, <span class="string">"SimpleHTTPAuthServer"</span>, <span class="string">"8080"</span>, <span class="string">"chengdol:123456"</span>, <span class="string">"--https"</span>]</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="HTTPS-Basic-Auth">HTTPS Basic Auth</h2>
+<p><a href="https://github.com/tianhuil/SimpleHTTPAuthServer" target="_blank" rel="noopener">https://github.com/tianhuil/SimpleHTTPAuthServer</a>
+You can run the pip in python2 virtualenv or build a docker container.</p>
+<p>Modify to build a image with https auth server, for example:</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## works on python2</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /usr/src/app</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">USER root</span></span><br><span class="line"><span class="bash"><span class="comment">## pip install</span></span></span><br><span class="line"><span class="bash">RUN pip install SimpleHTTPAuthServer</span></span><br><span class="line"><span class="bash"><span class="comment">## to setup self-signed certificate, need to pre-generated key and cert</span></span></span><br><span class="line"><span class="bash">RUN mkdir -p /root/.ssh</span></span><br><span class="line"><span class="bash">RUN openssl req \</span></span><br><span class="line"><span class="bash">    -newkey rsa:2048 -new -nodes -x509 -days 3650 \</span></span><br><span class="line"><span class="bash">    -keyout /root/.ssh/key.pem -out /root/.ssh/cert.pem \</span></span><br><span class="line"><span class="bash">    -subj <span class="string">"/C=US/ST=CA/L=San Jose/O=GOOG/OU=Org/CN=localhost"</span></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">## copy other files to WORKDIR</span></span></span><br><span class="line"><span class="bash">COPY file.txt .</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">EXPOSE 8080</span></span><br><span class="line"><span class="bash"><span class="comment">## start with https</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"python"</span>, <span class="string">"-m"</span>, <span class="string">"SimpleHTTPAuthServer"</span>, <span class="string">"8080"</span>, <span class="string">"chengdol:123456"</span>, <span class="string">"--https"</span>]</span></span><br></pre></td></tr></table></figure>
 <p>Then go to firefox, type and hit <code>https://localhost:8080</code>.</p>
 
       
@@ -643,7 +632,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -740,7 +729,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1053,7 +1044,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1115,13 +1108,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

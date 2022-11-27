@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This blog is for Network file system NFS with only one server. 但NFS有新版本支持multi-server了。For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS).For cluster">
+  <meta name="description" content="This blog is for Network file system NFS with only one server. 但NFS有新版本支持multi-server了。 For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS). For cluste">
 <meta name="keywords" content="linux,filesystem,nfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NFS Server and Client Setup">
 <meta property="og:url" content="http://yoursite.com/2019/05/27/fs-nfs/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This blog is for Network file system NFS with only one server. 但NFS有新版本支持multi-server了。For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS).For cluster">
+<meta property="og:description" content="This blog is for Network file system NFS with only one server. 但NFS有新版本支持multi-server了。 For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS). For cluste">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-12-27T06:42:53.451Z">
+<meta property="og:updated_time" content="2021-12-27T06:42:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NFS Server and Client Setup">
-<meta name="twitter:description" content="This blog is for Network file system NFS with only one server. 但NFS有新版本支持multi-server了。For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS).For cluster">
+<meta name="twitter:description" content="This blog is for Network file system NFS with only one server. 但NFS有新版本支持multi-server了。 For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS). For cluste">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">9.1k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,25 +490,45 @@
       
 
       
-        <p>This blog is for Network file system NFS with only <code>one</code> server. 但NFS有新版本支持multi-server了。<br>For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS).<br>For cluster file systems: GFS2 (linux native support)</p>
+        <p>This blog is for Network file system NFS with only <code>one</code> server. 但NFS有新版本支持multi-server了。
+For distributed file system (multiple servers): openAFS, GlusterFS (native support on Redhat/centOS).
+For cluster file systems: GFS2 (linux native support)</p>
 <p>So, <a href="https://www.quora.com/What-is-the-difference-between-a-distributed-file-system-clustered-file-system-and-a-network-file-system" target="_blank" rel="noopener">what is the difference among network, distributed and cluster file systems?</a>. 补充一点: Distributed or netowrk file system also ensure data availability across multiple server nodes and can usually handle nodes being added and removed more gracefully. Don’t make assumptions about how well this will work; be sure to test not only for performance and latency, but also for the impact of changes to the cluster and for failure scenarios.</p>
-<p>NFS是一个概念(protocol)，它不是一个文件系统的类型，它是一种文件系统的共享方式, 这里默认使用本地Linux的文件系统类型了。<br>NFS allows remote hosts to mount <code>filesystems</code>(can be any) over a network and interact with those filesystems as though they are mounted locally. </p>
+<p>NFS是一个概念(protocol)，它不是一个文件系统的类型，它是一种文件系统的共享方式, 这里默认使用本地Linux的文件系统类型了。
+NFS allows remote hosts to mount <code>filesystems</code>(can be any) over a network and interact with those filesystems as though they are mounted locally.</p>
 <p>NFS lets you leverage storage space in a different location and allows you to write onto the same space from multiple servers or clients in an effortless manner. It, thus, works fairly well for directories that users need to access frequently.</p>
 <p>常见用法，比如分享home directories so if switch to different host, just mount them, supports diskless machines, but be careful with UIDs and GIDs, ensure they are the same person on each machine.</p>
-<h1 id="Server-Setup"><a href="#Server-Setup" class="headerlink" title="Server Setup"></a>Server Setup</h1><p>Acutally there are many other package may needed, this <a href="https://www.youtube.com/watch?v=MBqZe5d9BNQ" target="_blank" rel="noopener">video</a> may give you more details.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nfs package</span></span><br><span class="line">yum -y install nfs-utils</span><br></pre></td></tr></table></figure></p>
-<p>Then enable and start nfs server:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the rpc by default should be on, but may not</span></span><br><span class="line"><span class="comment"># rpc is called remote producture call</span></span><br><span class="line"><span class="comment"># nfs server needs this to access and operate on others</span></span><br><span class="line">systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">systemctl start rpcbind</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> nfs-server.service</span><br><span class="line">systemctl start nfs-server.service</span><br><span class="line"><span class="comment"># create server side shared folder</span></span><br><span class="line">mkdir –p /data</span><br><span class="line">chmod –R 755 /data</span><br></pre></td></tr></table></figure></p>
-<p>Edit <code>/etc/exports</code> file to expose shared folder<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/exports </span><br><span class="line"></span><br><span class="line"><span class="comment"># any client can access this folder</span></span><br><span class="line">/data *(rw,insecure,async,no_root_squash)   </span><br><span class="line"><span class="comment"># or specific client can access this folder</span></span><br><span class="line">/data &lt;client ip&gt;(rw,insecure,async,no_root_squash)</span><br></pre></td></tr></table></figure></p>
-<p>Then export the shared folder:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exportfs -a</span><br><span class="line">systemctl restart nfs-server.service</span><br></pre></td></tr></table></figure></p>
-<p>Check shared folder is up <code>showmount -e &lt;server ip&gt;</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showmount -e localhost</span><br></pre></td></tr></table></figure></p>
-<p>If you change the content in <code>/etc/exports</code>, need to reload:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportfs -ra</span><br></pre></td></tr></table></figure></p>
-<p>Check mount options:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportfs -v</span><br></pre></td></tr></table></figure></p>
-<h1 id="Client-Setup"><a href="#Client-Setup" class="headerlink" title="Client Setup"></a>Client Setup</h1><p>First create or using existing folder as folder to mount, here I use <code>/mntiis</code> folder in client machine<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nfs package</span></span><br><span class="line">yum -y install nfs-utils</span><br><span class="line"></span><br><span class="line"><span class="comment"># create client side shared folder</span></span><br><span class="line">mkdir -p /mntiis</span><br><span class="line">chmod -R 0755 /mntiis</span><br></pre></td></tr></table></figure></p>
-<p>If you use non-persistent mount in command line, this connection will disappear after rebooting:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount &lt;server ip&gt;:/data     /mntiis</span><br></pre></td></tr></table></figure></p>
-<p>For persistent mount, go to <code>/etc/fstab</code> file, add this line<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;server ip&gt;:/data /mntiis nfs defaults 0 0</span><br><span class="line"><span class="comment"># or with other mount options</span></span><br><span class="line">&lt;server ip&gt;:/data /mntiis nfs defaults,timeo=10,retrans=3,rsize=1048576,wsize=1048576 0 0</span><br></pre></td></tr></table></figure></p>
-<p>Enable mount:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mount /mntiis</span><br><span class="line"><span class="comment"># or reload all in fstab file</span></span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure></p>
-<p>Verify all set, you can see the <code>/mntiis</code> in the output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -hk</span><br></pre></td></tr></table></figure></p>
-<p>When you remove the entry in <code>/etc/fstab</code> filem, also unmount the folder, otherwise you will see <code>/mntiis</code> is marked by <code>?</code> in filesystem:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mntiis</span><br></pre></td></tr></table></figure></p>
-<h1 id="Mount-On-demand"><a href="#Mount-On-demand" class="headerlink" title="Mount On-demand"></a>Mount On-demand</h1><p>You can set NFS auto mount on-demand via <code>autofs</code>, this can avoid wasting resources by unmounting mount point when not using and mounting it when access again.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y autofs</span><br><span class="line">systemctl start autofs</span><br></pre></td></tr></table></figure></p>
+<h1>Server Setup</h1>
+<p>Acutally there are many other package may needed, this <a href="https://www.youtube.com/watch?v=MBqZe5d9BNQ" target="_blank" rel="noopener">video</a> may give you more details.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nfs package</span></span><br><span class="line">yum -y install nfs-utils</span><br></pre></td></tr></table></figure>
+<p>Then enable and start nfs server:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the rpc by default should be on, but may not</span></span><br><span class="line"><span class="comment"># rpc is called remote producture call</span></span><br><span class="line"><span class="comment"># nfs server needs this to access and operate on others</span></span><br><span class="line">systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">systemctl start rpcbind</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> nfs-server.service</span><br><span class="line">systemctl start nfs-server.service</span><br><span class="line"><span class="comment"># create server side shared folder</span></span><br><span class="line">mkdir –p /data</span><br><span class="line">chmod –R 755 /data</span><br></pre></td></tr></table></figure>
+<p>Edit <code>/etc/exports</code> file to expose shared folder</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/exports </span><br><span class="line"></span><br><span class="line"><span class="comment"># any client can access this folder</span></span><br><span class="line">/data *(rw,insecure,async,no_root_squash)   </span><br><span class="line"><span class="comment"># or specific client can access this folder</span></span><br><span class="line">/data &lt;client ip&gt;(rw,insecure,async,no_root_squash)</span><br></pre></td></tr></table></figure>
+<p>Then export the shared folder:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exportfs -a</span><br><span class="line">systemctl restart nfs-server.service</span><br></pre></td></tr></table></figure>
+<p>Check shared folder is up <code>showmount -e &lt;server ip&gt;</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showmount -e localhost</span><br></pre></td></tr></table></figure>
+<p>If you change the content in <code>/etc/exports</code>, need to reload:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportfs -ra</span><br></pre></td></tr></table></figure>
+<p>Check mount options:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exportfs -v</span><br></pre></td></tr></table></figure>
+<h1>Client Setup</h1>
+<p>First create or using existing folder as folder to mount, here I use <code>/mntiis</code> folder in client machine</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install nfs package</span></span><br><span class="line">yum -y install nfs-utils</span><br><span class="line"></span><br><span class="line"><span class="comment"># create client side shared folder</span></span><br><span class="line">mkdir -p /mntiis</span><br><span class="line">chmod -R 0755 /mntiis</span><br></pre></td></tr></table></figure>
+<p>If you use non-persistent mount in command line, this connection will disappear after rebooting:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount &lt;server ip&gt;:/data     /mntiis</span><br></pre></td></tr></table></figure>
+<p>For persistent mount, go to <code>/etc/fstab</code> file, add this line</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;server ip&gt;:/data /mntiis nfs defaults 0 0</span><br><span class="line"><span class="comment"># or with other mount options</span></span><br><span class="line">&lt;server ip&gt;:/data /mntiis nfs defaults,timeo=10,retrans=3,rsize=1048576,wsize=1048576 0 0</span><br></pre></td></tr></table></figure>
+<p>Enable mount:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mount /mntiis</span><br><span class="line"><span class="comment"># or reload all in fstab file</span></span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure>
+<p>Verify all set, you can see the <code>/mntiis</code> in the output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -hk</span><br></pre></td></tr></table></figure>
+<p>When you remove the entry in <code>/etc/fstab</code> filem, also unmount the folder, otherwise you will see <code>/mntiis</code> is marked by <code>?</code> in filesystem:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mntiis</span><br></pre></td></tr></table></figure>
+<h1>Mount On-demand</h1>
+<p>You can set NFS auto mount on-demand via <code>autofs</code>, this can avoid wasting resources by unmounting mount point when not using and mounting it when access again.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y autofs</span><br><span class="line">systemctl start autofs</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -651,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -748,7 +750,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1061,7 +1065,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1097,7 +1103,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Server-Setup"><span class="nav-number">1.</span> <span class="nav-text">Server Setup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Client-Setup"><span class="nav-number">2.</span> <span class="nav-text">Client Setup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mount-On-demand"><span class="nav-number">3.</span> <span class="nav-text">Mount On-demand</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Server Setup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Client Setup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Mount On-demand</span></a></li></ol></div>
             
 
           </div>
@@ -1123,13 +1129,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

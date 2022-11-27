@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Starting with kernel 2.2, Linux divides the privileges traditionally associated with superuser into distinct units, known as capabilities, which can be independently enabled and disabled. This way the">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-04-20T05:39:33.681Z">
+<meta property="og:updated_time" content="2022-04-20T05:39:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Capability">
 <meta name="twitter:description" content="Starting with kernel 2.2, Linux divides the privileges traditionally associated with superuser into distinct units, known as capabilities, which can be independently enabled and disabled. This way the">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">20k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -512,14 +494,22 @@
 <p>This story started by removing <code>SYS_ADMIN</code> and <code>SYS_RESOURCE</code> Linux capabilities from K8s container which hosts DB2. Why we removed them? Because by the time DB2 has to run as root(to tune kernel parameters), so we want to minimize the privilege of the root user by removing some risky Linux capabilities from pod/container.</p>
 <p>And a container is really just a process running on the system, separated using cgroups and namespaces in the kernel. This means that capabilities can be assigned to the container in just the same way as with any other process and this is handled by the container runtime when it creates the container.</p>
 <p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container" target="_blank" rel="noopener">How to add/remove Linux capabilities in K8s</a></p>
-<p><a href="https://www.redhat.com/en/blog/secure-your-containers-one-weird-trick" target="_blank" rel="noopener">Secure Your Containers with this One Weird Trick</a>: The way I describe it is that most people think of root as being all powerful. This isn’t the whole picture, the root user with all capabilities is all powerful. </p>
+<p><a href="https://www.redhat.com/en/blog/secure-your-containers-one-weird-trick" target="_blank" rel="noopener">Secure Your Containers with this One Weird Trick</a>: The way I describe it is that most people think of root as being all powerful. This isn’t the whole picture, the root user with all capabilities is all powerful.</p>
 <p><a href="https://snyk.io/blog/kubernetes-securitycontext-linux-capabilities/" target="_blank" rel="noopener">Linux capabilities in Kubernetes</a></p>
 <p>For the purpose of performing permission checks, traditional UNIX implementations distinguish two categories of processes: <code>privileged</code> processes (whose effective user ID is 0, referred to as superuser or root), and <code>unprivileged</code> processes (whose effective UID is nonzero).</p>
-<h2 id="Basic-Capability-Thing"><a href="#Basic-Capability-Thing" class="headerlink" title="Basic Capability Thing"></a>Basic Capability Thing</h2><h3 id="Header-File"><a href="#Header-File" class="headerlink" title="Header File"></a>Header File</h3><p>Linux capabilities are defined in a header file with the non-surprising name <code>capability.h</code>, in <code>/usr/include/linux/capability.h</code>. They’re pretty self-explanatory and well commented</p>
-<h3 id="Capability-Number"><a href="#Capability-Number" class="headerlink" title="Capability Number"></a>Capability Number</h3><p>To see the highest capability number for your kernel, use the data from the <code>/proc</code> file system.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /proc/sys/kernel/cap_last_cap</span></span><br><span class="line">36</span><br></pre></td></tr></table></figure></p>
-<h3 id="Current-Capabilities"><a href="#Current-Capabilities" class="headerlink" title="Current Capabilities"></a>Current Capabilities</h3><p>To see the current capabilities list, run <code>capsh --print</code>, for example, as normal user <code>dsadm</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># capsh --print</span></span><br><span class="line"></span><br><span class="line">Current: =</span><br><span class="line">Bounding <span class="built_in">set</span> =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,</span><br><span class="line">cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,</span><br><span class="line">cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,</span><br><span class="line">cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,</span><br><span class="line">cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,</span><br><span class="line">cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,</span><br><span class="line">35,36</span><br><span class="line">Securebits: 00/0x0/1<span class="string">'b0</span></span><br><span class="line"><span class="string"> secure-noroot: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-no-suid-fixup: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-keep-caps: no (unlocked)</span></span><br><span class="line"><span class="string">uid=1002(dsadm)</span></span><br><span class="line"><span class="string">gid=1002(dsadm)</span></span><br><span class="line"><span class="string">groups=1002(dsadm)</span></span><br></pre></td></tr></table></figure></p>
-<p>you see the <code>Current: =</code> is empty, but if you run as <code>root</code> user:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ capsh --<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line">Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,</span><br><span class="line">cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,</span><br><span class="line">cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,</span><br><span class="line">cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,</span><br><span class="line">cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,</span><br><span class="line">cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,</span><br><span class="line">35,36+ep</span><br><span class="line">Bounding <span class="built_in">set</span> =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,</span><br><span class="line">cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,</span><br><span class="line">cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,</span><br><span class="line">cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,</span><br><span class="line">cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,</span><br><span class="line">cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,</span><br><span class="line">35,36</span><br><span class="line">Securebits: 00/0x0/1<span class="string">'b0</span></span><br><span class="line"><span class="string"> secure-noroot: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-no-suid-fixup: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-keep-caps: no (unlocked)</span></span><br><span class="line"><span class="string">uid=0(root)</span></span><br><span class="line"><span class="string">gid=0(root)</span></span><br><span class="line"><span class="string">groups=0(root)</span></span><br></pre></td></tr></table></figure></p>
-<p>To see the capabilities for a particular process, run <code>cat /proc/&lt;PID&gt;/status | grep -i cap</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /proc/1/status | grep -i cap</span></span><br><span class="line"></span><br><span class="line">CapInh: 00000000a884a5fb</span><br><span class="line">CapPrm: 00000000a884a5fb</span><br><span class="line">CapEff: 00000000a884a5fb</span><br><span class="line">CapBnd: 00000000a884a5fb</span><br><span class="line">CapAmb: 0000000000000000</span><br></pre></td></tr></table></figure></p>
+<h2 id="Basic-Capability-Thing">Basic Capability Thing</h2>
+<h3 id="Header-File">Header File</h3>
+<p>Linux capabilities are defined in a header file with the non-surprising name <code>capability.h</code>, in <code>/usr/include/linux/capability.h</code>. They’re pretty self-explanatory and well commented</p>
+<h3 id="Capability-Number">Capability Number</h3>
+<p>To see the highest capability number for your kernel, use the data from the <code>/proc</code> file system.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /proc/sys/kernel/cap_last_cap</span></span><br><span class="line">36</span><br></pre></td></tr></table></figure>
+<h3 id="Current-Capabilities">Current Capabilities</h3>
+<p>To see the current capabilities list, run <code>capsh --print</code>, for example, as normal user <code>dsadm</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># capsh --print</span></span><br><span class="line"></span><br><span class="line">Current: =</span><br><span class="line">Bounding <span class="built_in">set</span> =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,</span><br><span class="line">cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,</span><br><span class="line">cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,</span><br><span class="line">cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,</span><br><span class="line">cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,</span><br><span class="line">cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,</span><br><span class="line">35,36</span><br><span class="line">Securebits: 00/0x0/1<span class="string">'b0</span></span><br><span class="line"><span class="string"> secure-noroot: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-no-suid-fixup: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-keep-caps: no (unlocked)</span></span><br><span class="line"><span class="string">uid=1002(dsadm)</span></span><br><span class="line"><span class="string">gid=1002(dsadm)</span></span><br><span class="line"><span class="string">groups=1002(dsadm)</span></span><br></pre></td></tr></table></figure>
+<p>you see the <code>Current: =</code> is empty, but if you run as <code>root</code> user:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ capsh --<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line">Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,</span><br><span class="line">cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,</span><br><span class="line">cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,</span><br><span class="line">cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,</span><br><span class="line">cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,</span><br><span class="line">cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,</span><br><span class="line">35,36+ep</span><br><span class="line">Bounding <span class="built_in">set</span> =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,</span><br><span class="line">cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,</span><br><span class="line">cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,</span><br><span class="line">cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,</span><br><span class="line">cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,</span><br><span class="line">cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,</span><br><span class="line">35,36</span><br><span class="line">Securebits: 00/0x0/1<span class="string">'b0</span></span><br><span class="line"><span class="string"> secure-noroot: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-no-suid-fixup: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-keep-caps: no (unlocked)</span></span><br><span class="line"><span class="string">uid=0(root)</span></span><br><span class="line"><span class="string">gid=0(root)</span></span><br><span class="line"><span class="string">groups=0(root)</span></span><br></pre></td></tr></table></figure>
+<p>To see the capabilities for a particular process, run <code>cat /proc/&lt;PID&gt;/status | grep -i cap</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /proc/1/status | grep -i cap</span></span><br><span class="line"></span><br><span class="line">CapInh: 00000000a884a5fb</span><br><span class="line">CapPrm: 00000000a884a5fb</span><br><span class="line">CapEff: 00000000a884a5fb</span><br><span class="line">CapBnd: 00000000a884a5fb</span><br><span class="line">CapAmb: 0000000000000000</span><br></pre></td></tr></table></figure>
 <p>This is the bit map for capabilities, the meaning for each is:</p>
 <ul>
 <li>CapInh = Inherited capabilities</li>
@@ -531,32 +521,55 @@
 <blockquote>
 <p>The <code>CapBnd</code> defines the upper level of available capabilities. During the time a process runs, no capabilities can be added to this list. Only the capabilities in the bounding set can be added to the inheritable set, which uses the capset() system call. If a capability is dropped from the boundary set, that process or its children can no longer have access to it.</p>
 </blockquote>
-<p>Using the <code>capsh</code> utility we can decode them into the capabilities name:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># capsh --decode=00000000a884a5fb</span></span><br><span class="line"></span><br><span class="line">0x00000000a884a5fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,</span><br><span class="line">cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,</span><br><span class="line">cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap</span><br></pre></td></tr></table></figure></p>
-<p>The another easy way is use <code>getpcaps</code> utility:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># getpcaps 1965</span></span><br><span class="line"></span><br><span class="line">Capabilities <span class="keyword">for</span> `1965<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br></pre></td></tr></table></figure></p>
-<p>It is also interesting to see the capabilities of a set of processes that have a relationship.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># getpcaps $(pgrep db2)</span></span><br><span class="line"></span><br><span class="line">Capabilities <span class="keyword">for</span> `1965<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br><span class="line"><span class="string">Capabilities for `2151'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities <span class="keyword">for</span> `2245<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br><span class="line"><span class="string">Capabilities for `2246'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span><br><span class="line">Capabilities <span class="keyword">for</span> `2247<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br><span class="line"><span class="string">Capabilities for `2249'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities <span class="keyword">for</span> `2614<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span></span><br><span class="line"><span class="string">Capabilities for `4213'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities <span class="keyword">for</span> `4238<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Limit-Capability"><a href="#Limit-Capability" class="headerlink" title="Limit Capability"></a>Limit Capability</h3><p>You can test what happens when a particular capability is dropped by using the <code>capsh</code> utility. This is a way to see what capabilities a particular program may need to function correctly. The <code>capsh</code> command can run a particular process and restrict the set of available capabilities.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capsh --<span class="built_in">print</span> -- -c <span class="string">"/bin/ping -c 1 localhost"</span></span><br></pre></td></tr></table></figure></p>
-<p>After dropping <code>cap_net_raw</code>, <code>ping</code> not permitted.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capsh --drop=cap_net_raw --<span class="built_in">print</span> -- -c <span class="string">"/bin/ping -c 1 localhost"</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Capability-Meet"><a href="#Capability-Meet" class="headerlink" title="Capability Meet"></a>Capability Meet</h3><p>List the capabilities I have seen so far:</p>
+<p>Using the <code>capsh</code> utility we can decode them into the capabilities name:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># capsh --decode=00000000a884a5fb</span></span><br><span class="line"></span><br><span class="line">0x00000000a884a5fb=cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,cap_setgid,</span><br><span class="line">cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,cap_sys_chroot,</span><br><span class="line">cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap</span><br></pre></td></tr></table></figure>
+<p>The another easy way is use <code>getpcaps</code> utility:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># getpcaps 1965</span></span><br><span class="line"></span><br><span class="line">Capabilities <span class="keyword">for</span> `1965<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br></pre></td></tr></table></figure>
+<p>It is also interesting to see the capabilities of a set of processes that have a relationship.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># getpcaps $(pgrep db2)</span></span><br><span class="line"></span><br><span class="line">Capabilities <span class="keyword">for</span> `1965<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br><span class="line"><span class="string">Capabilities for `2151'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities <span class="keyword">for</span> `2245<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br><span class="line"><span class="string">Capabilities for `2246'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span><br><span class="line">Capabilities <span class="keyword">for</span> `2247<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+eip</span></span><br><span class="line"><span class="string">Capabilities for `2249'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities <span class="keyword">for</span> `2614<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span></span><br><span class="line"><span class="string">Capabilities for `4213'</span>: = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span><br><span class="line">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span><br><span class="line">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span><br><span class="line">Capabilities <span class="keyword">for</span> `4238<span class="string">': = cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_kill,</span></span><br><span class="line"><span class="string">cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_ipc_owner,</span></span><br><span class="line"><span class="string">cap_sys_chroot,cap_sys_nice,cap_mknod,cap_audit_write,cap_setfcap+i</span></span><br></pre></td></tr></table></figure>
+<h3 id="Limit-Capability">Limit Capability</h3>
+<p>You can test what happens when a particular capability is dropped by using the <code>capsh</code> utility. This is a way to see what capabilities a particular program may need to function correctly. The <code>capsh</code> command can run a particular process and restrict the set of available capabilities.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capsh --<span class="built_in">print</span> -- -c <span class="string">"/bin/ping -c 1 localhost"</span></span><br></pre></td></tr></table></figure>
+<p>After dropping <code>cap_net_raw</code>, <code>ping</code> not permitted.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">capsh --drop=cap_net_raw --<span class="built_in">print</span> -- -c <span class="string">"/bin/ping -c 1 localhost"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Capability-Meet">Capability Meet</h3>
+<p>List the capabilities I have seen so far:</p>
 <ul>
-<li>CAP_SYS_ADMIN<br>Without it, I cannot perform <code>hostname</code> command for docker container in K8s.</li>
-<li>CAP_SYS_RESOURCE<br>This is for adjust <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/c0057140.html" target="_blank" rel="noopener">DB2 kernel parameters</a></li>
+<li>CAP_SYS_ADMIN
+Without it, I cannot perform <code>hostname</code> command for docker container in K8s.</li>
+<li>CAP_SYS_RESOURCE
+This is for adjust <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/c0057140.html" target="_blank" rel="noopener">DB2 kernel parameters</a></li>
 </ul>
 <p>These 3 necessaries are for DB2:</p>
 <ul>
-<li>CAP_SETFCAP<br>Set arbitrary capabilities on a file. (actually this is default in unprivileged docker container)</li>
+<li>CAP_SETFCAP
+Set arbitrary capabilities on a file. (actually this is default in unprivileged docker container)</li>
 <li>CAP_SYS_NICE</li>
-<li>CAP_IPC_OWNER<br>Bypass permission checks for operations on System V IPC objects.</li>
+<li>CAP_IPC_OWNER
+Bypass permission checks for operations on System V IPC objects.</li>
 </ul>
-<h3 id="My-Questions"><a href="#My-Questions" class="headerlink" title="My Questions"></a>My Questions</h3><ol>
-<li><p>Is capability granted to user or process?<br>Frist ensure the env(container) has enough Linux caps.<br>Then using command grant process certains caps, but need root privilege to do that, then you can run process as ordinary user.</p>
+<h3 id="My-Questions">My Questions</h3>
+<ol>
+<li>
+<p>Is capability granted to user or process?
+Frist ensure the env(container) has enough Linux caps.
+Then using command grant process certains caps, but need root privilege to do that, then you can run process as ordinary user.</p>
 </li>
-<li><p>Privilege process bypass all kernel permission check? Does that mean linux<br>capabilities are only for non-privilege user or process?<br>I think there is a global or default capability set in system to determine what ever processes on system is allowed to do. Then you can fine-tune for unprivileged process.</p>
+<li>
+<p>Privilege process bypass all kernel permission check? Does that mean linux
+capabilities are only for non-privilege user or process?
+I think there is a global or default capability set in system to determine what ever processes on system is allowed to do. Then you can fine-tune for unprivileged process.</p>
 </li>
-<li><p>If we have root and normal user both in docker container, so capabilities are applied<br>on root or normal user or both?<br>After testing and comparing by <code>capsh --print</code> with different user in xmeta container, I think capabilities are applied on all users in K8s environment.</p>
+<li>
+<p>If we have root and normal user both in docker container, so capabilities are applied
+on root or normal user or both?
+After testing and comparing by <code>capsh --print</code> with different user in xmeta container, I think capabilities are applied on all users in K8s environment.</p>
 </li>
 </ol>
 <p>Later I post blogs to talk about <code>&lt;&lt;Capability in Docker&gt;&gt;</code>.</p>
-<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p><a href="http://man7.org/linux/man-pages/man7/capabilities.7.html" target="_blank" rel="noopener">Linux Programmer’s Manual</a><br><a href="https://linux-audit.com/linux-capabilities-101/" target="_blank" rel="noopener">Linux capabilities 101</a></p>
+<h2 id="Resources">Resources</h2>
+<p><a href="http://man7.org/linux/man-pages/man7/capabilities.7.html" target="_blank" rel="noopener">Linux Programmer’s Manual</a>
+<a href="https://linux-audit.com/linux-capabilities-101/" target="_blank" rel="noopener">Linux capabilities 101</a></p>
 
       
     </div>
@@ -679,7 +692,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -776,7 +789,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1089,7 +1104,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1151,13 +1168,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

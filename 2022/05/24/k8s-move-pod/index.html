@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Sometimes there is a need to shift pod to another node in order to rebalance the k8s node load, such as context switch, CPU LA, network traffic, etc. For pods controlled by deployment or statefulset,">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-06-19T18:49:28.461Z">
+<meta property="og:updated_time" content="2022-06-19T18:49:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Moving Pod to Another Node">
 <meta name="twitter:description" content="Sometimes there is a need to shift pod to another node in order to rebalance the k8s node load, such as context switch, CPU LA, network traffic, etc. For pods controlled by deployment or statefulset,">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.3k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,7 +491,8 @@
 
       
         <p>Sometimes there is a need to shift pod to another node in order to rebalance the k8s node load, such as context switch, CPU LA, network traffic, etc.</p>
-<p>For pods controlled by deployment or statefulset, delete the pod alone will usually result in recreating it in the same node again, there is a simple workaround with cordon:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make the node unschedulable for new pods</span></span><br><span class="line">kubectl cordon &lt;pod host node name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># delete the target pod, it will be recreated  in another node</span></span><br><span class="line">kubectl delete pod &lt;pod name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># revert node status</span></span><br><span class="line">kubectl uncordon &lt;pod host node name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>For pods controlled by deployment or statefulset, delete the pod alone will usually result in recreating it in the same node again, there is a simple workaround with cordon:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make the node unschedulable for new pods</span></span><br><span class="line">kubectl cordon &lt;pod host node name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># delete the target pod, it will be recreated  in another node</span></span><br><span class="line">kubectl delete pod &lt;pod name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># revert node status</span></span><br><span class="line">kubectl uncordon &lt;pod host node name&gt;</span><br></pre></td></tr></table></figure>
 <p>This approach is much convenient than affinity.</p>
 
       
@@ -622,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -719,7 +702,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1032,7 +1017,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1077,13 +1064,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

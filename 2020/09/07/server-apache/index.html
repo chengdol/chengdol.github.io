@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试:12client &amp;lt;--------------&amp;gt; envoy proxy &amp;lt;--------------&amp;gt; Apache server                     (docker container)                (ce">
+  <meta name="description" content="因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试: 12client &amp;lt;--------------&amp;gt; envoy proxy &amp;lt;--------------&amp;gt; Apache server                     (docker container)                (c">
 <meta name="keywords" content="server,apache">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Server">
 <meta property="og:url" content="http://yoursite.com/2020/09/07/server-apache/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试:12client &amp;lt;--------------&amp;gt; envoy proxy &amp;lt;--------------&amp;gt; Apache server                     (docker container)                (ce">
+<meta property="og:description" content="因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试: 12client &amp;lt;--------------&amp;gt; envoy proxy &amp;lt;--------------&amp;gt; Apache server                     (docker container)                (c">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-09-09T06:21:40.385Z">
+<meta property="og:updated_time" content="2020-09-09T06:21:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Server">
-<meta name="twitter:description" content="因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试:12client &amp;lt;--------------&amp;gt; envoy proxy &amp;lt;--------------&amp;gt; Apache server                     (docker container)                (ce">
+<meta name="twitter:description" content="因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试: 12client &amp;lt;--------------&amp;gt; envoy proxy &amp;lt;--------------&amp;gt; Apache server                     (docker container)                (c">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.5k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,7 +490,8 @@
       
 
       
-        <p>因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">client &lt;--------------&gt; envoy proxy &lt;--------------&gt; Apache server</span><br><span class="line">                     (docker container)                (certbot)</span><br></pre></td></tr></table></figure></p>
+        <p>因为需要验证Envoy CONNECT feature的缘故，我打算自己设置一个server with SSL/TLS测试:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">client &lt;--------------&gt; envoy proxy &lt;--------------&gt; Apache server</span><br><span class="line">                     (docker container)                (certbot)</span><br></pre></td></tr></table></figure>
 <p>目前遇到的问题:</p>
 <ol>
 <li>localhost conigure domain name: <a href="https://www.youtube.com/watch?v=gBfZdJFxjew" target="_blank" rel="noopener">https://www.youtube.com/watch?v=gBfZdJFxjew</a></li>
@@ -525,9 +508,13 @@
 </ol>
 <p>other links:</p>
 <ol>
-<li><p>set virtualhost domain:<br><a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html" target="_blank" rel="noopener">https://httpd.apache.org/docs/2.4/vhosts/examples.html</a></p>
+<li>
+<p>set virtualhost domain:
+<a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html" target="_blank" rel="noopener">https://httpd.apache.org/docs/2.4/vhosts/examples.html</a></p>
 </li>
-<li><p>apache config file in centos:<br><a href="https://www.liquidweb.com/kb/apache-configuration-centos/" target="_blank" rel="noopener">https://www.liquidweb.com/kb/apache-configuration-centos/</a></p>
+<li>
+<p>apache config file in centos:
+<a href="https://www.liquidweb.com/kb/apache-configuration-centos/" target="_blank" rel="noopener">https://www.liquidweb.com/kb/apache-configuration-centos/</a></p>
 </li>
 </ol>
 
@@ -643,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -740,7 +727,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1053,7 +1042,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1098,13 +1089,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

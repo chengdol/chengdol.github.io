@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="IntroductionKubernetes 1.14: Local Persistent Volumes GARecap:A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin,">
+  <meta name="description" content="Introduction Kubernetes 1.14: Local Persistent Volumes GA Recap: A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugi">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Local Persistent Volume">
 <meta property="og:url" content="http://yoursite.com/2020/04/02/k8s-local-persistent-volume/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="IntroductionKubernetes 1.14: Local Persistent Volumes GARecap:A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin,">
+<meta property="og:description" content="Introduction Kubernetes 1.14: Local Persistent Volumes GA Recap: A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugi">
 <meta property="og:locale" content="中文|English">
 <meta property="og:updated_time" content="2020-04-12T04:32:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Local Persistent Volume">
-<meta name="twitter:description" content="IntroductionKubernetes 1.14: Local Persistent Volumes GARecap:A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin,">
+<meta name="twitter:description" content="Introduction Kubernetes 1.14: Local Persistent Volumes GA Recap: A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugi">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">17k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,27 +490,38 @@
       
 
       
-        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a href="https://kubernetes.io/blog/2019/04/04/kubernetes-1.14-local-persistent-volumes-ga/" target="_blank" rel="noopener">Kubernetes 1.14: Local Persistent Volumes GA</a><br><strong>Recap:</strong><br>A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin, Kubernetes workloads can now consume high performance local storage using the same volume APIs that app developers have become accustomed to.</p>
-<p>一个和hostPath的重要区别:<br>The biggest difference is that the Kubernetes scheduler understands which node a Local Persistent Volume belongs to. With HostPath volumes, a pod referencing a HostPath volume may be moved by the scheduler to a different node resulting in data loss. But with Local Persistent Volumes, the Kubernetes scheduler ensures that a pod using a Local Persistent Volume is <strong>always</strong> scheduled to the same node.</p>
+        <h2 id="Introduction">Introduction</h2>
+<p><a href="https://kubernetes.io/blog/2019/04/04/kubernetes-1.14-local-persistent-volumes-ga/" target="_blank" rel="noopener">Kubernetes 1.14: Local Persistent Volumes GA</a>
+<strong>Recap:</strong>
+A local persistent volume represents a local disk directly-attached to a single Kubernetes Node. With the Local Persistent Volume plugin, Kubernetes workloads can now consume high performance local storage using the same volume APIs that app developers have become accustomed to.</p>
+<p>一个和hostPath的重要区别:
+The biggest difference is that the Kubernetes scheduler understands which node a Local Persistent Volume belongs to. With HostPath volumes, a pod referencing a HostPath volume may be moved by the scheduler to a different node resulting in data loss. But with Local Persistent Volumes, the Kubernetes scheduler ensures that a pod using a Local Persistent Volume is <strong>always</strong> scheduled to the same node.</p>
 <p>While HostPath volumes may be referenced via a Persistent Volume Claim (PVC) or directly inline in a pod definition, Local Persistent Volumes can only be referenced via a PVC. This provides additional security benefits since Persistent Volume objects are managed by the administrator, preventing Pods from being able to access any path on the host.</p>
 <p>Additional benefits include support for formatting of block devices during mount, and volume ownership using fsGroup.</p>
-<p>注意: 实际上emptyDir + fsGroup也可以实现类似hostPath的效果，emptyDir用的是<code>/sysroot</code> (RedHat Linux), 比如多个pods 使用emptyDir在同一个Node, 我在各自的emptyDir中touch了一个file: compute-0 和compute-3, 进入Node使用find command就可以看到了:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sysroot/ostree/deploy/rhcos/var/lib/kubelet/pods/68e65ed4-4e62-4588-9269-8947dea9dd46/volumes/kubernetes.io~empty-dir/compute-dedicated-scratch/compute-0</span><br><span class="line"></span><br><span class="line">/sysroot/ostree/deploy/rhcos/var/lib/kubelet/pods/92b26b37-92f3-4609-83cb-da8cb8727ca2/volumes/kubernetes.io~empty-dir/compute-dedicated-scratch/compute-3</span><br></pre></td></tr></table></figure></p>
+<p>注意: 实际上emptyDir + fsGroup也可以实现类似hostPath的效果，emptyDir用的是<code>/sysroot</code> (RedHat Linux), 比如多个pods 使用emptyDir在同一个Node, 我在各自的emptyDir中touch了一个file: compute-0 和compute-3, 进入Node使用find command就可以看到了:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/sysroot/ostree/deploy/rhcos/var/lib/kubelet/pods/68e65ed4-4e62-4588-9269-8947dea9dd46/volumes/kubernetes.io~empty-dir/compute-dedicated-scratch/compute-0</span><br><span class="line"></span><br><span class="line">/sysroot/ostree/deploy/rhcos/var/lib/kubelet/pods/92b26b37-92f3-4609-83cb-da8cb8727ca2/volumes/kubernetes.io~empty-dir/compute-dedicated-scratch/compute-3</span><br></pre></td></tr></table></figure>
 <p>还需要注意的是，local storage provisioning 在每个node上只会provision attach的disk个数一样的PV，并且这个PV会被一个PVC占据，尽管PV大小是500G但是PVC只请求5G。（不知道这个以后是否会有改进）</p>
-<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><blockquote>
+<h2 id="Steps">Steps</h2>
+<blockquote>
 <p>Only test on OCP <code>4.3</code> version</p>
 </blockquote>
-<p><a href="https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html" target="_blank" rel="noopener">OpenShift persistent storage using local volumes</a><br><a href="https://github.com/openshift/local-storage-operator/blob/master/docs/deploy-with-olm.md" target="_blank" rel="noopener">Deploy local-storage Operator</a></p>
+<p><a href="https://docs.openshift.com/container-platform/4.3/storage/persistent_storage/persistent-storage-local.html" target="_blank" rel="noopener">OpenShift persistent storage using local volumes</a>
+<a href="https://github.com/openshift/local-storage-operator/blob/master/docs/deploy-with-olm.md" target="_blank" rel="noopener">Deploy local-storage Operator</a></p>
 <ol>
 <li>install local storage operator (it is by default set in <code>local-storage</code> namespace)</li>
 <li>provision the local storage</li>
 <li>create local volume persistentVolumeClaim and attach to pod</li>
 </ol>
-<p>After deploy the operator, then<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## get hostname of each worker node</span></span><br><span class="line"><span class="comment">## can use label -l to filter worker node if needed</span></span><br><span class="line">kbc describe node | grep hostname</span><br></pre></td></tr></table></figure></p>
+<p>After deploy the operator, then</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## get hostname of each worker node</span></span><br><span class="line"><span class="comment">## can use label -l to filter worker node if needed</span></span><br><span class="line">kbc describe node | grep hostname</span><br></pre></td></tr></table></figure>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">"local.storage.openshift.io/v1"</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">"LocalVolume"</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">"local-disks"</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">"local-storage"</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  nodeSelector:</span></span><br><span class="line"><span class="attr">    nodeSelectorTerms:</span></span><br><span class="line"><span class="attr">    - matchExpressions:</span></span><br><span class="line"><span class="attr">        - key:</span> <span class="string">kubernetes.io/hostname</span></span><br><span class="line"><span class="attr">          operator:</span> <span class="string">In</span></span><br><span class="line"><span class="attr">          values:</span></span><br><span class="line">          <span class="comment">## put hostname above here</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">worker0.jc-portworx.os.xx.com</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">worker1.jc-portworx.os.xx.com</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">worker2.jc-portworx.os.xx.com</span></span><br><span class="line"><span class="attr">  storageClassDevices:</span></span><br><span class="line"><span class="attr">    - storageClassName:</span> <span class="string">"local-sc"</span></span><br><span class="line"><span class="attr">      volumeMode:</span> <span class="string">Filesystem</span></span><br><span class="line">      <span class="comment">## The file system that will be formatted when the local volume is mounted</span></span><br><span class="line"><span class="attr">      fsType:</span> <span class="string">xfs</span></span><br><span class="line"><span class="attr">      devicePaths:</span></span><br><span class="line">        <span class="comment">## use blkid command to get this devicePath</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">/dev/vdc</span></span><br></pre></td></tr></table></figure>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blkid</span><br><span class="line"><span class="comment">## for clarity I remove unrelated output</span></span><br><span class="line"><span class="comment">## First colume is the device path</span></span><br><span class="line">/dev/vdc: LABEL=<span class="string">"mdvol"</span> UUID=<span class="string">"fdac344f-8d5f-48bd-9101-99cb416bb93d"</span> TYPE=<span class="string">"xfs"</span></span><br></pre></td></tr></table></figure></p>
-<p>let’s check <code>/dev/vdc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsblk /dev/vdc</span><br><span class="line"></span><br><span class="line">NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">vdc  252:32   0  500G  0 disk</span><br></pre></td></tr></table></figure></p>
-<p>After apply the CR <code>LocalVolume</code>, let’s check <code>local-storage</code> namespace status, you should see lcoal diskmaker and provisioner pods are up and running, corresponding PVs are ready as well.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">NAME                                          READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-6787r         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-jvwnq         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-lfzq9         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-fzgs2       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-mqd86       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-t2bvz       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-storage-operator-7f8dbfb95c-7brlv   1/1     Running   0          16h</span><br><span class="line"></span><br><span class="line"><span class="comment">## PV</span></span><br><span class="line"><span class="built_in">local</span>-pv-38162728                          500Gi      RWO            Delete           Available                                                     <span class="built_in">local</span>-sc                7m45s</span><br><span class="line"><span class="built_in">local</span>-pv-64bcf276                          500Gi      RWO            Delete           Available                                                     <span class="built_in">local</span>-sc                7m45s</span><br><span class="line"><span class="built_in">local</span>-pv-bd2d227                           500Gi      RWO            Delete           Available</span><br></pre></td></tr></table></figure></p>
-<p>If things are all set, we can consume the local storage provisioned by local-sc. Here I use <code>volumeClaimTemplates</code> instead of create separate PVC (这里应该不能使用分开的PVC，因为PVC的创建和pod位于的node有关，事先并不知道). </p>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blkid</span><br><span class="line"><span class="comment">## for clarity I remove unrelated output</span></span><br><span class="line"><span class="comment">## First colume is the device path</span></span><br><span class="line">/dev/vdc: LABEL=<span class="string">"mdvol"</span> UUID=<span class="string">"fdac344f-8d5f-48bd-9101-99cb416bb93d"</span> TYPE=<span class="string">"xfs"</span></span><br></pre></td></tr></table></figure>
+<p>let’s check <code>/dev/vdc</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsblk /dev/vdc</span><br><span class="line"></span><br><span class="line">NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">vdc  252:32   0  500G  0 disk</span><br></pre></td></tr></table></figure>
+<p>After apply the CR <code>LocalVolume</code>, let’s check <code>local-storage</code> namespace status, you should see lcoal diskmaker and provisioner pods are up and running, corresponding PVs are ready as well.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">NAME                                          READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-6787r         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-jvwnq         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-diskmaker-lfzq9         1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-fzgs2       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-mqd86       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-disks-local-provisioner-t2bvz       1/1     Running   0          52m</span><br><span class="line">pod/<span class="built_in">local</span>-storage-operator-7f8dbfb95c-7brlv   1/1     Running   0          16h</span><br><span class="line"></span><br><span class="line"><span class="comment">## PV</span></span><br><span class="line"><span class="built_in">local</span>-pv-38162728                          500Gi      RWO            Delete           Available                                                     <span class="built_in">local</span>-sc                7m45s</span><br><span class="line"><span class="built_in">local</span>-pv-64bcf276                          500Gi      RWO            Delete           Available                                                     <span class="built_in">local</span>-sc                7m45s</span><br><span class="line"><span class="built_in">local</span>-pv-bd2d227                           500Gi      RWO            Delete           Available</span><br></pre></td></tr></table></figure>
+<p>If things are all set, we can consume the local storage provisioned by local-sc. Here I use <code>volumeClaimTemplates</code> instead of create separate PVC (这里应该不能使用分开的PVC，因为PVC的创建和pod位于的node有关，事先并不知道).</p>
 <blockquote>
 <p>Notice that if there is one PV per node, then one PVC will consume the whole PV. So if use statefulset with volume claim template, we will only have one pod per node.</p>
 </blockquote>
@@ -654,7 +647,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -751,7 +744,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1064,7 +1059,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1126,13 +1123,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

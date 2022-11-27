@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When build docker images, sometimes we need to use some files to install some packages inside container, for example when build redhat docker image: redhat.repo, entitlement/ and rpm-gpg/ are needed f">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-09-05T02:48:28.621Z">
+<meta property="og:updated_time" content="2020-09-05T02:48:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Commit">
 <meta name="twitter:description" content="When build docker images, sometimes we need to use some files to install some packages inside container, for example when build redhat docker image: redhat.repo, entitlement/ and rpm-gpg/ are needed f">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.2k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -510,8 +492,10 @@
       
         <p>When build docker images, sometimes we need to use some files to install some packages inside container, for example when build redhat docker image: <code>redhat.repo</code>, <code>entitlement/</code> and <code>rpm-gpg/</code> are needed for package installation.</p>
 <p>But we don’t want to use <code>COPY</code> command in dockerfile to copy them into image, that will add layers to store them when run <code>docker build</code>, not safe. The solution is mount these files in <code>docker run</code>, after install then commit, <code>docker commit</code> <strong>will not</strong> include any data in volumes mounted inside the container.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## mount redhat repo and keys, install packages</span></span><br><span class="line">docker run --detach \</span><br><span class="line">  --name=serviceosbase \</span><br><span class="line">  --user 0 \</span><br><span class="line">  -v /etc/yum.repos.d/redhat.repo:/etc/yum.repos.d/redhat.repo \</span><br><span class="line">  -v /etc/pki/rpm-gpg:/etc/pki/rpm-gpg \</span><br><span class="line">  -v /etc/pki/entitlement:/etc/pki/entitlement \</span><br><span class="line">  --entrypoint=/bin/sh \</span><br><span class="line">  <span class="variable">$&#123;DOCKER_IMAGE_TAG&#125;</span>:1 \</span><br><span class="line">  -c <span class="string">'tail -f /dev/null'</span></span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> serviceosbase /bin/sh -c <span class="string">"yum install -y glibc glibc-common systemd</span></span><br><span class="line"><span class="string">    systemd-libs openssl-libs &amp;&amp; yum update -y &amp;&amp; rm -rf /var/tmp/yum-* &amp;&amp; yum</span></span><br><span class="line"><span class="string">    makecache fast"</span></span><br><span class="line"></span><br><span class="line">docker commit serviceosbase <span class="variable">$&#123;DOCKER_IMAGE_TAG&#125;</span>:1</span><br></pre></td></tr></table></figure></p>
-<p>You can check the layers with <code>docker history &lt;image&gt;</code> command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IMAGE               CREATED              CREATED BY                                      SIZE                COMMENT</span><br><span class="line">1f6e112efb83        About a minute ago   /bin/sh -c <span class="comment">#(nop)  ENV LANG=en_US.UTF-8 LANGU   0 B</span></span><br><span class="line">6060bfb14056        About a minute ago   /bin/sh -c rm /etc/yum.repos.d/ubi.repo &amp;&amp;      10.83 MB</span><br><span class="line">543fa76542de        2 minutes ago        /bin/sh -c <span class="comment">#(nop)  MAINTAINER XXX               0 B</span></span><br><span class="line">6558c4297a5d        2 minutes ago        /bin/sh -c <span class="comment">#(nop)  LABEL name=IIS Services ve   0 B</span></span><br><span class="line">6fecccc91c83        5 weeks ago                                                          7.06 kB</span><br><span class="line">&lt;missing&gt;           5 weeks ago                                                          204.8 MB            Imported from -</span><br></pre></td></tr></table></figure></p>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## mount redhat repo and keys, install packages</span></span><br><span class="line">docker run --detach \</span><br><span class="line">  --name=serviceosbase \</span><br><span class="line">  --user 0 \</span><br><span class="line">  -v /etc/yum.repos.d/redhat.repo:/etc/yum.repos.d/redhat.repo \</span><br><span class="line">  -v /etc/pki/rpm-gpg:/etc/pki/rpm-gpg \</span><br><span class="line">  -v /etc/pki/entitlement:/etc/pki/entitlement \</span><br><span class="line">  --entrypoint=/bin/sh \</span><br><span class="line">  <span class="variable">$&#123;DOCKER_IMAGE_TAG&#125;</span>:1 \</span><br><span class="line">  -c <span class="string">'tail -f /dev/null'</span></span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> serviceosbase /bin/sh -c <span class="string">"yum install -y glibc glibc-common systemd</span></span><br><span class="line"><span class="string">    systemd-libs openssl-libs &amp;&amp; yum update -y &amp;&amp; rm -rf /var/tmp/yum-* &amp;&amp; yum</span></span><br><span class="line"><span class="string">    makecache fast"</span></span><br><span class="line"></span><br><span class="line">docker commit serviceosbase <span class="variable">$&#123;DOCKER_IMAGE_TAG&#125;</span>:1</span><br></pre></td></tr></table></figure>
+<p>You can check the layers with <code>docker history &lt;image&gt;</code> command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IMAGE               CREATED              CREATED BY                                      SIZE                COMMENT</span><br><span class="line">1f6e112efb83        About a minute ago   /bin/sh -c <span class="comment">#(nop)  ENV LANG=en_US.UTF-8 LANGU   0 B</span></span><br><span class="line">6060bfb14056        About a minute ago   /bin/sh -c rm /etc/yum.repos.d/ubi.repo &amp;&amp;      10.83 MB</span><br><span class="line">543fa76542de        2 minutes ago        /bin/sh -c <span class="comment">#(nop)  MAINTAINER XXX               0 B</span></span><br><span class="line">6558c4297a5d        2 minutes ago        /bin/sh -c <span class="comment">#(nop)  LABEL name=IIS Services ve   0 B</span></span><br><span class="line">6fecccc91c83        5 weeks ago                                                          7.06 kB</span><br><span class="line">&lt;missing&gt;           5 weeks ago                                                          204.8 MB            Imported from -</span><br></pre></td></tr></table></figure>
 <p>Compare with dockerfile, no layer is for mount data after commit.</p>
 
       
@@ -624,7 +608,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -721,7 +705,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1034,7 +1020,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1079,13 +1067,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

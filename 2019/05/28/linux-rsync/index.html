@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This command is awesome for backup with complicated file structure and frequently modifications. It’s more elegant and smart(skip unchanged files) than using portable storage or scp to transfer the fi">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-01-19T04:29:22.383Z">
+<meta property="og:updated_time" content="2021-01-19T04:29:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sync Up Files with rsync">
 <meta name="twitter:description" content="This command is awesome for backup with complicated file structure and frequently modifications. It’s more elegant and smart(skip unchanged files) than using portable storage or scp to transfer the fi">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">9.7k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -512,35 +494,49 @@
 <blockquote>
 <p>Note that <code>SSHFS</code> monut may also fit the needs.</p>
 </blockquote>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Let’s see what is <code>rsync</code> from <a href="https://en.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener">wiki</a>:<br><code>rsync</code> is a utility for efficiently transferring and synchronizing files between a computer and an external hard drive and across networked computers by comparing the modification times and sizes of files.</p>
+<h1>Introduction</h1>
+<p>Let’s see what is <code>rsync</code> from <a href="https://en.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener">wiki</a>:
+<code>rsync</code> is a utility for efficiently transferring and synchronizing files between a computer and an external hard drive and across networked computers by comparing the modification times and sizes of files.</p>
 <p><code>rsync</code> will use <strong>SSH</strong> to connect. Once connected, it will invoke the remote host’s <code>rsync</code> and then the two programs will determine what parts of the local file need to be transferred so that the remote file matches the local one.</p>
 <p><code>rsync</code> can also operate in a daemon mode, serving and receiving files in the native rsync protocol (using the <code>rsync://</code> syntax). Here I only talks SSH way.</p>
-<p><a href="https://linuxize.com/post/how-to-exclude-files-and-directories-with-rsync/" target="_blank" rel="noopener">How to Exclude Files and Directories with Rsync</a><br><a href="https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/" target="_blank" rel="noopener">Rsync Command in Linux with Examples</a></p>
-<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>To get <code>rsync</code> working between two hosts, the <code>rsync</code> program must be installed on both the source and destination, and you’ll need a way to access one machine from the other.</p>
-<p>Copy files to remote home or from remote to local<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync files remote:</span><br><span class="line">rsync files user@remote:</span><br><span class="line">rsync user@remote:<span class="built_in">source</span> dest</span><br></pre></td></tr></table></figure></p>
-<p>If <code>rsync</code> isn’t in the remote path but is on the system, use <code>--rsync-path=path</code> to manually specify its location. Unless you supply extra options, <code>rsync</code> copies <strong>only</strong> files. You will see:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skipping directory xxx</span><br></pre></td></tr></table></figure></p>
-<p>To transfer entire directory hierarchies, complete with symbolic links, permissions, modes, and devices, use the <code>-a</code> option.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -n: dry-run, this is vital when you are not sure.</span></span><br><span class="line"><span class="comment"># -P: show progress bar</span></span><br><span class="line"><span class="comment"># -v: verbose mode</span></span><br><span class="line"><span class="comment"># -z: compress during transfer</span></span><br><span class="line"><span class="comment"># -a: archive mode, equals -rlptgoD</span></span><br><span class="line"><span class="comment"># here rsync a file and a dir</span></span><br><span class="line">rsync -n -P -vza file dir user@remote:&lt;path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># -q: quiet</span></span><br><span class="line"><span class="comment"># -e: choose a different remote shell</span></span><br><span class="line"><span class="comment"># for example remote ssh uses a port other than 22</span></span><br><span class="line">rsync -q -e <span class="string">"ssh -p 2322"</span> file user@remote:&lt;path&gt;</span><br></pre></td></tr></table></figure></p>
-<p>To make an exact replica of the source directory, you must delete files in the destination directory that do not exist in the source directory:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --delete: delete extraneous files from dest dirs</span></span><br><span class="line">rsync -v --delete -a dir user@remote:</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://linuxize.com/post/how-to-exclude-files-and-directories-with-rsync/" target="_blank" rel="noopener">How to Exclude Files and Directories with Rsync</a>
+<a href="https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/" target="_blank" rel="noopener">Rsync Command in Linux with Examples</a></p>
+<h1>Usage</h1>
+<p>To get <code>rsync</code> working between two hosts, the <code>rsync</code> program must be installed on both the source and destination, and you’ll need a way to access one machine from the other.</p>
+<p>Copy files to remote home or from remote to local</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync files remote:</span><br><span class="line">rsync files user@remote:</span><br><span class="line">rsync user@remote:<span class="built_in">source</span> dest</span><br></pre></td></tr></table></figure>
+<p>If <code>rsync</code> isn’t in the remote path but is on the system, use <code>--rsync-path=path</code> to manually specify its location. Unless you supply extra options, <code>rsync</code> copies <strong>only</strong> files. You will see:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skipping directory xxx</span><br></pre></td></tr></table></figure>
+<p>To transfer entire directory hierarchies, complete with symbolic links, permissions, modes, and devices, use the <code>-a</code> option.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -n: dry-run, this is vital when you are not sure.</span></span><br><span class="line"><span class="comment"># -P: show progress bar</span></span><br><span class="line"><span class="comment"># -v: verbose mode</span></span><br><span class="line"><span class="comment"># -z: compress during transfer</span></span><br><span class="line"><span class="comment"># -a: archive mode, equals -rlptgoD</span></span><br><span class="line"><span class="comment"># here rsync a file and a dir</span></span><br><span class="line">rsync -n -P -vza file dir user@remote:&lt;path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># -q: quiet</span></span><br><span class="line"><span class="comment"># -e: choose a different remote shell</span></span><br><span class="line"><span class="comment"># for example remote ssh uses a port other than 22</span></span><br><span class="line">rsync -q -e <span class="string">"ssh -p 2322"</span> file user@remote:&lt;path&gt;</span><br></pre></td></tr></table></figure>
+<p>To make an exact replica of the source directory, you must delete files in the destination directory that do not exist in the source directory:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --delete: delete extraneous files from dest dirs</span></span><br><span class="line">rsync -v --delete -a dir user@remote:</span><br></pre></td></tr></table></figure>
 <p>Please use <code>-n</code> dry-run to see what will be deleted before performing command.</p>
-<p>Be particular careful with tailing slash after dir:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dir vs dir/</span></span><br><span class="line">rsync -a dir/ user@remote:dest</span><br></pre></td></tr></table></figure></p>
+<p>Be particular careful with tailing slash after dir:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dir vs dir/</span></span><br><span class="line">rsync -a dir/ user@remote:dest</span><br></pre></td></tr></table></figure>
 <p>This will copy all files under dir to dest folder in remote instead of copy dir into dest.</p>
 <p>You can also <code>--exclude/--include=PATTERN</code> and <code>--exclude-from/--include-from=PATTERN_FILE</code>in command.</p>
 <p>To speed operation, <code>rsync</code> uses a quick check to determine whether any files on the transfer source are already on the destination. The quick check uses a combination of the file size and its last-modified date.</p>
 <p>When the files on the source side are not identical to the files on the destination side, <code>rsync</code> transfers the source files and overwrites any files that exist on the remote side. The default behavior may be inadequate, though, because you may need additional reassurance that files are indeed the same before skipping over them in transfers, or you may want to put in some extra safeguards:</p>
 <ul>
-<li><p><code>--checksum</code>(abbreviation: <code>-c</code>) Compute checksums (mostly unique signatures) of the files to see if they’re the same. This consumes additional I/O and CPU resources during transfers, but if you’re dealing with sensitive data or files that often have uniform sizes, this option is a must. (This will focus on file content, not date stamp)</p>
+<li>
+<p><code>--checksum</code>(abbreviation: <code>-c</code>) Compute checksums (mostly unique signatures) of the files to see if they’re the same. This consumes additional I/O and CPU resources during transfers, but if you’re dealing with sensitive data or files that often have uniform sizes, this option is a must. (This will focus on file content, not date stamp)</p>
 </li>
-<li><p><code>--ignore-existing</code> Doesn’t clobber files already on the target side.</p>
+<li>
+<p><code>--ignore-existing</code> Doesn’t clobber files already on the target side.</p>
 </li>
-<li><p><code>--backup</code> (abbreviation: <code>-b</code>) Doesn’t clobber files already on the target but rather renames these existing files by adding a ~ suffix to their names before transferring the new files.</p>
+<li>
+<p><code>--backup</code> (abbreviation: <code>-b</code>) Doesn’t clobber files already on the target but rather renames these existing files by adding a ~ suffix to their names before transferring the new files.</p>
 </li>
-<li><p><code>--suffix=s</code> Changes the suffix used with –backup from <code>~</code> to <code>s</code>.</p>
+<li>
+<p><code>--suffix=s</code> Changes the suffix used with –backup from <code>~</code> to <code>s</code>.</p>
 </li>
-<li><p><code>--update</code> (abbreviation: <code>-u</code>) Doesn’t clobber any file on the target that has a later date than the corresponding file on the source.</p>
+<li>
+<p><code>--update</code> (abbreviation: <code>-u</code>) Doesn’t clobber any file on the target that has a later date than the corresponding file on the source.</p>
 </li>
 </ul>
-<p>For example, sync my code repo in local host to remote for testing and developing, after verifying, sync back to local host to check in:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># forward sync source proj folder itself to dest</span></span><br><span class="line"><span class="comment"># result in remote: /home/chengdol/proj</span></span><br><span class="line">rsync -vza \</span><br><span class="line">    ./proj \</span><br><span class="line">    remote_user@remote:/home/chengdol</span><br><span class="line"></span><br><span class="line"><span class="comment"># then coding and editing</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># backward sync remote proj folder itself to current directory</span></span><br><span class="line"><span class="comment"># result ./proj</span></span><br><span class="line">rsync -vza \</span><br><span class="line">    <span class="comment"># exclude folder inside remote proj</span></span><br><span class="line">    --exclude .terraform \</span><br><span class="line">    --exclude output \</span><br><span class="line">    --exclude utils/__pycache__ \</span><br><span class="line">    --exclude deployment/__pycache__ \</span><br><span class="line">    remote_user@remote:/home/chengdol/proj \</span><br><span class="line">    .</span><br><span class="line"></span><br><span class="line"><span class="comment"># you will see the incremental transferred files, as well as the .git changes</span></span><br></pre></td></tr></table></figure></p>
-
+<p>For example, sync my code repo in local host to remote for testing and developing, after verifying, sync back to local host to check in:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># forward sync source proj folder itself to dest</span></span><br><span class="line"><span class="comment"># result in remote: /home/chengdol/proj</span></span><br><span class="line">rsync -vza \</span><br><span class="line">    ./proj \</span><br><span class="line">    remote_user@remote:/home/chengdol</span><br><span class="line"></span><br><span class="line"><span class="comment"># then coding and editing</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># backward sync remote proj folder itself to current directory</span></span><br><span class="line"><span class="comment"># result ./proj</span></span><br><span class="line">rsync -vza \</span><br><span class="line">    <span class="comment"># exclude folder inside remote proj</span></span><br><span class="line">    --exclude .terraform \</span><br><span class="line">    --exclude output \</span><br><span class="line">    --exclude utils/__pycache__ \</span><br><span class="line">    --exclude deployment/__pycache__ \</span><br><span class="line">    remote_user@remote:/home/chengdol/proj \</span><br><span class="line">    .</span><br><span class="line"></span><br><span class="line"><span class="comment"># you will see the incremental transferred files, as well as the .git changes</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -662,7 +658,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -759,7 +755,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1072,7 +1070,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1108,7 +1108,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li></ol></div>
             
 
           </div>
@@ -1134,13 +1134,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.4k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -512,11 +494,16 @@
 <p>注意这里的Github repository is secured, 比如Github Enterprise。一般我们设置SSH credentials access (SSH Username with private key), 这个credential 会提前写到 Jenkins Credential Management中，在配置pipeline的时候，最后一步设置SCM -&gt; Git, 除了输入Reporsity URL, 还要add SSH credential. 这样Jenkins才能正常地check out code. 当然，在pipeline steps 中 check out code也行，比如使用 <code>git</code>, <code>checkout</code> snippets.</p>
 <p>对于check in code, 也可以使用snippet 比如:</p>
 <ul>
-<li><p><code>withCredentials</code><br>Bind credential to variables, 这个snippet 可以提供通过环境变量访问credential. 但在这里对于git SSH credential access, 需要设置让git去使用这个变量，this is unknown to me.</p>
+<li>
+<p><code>withCredentials</code>
+Bind credential to variables, 这个snippet 可以提供通过环境变量访问credential. 但在这里对于git SSH credential access, 需要设置让git去使用这个变量，this is unknown to me.</p>
 </li>
-<li><p><code>sshagent</code>:<br>需要install plugin: <a href="https://plugins.jenkins.io/ssh-agent/" target="_blank" rel="noopener">https://plugins.jenkins.io/ssh-agent/</a>, pass credential to it. 然后把git 操作放在这个snippet中即可. 比如:</p>
+<li>
+<p><code>sshagent</code>:
+需要install plugin: <a href="https://plugins.jenkins.io/ssh-agent/" target="_blank" rel="noopener">https://plugins.jenkins.io/ssh-agent/</a>, pass credential to it. 然后把git 操作放在这个snippet中即可. 比如:</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">steps &#123;</span><br><span class="line">  sshagent([<span class="string">'&lt;credential id&gt;'</span>]) &#123;</span><br><span class="line">    <span class="comment">// fetch a branch, edit and check in the code</span></span><br><span class="line">    sh <span class="string">'''</span></span><br><span class="line"><span class="string">      ## or git pull other repository</span></span><br><span class="line"><span class="string">      git fetch</span></span><br><span class="line"><span class="string">      git checkout $TARGET_BRANCH</span></span><br><span class="line"><span class="string">      git reset --hard origin/$TARGET_BRANCH</span></span><br><span class="line"><span class="string">      git pull</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      CHECKOUT_BRANCH="feature/$&#123;TARGET_BRANCH&#125;-$&#123;COMPONENT_NAME&#125;-$&#123;COMPONENT_VERSION&#125;"</span></span><br><span class="line"><span class="string">      echo "Creating feature branch: $CHECKOUT_BRANCH"</span></span><br><span class="line"><span class="string">      git checkout -b $CHECKOUT_BRANCH</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      sed -i "/.*version.*/c\  version: $COMPONENT_VERSION" files/$COMPONENT_NAME.yaml</span></span><br><span class="line"><span class="string">      git add files/$COMPONENT_NAME.yaml</span></span><br><span class="line"><span class="string">      ## list file changes</span></span><br><span class="line"><span class="string">      git status</span></span><br><span class="line"><span class="string">      git -c user.name="unibot" -c user.email="unibot@il.example.com" commit -m "Update $&#123;COMPONENT_NAME&#125; to $&#123;COMPONENT_VERSION&#125;"</span></span><br><span class="line"><span class="string">      git push --set-upstream origin $CHECKOUT_BRANCH</span></span><br><span class="line"><span class="string">      '''</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考这里的代码:<br><a href="https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/push-git-repo/pushGitRepo.groovy" target="_blank" rel="noopener">https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/push-git-repo/pushGitRepo.groovy</a></p>
+<p>参考这里的代码:
+<a href="https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/push-git-repo/pushGitRepo.groovy" target="_blank" rel="noopener">https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/push-git-repo/pushGitRepo.groovy</a></p>
 </li>
 </ul>
 <p>在这里，如果我没有权限去安装<code>sshagent</code> plugin, 还有一个比较好的办法是，设置一个 dedicated node with pre-set SSH credential. 然后需要执行git check in任务的时候指定在这个node上进行即可。</p>
@@ -635,7 +622,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -732,7 +719,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1045,7 +1034,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1090,13 +1081,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

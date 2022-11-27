@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">16k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -513,34 +495,73 @@
 <ol>
 <li>Design Instagarm</li>
 <li>Design Dropbox</li>
-<li>Design Twitter<br>post tweets(photos, videos), follow others, favorite tweets<br>generate timeline of top tweets<br>low latancy<br>highly available<br>consistency can take a hit</li>
+<li>Design Twitter
+post tweets(photos, videos), follow others, favorite tweets
+generate timeline of top tweets
+low latancy
+highly available
+consistency can take a hit</li>
 </ol>
-<p>storage: text + photo + video<br>ingress (write): new generated storage / sec<br>egress (read): read volume / sec</p>
-<p>read heavy system<br>data sharding: user id -&gt; tweet id -&gt; (creation time + tweet id, sort by time)<br>query all servers and aggregate</p>
+<p>storage: text + photo + video
+ingress (write): new generated storage / sec
+egress (read): read volume / sec</p>
+<p>read heavy system
+data sharding: user id -&gt; tweet id -&gt; (creation time + tweet id, sort by time)
+query all servers and aggregate</p>
 <p>cache for hot users and tweets</p>
 <ol start="4">
-<li>Designing Twitter Search</li>
-<li><p>Designing a Web Crawler (BFS, modular, url frontier, DNS, fetcher, DIS, content filter, extractor, url filter)</p>
+<li>
+<p>Designing Twitter Search</p>
 </li>
-<li><p>Designing Facebook Messenger<br>each chat server serves a bunch of users, LB maps user to it’s chat server, chat server commuicate with each other to send/receive message<br>message handling: long polling to receive message<br>hashtable keep track of online user, if offline, notify delivery failure to sender<br>handle message order: 单独靠timestamp不行，use sequence number with every message for each user</p>
+<li>
+<p>Designing a Web Crawler (BFS, modular, url frontier, DNS, fetcher, DIS, content filter, extractor, url filter)</p>
+</li>
+<li>
+<p>Designing Facebook Messenger
+each chat server serves a bunch of users, LB maps user to it’s chat server, chat server commuicate with each other to send/receive message
+message handling: long polling to receive message
+hashtable keep track of online user, if offline, notify delivery failure to sender
+handle message order: 单独靠timestamp不行，use sequence number with every message for each user</p>
 </li>
 </ol>
-<p>database: support high frequence write/read row, quick small updates, range based search: HBase, column-oriented key-value NoSQL database<br>partition by UserID, low latency</p>
+<p>database: support high frequence write/read row, quick small updates, range based search: HBase, column-oriented key-value NoSQL database
+partition by UserID, low latency</p>
 <p>有的主要涉及到了数据结构和算法:</p>
 <ol>
-<li>Typeahead suggestion (trie, reference)</li>
-<li>API rate limiter (dynamic sliding window)</li>
-<li><p>Designing Facebook’s Newsfeed (offline feed generation)<br>contain updates, posts, video, photos from all people user follows<br>user average has 200 followers, 300M DAU, fetch 5 times a day, 1KB each post, so can get traffic.<br>cache each users’ news feed in mem for quick fetch.<br>feed generation:<br>retrieve, rank, store<br>offline generate by dedicated servers, <code>Map&lt;UserID, LikedHashMap/TreeMap&lt;PostID, PostItem&gt;&gt; + LastGenerateTime</code> in memory, LRU cache for user or find user’s activity pattern to help generate newsfeed<br>feed publishing:<br>push to notify, pull for serving</p>
+<li>
+<p>Typeahead suggestion (trie, reference)</p>
 </li>
-<li><p>Designing Yelp (querying, objects don’t change often, QuadTree)<br>解释一下我的理解，这里partition讲的是partition quadtree.<br>从DB中读location id, 通过hashing map to different quadtree server (这个mapping其实就是quadtree index，可以在quadtree server fail后用来重新构造它的数据)，然后各自构造自己的quadtree.这些quadtree servers有一个aggregator server（它有自己的copies）。于是每次request要去所有quadtree server查询，然后聚合返回的数据。对于每个quadtree server，它所包含的location id也有一个本地的mapping, to know which DB servers contains this locatio id info. 这个mapping也使用的hashing实现。</p>
+<li>
+<p>API rate limiter (dynamic sliding window)</p>
 </li>
-<li><p>Designing Uber backend (requirements, objects do change often, QuadTree)</p>
+<li>
+<p>Designing Facebook’s Newsfeed (offline feed generation)
+contain updates, posts, video, photos from all people user follows
+user average has 200 followers, 300M DAU, fetch 5 times a day, 1KB each post, so can get traffic.
+cache each users’ news feed in mem for quick fetch.
+feed generation:
+retrieve, rank, store
+offline generate by dedicated servers, <code>Map&lt;UserID, LikedHashMap/TreeMap&lt;PostID, PostItem&gt;&gt; + LastGenerateTime</code> in memory, LRU cache for user or find user’s activity pattern to help generate newsfeed
+feed publishing:
+push to notify, pull for serving</p>
 </li>
-<li>Design Ticketmaster (first come first serve, highly concurrent, financial transactions ACID)</li>
+<li>
+<p>Designing Yelp (querying, objects don’t change often, QuadTree)
+解释一下我的理解，这里partition讲的是partition quadtree.
+从DB中读location id, 通过hashing map to different quadtree server (这个mapping其实就是quadtree index，可以在quadtree server fail后用来重新构造它的数据)，然后各自构造自己的quadtree.这些quadtree servers有一个aggregator server（它有自己的copies）。于是每次request要去所有quadtree server查询，然后聚合返回的数据。对于每个quadtree server，它所包含的location id也有一个本地的mapping, to know which DB servers contains this locatio id info. 这个mapping也使用的hashing实现。</p>
+</li>
+<li>
+<p>Designing Uber backend (requirements, objects do change often, QuadTree)</p>
+</li>
+<li>
+<p>Design Ticketmaster (first come first serve, highly concurrent, financial transactions ACID)</p>
+</li>
 </ol>
-<h1 id="CAP-Theorem"><a href="#CAP-Theorem" class="headerlink" title="CAP Theorem"></a>CAP Theorem</h1><p>CAP theorem states that it is impossible for a distributed software system to simultaneously provide more than two out of three of the following guarantees (CAP): <code>Consistency</code>, <code>Availability</code>, and <code>Partition tolerance</code>.</p>
+<h1>CAP Theorem</h1>
+<p>CAP theorem states that it is impossible for a distributed software system to simultaneously provide more than two out of three of the following guarantees (CAP): <code>Consistency</code>, <code>Availability</code>, and <code>Partition tolerance</code>.</p>
 <p>When we design a distributed system, trading off among <code>CAP</code> is almost the first thing we want to consider.</p>
-<h1 id="Thinking-process"><a href="#Thinking-process" class="headerlink" title="Thinking process"></a>Thinking process</h1><ol>
+<h1>Thinking process</h1>
+<ol>
 <li>requirements clarification</li>
 <li>back of the envelope estimation: scale, storate, bandwidth.</li>
 <li>system interface definition</li>
@@ -549,7 +570,8 @@
 <li>detailed design</li>
 <li>identifying and resolving bottlenecks</li>
 </ol>
-<h1 id="Crucial-Components"><a href="#Crucial-Components" class="headerlink" title="Crucial Components"></a>Crucial Components</h1><p>这里的笔记主要根据以下几点展开:</p>
+<h1>Crucial Components</h1>
+<p>这里的笔记主要根据以下几点展开:</p>
 <ol>
 <li>Database (book: 7 weeks 7 databases)</li>
 <li>Cache system (redis, memcache)</li>
@@ -559,63 +581,110 @@
 <li>monitor system</li>
 <li>My domain of knowledge k8s, docker, micro-services</li>
 </ol>
-<h1 id="Key-Characteristics-of-Distributed-Systems"><a href="#Key-Characteristics-of-Distributed-Systems" class="headerlink" title="Key Characteristics of Distributed Systems"></a>Key Characteristics of Distributed Systems</h1><p>Scalability: scaling without performance loss (but actually will).<br>Reliability: keep delivering services when some components fail.<br>Availability: reliable means available, but not vice versa<br>Efficiency: latency and (throughput)bandwidth.<br>Manageability: ease of diagnosing and understanding problems when they occur.</p>
-<h1 id="常用技术知识"><a href="#常用技术知识" class="headerlink" title="常用技术知识"></a>常用技术知识</h1><h2 id="备份的说法"><a href="#备份的说法" class="headerlink" title="备份的说法:"></a>备份的说法:</h2><p>Standby replicas<br>Failover to other healthy copies<br>Duplicates<br>Backup (spare)<br>Redundancy (redundant secondary copy)</p>
-<h2 id="NoSQL-Database"><a href="#NoSQL-Database" class="headerlink" title="NoSQL Database:"></a>NoSQL Database:</h2><p><a href="https://www.youtube.com/watch?v=uD3p_rZPBUQ" target="_blank" rel="noopener">An Introduction To NoSQL Databases</a><br><strong>Big Data</strong>: social network, search engine, traditional methods of processing and storage are inadequate.</p>
+<h1>Key Characteristics of Distributed Systems</h1>
+<p>Scalability: scaling without performance loss (but actually will).
+Reliability: keep delivering services when some components fail.
+Availability: reliable means available, but not vice versa
+Efficiency: latency and (throughput)bandwidth.
+Manageability: ease of diagnosing and understanding problems when they occur.</p>
+<h1>常用技术知识</h1>
+<h2 id="备份的说法">备份的说法:</h2>
+<p>Standby replicas
+Failover to other healthy copies
+Duplicates
+Backup (spare)
+Redundancy (redundant secondary copy)</p>
+<h2 id="NoSQL-Database">NoSQL Database:</h2>
+<p><a href="https://www.youtube.com/watch?v=uD3p_rZPBUQ" target="_blank" rel="noopener">An Introduction To NoSQL Databases</a>
+<strong>Big Data</strong>: social network, search engine, traditional methods of processing and storage are inadequate.</p>
 <ol>
 <li>Key-value stores: Redis, Dynamo (redis can also be cache)</li>
 <li>Document database: MongoDB, Couchbase</li>
 <li><a href="https://www.youtube.com/watch?v=8KGVFB3kVHQ" target="_blank" rel="noopener">Wide-column database</a>: Cassandra, HBase</li>
 <li>Graph database: Neo4J</li>
 </ol>
-<p>Advantage of NOSQL database：<br>no data models(no pre-defind schema), unstructed , easy to scale up and down (horizontal data sharding), high performance with big data.</p>
-<p>Advantage of SQL database:<br>relational data, normalization (eliminate redundancy), SQL, data integrity, ACID compliance.</p>
-<h2 id="Consistent-Hashing-with-virtual-replicas"><a href="#Consistent-Hashing-with-virtual-replicas" class="headerlink" title="Consistent Hashing (with virtual replicas)"></a>Consistent Hashing (with virtual replicas)</h2><p><a href="https://www.youtube.com/watch?v=ffE1mQWxyKM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ffE1mQWxyKM</a><br>Using hash <code>mod</code> strategy is not efficient, think about that add a new server, then original 20 % 3 = 2 now is 20 % 4 = 0. We have to <strong>re-organize</strong> all the existing mappings.</p>
-<p><a href="https://www.youtube.com/watch?v=zaRkONvyGr8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=zaRkONvyGr8</a><br>Consistent hashing can be used in many situations, like distributed cache, load balancing, database, etc.</p>
-<p>For example, we have <code>n</code> servers.<br>Hash the request and get the location of it in the <code>ring</code>, find the server with hash value equal or larger than it and send this request to that server (clockwise move). But server may not distributed in ring evenly or the requests is not uniformly (thus server load factor is not <code>1/n</code>), so we can use <strong>virtual replicas</strong>, this can implement by other hash function.</p>
+<p>Advantage of NOSQL database：
+no data models(no pre-defind schema), unstructed , easy to scale up and down (horizontal data sharding), high performance with big data.</p>
+<p>Advantage of SQL database:
+relational data, normalization (eliminate redundancy), SQL, data integrity, ACID compliance.</p>
+<h2 id="Consistent-Hashing-with-virtual-replicas">Consistent Hashing (with virtual replicas)</h2>
+<p><a href="https://www.youtube.com/watch?v=ffE1mQWxyKM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ffE1mQWxyKM</a>
+Using hash <code>mod</code> strategy is not efficient, think about that add a new server, then original 20 % 3 = 2 now is 20 % 4 = 0. We have to <strong>re-organize</strong> all the existing mappings.</p>
+<p><a href="https://www.youtube.com/watch?v=zaRkONvyGr8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=zaRkONvyGr8</a>
+Consistent hashing can be used in many situations, like distributed cache, load balancing, database, etc.</p>
+<p>For example, we have <code>n</code> servers.
+Hash the request and get the location of it in the <code>ring</code>, find the server with hash value equal or larger than it and send this request to that server (clockwise move). But server may not distributed in ring evenly or the requests is not uniformly (thus server load factor is not <code>1/n</code>), so we can use <strong>virtual replicas</strong>, this can implement by other hash function.</p>
 <p>With contsistent hashing, add or remove servers will not cause much overhead. The new added server will grab objects from its near servers and removed server, all original objects will move to next server after the removed one.</p>
-<h2 id="Long-Polling-轮询"><a href="#Long-Polling-轮询" class="headerlink" title="Long Polling (轮询)"></a>Long Polling (轮询)</h2><p><a href="https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0</a><br>和一般的polling都属于pull(拉模式)。</p>
+<h2 id="Long-Polling-轮询">Long Polling (轮询)</h2>
+<p><a href="https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/d3f66b1eb748?from=timeline&amp;isappinstalled=0</a>
+和一般的polling都属于pull(拉模式)。</p>
 <blockquote>
 <p>题外话: push模式其实也是建立了一个持久的connection，但server一旦有新的信息就会push给client，而不会去在乎client的处理能力，这是一个缺点, long polling对于client要更灵活一些（因为client会request first）。</p>
 </blockquote>
 <p>This is a variation of the traditional polling technique that allows the server to push information to a client whenever the data is available. With Long-Polling, the client requests information from the server exactly as in normal polling, but with the expectation that the server may not respond immediately (keep the connection connected). That’s why this technique is sometimes referred to as a <code>Hanging GET</code>.</p>
 <p>Each Long-Poll request has a <code>timeout</code>. The client has to reconnect periodically after the connection is closed due to timeouts or receive the disconnect from server.</p>
 <p>如果client突然unavailable了，如何检测呢？这个connection是如何保持的？我猜想的是connection保持期间，并不需要额外的sync查看server client是否健在(我记得TCP有一个机制会检测这个connection是否健康？)。如果server 发送了message未收到acknowledge则说明client不在了，则connection中断。</p>
-<h2 id="Data-Sharding"><a href="#Data-Sharding" class="headerlink" title="Data Sharding"></a>Data Sharding</h2><p><a href="https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6" target="_blank" rel="noopener">https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6</a><br><code>Horizontal partitioning</code> is also called as Data Sharding</p>
-<h2 id="Web-Server-vs-Application-Server"><a href="#Web-Server-vs-Application-Server" class="headerlink" title="Web Server vs Application Server"></a>Web Server vs Application Server</h2><p><a href="https://stackoverflow.com/questions/936197/what-is-the-difference-between-application-server-and-web-server" target="_blank" rel="noopener">https://stackoverflow.com/questions/936197/what-is-the-difference-between-application-server-and-web-server</a></p>
-<h2 id="proxy-server"><a href="#proxy-server" class="headerlink" title="proxy server"></a>proxy server</h2><p><a href="https://www.educative.io/courses/grokking-the-system-design-interview/N8G9MvM4OR2" target="_blank" rel="noopener">https://www.educative.io/courses/grokking-the-system-design-interview/N8G9MvM4OR2</a><br>A proxy server is an intermediate server between the client and the back-end server.</p>
+<h2 id="Data-Sharding">Data Sharding</h2>
+<p><a href="https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6" target="_blank" rel="noopener">https://medium.com/@jeeyoungk/how-sharding-works-b4dec46b3f6</a>
+<code>Horizontal partitioning</code> is also called as Data Sharding</p>
+<h2 id="Web-Server-vs-Application-Server">Web Server vs Application Server</h2>
+<p><a href="https://stackoverflow.com/questions/936197/what-is-the-difference-between-application-server-and-web-server" target="_blank" rel="noopener">https://stackoverflow.com/questions/936197/what-is-the-difference-between-application-server-and-web-server</a></p>
+<h2 id="proxy-server">proxy server</h2>
+<p><a href="https://www.educative.io/courses/grokking-the-system-design-interview/N8G9MvM4OR2" target="_blank" rel="noopener">https://www.educative.io/courses/grokking-the-system-design-interview/N8G9MvM4OR2</a>
+A proxy server is an intermediate server between the client and the back-end server.</p>
 <p>Typically, proxies are used to filter requests, log requests, or sometimes transform requests (by adding/removing headers, encrypting/decrypting, or compressing a resource). Another advantage of a proxy server is that its cache can serve a lot of requests.</p>
 <ol>
 <li>open (forwarding) proxy: hide clients</li>
 <li>reverse proxy: hide servers</li>
 </ol>
-<h2 id="Map-Reduce"><a href="#Map-Reduce" class="headerlink" title="Map Reduce"></a>Map Reduce</h2><p>We can have a Map-Reduce (MR) set-up These MR jobs will calculate frequencies of all searched terms in the past hour.</p>
-<h2 id="Exponential-Moving-Average-EMA"><a href="#Exponential-Moving-Average-EMA" class="headerlink" title="Exponential Moving Average (EMA)"></a>Exponential Moving Average (EMA)</h2><p>In EMA, we give more weight to the latest data. It’s also known as the exponentially weighted moving average.</p>
-<h1 id="Some-Design-Bottlenecks"><a href="#Some-Design-Bottlenecks" class="headerlink" title="Some Design Bottlenecks"></a>Some Design Bottlenecks</h1><ol>
-<li><p>data compression 需要吗, 如何选择？</p>
+<h2 id="Map-Reduce">Map Reduce</h2>
+<p>We can have a Map-Reduce (MR) set-up These MR jobs will calculate frequencies of all searched terms in the past hour.</p>
+<h2 id="Exponential-Moving-Average-EMA">Exponential Moving Average (EMA)</h2>
+<p>In EMA, we give more weight to the latest data. It’s also known as the exponentially weighted moving average.</p>
+<h1>Some Design Bottlenecks</h1>
+<ol>
+<li>
+<p>data compression 需要吗, 如何选择？</p>
 </li>
-<li><p>capacity estimation: metadata + content 两方面都要考虑，high level estimations 主要包括: storage for each day, storage for years, incoming bandwidth, outgoing bandwidth. 这些主要来自于: Total user, Daily active user (DAU), size of each request, how many entries each user produce, data growth, 有时对某个量单独估计比较好。</p>
+<li>
+<p>capacity estimation: metadata + content 两方面都要考虑，high level estimations 主要包括: storage for each day, storage for years, incoming bandwidth, outgoing bandwidth. 这些主要来自于: Total user, Daily active user (DAU), size of each request, how many entries each user produce, data growth, 有时对某个量单独估计比较好。</p>
 </li>
-<li><p>read heavy or wirte heavy? bandwidth, ingress: 每日新增数据总量/秒; egress: 用户浏览或下载总量/秒.</p>
+<li>
+<p>read heavy or wirte heavy? bandwidth, ingress: 每日新增数据总量/秒; egress: 用户浏览或下载总量/秒.</p>
 </li>
-<li>database需要有哪些符合场景的特点? 比如quick small updates, ACID, range based search, etc.</li>
-<li>how about consider the peak time read and wirte throughput.</li>
-<li><p>hot user in database handle, 怎么设计database去减轻这个问题.</p>
+<li>
+<p>database需要有哪些符合场景的特点? 比如quick small updates, ACID, range based search, etc.</p>
 </li>
-<li><p>we may need aggregator server for fetching and process data from different DB or caches.</p>
+<li>
+<p>how about consider the peak time read and wirte throughput.</p>
 </li>
-<li><p>monitoring system, collect metrics: daily peak, latency.  we will realize if we need more replication, load balancing, or caching.</p>
+<li>
+<p>hot user in database handle, 怎么设计database去减轻这个问题.</p>
 </li>
-<li><p>load balancer can sit: between client and web server, web server and application server (or cahce), application server and database. load balancer can be single point of failure, need redundancy to take over when main is down.</p>
+<li>
+<p>we may need aggregator server for fetching and process data from different DB or caches.</p>
 </li>
-<li><p>load balancer: Round Robin approach, or more intelligent.</p>
+<li>
+<p>monitoring system, collect metrics: daily peak, latency.  we will realize if we need more replication, load balancing, or caching.</p>
 </li>
-<li><p>cache policy, LRU, 80-20 rule.</p>
+<li>
+<p>load balancer can sit: between client and web server, web server and application server (or cahce), application server and database. load balancer can be single point of failure, need redundancy to take over when main is down.</p>
+</li>
+<li>
+<p>load balancer: Round Robin approach, or more intelligent.</p>
+</li>
+<li>
+<p>cache policy, LRU, 80-20 rule.</p>
 </li>
 </ol>
-<h1 id="Other-System-Design-Videos"><a href="#Other-System-Design-Videos" class="headerlink" title="Other System Design Videos:"></a>Other System Design Videos:</h1><h2 id="Introduce-to-System-Design"><a href="#Introduce-to-System-Design" class="headerlink" title="Introduce to System Design"></a>Introduce to System Design</h2><p><a href="https://www.youtube.com/watch?v=UzLMhqg3_Wc&amp;list=PLrmLmBdmIlps7GJJWW9I7N0P0rB0C3eY2" target="_blank" rel="noopener">Introduce to System Design</a><br>同样推荐了这本书<code>&lt;&lt;Designing Data Intensive Applications&gt;&gt;</code>, 会对这些topics有更深入的讲解。</p>
+<h1>Other System Design Videos:</h1>
+<h2 id="Introduce-to-System-Design">Introduce to System Design</h2>
+<p><a href="https://www.youtube.com/watch?v=UzLMhqg3_Wc&amp;list=PLrmLmBdmIlps7GJJWW9I7N0P0rB0C3eY2" target="_blank" rel="noopener">Introduce to System Design</a>
+同样推荐了这本书<code>&lt;&lt;Designing Data Intensive Applications&gt;&gt;</code>, 会对这些topics有更深入的讲解。</p>
 <ol>
-<li>ask good question:<br>which features care about, which not?<br>how much to scale (data, request, latency)</li>
+<li>ask good question:
+which features care about, which not?
+how much to scale (data, request, latency)</li>
 <li>don’t use buzzword (be clear about the tech you use)</li>
 <li>clear and organized thinking</li>
 <li>drive discussion (80% I talk)</li>
@@ -637,12 +706,16 @@
 <li>Vertical vs horizontal scaling</li>
 <li>CAP theorem</li>
 <li>ACID vs BASE</li>
-<li>Partitioning/Sharding </li>
+<li>Partitioning/Sharding</li>
 <li>Consistent Hashing</li>
 <li>Optimistic vs pessimistic locking</li>
 <li>Strong vs eventual consistency</li>
 <li>RelationalDB vs NoSQL</li>
-<li>Types of NoSQL<br>  Key value<br>  Wide column<br>  Document-based<br>  Graph-based</li>
+<li>Types of NoSQL
+Key value
+Wide column
+Document-based
+Graph-based</li>
 <li>Caching</li>
 <li>Data center/racks/hosts</li>
 <li>CPU/memory/Hard drives/Network bandwidth</li>
@@ -658,11 +731,11 @@
 <li>Load Balancer</li>
 <li>CDNs &amp; Edges</li>
 <li>Bloom filters and Count-Min sketch</li>
-<li>Paxos </li>
+<li>Paxos</li>
 <li>Leader election</li>
 <li>Design patterns and Object-oriented design</li>
 <li>Virtual machines and containers</li>
-<li>Pub-sub architecture </li>
+<li>Pub-sub architecture</li>
 <li>MapReduce</li>
 <li>Multithreading, locks, synchronization, CAS(compare and set)</li>
 </ol>
@@ -682,14 +755,17 @@
 <li>Docker, Kubernetes, Mesos</li>
 <li>Hadoop/Spark and HDFS</li>
 </ol>
-<h2 id="Design-Spotify-Apple-Muisc-Youtube-Music"><a href="#Design-Spotify-Apple-Muisc-Youtube-Music" class="headerlink" title="Design Spotify| Apple Muisc | Youtube Music"></a>Design Spotify| Apple Muisc | Youtube Music</h2><p><a href="https://www.youtube.com/watch?v=ks-CS41AiQs" target="_blank" rel="noopener">Design Spotify| Apple Muisc | Youtube Music</a></p>
+<h2 id="Design-Spotify-Apple-Muisc-Youtube-Music">Design Spotify| Apple Muisc | Youtube Music</h2>
+<p><a href="https://www.youtube.com/watch?v=ks-CS41AiQs" target="_blank" rel="noopener">Design Spotify| Apple Muisc | Youtube Music</a></p>
 <ol>
 <li>scope: cover and what else you are not going to cover</li>
 <li>key components (具体分析了一下spotify工作的过程，比如存储，传输protocol转换，low latency, CDN)</li>
 <li>data model</li>
 <li>scaling</li>
 </ol>
-<p>if data size is high, consider compress audio data<br>quality, user use different device and network condition<br>distribution CDN</p>
+<p>if data size is high, consider compress audio data
+quality, user use different device and network condition
+distribution CDN</p>
 <p>scaling group 比如一些stateless servers可以使用k8s, containers去管理。</p>
 
       
@@ -811,7 +887,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -908,7 +984,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1221,7 +1299,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1257,7 +1337,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CAP-Theorem"><span class="nav-number">1.</span> <span class="nav-text">CAP Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thinking-process"><span class="nav-number">2.</span> <span class="nav-text">Thinking process</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Crucial-Components"><span class="nav-number">3.</span> <span class="nav-text">Crucial Components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key-Characteristics-of-Distributed-Systems"><span class="nav-number">4.</span> <span class="nav-text">Key Characteristics of Distributed Systems</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用技术知识"><span class="nav-number">5.</span> <span class="nav-text">常用技术知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#备份的说法"><span class="nav-number">5.1.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSQL-Database"><span class="nav-number">5.2.</span> <span class="nav-text">NoSQL Database:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-Hashing-with-virtual-replicas"><span class="nav-number">5.3.</span> <span class="nav-text">Consistent Hashing (with virtual replicas)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Polling-轮询"><span class="nav-number">5.4.</span> <span class="nav-text">Long Polling (轮询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Sharding"><span class="nav-number">5.5.</span> <span class="nav-text">Data Sharding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Server-vs-Application-Server"><span class="nav-number">5.6.</span> <span class="nav-text">Web Server vs Application Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy-server"><span class="nav-number">5.7.</span> <span class="nav-text">proxy server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">5.8.</span> <span class="nav-text">Map Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exponential-Moving-Average-EMA"><span class="nav-number">5.9.</span> <span class="nav-text">Exponential Moving Average (EMA)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-Design-Bottlenecks"><span class="nav-number">6.</span> <span class="nav-text">Some Design Bottlenecks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-System-Design-Videos"><span class="nav-number">7.</span> <span class="nav-text">Other System Design Videos:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduce-to-System-Design"><span class="nav-number">7.1.</span> <span class="nav-text">Introduce to System Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Spotify-Apple-Muisc-Youtube-Music"><span class="nav-number">7.2.</span> <span class="nav-text">Design Spotify| Apple Muisc | Youtube Music</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">CAP Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Thinking process</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Crucial Components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Key Characteristics of Distributed Systems</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">常用技术知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#备份的说法"><span class="nav-number">5.1.</span> <span class="nav-text">备份的说法:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSQL-Database"><span class="nav-number">5.2.</span> <span class="nav-text">NoSQL Database:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consistent-Hashing-with-virtual-replicas"><span class="nav-number">5.3.</span> <span class="nav-text">Consistent Hashing (with virtual replicas)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-Polling-轮询"><span class="nav-number">5.4.</span> <span class="nav-text">Long Polling (轮询)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Sharding"><span class="nav-number">5.5.</span> <span class="nav-text">Data Sharding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Server-vs-Application-Server"><span class="nav-number">5.6.</span> <span class="nav-text">Web Server vs Application Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy-server"><span class="nav-number">5.7.</span> <span class="nav-text">proxy server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">5.8.</span> <span class="nav-text">Map Reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exponential-Moving-Average-EMA"><span class="nav-number">5.9.</span> <span class="nav-text">Exponential Moving Average (EMA)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Some Design Bottlenecks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Other System Design Videos:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduce-to-System-Design"><span class="nav-number">7.1.</span> <span class="nav-text">Introduce to System Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Spotify-Apple-Muisc-Youtube-Music"><span class="nav-number">7.2.</span> <span class="nav-text">Design Spotify| Apple Muisc | Youtube Music</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1283,13 +1363,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

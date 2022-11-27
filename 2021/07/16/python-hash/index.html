@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Just a kindly reminder that Python built-in hash() uses random seed in some specific version, that leads to different hash value from the same input in different sessions. See questions and comments h">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-07-18T04:23:35.803Z">
+<meta property="og:updated_time" content="2021-07-18T04:23:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Hash">
 <meta name="twitter:description" content="Just a kindly reminder that Python built-in hash() uses random seed in some specific version, that leads to different hash value from the same input in different sessions. See questions and comments h">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.2k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -510,7 +492,8 @@
       
         <p>Just a kindly reminder that Python built-in <code>hash()</code> uses random seed in some specific version, that leads to different hash value from the same input in different sessions.</p>
 <p>See questions and comments <a href="https://stackoverflow.com/questions/27522626/hash-function-in-python-3-3-returns-different-results-between-sessions" target="_blank" rel="noopener">here</a>.</p>
-<p>You can use <code>export PYTHONHASHSEED=1</code> or fixed integer seed to avoid the randomness, or using <code>import hashlib</code> module, for example:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">hash_output = hashlib.md5(<span class="string">"input"</span>.encode()).hexdigest()</span><br><span class="line"><span class="comment"># or usign differet algorithm</span></span><br><span class="line">hash_output = hashlib.sha256(<span class="string">"input"</span>.encode()).hexdigest()</span><br></pre></td></tr></table></figure></p>
+<p>You can use <code>export PYTHONHASHSEED=1</code> or fixed integer seed to avoid the randomness, or using <code>import hashlib</code> module, for example:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">hash_output = hashlib.md5(<span class="string">"input"</span>.encode()).hexdigest()</span><br><span class="line"><span class="comment"># or usign differet algorithm</span></span><br><span class="line">hash_output = hashlib.sha256(<span class="string">"input"</span>.encode()).hexdigest()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -622,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -719,7 +702,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1032,7 +1017,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1077,13 +1064,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

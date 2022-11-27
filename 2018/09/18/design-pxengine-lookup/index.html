@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="How Does lookup operator work now Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (may overflow here). Until all the records">
+  <meta name="description" content="How Does lookup operator work now   Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (may overflow here). Until all the record">
 <meta name="keywords" content="pxengine">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lookup Bounded Memory Support">
 <meta property="og:url" content="http://yoursite.com/2018/09/18/design-pxengine-lookup/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="How Does lookup operator work now Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (may overflow here). Until all the records">
+<meta property="og:description" content="How Does lookup operator work now   Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (may overflow here). Until all the record">
 <meta property="og:locale" content="中文|English">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Dzv6L3U7TA_aqFxboe6h6mZaoH6N9UAB">
 <meta property="og:image" content="https://drive.google.com/uc?id=10fgUeAvzYKlp8YKlj3vjgPRypo7KUiQh">
 <meta property="og:updated_time" content="2019-08-11T23:28:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lookup Bounded Memory Support">
-<meta name="twitter:description" content="How Does lookup operator work now Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (may overflow here). Until all the records">
+<meta name="twitter:description" content="How Does lookup operator work now   Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (may overflow here). Until all the record">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1Dzv6L3U7TA_aqFxboe6h6mZaoH6N9UAB">
 
 
@@ -263,7 +263,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -282,7 +282,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -477,24 +477,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3.6k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -511,30 +493,44 @@
       
 
       
-        <h1 id="How-Does-lookup-operator-work-now"><a href="#How-Does-lookup-operator-work-now" class="headerlink" title="How Does lookup operator work now"></a>How Does lookup operator work now</h1><ol>
-<li><p>Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (<code>may overflow here</code>). Until all the records are processed, then save the lookup table in the memory into disk. </p>
+        <h1>How Does lookup operator work now</h1>
+<ol>
+<li>
+<p>Process every record that would compose to be a lookup table,  read one record at a time, and add the record to the memory (<code>may overflow here</code>). Until all the records are processed, then save the lookup table in the memory into disk.</p>
 </li>
-<li><p>Reads the lookup table file back to memory (<code>may overflow here</code>) to setup the hash bucket for each record (set next record offset) , then write to disk again.</p>
+<li>
+<p>Reads the lookup table file back to memory (<code>may overflow here</code>) to setup the hash bucket for each record (set next record offset) , then write to disk again.</p>
 </li>
-<li><p>Load the entire lookup table file from the disk to memory to do lookup(<code>may overflow here</code>).</p>
+<li>
+<p>Load the entire lookup table file from the disk to memory to do lookup(<code>may overflow here</code>).</p>
 </li>
 </ol>
-<p>As we can see, there are 3 parts that will cause memory overflow, the main reason is that we load the <strong>whole</strong> lookup table into memory. </p>
+<p>As we can see, there are 3 parts that will cause memory overflow, the main reason is that we load the <strong>whole</strong> lookup table into memory.</p>
 <p>To solve this problem, the easy and straightforward way to do is to divide the lookup table into several parts (we call this as <code>section</code>), then process these sections accordingly.</p>
-<h1 id="New-Design"><a href="#New-Design" class="headerlink" title="New Design"></a>New Design</h1><p>Let’s see the diagram to illustrate the workflow:<br><img src="https://drive.google.com/uc?id=1Dzv6L3U7TA_aqFxboe6h6mZaoH6N9UAB" alt=""></p>
-<p><strong>Header</strong>: meta data about lookup table: address, offset…<br><strong>Bucket vector</strong>: speed up lookup by chaining the records to different bucket using hash. </p>
-<p><img src="https://drive.google.com/uc?id=10fgUeAvzYKlp8YKlj3vjgPRypo7KUiQh" alt=""><br>Here assume we have 5 records and 2 buckets, so when we lookup record 4, after hashing, we search from bucket2, so we will only walk through record 2, skip record 1,3 and 5. Of course, the pointer is stored in each record, actually it’s an offset value.</p>
+<h1>New Design</h1>
+<p>Let’s see the diagram to illustrate the workflow:
+<img src="https://drive.google.com/uc?id=1Dzv6L3U7TA_aqFxboe6h6mZaoH6N9UAB" alt=""></p>
+<p><strong>Header</strong>: meta data about lookup table: address, offset…
+<strong>Bucket vector</strong>: speed up lookup by chaining the records to different bucket using hash.</p>
+<p><img src="https://drive.google.com/uc?id=10fgUeAvzYKlp8YKlj3vjgPRypo7KUiQh" alt="">
+Here assume we have 5 records and 2 buckets, so when we lookup record 4, after hashing, we search from bucket2, so we will only walk through record 2, skip record 1,3 and 5. Of course, the pointer is stored in each record, actually it’s an offset value.</p>
 <p><strong>section file container</strong>: we fix the size of section file container in memory (can be configured by client or set by some logic according to the size of memory in client machine)</p>
-<h2 id="Current-Design-to-minimize-the-memory-usage"><a href="#Current-Design-to-minimize-the-memory-usage" class="headerlink" title="Current Design to minimize the memory usage"></a>Current Design to minimize the memory usage</h2><ol>
-<li><p>Set a max memory cap (section file container size).</p>
+<h2 id="Current-Design-to-minimize-the-memory-usage">Current Design to minimize the memory usage</h2>
+<ol>
+<li>
+<p>Set a max memory cap (section file container size).</p>
 </li>
-<li><p>Process each record as it got read in, add the size of the record, when the size will exceed or be the same as max memory cap, save the records that collected so far into a file (called section file, size of section file <code>&lt;=</code> max memory cap size).   </p>
+<li>
+<p>Process each record as it got read in, add the size of the record, when the size will exceed or be the same as max memory cap, save the records that collected so far into a file (called section file, size of section file <code>&lt;=</code> max memory cap size).</p>
 </li>
-<li><p>Repeat the step above until all records have been saved into section file. Therefore, one big lookup table file now has been divided into several chunks of section files.</p>
+<li>
+<p>Repeat the step above until all records have been saved into section file. Therefore, one big lookup table file now has been divided into several chunks of section files.</p>
 </li>
-<li><p>Process the input record and use its key to get the hash bucket number, chain the records(namely add offect in placeholder left, then we need to wirte new content back to disk, need to swap section files with writing and reading operations).</p>
+<li>
+<p>Process the input record and use its key to get the hash bucket number, chain the records(namely add offect in placeholder left, then we need to wirte new content back to disk, need to swap section files with writing and reading operations).</p>
 </li>
-<li><p>when do lookup operation, hash the key and get the entry to lookup it, walk through and compare each record until find it or not, may need to read several section file from disk (now write operation).</p>
+<li>
+<p>when do lookup operation, hash the key and get the entry to lookup it, walk through and compare each record until find it or not, may need to read several section file from disk (now write operation).</p>
 </li>
 </ol>
 <p>If the size of input data <code>&lt;=</code> 2 * available memory size (ignore other small overhead), we will only have 2 section files, the performance will be only corroded slightl(assume the read/write file operation is good).</p>
@@ -654,7 +650,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -751,7 +747,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1064,7 +1062,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1100,7 +1100,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#How-Does-lookup-operator-work-now"><span class="nav-number">1.</span> <span class="nav-text">How Does lookup operator work now</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#New-Design"><span class="nav-number">2.</span> <span class="nav-text">New Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Current-Design-to-minimize-the-memory-usage"><span class="nav-number">2.1.</span> <span class="nav-text">Current Design to minimize the memory usage</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">How Does lookup operator work now</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">New Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Current-Design-to-minimize-the-memory-usage"><span class="nav-number">2.1.</span> <span class="nav-text">Current Design to minimize the memory usage</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1126,13 +1126,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

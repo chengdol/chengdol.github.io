@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Watched Pluralsight &amp;lt;&amp;lt;Managing Ansible with Red Hat Ansible Tower&amp;gt;&amp;gt; This is a brief introduction for Tower, to see details please check official documents. Need to know:  Create project to">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-05-04T04:02:21.795Z">
+<meta property="og:updated_time" content="2022-05-04T04:02:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Tower">
 <meta name="twitter:description" content="Watched Pluralsight &amp;lt;&amp;lt;Managing Ansible with Red Hat Ansible Tower&amp;gt;&amp;gt; This is a brief introduction for Tower, to see details please check official documents. Need to know:  Create project to">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">8.3k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -518,19 +500,29 @@
 <li>Check job status and log from job dashboard.</li>
 </ol>
 <p>Step 1,2,3 could be done by running playbook on Tower.</p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Tower is a kind of control node that also provides a central web UI, authentation and API for Ansible. The new version of Tower is called as <code>Ansible Automation Platform</code>.</p>
+<h1>Introduction</h1>
+<p>Tower is a kind of control node that also provides a central web UI, authentation and API for Ansible. The new version of Tower is called as <code>Ansible Automation Platform</code>.</p>
 <blockquote>
 <p>Tower installation needs license.</p>
 </blockquote>
-<p>Red Hat Ansible Tower official web site:<br><a href="https://access.redhat.com/products/ansible-tower-red-hat" target="_blank" rel="noopener">https://access.redhat.com/products/ansible-tower-red-hat</a></p>
-<p>I use Tower version <code>3.7.4</code>:<br><a href="https://docs.ansible.com/ansible-tower/3.7.4/html/quickinstall/index.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible-tower/3.7.4/html/quickinstall/index.html</a></p>
-<p>Need to apply subscription in order to login the Tower web UI, get trial free license from there:<br><a href="https://docs.ansible.com/ansible-tower/3.7.4/html/installandreference/updates_support.html#trial-evaluation" target="_blank" rel="noopener">https://docs.ansible.com/ansible-tower/3.7.4/html/installandreference/updates_support.html#trial-evaluation</a></p>
-<p>Tower install package download:<br><a href="https://releases.ansible.com/ansible-tower/setup/" target="_blank" rel="noopener">https://releases.ansible.com/ansible-tower/setup/</a><br>For example, I am using bundled(self-contained) installer <a href="https://releases.ansible.com/ansible-tower/setup-bundle/" target="_blank" rel="noopener"><code>ansible-tower-setup-bundle-3.7.4-1.tar.gz</code></a>, can be used without netwrork connection.</p>
-<p>The installation may fail due to lack of necessary packages, just install it, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y rsync</span><br></pre></td></tr></table></figure></p>
-<p>For Tower single node installation, extract the tar.gz and edit the <code>inventory</code> file(Tower is installed through Ansible as well) to fill passwords:<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">admin_password</span>=<span class="string">'admin'</span></span><br><span class="line"><span class="attr">pg_password</span>=<span class="string">'admin'</span></span><br><span class="line"><span class="attr">rabbitmq_password</span>=<span class="string">'admin'</span></span><br></pre></td></tr></table></figure></p>
-<p>Then install by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./setup.sh</span><br></pre></td></tr></table></figure></p>
+<p>Red Hat Ansible Tower official web site:
+<a href="https://access.redhat.com/products/ansible-tower-red-hat" target="_blank" rel="noopener">https://access.redhat.com/products/ansible-tower-red-hat</a></p>
+<p>I use Tower version <code>3.7.4</code>:
+<a href="https://docs.ansible.com/ansible-tower/3.7.4/html/quickinstall/index.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible-tower/3.7.4/html/quickinstall/index.html</a></p>
+<p>Need to apply subscription in order to login the Tower web UI, get trial free license from there:
+<a href="https://docs.ansible.com/ansible-tower/3.7.4/html/installandreference/updates_support.html#trial-evaluation" target="_blank" rel="noopener">https://docs.ansible.com/ansible-tower/3.7.4/html/installandreference/updates_support.html#trial-evaluation</a></p>
+<p>Tower install package download:
+<a href="https://releases.ansible.com/ansible-tower/setup/" target="_blank" rel="noopener">https://releases.ansible.com/ansible-tower/setup/</a>
+For example, I am using bundled(self-contained) installer <a href="https://releases.ansible.com/ansible-tower/setup-bundle/" target="_blank" rel="noopener"><code>ansible-tower-setup-bundle-3.7.4-1.tar.gz</code></a>, can be used without netwrork connection.</p>
+<p>The installation may fail due to lack of necessary packages, just install it, for example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y rsync</span><br></pre></td></tr></table></figure>
+<p>For Tower single node installation, extract the tar.gz and edit the <code>inventory</code> file(Tower is installed through Ansible as well) to fill passwords:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">admin_password</span>=<span class="string">'admin'</span></span><br><span class="line"><span class="attr">pg_password</span>=<span class="string">'admin'</span></span><br><span class="line"><span class="attr">rabbitmq_password</span>=<span class="string">'admin'</span></span><br></pre></td></tr></table></figure>
+<p>Then install by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./setup.sh</span><br></pre></td></tr></table></figure>
 <p>The playbook location: <code>/var/lib/awx/projects</code>, you can put playbooks and ansible.cfg and others info in a <code>tar.gz</code> package and place it under this path (should not need to manually manage these directories).</p>
-<p>Tower REST API:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check api version</span></span><br><span class="line">curl -XGET -k https://localhost/api/</span><br></pre></td></tr></table></figure></p>
+<p>Tower REST API:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check api version</span></span><br><span class="line">curl -XGET -k https://localhost/api/</span><br></pre></td></tr></table></figure>
 <p>There are 4 main components for Tower:</p>
 <ul>
 <li>Nginx: provide web server for UI and API</li>
@@ -546,22 +538,28 @@
 <li>Rabbitmq-server: beam listens on 5672/tcp, 15672/tcp, 25672/tcp</li>
 </ul>
 <p>In the single machine installation, only need to expose 80/tcp and 443/tcp.</p>
-<p>There are some wrapper systemctl commands for Tower:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ansible-tower-service status</span><br><span class="line">ansible-tower-service start</span><br><span class="line">ansible-tower-service stop</span><br><span class="line">ansible-tower-service restart</span><br></pre></td></tr></table></figure></p>
-<h1 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h1><p>To have a overview of Tower dashboard and setup:<br><a href="https://www.youtube.com/watch?v=ToXoDdUOzj8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ToXoDdUOzj8</a></p>
+<p>There are some wrapper systemctl commands for Tower:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ansible-tower-service status</span><br><span class="line">ansible-tower-service start</span><br><span class="line">ansible-tower-service stop</span><br><span class="line">ansible-tower-service restart</span><br></pre></td></tr></table></figure>
+<h1>Dashboard</h1>
+<p>To have a overview of Tower dashboard and setup:
+<a href="https://www.youtube.com/watch?v=ToXoDdUOzj8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ToXoDdUOzj8</a></p>
 <ol>
 <li>create a project, SCM TYPE set to <code>Manual</code> which means you will put your playbook folder in the <code>/var/lib/awx/&lt;any folder&gt;/my-playbook</code> directory. Set <code>ANSIBLE ENVIRONMENT</code> to a virtual python env folder.</li>
 <li>create inventory.</li>
 <li>create templates, set the PROJECT, PLAYBOOK path, JOB TYPE, INVENTORY, ENABLE CURRENT JOBS, etc</li>
 <li>launch the template job w/o extra vars from console or from Tower API.</li>
 </ol>
-<h1 id="Manual-Quick-Debug"><a href="#Manual-Quick-Debug" class="headerlink" title="Manual Quick Debug"></a>Manual Quick Debug</h1><p>Sometimes I would like to run playbook in CLI, that’s easy to do:</p>
+<h1>Manual Quick Debug</h1>
+<p>Sometimes I would like to run playbook in CLI, that’s easy to do:</p>
 <ol>
 <li>upload playbook in one of the Tower VM path <code>/var/lib/awx/projects/my-playbook</code>.</li>
 <li>source the python venv, for example the venv is put in <code>/var/lib/awx/venv</code>.</li>
-<li>run playbook from <strong>inside</strong> the <code>my-playbook</code> directory, otherwise you may encounter strange issue(if you check the process launched by Tower, it runs this way), for example<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /var/lib/awx/venv/my-venv/bin/activate</span><br><span class="line"><span class="built_in">cd</span> /var/lib/awx/projects/my-playbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># no inventory means run on localhost</span></span><br><span class="line">ansible-playbook playbook_v1.yml \</span><br><span class="line">-e @var.json \</span><br><span class="line">-e <span class="string">"endpoint=http://example.com/xs73s93jsdfsf"</span> \</span><br><span class="line">-vvv</span><br></pre></td></tr></table></figure>
-</li>
+<li>run playbook from <strong>inside</strong> the <code>my-playbook</code> directory, otherwise you may encounter strange issue(if you check the process launched by Tower, it runs this way), for example</li>
 </ol>
-<h1 id="Search-Job-Log"><a href="#Search-Job-Log" class="headerlink" title="Search Job Log"></a>Search Job Log</h1><p>It is useful to accurately locate the job specific task logs, in the job log search bar, it can do target and fuzzy search:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">task:<span class="string">"&lt;task name&gt;"</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /var/lib/awx/venv/my-venv/bin/activate</span><br><span class="line"><span class="built_in">cd</span> /var/lib/awx/projects/my-playbook</span><br><span class="line"></span><br><span class="line"><span class="comment"># no inventory means run on localhost</span></span><br><span class="line">ansible-playbook playbook_v1.yml \</span><br><span class="line">-e @var.json \</span><br><span class="line">-e <span class="string">"endpoint=http://example.com/xs73s93jsdfsf"</span> \</span><br><span class="line">-vvv</span><br></pre></td></tr></table></figure>
+<h1>Search Job Log</h1>
+<p>It is useful to accurately locate the job specific task logs, in the job log search bar, it can do target and fuzzy search:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">task:<span class="string">"&lt;task name&gt;"</span></span><br></pre></td></tr></table></figure>
 <p>Other search bars have similar syntax.</p>
 
       
@@ -683,7 +681,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -780,7 +778,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1093,7 +1093,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1129,7 +1131,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dashboard"><span class="nav-number">2.</span> <span class="nav-text">Dashboard</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Manual-Quick-Debug"><span class="nav-number">3.</span> <span class="nav-text">Manual Quick Debug</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Search-Job-Log"><span class="nav-number">4.</span> <span class="nav-text">Search Job Log</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Dashboard</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Manual Quick Debug</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Search Job Log</span></a></li></ol></div>
             
 
           </div>
@@ -1155,13 +1157,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

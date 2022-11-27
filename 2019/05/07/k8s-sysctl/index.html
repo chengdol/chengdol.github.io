@@ -266,7 +266,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -285,7 +285,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -304,7 +304,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -480,24 +480,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">5.7k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -516,7 +498,8 @@
       
         <p><strong>Kubernetes version 1.13.2</strong></p>
 <p>In my article <a href="https://chengdol.github.io/2019/05/01/linux-ipcs/" target="_blank" rel="noopener"><code>&lt;&lt;Linux IPC&gt;&gt;</code></a>, I mentioned that there is a workaround to set IPC kernel parameters using <code>sysctl</code> in Kubernetes cluster if <code>SYS_RESOURCE</code> is not allowed.</p>
-<h3 id="Clarification"><a href="#Clarification" class="headerlink" title="Clarification"></a>Clarification</h3><p>From the Kubernetes <a href="https://v1-14.docs.kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/" target="_blank" rel="noopener">document</a>, we see:</p>
+<h3 id="Clarification">Clarification</h3>
+<p>From the Kubernetes <a href="https://v1-14.docs.kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/" target="_blank" rel="noopener">document</a>, we see:</p>
 <p>Sysctls are grouped into safe and unsafe sysctls. This means that setting a safe sysctl for one pod:</p>
 <ul>
 <li>must not have any influence on any other pod on the node</li>
@@ -533,7 +516,8 @@
 <p>All <code>safe</code> sysctls are enabled by default (you can use it directly without additional configuration in kubelet).</p>
 <p>All <code>unsafe</code> sysctls are disabled by default and must be allowed manually by the cluster admin on a per-node basis. Pods with disabled unsafe sysctls will be scheduled, but will fail to launch:</p>
 <p><img src="https://drive.google.com/uc?id=1ROz7A1kQPzeaBtpLiYPyFHjii0jIvJ52" alt=""></p>
-<p>If you describe the failed pod, you get:<br><img src="https://drive.google.com/uc?id=1T7tUI4jIgGXt_qURYSNME-Qtz2RZc-XI" alt=""></p>
+<p>If you describe the failed pod, you get:
+<img src="https://drive.google.com/uc?id=1T7tUI4jIgGXt_qURYSNME-Qtz2RZc-XI" alt=""></p>
 <p>A number of sysctls are <code>namespaced</code> in today’s Linux kernels. This means that they can be set independently for each pod on a node. <strong>Only</strong> namespaced sysctls are configurable via the pod securityContext within Kubernetes.</p>
 <p>The following sysctls are known to be namespaced. This list could change in future versions of the Linux kernel.</p>
 <ul>
@@ -546,11 +530,15 @@
 <p>Sysctls with no namespace are called <code>node-level</code> sysctls. If you need to set them, you must manually configure them on each node’s operating system, or by using a DaemonSet with privileged containers.</p>
 <p>As with node-level sysctls it is recommended to use taints and toleration feature or taints on nodes to schedule those pods onto the right nodes.</p>
 <p>Use the pod securityContext to configure namespaced sysctls. The securityContext applies to <strong>all</strong> containers in the same pod.</p>
-<h3 id="Configure-kubelet"><a href="#Configure-kubelet" class="headerlink" title="Configure kubelet"></a>Configure kubelet</h3><p>If you need to use <strong>unsafe</strong> sysctls, configure kubelet in target node (configure the node that the unsafe sysctls pod will reside) is a must. Go to edit <code>10-kubeadm.conf</code> file in <code>/etc/systemd/system/kubelet.service.d/</code>, add<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Environment=&quot;KUBELET_UNSAFE_SYSCTLS=--allowed-unsafe-sysctls=&apos;kernel.shm*,kernel.sem,kernel.msg*&apos;&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Configure-kubelet">Configure kubelet</h3>
+<p>If you need to use <strong>unsafe</strong> sysctls, configure kubelet in target node (configure the node that the unsafe sysctls pod will reside) is a must. Go to edit <code>10-kubeadm.conf</code> file in <code>/etc/systemd/system/kubelet.service.d/</code>, add</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Environment=&quot;KUBELET_UNSAFE_SYSCTLS=--allowed-unsafe-sysctls=&apos;kernel.shm*,kernel.sem,kernel.msg*&apos;&quot;</span><br></pre></td></tr></table></figure>
 <p>Here I need <code>kernel.shm*</code>, <code>kernel.sem</code> and <code>kernel.msg*</code>.</p>
 <p><img src="https://drive.google.com/uc?id=11mDU4EZv5p6MJJYahaRblXICFBUY52aD" alt=""></p>
-<p>then run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart kubelet</span><br></pre></td></tr></table></figure></p>
-<p>verify changes, you can see <code>--allowed-unsafe-sysctls</code> is there:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep kubelet</span><br></pre></td></tr></table></figure></p>
+<p>then run:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart kubelet</span><br></pre></td></tr></table></figure>
+<p>verify changes, you can see <code>--allowed-unsafe-sysctls</code> is there:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep kubelet</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>A brief digress: the kubelet service unit file is in <code>/etc/systemd/system/kubelet.service</code>.</p>
 </blockquote>
@@ -558,8 +546,11 @@
 <p><img src="https://drive.google.com/uc?id=122vY73xveFwkFrtsipVJb50WTCiwgjUq" alt=""></p>
 <p>Sometimes you need to disable <code>hostIPC</code>, if not you will get this problem:</p>
 <p><img src="https://drive.google.com/uc?id=1s1sLiMy_FCCu_ClNJlX9r8C3k_Kw6c_E" alt=""></p>
-<p>After things done, get into the container to check the kernel parameter vaule, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -a | grep -i kernel.sem</span><br></pre></td></tr></table></figure></p>
-<h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><p><a href="https://blog.csdn.net/horsefoot/article/details/53007177?utm_source=blogxgwz5" target="_blank" rel="noopener">kubernetes 1.4 new feature: support sysctls</a><br><a href="https://yq.aliyun.com/articles/603745?utm_content=m_1000003747" target="_blank" rel="noopener">configure kernel parameters in k8s cluster</a></p>
+<p>After things done, get into the container to check the kernel parameter vaule, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -a | grep -i kernel.sem</span><br></pre></td></tr></table></figure>
+<h3 id="Resources">Resources</h3>
+<p><a href="https://blog.csdn.net/horsefoot/article/details/53007177?utm_source=blogxgwz5" target="_blank" rel="noopener">kubernetes 1.4 new feature: support sysctls</a>
+<a href="https://yq.aliyun.com/articles/603745?utm_content=m_1000003747" target="_blank" rel="noopener">configure kernel parameters in k8s cluster</a></p>
 
       
     </div>
@@ -682,7 +673,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -779,7 +770,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1092,7 +1085,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1154,13 +1149,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

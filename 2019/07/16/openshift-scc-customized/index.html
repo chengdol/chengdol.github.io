@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">8.8k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -513,14 +495,18 @@
 <blockquote>
 <p>To get basic understand about <code>SCC</code>, see my blog <a href="https://chengdol.github.io/2019/06/21/openshift-scc/" target="_blank" rel="noopener"><code>&lt;&lt;OpenShift Security Context Constraint&gt;&gt;</code></a>.</p>
 </blockquote>
-<p>7 default existing SCCs are:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">oc get scc</span><br><span class="line"></span><br><span class="line">NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP     SUPGROUP    PRIORITY   READONLYROOTFS   VOLUMES</span><br><span class="line">anyuid             <span class="literal">false</span>     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    10         <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">hostaccess         <span class="literal">false</span>     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir hostPath persistentVolumeClaim projected secret]</span><br><span class="line">hostmount-anyuid   <span class="literal">false</span>     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir hostPath nfs persistentVolumeClaim projected secret]</span><br><span class="line">hostnetwork        <span class="literal">false</span>     []        MustRunAs   MustRunAsRange     MustRunAs   MustRunAs   &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">nonroot            <span class="literal">false</span>     []        MustRunAs   MustRunAsNonRoot   RunAsAny    RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">privileged         <span class="literal">true</span>      [*]       RunAsAny    RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [*]</span><br><span class="line">restricted         <span class="literal">false</span>     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br></pre></td></tr></table></figure></p>
+<p>7 default existing SCCs are:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">oc get scc</span><br><span class="line"></span><br><span class="line">NAME               PRIV      CAPS      SELINUX     RUNASUSER          FSGROUP     SUPGROUP    PRIORITY   READONLYROOTFS   VOLUMES</span><br><span class="line">anyuid             <span class="literal">false</span>     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    10         <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">hostaccess         <span class="literal">false</span>     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir hostPath persistentVolumeClaim projected secret]</span><br><span class="line">hostmount-anyuid   <span class="literal">false</span>     []        MustRunAs   RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir hostPath nfs persistentVolumeClaim projected secret]</span><br><span class="line">hostnetwork        <span class="literal">false</span>     []        MustRunAs   MustRunAsRange     MustRunAs   MustRunAs   &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">nonroot            <span class="literal">false</span>     []        MustRunAs   MustRunAsNonRoot   RunAsAny    RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br><span class="line">privileged         <span class="literal">true</span>      [*]       RunAsAny    RunAsAny           RunAsAny    RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [*]</span><br><span class="line">restricted         <span class="literal">false</span>     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    &lt;none&gt;     <span class="literal">false</span>            [configMap downwardAPI emptyDir persistentVolumeClaim projected secret]</span><br></pre></td></tr></table></figure>
 <p>Don’t forget to examine SCC, such as <code>oc describe scc privileged</code>.</p>
-<h2 id="SCC-Yaml-Demo"><a href="#SCC-Yaml-Demo" class="headerlink" title="SCC Yaml Demo"></a>SCC Yaml Demo</h2><blockquote>
+<h2 id="SCC-Yaml-Demo">SCC Yaml Demo</h2>
+<blockquote>
 <p>How to write SCC yaml and what does each field mean? <a href="https://docs.openshift.com/container-platform/3.9/architecture/additional_concepts/authorization.html#security-context-constraints" target="_blank" rel="noopener">OpenShift SCC official</a></p>
 </blockquote>
-<p>Create a file named as <code>scc-customized.yaml</code>, carefully fill the value to satisfy the demands<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">SecurityContextConstraints</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">scc-customized</span></span><br><span class="line"><span class="comment">## permission</span></span><br><span class="line"><span class="attr">allowPrivilegedContainer:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">allowHostIPC:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">allowHostNetwork:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">allowHostPID:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">allowHostPorts:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment">#allowedFlexVolumes: null</span></span><br><span class="line"><span class="comment">## linux capabilities, some pods require these</span></span><br><span class="line"><span class="attr">allowedCapabilities:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">SYS_NICE</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">IPC_OWNER</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">SYS_RESOURCE</span></span><br><span class="line"><span class="attr">requiredDropCapabilities:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">defaultAddCapabilities:</span> <span class="string">[]</span></span><br><span class="line"><span class="comment">## strategies</span></span><br><span class="line"><span class="attr">runAsUser:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">MustRunAsNonRoot</span></span><br><span class="line"><span class="attr">seLinuxContext:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">RunAsAny</span></span><br><span class="line"><span class="attr">fsGroup:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">RunAsAny</span></span><br><span class="line"><span class="attr">supplementalGroups:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">RunAsAny</span></span><br><span class="line"><span class="comment">## who can access this SCC</span></span><br><span class="line"><span class="attr">users:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">groups:</span></span><br><span class="line"><span class="attr">- system:</span><span class="string">authenticated</span></span><br><span class="line"><span class="comment">## may narrow down insteaf of `*`</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">'*'</span></span><br></pre></td></tr></table></figure></p>
+<p>Create a file named as <code>scc-customized.yaml</code>, carefully fill the value to satisfy the demands</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">SecurityContextConstraints</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">scc-customized</span></span><br><span class="line"><span class="comment">## permission</span></span><br><span class="line"><span class="attr">allowPrivilegedContainer:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">allowHostIPC:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">allowHostNetwork:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">allowHostPID:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">allowHostPorts:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment">#allowedFlexVolumes: null</span></span><br><span class="line"><span class="comment">## linux capabilities, some pods require these</span></span><br><span class="line"><span class="attr">allowedCapabilities:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">SYS_NICE</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">IPC_OWNER</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">SYS_RESOURCE</span></span><br><span class="line"><span class="attr">requiredDropCapabilities:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">defaultAddCapabilities:</span> <span class="string">[]</span></span><br><span class="line"><span class="comment">## strategies</span></span><br><span class="line"><span class="attr">runAsUser:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">MustRunAsNonRoot</span></span><br><span class="line"><span class="attr">seLinuxContext:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">RunAsAny</span></span><br><span class="line"><span class="attr">fsGroup:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">RunAsAny</span></span><br><span class="line"><span class="attr">supplementalGroups:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">RunAsAny</span></span><br><span class="line"><span class="comment">## who can access this SCC</span></span><br><span class="line"><span class="attr">users:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">groups:</span></span><br><span class="line"><span class="attr">- system:</span><span class="string">authenticated</span></span><br><span class="line"><span class="comment">## may narrow down insteaf of `*`</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">'*'</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oc create -f scc-customized.yaml</span><br></pre></td></tr></table></figure>
-<p>Then, for example, you can bind <code>default</code> service account to this <code>SCC</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oc adm policy add-scc-to-user scc-customized system:serviceaccount:&lt;project&gt;:default</span><br></pre></td></tr></table></figure></p>
+<p>Then, for example, you can bind <code>default</code> service account to this <code>SCC</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oc adm policy add-scc-to-user scc-customized system:serviceaccount:&lt;project&gt;:default</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>A <code>default</code> service account is used by all other pods unless they specify a different service account.</p>
 </blockquote>
@@ -646,7 +632,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -743,7 +729,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1056,7 +1044,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1118,13 +1108,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

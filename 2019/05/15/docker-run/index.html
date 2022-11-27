@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-10-11T06:12:32.073Z">
+<meta property="og:updated_time" content="2021-10-11T06:12:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Run Reference">
 <meta name="twitter:description" content="This is a summary from Docker run reference Docker runs processes in isolated containers. A container is a process which runs on a host. The host may be local or remote. When an operator executes dock">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">14k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -512,45 +494,62 @@
 <p>Docker runs processes in isolated containers. <strong>A container is a process</strong> which runs on a host. The host may be local or remote. When an operator executes <code>docker run</code>, the container process that runs is isolated in that it has its own file system, its own networking, and its own isolated process tree separate from the host.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
 <p>The <code>docker run</code> command can override nearly all the defaults set from docker image.</p>
-<p>Let’s first see the <code>docker run</code> command I encountered:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">--name=<span class="variable">$&#123;DB2_XMETA_HOST&#125;</span> \</span><br><span class="line">--restart=always \</span><br><span class="line">--privileged=<span class="literal">false</span> \</span><br><span class="line">--<span class="built_in">cap</span>-add=SYS_NICE \</span><br><span class="line">--<span class="built_in">cap</span>-add=IPC_OWNER \</span><br><span class="line">--<span class="built_in">cap</span>-add=SETFCAP  \</span><br><span class="line">--user 1000 \</span><br><span class="line">-e MY_POD_NAMESPACE=<span class="variable">$&#123;MY_POD_NAMESPACE&#125;</span> \</span><br><span class="line">-e SHARED_VOL=<span class="variable">$&#123;SHARED_REPOS_VOLPATH&#125;</span> \</span><br><span class="line">--hostname=<span class="variable">$&#123;DB2_XMETA_HOST&#125;</span> \</span><br><span class="line">-p <span class="variable">$&#123;DB2_XMETA_PORT&#125;</span>:<span class="variable">$&#123;DB2_XMETA_PORT&#125;</span> \</span><br><span class="line">-v <span class="variable">$&#123;SHARED_VOL&#125;</span>:<span class="variable">$&#123;SHARED_VOL&#125;</span> \</span><br><span class="line">is-xmetadocker:11.7.1 \</span><br></pre></td></tr></table></figure></p>
-<h2 id="Detched-d"><a href="#Detched-d" class="headerlink" title="Detched [-d]"></a>Detched [-d]</h2><p>To start a container in detached mode, you use <code>-d=true</code> or just <code>-d</code> option. By design, containers started in detached mode exit when the root process used to run the container exits, unless you also specify the <code>--rm</code> option. If you use <code>-d</code> with <code>--rm</code>, the container is removed when it exits or when the daemon exits, whichever happens first.</p>
+<p>Let’s first see the <code>docker run</code> command I encountered:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">--name=<span class="variable">$&#123;DB2_XMETA_HOST&#125;</span> \</span><br><span class="line">--restart=always \</span><br><span class="line">--privileged=<span class="literal">false</span> \</span><br><span class="line">--<span class="built_in">cap</span>-add=SYS_NICE \</span><br><span class="line">--<span class="built_in">cap</span>-add=IPC_OWNER \</span><br><span class="line">--<span class="built_in">cap</span>-add=SETFCAP  \</span><br><span class="line">--user 1000 \</span><br><span class="line">-e MY_POD_NAMESPACE=<span class="variable">$&#123;MY_POD_NAMESPACE&#125;</span> \</span><br><span class="line">-e SHARED_VOL=<span class="variable">$&#123;SHARED_REPOS_VOLPATH&#125;</span> \</span><br><span class="line">--hostname=<span class="variable">$&#123;DB2_XMETA_HOST&#125;</span> \</span><br><span class="line">-p <span class="variable">$&#123;DB2_XMETA_PORT&#125;</span>:<span class="variable">$&#123;DB2_XMETA_PORT&#125;</span> \</span><br><span class="line">-v <span class="variable">$&#123;SHARED_VOL&#125;</span>:<span class="variable">$&#123;SHARED_VOL&#125;</span> \</span><br><span class="line">is-xmetadocker:11.7.1 \</span><br></pre></td></tr></table></figure>
+<h2 id="Detched-d">Detched [-d]</h2>
+<p>To start a container in detached mode, you use <code>-d=true</code> or just <code>-d</code> option. By design, containers started in detached mode exit when the root process used to run the container exits, unless you also specify the <code>--rm</code> option. If you use <code>-d</code> with <code>--rm</code>, the container is removed when it exits or when the daemon exits, whichever happens first.</p>
 <blockquote>
 <p>This is why we specify <code>tail -f /dev/null</code> at end of start script in container.</p>
 </blockquote>
-<h2 id="Foreground"><a href="#Foreground" class="headerlink" title="Foreground"></a>Foreground</h2><p>In foreground mode (the default when <code>-d</code> is not specified), docker run can start the process in the container and attach the console to the process’s standard input, output, and standard error. It can even pretend to be a TTY (this is what most command line executables expect) and pass along signals.</p>
-<p>For interactive processes (like a shell), you must use <code>-it</code> together in order to allocate a tty for the container process. </p>
-<p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm busybox /bin/sh</span><br></pre></td></tr></table></figure></p>
+<h2 id="Foreground">Foreground</h2>
+<p>In foreground mode (the default when <code>-d</code> is not specified), docker run can start the process in the container and attach the console to the process’s standard input, output, and standard error. It can even pretend to be a TTY (this is what most command line executables expect) and pass along signals.</p>
+<p>For interactive processes (like a shell), you must use <code>-it</code> together in order to allocate a tty for the container process.</p>
+<p>For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm busybox /bin/sh</span><br></pre></td></tr></table></figure>
 <p>This will directly open a shell to operate on container, once exit, container will be removed.</p>
-<h2 id="Name-name"><a href="#Name-name" class="headerlink" title="Name [--name]"></a>Name [<code>--name</code>]</h2><p>Specify container name. If you do not assign a container name with the <code>--name</code> option, then the daemon generates a random string name for you. Defining a name can be a handy way to add meaning to a container.</p>
-<h3 id="IPC-settings-ipc"><a href="#IPC-settings-ipc" class="headerlink" title="IPC settings [--ipc]"></a>IPC settings [<code>--ipc</code>]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--ipc=&quot;MODE&quot;  : Set the IPC mode for the container</span><br></pre></td></tr></table></figure>
+<h2 id="Name-name">Name [<code>--name</code>]</h2>
+<p>Specify container name. If you do not assign a container name with the <code>--name</code> option, then the daemon generates a random string name for you. Defining a name can be a handy way to add meaning to a container.</p>
+<h3 id="IPC-settings-ipc">IPC settings [<code>--ipc</code>]</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--ipc=&quot;MODE&quot;  : Set the IPC mode for the container</span><br></pre></td></tr></table></figure>
 <p>IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues.</p>
-<p>Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack. </p>
+<p>Shared memory segments are used to accelerate inter-process communication at memory speed, rather than through pipes or through the network stack.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--ipc=&lt;Value&gt;</span><br></pre></td></tr></table></figure>
-<p>Value    Description</p>
+<p>Value	Description</p>
 <ul>
-<li>“”:    Use daemon’s default.</li>
-<li>“none”:    Own private IPC namespace, with /dev/shm not mounted.</li>
-<li>“private”:    Own private IPC namespace.</li>
+<li>“”:	Use daemon’s default.</li>
+<li>“none”:	Own private IPC namespace, with /dev/shm not mounted.</li>
+<li>“private”:	Own private IPC namespace.</li>
 <li>“shareable”:Own private IPC namespace, with a possibility to share it with other containers.</li>
 <li>“container: &lt;<em>name-or-ID</em>&gt;”: Join another (“shareable”) container’s IPC namespace.</li>
 <li>“*host”: Use the host system’s IPC namespace.</li>
 </ul>
 <p>If not specified, daemon default is used, which can either be <code>private</code> or <code>shareable</code>, depending on the daemon version and configuration.</p>
 <p>If these types of applications are broken into multiple containers, you might need to share the IPC mechanisms of the containers, using “shareable” mode for the main container, and <code>container:&lt;donor-name-or-ID&gt;</code> for other containers.</p>
-<h2 id="Network-settings"><a href="#Network-settings" class="headerlink" title="Network settings"></a>Network settings</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--dns=[]           : Set custom dns servers <span class="keyword">for</span> the container</span><br><span class="line">--network=<span class="string">"bridge"</span> : Connect a container to a network</span><br><span class="line">                      <span class="string">'bridge'</span>: create a network stack on the default Docker bridge</span><br><span class="line">                      <span class="string">'none'</span>: no networking</span><br><span class="line">                      <span class="comment"># set this to join other's network</span></span><br><span class="line">                      <span class="string">'container:&lt;name|id&gt;'</span>: reuse another container<span class="string">'s network stack</span></span><br><span class="line"><span class="string">                      '</span>host<span class="string">': use the Docker host network stack</span></span><br><span class="line"><span class="string">                      '</span>&lt;network-name&gt;|&lt;network-id&gt;<span class="string">': connect to a user-defined network</span></span><br><span class="line"><span class="string">--network-alias=[] : Add network-scoped alias for the container</span></span><br><span class="line"><span class="string">--add-host=""      : Add a line to /etc/hosts (host:IP)</span></span><br><span class="line"><span class="string">--mac-address=""   : Sets the container'</span>s Ethernet device<span class="string">'s MAC address</span></span><br><span class="line"><span class="string">--ip=""            : Sets the container'</span>s Ethernet device<span class="string">'s IPv4 address</span></span><br><span class="line"><span class="string">--ip6=""           : Sets the container'</span>s Ethernet device<span class="string">'s IPv6 address</span></span><br><span class="line"><span class="string">--link-local-ip=[] : Sets one or more container'</span>s Ethernet device<span class="string">'s link local IPv4/IPv6 addresses</span></span><br></pre></td></tr></table></figure>
-<p>I meet <code>--add-host</code> flag in service docker:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;SERVICES_HOST_IP&#125; \</span><br></pre></td></tr></table></figure></p>
-<h2 id="Restart-policies-restart"><a href="#Restart-policies-restart" class="headerlink" title="Restart policies (--restart)"></a>Restart policies (<code>--restart</code>)</h2><p>Using the <code>--restart</code> flag on Docker run you can specify a restart policy for how a container should or should not be restarted on exit.</p>
+<h2 id="Network-settings">Network settings</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--dns=[]           : Set custom dns servers <span class="keyword">for</span> the container</span><br><span class="line">--network=<span class="string">"bridge"</span> : Connect a container to a network</span><br><span class="line">                      <span class="string">'bridge'</span>: create a network stack on the default Docker bridge</span><br><span class="line">                      <span class="string">'none'</span>: no networking</span><br><span class="line">                      <span class="comment"># set this to join other's network</span></span><br><span class="line">                      <span class="string">'container:&lt;name|id&gt;'</span>: reuse another container<span class="string">'s network stack</span></span><br><span class="line"><span class="string">                      '</span>host<span class="string">': use the Docker host network stack</span></span><br><span class="line"><span class="string">                      '</span>&lt;network-name&gt;|&lt;network-id&gt;<span class="string">': connect to a user-defined network</span></span><br><span class="line"><span class="string">--network-alias=[] : Add network-scoped alias for the container</span></span><br><span class="line"><span class="string">--add-host=""      : Add a line to /etc/hosts (host:IP)</span></span><br><span class="line"><span class="string">--mac-address=""   : Sets the container'</span>s Ethernet device<span class="string">'s MAC address</span></span><br><span class="line"><span class="string">--ip=""            : Sets the container'</span>s Ethernet device<span class="string">'s IPv4 address</span></span><br><span class="line"><span class="string">--ip6=""           : Sets the container'</span>s Ethernet device<span class="string">'s IPv6 address</span></span><br><span class="line"><span class="string">--link-local-ip=[] : Sets one or more container'</span>s Ethernet device<span class="string">'s link local IPv4/IPv6 addresses</span></span><br></pre></td></tr></table></figure>
+<p>I meet <code>--add-host</code> flag in service docker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--add-host=&quot;$&#123;SERVICES_HOST&#125; $&#123;DB2_XMETA_HOST&#125; $&#123;ENGINE_HOST&#125;&quot;:$&#123;SERVICES_HOST_IP&#125; \</span><br></pre></td></tr></table></figure>
+<h2 id="Restart-policies-restart">Restart policies (<code>--restart</code>)</h2>
+<p>Using the <code>--restart</code> flag on Docker run you can specify a restart policy for how a container should or should not be restarted on exit.</p>
 <p>When a restart policy is active on a container, it will be shown as either <code>Up</code> or <code>Restarting</code> in <code>docker ps</code>.</p>
-<h2 id="Exit-Status"><a href="#Exit-Status" class="headerlink" title="Exit Status"></a>Exit Status</h2><p>The exit code from <code>docker run</code> gives information about why the container failed to run or why it exited. When <code>docker run</code> exits with a non-zero code, the exit codes follow the chroot standard.</p>
-<h2 id="Clean-up-rm"><a href="#Clean-up-rm" class="headerlink" title="Clean up [--rm]"></a>Clean up [<code>--rm</code>]</h2><p>By default a container’s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running <strong>short-term</strong> foreground processes, these container file systems can really pile up. If instead you’d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the <code>--rm</code> flag.</p>
-<h2 id="HOSTNAME-hostname"><a href="#HOSTNAME-hostname" class="headerlink" title="HOSTNAME [--hostname]"></a>HOSTNAME [<code>--hostname</code>]</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--hostname=&quot;xxx&quot;		Container host name</span><br></pre></td></tr></table></figure>
+<h2 id="Exit-Status">Exit Status</h2>
+<p>The exit code from <code>docker run</code> gives information about why the container failed to run or why it exited. When <code>docker run</code> exits with a non-zero code, the exit codes follow the chroot standard.</p>
+<h2 id="Clean-up-rm">Clean up [<code>--rm</code>]</h2>
+<p>By default a container’s file system persists even after the container exits. This makes debugging a lot easier (since you can inspect the final state) and you retain all your data by default. But if you are running <strong>short-term</strong> foreground processes, these container file systems can really pile up. If instead you’d like Docker to automatically clean up the container and remove the file system when the container exits, you can add the <code>--rm</code> flag.</p>
+<h2 id="HOSTNAME-hostname">HOSTNAME [<code>--hostname</code>]</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--hostname=&quot;xxx&quot;		Container host name</span><br></pre></td></tr></table></figure>
 <p>Set the hostname of the container.</p>
-<h2 id="Runtime-privilege-and-Linux-capabilities"><a href="#Runtime-privilege-and-Linux-capabilities" class="headerlink" title="Runtime privilege and Linux capabilities"></a>Runtime privilege and Linux capabilities</h2><p>I separate this section to the blog <a href="https://chengdol.github.io/2019/05/15/docker-capability/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Capability&gt;&gt;</code></a> since it’s important to me.</p>
-<h2 id="Logging-drivers-log-driver"><a href="#Logging-drivers-log-driver" class="headerlink" title="Logging drivers [--log-driver]"></a>Logging drivers [<code>--log-driver</code>]</h2><p>The container can have a different logging driver than the Docker daemon. Use the <code>--log-driver=VALUE</code> with the <code>docker run</code> command to configure the container’s logging driver.</p>
+<h2 id="Runtime-privilege-and-Linux-capabilities">Runtime privilege and Linux capabilities</h2>
+<p>I separate this section to the blog <a href="https://chengdol.github.io/2019/05/15/docker-capability/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Capability&gt;&gt;</code></a> since it’s important to me.</p>
+<h2 id="Logging-drivers-log-driver">Logging drivers [<code>--log-driver</code>]</h2>
+<p>The container can have a different logging driver than the Docker daemon. Use the <code>--log-driver=VALUE</code> with the <code>docker run</code> command to configure the container’s logging driver.</p>
 <p>Default logging driver is json format. The <code>docker logs</code> command is available only for the <code>json-file</code> and <code>journald</code> logging drivers.</p>
-<h2 id="Overriding-Dockerfile-image-defaults"><a href="#Overriding-Dockerfile-image-defaults" class="headerlink" title="Overriding Dockerfile image defaults"></a>Overriding Dockerfile image defaults</h2><p>I separate this section to the blog <a href="https://chengdol.github.io/2019/05/15/docker-image-default/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Image Defaults&gt;&gt;</code></a> since it’s important to me.</p>
-<h2 id="p"><a href="#p" class="headerlink" title="-p"></a>-p</h2><p>Remember, the first part of the -p value is the host port and the second part is the port within the container</p>
-<h2 id="VOLUME-shared-filesystems"><a href="#VOLUME-shared-filesystems" class="headerlink" title="VOLUME (shared filesystems)"></a>VOLUME (shared filesystems)</h2><p>When use <code>-v</code> option binds mount a volume from host machine to inside container, if the container originally has contents inside the mount target folder, they will all be removed when mount and replaced by contents from source host machine folder.</p>
+<h2 id="Overriding-Dockerfile-image-defaults">Overriding Dockerfile image defaults</h2>
+<p>I separate this section to the blog <a href="https://chengdol.github.io/2019/05/15/docker-image-default/" target="_blank" rel="noopener"><code>&lt;&lt;Docker Image Defaults&gt;&gt;</code></a> since it’s important to me.</p>
+<h2 id="p">-p</h2>
+<p>Remember, the first part of the -p value is the host port and the second part is the port within the container</p>
+<h2 id="VOLUME-shared-filesystems">VOLUME (shared filesystems)</h2>
+<p>When use <code>-v</code> option binds mount a volume from host machine to inside container, if the container originally has contents inside the mount target folder, they will all be removed when mount and replaced by contents from source host machine folder.</p>
 <blockquote>
 <p>Note that <code>docker commit</code> will not include any data contained in volumes mounted inside the container.</p>
 </blockquote>
@@ -674,7 +673,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -771,7 +770,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1084,7 +1085,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1146,13 +1149,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="New features:  Using cockpit web interface Using enhanced firewall: nftables Managing NFSv4 with nfsconf Layered storage management with stratis Data de-duplication and compression with VDO (virtual d">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-12-31T00:12:01.936Z">
+<meta property="og:updated_time" content="2020-12-31T00:12:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What&#39;s New in CentOS 8">
 <meta name="twitter:description" content="New features:  Using cockpit web interface Using enhanced firewall: nftables Managing NFSv4 with nfsconf Layered storage management with stratis Data de-duplication and compression with VDO (virtual d">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">22k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -516,7 +498,8 @@
 <li>Layered storage management with stratis</li>
 <li>Data de-duplication and compression with VDO (virtual data optimizer)</li>
 </ul>
-<p>感觉资源挺分散的，不知道就是不知道😢<br>RedHat provides lab interactive learning exercise:</p>
+<p>感觉资源挺分散的，不知道就是不知道😢
+RedHat provides lab interactive learning exercise:</p>
 <ul>
 <li><a href="https://lab.redhat.com/" target="_blank" rel="noopener">https://lab.redhat.com/</a></li>
 </ul>
@@ -524,43 +507,71 @@
 <ul>
 <li><a href="https://learn.openshift.com/" target="_blank" rel="noopener">https://learn.openshift.com/</a></li>
 </ul>
-<h1 id="Fast-Ping-Test"><a href="#Fast-Ping-Test" class="headerlink" title="Fast Ping Test"></a>Fast Ping Test</h1><p>This is the new shorthand format.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># last decimal represents 24 bits</span></span><br><span class="line"><span class="comment"># the same as 127.0.0.1</span></span><br><span class="line">ping 127.1</span><br><span class="line"><span class="comment"># 1.0.0.1</span></span><br><span class="line">ping 1.1</span><br></pre></td></tr></table></figure></p>
-<h1 id="Cocopit-Web-Console"><a href="#Cocopit-Web-Console" class="headerlink" title="Cocopit Web Console"></a>Cocopit Web Console</h1><p>Available since CentOS 7.5. 相当于一个简化版的桌面. You can check logs, create account, monitor network, start services, and so on.</p>
+<h1>Fast Ping Test</h1>
+<p>This is the new shorthand format.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># last decimal represents 24 bits</span></span><br><span class="line"><span class="comment"># the same as 127.0.0.1</span></span><br><span class="line">ping 127.1</span><br><span class="line"><span class="comment"># 1.0.0.1</span></span><br><span class="line">ping 1.1</span><br></pre></td></tr></table></figure>
+<h1>Cocopit Web Console</h1>
+<p>Available since CentOS 7.5. 相当于一个简化版的桌面. You can check logs, create account, monitor network, start services, and so on.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install</span></span><br><span class="line">sudo yum install -y cockpit-211.3-1.el8.x86_64</span><br><span class="line"></span><br><span class="line"><span class="comment"># start socket only not cockpit.service</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> --now cockpit.socket</span><br><span class="line">systemctl status cockpit.socket</span><br><span class="line"><span class="comment"># see port opened: 9090</span></span><br><span class="line">sudo ss -tnlp</span><br><span class="line"></span><br><span class="line"><span class="comment"># still inactive</span></span><br><span class="line">systemctl status cockpit.service</span><br></pre></td></tr></table></figure>
-<p>Set root password, user <code>vagrant</code> is privileged, run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure></p>
-<p>I have the port forwarding for <code>9090</code>, view cockpit UI by <code>localhost:9090</code>, login as root user with the password you set. After login the <code>cockpit.service</code> is now active:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status cockpit.service</span><br></pre></td></tr></table></figure></p>
+<p>Set root password, user <code>vagrant</code> is privileged, run:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+<p>I have the port forwarding for <code>9090</code>, view cockpit UI by <code>localhost:9090</code>, login as root user with the password you set. After login the <code>cockpit.service</code> is now active:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status cockpit.service</span><br></pre></td></tr></table></figure>
 <p>There is a <code>terminal</code> in web UI, you can work with it just like working on a normal ssh terminal.</p>
-<p>The <code>dashboard</code> plugin:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># see plugins</span></span><br><span class="line"><span class="comment"># you can see yum packages installed and available</span></span><br><span class="line">yum list cockpit*</span><br><span class="line"></span><br><span class="line">yum info cockpit-dashboard</span><br><span class="line">yum install -y cockpit-dashboard</span><br></pre></td></tr></table></figure></p>
+<p>The <code>dashboard</code> plugin:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># see plugins</span></span><br><span class="line"><span class="comment"># you can see yum packages installed and available</span></span><br><span class="line">yum list cockpit*</span><br><span class="line"></span><br><span class="line">yum info cockpit-dashboard</span><br><span class="line">yum install -y cockpit-dashboard</span><br></pre></td></tr></table></figure>
 <p>With cockpit dashboard plugin installed, you can connect to remote machine (with cockpit installed and cockpit.socket running), dashboard is just like a control plane.</p>
 <p>Other plugins like <code>cockpit-machines</code> is used to manage virtual guests.</p>
-<h1 id="Enhancing-Firewall"><a href="#Enhancing-Firewall" class="headerlink" title="Enhancing Firewall"></a>Enhancing Firewall</h1><p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-nftables_configuring-and-managing-networking" target="_blank" rel="noopener">RedHat 8 Getting start with nftables</a><br>It is the designated <strong>successor</strong> to the iptables, ip6tables, arptables, and ebtables tools. Stick to one command, not using mixed. <code>firewalld</code> command can be replaced by nftables.</p>
+<h1>Enhancing Firewall</h1>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-nftables_configuring-and-managing-networking" target="_blank" rel="noopener">RedHat 8 Getting start with nftables</a>
+It is the designated <strong>successor</strong> to the iptables, ip6tables, arptables, and ebtables tools. Stick to one command, not using mixed. <code>firewalld</code> command can be replaced by nftables.</p>
 <p>NFTables <code>nft</code> is the default kernel firewall in CentOS 8. Single command for IPV4, IPV6 ARP, and Bridge filters. nftables does not have any predefined tables, tables are created by <code>firewalld</code> or rely on our scripts.</p>
 <p>First yum install nftables, run as sudo or <strong>root</strong>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> --now firewalld</span><br><span class="line">reboot</span><br><span class="line"><span class="comment"># list all tables, nothing is there.</span></span><br><span class="line">nft list tables</span><br></pre></td></tr></table></figure>
-<p>Now start and enable firewalld, the tables will be created:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now firewalld</span><br><span class="line"><span class="comment"># list all tables</span></span><br><span class="line">nft list tables</span><br><span class="line"></span><br><span class="line">table ip filter</span><br><span class="line">table ip6 filter</span><br><span class="line">table bridge filter</span><br><span class="line">table ip security</span><br><span class="line">table ip raw</span><br><span class="line">table ip mangle</span><br><span class="line">table ip nat</span><br><span class="line">table ip6 security</span><br><span class="line">table ip6 raw</span><br><span class="line">table ip6 mangle</span><br><span class="line">table ip6 nat</span><br><span class="line">table bridge nat</span><br><span class="line">table inet firewalld</span><br><span class="line">table ip firewalld</span><br><span class="line">table ip6 firewalld</span><br></pre></td></tr></table></figure></p>
-<p>Some common commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list all tables</span></span><br><span class="line">nft list tables</span><br><span class="line"></span><br><span class="line"><span class="comment"># list tables with specific protocol family</span></span><br><span class="line">nft list tables ip</span><br><span class="line"><span class="comment"># check detail of ip filter</span></span><br><span class="line">nft list table ip filter</span><br></pre></td></tr></table></figure></p>
-<p>Let’s see the demo code to build nftables: </p>
+<p>Now start and enable firewalld, the tables will be created:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now firewalld</span><br><span class="line"><span class="comment"># list all tables</span></span><br><span class="line">nft list tables</span><br><span class="line"></span><br><span class="line">table ip filter</span><br><span class="line">table ip6 filter</span><br><span class="line">table bridge filter</span><br><span class="line">table ip security</span><br><span class="line">table ip raw</span><br><span class="line">table ip mangle</span><br><span class="line">table ip nat</span><br><span class="line">table ip6 security</span><br><span class="line">table ip6 raw</span><br><span class="line">table ip6 mangle</span><br><span class="line">table ip6 nat</span><br><span class="line">table bridge nat</span><br><span class="line">table inet firewalld</span><br><span class="line">table ip firewalld</span><br><span class="line">table ip6 firewalld</span><br></pre></td></tr></table></figure>
+<p>Some common commands:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list all tables</span></span><br><span class="line">nft list tables</span><br><span class="line"></span><br><span class="line"><span class="comment"># list tables with specific protocol family</span></span><br><span class="line">nft list tables ip</span><br><span class="line"><span class="comment"># check detail of ip filter</span></span><br><span class="line">nft list table ip filter</span><br></pre></td></tr></table></figure>
+<p>Let’s see the demo code to build nftables:</p>
 <ul>
 <li>create chains</li>
 <li>create rules</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># disable firewalld</span></span><br><span class="line">systemctl <span class="built_in">disable</span> --now firewalld ; reboot</span><br><span class="line">nft list tables</span><br><span class="line"><span class="comment"># inet will work both for ipv4 and ipv6</span></span><br><span class="line"><span class="comment"># create a new table `filter`</span></span><br><span class="line">nft add table inet filter </span><br><span class="line"></span><br><span class="line"><span class="comment"># INPUT is the chain name, not necessarily call it INPUT</span></span><br><span class="line"><span class="comment"># here we add INPUT chain to inet filter table</span></span><br><span class="line">nft add chain inet filter INPUT \</span><br><span class="line">  <span class="comment"># basic chain type: filter, route, nat</span></span><br><span class="line">  <span class="comment"># basic hook types: prerouting, input, forward, output, postrouting, ingress</span></span><br><span class="line">  <span class="comment"># priority 0 ~ 100, 0 is hightest</span></span><br><span class="line">  &#123; <span class="built_in">type</span> filter hook input priority 0 \; policy accept \;&#125;</span><br></pre></td></tr></table></figure>
-<p>Add SSH inbound to our system, set rules:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># add rule to inet filter table INPUT chain</span></span><br><span class="line">nft add rule inet filter INPUT iif lo accept </span><br><span class="line"><span class="comment"># allow traffic back to system with specified state</span></span><br><span class="line">nft add rule inet filter INPUT ct state \</span><br><span class="line">      established,related accept </span><br><span class="line">nft add rule inet filter INPUT tcp dport 22 accept</span><br><span class="line"><span class="comment"># drop everthing that is not explicitly defined</span></span><br><span class="line">nft add rule inet filter INPUT counter drop</span><br></pre></td></tr></table></figure></p>
-<p>Persisting nftables rules<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># store rules</span></span><br><span class="line">nft list ruleset &gt; /root/myrules</span><br><span class="line"><span class="comment"># clear table</span></span><br><span class="line">nft flush table inet filter</span><br><span class="line"><span class="comment"># delete table</span></span><br><span class="line">nft delete table inet filter</span><br><span class="line"><span class="comment"># restore rules</span></span><br><span class="line">nft -f /root/myrules</span><br></pre></td></tr></table></figure></p>
-<p>Using systemd service unit:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the systemd service unit for nftables use /etc/sysconfig/nftables.conf</span></span><br><span class="line">nft list ruleset &gt; /etc/sysconfig/nftables.conf</span><br><span class="line">nft flush table inet filter</span><br><span class="line">nft delete table inet filter</span><br><span class="line">systemctl <span class="built_in">enable</span> --now nftables</span><br></pre></td></tr></table></figure></p>
-<h1 id="NFSv4"><a href="#NFSv4" class="headerlink" title="NFSv4"></a>NFSv4</h1><p>CentOS 8 uses <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/exporting-nfs-shares_managing-file-systems" target="_blank" rel="noopener">NFSv4.2</a> as NFS server.<br>The new tool <code>nfsconf</code> writes to the <code>/etc/nfs.conf</code>.<br>Enable and use NFSv4 only and managing inbound TCP connections using firewall.<br>SELinux NFS configuration.</p>
-<p>Install nfs package for both server and clients:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nfs-utils</span><br></pre></td></tr></table></figure></p>
+<p>Add SSH inbound to our system, set rules:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># add rule to inet filter table INPUT chain</span></span><br><span class="line">nft add rule inet filter INPUT iif lo accept </span><br><span class="line"><span class="comment"># allow traffic back to system with specified state</span></span><br><span class="line">nft add rule inet filter INPUT ct state \</span><br><span class="line">      established,related accept </span><br><span class="line">nft add rule inet filter INPUT tcp dport 22 accept</span><br><span class="line"><span class="comment"># drop everthing that is not explicitly defined</span></span><br><span class="line">nft add rule inet filter INPUT counter drop</span><br></pre></td></tr></table></figure>
+<p>Persisting nftables rules</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># store rules</span></span><br><span class="line">nft list ruleset &gt; /root/myrules</span><br><span class="line"><span class="comment"># clear table</span></span><br><span class="line">nft flush table inet filter</span><br><span class="line"><span class="comment"># delete table</span></span><br><span class="line">nft delete table inet filter</span><br><span class="line"><span class="comment"># restore rules</span></span><br><span class="line">nft -f /root/myrules</span><br></pre></td></tr></table></figure>
+<p>Using systemd service unit:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the systemd service unit for nftables use /etc/sysconfig/nftables.conf</span></span><br><span class="line">nft list ruleset &gt; /etc/sysconfig/nftables.conf</span><br><span class="line">nft flush table inet filter</span><br><span class="line">nft delete table inet filter</span><br><span class="line">systemctl <span class="built_in">enable</span> --now nftables</span><br></pre></td></tr></table></figure>
+<h1>NFSv4</h1>
+<p>CentOS 8 uses <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/exporting-nfs-shares_managing-file-systems" target="_blank" rel="noopener">NFSv4.2</a> as NFS server.
+The new tool <code>nfsconf</code> writes to the <code>/etc/nfs.conf</code>.
+Enable and use NFSv4 only and managing inbound TCP connections using firewall.
+SELinux NFS configuration.</p>
+<p>Install nfs package for both server and clients:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nfs-utils</span><br></pre></td></tr></table></figure>
 <p>The default will have NFSv2 disable and NFSv3 and above enabled, we will disable NFSv3 and <strong>have NFSv4 only with TCP port 2049 to be opened</strong>. 这样看来之前项目中的NFS 用的默认设置，并且不是secure的.</p>
-<p>we can edit <code>/etc/nfs.conf</code> or using <code>nfsconf</code> commands:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nfsconf --<span class="built_in">set</span> nfsd vers4 y</span><br><span class="line">nfsconf --<span class="built_in">set</span> nfsd tcp y</span><br><span class="line"><span class="comment"># close udp and nfsv3</span></span><br><span class="line">nfsconf --<span class="built_in">set</span> nfsd vers3 n</span><br><span class="line">nfsconf --<span class="built_in">set</span> nfsd udp n</span><br></pre></td></tr></table></figure></p>
-<p>Start nfs server daemon:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now nfs-server.service</span><br></pre></td></tr></table></figure></p>
-<p>Check port opened:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ss -tlp -4</span><br><span class="line"></span><br><span class="line">State  Recv-Q   Send-Q      Local Address:Port       Peer Address:Port                                                              </span><br><span class="line">LISTEN 0        128               0.0.0.0:sunrpc          0.0.0.0:*      users:((<span class="string">"rpcbind"</span>,pid=8920,fd=4),(<span class="string">"systemd"</span>,pid=1,fd=76))  </span><br><span class="line">LISTEN 0        128               0.0.0.0:mountd          0.0.0.0:*      users:((<span class="string">"rpc.mountd"</span>,pid=8936,fd=8))                       </span><br><span class="line">LISTEN 0        128               0.0.0.0:ssh             0.0.0.0:*      users:((<span class="string">"sshd"</span>,pid=917,fd=5))                              </span><br><span class="line">LISTEN 0        128               0.0.0.0:54425           0.0.0.0:*      users:((<span class="string">"rpc.statd"</span>,pid=8925,fd=9))                        </span><br><span class="line">LISTEN 0        64                0.0.0.0:nfs             0.0.0.0:*</span><br></pre></td></tr></table></figure></p>
-<p>We don’t need <code>sunrpc</code> with NFSv4, mask them both service and socket:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl mask --now rpc-statd rpcbind.service rpcbind.socket</span><br></pre></td></tr></table></figure></p>
-<p>Then we have nfs and mounted port only, only nfs port needs firewalld setting:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ss -tl -4</span><br><span class="line"></span><br><span class="line">State           Recv-Q           Send-Q                      Local Address:Port                         Peer Address:Port           </span><br><span class="line">LISTEN          0                128                               0.0.0.0:mountd                            0.0.0.0:*              </span><br><span class="line">LISTEN          0                128                               0.0.0.0:ssh                               0.0.0.0:*              </span><br><span class="line">LISTEN          0                64                                0.0.0.0:nfs                               0.0.0.0:*</span><br></pre></td></tr></table></figure></p>
-<p>Let’s create some shared files:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir /share</span><br><span class="line"><span class="comment"># copy *.txt under /usr/share/doc to /share</span></span><br><span class="line"><span class="comment"># &#123;&#125; represents the content find finds</span></span><br><span class="line"><span class="comment"># \; is used for find command, escape in bash</span></span><br><span class="line">find /usr/share/doc -name <span class="string">'*.txt'</span> -<span class="built_in">exec</span> cp &#123;&#125; /share \;</span><br></pre></td></tr></table></figure></p>
-<p>Go to edit <code>/etc/exports</code> file<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Here only rw, in my previous work, we use (rw,insecure,async,no_root_squash)</span></span><br><span class="line"><span class="comment"># 这里其他默认设置够用了</span></span><br><span class="line">/share *(rw)</span><br><span class="line"></span><br><span class="line"><span class="comment"># launch</span></span><br><span class="line">exportfs -rav</span><br><span class="line"><span class="comment"># check options applied</span></span><br><span class="line">exportfs -v</span><br><span class="line"></span><br><span class="line">/share          &lt;world&gt;(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,root_squash,no_all_squash)</span><br></pre></td></tr></table></figure></p>
-<p>Configure firewall:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-service=nfs --permanent</span><br></pre></td></tr></table></figure></p>
-<p>Then go to the client and mount <code>/share</code> folder.<br>后面讲了SElinux对NFS的支持，目前用不到, 也没明白.</p>
-<h1 id="Storage-Management-Stratis"><a href="#Storage-Management-Stratis" class="headerlink" title="Storage Management Stratis"></a>Storage Management Stratis</h1><p>Stratis resources:</p>
+<p>we can edit <code>/etc/nfs.conf</code> or using <code>nfsconf</code> commands:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nfsconf --<span class="built_in">set</span> nfsd vers4 y</span><br><span class="line">nfsconf --<span class="built_in">set</span> nfsd tcp y</span><br><span class="line"><span class="comment"># close udp and nfsv3</span></span><br><span class="line">nfsconf --<span class="built_in">set</span> nfsd vers3 n</span><br><span class="line">nfsconf --<span class="built_in">set</span> nfsd udp n</span><br></pre></td></tr></table></figure>
+<p>Start nfs server daemon:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now nfs-server.service</span><br></pre></td></tr></table></figure>
+<p>Check port opened:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ss -tlp -4</span><br><span class="line"></span><br><span class="line">State  Recv-Q   Send-Q      Local Address:Port       Peer Address:Port                                                              </span><br><span class="line">LISTEN 0        128               0.0.0.0:sunrpc          0.0.0.0:*      users:((<span class="string">"rpcbind"</span>,pid=8920,fd=4),(<span class="string">"systemd"</span>,pid=1,fd=76))  </span><br><span class="line">LISTEN 0        128               0.0.0.0:mountd          0.0.0.0:*      users:((<span class="string">"rpc.mountd"</span>,pid=8936,fd=8))                       </span><br><span class="line">LISTEN 0        128               0.0.0.0:ssh             0.0.0.0:*      users:((<span class="string">"sshd"</span>,pid=917,fd=5))                              </span><br><span class="line">LISTEN 0        128               0.0.0.0:54425           0.0.0.0:*      users:((<span class="string">"rpc.statd"</span>,pid=8925,fd=9))                        </span><br><span class="line">LISTEN 0        64                0.0.0.0:nfs             0.0.0.0:*</span><br></pre></td></tr></table></figure>
+<p>We don’t need <code>sunrpc</code> with NFSv4, mask them both service and socket:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl mask --now rpc-statd rpcbind.service rpcbind.socket</span><br></pre></td></tr></table></figure>
+<p>Then we have nfs and mounted port only, only nfs port needs firewalld setting:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ss -tl -4</span><br><span class="line"></span><br><span class="line">State           Recv-Q           Send-Q                      Local Address:Port                         Peer Address:Port           </span><br><span class="line">LISTEN          0                128                               0.0.0.0:mountd                            0.0.0.0:*              </span><br><span class="line">LISTEN          0                128                               0.0.0.0:ssh                               0.0.0.0:*              </span><br><span class="line">LISTEN          0                64                                0.0.0.0:nfs                               0.0.0.0:*</span><br></pre></td></tr></table></figure>
+<p>Let’s create some shared files:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir /share</span><br><span class="line"><span class="comment"># copy *.txt under /usr/share/doc to /share</span></span><br><span class="line"><span class="comment"># &#123;&#125; represents the content find finds</span></span><br><span class="line"><span class="comment"># \; is used for find command, escape in bash</span></span><br><span class="line">find /usr/share/doc -name <span class="string">'*.txt'</span> -<span class="built_in">exec</span> cp &#123;&#125; /share \;</span><br></pre></td></tr></table></figure>
+<p>Go to edit <code>/etc/exports</code> file</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Here only rw, in my previous work, we use (rw,insecure,async,no_root_squash)</span></span><br><span class="line"><span class="comment"># 这里其他默认设置够用了</span></span><br><span class="line">/share *(rw)</span><br><span class="line"></span><br><span class="line"><span class="comment"># launch</span></span><br><span class="line">exportfs -rav</span><br><span class="line"><span class="comment"># check options applied</span></span><br><span class="line">exportfs -v</span><br><span class="line"></span><br><span class="line">/share          &lt;world&gt;(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,root_squash,no_all_squash)</span><br></pre></td></tr></table></figure>
+<p>Configure firewall:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-service=nfs --permanent</span><br></pre></td></tr></table></figure>
+<p>Then go to the client and mount <code>/share</code> folder.
+后面讲了SElinux对NFS的支持，目前用不到, 也没明白.</p>
+<h1>Storage Management Stratis</h1>
+<p>Stratis resources:</p>
 <ul>
 <li><a href="https://stratis-storage.github.io/" target="_blank" rel="noopener">https://stratis-storage.github.io/</a></li>
 <li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/managing-layered-local-storage-with-stratis_managing-file-systems" target="_blank" rel="noopener">MANAGING LAYERED LOCAL STORAGE WITH STRATIS</a></li>
@@ -570,11 +581,13 @@
 <ul>
 <li><a href="https://computingforgeeks.com/ext4-vs-xfs-complete-comparison/" target="_blank" rel="noopener">https://computingforgeeks.com/ext4-vs-xfs-complete-comparison/</a></li>
 </ul>
-<h1 id="Virtual-Data-Optimizer"><a href="#Virtual-Data-Optimizer" class="headerlink" title="Virtual Data Optimizer"></a>Virtual Data Optimizer</h1><p>To make use of block level deduplication, compression, thin-provisioning to save space.</p>
+<h1>Virtual Data Optimizer</h1>
+<p>To make use of block level deduplication, compression, thin-provisioning to save space.</p>
 <ul>
 <li><a href="https://lab.redhat.com/vdo-configure" target="_blank" rel="noopener">https://lab.redhat.com/vdo-configure</a></li>
 </ul>
-<p>Example Use Case:<br>To reduce the amount of operational and storage costs in data centers, we use the deduplication and compression features in VDO to decrease the footprint of data.</p>
+<p>Example Use Case:
+To reduce the amount of operational and storage costs in data centers, we use the deduplication and compression features in VDO to decrease the footprint of data.</p>
 
       
     </div>
@@ -697,7 +710,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -794,7 +807,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1107,7 +1122,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1143,7 +1160,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fast-Ping-Test"><span class="nav-number">1.</span> <span class="nav-text">Fast Ping Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cocopit-Web-Console"><span class="nav-number">2.</span> <span class="nav-text">Cocopit Web Console</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Enhancing-Firewall"><span class="nav-number">3.</span> <span class="nav-text">Enhancing Firewall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFSv4"><span class="nav-number">4.</span> <span class="nav-text">NFSv4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Storage-Management-Stratis"><span class="nav-number">5.</span> <span class="nav-text">Storage Management Stratis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Virtual-Data-Optimizer"><span class="nav-number">6.</span> <span class="nav-text">Virtual Data Optimizer</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Fast Ping Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Cocopit Web Console</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Enhancing Firewall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">NFSv4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Storage Management Stratis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Virtual Data Optimizer</span></a></li></ol></div>
             
 
           </div>
@@ -1169,13 +1186,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;em">
+  <meta name="description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. ################################################################ #    Date           Description">
 <meta name="keywords" content="linux,yum,rpm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yum and Rpm Daily Work Summary">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/linux-yum-rpm-summary/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;em">
+<meta property="og:description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. ################################################################ #    Date           Description">
 <meta property="og:locale" content="中文|English">
 <meta property="og:updated_time" content="2020-04-18T23:51:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yum and Rpm Daily Work Summary">
-<meta name="twitter:description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. #################################################################  &amp;emsp; Date &amp;emsp; &amp;emsp; &amp;em">
+<meta name="twitter:description" content="This article used to walk you through some commonly yum and rpm usages , based on a real life scenario. ################################################################ #    Date           Description">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">15k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,29 +491,64 @@
 
       
         <p>This article used to walk you through some commonly <code>yum</code> and <code>rpm</code> usages , based on a real life scenario.</p>
-<p>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 03/05/2019 &emsp; &emsp; yum autoremove<br>#  &emsp; 03/02/2019 &emsp; &emsp; upgrade rpm<br>#  &emsp; 03/01/2019 &emsp; &emsp; list rpm dependencies<br>#  &emsp; 02/27/2019 &emsp; &emsp; yum provides<br>#  &emsp; 02/25/2019 &emsp; &emsp; search rpm installed<br>#  &emsp; 02/24/2019 &emsp; &emsp; install rpm<br>#  &emsp; 01/19/2019 &emsp; &emsp; remove package<br>#<br>################################################################</p>
-<p>Yum command <a href="https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf" target="_blank" rel="noopener">cheat sheet</a><br><code>rpm</code> command is one of the package management command.</p>
-<h3 id="01-19-2019"><a href="#01-19-2019" class="headerlink" title="01/19/2019"></a>01/19/2019</h3><p>Remove or erase a installed package with its dependencies:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev &lt;package name&gt;</span><br><span class="line">yum erase &lt;package name&gt;</span><br></pre></td></tr></table></figure></p>
-<p>if the rpm is part of other dependencies, <code>rpm -ev</code> will fail, or you can use <code>yum erase</code> to delete them all:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev containerd.io</span><br><span class="line"></span><br><span class="line">error: Failed dependencies:</span><br><span class="line">        containerd.io &gt;= 1.2.2-3 is needed by (installed) docker-ce-3:18.09.2-3.el7.x86_64</span><br></pre></td></tr></table></figure></p>
-<p>Remove or erase a installed package <strong>without</strong> checking for dependencies<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev --nodeps &lt;package name&gt;</span><br></pre></td></tr></table></figure></p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev --nodpes containerd.io</span><br><span class="line"></span><br><span class="line">Preparing packages...</span><br><span class="line">containerd.io-1.2.2-3.3.el7.x86_64</span><br></pre></td></tr></table></figure></p>
-<h3 id="02-24-2019"><a href="#02-24-2019" class="headerlink" title="02/24/2019"></a>02/24/2019</h3><p>This command will install a single rpm file if it meets all dependencies, otherwise install will fail and the output will show you the missig rpms.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh &lt;rpm name&gt;</span><br></pre></td></tr></table></figure></p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm</span><br><span class="line"></span><br><span class="line">warning: 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 3e1ba8d5: NOKEY</span><br><span class="line">error: Failed dependencies:</span><br><span class="line">        cri-tools &gt;= 1.11.0 is needed by kubeadm-1.13.2-0.x86_64</span><br><span class="line">        kubectl &gt;= 1.6.0 is needed by kubeadm-1.13.2-0.x86_64</span><br><span class="line">        kubelet &gt;= 1.6.0 is needed by kubeadm-1.13.2-0.x86_64</span><br><span class="line">        kubernetes-cni &gt;= 0.6.0 is needed by kubeadm-1.13.2-0.x86_64</span><br></pre></td></tr></table></figure></p>
-<h3 id="02-25-2019"><a href="#02-25-2019" class="headerlink" title="02/25/2019"></a>02/25/2019</h3><p>These two both work:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## query package installed</span></span><br><span class="line">rpm -qa | grep &lt;package name&gt;</span><br><span class="line">yum list installed | grep &lt;package name&gt;</span><br></pre></td></tr></table></figure></p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep docker</span><br><span class="line">docker-ce-18.06.1.ce-3.el7.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>################################################################
+#    Date           Description
+#    03/05/2019     yum autoremove
+#    03/02/2019     upgrade rpm
+#    03/01/2019     list rpm dependencies
+#    02/27/2019     yum provides
+#    02/25/2019     search rpm installed
+#    02/24/2019     install rpm
+#    01/19/2019     remove package
+#
+################################################################</p>
+<p>Yum command <a href="https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf" target="_blank" rel="noopener">cheat sheet</a>
+<code>rpm</code> command is one of the package management command.</p>
+<h3 id="01-19-2019">01/19/2019</h3>
+<p>Remove or erase a installed package with its dependencies:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev &lt;package name&gt;</span><br><span class="line">yum erase &lt;package name&gt;</span><br></pre></td></tr></table></figure>
+<p>if the rpm is part of other dependencies, <code>rpm -ev</code> will fail, or you can use <code>yum erase</code> to delete them all:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev containerd.io</span><br><span class="line"></span><br><span class="line">error: Failed dependencies:</span><br><span class="line">        containerd.io &gt;= 1.2.2-3 is needed by (installed) docker-ce-3:18.09.2-3.el7.x86_64</span><br></pre></td></tr></table></figure>
+<p>Remove or erase a installed package <strong>without</strong> checking for dependencies</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev --nodeps &lt;package name&gt;</span><br></pre></td></tr></table></figure>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -ev --nodpes containerd.io</span><br><span class="line"></span><br><span class="line">Preparing packages...</span><br><span class="line">containerd.io-1.2.2-3.3.el7.x86_64</span><br></pre></td></tr></table></figure>
+<h3 id="02-24-2019">02/24/2019</h3>
+<p>This command will install a single rpm file if it meets all dependencies, otherwise install will fail and the output will show you the missig rpms.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh &lt;rpm name&gt;</span><br></pre></td></tr></table></figure>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm</span><br><span class="line"></span><br><span class="line">warning: 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 3e1ba8d5: NOKEY</span><br><span class="line">error: Failed dependencies:</span><br><span class="line">        cri-tools &gt;= 1.11.0 is needed by kubeadm-1.13.2-0.x86_64</span><br><span class="line">        kubectl &gt;= 1.6.0 is needed by kubeadm-1.13.2-0.x86_64</span><br><span class="line">        kubelet &gt;= 1.6.0 is needed by kubeadm-1.13.2-0.x86_64</span><br><span class="line">        kubernetes-cni &gt;= 0.6.0 is needed by kubeadm-1.13.2-0.x86_64</span><br></pre></td></tr></table></figure>
+<h3 id="02-25-2019">02/25/2019</h3>
+<p>These two both work:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## query package installed</span></span><br><span class="line">rpm -qa | grep &lt;package name&gt;</span><br><span class="line">yum list installed | grep &lt;package name&gt;</span><br></pre></td></tr></table></figure>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep docker</span><br><span class="line">docker-ce-18.06.1.ce-3.el7.x86_64</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep docker</span><br><span class="line">docker-ce.x86_64                18.06.1.ce-3.el7           installed</span><br></pre></td></tr></table></figure>
-<h3 id="02-27-2019"><a href="#02-27-2019" class="headerlink" title="02/27/2019"></a>02/27/2019</h3><p>Find packages that provide the queried file, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum provides host</span><br><span class="line"></span><br><span class="line">32:<span class="built_in">bind</span>-utils-9.9.4-14.el7.x86_64 : Utilities <span class="keyword">for</span> querying DNS name servers</span><br><span class="line">Repo        : Local-Base</span><br><span class="line">Matched from:</span><br><span class="line">Filename    : /usr/bin/host</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>Next you can install it:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y bind-utils</span><br></pre></td></tr></table></figure></p>
-<h3 id="03-01-2019"><a href="#03-01-2019" class="headerlink" title="03/01/2019"></a>03/01/2019</h3><p>If you have a local rpm file, you can list its dependencies by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpR &lt;rpm name&gt;</span><br></pre></td></tr></table></figure></p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpR 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm</span><br><span class="line"></span><br><span class="line">warning: 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 3e1ba8d5: NOKEY</span><br><span class="line">cri-tools &gt;= 1.11.0</span><br><span class="line">kubectl &gt;= 1.6.0</span><br><span class="line">kubelet &gt;= 1.6.0</span><br><span class="line">kubernetes-cni &gt;= 0.6.0</span><br><span class="line">rpmlib(CompressedFileNames) &lt;= 3.0.4-1</span><br><span class="line">rpmlib(FileDigests) &lt;= 4.6.0-1</span><br><span class="line">rpmlib(PayloadFilesHavePrefix) &lt;= 4.0-1</span><br><span class="line">rpmlib(PayloadIsXz) &lt;= 5.2-1</span><br></pre></td></tr></table></figure></p>
-<h3 id="03-02-2019"><a href="#03-02-2019" class="headerlink" title="03/02/2019"></a>03/02/2019</h3><p>If you run <code>man rpm</code>, there are two similar statements:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">The general form of an rpm upgrade command is</span><br><span class="line"></span><br><span class="line">rpm &#123;-U|--upgrade&#125; [install-options] PACKAGE_FILE ...</span><br><span class="line"></span><br><span class="line">       This upgrades or installs the package currently installed to a newer version.  This is the same as  install,</span><br><span class="line">       except all other version(s) of the package are removed after the new package is installed.</span><br><span class="line"></span><br><span class="line">rpm &#123;-F|--freshen&#125; [install-options] PACKAGE_FILE ...</span><br><span class="line"></span><br><span class="line">       This will upgrade packages, but only ones for which an earlier version is installed.</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-27-2019">02/27/2019</h3>
+<p>Find packages that provide the queried file, for example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum provides host</span><br><span class="line"></span><br><span class="line">32:<span class="built_in">bind</span>-utils-9.9.4-14.el7.x86_64 : Utilities <span class="keyword">for</span> querying DNS name servers</span><br><span class="line">Repo        : Local-Base</span><br><span class="line">Matched from:</span><br><span class="line">Filename    : /usr/bin/host</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Next you can install it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y bind-utils</span><br></pre></td></tr></table></figure>
+<h3 id="03-01-2019">03/01/2019</h3>
+<p>If you have a local rpm file, you can list its dependencies by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpR &lt;rpm name&gt;</span><br></pre></td></tr></table></figure>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rpm -qpR 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm</span><br><span class="line"></span><br><span class="line">warning: 416b2856f8dbb6f07a50a46018fee8596479ebc0eaeec069c26bedfa29033315-kubeadm-1.13.2-0.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 3e1ba8d5: NOKEY</span><br><span class="line">cri-tools &gt;= 1.11.0</span><br><span class="line">kubectl &gt;= 1.6.0</span><br><span class="line">kubelet &gt;= 1.6.0</span><br><span class="line">kubernetes-cni &gt;= 0.6.0</span><br><span class="line">rpmlib(CompressedFileNames) &lt;= 3.0.4-1</span><br><span class="line">rpmlib(FileDigests) &lt;= 4.6.0-1</span><br><span class="line">rpmlib(PayloadFilesHavePrefix) &lt;= 4.0-1</span><br><span class="line">rpmlib(PayloadIsXz) &lt;= 5.2-1</span><br></pre></td></tr></table></figure>
+<h3 id="03-02-2019">03/02/2019</h3>
+<p>If you run <code>man rpm</code>, there are two similar statements:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">The general form of an rpm upgrade command is</span><br><span class="line"></span><br><span class="line">rpm &#123;-U|--upgrade&#125; [install-options] PACKAGE_FILE ...</span><br><span class="line"></span><br><span class="line">       This upgrades or installs the package currently installed to a newer version.  This is the same as  install,</span><br><span class="line">       except all other version(s) of the package are removed after the new package is installed.</span><br><span class="line"></span><br><span class="line">rpm &#123;-F|--freshen&#125; [install-options] PACKAGE_FILE ...</span><br><span class="line"></span><br><span class="line">       This will upgrade packages, but only ones for which an earlier version is installed.</span><br></pre></td></tr></table></figure>
 <p>Both <code>rpm -Fvh</code> and <code>rpm -Uvh</code> will perform the same task but the diff is <code>rpm -Uvh</code> is also same as <code>rpm -ivh</code>, you can use any of them I mean <code>rpm -ivh</code> or <code>rpm -Uvh</code> for installing the package.</p>
 <p>But for upgrading installed package you can use any of <code>rpm -Fvh</code> or <code>rpm -Uvh</code>.</p>
-<p><code>rpm -Fvh</code> is used for upgrading the existing package (installed package).<br><code>rpm -Uvh</code> is used for installing the package and upgrading the package both.</p>
-<p>For example, upgrade <code>ansible</code> from <code>2.4.6.0</code> to <code>2.7.8</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -Fvh ansible-2.7.8-1.el7.ans.noarch.rpm</span><br><span class="line"></span><br><span class="line">warning: ansible-2.7.8-1.el7.ans.noarch.rpm: Header V4 RSA/SHA1 Signature, key ID 442667a9: NOKEY</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating / installing...</span><br><span class="line">   1:ansible-2.7.8-1.el7.ans          ################################# [ 50%]</span><br><span class="line">Cleaning up / removing...</span><br><span class="line">   2:ansible-2.4.6.0-1.el7.ans        ################################# [100%]</span><br></pre></td></tr></table></figure></p>
-<h3 id="03-05-2019"><a href="#03-05-2019" class="headerlink" title="03/05/2019"></a>03/05/2019</h3><p>Remove dependencies which are not in use, any unneeded dependencies from your system, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum autoremove docker-ce</span><br></pre></td></tr></table></figure></p>
+<p><code>rpm -Fvh</code> is used for upgrading the existing package (installed package).
+<code>rpm -Uvh</code> is used for installing the package and upgrading the package both.</p>
+<p>For example, upgrade <code>ansible</code> from <code>2.4.6.0</code> to <code>2.7.8</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -Fvh ansible-2.7.8-1.el7.ans.noarch.rpm</span><br><span class="line"></span><br><span class="line">warning: ansible-2.7.8-1.el7.ans.noarch.rpm: Header V4 RSA/SHA1 Signature, key ID 442667a9: NOKEY</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating / installing...</span><br><span class="line">   1:ansible-2.7.8-1.el7.ans          ################################# [ 50%]</span><br><span class="line">Cleaning up / removing...</span><br><span class="line">   2:ansible-2.4.6.0-1.el7.ans        ################################# [100%]</span><br></pre></td></tr></table></figure>
+<h3 id="03-05-2019">03/05/2019</h3>
+<p>Remove dependencies which are not in use, any unneeded dependencies from your system, for example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum autoremove docker-ce</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Dependencies Resolved</span><br><span class="line"></span><br><span class="line">=========================================================================================================================</span><br><span class="line"> Package                            Arch               Version                      Repository                      Size</span><br><span class="line">=========================================================================================================================</span><br><span class="line">Removing:</span><br><span class="line"> docker-ce                          x86_64             18.06.1.ce-3.el7             @docker-local.repo             168 M</span><br><span class="line">Removing for dependencies:</span><br><span class="line"> container-selinux                  noarch             2:2.68-1.el7                 @Local-Extras                   36 k</span><br><span class="line"> libcgroup                          x86_64             0.41-20.el7                  @Local-Base                    134 k</span><br><span class="line"> libseccomp                         x86_64             2.3.1-3.el7                  @Local-Base                    297 k</span><br><span class="line"> libtool-ltdl                       x86_64             2.4.2-22.el7_3               @Local-Base                     66 k</span><br><span class="line"> policycoreutils-python             x86_64             2.5-29.el7_6.1               @Local-Base                    1.2 M</span><br><span class="line"></span><br><span class="line">Transaction Summary</span><br><span class="line">=========================================================================================================================</span><br><span class="line">Remove  1 Package (+5 Dependent packages)</span><br></pre></td></tr></table></figure>
-<p>You also can add <code>clean_requirements_on_remove=1</code> in <code>/etc/yum.conf</code> file, then run<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker-ce</span><br></pre></td></tr></table></figure></p>
+<p>You also can add <code>clean_requirements_on_remove=1</code> in <code>/etc/yum.conf</code> file, then run</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker-ce</span><br></pre></td></tr></table></figure>
 <p>the same effect as using <code>autoremove</code>.</p>
 
       
@@ -657,7 +674,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -754,7 +771,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1067,7 +1086,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1129,13 +1150,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

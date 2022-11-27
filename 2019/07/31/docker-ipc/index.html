@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="I have a post talks about IPC &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, it’s about IPC resource requirements for DB2 and how to adjust the ipc parameters permanently or temporarily. This time we face different ipc i">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-09-05T02:55:58.906Z">
+<meta property="og:updated_time" content="2020-09-05T02:55:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Container IPC Share">
 <meta name="twitter:description" content="I have a post talks about IPC &amp;lt;&amp;lt;Linux IPC&amp;gt;&amp;gt;, it’s about IPC resource requirements for DB2 and how to adjust the ipc parameters permanently or temporarily. This time we face different ipc i">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.3k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,14 +491,17 @@
 
       
         <p>I have a post talks about IPC <a href="https://chengdol.github.io/2019/05/01/linux-ipc/" target="_blank" rel="noopener"><code>&lt;&lt;Linux IPC&gt;&gt;</code></a>, it’s about IPC resource requirements for DB2 and how to adjust the ipc parameters permanently or temporarily. This time we face different ipc issue, interesting.</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>We bring up DataStage container in particular order to make them function correctly, but when Engine is running, Xmeta DB2 went down silently whihout any warning or error messages. unquiesce will make DB2 up again, but it’s not stable.</p>
+<h2 id="Description">Description</h2>
+<p>We bring up DataStage container in particular order to make them function correctly, but when Engine is running, Xmeta DB2 went down silently whihout any warning or error messages. unquiesce will make DB2 up again, but it’s not stable.</p>
 <p>This did not happen in K8s cluster, things get weired.</p>
-<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>We update docker run command for Xmeta and Engine with <code>--ipc=host</code>, so they will share the ipc resouces with host machine (They reside on the same machine) and each other. </p>
+<h2 id="Reason">Reason</h2>
+<p>We update docker run command for Xmeta and Engine with <code>--ipc=host</code>, so they will share the ipc resouces with host machine (They reside on the same machine) and each other.</p>
 <p>The trick is there are some <code>ipcrm -a</code> in the Engine start and quiesce scripts. So when Engine is up, it cleans host ipc resource and DB2 goes down.</p>
 <p>we remove all <code>ipcrm -a</code> commands inside container and things get work.</p>
 <p>Another thing is before start up the containers, <strong>make sure the ipc is clean</strong>, we encountered the problem that the old non-used ipc overstep in new containers, so run <code>ipcrm -a</code> in host machine to clean them.</p>
 <p><strong>Why K8s does not have this problem?</strong> Because we schedule Xmeta and Engine in different nodes, the <code>ipcrm -a</code> will not affect each other, but docker we hold all containers in one node.</p>
-<p>Some usefully commands<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ipcs -l      <span class="comment">## list ipc configuration</span></span><br><span class="line"></span><br><span class="line">ipcrm -a     <span class="comment">## remove all ipc resources</span></span><br><span class="line">ipcs -a      <span class="comment">## list ipc in use</span></span><br></pre></td></tr></table></figure></p>
+<p>Some usefully commands</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ipcs -l      <span class="comment">## list ipc configuration</span></span><br><span class="line"></span><br><span class="line">ipcrm -a     <span class="comment">## remove all ipc resources</span></span><br><span class="line">ipcs -a      <span class="comment">## list ipc in use</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -641,7 +626,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -738,7 +723,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1051,7 +1038,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1113,13 +1102,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

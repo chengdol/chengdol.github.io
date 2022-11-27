@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="For updating components secret or configmap, you can do complete replace:123456kubectl get secret docker-registry-auth -o yaml -n default \        | sed -e &quot;/htpasswd/c\  htpasswd: $&amp;#123;AUTH_BASE64&amp;">
+  <meta name="description" content="For updating components secret or configmap, you can do complete replace: 123456kubectl get secret docker-registry-auth -o yaml -n default \        | sed -e &quot;/htpasswd/c\  htpasswd: $&amp;#123;AUTH_BASE64">
 <meta name="keywords" content="kubernetes,patch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Patch K8s Objects in Place">
 <meta property="og:url" content="http://yoursite.com/2020/02/07/k8s-patch-object/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="For updating components secret or configmap, you can do complete replace:123456kubectl get secret docker-registry-auth -o yaml -n default \        | sed -e &quot;/htpasswd/c\  htpasswd: $&amp;#123;AUTH_BASE64&amp;">
+<meta property="og:description" content="For updating components secret or configmap, you can do complete replace: 123456kubectl get secret docker-registry-auth -o yaml -n default \        | sed -e &quot;/htpasswd/c\  htpasswd: $&amp;#123;AUTH_BASE64">
 <meta property="og:locale" content="中文|English">
 <meta property="og:updated_time" content="2020-02-07T21:46:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Patch K8s Objects in Place">
-<meta name="twitter:description" content="For updating components secret or configmap, you can do complete replace:123456kubectl get secret docker-registry-auth -o yaml -n default \        | sed -e &quot;/htpasswd/c\  htpasswd: $&amp;#123;AUTH_BASE64&amp;">
+<meta name="twitter:description" content="For updating components secret or configmap, you can do complete replace: 123456kubectl get secret docker-registry-auth -o yaml -n default \        | sed -e &quot;/htpasswd/c\  htpasswd: $&amp;#123;AUTH_BASE64">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -462,24 +462,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">5k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -496,13 +478,20 @@
       
 
       
-        <p>For updating components secret or configmap, you can do complete replace:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kubectl get secret docker-registry-auth -o yaml -n default \</span><br><span class="line">        | sed -e <span class="string">"/htpasswd/c\  htpasswd: <span class="variable">$&#123;AUTH_BASE64&#125;</span>"</span> \</span><br><span class="line">        | kubectl replace -f -</span><br><span class="line">kubectl get configmap repl-pod-map -n <span class="variable">$NAMESPACE</span> -o yaml </span><br><span class="line">        | sed -e <span class="string">"/<span class="variable">$&#123;POD_NAME&#125;</span>/d"</span> </span><br><span class="line">        | kubectl replace -f-</span><br></pre></td></tr></table></figure></p>
-<p>For patching pod controller like deployment and statefulset, see:<br><a href="https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/</a></p>
-<h2 id="Strategic-merge-patch"><a href="#Strategic-merge-patch" class="headerlink" title="Strategic merge patch"></a>Strategic merge patch</h2><p>For example, add one more containers in the pod, give the yaml file <code>patch-file.yaml</code>:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">patch-demo-ctr-2</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">redis</span></span><br></pre></td></tr></table></figure></p>
+        <p>For updating components secret or configmap, you can do complete replace:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kubectl get secret docker-registry-auth -o yaml -n default \</span><br><span class="line">        | sed -e <span class="string">"/htpasswd/c\  htpasswd: <span class="variable">$&#123;AUTH_BASE64&#125;</span>"</span> \</span><br><span class="line">        | kubectl replace -f -</span><br><span class="line">kubectl get configmap repl-pod-map -n <span class="variable">$NAMESPACE</span> -o yaml </span><br><span class="line">        | sed -e <span class="string">"/<span class="variable">$&#123;POD_NAME&#125;</span>/d"</span> </span><br><span class="line">        | kubectl replace -f-</span><br></pre></td></tr></table></figure>
+<p>For patching pod controller like deployment and statefulset, see:
+<a href="https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/run-application/update-api-object-kubectl-patch/</a></p>
+<h2 id="Strategic-merge-patch">Strategic merge patch</h2>
+<p>For example, add one more containers in the pod, give the yaml file <code>patch-file.yaml</code>:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">patch-demo-ctr-2</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">redis</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this command use default patch strategy for containers field: merge</span></span><br><span class="line">kubectl patch deployment patch-demo --patch <span class="string">"<span class="variable">$(cat patch-file.yaml)</span>"</span></span><br></pre></td></tr></table></figure>
 <p>This will get merged not replaced (the original container is kept), but not all fields have <code>merge</code> strategy, some use default strategy that is <code>replace</code>, for example: tolerations field.</p>
-<p>How to know the patch strategy of each field?<br>see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/" target="_blank" rel="noopener">API document</a><br>It seems not all fields have specified patch strategy, for example, I don’t see that on configmap.</p>
-<h2 id="Json-merge-patch"><a href="#Json-merge-patch" class="headerlink" title="Json merge patch"></a>Json merge patch</h2><p>A strategic merge patch is different from a JSON merge patch. With a JSON merge patch, if you want to update a list, you have to specify the <code>entire new list</code>. And the new list completely replaces the existing list.</p>
+<p>How to know the patch strategy of each field?
+see <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/" target="_blank" rel="noopener">API document</a>
+It seems not all fields have specified patch strategy, for example, I don’t see that on configmap.</p>
+<h2 id="Json-merge-patch">Json merge patch</h2>
+<p>A strategic merge patch is different from a JSON merge patch. With a JSON merge patch, if you want to update a list, you have to specify the <code>entire new list</code>. And the new list completely replaces the existing list.</p>
 <p>The <code>kubectl patch</code> command has a <code>--type</code> parameter that you can set to one of these values:</p>
 <ol>
 <li>json (json patch)</li>
@@ -510,9 +499,10 @@
 <li>strategic (default)</li>
 </ol>
 <blockquote>
-<p>这里文档有问题，如果用json merge patch on configmap，其实还是做的merge操作(之前的数据被保留)，并不是replace.这个值得注意，比如以下2个commands效果是一样的:<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## json merge patch</span></span><br><span class="line">kubectl patch configmap repl-pod-map -n pines --<span class="built_in">type</span> merge -p <span class="string">"&#123;\"data\": &#123;\"test1\":\"test1key\"&#125;&#125;"</span></span><br><span class="line"><span class="comment">## defaul strategic patch</span></span><br><span class="line">kubectl patch configmap repl-pod-map -n pines  -p <span class="string">"&#123;\"data\": &#123;\"test1\":\"test1key\"&#125;&#125;"</span></span><br></pre></td></tr></table></figure></p>
+<p>这里文档有问题，如果用json merge patch on configmap，其实还是做的merge操作(之前的数据被保留)，并不是replace.这个值得注意，比如以下2个commands效果是一样的:</p>
 </blockquote>
-<p>  我猜可能是configmap没有明确的patch strategy定义，但对于其他有明确定义的field，则json merge patch会replace之前的数据。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## json merge patch</span></span><br><span class="line">kubectl patch configmap repl-pod-map -n pines --<span class="built_in">type</span> merge -p <span class="string">"&#123;\"data\": &#123;\"test1\":\"test1key\"&#125;&#125;"</span></span><br><span class="line"><span class="comment">## defaul strategic patch</span></span><br><span class="line">kubectl patch configmap repl-pod-map -n pines  -p <span class="string">"&#123;\"data\": &#123;\"test1\":\"test1key\"&#125;&#125;"</span></span><br></pre></td></tr></table></figure>
+<p>我猜可能是configmap没有明确的patch strategy定义，但对于其他有明确定义的field，则json merge patch会replace之前的数据。</p>
 
       
     </div>
@@ -635,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -732,7 +722,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1045,7 +1037,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1107,13 +1101,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

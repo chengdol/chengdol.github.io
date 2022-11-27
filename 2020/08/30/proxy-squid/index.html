@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="//TODO[ ] https tunnel setup[ ] docker image build and test Introductionhttp://www.squid-cache.org/Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth and">
+  <meta name="description" content="//TODO [ ] https tunnel setup [ ] docker image build and test Introduction http://www.squid-cache.org/ Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth">
 <meta name="keywords" content="proxy,squid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Squid">
 <meta property="og:url" content="http://yoursite.com/2020/08/30/proxy-squid/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="//TODO[ ] https tunnel setup[ ] docker image build and test Introductionhttp://www.squid-cache.org/Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth and">
+<meta property="og:description" content="//TODO [ ] https tunnel setup [ ] docker image build and test Introduction http://www.squid-cache.org/ Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-12-19T00:40:06.419Z">
+<meta property="og:updated_time" content="2020-12-19T00:40:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Squid">
-<meta name="twitter:description" content="//TODO[ ] https tunnel setup[ ] docker image build and test Introductionhttp://www.squid-cache.org/Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth and">
+<meta name="twitter:description" content="//TODO [ ] https tunnel setup [ ] docker image build and test Introduction http://www.squid-cache.org/ Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.4k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,11 +490,24 @@
       
 
       
-        <p>//TODO<br>[ ] https tunnel setup<br>[ ] docker image build and test</p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a href="http://www.squid-cache.org/" target="_blank" rel="noopener">http://www.squid-cache.org/</a><br>Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth and improves response times by caching and reusing frequently-requested web pages. Squid has extensive access controls and makes a great server accelerator.</p>
-<p>Squid docker image github, includes Dockerfile and entrypoint.sh:<br><a href="https://github.com/sameersbn/docker-squid" target="_blank" rel="noopener">https://github.com/sameersbn/docker-squid</a><br>dockerhub:<br><a href="https://hub.docker.com/r/sameersbn/squid" target="_blank" rel="noopener">https://hub.docker.com/r/sameersbn/squid</a></p>
-<p>Features useful:<br>[1] store cache on disk(persistent data) vs. in memory.<br>[2] fine tune cache size and age.<br>[3] user authz and authn<br>[4] filter traffic</p>
-<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><p>This repository contains squid demo as both HTTP(s) forward proxy and reverse proxy:<br><a href="https://github.com/chengdol/proxy/tree/main/squid" target="_blank" rel="noopener">https://github.com/chengdol/proxy/tree/main/squid</a></p>
+        <p>//TODO
+[ ] https tunnel setup
+[ ] docker image build and test</p>
+<h1>Introduction</h1>
+<p><a href="http://www.squid-cache.org/" target="_blank" rel="noopener">http://www.squid-cache.org/</a>
+Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth and improves response times by caching and reusing frequently-requested web pages. Squid has extensive access controls and makes a great server accelerator.</p>
+<p>Squid docker image github, includes Dockerfile and <a href="http://entrypoint.sh" target="_blank" rel="noopener">entrypoint.sh</a>:
+<a href="https://github.com/sameersbn/docker-squid" target="_blank" rel="noopener">https://github.com/sameersbn/docker-squid</a>
+dockerhub:
+<a href="https://hub.docker.com/r/sameersbn/squid" target="_blank" rel="noopener">https://hub.docker.com/r/sameersbn/squid</a></p>
+<p>Features useful:
+[1] store cache on disk(persistent data) vs. in memory.
+[2] fine tune cache size and age.
+[3] user authz and authn
+[4] filter traffic</p>
+<h1>Github</h1>
+<p>This repository contains squid demo as both HTTP(s) forward proxy and reverse proxy:
+<a href="https://github.com/chengdol/proxy/tree/main/squid" target="_blank" rel="noopener">https://github.com/chengdol/proxy/tree/main/squid</a></p>
 
       
     </div>
@@ -635,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -732,7 +727,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1045,7 +1042,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1081,7 +1080,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github"><span class="nav-number">2.</span> <span class="nav-text">Github</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Github</span></a></li></ol></div>
             
 
           </div>
@@ -1107,13 +1106,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

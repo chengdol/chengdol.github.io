@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -462,24 +462,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">7.4k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -498,36 +480,50 @@
       
         <p>Let’s first see what does <code>cron</code> represent from <a href="https://en.wikipedia.org/wiki/Cron" target="_blank" rel="noopener">wiki</a>:</p>
 <blockquote>
-<p>The software utility <code>cron</code> is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environments use <code>cron</code> to schedule jobs (commands or shell scripts) to run periodically at fixed times, dates, or intervals. </p>
+<p>The software utility <code>cron</code> is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environments use <code>cron</code> to schedule jobs (commands or shell scripts) to run periodically at fixed times, dates, or intervals.</p>
 </blockquote>
 <p><code>cron</code> is most suitable for scheduling repetitive tasks. For example, it runs log file rotation utilities to ensure that your hard drive doesn’t fill up with old log files. You should know how to use cron because it’s just plain useful.</p>
 <blockquote>
 <p>Also see <a href="https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/" target="_blank" rel="noopener">cronjob</a> in K8s.</p>
 </blockquote>
-<h2 id="Install-crontab"><a href="#Install-crontab" class="headerlink" title="Install crontab"></a>Install crontab</h2><p>In CentOS or RedHat, you can run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install cronie</span><br></pre></td></tr></table></figure></p>
+<h2 id="Install-crontab">Install crontab</h2>
+<p>In CentOS or RedHat, you can run:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install cronie</span><br></pre></td></tr></table></figure>
 <p>If you are not sure, try <code>yum provides crontab</code> to see which package will provide this service.</p>
-<p>To check if <code>cron</code> service is running or not:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status crond</span><br></pre></td></tr></table></figure></p>
-<p>If inactive, enable and restart it. </p>
-<h2 id="crontab-File"><a href="#crontab-File" class="headerlink" title="crontab File"></a>crontab File</h2><p>Cron is driven by a <code>crontab(cron table)</code> file, a configuration file that specifies shell commands to run periodically on a given schedule. </p>
+<p>To check if <code>cron</code> service is running or not:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status crond</span><br></pre></td></tr></table></figure>
+<p>If inactive, enable and restart it.</p>
+<h2 id="crontab-File">crontab File</h2>
+<p>Cron is driven by a <code>crontab(cron table)</code> file, a configuration file that specifies shell commands to run periodically on a given schedule.</p>
 <p>The program running through cron is called a <code>cron job</code>. To install a <code>cron job</code>, you’ll create an entry line in your <code>crontab</code> file, usually by running the <code>crontab</code> command.</p>
 <p>Each user can have his or her own crontab file, which means that every system may have multiple crontabs, usually found in <code>/var/spool/cron/</code> folder. the crontab command installs, lists, edits, and removes a user’s crontab.</p>
-<h2 id="crontab-Commands"><a href="#crontab-Commands" class="headerlink" title="crontab Commands"></a>crontab Commands</h2><p>For example, run as <code>root</code>, I want to set a recurring task for user <code>dsadm</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -e</span><br></pre></td></tr></table></figure></p>
-<p>Then edit like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 21 * * * /home/dsadm/test.sh &gt; /tmp/cron-log 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
-<p>This means on everyday at 9:00PM, user <code>dsadm</code> will run <code>test.sh</code> and redirect output to <code>/tmp/cron-log</code> file. You can also put the entries into a file and run:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm &lt;entry file&gt;</span><br></pre></td></tr></table></figure></p>
-<p>The meaning of the entry is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ┌───────────── minute (0 - 59)</span><br><span class="line"># │ ┌───────────── hour (0 - 23)</span><br><span class="line"># │ │ ┌───────────── day of the month (1 - 31)</span><br><span class="line"># │ │ │ ┌───────────── month (1 - 12)</span><br><span class="line"># │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;</span><br><span class="line"># │ │ │ │ │                                   7 is also Sunday on some systems)</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># * * * * * command to execute</span><br></pre></td></tr></table></figure></p>
+<h2 id="crontab-Commands">crontab Commands</h2>
+<p>For example, run as <code>root</code>, I want to set a recurring task for user <code>dsadm</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -e</span><br></pre></td></tr></table></figure>
+<p>Then edit like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 21 * * * /home/dsadm/test.sh &gt; /tmp/cron-log 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>This means on everyday at 9:00PM, user <code>dsadm</code> will run <code>test.sh</code> and redirect output to <code>/tmp/cron-log</code> file. You can also put the entries into a file and run:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm &lt;entry file&gt;</span><br></pre></td></tr></table></figure>
+<p>The meaning of the entry is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ┌───────────── minute (0 - 59)</span><br><span class="line"># │ ┌───────────── hour (0 - 23)</span><br><span class="line"># │ │ ┌───────────── day of the month (1 - 31)</span><br><span class="line"># │ │ │ ┌───────────── month (1 - 12)</span><br><span class="line"># │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;</span><br><span class="line"># │ │ │ │ │                                   7 is also Sunday on some systems)</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># * * * * * command to execute</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>A <code>*</code> in any field means to match every value.</p>
 </blockquote>
 <p>Now, if you check <code>/var/spool/cron</code> directory, the <code>dsadm</code> crontab file is created there.</p>
-<p>To list the <code>dsadm</code> cron job:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -l</span><br></pre></td></tr></table></figure></p>
-<p>To remove <code>dsadm</code> cron job:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -r</span><br></pre></td></tr></table></figure></p>
-<h2 id="Run-as-Non-Root"><a href="#Run-as-Non-Root" class="headerlink" title="Run as Non-Root"></a>Run as Non-Root</h2><p>If you want to run <code>crontab</code> as <code>dsadm</code>, you must set the cron permission:</p>
+<p>To list the <code>dsadm</code> cron job:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -l</span><br></pre></td></tr></table></figure>
+<p>To remove <code>dsadm</code> cron job:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u dsadm -r</span><br></pre></td></tr></table></figure>
+<h2 id="Run-as-Non-Root">Run as Non-Root</h2>
+<p>If you want to run <code>crontab</code> as <code>dsadm</code>, you must set the cron permission:</p>
 <ul>
 <li><code>/etc/cron.allow</code> - If this file exists, it must contain your username for you to use cron jobs.</li>
-<li><code>/etc/cron.deny</code> - If the cron.allow file does not exist but the <code>/etc/cron.deny</code> file does exist then, to use cron jobs, you must not be listed in the <code>/etc/cron.deny</code> file. </li>
+<li><code>/etc/cron.deny</code> - If the cron.allow file does not exist but the <code>/etc/cron.deny</code> file does exist then, to use cron jobs, you must not be listed in the <code>/etc/cron.deny</code> file.</li>
 </ul>
 <p>So, if you put <code>dsadm</code> in <code>/etc/cron.allow</code> file, then you can use <code>crontab</code> directly.</p>
-<h2 id="System-crontab-File"><a href="#System-crontab-File" class="headerlink" title="System crontab File"></a>System crontab File</h2><p>Linux distributions normally have an <code>/etc/crontab</code> file. You can also edit here, but the format is a little bit difference:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name  command to be executed</span><br></pre></td></tr></table></figure></p>
+<h2 id="System-crontab-File">System crontab File</h2>
+<p>Linux distributions normally have an <code>/etc/crontab</code> file. You can also edit here, but the format is a little bit difference:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name  command to be executed</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -650,7 +646,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -747,7 +743,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1060,7 +1058,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1122,13 +1122,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

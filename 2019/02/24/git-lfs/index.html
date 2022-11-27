@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
+  <meta name="description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
 <meta name="keywords" content="git-lfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Versioning Large File in Git">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/git-lfs/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
+<meta property="og:description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
 <meta property="og:locale" content="中文|English">
 <meta property="og:image" content="https://drive.google.com/uc?id=1c2hUDmTQwOnD3GNz8S1QHfkyGwLzO5ur">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Zhnjd815gHSBJFySqdAyvfqSDeZtd0oc">
@@ -111,10 +111,10 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=12xtxpkkbAzSjSXAecwjqb-dV0SFEt_qz">
 <meta property="og:image" content="https://drive.google.com/uc?id=1gTK8WwQi7i1Vfjq7_ysTU5H9jXN4w_Jo">
 <meta property="og:image" content="https://drive.google.com/uc?id=1x9TX8NBIEZaaG51_dQxEKljdeL0ziKK8">
-<meta property="og:updated_time" content="2020-12-06T08:06:01.317Z">
+<meta property="og:updated_time" content="2020-12-06T08:06:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Versioning Large File in Git">
-<meta name="twitter:description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
+<meta name="twitter:description" content="I want to introduce you Git LFS, it is a command line extension and specification for managing large files with Git. LFS is great for large, changing files, there is basically a text pointer to the la">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1c2hUDmTQwOnD3GNz8S1QHfkyGwLzO5ur">
 
 
@@ -268,7 +268,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -287,7 +287,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -306,7 +306,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -482,24 +482,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -516,31 +498,40 @@
       
 
       
-        <p>I want to introduce you <a href="https://git-lfs.github.com/" target="_blank" rel="noopener">Git LFS</a>, it is a command line extension and <a href="https://github.com/git-lfs/git-lfs/blob/master/docs/spec.md" target="_blank" rel="noopener">specification</a> for managing large files with Git. LFS is great for <strong>large, changing files</strong>, there is basically a text pointer to the large file archived some place else.</p>
+        <p>I want to introduce you <a href="https://git-lfs.github.com/" target="_blank" rel="noopener">Git LFS</a>, it is a command line extension and <a href="https://github.com/git-lfs/git-lfs/blob/master/docs/spec.md" target="_blank" rel="noopener">specification</a> for managing large files with Git. LFS is great for <strong>large, changing files</strong>, there is basically a text pointer to the large file archived some place else.</p>
 <p>Usually we store large file or object in artifactory, for example: <code>jFrog</code>, <code>Nexus</code>, etc.</p>
-<h3 id="Install-Git-LFS"><a href="#Install-Git-LFS" class="headerlink" title="Install Git LFS"></a>Install Git LFS</h3><blockquote>
+<h3 id="Install-Git-LFS">Install Git LFS</h3>
+<blockquote>
 <p>Note: you need to install <code>Git LFS</code> if you <code>git pull</code> from a remote repository that has it</p>
 </blockquote>
-<p>For example, I am working on a RHEL machine.<br>First go to source page, follow the installation guide to install:</p>
+<p>For example, I am working on a RHEL machine.
+First go to source page, follow the installation guide to install:</p>
 <p><img src="https://drive.google.com/uc?id=1c2hUDmTQwOnD3GNz8S1QHfkyGwLzO5ur" alt=""></p>
 <p><img src="https://drive.google.com/uc?id=1Zhnjd815gHSBJFySqdAyvfqSDeZtd0oc" alt=""></p>
 <p>This will create a yum repos for git-lfs:</p>
 <p><img src="https://drive.google.com/uc?id=1BtoVGRjTz1PHXplO5OuJnhYMy8oJPzKl" alt=""></p>
 <p><img src="https://drive.google.com/uc?id=1F4NO7fUTtq0cP0bfgm8EGNlIrvKAjp1T" alt=""></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y git-lfs</span><br></pre></td></tr></table></figure>
-<p>you can see git-lfs is installed in your machine:<br><img src="https://drive.google.com/uc?id=12xtxpkkbAzSjSXAecwjqb-dV0SFEt_qz" alt=""></p>
-<p>Once downloaded and installed, set up Git LFS and its respective hooks by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure></p>
+<p>you can see git-lfs is installed in your machine:
+<img src="https://drive.google.com/uc?id=12xtxpkkbAzSjSXAecwjqb-dV0SFEt_qz" alt=""></p>
+<p>Once downloaded and installed, set up Git LFS and its respective hooks by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
 <p><img src="https://drive.google.com/uc?id=1gTK8WwQi7i1Vfjq7_ysTU5H9jXN4w_Jo" alt=""></p>
 <blockquote>
 <p>Note: You’ll need to run this in your repository directory, once per repository.</p>
 </blockquote>
-<h3 id="Track-Large-File"><a href="#Track-Large-File" class="headerlink" title="Track Large File"></a>Track Large File</h3><p>Select the file types you’d like Git LFS to manage (or directly edit your <code>.gitattributes</code>). You can configure additional file extensions at anytime.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs track <span class="string">"*.tar.gz"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Track-Large-File">Track Large File</h3>
+<p>Select the file types you’d like Git LFS to manage (or directly edit your <code>.gitattributes</code>). You can configure additional file extensions at anytime.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs track <span class="string">"*.tar.gz"</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Note: run this track command at the top level of your repository, then you need to git add <code>.gitattributes</code> file</p>
 </blockquote>
-<h3 id="Manage-Large-File"><a href="#Manage-Large-File" class="headerlink" title="Manage Large File"></a>Manage Large File</h3><p>Then, just do normal <code>git add</code> and <code>git commit</code> to manage your large size file.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add *.tar.gz</span><br><span class="line">git commit -m <span class="string">"add tar.gz file"</span></span><br><span class="line">git push origin &lt;your branch&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Manage-Large-File">Manage Large File</h3>
+<p>Then, just do normal <code>git add</code> and <code>git commit</code> to manage your large size file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add *.tar.gz</span><br><span class="line">git commit -m <span class="string">"add tar.gz file"</span></span><br><span class="line">git push origin &lt;your branch&gt;</span><br></pre></td></tr></table></figure>
 <p><img src="https://drive.google.com/uc?id=1x9TX8NBIEZaaG51_dQxEKljdeL0ziKK8" alt=""></p>
-<p>Actually, you can check the large files you managed by running:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs ls-files</span><br></pre></td></tr></table></figure></p>
+<p>Actually, you can check the large files you managed by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs ls-files</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -661,7 +652,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -758,7 +749,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1071,7 +1064,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1133,13 +1128,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

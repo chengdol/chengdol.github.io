@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Summary of some jq use cases and caveats daily.Quick reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
+  <meta name="description" content="Summary of some jq use cases and caveats daily. Quick reference:  cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
 <meta name="keywords" content="linux,jq,yq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jq&#x2F;yq Cheat Sheet">
 <meta property="og:url" content="http://yoursite.com/2021/11/12/linux-jq/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Summary of some jq use cases and caveats daily.Quick reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
+<meta property="og:description" content="Summary of some jq use cases and caveats daily. Quick reference:  cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-08-27T20:48:36.898Z">
+<meta property="og:updated_time" content="2022-08-27T20:48:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jq&#x2F;yq Cheat Sheet">
-<meta name="twitter:description" content="Summary of some jq use cases and caveats daily.Quick reference:   cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
+<meta name="twitter:description" content="Summary of some jq use cases and caveats daily. Quick reference:  cheat sheet  Need to read through some common use cases:  official tutorial official manual  yq is another open source tool relies on">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">6.7k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,7 +490,8 @@
       
 
       
-        <p>Summary of some <code>jq</code> use cases and caveats daily.<br>Quick reference: </p>
+        <p>Summary of some <code>jq</code> use cases and caveats daily.
+Quick reference:</p>
 <ul>
 <li><a href="https://lzone.de/cheat-sheet/jq" target="_blank" rel="noopener">cheat sheet</a></li>
 </ul>
@@ -519,26 +502,34 @@
 </ul>
 <p><a href="https://github.com/mikefarah/yq" target="_blank" rel="noopener"><code>yq</code></a> is another open source tool relies on <code>jq</code> to query yaml file, tt has most common operations available and syntactically like <code>jq</code>.</p>
 <ol>
-<li><p>Must quote the expression<br>For example:</p>
+<li>Must quote the expression
+For example:</li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -r: raw string</span></span><br><span class="line">k get pod banzai-vault-0 -o json | jq -r <span class="string">'.spec.containers[].name'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Filter out null value<br>For example, I want to get the configMap name from a deployment, the volumes may have multiple subitems and one of them is config map, we need to filter out <code>null</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy nwiaas -o json | jq -r <span class="string">'.spec.template.spec.volumes[].configMap.name | select(. != null)'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>This is a simple case to introduce <a href="https://stedolan.github.io/jq/manual/#select(boolean_expression" target="_blank" rel="noopener"><code>select</code> function</a>)</p>
 <ol start="2">
-<li>Replace field values<br>Using <code>|=</code> operator, see <a href="https://stedolan.github.io/jq/manual/#Assignment" target="_blank" rel="noopener">here</a>.</li>
+<li>Filter out null value
+For example, I want to get the configMap name from a deployment, the volumes may have multiple subitems and one of them is config map, we need to filter out <code>null</code>:</li>
 </ol>
-<p>For example, I want to create one job from cronjob but with different args:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --dry-run=client: print without sending object</span></span><br><span class="line">kubectl create job \</span><br><span class="line">--from=cronjob/&lt;cronjob name&gt; \</span><br><span class="line">&lt;job name&gt; \</span><br><span class="line">--dry-run=client \</span><br><span class="line">--output json &gt; original.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># use jq docker</span></span><br><span class="line">docker run -it --rm \</span><br><span class="line">-v $(<span class="built_in">pwd</span>)/original.json:/original.json \</span><br><span class="line">--entrypoint=/bin/bash \</span><br><span class="line">stedolan/jq \</span><br><span class="line">-c <span class="string">"cat /original.json |jq -r '.spec.template.spec.containers[].args |= [\"python\", \"make.py\", \"do_something\"]' | cat"</span> \</span><br><span class="line">| kubectl apply -f -</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deploy nwiaas -o json | jq -r <span class="string">'.spec.template.spec.volumes[].configMap.name | select(. != null)'</span></span><br></pre></td></tr></table></figure>
+<p>This is a simple case to introduce <a href="https://stedolan.github.io/jq/manual/#select(boolean_expression)" target="_blank" rel="noopener"><code>select</code> function</a></p>
+<ol start="2">
+<li>Replace field values
+Using <code>|=</code> operator, see <a href="https://stedolan.github.io/jq/manual/#Assignment" target="_blank" rel="noopener">here</a>.</li>
+</ol>
+<p>For example, I want to create one job from cronjob but with different args:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --dry-run=client: print without sending object</span></span><br><span class="line">kubectl create job \</span><br><span class="line">--from=cronjob/&lt;cronjob name&gt; \</span><br><span class="line">&lt;job name&gt; \</span><br><span class="line">--dry-run=client \</span><br><span class="line">--output json &gt; original.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># use jq docker</span></span><br><span class="line">docker run -it --rm \</span><br><span class="line">-v $(<span class="built_in">pwd</span>)/original.json:/original.json \</span><br><span class="line">--entrypoint=/bin/bash \</span><br><span class="line">stedolan/jq \</span><br><span class="line">-c <span class="string">"cat /original.json |jq -r '.spec.template.spec.containers[].args |= [\"python\", \"make.py\", \"do_something\"]' | cat"</span> \</span><br><span class="line">| kubectl apply -f -</span><br></pre></td></tr></table></figure>
 <p>Here I use <code>cat</code> at end to remove color supplement, otherwise kubectl apply will fail.</p>
 <ol start="3">
-<li>Loop and extract specified values<br>For example, the Elasticsearch API returns a list of map object and each map has the same number of fields, I want to extract few of the fields and output with specific format.</li>
+<li>Loop and extract specified values
+For example, the Elasticsearch API returns a list of map object and each map has the same number of fields, I want to extract few of the fields and output with specific format.</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [.index,.shard,.prirep,.node]: generate [] array format and put items in</span></span><br><span class="line">curl -s <span class="string">"http://localhost:9200/_cat/shards/.ds-*?h=index,shard,prirep,state,node&amp;format=json"</span> | \</span><br><span class="line">jq -r <span class="string">'.[] | [.index,.shard,.prirep,.node] | @csv'</span> | sed <span class="string">'s/\"//g'</span></span><br></pre></td></tr></table></figure>
-<p>It will output <a href="https://stedolan.github.io/jq/manual/v1.6/#Basicfilters" target="_blank" rel="noopener"><code>csv</code></a> style string, for example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"xxx"</span>,<span class="string">"yyy"</span>,<span class="string">"zzz"</span>,<span class="string">"qqq"</span></span><br></pre></td></tr></table></figure></p>
-<p>Or format as a table:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [.index,.shard,.prirep,.node]: generate an array</span></span><br><span class="line"><span class="comment"># join(":|:"): join array elements</span></span><br><span class="line"><span class="comment"># column -s : -t: use `:` as separator and make table</span></span><br><span class="line">curl -s <span class="string">"http://localhost:9200/_cat/shards/.ds-*?h=index,shard,prirep,state,node&amp;format=json"</span> | \</span><br><span class="line">jq -r <span class="string">'.[] | [.index, .shard, .prirep, .node] | join(":|:")'</span> | column -s : -t | sort</span><br></pre></td></tr></table></figure></p>
-<p>The output is like:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.ds-k8s-nodes-filebeat-2022.04.28-000020  |  0  |  p  |  172.16.0.172</span><br><span class="line">.ds-k8s-nodes-filebeat-2022.04.28-000020  |  1  |  p  |  172.16.0.164</span><br><span class="line">.ds-k8s-nodes-filebeat-2022.04.28-000020  |  2  |  p  |  172.16.0.247</span><br></pre></td></tr></table></figure></p>
+<p>It will output <a href="https://stedolan.github.io/jq/manual/v1.6/#Basicfilters" target="_blank" rel="noopener"><code>csv</code></a> style string, for example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"xxx"</span>,<span class="string">"yyy"</span>,<span class="string">"zzz"</span>,<span class="string">"qqq"</span></span><br></pre></td></tr></table></figure>
+<p>Or format as a table:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [.index,.shard,.prirep,.node]: generate an array</span></span><br><span class="line"><span class="comment"># join(":|:"): join array elements</span></span><br><span class="line"><span class="comment"># column -s : -t: use `:` as separator and make table</span></span><br><span class="line">curl -s <span class="string">"http://localhost:9200/_cat/shards/.ds-*?h=index,shard,prirep,state,node&amp;format=json"</span> | \</span><br><span class="line">jq -r <span class="string">'.[] | [.index, .shard, .prirep, .node] | join(":|:")'</span> | column -s : -t | sort</span><br></pre></td></tr></table></figure>
+<p>The output is like:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.ds-k8s-nodes-filebeat-2022.04.28-000020  |  0  |  p  |  172.16.0.172</span><br><span class="line">.ds-k8s-nodes-filebeat-2022.04.28-000020  |  1  |  p  |  172.16.0.164</span><br><span class="line">.ds-k8s-nodes-filebeat-2022.04.28-000020  |  2  |  p  |  172.16.0.247</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -654,7 +645,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -751,7 +742,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1064,7 +1057,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1109,13 +1104,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="If the VPC subnet address space in a region ran out, the simplest way is to create a new subnet with the same mask in the same region(depends on your needs). Or you can expand the original subnet IP r">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-06-19T18:49:28.454Z">
+<meta property="og:updated_time" content="2022-06-19T18:49:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google Cloud Subnet Expansion">
 <meta name="twitter:description" content="If the VPC subnet address space in a region ran out, the simplest way is to create a new subnet with the same mask in the same region(depends on your needs). Or you can expand the original subnet IP r">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.7k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,13 +491,15 @@
 
       
         <p>If the VPC subnet address space in a region ran out, the simplest way is to create a new subnet with the same mask in the same region(depends on your needs). Or you can expand the original subnet IP range.</p>
-<h1 id="VPC-Overview-Highlight"><a href="#VPC-Overview-Highlight" class="headerlink" title="VPC Overview Highlight"></a>VPC Overview Highlight</h1><p><a href="https://cloud.google.com/vpc/docs/vpc" target="_blank" rel="noopener">https://cloud.google.com/vpc/docs/vpc</a></p>
+<h1>VPC Overview Highlight</h1>
+<p><a href="https://cloud.google.com/vpc/docs/vpc" target="_blank" rel="noopener">https://cloud.google.com/vpc/docs/vpc</a></p>
 <ul>
 <li>VPC is global resource</li>
 <li>resource within a VPC(regardless subnet) can communicate to each other, subject to firewall rules</li>
 <li>shared VPC, keep a VPC in a common host project</li>
 </ul>
-<h1 id="Subnet-Overview-Highlight"><a href="#Subnet-Overview-Highlight" class="headerlink" title="Subnet Overview Highlight"></a>Subnet Overview Highlight</h1><p><a href="https://cloud.google.com/vpc/docs/subnets" target="_blank" rel="noopener">https://cloud.google.com/vpc/docs/subnets</a></p>
+<h1>Subnet Overview Highlight</h1>
+<p><a href="https://cloud.google.com/vpc/docs/subnets" target="_blank" rel="noopener">https://cloud.google.com/vpc/docs/subnets</a></p>
 <ul>
 <li>subnet is regional resource</li>
 <li>subnet <a href="https://cloud.google.com/vpc/docs/vpc#subnet-ranges" target="_blank" rel="noopener">creation mode</a>: auto and custom</li>
@@ -523,13 +507,17 @@
 <li>subnet <a href="https://cloud.google.com/vpc/docs/subnets#ipv4-ranges" target="_blank" rel="noopener">IPV4 valid range</a>: primary and secondary</li>
 </ul>
 <p>Note, there is no need to create secondary subnet IP range for <a href="https://cloud.google.com/vpc/docs/alias-ip" target="_blank" rel="noopener"><code>Alias IP</code></a>. From observation, the subnet will have seconard IP ranges auto created if GKE is used in that network: it will create <code>pods</code> and <code>services</code> secondary IP ranges.</p>
-<p>For example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check which node has pods secondary IP range:</span></span><br><span class="line">gcloud compute instances list \</span><br><span class="line"><span class="comment"># the attribute path can be found through --format flattened</span></span><br><span class="line">--filter=<span class="string">"networkInterfaces[0].aliasIpRanges[0].subnetworkRangeName~'pods'"</span> \</span><br><span class="line">--project &lt;project name&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Found VM attached with specified subnet:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gcloud compute instances list \</span><br><span class="line">--filter=<span class="string">"networkInterfaces[].subnetwork~'regions/us-east4/subnetworks/us-east4'"</span> \</span><br><span class="line">--project &lt;project name&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Create-and-Modify-Network"><a href="#Create-and-Modify-Network" class="headerlink" title="Create and Modify Network"></a>Create and Modify Network</h2><ul>
+<p>For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check which node has pods secondary IP range:</span></span><br><span class="line">gcloud compute instances list \</span><br><span class="line"><span class="comment"># the attribute path can be found through --format flattened</span></span><br><span class="line">--filter=<span class="string">"networkInterfaces[0].aliasIpRanges[0].subnetworkRangeName~'pods'"</span> \</span><br><span class="line">--project &lt;project name&gt;</span><br></pre></td></tr></table></figure>
+<p>Found VM attached with specified subnet:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gcloud compute instances list \</span><br><span class="line">--filter=<span class="string">"networkInterfaces[].subnetwork~'regions/us-east4/subnetworks/us-east4'"</span> \</span><br><span class="line">--project &lt;project name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Create-and-Modify-Network">Create and Modify Network</h2>
+<ul>
 <li><a href="https://cloud.google.com/vpc/docs/vpc#mtu" target="_blank" rel="noopener">VPC MTU setting and impact</a></li>
 <li><a href="https://cloud.google.com/vpc/docs/create-modify-vpc-networks#subnet-rules" target="_blank" rel="noopener">subnet creation and editing</a></li>
 </ul>
-<p>The primary IPv4 range for the subnet can be <a href="https://cloud.google.com/vpc/docs/create-modify-vpc-networks#expand-subnet" target="_blank" rel="noopener"><code>expanded</code></a>, but not replaced or shrunk, after the subnet has been created. For example, the original primary IP range is <code>192.168.2.0/24</code>(in private address space defined in gcloud), now set the prefix length to <code>21</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcloud compute networks subnets expand-ip-range &lt;subnet name&gt; \</span><br><span class="line">--region us-east4 \</span><br><span class="line">--prefix-length=21 \</span><br><span class="line">--project &lt;project name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>The primary IPv4 range for the subnet can be <a href="https://cloud.google.com/vpc/docs/create-modify-vpc-networks#expand-subnet" target="_blank" rel="noopener"><code>expanded</code></a>, but not replaced or shrunk, after the subnet has been created. For example, the original primary IP range is <code>192.168.2.0/24</code>(in private address space defined in gcloud), now set the prefix length to <code>21</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gcloud compute networks subnets expand-ip-range &lt;subnet name&gt; \</span><br><span class="line">--region us-east4 \</span><br><span class="line">--prefix-length=21 \</span><br><span class="line">--project &lt;project name&gt;</span><br></pre></td></tr></table></figure>
 <p>Then the new IP range will be <code>192.168.0.0/21</code>(bit set exceeds mask length is removed as it does not make sense), the expansion will fail if the new IP range conflicts with others.</p>
 
       
@@ -653,7 +641,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -750,7 +738,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1063,7 +1053,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1099,7 +1091,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VPC-Overview-Highlight"><span class="nav-number">1.</span> <span class="nav-text">VPC Overview Highlight</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Subnet-Overview-Highlight"><span class="nav-number">2.</span> <span class="nav-text">Subnet Overview Highlight</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-and-Modify-Network"><span class="nav-number">2.1.</span> <span class="nav-text">Create and Modify Network</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">VPC Overview Highlight</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Subnet Overview Highlight</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-and-Modify-Network"><span class="nav-number">2.1.</span> <span class="nav-text">Create and Modify Network</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1125,13 +1117,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

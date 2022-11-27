@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. Source ScriptThe file may not necessary to be a exec">
+  <meta name="description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. Source Script The file may not necessary to be a exe">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Source vs Execute Script">
 <meta property="og:url" content="http://yoursite.com/2019/05/07/shell-source-vs-execute/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. Source ScriptThe file may not necessary to be a exec">
+<meta property="og:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. Source Script The file may not necessary to be a exe">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-11-23T06:41:52.311Z">
+<meta property="og:updated_time" content="2020-11-23T06:41:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Source vs Execute Script">
-<meta name="twitter:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. Source ScriptThe file may not necessary to be a exec">
+<meta name="twitter:description" content="Understand the difference between source and execute a script is important, otherwise you will be confused why something doesn’t run as you expect. Source Script The file may not necessary to be a exe">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3.3k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,23 +491,30 @@
 
       
         <p>Understand the difference between <code>source</code> and execute a script is important, otherwise you will be confused why something doesn’t run as you expect.</p>
-<h1 id="Source-Script"><a href="#Source-Script" class="headerlink" title="Source Script"></a>Source Script</h1><p>The file may <strong>not</strong> necessary to be a executable (<code>chmod -x</code>) but should be valid shell script. We usually use <code>source</code> to load shell functions and export environment variables into current shell process.</p>
-<p>For example, both syntax are good:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./xx.env</span><br><span class="line">. ./xx.env</span><br></pre></td></tr></table></figure></p>
+<h1>Source Script</h1>
+<p>The file may <strong>not</strong> necessary to be a executable (<code>chmod -x</code>) but should be valid shell script. We usually use <code>source</code> to load shell functions and export environment variables into current shell process.</p>
+<p>For example, both syntax are good:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./xx.env</span><br><span class="line">. ./xx.env</span><br></pre></td></tr></table></figure>
 <p>注意<code>source</code> 在当前上下文中执行脚本，不会生成新的进程！！执行完毕后回到当前进程。</p>
 <blockquote>
 <p>Note that <code>.</code> is not an alias for <code>source</code>, but rather the other way around. <code>source</code> is a bash extension, while <code>.</code> works in any POSIX compatible shell.</p>
 </blockquote>
 <p>You can also put the file path in <code>$PATH</code> so that you don’t need to specify the path in command.</p>
-<h1 id="Execute-Script"><a href="#Execute-Script" class="headerlink" title="Execute Script"></a>Execute Script</h1><p>The file is <strong>executable</strong> (<code>chmod +x</code>) and you are in right permission to run it. And you need to specify the path even in current directory, or put path in <code>$PATH</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xx.sh</span><br></pre></td></tr></table></figure></p>
+<h1>Execute Script</h1>
+<p>The file is <strong>executable</strong> (<code>chmod +x</code>) and you are in right permission to run it. And you need to specify the path even in current directory, or put path in <code>$PATH</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xx.sh</span><br></pre></td></tr></table></figure>
 <p>The current shell spawns a new shell to run the script. The script is running in the new shell and all changes to the environment only in the new shell. After the script is done all changes to the environment in the new shell are destroyed.</p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>Use execution method will run the script as another process, so variables and functions in child script will not be accessible in parent shell. </p>
+<h1>Summary</h1>
+<p>Use execution method will run the script as another process, so variables and functions in child script will not be accessible in parent shell.</p>
 <p>The <code>source</code> method executes the child script in the parent script’s process, the parent process can access the variabels or functions in child script. If you are using <code>exit</code> in script, it will exit the parent script as well. Which will not happen in execution method.</p>
-<h1 id="exec-Command"><a href="#exec-Command" class="headerlink" title="exec Command"></a>exec Command</h1><p><code>exec</code> command, 这个命令在docker container的entry script中很常见:</p>
+<h1>exec Command</h1>
+<p><code>exec</code> command, 这个命令在docker container的entry script中很常见:</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=nwm7rJG90i8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=nwm7rJG90i8</a></li>
 <li><a href="https://askubuntu.com/questions/819910/what-are-possible-use-of-exec-command" target="_blank" rel="noopener">https://askubuntu.com/questions/819910/what-are-possible-use-of-exec-command</a></li>
 </ul>
-<p>此外还有<code>su-exec</code> 命令，但这个不是built-in的:<br><a href="https://github.com/ncopa/su-exec" target="_blank" rel="noopener">https://github.com/ncopa/su-exec</a></p>
+<p>此外还有<code>su-exec</code> 命令，但这个不是built-in的:
+<a href="https://github.com/ncopa/su-exec" target="_blank" rel="noopener">https://github.com/ncopa/su-exec</a></p>
 
       
     </div>
@@ -646,7 +635,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -743,7 +732,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1056,7 +1047,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1092,7 +1085,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Source-Script"><span class="nav-number">1.</span> <span class="nav-text">Source Script</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Execute-Script"><span class="nav-number">2.</span> <span class="nav-text">Execute Script</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exec-Command"><span class="nav-number">4.</span> <span class="nav-text">exec Command</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Source Script</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Execute Script</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">exec Command</span></a></li></ol></div>
             
 
           </div>
@@ -1118,13 +1111,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

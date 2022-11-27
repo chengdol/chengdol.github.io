@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="It’s very tedious to type full command when you operate on K8s cluster, this blog is the summary of alias I adopt in daily work. Put these alias to $HOME/.bashrc or $HOME/.zshrc, then sourcing it or n">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-05-06T07:42:52.064Z">
+<meta property="og:updated_time" content="2021-05-06T07:42:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes Commands Alias">
 <meta name="twitter:description" content="It’s very tedious to type full command when you operate on K8s cluster, this blog is the summary of alias I adopt in daily work. Put these alias to $HOME/.bashrc or $HOME/.zshrc, then sourcing it or n">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">9.6k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -510,9 +492,12 @@
       
         <p>It’s very tedious to type full command when you operate on K8s cluster, this blog is the summary of alias I adopt in daily work.</p>
 <p>Put these alias to <code>$HOME/.bashrc</code> or <code>$HOME/.zshrc</code>, then sourcing it or next time when you login they will take effect.</p>
-<p>Some quick commands used to create resources:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create nodeport svc to expose access</span></span><br><span class="line"><span class="comment">## --type default is ClusterIP</span></span><br><span class="line"><span class="comment">## --target-port default is --port</span></span><br><span class="line">kubectl expose pod &lt;podname&gt; [--<span class="built_in">type</span>=NodePort] --port=80 [--target-port=80] --name=&lt;svcname&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## run command in pod</span></span><br><span class="line">kubectl <span class="built_in">exec</span> -n &lt;namespace&gt; &lt;podname&gt; -- sh -c <span class="string">"commands"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## check log</span></span><br><span class="line">kubectl logs -f &lt;pod name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## scale up/down</span></span><br><span class="line">kubectl scale deploy &lt;deploy name&gt; --replicas=5</span><br></pre></td></tr></table></figure></p>
-<p>These are some aliases used to run test:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## exit will delete the pod automatically</span></span><br><span class="line"><span class="comment">## --restart=Never: create a pod instead of deployment</span></span><br><span class="line"><span class="comment">## praqma/network-multitool: network tools image</span></span><br><span class="line"><span class="built_in">alias</span> kbt=<span class="string">'kubectl run testpod -it --rm --restart=Never --image=praqma/network-multitool -- /bin/sh'</span></span><br></pre></td></tr></table></figure></p>
-<p>很多都是当时在IBM 时候的命令了，留着做个纪念吧.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## docker shortcut</span></span><br><span class="line"><span class="built_in">alias</span> di=<span class="string">'docker images'</span></span><br><span class="line"><span class="built_in">alias</span> dp=<span class="string">'docker ps -a'</span></span><br><span class="line"><span class="built_in">alias</span> dri=<span class="string">'docker rmi -f'</span></span><br><span class="line"><span class="built_in">alias</span> drp=<span class="string">'docker rm -f'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> k=<span class="string">'kubectl'</span></span><br><span class="line"><span class="built_in">alias</span> kbn=<span class="string">'kubectl get nodes'</span></span><br><span class="line"><span class="comment">## can replace with your working namespace</span></span><br><span class="line"><span class="comment">## pods</span></span><br><span class="line"><span class="built_in">alias</span> kbp=<span class="string">'kubectl get pods --all-namespaces'</span></span><br><span class="line"><span class="comment">## deployments</span></span><br><span class="line"><span class="built_in">alias</span> kbd=<span class="string">'kubectl get deploy -n zen | grep -E "xmeta|services"'</span></span><br><span class="line"><span class="comment">## statefulsets</span></span><br><span class="line"><span class="built_in">alias</span> kbsts=<span class="string">'kubectl get sts -n zen | grep -E "conductor|compute"'</span></span><br><span class="line"><span class="comment">## services</span></span><br><span class="line"><span class="built_in">alias</span> kbs=<span class="string">'kubectl get svc -n test-1'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## get into pods</span></span><br><span class="line">kbl()</span><br><span class="line">&#123;</span><br><span class="line">  pod=<span class="variable">$1</span></span><br><span class="line">  <span class="comment">## get namepace</span></span><br><span class="line">  ns=$(kubectl get pod --all-namespaces | grep <span class="variable">$pod</span> | awk &#123;<span class="string">'print $1'</span>&#125;)</span><br><span class="line">  kubectl <span class="built_in">exec</span> -it <span class="variable">$pod</span> sh -n <span class="variable">$ns</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">### for fixed pod name</span></span><br><span class="line"><span class="built_in">alias</span> gocond=<span class="string">'kubectl exec -it is-en-conductor-0 bash -n test-1'</span></span><br><span class="line"><span class="built_in">alias</span> gocomp0=<span class="string">'kubectl exec -it is-engine-compute-0 bash -n test-1'</span></span><br><span class="line"><span class="comment">### for dynamic pod name</span></span><br><span class="line">goxmeta()</span><br><span class="line">&#123;</span><br><span class="line">  isxmetadockerpod=`kubectl get pods --field-selector=status.phase=Running -n <span class="built_in">test</span>-1 | grep is-xmetadocker-pod | awk &#123;<span class="string">'print $1'</span>&#125;`</span><br><span class="line">  kubectl <span class="built_in">exec</span> -it <span class="variable">$&#123;isxmetadockerpod&#125;</span> bash -n <span class="built_in">test</span>-1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gosvc()</span><br><span class="line">&#123;</span><br><span class="line">  isservicesdockerpod=`kubectl get pods --field-selector=status.phase=Running -n <span class="built_in">test</span>-1 | grep is-servicesdocker-pod | awk &#123;<span class="string">'print $1'</span>&#125;`</span><br><span class="line">  kubectl <span class="built_in">exec</span> -it <span class="variable">$&#123;isservicesdockerpod&#125;</span> bash -n <span class="built_in">test</span>-1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## clean pods</span></span><br><span class="line"><span class="built_in">alias</span> rmxmeta=<span class="string">'kubectl delete svc is-xmetadocker -n test-1; kubectl delete deploy is-xmetadocker-pod -n test-1; rm -rf /mnt/IIS_test-1/Repository/*'</span></span><br><span class="line"><span class="built_in">alias</span> rmsvc=<span class="string">'kubectl delete svc is-servicesdocker -n test-1; kubectl delete deploy is-servicesdocker-pod -n test-1; rm -rf /mnt/IIS_test-1/Services/*'</span></span><br><span class="line"><span class="built_in">alias</span> rmcond=<span class="string">'kubectl delete svc is-en-conductor-0 -n test-1; kubectl delete svc en-cond -n test-1; kubectl delete statefulset is-en-conductor -n test-1; rm -rf /mnt/IIS_test-1/Engine/test-1/is-en-conductor-0/'</span></span><br><span class="line"><span class="built_in">alias</span> rmcomp=<span class="string">'kbc delete svc conductor-0 -n test-1; kbc delete statefulset is-engine-compute -n test-1; rm -rf /mnt/IIS_test-1/Engine/test-1/is-engine-compute*'</span></span><br></pre></td></tr></table></figure></p>
+<p>Some quick commands used to create resources:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create nodeport svc to expose access</span></span><br><span class="line"><span class="comment">## --type default is ClusterIP</span></span><br><span class="line"><span class="comment">## --target-port default is --port</span></span><br><span class="line">kubectl expose pod &lt;podname&gt; [--<span class="built_in">type</span>=NodePort] --port=80 [--target-port=80] --name=&lt;svcname&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## run command in pod</span></span><br><span class="line">kubectl <span class="built_in">exec</span> -n &lt;namespace&gt; &lt;podname&gt; -- sh -c <span class="string">"commands"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## check log</span></span><br><span class="line">kubectl logs -f &lt;pod name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## scale up/down</span></span><br><span class="line">kubectl scale deploy &lt;deploy name&gt; --replicas=5</span><br></pre></td></tr></table></figure>
+<p>These are some aliases used to run test:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## exit will delete the pod automatically</span></span><br><span class="line"><span class="comment">## --restart=Never: create a pod instead of deployment</span></span><br><span class="line"><span class="comment">## praqma/network-multitool: network tools image</span></span><br><span class="line"><span class="built_in">alias</span> kbt=<span class="string">'kubectl run testpod -it --rm --restart=Never --image=praqma/network-multitool -- /bin/sh'</span></span><br></pre></td></tr></table></figure>
+<p>很多都是当时在IBM 时候的命令了，留着做个纪念吧.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## docker shortcut</span></span><br><span class="line"><span class="built_in">alias</span> di=<span class="string">'docker images'</span></span><br><span class="line"><span class="built_in">alias</span> dp=<span class="string">'docker ps -a'</span></span><br><span class="line"><span class="built_in">alias</span> dri=<span class="string">'docker rmi -f'</span></span><br><span class="line"><span class="built_in">alias</span> drp=<span class="string">'docker rm -f'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> k=<span class="string">'kubectl'</span></span><br><span class="line"><span class="built_in">alias</span> kbn=<span class="string">'kubectl get nodes'</span></span><br><span class="line"><span class="comment">## can replace with your working namespace</span></span><br><span class="line"><span class="comment">## pods</span></span><br><span class="line"><span class="built_in">alias</span> kbp=<span class="string">'kubectl get pods --all-namespaces'</span></span><br><span class="line"><span class="comment">## deployments</span></span><br><span class="line"><span class="built_in">alias</span> kbd=<span class="string">'kubectl get deploy -n zen | grep -E "xmeta|services"'</span></span><br><span class="line"><span class="comment">## statefulsets</span></span><br><span class="line"><span class="built_in">alias</span> kbsts=<span class="string">'kubectl get sts -n zen | grep -E "conductor|compute"'</span></span><br><span class="line"><span class="comment">## services</span></span><br><span class="line"><span class="built_in">alias</span> kbs=<span class="string">'kubectl get svc -n test-1'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## get into pods</span></span><br><span class="line">kbl()</span><br><span class="line">&#123;</span><br><span class="line">  pod=<span class="variable">$1</span></span><br><span class="line">  <span class="comment">## get namepace</span></span><br><span class="line">  ns=$(kubectl get pod --all-namespaces | grep <span class="variable">$pod</span> | awk &#123;<span class="string">'print $1'</span>&#125;)</span><br><span class="line">  kubectl <span class="built_in">exec</span> -it <span class="variable">$pod</span> sh -n <span class="variable">$ns</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">### for fixed pod name</span></span><br><span class="line"><span class="built_in">alias</span> gocond=<span class="string">'kubectl exec -it is-en-conductor-0 bash -n test-1'</span></span><br><span class="line"><span class="built_in">alias</span> gocomp0=<span class="string">'kubectl exec -it is-engine-compute-0 bash -n test-1'</span></span><br><span class="line"><span class="comment">### for dynamic pod name</span></span><br><span class="line">goxmeta()</span><br><span class="line">&#123;</span><br><span class="line">  isxmetadockerpod=`kubectl get pods --field-selector=status.phase=Running -n <span class="built_in">test</span>-1 | grep is-xmetadocker-pod | awk &#123;<span class="string">'print $1'</span>&#125;`</span><br><span class="line">  kubectl <span class="built_in">exec</span> -it <span class="variable">$&#123;isxmetadockerpod&#125;</span> bash -n <span class="built_in">test</span>-1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gosvc()</span><br><span class="line">&#123;</span><br><span class="line">  isservicesdockerpod=`kubectl get pods --field-selector=status.phase=Running -n <span class="built_in">test</span>-1 | grep is-servicesdocker-pod | awk &#123;<span class="string">'print $1'</span>&#125;`</span><br><span class="line">  kubectl <span class="built_in">exec</span> -it <span class="variable">$&#123;isservicesdockerpod&#125;</span> bash -n <span class="built_in">test</span>-1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## clean pods</span></span><br><span class="line"><span class="built_in">alias</span> rmxmeta=<span class="string">'kubectl delete svc is-xmetadocker -n test-1; kubectl delete deploy is-xmetadocker-pod -n test-1; rm -rf /mnt/IIS_test-1/Repository/*'</span></span><br><span class="line"><span class="built_in">alias</span> rmsvc=<span class="string">'kubectl delete svc is-servicesdocker -n test-1; kubectl delete deploy is-servicesdocker-pod -n test-1; rm -rf /mnt/IIS_test-1/Services/*'</span></span><br><span class="line"><span class="built_in">alias</span> rmcond=<span class="string">'kubectl delete svc is-en-conductor-0 -n test-1; kubectl delete svc en-cond -n test-1; kubectl delete statefulset is-en-conductor -n test-1; rm -rf /mnt/IIS_test-1/Engine/test-1/is-en-conductor-0/'</span></span><br><span class="line"><span class="built_in">alias</span> rmcomp=<span class="string">'kbc delete svc conductor-0 -n test-1; kbc delete statefulset is-engine-compute -n test-1; rm -rf /mnt/IIS_test-1/Engine/test-1/is-engine-compute*'</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -624,7 +609,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -721,7 +706,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1034,7 +1021,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1079,13 +1068,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

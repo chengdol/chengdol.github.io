@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="At the time of this writing, we use Elasticsearch version 7.16.2, the reference is based on this version and the content may be subject to change. DemoA quick docker compose setup to play with data st">
+  <meta name="description" content="At the time of this writing, we use Elasticsearch version 7.16.2, the reference is based on this version and the content may be subject to change. Demo A quick docker compose setup to play with data s">
 <meta name="keywords" content="elastic,datastream">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Data Stream, ILM and Data Tiers">
 <meta property="og:url" content="http://yoursite.com/2022/08/05/elastic-data-stream/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="At the time of this writing, we use Elasticsearch version 7.16.2, the reference is based on this version and the content may be subject to change. DemoA quick docker compose setup to play with data st">
+<meta property="og:description" content="At the time of this writing, we use Elasticsearch version 7.16.2, the reference is based on this version and the content may be subject to change. Demo A quick docker compose setup to play with data s">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-08-27T20:48:36.896Z">
+<meta property="og:updated_time" content="2022-11-27T00:37:11.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data Stream, ILM and Data Tiers">
-<meta name="twitter:description" content="At the time of this writing, we use Elasticsearch version 7.16.2, the reference is based on this version and the content may be subject to change. DemoA quick docker compose setup to play with data st">
+<meta name="twitter:description" content="At the time of this writing, we use Elasticsearch version 7.16.2, the reference is based on this version and the content may be subject to change. Demo A quick docker compose setup to play with data s">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-08-27 13:48:36" itemprop="dateModified" datetime="2022-08-27T13:48:36-07:00">2022-08-27</time>
+                <time title="Modified: 2022-11-26 16:37:11" itemprop="dateModified" datetime="2022-11-26T16:37:11-08:00">2022-11-26</time>
               
             
           </span>
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">7.8k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,30 +491,45 @@
 
       
         <p>At the time of this writing, we use Elasticsearch version 7.16.2, the reference is based on this version and the content may be subject to change.</p>
-<h1 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h1><p>A quick docker compose <a href="https://github.com/chengdol/InfraTree/tree/master/docker-elasticsearch#hotwarmcold-tiers" target="_blank" rel="noopener">setup</a> to play with data stream and observe how ILM behaves.</p>
+<h1>Demo</h1>
+<p>A quick docker compose <a href="https://github.com/chengdol/InfraTree/tree/master/docker-elasticsearch#hotwarmcold-tiers" target="_blank" rel="noopener">setup</a> to play with data stream and observe how ILM behaves.</p>
 <p>A more <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/set-up-a-data-stream.html" target="_blank" rel="noopener">detailed way</a> to set up and use data stream and ILM from official document.</p>
-<h1 id="Data-Tiers"><a href="#Data-Tiers" class="headerlink" title="Data Tiers"></a>Data Tiers</h1><p>Details please see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/data-management.html" target="_blank" rel="noopener">Data Management</a> explanation.</p>
+<blockquote>
+<p>In reality, consider the tier size in terms of multiple factors: disk space usage, CPU LA, CPU usage, for example, when the disk space usage is low but the CPU LA could beyond the vcpu limits, then you should not shrink the tier aggressively.</p>
+</blockquote>
+<h1>Data Tiers</h1>
+<p>Details please see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/data-management.html" target="_blank" rel="noopener">Data Management</a> explanation.</p>
 <p>Data tiers is automatically ingetrated with Data Stream, to move cold indices to less performance and cost hardware, as the docker compose setup demo shows.</p>
 <p>Things to highlight:</p>
 <ul>
 <li>The content tier is required. System indices and other indices that aren’t part of a data stream are automatically allocated to the content tier.</li>
 <li>The hot tier is required. New indices that are part of a data stream are automatically allocated to the hot tier.</li>
 </ul>
-<h2 id="Decommission-Data-Nodes"><a href="#Decommission-Data-Nodes" class="headerlink" title="Decommission Data Nodes"></a>Decommission Data Nodes</h2><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/modules-cluster.html#cluster-shard-allocation-filtering" target="_blank" rel="noopener">Cluster-level shard allocation filtering</a>.</p>
-<p>To decommission data node from tiers, first drain all shards from it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple ips separated by comma</span></span><br><span class="line">PUT _cluster/settings</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"transient"</span>: &#123;</span><br><span class="line">    <span class="string">"cluster.routing.allocation.exclude._ip"</span> : <span class="string">"&lt;target data node ips&gt;"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Then check allocation to make sure 0 shard resides:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cat/allocation?v</span><br></pre></td></tr></table></figure></p>
-<p>Then revert the cluster level transient setting:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT _cluster/settings</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"transient"</span>: &#123;</span><br><span class="line">    <span class="string">"cluster.routing.allocation.exclude._ip"</span> : null</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Data-Stream"><a href="#Data-Stream" class="headerlink" title="Data Stream"></a>Data Stream</h1><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/data-streams.html" target="_blank" rel="noopener">Data Stream</a> is well-suited for logs, events, metrics, and other continuously generated append-only data.</p>
-<p>Data stream consists of <strong>hidden</strong> backing indices, not to be confused with the hidden data stream. To list all hidden or non-hidden data streams:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _data_stream?expand_wildcards=hidden</span><br></pre></td></tr></table></figure></p>
+<h2 id="Decommission-Data-Nodes">Decommission Data Nodes</h2>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/modules-cluster.html#cluster-shard-allocation-filtering" target="_blank" rel="noopener">Cluster-level shard allocation filtering</a>.</p>
+<p>To decommission data node from tiers, first drain all shards from it:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple ips separated by comma</span></span><br><span class="line">PUT _cluster/settings</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"transient"</span>: &#123;</span><br><span class="line">    <span class="string">"cluster.routing.allocation.exclude._ip"</span> : <span class="string">"&lt;target data node ips&gt;"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then check allocation to make sure 0 shard resides:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cat/allocation?v</span><br></pre></td></tr></table></figure>
+<p>Then revert the cluster level transient setting:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PUT _cluster/settings</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"transient"</span>: &#123;</span><br><span class="line">    <span class="string">"cluster.routing.allocation.exclude._ip"</span> : null</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>Data Stream</h1>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/data-streams.html" target="_blank" rel="noopener">Data Stream</a> is well-suited for logs, events, metrics, and other continuously generated append-only data.</p>
+<p>Data stream consists of <strong>hidden</strong> backing indices, not to be confused with the hidden data stream. To list all hidden or non-hidden data streams:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _data_stream?expand_wildcards=hidden</span><br></pre></td></tr></table></figure>
 <p>Hidden data streams are usually for facilitating purpose, we don’t use it.</p>
-<p>The backing index name pattern:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.ds-&lt;data-stream&gt;-&lt;yyyy.MM.dd&gt;-&lt;generation&gt;</span><br></pre></td></tr></table></figure></p>
-<p>The same index template can be used for <strong>multiple</strong> data streams, the index patterns in settings can use regexp to extend match:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"index_patterns"</span> : [<span class="string">"apple-*"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>The backing index name pattern:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.ds-&lt;data-stream&gt;-&lt;yyyy.MM.dd&gt;-&lt;generation&gt;</span><br></pre></td></tr></table></figure>
+<p>The same index template can be used for <strong>multiple</strong> data streams, the index patterns in settings can use regexp to extend match:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"index_patterns"</span> : [<span class="string">"apple-*"</span>]</span><br></pre></td></tr></table></figure>
 <p>Then <code>apple-green</code> and <code>apple-yellow</code> are 2 data streams.</p>
 <p>One data stream only has <strong>one</strong> wirte index.</p>
-<h1 id="ILM"><a href="#ILM" class="headerlink" title="ILM"></a>ILM</h1><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/index-lifecycle-management.html" target="_blank" rel="noopener">ILM: Manage the index lifecycle</a>, ILM is tightly working with Data Steam as the docker compose setup demo shows.</p>
+<h1>ILM</h1>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/index-lifecycle-management.html" target="_blank" rel="noopener">ILM: Manage the index lifecycle</a>, ILM is tightly working with Data Steam as the docker compose setup demo shows.</p>
 <p>One thing is worth to notice is the age of shard, for instance, the write index at hot tier(always start at hot) is named as <code>.ds-example-2022.07.26-000002</code>, at the time of rollover the age of it is <strong>reset</strong> to 0. If from hot to cold tier the min age is 7 days, let’s say the rollover is at <code>2022.08.01</code>, then the shift to cold tier of this shard will be on <code>2022.08.08</code>, instead of <code>2022.08.02</code>(2022.07.26 + 7 days).</p>
 <p>So, to transition backing index to next tier right after rollover, the window should be set as <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/ilm-index-lifecycle.html#ilm-phase-transitions" target="_blank" rel="noopener">0 days</a>.</p>
-<p>The age of the shard can be examined by ILM explain <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/ilm-explain-lifecycle.html" target="_blank" rel="noopener">API</a>, and list of other important fields:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET .ds-example-2022.07.26-000002/_ilm/explain</span><br></pre></td></tr></table></figure></p>
+<p>The age of the shard can be examined by ILM explain <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/ilm-explain-lifecycle.html" target="_blank" rel="noopener">API</a>, and list of other important fields:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET .ds-example-2022.07.26-000002/_ilm/explain</span><br></pre></td></tr></table></figure>
 <p>The update on working ILM policy has some <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/update-lifecycle-policy.html#ilm-apply-changes" target="_blank" rel="noopener">limitations</a>:</p>
 <ul>
 <li>If changes can be safely applied, ILM updates the cached phase definition. If they cannot, phase execution continues using the previous cached definition.</li>
@@ -661,7 +658,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -758,7 +755,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1071,7 +1070,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1107,7 +1108,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Demo"><span class="nav-number">1.</span> <span class="nav-text">Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Tiers"><span class="nav-number">2.</span> <span class="nav-text">Data Tiers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Decommission-Data-Nodes"><span class="nav-number">2.1.</span> <span class="nav-text">Decommission Data Nodes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Stream"><span class="nav-number">3.</span> <span class="nav-text">Data Stream</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ILM"><span class="nav-number">4.</span> <span class="nav-text">ILM</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Data Tiers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Decommission-Data-Nodes"><span class="nav-number">2.1.</span> <span class="nav-text">Decommission Data Nodes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Data Stream</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">ILM</span></a></li></ol></div>
             
 
           </div>
@@ -1133,13 +1134,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

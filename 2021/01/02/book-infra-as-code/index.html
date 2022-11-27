@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="刚看完第一版，第二版就出来了, hmmm… -_-||| This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate conc">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-02-01T06:59:24.864Z">
+<meta property="og:updated_time" content="2021-02-01T06:59:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Infrastructure as Code">
 <meta name="twitter:description" content="刚看完第一版，第二版就出来了, hmmm… -_-||| This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate conc">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">42k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -511,10 +493,15 @@
         <p>刚看完第一版，第二版就出来了, hmmm… -_-|||</p>
 <p>This book doesn’t offer instructions in using specific scripting languages or tools. There are code examples from specific tools, but these are intended to illustrate concepts and approaches, rather than to provide instruction.</p>
 <p>最开始介绍了作者之前的一些经历 starts from team Vmware virtual server farm，从这些经历中，慢慢领悟和学习到了IaC的必要性。puppet and chef 看来是很久之前的config automation tool了. 后来过渡到cloud，从其他IT Ops team 中学到很多new ideas, eye-opener: “The key idea of our new approach was that every server could be automatically rebuilt from scratch, and our configuration tooling would run continuously, not ad hoc. Every server added into our new infrastructure would fall under this approach. If automation broke on some edge case, we would either change the automation to handle it, or else fix the design of the service so it was no longer an edge case.”</p>
-<p>虚拟机和容器相辅相成。<br>Virtualization was one step, allowing you to add and remove VMs to scale your capacity to your load on a timescale of minutes. Containers take this to the next level, allowing you to scale your capacity up and down on a timescale of seconds.</p>
+<p>虚拟机和容器相辅相成。
+Virtualization was one step, allowing you to add and remove VMs to scale your capacity to your load on a timescale of minutes. Containers take this to the next level, allowing you to scale your capacity up and down on a timescale of seconds.</p>
 <p>后来我想到了一个问题，如果把容器运行在虚拟机之上，不又多了一层overhead吗？有没有优化。比如GKE runs on GCE VM, any optimization on VM image for k8s? 是的，用的是<a href="https://cloud.google.com/container-optimized-os/docs/concepts/features-and-benefits?hl=en" target="_blank" rel="noopener">container-optimized OS</a>.</p>
-<p>这里还有一些文章，讲了k8s运行环境的比较:<br><a href="https://platform9.com/blog/where-to-install-kubernetes-bare-metal-vs-vms-vs-cloud/" target="_blank" rel="noopener">Where to Install Kubernetes? Bare-Metal vs. VMs. vs. Cloud</a>.<br><a href="https://www.stratoscale.com/blog/data-center/running-containers-on-bare-metal/" target="_blank" rel="noopener">Running Containers on Bare Metal vs. VMs: Performance and Benefits</a></p>
-<h1 id="Part-I-Fundations"><a href="#Part-I-Fundations" class="headerlink" title="Part I Fundations"></a>Part I Fundations</h1><h2 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h2><p><code>Infrastructure as code</code> is an approach to infrastructure automation based on practices from software development. It emphasizes consistent, repeatable routines for provisioning and changing systems and their configuration. Changes are made to definitions and then rolled out to systems through unattended processes(指不需要人参与) that include thorough validation.</p>
+<p>这里还有一些文章，讲了k8s运行环境的比较:
+<a href="https://platform9.com/blog/where-to-install-kubernetes-bare-metal-vs-vms-vs-cloud/" target="_blank" rel="noopener">Where to Install Kubernetes? Bare-Metal vs. VMs. vs. Cloud</a>.
+<a href="https://www.stratoscale.com/blog/data-center/running-containers-on-bare-metal/" target="_blank" rel="noopener">Running Containers on Bare Metal vs. VMs: Performance and Benefits</a></p>
+<h1>Part I Fundations</h1>
+<h2 id="Chapter-1">Chapter 1</h2>
+<p><code>Infrastructure as code</code> is an approach to infrastructure automation based on practices from software development. It emphasizes consistent, repeatable routines for provisioning and changing systems and their configuration. Changes are made to definitions and then rolled out to systems through unattended processes(指不需要人参与) that include thorough validation.</p>
 <p>The phrase <code>dynamic infrastructure</code> to refer to the ability to create and destroy servers programmatically.</p>
 <p><code>Challenges</code> with dynamic infrastructure, the previous one can cause the next:</p>
 <ul>
@@ -545,14 +532,19 @@
 <li>Keep services available continuously, see chapter 14.</li>
 <li>Antifragility, beyond robust: When something goes wrong, the priority is not simply to fix it, but to improve the ability of the system to cope with similar incidents in the future.</li>
 </ul>
-<h2 id="Chapter-2"><a href="#Chapter-2" class="headerlink" title="Chapter 2"></a>Chapter 2</h2><p><code>Dynamic Infrastructure Platform</code>: is a system that provides computing resources, particularly servers, storage, and networking, in a way that they can be programmatically allocated and managed.</p>
+<h2 id="Chapter-2">Chapter 2</h2>
+<p><code>Dynamic Infrastructure Platform</code>: is a system that provides computing resources, particularly servers, storage, and networking, in a way that they can be programmatically allocated and managed.</p>
 <p>主要讲了构造dynamic infra platform 的要求，比如programmable, on-demand, self-service。需要提供用户什么功能，比如compute, storage(block, storage storage, networked filesystem), network, anth, etc。</p>
 <p>这里有个概念要澄清一下: private cloud vs bare-metal cloud. 之前认为意义相同，但并不是，bare-metal cloud is running an OS directly on server hardware rather than in a VM. There are many reasons why running directly on hardware may be the best choice for a given application or service. Virtualization adds performance overhead, because it inserts extra software layers between the application and the hardware resources it uses. Processes on one VM can impact the performance of other VMs running on the same host. 常用的tool for managing bare-metal: Cobbler, Foreman, etc.</p>
 <p>An IT professional, the deeper and stronger your understanding of how the system works down the stack and into the hardware, the more proficient you’ll be at getting the most from it.</p>
-<p>并不是说new instance就一定是well performance的，虚拟化也有很多不确定因素:<br>For example, the Netflix team knew that a percentage of AWS instances, when provisioned, will perform much worse than the average instance, whether because of hardware issues or simply because they happen to be sharing hardware with someone else’s poorly behaving systems. So they wrote their provisioning scripts to immediately test the performance of each new instance. If it doesn’t meet their standards, the script destroys the instance and tries again with a new instance.</p>
+<p>并不是说new instance就一定是well performance的，虚拟化也有很多不确定因素:
+For example, the Netflix team knew that a percentage of AWS instances, when provisioned, will perform much worse than the average instance, whether because of hardware issues or simply because they happen to be sharing hardware with someone else’s poorly behaving systems. So they wrote their provisioning scripts to immediately test the performance of each new instance. If it doesn’t meet their standards, the script destroys the instance and tries again with a new instance.</p>
 <p>Software and infrastructure should be architected, designed, and implemented with an understanding of the true architecture of the hardware, networking, storage, and the dynamic infrastructure platform.</p>
-<h2 id="Chapter-3"><a href="#Chapter-3" class="headerlink" title="Chapter 3"></a>Chapter 3</h2><p><code>Infrasturcture Definition Tools</code>: This chapter has discussed the types of tools to manage high-level infrastructure according to the principles and practices of infrastructure as code.</p>
-<h2 id="Chapter-4"><a href="#Chapter-4" class="headerlink" title="Chapter 4"></a>Chapter 4</h2><p><code>Server Configuration Tools</code><br>主要讲了provisioning tools, such as chef, puppet and ansible, salt. Tools for packing server templates, such as Packer. Tools for running commands on server.</p>
+<h2 id="Chapter-3">Chapter 3</h2>
+<p><code>Infrasturcture Definition Tools</code>: This chapter has discussed the types of tools to manage high-level infrastructure according to the principles and practices of infrastructure as code.</p>
+<h2 id="Chapter-4">Chapter 4</h2>
+<p><code>Server Configuration Tools</code>
+主要讲了provisioning tools, such as chef, puppet and ansible, salt. Tools for packing server templates, such as Packer. Tools for running commands on server.</p>
 <p>Many server configuration tool vendors provide their own <code>configuration registry</code> to manage configuration definitions, for example, Chef Server, PuppetDB, and <code>Ansible Tower</code>.</p>
 <p>In many cases, new servers can be built using off-the-shelf <code>server template</code> images. Packaging common elements onto a template makes it <code>faster</code> to provision new servers. Some teams take this further by creating server templates for particular roles such as web servers and application servers. Chapter 7 discusses trade-offs and patterns around baking server elements into templates versus adding them when creating servers (这个是当时正在做的新项目)。</p>
 <p><a href="https://en.wikipedia.org/wiki/Unikernel" target="_blank" rel="noopener">Unikernel Server Templates</a>. an OS image that is custom-compiled with the application it will run. The image only includes the parts of the OS kernel needed for the application, so is small and fast. This image is run directly as a VM or container (see later in this chapter) but has a single address space.</p>
@@ -568,18 +560,23 @@
 <p>A host server runs virtual machines using a hypervisor, Container instances share the operating system kernel of their host system, so they can’t run a different OS. Container has less overhead than a hardware virtual machine. Container image can be much smaller than a VM image, because it doesn’t need to include the entire OS. It can start up in seconds, as it doesn’t need to boot a kernel from scratch. And it consumes fewer system resources, because it doesn’t need to run its own kernel. So a given host can run more container processes than full VMs.</p>
 <p><a href="https://docs.docker.com/engine/security/" target="_blank" rel="noopener">Container security</a>, While containers isolate processes running on a host from one another, this isolation is not impossible to break. Different container implementations have different strengths and weaknesses. When using containers, a team should be sure to fully understand how the technology works, and where its vulnerabilities may lie.</p>
 <p>Teams should ensure the provenance of each image used within the infrastructure is well known, trusted, and can be verified and traced. (当时ICP4D image RedHat 也专门去扫描检测了)。</p>
-<h2 id="Chapter-5"><a href="#Chapter-5" class="headerlink" title="Chapter 5"></a>Chapter 5</h2><p><code>General Indrastructure Services</code>.<br>The purpose of this chapter isn’t to list or explain these services and tools. Instead, it is intended to explain how they should work in the context of a dynamic infrastructure managed as code. </p>
+<h2 id="Chapter-5">Chapter 5</h2>
+<p><code>General Indrastructure Services</code>.
+The purpose of this chapter isn’t to list or explain these services and tools. Instead, it is intended to explain how they should work in the context of a dynamic infrastructure managed as code.</p>
 <p>The services and tools addressed are <code>monitoring</code>, <code>service discovery</code>, <code>distributed process management</code>, and <code>software deployment</code>. (这是几个主要的在infra 完成构建后的其他主要服务)</p>
-<p><code>Monitor</code>: alerting, metrics and logging.<br>Monitoring information comes in two types: state and events. State is concerned with the current situation, whereas an event records actions or changes.</p>
+<p><code>Monitor</code>: alerting, metrics and logging.
+Monitoring information comes in two types: state and events. State is concerned with the current situation, whereas an event records actions or changes.</p>
 <ul>
 <li>Alerting: Tell Me When Something Is Wrong</li>
 <li>Metrics: Collect and Analyze Data</li>
 <li>Log Aggregation and Analysis</li>
 </ul>
-<p><code>Service Discovery</code>: Applications and services running in an infrastructure often need to know how to find other applications and services. </p>
+<p><code>Service Discovery</code>: Applications and services running in an infrastructure often need to know how to find other applications and services.</p>
 <p><code>Distributed Process Management</code>: VMs or containers. K8s, Nomad, Openshift.</p>
 <p><code>Software Deployment</code>: Many have a series of environments for testing stages, including things like operational acceptance testing (<code>OAT</code>), <code>QA</code> (for humans to carry out exploratory testing), system integration testing (<code>SIT</code>), user acceptance testing (<code>UAT</code>), staging, preproduction, and performance.</p>
-<h1 id="Part-II-Patterns"><a href="#Part-II-Patterns" class="headerlink" title="Part II Patterns"></a>Part II Patterns</h1><h2 id="Chapter-6"><a href="#Chapter-6" class="headerlink" title="Chapter 6"></a>Chapter 6</h2><p><code>Patterns for Provisioning Servers</code>.</p>
+<h1>Part II Patterns</h1>
+<h2 id="Chapter-6">Chapter 6</h2>
+<p><code>Patterns for Provisioning Servers</code>.</p>
 <p>Provisioning is not only done for a new server. Sometimes an existing server is re- provisioned, changing its role from one to another.</p>
 <p>Server’s lifecycle:</p>
 <ol>
@@ -596,7 +593,8 @@
 <li>resize server pool, add/remove instances</li>
 <li>reconfig hardware resources, for example, add CPU, RAM, mount new disks, etc.</li>
 </ol>
-<p><code>Server roles</code>:<br>Another pattern is to have a <code>role-inheritance hierarchy</code>(我们确实也是这么做的). The base role would have the software and configuration common to all servers, such as a monitoring agent, common user accounts, and common configuration like DNS and NTP server settings. Other roles would add more things on top of this, possibly at several levels.</p>
+<p><code>Server roles</code>:
+Another pattern is to have a <code>role-inheritance hierarchy</code>(我们确实也是这么做的). The base role would have the software and configuration common to all servers, such as a monitoring agent, common user accounts, and common configuration like DNS and NTP server settings. Other roles would add more things on top of this, possibly at several levels.</p>
 <p>It can still be useful to have servers with multiple roles even with the role inheritance pattern. For example, although production deployments may have separate web, app, and db servers, for development and some test cases, it can be pragmatic to combine these onto a single server.</p>
 <p>Cloned server (similar to save container to image) suffers, because they have <code>runtime data</code> from the original server, which is not reproducible and it accumulate changes or data.</p>
 <p>Bootstrapping new servers:</p>
@@ -615,67 +613,94 @@
 <li>Are any user accounts enabled that shouldn’t be?</li>
 </ul>
 <p>Smoke tests could be integrated with monitoring systems. Most of the checks that would go into a smoke test would work great as routine monitoring checks, so the smoke test could just verify that the new server appears in the monitoring system, and that all of its checks are green.</p>
-<h2 id="Chapter-7"><a href="#Chapter-7" class="headerlink" title="Chapter 7"></a>Chapter 7</h2><p><code>Patterns for Managing Server Templates</code> 需要重点关注.</p>
-<p>这也是我们采取的前后2种方法，new generation采用第二种。也可以两者结合，把经常变化的部分放在creation time provisioning.<br>One end of the spectrum is minimizing what’s on the template and doing most of the provisioning work when a new server is created.</p>
+<h2 id="Chapter-7">Chapter 7</h2>
+<p><code>Patterns for Managing Server Templates</code> 需要重点关注.</p>
+<p>这也是我们采取的前后2种方法，new generation采用第二种。也可以两者结合，把经常变化的部分放在creation time provisioning.
+One end of the spectrum is minimizing what’s on the template and doing most of the provisioning work when a new server is created.</p>
 <p>Keeping templates minimal makes sense when there is a lot of variation in what may be installed on a server. For example, if people create servers by self-service, choosing from a large menu of configuration options, it makes sense to provision dynamically when the server is created. Otherwise, the library of prebuilt templates would need to be huge to include all of the variations that a user might select.</p>
 <p>At the other end of the provisioning spectrum is putting nearly everything into the server template.</p>
-<p>Doing all of the significant provisioning in the template, and disal‐ lowing changes to anything other than runtime data after a server is created, is the key idea of <code>immutable servers</code>. </p>
-<p><code>Process to build template</code><br>An alternative to booting the origin image is to mount the origin disk image in another server and apply changes to its <code>filesystem</code>. This tends to be much faster, but the customization process may be more complicated. </p>
+<p>Doing all of the significant provisioning in the template, and disal‐ lowing changes to anything other than runtime data after a server is created, is the key idea of <code>immutable servers</code>.</p>
+<p><code>Process to build template</code>
+An alternative to booting the origin image is to mount the origin disk image in another server and apply changes to its <code>filesystem</code>. This tends to be much faster, but the customization process may be more complicated.</p>
 <p>Netflix’s Aminator tool builds AWS AMIs by mounting the origin image as a disk volume. The company’s blog post on <a href="https://netflixtechblog.com/ami-creation-with-aminator-98d627ca37b0" target="_blank" rel="noopener">Aminator</a> describes the process quite well. Packer offers the <a href="https://www.packer.io/docs/builders/amazon-chroot.html" target="_blank" rel="noopener">amazon-chroot builder</a> to support this approach.</p>
 <p>It could make sense to have server templates tuned for different pur‐ poses. Database server nodes could be built from one template that has been tuned for high-performance file access, while web servers may be tuned for network I/O throughput.(我们并没有考虑这么多)</p>
-<h2 id="Chapter-8"><a href="#Chapter-8" class="headerlink" title="Chapter 8"></a>Chapter 8</h2><p><code>Patterns for Updating and Changing Servers</code> 需要重点关注。<br>An effective change management process ensures that any new change is rolled out to all relevant existing servers and applied to newly created servers.</p>
+<h2 id="Chapter-8">Chapter 8</h2>
+<p><code>Patterns for Updating and Changing Servers</code> 需要重点关注。
+An effective change management process ensures that any new change is rolled out to all relevant existing servers and applied to newly created servers.</p>
 <p><code>Continuous Configuration Synchronization</code>, for example, google gcloud resource configuration has a central of truth repo(主要是针对API, role权限), the configuration process sync every one hour or so to elminiate config drift.</p>
 <p>Any areas not explicitly managed by configuration definitions may be changed outside the tooling, which leaves them vulnerable to configuration drift.</p>
 <p><code>Immutable Servers</code>, the practice is normally combined with keeping the lifespan of servers <code>short</code>, as with the Phoenix. So servers are rebuilt as frequently as every day, leaving little opportunity for unmanaged changes. Another approach to this issue is to set those parts of a server’s filesystems that should not change at runtime as read-only.</p>
-<p>Using the term “immutable” to describe this pattern can be misleading. “Immutable” means that a thing can’t be changed, so a truly immutable server would be useless. As soon as a server boots, its runtime state changes—processes run, entries are written to logfiles, and application data is added, updated, and removed.It’s more useful to think of the term “immutable” as applying to the server’s configu‐ ration, rather than to the server as a whole. </p>
+<p>Using the term “immutable” to describe this pattern can be misleading. “Immutable” means that a thing can’t be changed, so a truly immutable server would be useless. As soon as a server boots, its runtime state changes—processes run, entries are written to logfiles, and application data is added, updated, and <a href="http://removed.It" target="_blank" rel="noopener">removed.It</a>’s more useful to think of the term “immutable” as applying to the server’s configu‐ ration, rather than to the server as a whole.</p>
 <p>Depending on the design of the configuration tool, a pull-based system may be more scalable than a push-based system. A push system needs the master to open connections to the systems it manages, which can become a bottleneck with infrastructures that scale to thousands of servers. Setting up clusters or pools of agents can help a push model scale. But a pull model can be designed to scale with fewer resources, and with less complexity.</p>
-<h2 id="Chapter-9"><a href="#Chapter-9" class="headerlink" title="Chapter 9"></a>Chapter 9</h2><p><code>Patterns for Defining Infrastructure</code><br>This chapter will look at how to provision and configure larger groups of infrastructure elements.</p>
+<h2 id="Chapter-9">Chapter 9</h2>
+<p><code>Patterns for Defining Infrastructure</code>
+This chapter will look at how to provision and configure larger groups of infrastructure elements.</p>
 <p><code>Stack</code>: A stack is a collection of infrastructure elements that are defined as a unit.</p>
 <p>Use parameterized environment definitions, for example terraform brings up a stack with a single definition file for different environments.</p>
-<p>提到了Consul configuration registry, 里面存储了不同stack的资源，比如run time IP address，可以供stack之间相互引用，这样decouple了stack，于是可以各自为政.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># AWS, get vip_ip from consul</span></span><br><span class="line">resource "consul_keys" "app_server" &#123; </span><br><span class="line">  key &#123;</span><br><span class="line">  name = "vip_ip"</span><br><span class="line">  path = "myapp/$&#123;var.environment&#125;/appserver/vip_ip" </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>提到了Consul configuration registry, 里面存储了不同stack的资源，比如run time IP address，可以供stack之间相互引用，这样decouple了stack，于是可以各自为政.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># AWS, get vip_ip from consul</span></span><br><span class="line">resource "consul_keys" "app_server" &#123; </span><br><span class="line">  key &#123;</span><br><span class="line">  name = "vip_ip"</span><br><span class="line">  path = "myapp/$&#123;var.environment&#125;/appserver/vip_ip" </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>It’s better to ensure that infrastructure is provisioned and updated by running tools from centrally managed systems, such as an <code>orchestration agent</code>. An orchestration agent is a server that is used to execute tools for provisioning and updating infrastructure. These are often controlled by a CI or CD server, as part of a change management pipeline. 处于安全，一致性，依赖的原因，确实应该如此.</p>
-<h1 id="Part-III-Practice"><a href="#Part-III-Practice" class="headerlink" title="Part III Practice"></a>Part III Practice</h1><h2 id="Chapter-10"><a href="#Chapter-10" class="headerlink" title="Chapter 10"></a>Chapter 10</h2><p><code>Software Engineering Practices for Infrastructure</code><br>Assume everything you deliver will need to change as the system evolves.</p>
+<h1>Part III Practice</h1>
+<h2 id="Chapter-10">Chapter 10</h2>
+<p><code>Software Engineering Practices for Infrastructure</code>
+Assume everything you deliver will need to change as the system evolves.</p>
 <p>The true measure of the quality of a system, and its code, is how quickly and safely changes are made to it.</p>
-<p>gitlab-ci上组里就是这么做的:<br>Although a CI tool can be used to run tests automatically on commits made to each separate branch, the integrated changes are only tested together when the branches are merged. Some teams find that this works well for them, generally by keeping branches very short-lived.<br>这里总结得很好，commit changes to short-lived branch and then merge to trunk, do both CI on before and after the merge for branch and trunk.</p>
-<p>这个CI/CD也解释得很好:<br><code>CI Continuous integration</code> addresses work done on a single codebase. <code>CD Continuous delivery</code> expands the scope of this continuous integration to the entire system, with all of its components.</p>
+<p>gitlab-ci上组里就是这么做的:
+Although a CI tool can be used to run tests automatically on commits made to each separate branch, the integrated changes are only tested together when the branches are merged. Some teams find that this works well for them, generally by keeping branches very short-lived.
+这里总结得很好，commit changes to short-lived branch and then merge to trunk, do both CI on before and after the merge for branch and trunk.</p>
+<p>这个CI/CD也解释得很好:
+<code>CI Continuous integration</code> addresses work done on a single codebase. <code>CD Continuous delivery</code> expands the scope of this continuous integration to the entire system, with all of its components.</p>
 <p>The idea behinds CD is to ensure that all of the deployable components, systems, and infrastructure are continuously validated to ensure that they are production ready. It is used to address the problems of the “integration phase.”</p>
 <p>One misconception about CD is that it means every change committed is applied to production immediately after passing automated tests. The point of CD is not to apply every change to production immediately, but to ensure that every change is ready to go to production.</p>
-<p><code>Code Quality</code><br>The key to a well-engineered system is simplicity. Build only what you need, then it becomes easier to make sure what you have built is correct. Reorganize code when doing so clearly adds value.</p>
+<p><code>Code Quality</code>
+The key to a well-engineered system is simplicity. Build only what you need, then it becomes easier to make sure what you have built is correct. Reorganize code when doing so clearly adds value.</p>
 <p><code>Technical debt</code> is a metaphor for problems in a system that have been left unfixed. 最好不要积累technical debts，发现的时候就去修复.</p>
 <p>An optional feature that is no longer used, or whose development has been stopped, is technical debt. It should be pruned ruthlessly. Even if you decide later on that you need that code, it should be in the history of the VCS. If, in the future, you want to go back and dust it off, you’ve got it in the history in version control.</p>
-<h2 id="Chapter-11"><a href="#Chapter-11" class="headerlink" title="Chapter 11"></a>Chapter 11</h2><p><code>Testing Infrastructure Changes</code>，需要关注.<br>The pyramid puts tests with a broader scope toward the top, and those with a narrow scope at the bottom. The lower tiers validate smaller, individual things such as defini‐ tion files and scripts. The middle tiers test some of the lower-level elements together —for example, by creating a running server. The highest tiers test working systems together—for example, a service with multiple servers and their surrounding infrastructure.</p>
+<h2 id="Chapter-11">Chapter 11</h2>
+<p><code>Testing Infrastructure Changes</code>，需要关注.
+The pyramid puts tests with a broader scope toward the top, and those with a narrow scope at the bottom. The lower tiers validate smaller, individual things such as defini‐ tion files and scripts. The middle tiers test some of the lower-level elements together —for example, by creating a running server. The highest tiers test working systems together—for example, a service with multiple servers and their surrounding infrastructure.</p>
 <p>There are more tests at the lower levels of the pyramid and fewer at the top. Because the lower-level tests are smaller and more focused, they run very quickly. The higher- level tests tend to be more involved, taking longer to set up and then run, so they run slower.</p>
 <p>In order for CI and CD to be practical, the full test suite should run every time someone commits a change. The committer should be able to see the results of the test for their individual change in a matter of minutes. Slow test suites make this difficult to do, which often leads teams to decide to run the test suite periodically—every few hours, or even nightly.</p>
 <p>If running tests on every commit is too slow to be practical, the sol‐ ution is not to run the tests less often, but instead to fix the situa‐ tion so the test suite runs more quickly. This usually involves re- balancing the test suite, reducing the number of long-running tests and increasing the coverage of tests at the lower levels.</p>
 <p>This in turn may require rearchitecting the system being tested to be more modular and loosely coupled, so that individual compo‐ nents can be tested more quickly.</p>
-<p>其实test cases也不太好决定, 还是要根据实际需求去选择测试什么部分，经常变动或容易broken的组件，及时的更新。<br>Practice:</p>
+<p>其实test cases也不太好决定, 还是要根据实际需求去选择测试什么部分，经常变动或容易broken的组件，及时的更新。
+Practice:</p>
 <ul>
 <li>Test at the Lowest Level Possible</li>
 <li>Only Implement the Layers You Need</li>
 <li>Prune the Test Suite Often</li>
 <li>Continuously Review Testing Effectiveness</li>
 </ul>
-<p>Whenever there is a major issue in production or even in testing, consider running a<br><a href="https://codeascraft.com/2012/05/22/blameless-postmortems/" target="_blank" rel="noopener"><code>blameless post-mortem</code></a>. 谷歌内部也提倡这个习惯。</p>
-<p><code>Low-level testing</code><br>对于ansible playbook, packer json file 之类的文件检查，有几个步骤:</p>
+<p>Whenever there is a major issue in production or even in testing, consider running a
+<a href="https://codeascraft.com/2012/05/22/blameless-postmortems/" target="_blank" rel="noopener"><code>blameless post-mortem</code></a>. 谷歌内部也提倡这个习惯。</p>
+<p><code>Low-level testing</code>
+对于ansible playbook, packer json file 之类的文件检查，有几个步骤:</p>
 <ul>
 <li>syntax check, ansible and others 自带有parser</li>
 <li>static code analysis: linting, Static analysis can be used to check for common errors and bad habits which, while syntactically correct, can lead to bugs, security holes, performance issues, or just code that is difficult to understand.</li>
 <li>unit testing, ansible has dedicate module for this, also puppet and chef.</li>
 </ul>
-<p><code>Mid-level testing</code><br>For example, starts building template via Packer and Ansible, the validation process would be to create a server instance using the new template, and then run some tests against it.</p>
-<p>Tools to test server configuration: <a href="https://serverspec.org/" target="_blank" rel="noopener">Serverspec</a>, 目前对于packer instance 都是自己去检查的, for example:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">describe service(<span class="string">'login_service'</span>) <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_running &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe host(<span class="string">'dbserver'</span>) <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_reachable.with( :<span class="function"><span class="params">port</span> =&gt;</span> <span class="number">5432</span> ) &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment">// </span></span><br><span class="line">describe <span class="string">'install and configure web server'</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">let</span>(:chef_run) &#123; <span class="attr">ChefSpec</span>::SoloRunner.converge(nginx_configuration_recipe) &#125;</span><br><span class="line"></span><br><span class="line">  it <span class="string">'installs nginx'</span> <span class="keyword">do</span></span><br><span class="line">    expect(chef_run).to install_package(<span class="string">'nginx'</span>)</span><br><span class="line">  end </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe <span class="string">'home page is working'</span> <span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">let</span>(:chef_run) &#123;</span><br><span class="line">    ChefSpec::SoloRunner.converge(nginx_configuration_recipe,</span><br><span class="line">                                  home_page_deployment_recipe)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  it <span class="string">'loads correctly'</span> <span class="keyword">do</span></span><br><span class="line">    response = Net::HTTP.new(<span class="string">'localhost'</span>,<span class="number">80</span>).get(<span class="string">'/'</span>) </span><br><span class="line">    expect(response.body).to include(<span class="string">'Welcome to the home page'</span>)</span><br><span class="line">  end </span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p><code>Mid-level testing</code>
+For example, starts building template via Packer and Ansible, the validation process would be to create a server instance using the new template, and then run some tests against it.</p>
+<p>Tools to test server configuration: <a href="https://serverspec.org/" target="_blank" rel="noopener">Serverspec</a>, 目前对于packer instance 都是自己去检查的, for example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">describe service(<span class="string">'login_service'</span>) <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_running &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe host(<span class="string">'dbserver'</span>) <span class="keyword">do</span></span><br><span class="line">  it &#123; should be_reachable.with( :<span class="function"><span class="params">port</span> =&gt;</span> <span class="number">5432</span> ) &#125;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment">// </span></span><br><span class="line">describe <span class="string">'install and configure web server'</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">let</span>(:chef_run) &#123; <span class="attr">ChefSpec</span>::SoloRunner.converge(nginx_configuration_recipe) &#125;</span><br><span class="line"></span><br><span class="line">  it <span class="string">'installs nginx'</span> <span class="keyword">do</span></span><br><span class="line">    expect(chef_run).to install_package(<span class="string">'nginx'</span>)</span><br><span class="line">  end </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">describe <span class="string">'home page is working'</span> <span class="keyword">do</span> </span><br><span class="line">  <span class="keyword">let</span>(:chef_run) &#123;</span><br><span class="line">    ChefSpec::SoloRunner.converge(nginx_configuration_recipe,</span><br><span class="line">                                  home_page_deployment_recipe)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  it <span class="string">'loads correctly'</span> <span class="keyword">do</span></span><br><span class="line">    response = Net::HTTP.new(<span class="string">'localhost'</span>,<span class="number">80</span>).get(<span class="string">'/'</span>) </span><br><span class="line">    expect(response.body).to include(<span class="string">'Welcome to the home page'</span>)</span><br><span class="line">  end </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <p>Automatically tests that remotely logging into a server can be challenging to implement securely. These tests either need a hardcoded password, or else an SSH key or similar mechanism that authorizes unattended logins.</p>
 <p>One approach to mitigate this is to have tests execute on the test server and push their results to a central server. This could be combined with monitoring, so that servers can self-test and trigger an alert if they fail.</p>
 <p>Another approach is to generate one-off authentication credentials when launching a server to test.</p>
-<p><code>High-level testing</code><br>The higher levels of the test suite involve testing that multiple elements of the infra‐ structure work correctly when integrated together.</p>
-<p><code>Testing Operational Quality</code> 这部分也很重要，但是应该在QA的范围.<br>People managing projects to develop and deploy software have a bucket of requirements they call <code>non-functional requirements</code>, or <code>NFRs</code>; these are also sometimes referred to as cross-functional requirements (<code>CFRs</code>). Performance, availability, and security tend to be swept into this bucket.</p>
-<p>Operational testing can take place at multiple tiers of the testing pyramid, although the results at the top tiers are the most important. </p>
-<p><code>关于testing and monitoring 的关系:</code><br>Testing is aimed at detecting problems when making changes, before they are applied to production systems. Monitoring is aimed at detecting problems in running systems.</p>
+<p><code>High-level testing</code>
+The higher levels of the test suite involve testing that multiple elements of the infra‐ structure work correctly when integrated together.</p>
+<p><code>Testing Operational Quality</code> 这部分也很重要，但是应该在QA的范围.
+People managing projects to develop and deploy software have a bucket of requirements they call <code>non-functional requirements</code>, or <code>NFRs</code>; these are also sometimes referred to as cross-functional requirements (<code>CFRs</code>). Performance, availability, and security tend to be swept into this bucket.</p>
+<p>Operational testing can take place at multiple tiers of the testing pyramid, although the results at the top tiers are the most important.</p>
+<p><code>关于testing and monitoring 的关系:</code>
+Testing is aimed at detecting problems when making changes, before they are applied to production systems. Monitoring is aimed at detecting problems in running systems.</p>
 <p>In order to effectively test a component, it must be isolated from any dependencies during the test. A solution to this is to use a <code>stub server</code> instead of the application server. It’s important for the stub server to be simple to maintain and use. It only needs to return responses specific to the tests you write.</p>
 <p>Mocks, fakes, and stubs are all types of <code>test doubles</code>. A test double replaces a dependency needed by a component or service being tested, to simplify testing.</p>
 <p><code>QA</code> tester means: quality analyst/assurance.</p>
 <p><code>story</code>: a small piece of work (Jira 中的分类), 可能是这个意思.</p>
-<h2 id="Chapter-12"><a href="#Chapter-12" class="headerlink" title="Chapter 12"></a>Chapter 12</h2><p><code>Change Management Pipelines for Infrastructure</code><br>This chapter explains how to implement continuous delivery for infrastructure by building a change management pipeline. 讲了如何设计，集成，测试CD pipeline.</p>
+<h2 id="Chapter-12">Chapter 12</h2>
+<p><code>Change Management Pipelines for Infrastructure</code>
+This chapter explains how to implement continuous delivery for infrastructure by building a change management pipeline. 讲了如何设计，集成，测试CD pipeline.</p>
 <p>A change management pipeline could be described as the automated manifestation of your infrastructure change management process. 就理解成CD pipeline.</p>
 <p>Guidelines for Designing Pipelines:</p>
 <ul>
@@ -698,14 +723,23 @@
 <li>apply to live, any significant risk or uncertainty at this stage should be modeled and addressed in upstream stages.</li>
 </ol>
 <p>还要注意的是，并不是每个commit 都会走所有的流程，可能commit 1/2/3 走到一个stage，然后合起来进入下一个stage, the earlier stages of the pipeline will run more often than the later stages. not every change, even ones that pass testing and demo, are necessarily deployed immediately to production.</p>
-<p><code>Pipeline for complex system</code>:<br>fan-in pattern: The fan-in pattern is a common one, useful for building a system that is composed of multiple components. Each component starts out with its own pipeline to build and test it in isolation. Then the component pipelines are joined so that the components are tested together. A system with multiple layers of components may have multiple joins. 这个流程图就如同fan-in的扇形.</p>
+<p><code>Pipeline for complex system</code>:
+fan-in pattern: The fan-in pattern is a common one, useful for building a system that is composed of multiple components. Each component starts out with its own pipeline to build and test it in isolation. Then the component pipelines are joined so that the components are tested together. A system with multiple layers of components may have multiple joins. 这个流程图就如同fan-in的扇形.</p>
 <p><code>Contract tests</code> are automated tests that check whether a provider interface behaves as consumers expect. This is a much smaller set of tests than full functional tests, purely focused on the API that the service has committed to provide to its consumers.</p>
-<h2 id="Chapter-13"><a href="#Chapter-13" class="headerlink" title="Chapter 13"></a>Chapter 13</h2><p><code>Workflow for the Infrastructure Team</code> 这章描述用语很好.<br>An infrastructure engineer can no longer just log onto a server to make a change. Instead, they make changes to the tools and definitions, and then allow the change management pipeline to roll the changes out to the server.</p>
+<h2 id="Chapter-13">Chapter 13</h2>
+<p><code>Workflow for the Infrastructure Team</code> 这章描述用语很好.
+An infrastructure engineer can no longer just log onto a server to make a change. Instead, they make changes to the tools and definitions, and then allow the change management pipeline to roll the changes out to the server.</p>
 <p>A <code>sandbox</code> is an environment where a team member can try out changes before com‐ mitting them into the pipeline. It may be run on a local workstation, using virtualiza‐ tion, or could be run on the virtualization platform.</p>
-<p><code>Autonomic Automation Workflow</code><br>Using local sandbox for testing:<br>A <code>sandbox</code> is an environment where a team member can try out changes before com‐ mitting them into the pipeline. It may be run on a local workstation, using virtualiza‐ tion, or could be run on the virtualization platform.</p>
+<p><code>Autonomic Automation Workflow</code>
+Using local sandbox for testing:
+A <code>sandbox</code> is an environment where a team member can try out changes before com‐ mitting them into the pipeline. It may be run on a local workstation, using virtualiza‐ tion, or could be run on the virtualization platform.</p>
 <p>Keeping the whole change/commit cycle short needs some habits around how to structure the changes so they don’t break production even when the whole task isn’t finished. Feature toggles and similar techniques mentioned in Chapter 12 can help.</p>
-<h2 id="Chapter-14"><a href="#Chapter-14" class="headerlink" title="Chapter 14"></a>Chapter 14</h2><p><code>Continuity with Dynamic Infrastructure</code><br>This chapter is concerned with the operational quality of production infrastructure.<br>Many IT service providers use availability as a key performance metric or <code>SLA</code>(service level agreement). This is a percentage, often expressed as a number of nines: “five nines availability” means that the system is available 99.999% of the time.</p>
-<p><code>Service continuity</code><br>Keeping services available to end users in the face of problems and changes</p>
+<h2 id="Chapter-14">Chapter 14</h2>
+<p><code>Continuity with Dynamic Infrastructure</code>
+This chapter is concerned with the operational quality of production infrastructure.
+Many IT service providers use availability as a key performance metric or <code>SLA</code>(service level agreement). This is a percentage, often expressed as a number of nines: “five nines availability” means that the system is available 99.999% of the time.</p>
+<p><code>Service continuity</code>
+Keeping services available to end users in the face of problems and changes</p>
 <p>A pitfall of using <code>dynamic pools</code> to automatically replace failed servers is that it can mask a problem. If an application has a bug that causes it to crash frequently, it may take a while for people to notice. So it is important to implement metrics and alerting on the pool’s activity. The team should be sent critical alerts when the frequency of server failures exceeds a threshold.</p>
 <p>Software that has been designed and implemented with the assumption that servers and other infrastructure elements are routinely added and removed is sometimes referred to as <code>cloud native</code>. Cloud-native software handles constantly changing and shifting infrastructure seamlessly.</p>
 <p>The team at Heroku published a list of guidelines for applications to work well in the context of a dynamic infrastructure, called the <a href="https://12factor.net/" target="_blank" rel="noopener">12-factor application</a>.</p>
@@ -716,7 +750,8 @@
 <li>Slow-running startup routines</li>
 <li>Static configuration of infrastructure parameters</li>
 </ul>
-<p><code>Zero-Downtime Changes</code><br>Many changes require taking elements of the infrastructure offline, or completely replacing them. Examples include upgrading an OS kernel, reconfiguring a network, or deploying a new version of application software. However, it’s often possible to carry out these changes without interrupting service.</p>
+<p><code>Zero-Downtime Changes</code>
+Many changes require taking elements of the infrastructure offline, or completely replacing them. Examples include upgrading an OS kernel, reconfiguring a network, or deploying a new version of application software. However, it’s often possible to carry out these changes without interrupting service.</p>
 <ul>
 <li>Blue-Green Replacement</li>
 <li>Phoenix Replacement</li>
@@ -725,16 +760,20 @@
 </ul>
 <p>Routing Traffic for Zero-Downtime Replacements. Zero-downtime change patterns involve fine-grained control to switch usage between system components.</p>
 <p>Zero-Downtime Changes with Data. The problem comes when the new version of the component involves a change to data formats so that it’s not possible to have both versions share the same data stor‐ age without issues. An effective way to approach data for zero-downtime deployments is to decouple data format changes from software releases.</p>
-<p><code>Data continuity</code><br>Keeping data available and consistent on infrastructure that isn’t.<br>There are many techniques that can be applied to this problem. A few include:</p>
+<p><code>Data continuity</code>
+Keeping data available and consistent on infrastructure that isn’t.
+There are many techniques that can be applied to this problem. A few include:</p>
 <ul>
 <li>Replicating data redundantly</li>
 <li>Regenerating data</li>
 <li>Delegating data persistence</li>
 <li>Backing up to persistent storage</li>
 </ul>
-<p><code>Disaster recovery</code><br>Coping well when the worst happens</p>
+<p><code>Disaster recovery</code>
+Coping well when the worst happens</p>
 <p>Iron-age IT organizations usually optimize for mean time between failures (MTBF), whereas cloud-age organizations optimize for mean time to recover (MTTR).</p>
-<p><code>Security</code><br>Keeping bad actors at bay</p>
+<p><code>Security</code>
+Keeping bad actors at bay</p>
 <ul>
 <li>Reliable Updates as a Defense</li>
 <li>Provenance of Packages</li>
@@ -748,7 +787,9 @@
 <li>Auditing user accounts, system settings, and checking installed software against known vulnerabilities.</li>
 </ul>
 <p>Frameworks and scripts for hardening system, see <a href="https://github.com/dev-sec" target="_blank" rel="noopener">here</a>. It is essential that the members of the team review and understand the changes made by externally created hardening scripts before applying them to their own infrastructure.</p>
-<h2 id="Chapter-15"><a href="#Chapter-15" class="headerlink" title="Chapter 15"></a>Chapter 15</h2><p><code>Organizing for Infrastructure as Code</code><br>This final chapter takes a look at implementing it from an organizational point of view.</p>
+<h2 id="Chapter-15">Chapter 15</h2>
+<p><code>Organizing for Infrastructure as Code</code>
+This final chapter takes a look at implementing it from an organizational point of view.</p>
 <p>The organizaitional principles that enable this include:</p>
 <ul>
 <li>A continuous approach to the design, implementation, and improvement of services</li>
@@ -878,7 +919,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -975,7 +1016,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1288,7 +1331,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1324,7 +1369,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-I-Fundations"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-II-Patterns"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7"><span class="nav-number">2.2.</span> <span class="nav-text">Chapter 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8"><span class="nav-number">2.3.</span> <span class="nav-text">Chapter 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-9"><span class="nav-number">2.4.</span> <span class="nav-text">Chapter 9</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Part-III-Practice"><span class="nav-number">3.</span> <span class="nav-text">Part III Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10"><span class="nav-number">3.1.</span> <span class="nav-text">Chapter 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-11"><span class="nav-number">3.2.</span> <span class="nav-text">Chapter 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-12"><span class="nav-number">3.3.</span> <span class="nav-text">Chapter 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-13"><span class="nav-number">3.4.</span> <span class="nav-text">Chapter 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-14"><span class="nav-number">3.5.</span> <span class="nav-text">Chapter 14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-15"><span class="nav-number">3.6.</span> <span class="nav-text">Chapter 15</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Part I Fundations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-5"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Part II Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-6"><span class="nav-number">2.1.</span> <span class="nav-text">Chapter 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-7"><span class="nav-number">2.2.</span> <span class="nav-text">Chapter 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-8"><span class="nav-number">2.3.</span> <span class="nav-text">Chapter 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-9"><span class="nav-number">2.4.</span> <span class="nav-text">Chapter 9</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Part III Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-10"><span class="nav-number">3.1.</span> <span class="nav-text">Chapter 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-11"><span class="nav-number">3.2.</span> <span class="nav-text">Chapter 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-12"><span class="nav-number">3.3.</span> <span class="nav-text">Chapter 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-13"><span class="nav-number">3.4.</span> <span class="nav-text">Chapter 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-14"><span class="nav-number">3.5.</span> <span class="nav-text">Chapter 14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-15"><span class="nav-number">3.6.</span> <span class="nav-text">Chapter 15</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1350,13 +1395,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

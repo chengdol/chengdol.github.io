@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。  By default oc/kubectl edit will use vi in Linux if environment variable OC _EDITOR is empty, if you have .vimrc that is not compatible with vi, will">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-09-11T04:41:31.339Z">
+<meta property="og:updated_time" content="2020-09-11T04:41:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Practical Vim, 2nd Edition">
 <meta name="twitter:description" content="看这种书挺枯燥，还是learn by doing 比较好，使用一段时间就很明确自己需要什么功能了。  By default oc/kubectl edit will use vi in Linux if environment variable OC _EDITOR is empty, if you have .vimrc that is not compatible with vi, will">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">22k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -512,12 +494,18 @@
 <blockquote>
 <p>By default <code>oc/kubectl edit</code> will use <code>vi</code> in Linux if environment variable <code>OC _EDITOR</code> is empty, if you have <code>.vimrc</code> that is not compatible with <code>vi</code>, will get error message, to use <code>vim</code> set <code>export OC_EDITOR=vim</code> or <code>export KUBE_EDITOR=vim</code>.</p>
 </blockquote>
-<h1 id="Other-resources"><a href="#Other-resources" class="headerlink" title="Other resources"></a>Other resources</h1><p><a href="https://nvie.com/posts/how-i-boosted-my-vim/" target="_blank" rel="noopener">How I booted my Vim</a><br>Informative!! I grab lots of configurations from it, go and poke around the author’s vimrc file.</p>
-<p><a href="http://derekwyatt.org/vim/tutorials/index.html" target="_blank" rel="noopener">Vim Tutorial Videos</a><br>There are a lot, see O`Reilly.</p>
+<h1>Other resources</h1>
+<p><a href="https://nvie.com/posts/how-i-boosted-my-vim/" target="_blank" rel="noopener">How I booted my Vim</a>
+Informative!! I grab lots of configurations from it, go and poke around the author’s vimrc file.</p>
+<p><a href="http://derekwyatt.org/vim/tutorials/index.html" target="_blank" rel="noopener">Vim Tutorial Videos</a>
+There are a lot, see O`Reilly.</p>
 <p>Actually you can learn <code>Vim</code> by running command <code>vimtutor</code> in your terminal, it is a simple and quick tutorial. For a quick review, just see summary after each lesson.</p>
-<h1 id="Daily-Foundation"><a href="#Daily-Foundation" class="headerlink" title="Daily Foundation"></a>Daily Foundation</h1><p>掌握好这些操作基本上就满足日常需求了。</p>
-<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p><code>.vimrc</code> is just like <code>.bashrc</code>. you create a <code>.vimrc</code> (even it’s empty) to tell vim use vim not vi-compatiable mode!</p>
-<p>关于vimrc的配置，参考my github repo:<br><a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">https://github.com/chengdol/vim-configuration</a></p>
+<h1>Daily Foundation</h1>
+<p>掌握好这些操作基本上就满足日常需求了。</p>
+<h2 id="Configuration">Configuration</h2>
+<p><code>.vimrc</code> is just like <code>.bashrc</code>. you create a <code>.vimrc</code> (even it’s empty) to tell vim use vim not vi-compatiable mode!</p>
+<p>关于vimrc的配置，参考my github repo:
+<a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">https://github.com/chengdol/vim-configuration</a></p>
 <ol>
 <li>Basic configuration</li>
 <li>Custom key mapping</li>
@@ -533,12 +521,19 @@
 </ul>
 <p>To list mapping: <code>:map</code> or more specific <code>:vmap</code></p>
 <p>Which mode is currently use should be clear:  <code>Normal</code> mode, <code>Insert</code> mode and <code>Visual</code> mode, <code>Command-Line</code> mode, <code>Replace</code> mode, etc. <code>Visual</code> mode lets us select text in the <code>buffer</code> and then operate on the selection.</p>
-<p>If you suspect that your customizations are causing interference, here’s a quick test. Try quitting Vim and then launching it with these options:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -u NONE -N</span><br></pre></td></tr></table></figure></p>
+<p>If you suspect that your customizations are causing interference, here’s a quick test. Try quitting Vim and then launching it with these options:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -u NONE -N</span><br></pre></td></tr></table></figure>
 <p>The <code>-u NONE</code> flag tells Vim not to source your <code>vimrc</code> on startup. That way, your customizations won’t be applied and plugins will be disabled. In older versions of Vim, not loading a <code>vimrc</code> file activates <code>vi</code> compatible mode, which causes many useful features to be disabled. The <code>-N</code> flag prevents this by setting the <code>nocompatible</code> option. Since version 8.0 of Vim, the <code>nocompatible</code> option is set by default, making the <code>-N</code> flag unnecessary.</p>
 <p><code>vim -N file</code>: <code>-N</code> not using vi compatible mode, use newer vim mode. or can configuring in <code>.vimrc</code> file.</p>
-<p><code>:set list</code>, <code>:set nolist</code>, <code>:set list?</code>, <code>:set list&amp;</code>: set, unset, check value, set as default. 以此类推.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set autochdir &quot;auto set current dir as working dir</span><br><span class="line">set wildmode=list:longest &quot;activate TAB auto-complete file path</span><br></pre></td></tr></table></figure></p>
-<p><strong>Reload .vimrc</strong><br>Reload .vimrc without restarting vim: <code>:source ~/.vimrc</code>. 已经加入vimrc了。</p>
-<h2 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h2><p>Vim 8.0 has its own built-in package manager. For Vim version less than 8.0, I use <code>vim-plug</code> as the plugin manager:<br><a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener">https://github.com/junegunn/vim-plug</a><br>You can even specify git address of the plugin, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;https://github.com/tfnico/vim-gradle.git&apos;</span><br></pre></td></tr></table></figure></p>
+<p><code>:set list</code>, <code>:set nolist</code>, <code>:set list?</code>, <code>:set list&amp;</code>: set, unset, check value, set as default. 以此类推.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set autochdir &quot;auto set current dir as working dir</span><br><span class="line">set wildmode=list:longest &quot;activate TAB auto-complete file path</span><br></pre></td></tr></table></figure>
+<p><strong>Reload .vimrc</strong>
+Reload .vimrc without restarting vim: <code>:source ~/.vimrc</code>. 已经加入vimrc了。</p>
+<h2 id="Plugin">Plugin</h2>
+<p>Vim 8.0 has its own built-in package manager. For Vim version less than 8.0, I use <code>vim-plug</code> as the plugin manager:
+<a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener">https://github.com/junegunn/vim-plug</a>
+You can even specify git address of the plugin, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;https://github.com/tfnico/vim-gradle.git&apos;</span><br></pre></td></tr></table></figure>
 <p>If the plugin does not get auto installed, run <code>:PlugInstall</code>, check the plug status by <code>:PlugStatus</code>. 这些在<code>vim-plug</code> README中都有说明。</p>
 <blockquote>
 <p>Please see my <a href="https://github.com/chengdol/vim-configuration" target="_blank" rel="noopener">vim-configuration git repo</a>, download the vimrc file.</p>
@@ -550,17 +545,29 @@
 <li>taglist: source code browser</li>
 </ul>
 <p>NERDTree，在目录界面中通过<code>m</code>启动常规文件/文件夹操作。<code>C</code>回车 进入子文件夹。</p>
-<h2 id="Display-Management"><a href="#Display-Management" class="headerlink" title="Display Management"></a>Display Management</h2><p>Vim中切换编辑多个文件：<br><code>:cd /tmp</code> change vim working directory<br><code>:pwd</code> show current working directory<br><code>:set hidden</code> (put it in <code>.vimrc</code>): <a href="https://medium.com/usevim/vim-101-set-hidden-f78800142855" target="_blank" rel="noopener">https://medium.com/usevim/vim-101-set-hidden-f78800142855</a><br><code>:e .</code> browse current directory, select file to edit</p>
+<h2 id="Display-Management">Display Management</h2>
+<p>Vim中切换编辑多个文件：
+<code>:cd /tmp</code> change vim working directory
+<code>:pwd</code> show current working directory
+<code>:set hidden</code> (put it in <code>.vimrc</code>): <a href="https://medium.com/usevim/vim-101-set-hidden-f78800142855" target="_blank" rel="noopener">https://medium.com/usevim/vim-101-set-hidden-f78800142855</a>
+<code>:e .</code> browse current directory, select file to edit</p>
 <p><code>:ls</code> list buffer (open files)</p>
 <ul>
 <li>%: buffer in current window</li>
 <li>+: unsave changes</li>
 <li>=: read-only</li>
 </ul>
-<p><code>:bn</code> go to next buffer<br><code>:bp</code> go to previous buffer<br><code>:bd</code> delete buffer, such as <code>:bd5</code><br><code>:bf</code> go to first buffer<br><code>:bl</code> go to last buffer<br><code>:b3</code> go to 3rd buffer<br><code>gf</code> jump to the file under the cursor, use <code>ctrl+o</code> jump back</p>
+<p><code>:bn</code> go to next buffer
+<code>:bp</code> go to previous buffer
+<code>:bd</code> delete buffer, such as <code>:bd5</code>
+<code>:bf</code> go to first buffer
+<code>:bl</code> go to last buffer
+<code>:b3</code> go to 3rd buffer
+<code>gf</code> jump to the file under the cursor, use <code>ctrl+o</code> jump back</p>
 <p>可以在vim <code>:e &lt;path&gt;</code> 中直接创建，删除文件或者文件夹，显示long format, sort等</p>
 <blockquote>
 <p>在使用<code>vim-plug</code>加载插件后，这部分功能失效了, 不过可以使用command mode去做查看。</p>
+</blockquote>
 <ul>
 <li>i: long, thin, tree format</li>
 <li>s: sort by name, time, file size</li>
@@ -571,63 +578,131 @@
 <li>R: rename file or dir</li>
 <li>-: go up a directory</li>
 </ul>
-</blockquote>
-<h3 id="windows-amp-splits"><a href="#windows-amp-splits" class="headerlink" title="windows &amp; splits"></a>windows &amp; splits</h3><p>All start with <code>ctrl+w</code>:</p>
+<h3 id="windows-splits">windows &amp; splits</h3>
+<p>All start with <code>ctrl+w</code>:</p>
 <ul>
-<li>s: split horizontally </li>
-<li>h: move focus left</li>
-<li><p>l: move focus right</p>
+<li>
+<p>s: split horizontally</p>
 </li>
-<li><p>v: split vertically</p>
+<li>
+<p>h: move focus left</p>
 </li>
-<li>j: move focus down</li>
-<li><p>k: move focus up</p>
+<li>
+<p>l: move focus right</p>
 </li>
-<li><p>w: cycle focus</p>
+<li>
+<p>v: split vertically</p>
 </li>
-<li><p>p: focus previous win</p>
+<li>
+<p>j: move focus down</p>
 </li>
-<li><p>c: close win current focus</p>
+<li>
+<p>k: move focus up</p>
 </li>
-<li>o: close all win except current focus</li>
+<li>
+<p>w: cycle focus</p>
+</li>
+<li>
+<p>p: focus previous win</p>
+</li>
+<li>
+<p>c: close win current focus</p>
+</li>
+<li>
+<p>o: close all win except current focus</p>
+</li>
 </ul>
 <p><code>:h window-resize</code>, check for window resize.</p>
 <ul>
 <li>+: enlarge windows, <code>5+</code></li>
 <li>-: reduce windows, <code>3-</code></li>
 </ul>
-<h3 id="Tab"><a href="#Tab" class="headerlink" title="Tab"></a>Tab</h3><p>各个文件单独的tab，不用划分window了, 这个部分是放在vimrc中的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot; Tab mappings</span><br><span class="line">&quot; The default leader key is \</span><br><span class="line">let mapleader=&quot;,&quot;                        &quot; remap leader key to ,</span><br><span class="line">&quot; invoke for example: ,tt</span><br><span class="line">map &lt;leader&gt;tt :tabnew&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;te :tabedit</span><br><span class="line">map &lt;leader&gt;tc :tabclose&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;to :tabonly&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tn :tabnext&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tp :tabprevious&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tf :tabfirst&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tl :tablast&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tm :tabmove</span><br></pre></td></tr></table></figure></p>
-<p>What is <code>Leader key</code> in Vim?<br><a href="https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file" target="_blank" rel="noopener">https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file</a><br>The <code>Leader key</code> is a way of extending the power of VIM’s shortcuts by using sequences of keys to perform a command.</p>
-<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>Using <code>hjkl</code> (在后续许多命令中都有涉及) or <code>arrow</code> keys to move around, can have number ahead to indicate how many line to move.</p>
-<p><code>:q!</code> quit without saving.<br><code>:wq</code> quit with saving, always retouch the timestamp.<br>sometimes using <code>:q!</code> and <code>:wq!</code>: <a href="https://unix.stackexchange.com/questions/88247/use-of-in-vim" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/88247/use-of-in-vim</a></p>
-<p><code>:x</code> the same as <code>:wq</code>, but write only when changes have been made.<br><code>:w filename</code> used to save file to <code>filename</code>.<br><code>:w !sudo tee %</code> write to sudo with current file name, <code>%</code> represent current file name. (用在保存更改read-only文件的内容)</p>
-<p><a href="https://medium.com/usevim/vim-101-quick-movement-c12889e759e0" target="_blank" rel="noopener">Quick Movement</a><br><code>A</code> append at end of the line, <code>a</code> appends after cursor.<br><code>I</code> insert ata head of the line, <code>i</code> insert at cursor.<br><code>W</code> jump contiguous words, <code>w</code> jump one word.<br><code>o</code> will open a line below cursor, <code>O</code> open above.<br><code>3w</code> move 3 words forward, <code>0</code> move to the start of the line.<br><code>^</code> go to first non-empty char in line<br><code>3fn</code> find 3rd <code>n</code> char at this line. repeat by <code>;</code></p>
-<h3 id="Screen-line-movement"><a href="#Screen-line-movement" class="headerlink" title="Screen line movement"></a>Screen line movement</h3><p>screen line指被terminal因宽度限制产生的行，并不是指原始的很长的那一行。<br><code>g0</code>, <code>gm</code>, <code>g$</code>: start, middle, end of a line.<br><code>gk</code>, <code>gj</code>: move up/down in screan line (can use arrow instead k/j ).</p>
-<h3 id="Scrolling"><a href="#Scrolling" class="headerlink" title="Scrolling"></a>Scrolling</h3><p>Press <code>G</code> to move you to the bottom of the file.<br>Type <code>gg</code> to move you to the start of the file.<br><code>line number + G</code> or <code>line number + gg</code> will go to the line specified.<br>To go back to where you came from press <code>Ctrl-o</code> (Keep <code>Ctrl</code> down while pressing the letter <code>o</code>). To go forward <code>Ctrl-i</code><br><code>H</code>, <code>M</code> and <code>L</code> move the cursor to top, medium and bottom of current page<br><code>zt</code>, <code>zz</code>, <code>zb</code>: move cursor line to top, middle, bottom of screen</p>
-<h3 id="Make-Mark"><a href="#Make-Mark" class="headerlink" title="Make Mark"></a>Make Mark</h3><p>For example, jump back and forth spots:<br><a href="https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/" target="_blank" rel="noopener">https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/</a><br><code>:marks</code></p>
-<h3 id="Shift"><a href="#Shift" class="headerlink" title="Shift"></a>Shift</h3><p>Shift configuration is in <code>.vimrc</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot; shift with tab</span><br><span class="line">set tabstop=2                    &quot; Global tab width.</span><br><span class="line">set shiftwidth=2                 &quot; And again, related.</span><br><span class="line">set expandtab                    &quot; Use spaces instead of tabs</span><br><span class="line">&quot; extremely useful to edit yaml file</span><br><span class="line">set autoindent                   &quot; always set autoindenting on</span><br><span class="line">set copyindent                   &quot; copy the previous indentation on autoindentin</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tab">Tab</h3>
+<p>各个文件单独的tab，不用划分window了, 这个部分是放在vimrc中的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot; Tab mappings</span><br><span class="line">&quot; The default leader key is \</span><br><span class="line">let mapleader=&quot;,&quot;                        &quot; remap leader key to ,</span><br><span class="line">&quot; invoke for example: ,tt</span><br><span class="line">map &lt;leader&gt;tt :tabnew&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;te :tabedit</span><br><span class="line">map &lt;leader&gt;tc :tabclose&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;to :tabonly&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tn :tabnext&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tp :tabprevious&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tf :tabfirst&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tl :tablast&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tm :tabmove</span><br></pre></td></tr></table></figure>
+<p>What is <code>Leader key</code> in Vim?
+<a href="https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file" target="_blank" rel="noopener">https://stackoverflow.com/questions/1764263/what-is-the-leader-in-a-vimrc-file</a>
+The <code>Leader key</code> is a way of extending the power of VIM’s shortcuts by using sequences of keys to perform a command.</p>
+<h2 id="Operation">Operation</h2>
+<p>Using <code>hjkl</code> (在后续许多命令中都有涉及) or <code>arrow</code> keys to move around, can have number ahead to indicate how many line to move.</p>
+<p><code>:q!</code> quit without saving.
+<code>:wq</code> quit with saving, always retouch the timestamp.
+sometimes using <code>:q!</code> and <code>:wq!</code>: <a href="https://unix.stackexchange.com/questions/88247/use-of-in-vim" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/88247/use-of-in-vim</a></p>
+<p><code>:x</code> the same as <code>:wq</code>, but write only when changes have been made.
+<code>:w filename</code> used to save file to <code>filename</code>.
+<code>:w !sudo tee %</code> write to sudo with current file name, <code>%</code> represent current file name. (用在保存更改read-only文件的内容)</p>
+<p><a href="https://medium.com/usevim/vim-101-quick-movement-c12889e759e0" target="_blank" rel="noopener">Quick Movement</a>
+<code>A</code> append at end of the line, <code>a</code> appends after cursor.
+<code>I</code> insert ata head of the line, <code>i</code> insert at cursor.
+<code>W</code> jump contiguous words, <code>w</code> jump one word.
+<code>o</code> will open a line below cursor, <code>O</code> open above.
+<code>3w</code> move 3 words forward, <code>0</code> move to the start of the line.
+<code>^</code> go to first non-empty char in line
+<code>3fn</code> find 3rd <code>n</code> char at this line. repeat by <code>;</code></p>
+<h3 id="Screen-line-movement">Screen line movement</h3>
+<p>screen line指被terminal因宽度限制产生的行，并不是指原始的很长的那一行。
+<code>g0</code>, <code>gm</code>, <code>g$</code>: start, middle, end of a line.
+<code>gk</code>, <code>gj</code>: move up/down in screan line (can use arrow instead k/j ).</p>
+<h3 id="Scrolling">Scrolling</h3>
+<p>Press <code>G</code> to move you to the bottom of the file.
+Type <code>gg</code> to move you to the start of the file.
+<code>line number + G</code> or <code>line number + gg</code> will go to the line specified.
+To go back to where you came from press <code>Ctrl-o</code> (Keep <code>Ctrl</code> down while pressing the letter <code>o</code>). To go forward <code>Ctrl-i</code>
+<code>H</code>, <code>M</code> and <code>L</code> move the cursor to top, medium and bottom of current page
+<code>zt</code>, <code>zz</code>, <code>zb</code>: move cursor line to top, middle, bottom of screen</p>
+<h3 id="Make-Mark">Make Mark</h3>
+<p>For example, jump back and forth spots:
+<a href="https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/" target="_blank" rel="noopener">https://www.linux.com/news/vim-tips-moving-around-using-marks-and-jumps/</a>
+<code>:marks</code></p>
+<h3 id="Shift">Shift</h3>
+<p>Shift configuration is in <code>.vimrc</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot; shift with tab</span><br><span class="line">set tabstop=2                    &quot; Global tab width.</span><br><span class="line">set shiftwidth=2                 &quot; And again, related.</span><br><span class="line">set expandtab                    &quot; Use spaces instead of tabs</span><br><span class="line">&quot; extremely useful to edit yaml file</span><br><span class="line">set autoindent                   &quot; always set autoindenting on</span><br><span class="line">set copyindent                   &quot; copy the previous indentation on autoindentin</span><br></pre></td></tr></table></figure>
 <p><code>:retab</code>: replace all tabs with spaces in current buffer.</p>
-<p><code>&gt;&gt;</code>, <code>&lt;&lt;</code> shift current line, <code>4&gt;&gt;</code>, <code>4&lt;&lt;</code> block shift with 4 lines together.<br>In insert mode, can use tab itself to shift (now override by auto-complete in my vimrc file), or using <code>ctrl+t</code>, <code>ctrl+d</code>: shift right and left.</p>
+<p><code>&gt;&gt;</code>, <code>&lt;&lt;</code> shift current line, <code>4&gt;&gt;</code>, <code>4&lt;&lt;</code> block shift with 4 lines together.
+In insert mode, can use tab itself to shift (now override by auto-complete in my vimrc file), or using <code>ctrl+t</code>, <code>ctrl+d</code>: shift right and left.</p>
 <p>对于code block indention，我在.vimrc 中设置了vmap, 用visual mode选中后shift就很方便了。</p>
-<h3 id="Search-and-Replace"><a href="#Search-and-Replace" class="headerlink" title="Search and Replace"></a>Search and Replace</h3><p><code>/</code> search forward, <code>?</code> search backword. when hit the search, <code>n</code> go forward, <code>N</code> go backword. If the cursor is at search word, use <code>*</code> to search forward, <code>#</code> search back, use <code>g*</code>, <code>g#</code> do partial match search.</p>
+<h3 id="Search-and-Replace">Search and Replace</h3>
+<p><code>/</code> search forward, <code>?</code> search backword. when hit the search, <code>n</code> go forward, <code>N</code> go backword. If the cursor is at search word, use <code>*</code> to search forward, <code>#</code> search back, use <code>g*</code>, <code>g#</code> do partial match search.</p>
 <p><code>/case\c</code> search case-insensitive, <code>/CaSe\C</code> search case-sensitive. <code>\c</code> and <code>\C</code> can be anywhere in pattern.</p>
-<p><code>:s/old/new/g</code> to substitute <code>old</code> by <code>new</code> in a line for all occrurences. you must place the cursor in that line.<br>To change every occurrence of a character string between two lines,<br><code>:#,#s/old/new/g</code> where <code>#,#</code> are the line numbers of the range of lines where the substitution is to be done.<br><code>:%s/old/new/g</code>  to change every occurrence in the whole file.<br><code>:%s/old/new/gc</code> to find every occurrence in the whole file, with a prompt whether to substitute or not, <code>c</code> is confirmation.</p>
+<p><code>:s/old/new/g</code> to substitute <code>old</code> by <code>new</code> in a line for all occrurences. you must place the cursor in that line.
+To change every occurrence of a character string between two lines,
+<code>:#,#s/old/new/g</code> where <code>#,#</code> are the line numbers of the range of lines where the substitution is to be done.
+<code>:%s/old/new/g</code>  to change every occurrence in the whole file.
+<code>:%s/old/new/gc</code> to find every occurrence in the whole file, with a prompt whether to substitute or not, <code>c</code> is confirmation.</p>
 <p>For case-sensitive: <code>:%s/old/new/Igc</code>, but actually can be <code>:%s/old\C/new/gc</code>.</p>
-<h3 id="Copy-and-Paste"><a href="#Copy-and-Paste" class="headerlink" title="Copy and Paste"></a>Copy and Paste</h3><p>这里和vim 的 register有关. Default is unnamed register, delete, change, substitute, search and yank all use registers.</p>
+<h3 id="Copy-and-Paste">Copy and Paste</h3>
+<p>这里和vim 的 register有关. Default is unnamed register, delete, change, substitute, search and yank all use registers.</p>
 <blockquote>
 <p>Pasting text into a terminal running Vim with automatic indentation enabled can destroy the indentation of the pasted text: <a href="https://vim.fandom.com/wiki/Toggle_auto-indenting_for_code_paste" target="_blank" rel="noopener">https://vim.fandom.com/wiki/Toggle_auto-indenting_for_code_paste</a>, use <code>vim-bracketed-paste</code> can fix this.</p>
 </blockquote>
 <p>Show register contents: <code>:registers</code></p>
 <p><code>y</code> is copy operator, for example, <code>yw</code> copy one word, <code>y$</code> copy to end of the line and <code>yy</code> used to copy a line, then you can paste through <code>p</code>. you can use <code>v</code> to select and copy. By default it uses unnamed register. Register <code>0</code> always stores the yank content, so you can use <code>&quot;0p</code> to paste.</p>
 <p><code>&quot;ayy</code>, <code>&quot;ap</code> use register <code>a</code> to yank and paste. Usually we use <code>a~z</code> and <code>A~Z</code> register, the uppercase register can append text to current content.</p>
-<p>使用上不同文件之间copy/paste没啥问题，但如果需要copy到system clipboard，需要设置:<br><a href="https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim" target="_blank" rel="noopener">https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim</a><br>vim has to be compiled with clipboard support for any of the suggestions mentioned here to work. Mine wasn’t configured that way on Mac OS X by default and I had to rebuild vim. Use this the command to find out whether you have it or not:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim --version | grep &apos;clipboard&apos;</span><br></pre></td></tr></table></figure></p>
+<p>使用上不同文件之间copy/paste没啥问题，但如果需要copy到system clipboard，需要设置:
+<a href="https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim" target="_blank" rel="noopener">https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim</a>
+vim has to be compiled with clipboard support for any of the suggestions mentioned here to work. Mine wasn’t configured that way on Mac OS X by default and I had to rebuild vim. Use this the command to find out whether you have it or not:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim --version | grep &apos;clipboard&apos;</span><br></pre></td></tr></table></figure>
 <p><code>+clipboard</code> means you’re good and the suggestions here will work for you, while <code>-clipboard</code> means you have to recompile and rebuild vim.</p>
-<p><code>d</code> is the <strong>delete operator</strong>, use <strong>motion</strong> to specify the action, for example <code>dw</code>, <code>de</code>, <code>d$</code>. Without <code>d</code>, vim just move the cursor: <code>w</code>, <code>e</code>, <code>$</code><br><code>2dw</code> delete 2 words ahead<br><code>4dd</code> delete 4 lines in a row<br>Type <code>p</code> to put previously <code>deleted</code> text after the cursor. for example, you delete a line and replace it in another place</p>
+<p><code>d</code> is the <strong>delete operator</strong>, use <strong>motion</strong> to specify the action, for example <code>dw</code>, <code>de</code>, <code>d$</code>. Without <code>d</code>, vim just move the cursor: <code>w</code>, <code>e</code>, <code>$</code>
+<code>2dw</code> delete 2 words ahead
+<code>4dd</code> delete 4 lines in a row
+Type <code>p</code> to put previously <code>deleted</code> text after the cursor. for example, you delete a line and replace it in another place</p>
 <p><code>v</code> and then you move the cursor to select the text you want, if you want to delete them next, type <code>d</code>, if you want to save the selected text to another file, press <code>:</code>, then type <code>w filename</code>. <code>V</code> is moved linewise.</p>
-<h3 id="Folding"><a href="#Folding" class="headerlink" title="Folding"></a>Folding</h3><p>这个非常有用，比如编辑yaml 文件。<br>Fold by syntax or indent (yaml). <code>:sed foldmethod=indent/syntax</code><br><code>zM</code>, <code>zR</code>: fold and unfold all<br><code>zi</code>: toggle fold all<br><code>zc</code>, <code>zo</code>: close, open fold block<br><code>za</code>: toggle fold block<br><code>zk</code>, <code>zj</code>: move fold focus up and down</p>
-<p>还可以根据file type去设定, for example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Automatic fold settings for specific files. Uncomment to use.</span><br><span class="line">&quot; autocmd FileType ruby setlocal foldmethod=syntax</span><br><span class="line">&quot; autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2</span><br></pre></td></tr></table></figure></p>
-<h3 id="Recording"><a href="#Recording" class="headerlink" title="Recording"></a>Recording</h3><p>暂时没用到，对重复的复杂操作有用。</p>
-<h3 id="Block-comment-and-uncomment"><a href="#Block-comment-and-uncomment" class="headerlink" title="Block comment and uncomment"></a>Block comment and uncomment</h3><p><a href="https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim" target="_blank" rel="noopener">quick way to comment and uncomment block of codes</a><br>comment:</p>
+<h3 id="Folding">Folding</h3>
+<p>这个非常有用，比如编辑yaml 文件。
+Fold by syntax or indent (yaml). <code>:sed foldmethod=indent/syntax</code>
+<code>zM</code>, <code>zR</code>: fold and unfold all
+<code>zi</code>: toggle fold all
+<code>zc</code>, <code>zo</code>: close, open fold block
+<code>za</code>: toggle fold block
+<code>zk</code>, <code>zj</code>: move fold focus up and down</p>
+<p>还可以根据file type去设定, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Automatic fold settings for specific files. Uncomment to use.</span><br><span class="line">&quot; autocmd FileType ruby setlocal foldmethod=syntax</span><br><span class="line">&quot; autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2</span><br></pre></td></tr></table></figure>
+<h3 id="Recording">Recording</h3>
+<p>暂时没用到，对重复的复杂操作有用。</p>
+<h3 id="Block-comment-and-uncomment">Block comment and uncomment</h3>
+<p><a href="https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim" target="_blank" rel="noopener">quick way to comment and uncomment block of codes</a>
+comment:</p>
 <ol>
 <li>press <code>Esc</code></li>
 <li>hit <code>ctrl+v</code>, enter visual block mode</li>
@@ -643,9 +718,12 @@
 <li>use arrow keys select text you want to delete</li>
 <li>press <code>x</code> to delete the text</li>
 </ol>
-<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>Press <code>u</code> to undo the last commands, <code>U</code> to undo all the changes in a line.<br><code>crtl+r</code> to undo undo.</p>
+<h3 id="Others">Others</h3>
+<p>Press <code>u</code> to undo the last commands, <code>U</code> to undo all the changes in a line.
+<code>crtl+r</code> to undo undo.</p>
 <p>Type <code>rx</code> to replace the one character at the cursor with  <code>x</code>. <code>R</code> is used to replace more then one chars, type <code>R</code> then get into insert mode.</p>
-<p><code>ce</code> deletes the word and places you in Insert mode, so you can type new word, it will replace old ones. <code>c</code> is <strong>change operator</strong>, just like <code>d</code>.<br>比如要更改3个连续的words 在某行中: <code>c3w</code>, then type.</p>
+<p><code>ce</code> deletes the word and places you in Insert mode, so you can type new word, it will replace old ones. <code>c</code> is <strong>change operator</strong>, just like <code>d</code>.
+比如要更改3个连续的words 在某行中: <code>c3w</code>, then type.</p>
 <p><code>Ctrl+g</code> will show cursor location in the file and the file status, also the file name.</p>
 <p><code>%</code> is used tp match another part of <code>(, [ or {</code>. This is very useful in debugging a program with unmatched parentheses. 也可以用来match其他block语句，比如if-end。</p>
 <p><code>:!&lt;commands&gt;</code> is used to execute external commands, for example <code>:!ls -ltr /tmp</code>. (the same as IPython)</p>
@@ -772,7 +850,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -869,7 +947,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1182,7 +1262,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1218,7 +1300,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-resources"><span class="nav-number">1.</span> <span class="nav-text">Other resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Daily-Foundation"><span class="nav-number">2.</span> <span class="nav-text">Daily Foundation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">2.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugin"><span class="nav-number">2.2.</span> <span class="nav-text">Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Display-Management"><span class="nav-number">2.3.</span> <span class="nav-text">Display Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows-amp-splits"><span class="nav-number">2.3.1.</span> <span class="nav-text">windows &amp; splits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tab"><span class="nav-number">2.3.2.</span> <span class="nav-text">Tab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-number">2.4.</span> <span class="nav-text">Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-line-movement"><span class="nav-number">2.4.1.</span> <span class="nav-text">Screen line movement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrolling"><span class="nav-number">2.4.2.</span> <span class="nav-text">Scrolling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-Mark"><span class="nav-number">2.4.3.</span> <span class="nav-text">Make Mark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shift"><span class="nav-number">2.4.4.</span> <span class="nav-text">Shift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-and-Replace"><span class="nav-number">2.4.5.</span> <span class="nav-text">Search and Replace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-and-Paste"><span class="nav-number">2.4.6.</span> <span class="nav-text">Copy and Paste</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Folding"><span class="nav-number">2.4.7.</span> <span class="nav-text">Folding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recording"><span class="nav-number">2.4.8.</span> <span class="nav-text">Recording</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-comment-and-uncomment"><span class="nav-number">2.4.9.</span> <span class="nav-text">Block comment and uncomment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-number">2.4.10.</span> <span class="nav-text">Others</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Other resources</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Daily Foundation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">2.1.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugin"><span class="nav-number">2.2.</span> <span class="nav-text">Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Display-Management"><span class="nav-number">2.3.</span> <span class="nav-text">Display Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows-splits"><span class="nav-number">2.3.1.</span> <span class="nav-text">windows &amp; splits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tab"><span class="nav-number">2.3.2.</span> <span class="nav-text">Tab</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-number">2.4.</span> <span class="nav-text">Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Screen-line-movement"><span class="nav-number">2.4.1.</span> <span class="nav-text">Screen line movement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scrolling"><span class="nav-number">2.4.2.</span> <span class="nav-text">Scrolling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-Mark"><span class="nav-number">2.4.3.</span> <span class="nav-text">Make Mark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shift"><span class="nav-number">2.4.4.</span> <span class="nav-text">Shift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-and-Replace"><span class="nav-number">2.4.5.</span> <span class="nav-text">Search and Replace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-and-Paste"><span class="nav-number">2.4.6.</span> <span class="nav-text">Copy and Paste</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Folding"><span class="nav-number">2.4.7.</span> <span class="nav-text">Folding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recording"><span class="nav-number">2.4.8.</span> <span class="nav-text">Recording</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-comment-and-uncomment"><span class="nav-number">2.4.9.</span> <span class="nav-text">Block comment and uncomment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Others"><span class="nav-number">2.4.10.</span> <span class="nav-text">Others</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1244,13 +1326,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

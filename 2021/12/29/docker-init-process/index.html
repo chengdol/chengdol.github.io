@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="//TODO关于init process signal handling is clear, how about init process forward signal? [ ] ancestor ns send sigterm to container init, will it receive it or not. 首先需要理解docker container -&amp;gt; process in">
+  <meta name="description" content="//TODO 关于init process signal handling is clear, how about init process forward signal? [ ] ancestor ns send sigterm to container init, will it receive it or not. 首先需要理解docker container -&amp;gt; process i">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker init Process Signal Caught">
 <meta property="og:url" content="http://yoursite.com/2021/12/29/docker-init-process/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="//TODO关于init process signal handling is clear, how about init process forward signal? [ ] ancestor ns send sigterm to container init, will it receive it or not. 首先需要理解docker container -&amp;gt; process in">
+<meta property="og:description" content="//TODO 关于init process signal handling is clear, how about init process forward signal? [ ] ancestor ns send sigterm to container init, will it receive it or not. 首先需要理解docker container -&amp;gt; process i">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-03-30T04:05:55.318Z">
+<meta property="og:updated_time" content="2022-03-30T04:05:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker init Process Signal Caught">
-<meta name="twitter:description" content="//TODO关于init process signal handling is clear, how about init process forward signal? [ ] ancestor ns send sigterm to container init, will it receive it or not. 首先需要理解docker container -&amp;gt; process in">
+<meta name="twitter:description" content="//TODO 关于init process signal handling is clear, how about init process forward signal? [ ] ancestor ns send sigterm to container init, will it receive it or not. 首先需要理解docker container -&amp;gt; process i">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,16 +490,30 @@
       
 
       
-        <p>//TODO<br>关于init process signal handling is clear, how about init process forward signal?</p>
+        <p>//TODO
+关于init process signal handling is clear, how about init process forward signal?</p>
 <p>[ ] ancestor ns send sigterm to container init, will it receive it or not.</p>
 <p>首先需要理解docker container -&gt; process in different pid namespace</p>
-<p>需要理解几个点ancestor namespace kill child init process:<br><a href="https://man7.org/linux/man-pages/man7/pid_namespaces.7.html" target="_blank" rel="noopener">https://man7.org/linux/man-pages/man7/pid_namespaces.7.html</a><br>docker kill, docker stop, docker rm difference<br><a href="https://unix.stackexchange.com/questions/509660/do-docker-container-rm-and-docker-container-kill-effectively-achieve-the-sam" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/509660/do-docker-container-rm-and-docker-container-kill-effectively-achieve-the-sam</a></p>
-<p>from inside of container kill init process, foreground:<br><a href="https://devops.stackexchange.com/questions/5613/how-to-explicitly-kill-the-process-with-pid-1-from-inside-a-container" target="_blank" rel="noopener">https://devops.stackexchange.com/questions/5613/how-to-explicitly-kill-the-process-with-pid-1-from-inside-a-container</a><br><a href="https://docs.docker.com/engine/reference/run/#foreground" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/run/#foreground</a><br>we need handler for init process<br><a href="https://medium.com/@gchudnov/trapping-signals-in-docker-containers-7a57fdda7d86" target="_blank" rel="noopener">https://medium.com/@gchudnov/trapping-signals-in-docker-containers-7a57fdda7d86</a></p>
-<p>how to know living process has signal handler:<br><a href="https://stackoverflow.com/questions/5975315/linux-how-to-see-if-a-living-process-has-signal-handlers-set/8810790" target="_blank" rel="noopener">https://stackoverflow.com/questions/5975315/linux-how-to-see-if-a-living-process-has-signal-handlers-set/8810790</a></p>
-<p>there is a demo to write signal proxy by your own:<br><a href="https://medium.com/hackernoon/my-process-became-pid-1-and-now-signals-behave-strangely-b05c52cc551c" target="_blank" rel="noopener">https://medium.com/hackernoon/my-process-became-pid-1-and-now-signals-behave-strangely-b05c52cc551c</a></p>
-<p>Best practices for propagating signals on Docker<br><a href="https://www.kaggle.com/residentmario/best-practices-for-propagating-signals-on-docker" target="_blank" rel="noopener">https://www.kaggle.com/residentmario/best-practices-for-propagating-signals-on-docker</a></p>
-<h2 id="Kill-init-Process-in-Container"><a href="#Kill-init-Process-in-Container" class="headerlink" title="Kill init Process in Container"></a>Kill init Process in Container</h2><p>Inside container, PID 1 will never be killed by <code>kill -9 1</code>, but if PID 1 has registered other signal handlers then it can respond accordingly, need to check the signal bit:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sh as PID 1</span></span><br><span class="line">docker run -it --entrypoint=/bin/sh busybox </span><br><span class="line"></span><br><span class="line"><span class="comment"># check signal bitmap PID 1</span></span><br><span class="line">cat /proc/1/status | grep -i sigcgt</span><br></pre></td></tr></table></figure></p>
-<p>The output is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SigCgt:	0000000000010002</span><br></pre></td></tr></table></figure></p>
+<p>需要理解几个点ancestor namespace kill child init process:
+<a href="https://man7.org/linux/man-pages/man7/pid_namespaces.7.html" target="_blank" rel="noopener">https://man7.org/linux/man-pages/man7/pid_namespaces.7.html</a>
+docker kill, docker stop, docker rm difference
+<a href="https://unix.stackexchange.com/questions/509660/do-docker-container-rm-and-docker-container-kill-effectively-achieve-the-sam" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/509660/do-docker-container-rm-and-docker-container-kill-effectively-achieve-the-sam</a></p>
+<p>from inside of container kill init process, foreground:
+<a href="https://devops.stackexchange.com/questions/5613/how-to-explicitly-kill-the-process-with-pid-1-from-inside-a-container" target="_blank" rel="noopener">https://devops.stackexchange.com/questions/5613/how-to-explicitly-kill-the-process-with-pid-1-from-inside-a-container</a>
+<a href="https://docs.docker.com/engine/reference/run/#foreground" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/run/#foreground</a>
+we need handler for init process
+<a href="https://medium.com/@gchudnov/trapping-signals-in-docker-containers-7a57fdda7d86" target="_blank" rel="noopener">https://medium.com/@gchudnov/trapping-signals-in-docker-containers-7a57fdda7d86</a></p>
+<p>how to know living process has signal handler:
+<a href="https://stackoverflow.com/questions/5975315/linux-how-to-see-if-a-living-process-has-signal-handlers-set/8810790" target="_blank" rel="noopener">https://stackoverflow.com/questions/5975315/linux-how-to-see-if-a-living-process-has-signal-handlers-set/8810790</a></p>
+<p>there is a demo to write signal proxy by your own:
+<a href="https://medium.com/hackernoon/my-process-became-pid-1-and-now-signals-behave-strangely-b05c52cc551c" target="_blank" rel="noopener">https://medium.com/hackernoon/my-process-became-pid-1-and-now-signals-behave-strangely-b05c52cc551c</a></p>
+<p>Best practices for propagating signals on Docker
+<a href="https://www.kaggle.com/residentmario/best-practices-for-propagating-signals-on-docker" target="_blank" rel="noopener">https://www.kaggle.com/residentmario/best-practices-for-propagating-signals-on-docker</a></p>
+<h2 id="Kill-init-Process-in-Container">Kill init Process in Container</h2>
+<p>Inside container, PID 1 will never be killed by <code>kill -9 1</code>, but if PID 1 has registered other signal handlers then it can respond accordingly, need to check the signal bit:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sh as PID 1</span></span><br><span class="line">docker run -it --entrypoint=/bin/sh busybox </span><br><span class="line"></span><br><span class="line"><span class="comment"># check signal bitmap PID 1</span></span><br><span class="line">cat /proc/1/status | grep -i sigcgt</span><br></pre></td></tr></table></figure>
+<p>The output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SigCgt:	0000000000010002</span><br></pre></td></tr></table></figure>
 <p>So <code>sh</code> has 2 handlers in bit 2(SIGINT) and bit 17(SIGHLD), so for this container, it will never react to <code>kill 1</code> or <code>kill -9 1</code> as no handler registered for them.</p>
 <p>If the init PID you use has bitmap set for SIGTERM with exit(0), then you can terminate it by <code>kill 1</code>.</p>
 
@@ -640,7 +636,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -737,7 +733,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1050,7 +1048,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1112,13 +1112,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

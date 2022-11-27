@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Why Python scripting?Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The demos of this blog:https://github.c">
+  <meta name="description" content="Why Python scripting? Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The demos of this blog: https://github">
 <meta name="keywords" content="python3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3 Scripting">
 <meta property="og:url" content="http://yoursite.com/2020/08/14/python-scripting/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Why Python scripting?Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The demos of this blog:https://github.c">
+<meta property="og:description" content="Why Python scripting? Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The demos of this blog: https://github">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-04-20T05:39:33.692Z">
+<meta property="og:updated_time" content="2022-04-20T05:39:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3 Scripting">
-<meta name="twitter:description" content="Why Python scripting?Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The demos of this blog:https://github.c">
+<meta name="twitter:description" content="Why Python scripting? Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks. The demos of this blog: https://github">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">22k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,9 +490,12 @@
       
 
       
-        <p>Why Python scripting?<br>Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks.</p>
-<p>The demos of this blog:<br><a href="https://github.com/chengdol/python-scripting" target="_blank" rel="noopener">https://github.com/chengdol/python-scripting</a></p>
-<h1 id="Common-Modules-for-Scripting"><a href="#Common-Modules-for-Scripting" class="headerlink" title="Common Modules for Scripting"></a>Common Modules for Scripting</h1><ul>
+        <p>Why Python scripting?
+Easy to learn and write, interactively, powerful built-in data types and object oriented. Included packages to support huge range of tasks.</p>
+<p>The demos of this blog:
+<a href="https://github.com/chengdol/python-scripting" target="_blank" rel="noopener">https://github.com/chengdol/python-scripting</a></p>
+<h1>Common Modules for Scripting</h1>
+<ul>
 <li><code>math</code>: Trig functions, sqrt, logarithms, exponentials</li>
 <li><code>pickle</code>: Serialise / de-serialize objects for persistent storage</li>
 <li><code>random</code>: Generate random numbers with various distributions</li>
@@ -537,31 +522,50 @@
 <li><code>shlex</code>: parsing unix shell commands, for example, split long arguments</li>
 <li><code>smtplib</code>: email handling</li>
 <li><code>threading</code>: threading operations</li>
-<li><code>timeit</code>: measure executing time </li>
+<li><code>timeit</code>: measure executing time</li>
 <li><code>pyyaml</code>: parse yaml file</li>
 <li><code>requests</code>: simple http library</li>
 <li><code>retrying</code>: <a href="https://pypi.org/project/retrying/" target="_blank" rel="noopener">retrying</a> flaky function</li>
 <li><code>python-terraform</code>: <a href="https://github.com/beelit94/python-terraform" target="_blank" rel="noopener">terraform wrapper</a></li>
 </ul>
-<h1 id="Work-Environment"><a href="#Work-Environment" class="headerlink" title="Work Environment"></a>Work Environment</h1><h2 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h2><p><code>REPL</code>: the interactive console. 这是最基本的一个python interactive shell, can be used for testing purpose.</p>
-<h2 id="IPython"><a href="#IPython" class="headerlink" title="IPython"></a>IPython</h2><p><code>ipython</code>: the enhanced python interpreter, can run shell commands + REPL, make alias for arbitrary shell commands and with TAB completion.</p>
-<p>How to install: <code>yum install -y ipython3</code><br>Then in terminal, run <code>ipython3</code></p>
-<p>可以直接在ipython中运行比如<code>ls -ltr</code>, <code>cd</code> 之类的命令，这些都属于magic function:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## off magic</span></span><br><span class="line">automagic</span><br><span class="line"><span class="comment">## then you need % prefix to run shell commands</span></span><br><span class="line">%ls -ltr</span><br><span class="line"></span><br><span class="line"><span class="comment">## open magic again</span></span><br><span class="line">%automagic</span><br><span class="line"><span class="comment">## no need % prefix</span></span><br><span class="line">ls -ltr</span><br><span class="line"></span><br><span class="line"><span class="comment">## helper</span></span><br><span class="line">ls?</span><br><span class="line"></span><br><span class="line"><span class="comment">## list env variables</span></span><br><span class="line">whos</span><br></pre></td></tr></table></figure></p>
-<p>Create alias:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create alias 'findsymlinks'</span></span><br><span class="line">alias findsymlinks ls -l /etc/ | grep <span class="string">'^l'</span></span><br><span class="line">%findsymlinks</span><br></pre></td></tr></table></figure></p>
-<p>Run and edit files in IPython:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">run script.py</span><br><span class="line"><span class="comment">## default using vi or vim, $EDITOR</span></span><br><span class="line">edit script.py</span><br></pre></td></tr></table></figure></p>
-<p>对于不能直接运行的shell commads, use shell escape with prefix <code>!</code>, similar to vim feature:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can store the output to a variable</span></span><br><span class="line">out = !df</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> out.grep(<span class="string">"tmpfs"</span>):</span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure></p>
-<h2 id="IDLE"><a href="#IDLE" class="headerlink" title="IDLE"></a>IDLE</h2><p>How to install: <code>yum install -y idle3</code><br>To run idle3, you need desktop environment.</p>
-<h1 id="Managing-File-System"><a href="#Managing-File-System" class="headerlink" title="Managing File System"></a>Managing File System</h1><p>找能实现Bash中功能的函数就行。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## walk around file system, wrap around Linux system call</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.getcwd()</span><br><span class="line"><span class="comment">## cd /tmp</span></span><br><span class="line">os.chdir(<span class="string">"/tmp"</span>)</span><br><span class="line"><span class="comment">## current level dir list</span></span><br><span class="line">os.listdir(<span class="string">"/"</span>)</span><br><span class="line"><span class="comment">## recursively to subdir, will return a tuple</span></span><br><span class="line"><span class="comment">## (current dir name, child dirs, child files)</span></span><br><span class="line">os.walk(<span class="string">"/tmp"</span>)</span><br><span class="line">os.stat(<span class="string">"/etc/hosts"</span>)</span><br><span class="line"></span><br><span class="line">os.mkdir(path [, mode])</span><br><span class="line">os.rename(src, dst)</span><br><span class="line">os.remove(file)</span><br><span class="line"><span class="comment">## remove empty dir</span></span><br><span class="line">os.rmdir(dir)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 0o644, prefixed with '0o'</span></span><br><span class="line">os.chown(file, mode)</span><br><span class="line">os.chmod(file, uid, gid)</span><br><span class="line"><span class="comment">## hardlink</span></span><br><span class="line">os.link(src, dst)</span><br><span class="line"><span class="comment">## softlink</span></span><br><span class="line">os.symlink(src, dst)</span><br><span class="line"></span><br><span class="line"><span class="comment">## high-level file operations</span></span><br><span class="line"><span class="keyword">import</span> shutil <span class="keyword">as</span> st</span><br><span class="line">st.copy(src, dst)</span><br><span class="line"><span class="comment">## also copy attr</span></span><br><span class="line">st.copy2(src, dst)</span><br><span class="line"><span class="comment">## mv</span></span><br><span class="line">st.move(src, dst)</span><br><span class="line"><span class="comment">## rm -f</span></span><br><span class="line">st.rmtree(path)</span><br><span class="line">st.copytree(src, dst, ignore=<span class="keyword">None</span>)</span><br><span class="line"><span class="comment">## which</span></span><br><span class="line">st.which(<span class="string">"java"</span>)</span><br><span class="line"></span><br><span class="line">st.make_archive(basename, format)</span><br><span class="line">st.unpack_archive(filename, extrac_dir, format)</span><br></pre></td></tr></table></figure></p>
-<h1 id="Interacting-with-Linux-System"><a href="#Interacting-with-Linux-System" class="headerlink" title="Interacting with Linux System"></a>Interacting with Linux System</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">## print command line parameters</span></span><br><span class="line"><span class="keyword">for</span> arg <span class="keyword">in</span> sys.argv[:]:</span><br><span class="line">    print(<span class="string">f"<span class="subst">&#123;arg&#125;</span>"</span>, end = <span class="string">' '</span>)</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
-<p>To parse parameters, use <code>optparse</code> module, see example in git repo <code>1_optparse-demo.py</code>.<br>Besides optparse and argparse from the standard library, <code>click</code> module is a good alternative.</p>
-<p>To get env varaible:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">## set default value when empty response</span></span><br><span class="line">os.getenv(<span class="string">"EDITOR"</span>, <span class="string">"/usr/bin/vim"</span>)</span><br><span class="line">os.getenv(<span class="string">"HOME"</span>)</span><br><span class="line">os.environ.get(<span class="string">"HOME"</span>)</span><br></pre></td></tr></table></figure></p>
+<h1>Work Environment</h1>
+<h2 id="REPL">REPL</h2>
+<p><code>REPL</code>: the interactive console. 这是最基本的一个python interactive shell, can be used for testing purpose.</p>
+<h2 id="IPython">IPython</h2>
+<p><code>ipython</code>: the enhanced python interpreter, can run shell commands + REPL, make alias for arbitrary shell commands and with TAB completion.</p>
+<p>How to install: <code>yum install -y ipython3</code>
+Then in terminal, run <code>ipython3</code></p>
+<p>可以直接在ipython中运行比如<code>ls -ltr</code>, <code>cd</code> 之类的命令，这些都属于magic function:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## off magic</span></span><br><span class="line">automagic</span><br><span class="line"><span class="comment">## then you need % prefix to run shell commands</span></span><br><span class="line">%ls -ltr</span><br><span class="line"></span><br><span class="line"><span class="comment">## open magic again</span></span><br><span class="line">%automagic</span><br><span class="line"><span class="comment">## no need % prefix</span></span><br><span class="line">ls -ltr</span><br><span class="line"></span><br><span class="line"><span class="comment">## helper</span></span><br><span class="line">ls?</span><br><span class="line"></span><br><span class="line"><span class="comment">## list env variables</span></span><br><span class="line">whos</span><br></pre></td></tr></table></figure>
+<p>Create alias:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## create alias 'findsymlinks'</span></span><br><span class="line">alias findsymlinks ls -l /etc/ | grep <span class="string">'^l'</span></span><br><span class="line">%findsymlinks</span><br></pre></td></tr></table></figure>
+<p>Run and edit files in IPython:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">run script.py</span><br><span class="line"><span class="comment">## default using vi or vim, $EDITOR</span></span><br><span class="line">edit script.py</span><br></pre></td></tr></table></figure>
+<p>对于不能直接运行的shell commads, use shell escape with prefix <code>!</code>, similar to vim feature:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can store the output to a variable</span></span><br><span class="line">out = !df</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> out.grep(<span class="string">"tmpfs"</span>):</span><br><span class="line">    print(line)</span><br></pre></td></tr></table></figure>
+<h2 id="IDLE">IDLE</h2>
+<p>How to install: <code>yum install -y idle3</code>
+To run idle3, you need desktop environment.</p>
+<h1>Managing File System</h1>
+<p>找能实现Bash中功能的函数就行。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## walk around file system, wrap around Linux system call</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.getcwd()</span><br><span class="line"><span class="comment">## cd /tmp</span></span><br><span class="line">os.chdir(<span class="string">"/tmp"</span>)</span><br><span class="line"><span class="comment">## current level dir list</span></span><br><span class="line">os.listdir(<span class="string">"/"</span>)</span><br><span class="line"><span class="comment">## recursively to subdir, will return a tuple</span></span><br><span class="line"><span class="comment">## (current dir name, child dirs, child files)</span></span><br><span class="line">os.walk(<span class="string">"/tmp"</span>)</span><br><span class="line">os.stat(<span class="string">"/etc/hosts"</span>)</span><br><span class="line"></span><br><span class="line">os.mkdir(path [, mode])</span><br><span class="line">os.rename(src, dst)</span><br><span class="line">os.remove(file)</span><br><span class="line"><span class="comment">## remove empty dir</span></span><br><span class="line">os.rmdir(dir)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 0o644, prefixed with '0o'</span></span><br><span class="line">os.chown(file, mode)</span><br><span class="line">os.chmod(file, uid, gid)</span><br><span class="line"><span class="comment">## hardlink</span></span><br><span class="line">os.link(src, dst)</span><br><span class="line"><span class="comment">## softlink</span></span><br><span class="line">os.symlink(src, dst)</span><br><span class="line"></span><br><span class="line"><span class="comment">## high-level file operations</span></span><br><span class="line"><span class="keyword">import</span> shutil <span class="keyword">as</span> st</span><br><span class="line">st.copy(src, dst)</span><br><span class="line"><span class="comment">## also copy attr</span></span><br><span class="line">st.copy2(src, dst)</span><br><span class="line"><span class="comment">## mv</span></span><br><span class="line">st.move(src, dst)</span><br><span class="line"><span class="comment">## rm -f</span></span><br><span class="line">st.rmtree(path)</span><br><span class="line">st.copytree(src, dst, ignore=<span class="keyword">None</span>)</span><br><span class="line"><span class="comment">## which</span></span><br><span class="line">st.which(<span class="string">"java"</span>)</span><br><span class="line"></span><br><span class="line">st.make_archive(basename, format)</span><br><span class="line">st.unpack_archive(filename, extrac_dir, format)</span><br></pre></td></tr></table></figure>
+<h1>Interacting with Linux System</h1>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">## print command line parameters</span></span><br><span class="line"><span class="keyword">for</span> arg <span class="keyword">in</span> sys.argv[:]:</span><br><span class="line">    print(<span class="string">f"<span class="subst">&#123;arg&#125;</span>"</span>, end = <span class="string">' '</span>)</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
+<p>To parse parameters, use <code>optparse</code> module, see example in git repo <code>1_optparse-demo.py</code>.
+Besides optparse and argparse from the standard library, <code>click</code> module is a good alternative.</p>
+<p>To get env varaible:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">## set default value when empty response</span></span><br><span class="line">os.getenv(<span class="string">"EDITOR"</span>, <span class="string">"/usr/bin/vim"</span>)</span><br><span class="line">os.getenv(<span class="string">"HOME"</span>)</span><br><span class="line">os.environ.get(<span class="string">"HOME"</span>)</span><br></pre></td></tr></table></figure>
 <p>这节的git repo例子很有意思<code>5_signal-primes-v5.py</code>, <code>6_timeout.py</code>, 用signal handler 去改变条件变量的值，从而改变运行逻辑。之前一直在BASH中用trap去做终止前的处理。Linux has 2 signals set aside for user: <code>SIGUSR1</code>, <code>SIGUSR2</code>.</p>
-<h1 id="Executing-Commands"><a href="#Executing-Commands" class="headerlink" title="Executing Commands"></a>Executing Commands</h1><p>Run external commands, for example, call other shell commands or executables by <code>subprocess</code>, similar to linux <code>()</code>.</p>
+<h1>Executing Commands</h1>
+<p>Run external commands, for example, call other shell commands or executables by <code>subprocess</code>, similar to linux <code>()</code>.</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">## 这是最简单的调用</span></span><br><span class="line"><span class="comment">## this will not disturb current env</span></span><br><span class="line">env = os.environ.copy()</span><br><span class="line"><span class="comment">## the run method will call Popen under the nood</span></span><br><span class="line">cmd = [<span class="string">"ls"</span>, <span class="string">"-ltr"</span>]</span><br><span class="line"><span class="comment">## if does not set stdout/stderr, then command print result to console</span></span><br><span class="line">process = subprocess.run(cmd, </span><br><span class="line">               env=env, </span><br><span class="line">               stdout=subprocess.PIPE, </span><br><span class="line">               stderr=subprocess.PIPE)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">process.returncode</span><br><span class="line">process.stdout.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">process.stderr.decode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 如果要运行和shell有关的命名且需要用到shell的特性 such as shell pipes, filename wildcards, environment variable expansion, and expansion of ~ to a user’s home directory.</span></span><br><span class="line"><span class="comment">## If shell is True, it is recommended to pass args as a string rather than as a sequence.</span></span><br><span class="line">env = os.environ.copy()</span><br><span class="line">cmd = <span class="string">"ls -ltr ~ | grep -i download"</span></span><br><span class="line">process = subprocess.run(cmd, </span><br><span class="line">               shell=<span class="keyword">True</span>,</span><br><span class="line">               env=env, </span><br><span class="line">               stdout=subprocess.PIPE, </span><br><span class="line">               stderr=subprocess.PIPE)</span><br><span class="line"></span><br><span class="line"><span class="comment">## the same as</span></span><br><span class="line">cmd = [<span class="string">"/bin/sh"</span>, <span class="string">"-c"</span>, <span class="string">"--"</span>, <span class="string">"ls -ltr ~ | grep -i download"</span>]</span><br><span class="line">process = subprocess.run(cmd,</span><br><span class="line">               env=env, </span><br><span class="line">               stdout=subprocess.PIPE, </span><br><span class="line">               stderr=subprocess.PIPE)</span><br><span class="line"></span><br><span class="line">process.returncode</span><br><span class="line">process.stdout.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">process.stderr.decode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 高级操作 Popen, run 在背后调用的它</span></span><br><span class="line">env = os.environ.copy()</span><br><span class="line"><span class="comment">## the same as export KUBECONFIG=clusters.yaml</span></span><br><span class="line">env[<span class="string">'KUBECONFIG'</span>] = <span class="string">"clusters.yaml"</span></span><br><span class="line"><span class="comment">## this kubectl will refer KUBECONFIG env variable above</span></span><br><span class="line">cmd = [<span class="string">"kubectl"</span>, <span class="string">"get"</span>, <span class="string">"sts"</span>]</span><br><span class="line">process = subprocess.Popen(cmd, </span><br><span class="line">                 env=env, </span><br><span class="line">                 stdout=subprocess.PIPE, </span><br><span class="line">                 stderr=subprocess.PIPE)</span><br><span class="line"></span><br><span class="line"><span class="comment">## out, err is byte type</span></span><br><span class="line">out, err = process.communicate()</span><br><span class="line"><span class="comment">## conver to string</span></span><br><span class="line">out = out.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">err = err.decode(<span class="string">"utf-8"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> process.returncode != <span class="number">0</span>:</span><br><span class="line">  <span class="keyword">raise</span> subprocess.CalledProcessError(process.returncode, cmd)</span><br></pre></td></tr></table></figure>
 <p>关于python concurrency专门的总结: <code>Python Concurrency</code></p>
-<h1 id="String-Manipulation"><a href="#String-Manipulation" class="headerlink" title="String Manipulation"></a>String Manipulation</h1><p>Besides basic operation, it talks about datetime:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment">## depends on your local time zone</span></span><br><span class="line">rightnow = datetime.datetime.now()</span><br><span class="line">utc_rightnow = datetime.datetime.utcnow()</span><br><span class="line"></span><br><span class="line">rightnow.month</span><br><span class="line">rightnow.hour</span><br><span class="line"></span><br><span class="line"><span class="comment">## lots of % format</span></span><br><span class="line">rightnow.strftime(<span class="string">"Today is %A"</span>)</span><br><span class="line"><span class="comment">## datetime.timedelta, to add and decrease time slot</span></span><br></pre></td></tr></table></figure></p>
+<h1>String Manipulation</h1>
+<p>Besides basic operation, it talks about datetime:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment">## depends on your local time zone</span></span><br><span class="line">rightnow = datetime.datetime.now()</span><br><span class="line">utc_rightnow = datetime.datetime.utcnow()</span><br><span class="line"></span><br><span class="line">rightnow.month</span><br><span class="line">rightnow.hour</span><br><span class="line"></span><br><span class="line"><span class="comment">## lots of % format</span></span><br><span class="line">rightnow.strftime(<span class="string">"Today is %A"</span>)</span><br><span class="line"><span class="comment">## datetime.timedelta, to add and decrease time slot</span></span><br></pre></td></tr></table></figure>
 <p>然后讲了<code>re</code> module. 可以参考这节的git code.</p>
-<h1 id="Processing-Text-Logging"><a href="#Processing-Text-Logging" class="headerlink" title="Processing Text, Logging"></a>Processing Text, Logging</h1><p>For long running background service, logging is a must, we can log events into: file, syslog or systemd journal.</p>
+<h1>Processing Text, Logging</h1>
+<p>For long running background service, logging is a must, we can log events into: file, syslog or systemd journal.</p>
 <p>Logger has different handlers, for example: StreamHandler(stdout, stderr), FileHanlder, watchFileHandler, SysLogHandler, SockerHandler, JournalHandler, etc.</p>
 <p>Logging levels: NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL.</p>
 
@@ -684,7 +688,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -781,7 +785,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1094,7 +1100,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1130,7 +1138,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Common-Modules-for-Scripting"><span class="nav-number">1.</span> <span class="nav-text">Common Modules for Scripting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Work-Environment"><span class="nav-number">2.</span> <span class="nav-text">Work Environment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#REPL"><span class="nav-number">2.1.</span> <span class="nav-text">REPL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPython"><span class="nav-number">2.2.</span> <span class="nav-text">IPython</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDLE"><span class="nav-number">2.3.</span> <span class="nav-text">IDLE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Managing-File-System"><span class="nav-number">3.</span> <span class="nav-text">Managing File System</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Interacting-with-Linux-System"><span class="nav-number">4.</span> <span class="nav-text">Interacting with Linux System</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Executing-Commands"><span class="nav-number">5.</span> <span class="nav-text">Executing Commands</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-Manipulation"><span class="nav-number">6.</span> <span class="nav-text">String Manipulation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Processing-Text-Logging"><span class="nav-number">7.</span> <span class="nav-text">Processing Text, Logging</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Common Modules for Scripting</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Work Environment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#REPL"><span class="nav-number">2.1.</span> <span class="nav-text">REPL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPython"><span class="nav-number">2.2.</span> <span class="nav-text">IPython</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDLE"><span class="nav-number">2.3.</span> <span class="nav-text">IDLE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Managing File System</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Interacting with Linux System</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Executing Commands</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">String Manipulation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Processing Text, Logging</span></a></li></ol></div>
             
 
           </div>
@@ -1156,13 +1164,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

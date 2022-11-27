@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="To examine logs of previous restarted pod/container:1234567# other useful options# -f: streaming logs# --tail: number of line to display# --since: return logs newer then a relative duration 5s, 2m, 3h">
+  <meta name="description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips   Explain resources with fields specific.  12k explain pod.seck explain ep  Create manual job">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kubernetes Pod Restart Investigation">
-<meta property="og:url" content="http://yoursite.com/2021/12/01/k8s-pod-restart/index.html">
+<meta property="og:title" content="Kubernetes CLI Tips">
+<meta property="og:url" content="http://yoursite.com/2022/08/20/k8s-cli-tips/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="To examine logs of previous restarted pod/container:1234567# other useful options# -f: streaming logs# --tail: number of line to display# --since: return logs newer then a relative duration 5s, 2m, 3h">
+<meta property="og:description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips   Explain resources with fields specific.  12k explain pod.seck explain ep  Create manual job">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-08-27T20:48:36.898Z">
+<meta property="og:updated_time" content="2022-11-27T00:37:11.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kubernetes Pod Restart Investigation">
-<meta name="twitter:description" content="To examine logs of previous restarted pod/container:1234567# other useful options# -f: streaming logs# --tail: number of line to display# --since: return logs newer then a relative duration 5s, 2m, 3h">
+<meta name="twitter:title" content="Kubernetes CLI Tips">
+<meta name="twitter:description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips   Explain resources with fields specific.  12k explain pod.seck explain ep  Create manual job">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/12/01/k8s-pod-restart/">
+  <link rel="canonical" href="http://yoursite.com/2022/08/20/k8s-cli-tips/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Kubernetes Pod Restart Investigation | 海胆阶段's Blog</title>
+  <title>Kubernetes CLI Tips | 海胆阶段's Blog</title>
   
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/01/k8s-pod-restart/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/08/20/k8s-cli-tips/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kubernetes Pod Restart Investigation
+          <h1 class="post-title" itemprop="name headline">Kubernetes CLI Tips
 
               
             
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2021-12-01 10:44:18" itemprop="dateCreated datePublished" datetime="2021-12-01T10:44:18-08:00">2021-12-01</time>
+              <time title="Created: 2022-08-20 13:44:18" itemprop="dateCreated datePublished" datetime="2022-08-20T13:44:18-07:00">2022-08-20</time>
             
 
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-08-27 13:48:36" itemprop="dateModified" datetime="2022-08-27T13:48:36-07:00">2022-08-27</time>
+                <time title="Modified: 2022-11-26 16:37:11" itemprop="dateModified" datetime="2022-11-26T16:37:11-08:00">2022-11-26</time>
               
             
           </span>
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.3k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,9 +490,62 @@
       
 
       
-        <p>To examine logs of previous restarted pod/container:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># other useful options</span></span><br><span class="line"><span class="comment"># -f: streaming logs</span></span><br><span class="line"><span class="comment"># --tail: number of line to display</span></span><br><span class="line"><span class="comment"># --since: return logs newer then a relative duration 5s, 2m, 3h</span></span><br><span class="line">kubectl logs &lt;pod name&gt; -c &lt;container name&gt; --previous</span><br><span class="line"></span><br><span class="line"><span class="comment"># if no -c specified, return first container log by default</span></span><br></pre></td></tr></table></figure></p>
-<p>Also the revisit of cluster events can help.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get events</span><br></pre></td></tr></table></figure></p>
-
+        <p>Some useful CLI tips in daily uses, references:</p>
+<ul>
+<li><a href="https://learncloudnative.com/blog/2022-05-10-kubectl-tips" target="_blank" rel="noopener">https://learncloudnative.com/blog/2022-05-10-kubectl-tips</a></li>
+</ul>
+<ol>
+<li>Explain resources with fields specific.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">k explain pod.sec</span><br><span class="line">k explain ep</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Create manual job from cronjob, you can also export the json as template, edit and use it.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k create job --from=cronjob/&lt;name of cronjob&gt; &lt;manual job name&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>List service account permissions.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n &lt;namespace&gt; auth can-i \</span><br><span class="line">--list \</span><br><span class="line">--as system:serviceaccount:&lt;namespace&gt;:&lt;service account name&gt;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>List endpoints(IP:port) to service name.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k get ep -n &lt;namespace&gt;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>List events sorted by lastTimestamp.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lastTimestamp is added by k8s in resource definition yaml</span></span><br><span class="line">kubectl get events --sort-by=<span class="string">".lastTimestamp"</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>Watching warning from all namespaces.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get events -w --field-selector=<span class="built_in">type</span>=Warning -A</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>Get raw json for APIs.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl get --raw /apis/apps/v1</span><br><span class="line"><span class="comment"># Get metrics</span></span><br><span class="line">kubectl get --raw /metrics</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>Wait for pods to be ready.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="built_in">wait</span> --<span class="keyword">for</span>=condition=ready pod -l foo=bar</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>List env vars from a resource.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="built_in">set</span> env &lt;resource&gt;/&lt;resource-name&gt; --list</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>List node and its pods mapping.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get po -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name</span><br></pre></td></tr></table></figure>
+<ol start="11">
+<li>Create starter YAML for resources.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create deploy nginx-deployment --image=nginx --dry-run=client -o yaml</span><br></pre></td></tr></table></figure>
+<ol start="12">
+<li>Pods sorted by memory usage.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl top pods -A --sort-by=<span class="string">'memory'</span></span><br></pre></td></tr></table></figure>
+<ol start="13">
+<li>To examine logs of previous restarted pod/container:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Other useful options:</span></span><br><span class="line"><span class="comment"># -f: streaming logs</span></span><br><span class="line"><span class="comment"># --tail: number of line to display</span></span><br><span class="line"><span class="comment"># --since: return logs newer then a relative duration 5s, 2m, 3h</span></span><br><span class="line">kubectl logs &lt;pod name&gt; -c &lt;container name&gt; --previous</span><br><span class="line"><span class="comment"># if no -c specified, return first container log by default</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -546,8 +581,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/11/30/k8s-cert-manager/" rel="next" title="Kubernetes Cert-manager">
-                <i class="fa fa-chevron-left"></i> Kubernetes Cert-manager
+              <a href="/2022/08/08/elastic-ILM/" rel="next" title="Index Lifecycle Management">
+                <i class="fa fa-chevron-left"></i> Index Lifecycle Management
               </a>
             
           </div>
@@ -556,8 +591,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/12/24/elastic-corrupt/" rel="prev" title="Elasticsearch Corrupted Shards">
-                Elasticsearch Corrupted Shards <i class="fa fa-chevron-right"></i>
+              <a href="/2022/11/21/k8s-crd-deletion-hang/" rel="prev" title="Kubernetes CRD Deletion Hang">
+                Kubernetes CRD Deletion Hang <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -621,7 +656,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -718,7 +753,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1031,7 +1068,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1076,13 +1115,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

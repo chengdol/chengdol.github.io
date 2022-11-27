@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.2k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -515,11 +497,16 @@
 <p>Note that docker will not allow commit the change of any permission of <code>/</code> directory into image.</p>
 </blockquote>
 <p>Each file and directory in a Linux filesystem is created with <code>Access Control Lists (ACLs)</code>. The permissions can be set using the <code>setfacl</code> utility. In order to know the access permissions of a file or directory we use <code>getfacl</code>.</p>
-<p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># getfacl /etc</span><br><span class="line"></span><br><span class="line">getfacl: Removing leading &apos;/&apos; from absolute path names</span><br><span class="line"># file: etc/</span><br><span class="line"># owner: root</span><br><span class="line"># group: root</span><br><span class="line">user::rwx</span><br><span class="line">group::r-x</span><br><span class="line">other::r-x</span><br></pre></td></tr></table></figure></p>
-<p>then we add <code>demo</code> full permission to <code>/etc</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## run as root</span></span><br><span class="line">setfacl -m u:demo:rwx /etc</span><br></pre></td></tr></table></figure></p>
-<p>check again:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># getfacl /etc</span><br><span class="line"></span><br><span class="line">getfacl: Removing leading &apos;/&apos; from absolute path names</span><br><span class="line"># file: etc</span><br><span class="line"># owner: root</span><br><span class="line"># group: root</span><br><span class="line">user::rwx</span><br><span class="line">user:demo:rwx</span><br><span class="line">group::r-x</span><br><span class="line">mask::rwx</span><br><span class="line">other::r-x</span><br></pre></td></tr></table></figure></p>
-<p>I have this question:<br><a href="https://unix.stackexchange.com/questions/364517/difference-between-chmod-vs-acl" target="_blank" rel="noopener">Difference between chmod vs ACL</a></p>
-<p>Under Linux, <code>ls -l</code> puts a <code>+</code> at the end of the permissions characters to indicate that <code>ACL</code> are present. If <code>ACL</code> are presenting then the basic permissions do not tell the full story: ACL override POSIX permissions:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ls -l /etc</span><br><span class="line"></span><br><span class="line">drwxrwxr-x+ 89 root root 8192 Sep 25 16:24</span><br></pre></td></tr></table></figure></p>
+<p>For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># getfacl /etc</span><br><span class="line"></span><br><span class="line">getfacl: Removing leading &apos;/&apos; from absolute path names</span><br><span class="line"># file: etc/</span><br><span class="line"># owner: root</span><br><span class="line"># group: root</span><br><span class="line">user::rwx</span><br><span class="line">group::r-x</span><br><span class="line">other::r-x</span><br></pre></td></tr></table></figure>
+<p>then we add <code>demo</code> full permission to <code>/etc</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## run as root</span></span><br><span class="line">setfacl -m u:demo:rwx /etc</span><br></pre></td></tr></table></figure>
+<p>check again:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># getfacl /etc</span><br><span class="line"></span><br><span class="line">getfacl: Removing leading &apos;/&apos; from absolute path names</span><br><span class="line"># file: etc</span><br><span class="line"># owner: root</span><br><span class="line"># group: root</span><br><span class="line">user::rwx</span><br><span class="line">user:demo:rwx</span><br><span class="line">group::r-x</span><br><span class="line">mask::rwx</span><br><span class="line">other::r-x</span><br></pre></td></tr></table></figure>
+<p>I have this question:
+<a href="https://unix.stackexchange.com/questions/364517/difference-between-chmod-vs-acl" target="_blank" rel="noopener">Difference between chmod vs ACL</a></p>
+<p>Under Linux, <code>ls -l</code> puts a <code>+</code> at the end of the permissions characters to indicate that <code>ACL</code> are present. If <code>ACL</code> are presenting then the basic permissions do not tell the full story: ACL override POSIX permissions:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ls -l /etc</span><br><span class="line"></span><br><span class="line">drwxrwxr-x+ 89 root root 8192 Sep 25 16:24</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -631,7 +618,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -728,7 +715,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1041,7 +1030,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1086,13 +1077,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

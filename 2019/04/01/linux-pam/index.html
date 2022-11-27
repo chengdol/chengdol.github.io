@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it. Plugg">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-04-20T05:39:33.685Z">
+<meta property="og:updated_time" content="2022-04-20T05:39:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux PAM Module Configuration">
 <meta name="twitter:description" content="When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it. Plugg">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">8.9k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,25 +491,38 @@
 
       
         <p>When I was working on non-root set up worker containers or pods, in order to grant the non-root user su password-less privilege, I got into PAM module in RHEL. Let’s spend time to understand it.</p>
-<p><strong>Pluggable authentication modules (PAMs)</strong> are a common framework for <strong>authentication</strong> and <strong>authorization</strong>. </p>
+<p><strong>Pluggable authentication modules (PAMs)</strong> are a common framework for <strong>authentication</strong> and <strong>authorization</strong>.</p>
 <p>There are many programs on your system that use PAM modules like su, passwd, ssh and login and other services. PAM main focus is to authenticate your users.</p>
 <p>PAM or Pluggable Authentication Modules are the management layer that sits between Linux applications and the Linux native authentication system.</p>
 <blockquote>
-<p>For full details, please refer:<br><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system-level_authentication_guide/pluggable_authentication_modules" target="_blank" rel="noopener">USING PLUGGABLE AUTHENTICATION MODULES (PAM)</a><br><a href="https://www.cnblogs.com/kevingrace/p/8671964.html" target="_blank" rel="noopener">CHINESE VERSION</a></p>
+<p>For full details, please refer:
+<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system-level_authentication_guide/pluggable_authentication_modules" target="_blank" rel="noopener">USING PLUGGABLE AUTHENTICATION MODULES (PAM)</a>
+<a href="https://www.cnblogs.com/kevingrace/p/8671964.html" target="_blank" rel="noopener">CHINESE VERSION</a></p>
 </blockquote>
 <p>Each PAM-aware application or service has a file in the <code>/etc/pam.d/</code> directory. Each file in this directory has the same name as the service to which it controls access. For example, the <code>login</code> program defines its service name as login and installs the <code>/etc/pam.d/login</code> PAM configuration file.</p>
-<p>What I have done is add a non-root user, for example <code>demo</code>, to <code>wheel</code> group (usually <code>wheel</code> group is pre-existing), operate this as root user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -a -G wheel demo</span><br></pre></td></tr></table></figure></p>
-<p>Why <code>wheel</code> group? What is <code>wheel</code> stand for in computing?<br>In computing, the term <code>wheel</code> refers to a user account with a wheel bit, a system setting<br>that provides additional special system privileges that empower a user to execute restricted commands that ordinary user accounts cannot access.</p>
+<p>What I have done is add a non-root user, for example <code>demo</code>, to <code>wheel</code> group (usually <code>wheel</code> group is pre-existing), operate this as root user:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -a -G wheel demo</span><br></pre></td></tr></table></figure>
+<p>Why <code>wheel</code> group? What is <code>wheel</code> stand for in computing?
+In computing, the term <code>wheel</code> refers to a user account with a wheel bit, a system setting
+that provides additional special system privileges that empower a user to execute restricted commands that ordinary user accounts cannot access.</p>
 <p>Modern Unix systems generally use user groups as a security protocol to control access privileges. The <code>wheel</code> group is a special user group used on some Unix systems to control access to the su or sudo command, which allows a user to masquerade as another user (usually the super user).</p>
 <p>By default it permits root access to the system if the applicant user is a member of the <code>wheel</code> group.</p>
-<p>Check <code>demo</code> group information:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id demo</span><br><span class="line"></span><br><span class="line">uid=1010(demo) gid=1010(demo) groups=1010(demo),10(wheel)</span><br></pre></td></tr></table></figure></p>
-<p>You can also go to <code>/etc/group</code> file to check group members of <code>wheel</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wheel:x:10:demo</span><br></pre></td></tr></table></figure></p>
-<p>Then go to edit <code>/etc/pam.d/su</code> file to uncomment this directive:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Uncomment the following line to implicitly trust users in the "wheel" group.</span></span><br><span class="line">auth           sufficient      pam_wheel.so trust use_uid</span><br></pre></td></tr></table></figure></p>
-<p>What is <code>pam_wheel.so</code>?<br>The <code>pam_wheel</code> PAM module is used to enforce the so-called <code>wheel</code> group. By default it permits root access(su - ) to the system if the applicant user is a member of the wheel group. If no group with this name exist, the module is using the group with the group-ID 0.</p>
-<p>Now the user <code>demo</code> can su to other users (include root) without password. You can run command as another user:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - &lt;another&gt; -c &quot;&lt;command&gt;&quot;</span><br></pre></td></tr></table></figure></p>
-<p>If you also want to have <code>sudo</code> password-less privilege for <code>wheel</code> group user, you need to edit <code>/etc/sudoers</code> file by <code>visudo</code> as root like this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Allows people in group wheel to run all commands</span></span><br><span class="line"><span class="comment">#%wheel       ALL=(ALL)       ALL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Same thing without a password</span></span><br><span class="line">%wheel        ALL=(ALL)       NOPASSWD: ALL</span><br></pre></td></tr></table></figure></p>
-<h3 id="PAM-file-format"><a href="#PAM-file-format" class="headerlink" title="PAM file format"></a>PAM file format</h3><p>Each PAM configuration file, such as <code>/etc/pam.d/su</code> contains a group of directives that define the module (the authentication configuration area) and any controls or arguments with it.</p>
-<p>The directives all have a simple syntax that identifies the module purpose (interface) and the configuration settings for the module.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module_interface	control_flag	module_name module_arguments</span><br></pre></td></tr></table></figure></p>
+<p>Check <code>demo</code> group information:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id demo</span><br><span class="line"></span><br><span class="line">uid=1010(demo) gid=1010(demo) groups=1010(demo),10(wheel)</span><br></pre></td></tr></table></figure>
+<p>You can also go to <code>/etc/group</code> file to check group members of <code>wheel</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wheel:x:10:demo</span><br></pre></td></tr></table></figure>
+<p>Then go to edit <code>/etc/pam.d/su</code> file to uncomment this directive:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Uncomment the following line to implicitly trust users in the "wheel" group.</span></span><br><span class="line">auth           sufficient      pam_wheel.so trust use_uid</span><br></pre></td></tr></table></figure>
+<p>What is <code>pam_wheel.so</code>?
+The <code>pam_wheel</code> PAM module is used to enforce the so-called <code>wheel</code> group. By default it permits root access(su - ) to the system if the applicant user is a member of the wheel group. If no group with this name exist, the module is using the group with the group-ID 0.</p>
+<p>Now the user <code>demo</code> can su to other users (include root) without password. You can run command as another user:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - &lt;another&gt; -c &quot;&lt;command&gt;&quot;</span><br></pre></td></tr></table></figure>
+<p>If you also want to have <code>sudo</code> password-less privilege for <code>wheel</code> group user, you need to edit <code>/etc/sudoers</code> file by <code>visudo</code> as root like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Allows people in group wheel to run all commands</span></span><br><span class="line"><span class="comment">#%wheel       ALL=(ALL)       ALL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Same thing without a password</span></span><br><span class="line">%wheel        ALL=(ALL)       NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+<h3 id="PAM-file-format">PAM file format</h3>
+<p>Each PAM configuration file, such as <code>/etc/pam.d/su</code> contains a group of directives that define the module (the authentication configuration area) and any controls or arguments with it.</p>
+<p>The directives all have a simple syntax that identifies the module purpose (interface) and the configuration settings for the module.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module_interface	control_flag	module_name module_arguments</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>module_name</strong> — such as <code>pam_wheel.so</code></li>
 <li><strong>auth</strong> — This module interface authenticates users. For example, it requests and verifies the validity of a password. Modules with this interface can also set credentials, such as group memberships.</li>
@@ -536,19 +531,24 @@
 <ul>
 <li><strong>sufficient</strong> — The module result is ignored if it fails. However, if the result of a module flagged sufficient is successful and no previous modules flagged required have failed, then no other results are required and the user is authenticated to the service.</li>
 </ul>
-<p>Let’s see an example:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@MyServer ~]<span class="comment"># cat /etc/pam.d/setup</span></span><br><span class="line"></span><br><span class="line">auth       sufficient	pam_rootok.so</span><br><span class="line">auth       include	system-auth</span><br><span class="line">account    required	pam_permit.so</span><br><span class="line">session	   required	pam_permit.so</span><br></pre></td></tr></table></figure></p>
+<p>Let’s see an example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@MyServer ~]<span class="comment"># cat /etc/pam.d/setup</span></span><br><span class="line"></span><br><span class="line">auth       sufficient	pam_rootok.so</span><br><span class="line">auth       include	system-auth</span><br><span class="line">account    required	pam_permit.so</span><br><span class="line">session	   required	pam_permit.so</span><br></pre></td></tr></table></figure>
 <p>Here the modules are stacking, from up to bottom, verify each directive one by one,</p>
 <ul>
-<li><p><em>auth sufficient pam_rootok.so</em> — This line uses the <code>pam_rootok.so</code> module to check whether the current user is root, by verifying that their UID is 0. If this test succeeds, no other modules are consulted and the command is executed. If this test fails, the next module is consulted.</p>
+<li>
+<p><em>auth sufficient pam_rootok.so</em> — This line uses the <code>pam_rootok.so</code> module to check whether the current user is root, by verifying that their UID is 0. If this test succeeds, no other modules are consulted and the command is executed. If this test fails, the next module is consulted.</p>
 </li>
-<li><p><em>auth include system-auth</em> — This line includes the content of the /etc/pam.d/system-auth module and processes this content for authentication.</p>
+<li>
+<p><em>auth include system-auth</em> — This line includes the content of the /etc/pam.d/system-auth module and processes this content for authentication.</p>
 </li>
 </ul>
 <p>PAM uses <code>arguments</code> to pass information to a pluggable module during authentication for some modules.</p>
 <ul>
-<li><p><strong>trust</strong>: The <code>pam_wheel</code> module will return PAM_SUCCESS instead of PAM_IGNORE if the user is a member of the wheel group</p>
+<li>
+<p><strong>trust</strong>: The <code>pam_wheel</code> module will return PAM_SUCCESS instead of PAM_IGNORE if the user is a member of the wheel group</p>
 </li>
-<li><p><strong>use_uid</strong>: The check for wheel membership will be done against the current uid instead of the original one</p>
+<li>
+<p><strong>use_uid</strong>: The check for wheel membership will be done against the current uid instead of the original one</p>
 </li>
 </ul>
 
@@ -673,7 +673,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -770,7 +770,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1083,7 +1085,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1145,13 +1149,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

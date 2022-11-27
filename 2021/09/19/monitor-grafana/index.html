@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
+  <meta name="description" content="Docker Compose Demo Github repo: https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. Grafana Grafana document: https://grafana.com/docs/grafana/latest/ Grafana">
 <meta name="keywords" content="grafana">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Grafana Quick Start">
 <meta property="og:url" content="http://yoursite.com/2021/09/19/monitor-grafana/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
+<meta property="og:description" content="Docker Compose Demo Github repo: https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. Grafana Grafana document: https://grafana.com/docs/grafana/latest/ Grafana">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-06-19T18:49:28.465Z">
+<meta property="og:updated_time" content="2022-06-19T18:49:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Grafana Quick Start">
-<meta name="twitter:description" content="Docker Compose DemoGithub repo:https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. GrafanaGrafana document:https://grafana.com/docs/grafana/latest/ Grafana doc">
+<meta name="twitter:description" content="Docker Compose Demo Github repo: https://github.com/chengdol/InfraTree/tree/master/docker-monitoring The steps are in README. Grafana Grafana document: https://grafana.com/docs/grafana/latest/ Grafana">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.4k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,10 +490,15 @@
       
 
       
-        <h1 id="Docker-Compose-Demo"><a href="#Docker-Compose-Demo" class="headerlink" title="Docker Compose Demo"></a>Docker Compose Demo</h1><p>Github repo:<br><a href="https://github.com/chengdol/InfraTree/tree/master/docker-monitoring" target="_blank" rel="noopener">https://github.com/chengdol/InfraTree/tree/master/docker-monitoring</a></p>
+        <h1>Docker Compose Demo</h1>
+<p>Github repo:
+<a href="https://github.com/chengdol/InfraTree/tree/master/docker-monitoring" target="_blank" rel="noopener">https://github.com/chengdol/InfraTree/tree/master/docker-monitoring</a></p>
 <p>The steps are in README.</p>
-<h1 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h1><p>Grafana document:<br><a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/</a></p>
-<p>Grafana docker image:<br><a href="https://grafana.com/docs/grafana/latest/installation/docker/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/installation/docker/</a></p>
+<h1>Grafana</h1>
+<p>Grafana document:
+<a href="https://grafana.com/docs/grafana/latest/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/</a></p>
+<p>Grafana docker image:
+<a href="https://grafana.com/docs/grafana/latest/installation/docker/" target="_blank" rel="noopener">https://grafana.com/docs/grafana/latest/installation/docker/</a></p>
 <ul>
 <li>Running in container</li>
 <li>Connecting to Prometheus</li>
@@ -521,8 +508,10 @@
 <p>Grafana support querying time-series database like <strong>prometheus</strong> and influxdb, also support <strong>Elasticsearch</strong> logging &amp; analytics database.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## pull image alpine based</span></span><br><span class="line">docker pull grafana/grafana:7.0.0</span><br><span class="line">docker run --detach --name=grafana --publish-all grafana/grafana:7.0.0</span><br></pre></td></tr></table></figure>
 <p>The default login is <code>admin/admin</code>. After login, go to set <code>Data Sources</code>, select prometheus and specify the url, then import data in dashboard.</p>
-<h1 id="Readings"><a href="#Readings" class="headerlink" title="Readings"></a>Readings</h1><ul>
-<li><a href="https://logz.io/blog/grafana-vs-kibana/" target="_blank" rel="noopener">Grafana vs. Kibana: The Key Differences to Know</a><br>The key difference between the two visualization tools stems from their purpose. Grafana is designed for analyzing and visualizing metrics such as system CPU, memory, disk and I/O utilization. Grafana does not allow full-text data querying. Kibana, on the other hand, runs on top of Elasticsearch and is used primarily for analyzing log messages.</li>
+<h1>Readings</h1>
+<ul>
+<li><a href="https://logz.io/blog/grafana-vs-kibana/" target="_blank" rel="noopener">Grafana vs. Kibana: The Key Differences to Know</a>
+The key difference between the two visualization tools stems from their purpose. Grafana is designed for analyzing and visualizing metrics such as system CPU, memory, disk and I/O utilization. Grafana does not allow full-text data querying. Kibana, on the other hand, runs on top of Elasticsearch and is used primarily for analyzing log messages.</li>
 </ul>
 
       
@@ -644,7 +633,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -741,7 +730,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1054,7 +1045,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1090,7 +1083,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Compose-Demo"><span class="nav-number">1.</span> <span class="nav-text">Docker Compose Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Grafana"><span class="nav-number">2.</span> <span class="nav-text">Grafana</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Readings"><span class="nav-number">3.</span> <span class="nav-text">Readings</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Docker Compose Demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Grafana</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Readings</span></a></li></ol></div>
             
 
           </div>
@@ -1116,13 +1109,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="When working with gcloud CLI, sometimes there exits strong needs to filter and format the output for consequent processing. A use case for example here:12345gcloud compute instances \list \--project e">
+  <meta name="description" content="When working with gcloud CLI, sometimes there exits strong needs to filter and format the output for consequent processing. A use case for example here: 12345gcloud compute instances \list \--project">
 <meta name="keywords" content="gcloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google Cloud CLI">
 <meta property="og:url" content="http://yoursite.com/2022/03/31/cloud-gcp-cli/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="When working with gcloud CLI, sometimes there exits strong needs to filter and format the output for consequent processing. A use case for example here:12345gcloud compute instances \list \--project e">
+<meta property="og:description" content="When working with gcloud CLI, sometimes there exits strong needs to filter and format the output for consequent processing. A use case for example here: 12345gcloud compute instances \list \--project">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-04-20T05:39:33.678Z">
+<meta property="og:updated_time" content="2022-04-20T05:39:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google Cloud CLI">
-<meta name="twitter:description" content="When working with gcloud CLI, sometimes there exits strong needs to filter and format the output for consequent processing. A use case for example here:12345gcloud compute instances \list \--project e">
+<meta name="twitter:description" content="When working with gcloud CLI, sometimes there exits strong needs to filter and format the output for consequent processing. A use case for example here: 12345gcloud compute instances \list \--project">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.4k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,11 +491,17 @@
 
       
         <p>When working with gcloud CLI, sometimes there exits strong needs to filter and format the output for consequent processing.</p>
-<p>A use case for example <a href="https://stackoverflow.com/questions/53497318/gce-how-to-find-all-disks-attached-to-an-instance" target="_blank" rel="noopener">here</a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gcloud compute instances \</span><br><span class="line">list \</span><br><span class="line">--project example \</span><br><span class="line">--filter=<span class="string">'name~test*'</span> \</span><br><span class="line">--format=<span class="string">"value(name,zone,disks[].deviceName)"</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Resource-Available-Key"><a href="#Resource-Available-Key" class="headerlink" title="Resource Available Key"></a>Resource Available Key</h3><p>To be used with filter and format, check <code>--format flattened</code> option:<br><a href="https://cloud.google.com/sdk/gcloud/reference/topic/resource-keys" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/resource-keys</a></p>
-<h3 id="Filter-Syntax"><a href="#Filter-Syntax" class="headerlink" title="Filter Syntax"></a>Filter Syntax</h3><p><a href="https://cloud.google.com/sdk/gcloud/reference/topic/filters" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/filters</a></p>
-<h3 id="Format-Syntax"><a href="#Format-Syntax" class="headerlink" title="Format Syntax"></a>Format Syntax</h3><p><a href="https://cloud.google.com/sdk/gcloud/reference/topic/formats" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/formats</a></p>
-<h3 id="Projection-Syntax"><a href="#Projection-Syntax" class="headerlink" title="Projection Syntax:"></a>Projection Syntax:</h3><p><a href="https://cloud.google.com/sdk/gcloud/reference/topic/projections" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/projections</a></p>
+<p>A use case for example <a href="https://stackoverflow.com/questions/53497318/gce-how-to-find-all-disks-attached-to-an-instance" target="_blank" rel="noopener">here</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gcloud compute instances \</span><br><span class="line">list \</span><br><span class="line">--project example \</span><br><span class="line">--filter=<span class="string">'name~test*'</span> \</span><br><span class="line">--format=<span class="string">"value(name,zone,disks[].deviceName)"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Resource-Available-Key">Resource Available Key</h3>
+<p>To be used with filter and format, check <code>--format flattened</code> option:
+<a href="https://cloud.google.com/sdk/gcloud/reference/topic/resource-keys" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/resource-keys</a></p>
+<h3 id="Filter-Syntax">Filter Syntax</h3>
+<p><a href="https://cloud.google.com/sdk/gcloud/reference/topic/filters" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/filters</a></p>
+<h3 id="Format-Syntax">Format Syntax</h3>
+<p><a href="https://cloud.google.com/sdk/gcloud/reference/topic/formats" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/formats</a></p>
+<h3 id="Projection-Syntax">Projection Syntax:</h3>
+<p><a href="https://cloud.google.com/sdk/gcloud/reference/topic/projections" target="_blank" rel="noopener">https://cloud.google.com/sdk/gcloud/reference/topic/projections</a></p>
 <p>They are all from <a href="https://cloud.google.com/sdk/gcloud/reference/topic" target="_blank" rel="noopener">gcloud topic group</a>, from the leftside panel there are other gcloud command reference.</p>
 
       
@@ -635,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -732,7 +720,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1045,7 +1035,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1107,13 +1099,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

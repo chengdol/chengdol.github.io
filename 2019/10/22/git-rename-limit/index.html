@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master:123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribute">
+  <meta name="description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master: 123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribut">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Rename Limit">
 <meta property="og:url" content="http://yoursite.com/2019/10/22/git-rename-limit/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master:123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribute">
+<meta property="og:description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master: 123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribut">
 <meta property="og:locale" content="中文|English">
 <meta property="og:updated_time" content="2019-10-28T18:42:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Rename Limit">
-<meta name="twitter:description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master:123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribute">
+<meta name="twitter:description" content="I encounter a git issue when I run these commands, they are used to sync up with origin/master: 123456789git_clean() &amp;#123;  git reset --hard HEAD  sed -i -e &apos;s/^\(\*[ ][ ]*text.*\)/#\1/&apos; .gitattribut">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3.3k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,11 +490,14 @@
       
 
       
-        <p>I encounter a git issue when I run these commands, they are used to sync up with origin/master:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">git_clean</span></span>() &#123;</span><br><span class="line">  git reset --hard HEAD</span><br><span class="line">  sed -i -e <span class="string">'s/^\(\*[ ][ ]*text.*\)/#\1/'</span> .gitattributes</span><br><span class="line">  git status</span><br><span class="line">  git clean -fdx</span><br><span class="line">  git checkout -- .</span><br><span class="line">  sed -i -e <span class="string">'s/^#\(\*[ ][ ]*text.*\)/\1/'</span> .gitattributes</span><br><span class="line">  git status</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>I get errors:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">warning: inexact rename detection was skipped due to too many files.</span><br><span class="line">warning: you may want to set your merge.renamelimit variable to at least 12454 and retry the command.</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure></p>
-<p>Try to set <code>rename.limit</code> to larger value and run commands again but that does not help, <a href="https://stackoverflow.com/questions/4722423/how-to-merge-two-branches-with-different-directory-hierarchies-in-git" target="_blank" rel="noopener">https://stackoverflow.com/questions/4722423/how-to-merge-two-branches-with-different-directory-hierarchies-in-git</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config merge.renameLimit 999999</span><br><span class="line">git merge --abort</span><br><span class="line">git config --unset merge.renameLimit</span><br></pre></td></tr></table></figure></p>
-<p>So far these commands help:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard origin/master</span><br><span class="line">git fetch -p</span><br><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line"><span class="comment">## if failed again, run</span></span><br><span class="line">git merge --abort</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
-
+        <p>I encounter a git issue when I run these commands, they are used to sync up with origin/master:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">git_clean</span></span>() &#123;</span><br><span class="line">  git reset --hard HEAD</span><br><span class="line">  sed -i -e <span class="string">'s/^\(\*[ ][ ]*text.*\)/#\1/'</span> .gitattributes</span><br><span class="line">  git status</span><br><span class="line">  git clean -fdx</span><br><span class="line">  git checkout -- .</span><br><span class="line">  sed -i -e <span class="string">'s/^#\(\*[ ][ ]*text.*\)/\1/'</span> .gitattributes</span><br><span class="line">  git status</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>I get errors:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">warning: inexact rename detection was skipped due to too many files.</span><br><span class="line">warning: you may want to set your merge.renamelimit variable to at least 12454 and retry the command.</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+<p>Try to set <code>rename.limit</code> to larger value and run commands again but that does not help, <a href="https://stackoverflow.com/questions/4722423/how-to-merge-two-branches-with-different-directory-hierarchies-in-git" target="_blank" rel="noopener">https://stackoverflow.com/questions/4722423/how-to-merge-two-branches-with-different-directory-hierarchies-in-git</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config merge.renameLimit 999999</span><br><span class="line">git merge --abort</span><br><span class="line">git config --unset merge.renameLimit</span><br></pre></td></tr></table></figure>
+<p>So far these commands help:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard origin/master</span><br><span class="line">git fetch -p</span><br><span class="line">git pull origin master</span><br><span class="line"></span><br><span class="line"><span class="comment">## if failed again, run</span></span><br><span class="line">git merge --abort</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -623,7 +608,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -720,7 +705,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1033,7 +1020,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1078,13 +1067,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

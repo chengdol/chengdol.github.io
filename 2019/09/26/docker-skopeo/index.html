@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">10k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -517,32 +499,48 @@
 <blockquote>
 <p>Skopeo can do paralelly copy, you can run several skopeo processes in background then wait.</p>
 </blockquote>
-<h2 id="Docker-Installed"><a href="#Docker-Installed" class="headerlink" title="Docker Installed"></a>Docker Installed</h2><p>In docker environmet, skopeo will check <code>$HOME/.docker/config.json</code> file for authentication (created by docker login command). If the auth file is there, you are good and you can directly copy image tar (or gzip tar) to docker registry and copy image directly from docker registry to local docker daemon for example (can use docker hub to do test):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy \</span><br><span class="line">       docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line"></span><br><span class="line">skopeo copy \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag \</span><br><span class="line">       docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<h2 id="Docker-Installed">Docker Installed</h2>
+<p>In docker environmet, skopeo will check <code>$HOME/.docker/config.json</code> file for authentication (created by docker login command). If the auth file is there, you are good and you can directly copy image tar (or gzip tar) to docker registry and copy image directly from docker registry to local docker daemon for example (can use docker hub to do test):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy \</span><br><span class="line">       docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line"></span><br><span class="line">skopeo copy \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag \</span><br><span class="line">       docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure>
 <p>This is extremely efficient compare to old load/tag/push method. Many other benefits like no docker daemon needed, rootless please see doc.</p>
-<p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
-<p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<p>Inspect docker image in registry:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure>
+<p>Delete image in registry</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>You must enable deletion in docker registry <a href="https://docs.docker.com/registry/configuration/#override-specific-configuration-options" target="_blank" rel="noopener">configuration</a>: </p>
+<p>You must enable deletion in docker registry <a href="https://docs.docker.com/registry/configuration/#override-specific-configuration-options" target="_blank" rel="noopener">configuration</a>:</p>
 </blockquote>
-<h2 id="No-Docker-Installed"><a href="#No-Docker-Installed" class="headerlink" title="No Docker Installed"></a>No Docker Installed</h2><p>If there is no docker daemon, skopeo will still work, but you need to explicitly give the auth creds and ssl/tls certificates path of the target registry, for example, the destination registry login user name and password are both <code>demo</code>, and the certificates path for ssl/tls is <code>/root/certs</code> (<strong>must</strong> include *.key, *.crt and *.cert, the *.crt and *.cert could be the same content if it’s self-signed).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy \</span><br><span class="line">       --dest-creds demo:demo \</span><br><span class="line">       --dest-cert-dir /root/certs \</span><br><span class="line">       docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line"></span><br><span class="line">skopeo copy \</span><br><span class="line">       --src-creds demo:demo \</span><br><span class="line">       --src-cert-dir /root/certs \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag \</span><br><span class="line">       docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
-<p>Inspect docker image in registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect \</span><br><span class="line">       --creds demo:demo \</span><br><span class="line">       --cert-dir /root/certs \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
-<p>Delete image in registry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete \</span><br><span class="line">       --creds demo:demo \</span><br><span class="line">       --cert-dir /root/certs \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure></p>
+<h2 id="No-Docker-Installed">No Docker Installed</h2>
+<p>If there is no docker daemon, skopeo will still work, but you need to explicitly give the auth creds and ssl/tls certificates path of the target registry, for example, the destination registry login user name and password are both <code>demo</code>, and the certificates path for ssl/tls is <code>/root/certs</code> (<strong>must</strong> include *.key, *.crt and *.cert, the *.crt and *.cert could be the same content if it’s self-signed).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy \</span><br><span class="line">       --dest-creds demo:demo \</span><br><span class="line">       --dest-cert-dir /root/certs \</span><br><span class="line">       docker-archive:&lt;absolute or relative path&gt;/&lt;tar name&gt;.tar.gz \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br><span class="line"></span><br><span class="line">skopeo copy \</span><br><span class="line">       --src-creds demo:demo \</span><br><span class="line">       --src-cert-dir /root/certs \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag \</span><br><span class="line">       docker-daemon:&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure>
+<p>Inspect docker image in registry:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">skopeo inspect \</span><br><span class="line">       --creds demo:demo \</span><br><span class="line">       --cert-dir /root/certs \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure>
+<p>Delete image in registry</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">skopeo delete \</span><br><span class="line">       --creds demo:demo \</span><br><span class="line">       --cert-dir /root/certs \</span><br><span class="line">       docker://&lt;registry&gt;[:5000]/&lt;image name&gt;:tag</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>You must enable deletion in docker registry <a href="https://docs.docker.com/registry/configuration/#override-specific-configuration-options" target="_blank" rel="noopener">configuration</a>: </p>
+<p>You must enable deletion in docker registry <a href="https://docs.docker.com/registry/configuration/#override-specific-configuration-options" target="_blank" rel="noopener">configuration</a>:</p>
 </blockquote>
-<h2 id="Other-Use-Case"><a href="#Other-Use-Case" class="headerlink" title="Other Use Case"></a>Other Use Case</h2><p>One important use case is we pre-load image to target host machine because we pre-assign some application runs on some dedicated nodes. Pre-load will save much time from pull if the image is big, the application pod will up and run instantly.</p>
+<h2 id="Other-Use-Case">Other Use Case</h2>
+<p>One important use case is we pre-load image to target host machine because we pre-assign some application runs on some dedicated nodes. Pre-load will save much time from pull if the image is big, the application pod will up and run instantly.</p>
 <p>So, how to copy image tarball from local to remote machine docker daemon? Yes there are <code>--src-daemon-host</code> and <code>--dest-daemon-host</code> options, but how?</p>
-<p>Refer <a href="https://docs.docker.com/install/linux/linux-postinstall/#configure-where-the-docker-daemon-listens-for-connections" target="_blank" rel="noopener">document</a> from docker:<br>By default, the Docker daemon listens for connections on a <code>UNIX socket</code> to accept requests from local clients. It is possible to allow Docker to accept requests from remote hosts by configuring it to <code>listen</code> on an IP address and port as well as the UNIX socket.</p>
-<p>So, let first open the port in target host:<br>It is conventional to use port <code>2375</code> for un-encrypted, and port <code>2376</code> for encrypted communication with the daemon.</p>
+<p>Refer <a href="https://docs.docker.com/install/linux/linux-postinstall/#configure-where-the-docker-daemon-listens-for-connections" target="_blank" rel="noopener">document</a> from docker:
+By default, the Docker daemon listens for connections on a <code>UNIX socket</code> to accept requests from local clients. It is possible to allow Docker to accept requests from remote hosts by configuring it to <code>listen</code> on an IP address and port as well as the UNIX socket.</p>
+<p>So, let first open the port in target host:
+It is conventional to use port <code>2375</code> for un-encrypted, and port <code>2376</code> for encrypted communication with the daemon.</p>
 <blockquote>
 <p>注意，这里我只考虑了un-encrypted，因为设置encrypted connection可能会影响kubelet对docker的操控，我在使用完后关闭了这一端口，并且如果集群有单独的网关且访问worker nodes的IP是内部的，影响也不大。</p>
 </blockquote>
-<p>Here we can configure remote access with <strong>systemd unit file</strong> or with <strong>daemon.json</strong>, I prefer the second one, because after systemd unit file update, I need to reload then restart docker:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
-<p>Using daemon json file only need to restart, just add this line to it:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"hosts"</span>: [<span class="string">"unix:///var/run/docker.sock"</span>, <span class="string">"tcp://0.0.0.0:2375"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>You can listen on port <code>2375</code> on all network interfaces(eg: <code>0.0.0.0</code>), or on a particular network interface using its IP address(eg: <code>172.192.10.1</code>). </p>
-<p>After restart docker service, check the port status:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lntp | grep 2375</span><br></pre></td></tr></table></figure></p>
-<p>Now we can execute copy:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy \</span><br><span class="line">       --dest-daemon-host http://&lt;target machine hostname or ip&gt;:2375 \</span><br><span class="line">       docker-archive:&lt;path&gt;/&lt;image tarball name&gt;.tar.gz \</span><br><span class="line">       docker-daemon:&lt;image name&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Check these articles:<br><a href="https://www.redhat.com/en/blog/skopeo-copy-rescue" target="_blank" rel="noopener">Skopeo Copy to the Rescue</a></p>
+<p>Here we can configure remote access with <strong>systemd unit file</strong> or with <strong>daemon.json</strong>, I prefer the second one, because after systemd unit file update, I need to reload then restart docker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>Using daemon json file only need to restart, just add this line to it:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"hosts"</span>: [<span class="string">"unix:///var/run/docker.sock"</span>, <span class="string">"tcp://0.0.0.0:2375"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can listen on port <code>2375</code> on all network interfaces(eg: <code>0.0.0.0</code>), or on a particular network interface using its IP address(eg: <code>172.192.10.1</code>).</p>
+<p>After restart docker service, check the port status:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lntp | grep 2375</span><br></pre></td></tr></table></figure>
+<p>Now we can execute copy:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">skopeo copy \</span><br><span class="line">       --dest-daemon-host http://&lt;target machine hostname or ip&gt;:2375 \</span><br><span class="line">       docker-archive:&lt;path&gt;/&lt;image tarball name&gt;.tar.gz \</span><br><span class="line">       docker-daemon:&lt;image name&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
+<p>Check these articles:
+<a href="https://www.redhat.com/en/blog/skopeo-copy-rescue" target="_blank" rel="noopener">Skopeo Copy to the Rescue</a></p>
 
       
     </div>
@@ -665,7 +663,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -762,7 +760,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1075,7 +1075,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1137,13 +1139,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

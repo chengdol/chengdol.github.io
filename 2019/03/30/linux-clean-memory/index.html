@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When deploying DS, I find the compute pod that assigned to the second node is hanging in CreateContainer status. I SSH into that node and find node memory is occupied heavily by some other processes s">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-02-13T22:51:37.953Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Clean Memory Cache">
 <meta name="twitter:description" content="When deploying DS, I find the compute pod that assigned to the second node is hanging in CreateContainer status. I SSH into that node and find node memory is occupied heavily by some other processes s">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">7.9k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -515,29 +497,45 @@
 <li><a href="https://unix.stackexchange.com/questions/2658/why-use-swap-when-there-is-more-than-enough-free-space-in-ram" target="_blank" rel="noopener">why swapping when there is more than enough free memory</a></li>
 <li><a href="https://unix.stackexchange.com/questions/415814/memory-runs-full-over-time-high-buffer-cache-usage-low-available-memory" target="_blank" rel="noopener">memory runs full over time</a></li>
 </ul>
-<p>The memory usage on bad node:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        <span class="number">8168772</span>      <span class="number">105152</span>      <span class="number">295732</span>     <span class="number">7491216</span>     <span class="number">7767888</span>      <span class="number">273448</span></span><br><span class="line">Swap:             <span class="number">0</span>           <span class="number">0</span>           <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<p>See the <code>available</code> size is too low, Comparing with the good node:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        <span class="number">8168772</span>      <span class="number">123504</span>     <span class="number">7041388</span>      <span class="number">270836</span>     <span class="number">1003880</span>     <span class="number">7424612</span></span><br><span class="line">Swap:             <span class="number">0</span>           <span class="number">0</span>           <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>The memory usage on bad node:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        <span class="number">8168772</span>      <span class="number">105152</span>      <span class="number">295732</span>     <span class="number">7491216</span>     <span class="number">7767888</span>      <span class="number">273448</span></span><br><span class="line">Swap:             <span class="number">0</span>           <span class="number">0</span>           <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>See the <code>available</code> size is too low, Comparing with the good node:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        <span class="number">8168772</span>      <span class="number">123504</span>     <span class="number">7041388</span>      <span class="number">270836</span>     <span class="number">1003880</span>     <span class="number">7424612</span></span><br><span class="line">Swap:             <span class="number">0</span>           <span class="number">0</span>           <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>You see the shared(Memory used mostly by tmpfs) and buff/cache parts are huge on bad node, I need to flush and clean it. (当时还未理解这些column的具体含义, 特别是shared, buff/cache, available). 还应该用memory leak相关分析工具去查看哪个调用栈导致了内存紧张 or memleak).</p>
-<p>马后炮, 应该去调查为什么这个node shared, buff/cache size 异常的高，以及为什么[kswapd]操作失败，原因可能是tmpfs(shared)仍然在被使用，需要调查. 后面介绍了如何释放cache by writing to <code>drop_caches</code>，但是我记得当时作用不大，this second comment may help:<br><a href="https://serverfault.com/questions/968020/why-cant-i-release-memory-cache-by-proc-sys-vm-drop-caches" target="_blank" rel="noopener">Why can’t I release memory cache by /proc/sys/vm/drop_caches</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -t: type</span></span><br><span class="line">df -t tmpfs --total -h</span><br><span class="line"><span class="comment"># check one of the tmpfs mount status</span></span><br><span class="line">lsof -nP +L1 /dev/shm | grep DEL</span><br></pre></td></tr></table></figure></p>
-<p>The general solution to release cache intentionally, this <a href="https://www.blackmoreops.com/2014/10/28/delete-clean-cache-to-free-up-memory-on-your-slow-linux-server-vps/" target="_blank" rel="noopener">post</a> is good to reference.<br>If you have to clear the disk cache, this command is safest in enterprise and production, will clear the <code>PageCache</code> only:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># modify kernel behavior by proc file</span></span><br><span class="line">sync; <span class="built_in">echo</span> 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>马后炮, 应该去调查为什么这个node shared, buff/cache size 异常的高，以及为什么[kswapd]操作失败，原因可能是tmpfs(shared)仍然在被使用，需要调查. 后面介绍了如何释放cache by writing to <code>drop_caches</code>，但是我记得当时作用不大，this second comment may help:
+<a href="https://serverfault.com/questions/968020/why-cant-i-release-memory-cache-by-proc-sys-vm-drop-caches" target="_blank" rel="noopener">Why can’t I release memory cache by /proc/sys/vm/drop_caches</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -t: type</span></span><br><span class="line">df -t tmpfs --total -h</span><br><span class="line"><span class="comment"># check one of the tmpfs mount status</span></span><br><span class="line">lsof -nP +L1 /dev/shm | grep DEL</span><br></pre></td></tr></table></figure>
+<p>The general solution to release cache intentionally, this <a href="https://www.blackmoreops.com/2014/10/28/delete-clean-cache-to-free-up-memory-on-your-slow-linux-server-vps/" target="_blank" rel="noopener">post</a> is good to reference.
+If you have to clear the disk cache, this command is safest in enterprise and production, will clear the <code>PageCache</code> only:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># modify kernel behavior by proc file</span></span><br><span class="line">sync; <span class="built_in">echo</span> 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>What is <code>sync</code> command: flush any data buffered in memory out to disk.</p>
 </blockquote>
-<p>More aggressively, Clear <code>dentries</code> and <code>inodes</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; <span class="built_in">echo</span> 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
-<p>Clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清理文件页、目录项、Inodes等各种缓存</span></span><br><span class="line"><span class="comment"># do all above</span></span><br><span class="line">sync; <span class="built_in">echo</span> 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure></p>
+<p>More aggressively, Clear <code>dentries</code> and <code>inodes</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; <span class="built_in">echo</span> 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+<p>Clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清理文件页、目录项、Inodes等各种缓存</span></span><br><span class="line"><span class="comment"># do all above</span></span><br><span class="line">sync; <span class="built_in">echo</span> 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
 <p>It is not recommended to use this in production until you know what you are doing, as it will clear <code>PageCache</code>, <code>dentries</code> and <code>inodes</code>. Because just after your run drop_caches, your server will get busy re-populating memory with <code>inodes</code> and <code>dentries</code>, original Kernel documentation recommends not to run this command outside of a testing or debugging environment. But what if you are a home user or your server is getting too busy and almost filling up it’s memory. You need to be able trade the benefits with the risk.</p>
 <ul>
-<li><p>what is <code>dirty cache</code>?<br>Dirty Cache refers to data which has <code>not</code> yet been committed to the database (or disk), and is currently held in computer memory. In short, the new/old data is available in Memory and it is different to what you have in database/disk.</p>
+<li>
+<p>what is <code>dirty cache</code>?
+Dirty Cache refers to data which has <code>not</code> yet been committed to the database (or disk), and is currently held in computer memory. In short, the new/old data is available in Memory and it is different to what you have in database/disk.</p>
 </li>
-<li><p>what is <code>clean cache</code>?<br>Clean cache refers to data which has been committed to database (or disk) and is currently held in computer memory. This is what we desire where everything is in sync.</p>
+<li>
+<p>what is <code>clean cache</code>?
+Clean cache refers to data which has been committed to database (or disk) and is currently held in computer memory. This is what we desire where everything is in sync.</p>
 </li>
-<li><p>what is <code>dentries</code> and <code>inodes</code>?<br>A filesystem is represented in memory using dentries and inodes.  Inodes are the objects that represent the underlying files (and also directories). A dentry is an object with a string name (d_name), a pointer to an inode (d_inode), and a pointer to the parent dentry (d_parent)</p>
+<li>
+<p>what is <code>dentries</code> and <code>inodes</code>?
+A filesystem is represented in memory using dentries and inodes.  Inodes are the objects that represent the underlying files (and also directories). A dentry is an object with a string name (d_name), a pointer to an inode (d_inode), and a pointer to the parent dentry (d_parent)</p>
 </li>
-<li><p>what is <code>drop_caches</code>?<br>Writing to this will cause the kernel to drop <code>clean caches</code>, as well as reclaimable slab objects like dentries and inodes.  Once dropped, their memory becomes free. It will not kill any process.</p>
+<li>
+<p>what is <code>drop_caches</code>?
+Writing to this will cause the kernel to drop <code>clean caches</code>, as well as reclaimable slab objects like dentries and inodes.  Once dropped, their memory becomes free. It will not kill any process.</p>
 </li>
 </ul>
-<p>BTW, if you want to clean swap space (actually here we don’t have swap enabled):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure></p>
-
+<p>BTW, if you want to clean swap space (actually here we don’t have swap enabled):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -650,7 +648,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -747,7 +745,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1060,7 +1060,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1105,13 +1107,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

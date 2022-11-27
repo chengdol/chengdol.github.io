@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.7k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,13 +491,20 @@
 
       
         <p>I was previously working on a separate branch <code>branch-tmp</code>, now I want to merge some files in that branch into my main personal branch <code>chengdol_master</code>, and finally create a pull request to merge int <code>master</code>.</p>
-<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p><a href="https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" target="_blank" rel="noopener">Git tip: How to “merge” specific files from another branch</a><br><a href="https://stackoverflow.com/questions/18115411/how-to-merge-specific-files-from-git-branches" target="_blank" rel="noopener">Interactive merge</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><blockquote>
-<p>Notice that in my case, the target files in <code>branch-tmp</code> are completely applicable for <code>chengdol_master</code>, so I just want to overwrite corresponding files in <code>chengdol_master</code>. If we need to pick some changes and leave others in the file, do an <code>interactive merge</code>, run this from <code>chengdol_master</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --patch brach-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Resource">Resource</h2>
+<p><a href="https://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" target="_blank" rel="noopener">Git tip: How to “merge” specific files from another branch</a>
+<a href="https://stackoverflow.com/questions/18115411/how-to-merge-specific-files-from-git-branches" target="_blank" rel="noopener">Interactive merge</a></p>
+<h2 id="Solution">Solution</h2>
+<blockquote>
+<p>Notice that in my case, the target files in <code>branch-tmp</code> are completely applicable for <code>chengdol_master</code>, so I just want to overwrite corresponding files in <code>chengdol_master</code>. If we need to pick some changes and leave others in the file, do an <code>interactive merge</code>, run this from <code>chengdol_master</code>:</p>
 </blockquote>
-<p>First check if you have <code>origin/branch-tmp</code> locally<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | grep branch-tmp</span><br></pre></td></tr></table></figure></p>
-<p>If not, you need to fetch it alone or fetch all origin branches:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin branch-tmp</span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure></p>
-<p>Then go to your target branch <code>chengdol_master</code>, use <code>git checkout</code> command to do the job:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout origin/branch-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout --patch brach-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure>
+<p>First check if you have <code>origin/branch-tmp</code> locally</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r | grep branch-tmp</span><br></pre></td></tr></table></figure>
+<p>If not, you need to fetch it alone or fetch all origin branches:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin branch-tmp</span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+<p>Then go to your target branch <code>chengdol_master</code>, use <code>git checkout</code> command to do the job:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout origin/branch-tmp &lt;relative path to target file&gt;</span><br></pre></td></tr></table></figure>
 <p>then the merged files from <code>branch-tmp</code> are in staging phase, you can directly commit or unstage them in the <code>chengdol_master</code> branch, then push and handle the pull request.</p>
 
       
@@ -637,7 +626,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -734,7 +723,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1047,7 +1038,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1109,13 +1102,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

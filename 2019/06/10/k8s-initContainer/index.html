@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
+  <meta name="description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example: 12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
 <meta name="keywords" content="kubernetes,initContainer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Init Container">
 <meta property="og:url" content="http://yoursite.com/2019/06/10/k8s-initContainer/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
+<meta property="og:description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example: 12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
 <meta property="og:locale" content="中文|English">
 <meta property="og:updated_time" content="2019-08-27T07:19:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Init Container">
-<meta name="twitter:description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example:12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
+<meta name="twitter:description" content="Kubernetes version 1.13.2 In ICP4D non-root development, I see in each tier the pod contains init container, for example: 12345678910111213141516171819202122...    hostname: is-xmetadocker    hostIPC:">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">6.8k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,8 +491,10 @@
 
       
         <p><strong>Kubernetes version 1.13.2</strong></p>
-<p>In ICP4D non-root development, I see in each tier the pod contains init container, for example:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">is-xmetadocker</span></span><br><span class="line"><span class="attr">    hostIPC:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    initContainers:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">load-data</span></span><br><span class="line"><span class="attr">      image:</span> <span class="string">"mycluster.icp:8500/zen/is-db2xmeta-image:11.7.1-1.0"</span></span><br><span class="line"><span class="attr">      imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line"><span class="attr">      securityContext:</span></span><br><span class="line"><span class="attr">        capabilities:</span></span><br><span class="line"><span class="attr">         add:</span> <span class="string">["SETFCAP",</span> <span class="string">"SYS_NICE"</span><span class="string">,</span> <span class="string">"IPC_OWNER"</span><span class="string">]</span></span><br><span class="line"><span class="attr">      command:</span> <span class="string">['/bin/bash',</span> <span class="string">'-c'</span><span class="string">,</span> <span class="string">'--'</span><span class="string">]</span></span><br><span class="line"><span class="attr">      args:</span> <span class="string">[</span> <span class="string">" set -x;</span></span><br><span class="line"><span class="string">              ...</span></span><br><span class="line"><span class="string">              "</span></span><br><span class="line">             <span class="string">]</span></span><br><span class="line"><span class="attr">      env:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">DEDICATED_REPOS_VOLPATH</span></span><br><span class="line"><span class="attr">        value:</span> <span class="string">/mnt/dedicated_vol/Repository</span></span><br><span class="line"><span class="attr">      volumeMounts:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">xmeta-pv-volume</span></span><br><span class="line"><span class="attr">        mountPath:</span> <span class="string">"/mnt/dedicated_vol/Repository"</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="Understanding"><a href="#Understanding" class="headerlink" title="Understanding"></a>Understanding</h2><p>What is this and what is it for? Let’s take a look. First reference to <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/" target="_blank" rel="noopener">official documentation</a>.</p>
+<p>In ICP4D non-root development, I see in each tier the pod contains init container, for example:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">is-xmetadocker</span></span><br><span class="line"><span class="attr">    hostIPC:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    initContainers:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">load-data</span></span><br><span class="line"><span class="attr">      image:</span> <span class="string">"mycluster.icp:8500/zen/is-db2xmeta-image:11.7.1-1.0"</span></span><br><span class="line"><span class="attr">      imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line"><span class="attr">      securityContext:</span></span><br><span class="line"><span class="attr">        capabilities:</span></span><br><span class="line"><span class="attr">         add:</span> <span class="string">["SETFCAP",</span> <span class="string">"SYS_NICE"</span><span class="string">,</span> <span class="string">"IPC_OWNER"</span><span class="string">]</span></span><br><span class="line"><span class="attr">      command:</span> <span class="string">['/bin/bash',</span> <span class="string">'-c'</span><span class="string">,</span> <span class="string">'--'</span><span class="string">]</span></span><br><span class="line"><span class="attr">      args:</span> <span class="string">[</span> <span class="string">" set -x;</span></span><br><span class="line"><span class="string">              ...</span></span><br><span class="line"><span class="string">              "</span></span><br><span class="line">             <span class="string">]</span></span><br><span class="line"><span class="attr">      env:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">DEDICATED_REPOS_VOLPATH</span></span><br><span class="line"><span class="attr">        value:</span> <span class="string">/mnt/dedicated_vol/Repository</span></span><br><span class="line"><span class="attr">      volumeMounts:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">xmeta-pv-volume</span></span><br><span class="line"><span class="attr">        mountPath:</span> <span class="string">"/mnt/dedicated_vol/Repository"</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
+<h2 id="Understanding">Understanding</h2>
+<p>What is this and what is it for? Let’s take a look. First reference to <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/" target="_blank" rel="noopener">official documentation</a>.</p>
 <p>Init Containers, which are <strong>specialized</strong> Containers that run <strong>before</strong> app Containers and can <strong>contain</strong> utilities or setup scripts not present in an app image.</p>
 <p>A Pod can have multiple Containers running apps within it, but it can also have one or more Init Containers, which are run before the app Containers are started.</p>
 <p>Init Containers are exactly like regular Containers, except:</p>
@@ -519,9 +503,11 @@
 <li>Each one must complete successfully before the next one is started.</li>
 </ul>
 <p>If an Init Container fails for a Pod, Kubernetes restarts the Pod repeatedly until the Init Container succeeds. However, if the Pod has a restartPolicy of Never, it is not restarted.</p>
-<h3 id="Differences-from-Regular-Containers"><a href="#Differences-from-Regular-Containers" class="headerlink" title="Differences from Regular Containers"></a>Differences from Regular Containers</h3><p>Init Containers support all the fields and features of app Containers, including resource limits, volumes, and security settings. However, the resource requests and limits for an Init Container are handled slightly differently.</p>
+<h3 id="Differences-from-Regular-Containers">Differences from Regular Containers</h3>
+<p>Init Containers support all the fields and features of app Containers, including resource limits, volumes, and security settings. However, the resource requests and limits for an Init Container are handled slightly differently.</p>
 <p>Init Containers do not support readiness probes because they must run to completion before the Pod can be ready.</p>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Init Containers have separate images from app Containers (actually they can have the same), they have some advantages for start-up related code:</p>
+<h2 id="Usage">Usage</h2>
+<p>Init Containers have separate images from app Containers (actually they can have the same), they have some advantages for start-up related code:</p>
 <ul>
 <li>They can contain and run utilities that are not desirable to include in the app Container image for security reasons.</li>
 <li>They can contain utilities or custom code for setup that is not present in an app image. For example, there is no need to make an image FROM another image just to use a tool like sed, awk, python, or dig during setup.</li>
@@ -529,9 +515,10 @@
 <li>They use Linux namespaces so that they have different filesystem views from app Containers. Consequently, they can be given access to Secrets that app Containers are not able to access.</li>
 <li>They run to completion before any app Containers start, whereas app Containers run in parallel, so Init Containers provide an easy way to block or delay the startup of app Containers until some set of preconditions are met.</li>
 </ul>
-<p>You can check the logs of init container:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl logs &lt;pod name&gt; -c &lt;init container&gt; -n test-1</span><br></pre></td></tr></table></figure></p>
+<p>You can check the logs of init container:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl logs &lt;pod name&gt; -c &lt;init container&gt; -n test-1</span><br></pre></td></tr></table></figure>
 <p>During the startup of a Pod, the Init Containers are started <strong>in order</strong>, after the network and volumes are initialized. Each Container must exit successfully before the next is started.</p>
-<p>If the Pod is restarted, all Init Containers must execute again. Init Container code should be idempotent. </p>
+<p>If the Pod is restarted, all Init Containers must execute again. Init Container code should be idempotent.</p>
 
       
     </div>
@@ -654,7 +641,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -751,7 +738,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1064,7 +1053,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1126,13 +1117,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

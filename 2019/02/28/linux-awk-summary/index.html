@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Designed for data extraction and reporting. awk is its own programming language itself and contains a lot of really good tools, enables a programmer to write tiny but effective programs in the form of">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-12-10T23:55:25.361Z">
+<meta property="og:updated_time" content="2020-12-10T23:55:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Awk Command Daily Work Summary">
 <meta name="twitter:description" content="Designed for data extraction and reporting. awk is its own programming language itself and contains a lot of really good tools, enables a programmer to write tiny but effective programs in the form of">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">10k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,29 +491,63 @@
 
       
         <p>Designed for data extraction and reporting.</p>
-<p><code>awk</code> is its own programming language itself and contains a lot of really good tools, enables a programmer to write tiny but effective programs in the form of statements that define <strong>text patterns</strong> that are to be searched for in <strong>each line</strong> of a document and the action that is to be taken when a <strong>match</strong> is found within a line. </p>
-<p><a href="https://www.geeksforgeeks.org/awk-command-unixlinux-examples/" target="_blank" rel="noopener">Reference from GeeksforGeeks</a><br><a href="https://ferd.ca/awk-in-20-minutes.html" target="_blank" rel="noopener">awk in 20 mins</a><br>WHAT CAN WE DO WITH AWK ?</p>
+<p><code>awk</code> is its own programming language itself and contains a lot of really good tools, enables a programmer to write tiny but effective programs in the form of statements that define <strong>text patterns</strong> that are to be searched for in <strong>each line</strong> of a document and the action that is to be taken when a <strong>match</strong> is found within a line.</p>
+<p><a href="https://www.geeksforgeeks.org/awk-command-unixlinux-examples/" target="_blank" rel="noopener">Reference from GeeksforGeeks</a>
+<a href="https://ferd.ca/awk-in-20-minutes.html" target="_blank" rel="noopener">awk in 20 mins</a>
+WHAT CAN WE DO WITH AWK ?</p>
 <ol>
-<li><p>AWK Operations:<br>(a) Scans a file line by line<br>(b) Splits each input line into fields<br>(c) Compares input line/fields to pattern<br>(d) Performs action(s) on matched lines</p>
+<li>
+<p>AWK Operations:
+(a) Scans a file line by line
+(b) Splits each input line into fields
+© Compares input line/fields to pattern
+(d) Performs action(s) on matched lines</p>
 </li>
-<li><p>Useful For:<br>(a) Transform data files<br>(b) Produce formatted reports</p>
+<li>
+<p>Useful For:
+(a) Transform data files
+(b) Produce formatted reports</p>
 </li>
-<li><p>Programming Constructs:<br>(a) Format output lines<br>(b) Arithmetic and string operations<br>(c) Conditionals and loops</p>
+<li>
+<p>Programming Constructs:
+(a) Format output lines
+(b) Arithmetic and string operations
+© Conditionals and loops</p>
 </li>
 </ol>
-<p>日期记录的部分主要平时遇到的零散总结:<br>################################################################<br>#  &emsp; Date &emsp; &emsp; &emsp; &emsp; &emsp; Description<br>#  &emsp; 09/11/2019 &emsp; &emsp; skip first line<br>#  &emsp; 02/28/2019 &emsp; &emsp; print last column<br>#  &emsp; 02/26/2019 &emsp; &emsp; awk remote execution<br>#<br>################################################################</p>
-<h3 id="02-26-2019"><a href="#02-26-2019" class="headerlink" title="02/26/2019"></a>02/26/2019</h3><p>When use <code>awk</code> in script, may suffer shell unexpected expanding:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o StrictHostKeyChecking=no sshrm1 <span class="string">"ifconfig eth0 | grep \"inet\" | awk '&#123;print <span class="variable">$2</span>&#125;'"</span></span><br></pre></td></tr></table></figure></p>
-<p>Above will not get right data, instead preceding <code>\</code> before <code>$</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o StrictHostKeyChecking=no sshrm1 <span class="string">"ifconfig eth0 | grep \"inet\" | awk '&#123;print \$2&#125;'"</span></span><br></pre></td></tr></table></figure></p>
+<p>日期记录的部分主要平时遇到的零散总结:
+################################################################
+#    Date           Description
+#    09/11/2019     skip first line
+#    02/28/2019     print last column
+#    02/26/2019     awk remote execution
+#
+################################################################</p>
+<h3 id="02-26-2019">02/26/2019</h3>
+<p>When use <code>awk</code> in script, may suffer shell unexpected expanding:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o StrictHostKeyChecking=no sshrm1 <span class="string">"ifconfig eth0 | grep \"inet\" | awk '&#123;print <span class="variable">$2</span>&#125;'"</span></span><br></pre></td></tr></table></figure>
+<p>Above will not get right data, instead preceding <code>\</code> before <code>$</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o StrictHostKeyChecking=no sshrm1 <span class="string">"ifconfig eth0 | grep \"inet\" | awk '&#123;print \$2&#125;'"</span></span><br></pre></td></tr></table></figure>
 <p>Another method is <code>awk</code> the return value from <code>ssh</code> rather than wrap it in <code>ssh</code> command.</p>
-<h3 id="02-28-2019"><a href="#02-28-2019" class="headerlink" title="02/28/2019"></a>02/28/2019</h3><p>Print last column separated by space:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## NF: count of fields of a line</span></span><br><span class="line">awk <span class="string">'&#123;print $NF&#125;'</span> &lt;file&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="09-11-2019"><a href="#09-11-2019" class="headerlink" title="09/11/2019"></a>09/11/2019</h3><p>Skip the first line:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## NR: current count of lines</span></span><br><span class="line">awk <span class="string">'NR&gt;1 &#123;print $1&#125;'</span> &lt;file&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-28-2019">02/28/2019</h3>
+<p>Print last column separated by space:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## NF: count of fields of a line</span></span><br><span class="line">awk <span class="string">'&#123;print $NF&#125;'</span> &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="09-11-2019">09/11/2019</h3>
+<p>Skip the first line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## NR: current count of lines</span></span><br><span class="line">awk <span class="string">'NR&gt;1 &#123;print $1&#125;'</span> &lt;file&gt;</span><br></pre></td></tr></table></figure>
 <p>You can use <code>NR&gt;=2</code>, <code>NR&lt;5</code>, <code>NR==3</code>, etc to limit the range.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check version</span></span><br><span class="line">awk -W version</span><br><span class="line"><span class="comment">## looks also works</span></span><br><span class="line">awk --version</span><br></pre></td></tr></table></figure>
-<p><code>awk</code> has BEGIN and END block, between is the body:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## BEGIN and END run only once</span></span><br><span class="line"><span class="comment">## body run as line number times</span></span><br><span class="line">awk <span class="string">'BEGIN &#123;print "start..."&#125; &#123;print NR, $0&#125; END &#123;print NR&#125;'</span> /etc/hosts</span><br><span class="line"></span><br><span class="line"><span class="comment">## BEGIN</span></span><br><span class="line">start...</span><br><span class="line"><span class="comment">## body</span></span><br><span class="line">1 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">2 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">3 172.16.163.83 myk8s1.fyre.ibm.com myk8s1</span><br><span class="line">4 172.16.182.156 myk8s2.fyre.ibm.com myk8s2</span><br><span class="line">5 172.16.182.187 myk8s3.fyre.ibm.com myk8s3</span><br><span class="line"><span class="comment">## END</span></span><br><span class="line">5</span><br></pre></td></tr></table></figure></p>
-<p>We can also put the awk option into awk script:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -f file.awk /etc/passwd</span><br></pre></td></tr></table></figure></p>
-<p><code>file.awk</code> content:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## FS is used to specify delimiter to parse line, by default awk use space</span></span><br><span class="line">BEGIN &#123; FS=<span class="string">":"</span> ; <span class="built_in">print</span> <span class="string">"User Name:"</span>&#125; </span><br><span class="line"><span class="comment">## $3 &gt; 999 is the condition match</span></span><br><span class="line"><span class="comment">## NR is internal variable of awk</span></span><br><span class="line"><span class="variable">$3</span> &gt; 999 &#123;<span class="built_in">print</span> NR, <span class="variable">$0</span>; count++ &#125; </span><br><span class="line">END &#123;<span class="built_in">print</span> <span class="string">"Total Lines: "</span> NR <span class="string">" Count Lines: "</span> count&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Let’s see more examples, actually sed may perform the same task but awk is more readable.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## set "," as delimiter, $1 to uppercase, $2 to lowercase</span></span><br><span class="line"><span class="comment">## toupper and tolower is awk internal functions</span></span><br><span class="line">awk -F<span class="string">","</span> <span class="string">'&#123;print toupper($1), tolower($2), $3&#125;'</span> &lt;file&gt;</span><br></pre></td></tr></table></figure></p>
-<p>lastlog.awk file to show non-root user login statistics<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## exclude if match these:</span></span><br><span class="line">!(/Never logged <span class="keyword">in</span>/ || /^Username/ || /^root/) &#123;</span><br><span class="line">cnt++</span><br><span class="line"><span class="comment">## line fields == 8</span></span><br><span class="line"><span class="keyword">if</span> (NF == 8)</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"%8s %2s %3s %4s\n"</span>, <span class="variable">$1</span>, <span class="variable">$5</span>, <span class="variable">$4</span>, <span class="variable">$8</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"%8s %2s %3s %4s\n"</span>, <span class="variable">$1</span>, <span class="variable">$6</span>, <span class="variable">$5</span>, <span class="variable">$9</span></span><br><span class="line">&#125;</span><br><span class="line">END &#123;</span><br><span class="line"><span class="built_in">print</span> <span class="string">"==============================="</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">"Total # of user processed: "</span> cnt</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Quick-Start">Quick Start</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## check version</span></span><br><span class="line">awk -W version</span><br><span class="line"><span class="comment">## looks also works</span></span><br><span class="line">awk --version</span><br></pre></td></tr></table></figure>
+<p><code>awk</code> has BEGIN and END block, between is the body:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## BEGIN and END run only once</span></span><br><span class="line"><span class="comment">## body run as line number times</span></span><br><span class="line">awk <span class="string">'BEGIN &#123;print "start..."&#125; &#123;print NR, $0&#125; END &#123;print NR&#125;'</span> /etc/hosts</span><br><span class="line"></span><br><span class="line"><span class="comment">## BEGIN</span></span><br><span class="line">start...</span><br><span class="line"><span class="comment">## body</span></span><br><span class="line">1 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">2 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">3 172.16.163.83 myk8s1.fyre.ibm.com myk8s1</span><br><span class="line">4 172.16.182.156 myk8s2.fyre.ibm.com myk8s2</span><br><span class="line">5 172.16.182.187 myk8s3.fyre.ibm.com myk8s3</span><br><span class="line"><span class="comment">## END</span></span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>We can also put the awk option into awk script:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -f file.awk /etc/passwd</span><br></pre></td></tr></table></figure>
+<p><code>file.awk</code> content:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## FS is used to specify delimiter to parse line, by default awk use space</span></span><br><span class="line">BEGIN &#123; FS=<span class="string">":"</span> ; <span class="built_in">print</span> <span class="string">"User Name:"</span>&#125; </span><br><span class="line"><span class="comment">## $3 &gt; 999 is the condition match</span></span><br><span class="line"><span class="comment">## NR is internal variable of awk</span></span><br><span class="line"><span class="variable">$3</span> &gt; 999 &#123;<span class="built_in">print</span> NR, <span class="variable">$0</span>; count++ &#125; </span><br><span class="line">END &#123;<span class="built_in">print</span> <span class="string">"Total Lines: "</span> NR <span class="string">" Count Lines: "</span> count&#125;</span><br></pre></td></tr></table></figure>
+<p>Let’s see more examples, actually sed may perform the same task but awk is more readable.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## set "," as delimiter, $1 to uppercase, $2 to lowercase</span></span><br><span class="line"><span class="comment">## toupper and tolower is awk internal functions</span></span><br><span class="line">awk -F<span class="string">","</span> <span class="string">'&#123;print toupper($1), tolower($2), $3&#125;'</span> &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<p>lastlog.awk file to show non-root user login statistics</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## exclude if match these:</span></span><br><span class="line">!(/Never logged <span class="keyword">in</span>/ || /^Username/ || /^root/) &#123;</span><br><span class="line">cnt++</span><br><span class="line"><span class="comment">## line fields == 8</span></span><br><span class="line"><span class="keyword">if</span> (NF == 8)</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"%8s %2s %3s %4s\n"</span>, <span class="variable">$1</span>, <span class="variable">$5</span>, <span class="variable">$4</span>, <span class="variable">$8</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">"%8s %2s %3s %4s\n"</span>, <span class="variable">$1</span>, <span class="variable">$6</span>, <span class="variable">$5</span>, <span class="variable">$9</span></span><br><span class="line">&#125;</span><br><span class="line">END &#123;</span><br><span class="line"><span class="built_in">print</span> <span class="string">"==============================="</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">"Total # of user processed: "</span> cnt</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -654,7 +670,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -751,7 +767,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1064,7 +1082,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1126,13 +1146,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

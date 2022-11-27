@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.1k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -516,26 +498,37 @@
 <p>Another tool very similar is <a href="https://rook.io/" target="_blank" rel="noopener">Rook</a>, see my blog <a href="https://chengdol.github.io/2020/01/20/k8s-rook/" target="_blank" rel="noopener"><code>Rook Storage Orchestrator</code></a>.</p>
 <p>The <code>Rook</code> is more heavy and this project is lightweight.</p>
 <ol>
-<li>Setup NFS server</li>
-<li><p>Install nfs-utils on all worker nodes<br>See my blog <a href="https://chengdol.github.io/2019/05/27/fs-nfs-setup/" target="_blank" rel="noopener">NFS Server and Client Setup</a>, this <code>Server Setup</code> chapter.</p>
+<li>
+<p>Setup NFS server</p>
 </li>
-<li><p>Setup NFS provisioner<br>This blog give me clear instruction on how to adopt the <code>nfs-client</code> provisioner: <a href="https://medium.com/faun/openshift-dynamic-nfs-persistent-volume-using-nfs-client-provisioner-fcbb8c9344e" target="_blank" rel="noopener">openshift dynamic NFS persistent volume using NFS-client-provisioner</a>.</p>
+<li>
+<p>Install nfs-utils on all worker nodes
+See my blog <a href="https://chengdol.github.io/2019/05/27/fs-nfs-setup/" target="_blank" rel="noopener">NFS Server and Client Setup</a>, this <code>Server Setup</code> chapter.</p>
+</li>
+<li>
+<p>Setup NFS provisioner
+This blog give me clear instruction on how to adopt the <code>nfs-client</code> provisioner: <a href="https://medium.com/faun/openshift-dynamic-nfs-persistent-volume-using-nfs-client-provisioner-fcbb8c9344e" target="_blank" rel="noopener">openshift dynamic NFS persistent volume using NFS-client-provisioner</a>.</p>
 </li>
 </ol>
 <p><strong>Notces</strong>:</p>
 <ol>
-<li><p>I find a bug in this project, when set rbac, you need to specify <code>-n test-1</code>, otherwise the role was created in <code>test-1</code> but rolebinding is created in default namespace.</p>
+<li>
+<p>I find a bug in this project, when set rbac, you need to specify <code>-n test-1</code>, otherwise the role was created in <code>test-1</code> but rolebinding is created in default namespace.</p>
 </li>
-<li><p>The NFS provisioner is global scoped.</p>
+<li>
+<p>The NFS provisioner is global scoped.</p>
 </li>
-<li><p>The <code>NFS_SERVER</code> env in deployment.yaml can be hostname or IP address.</p>
+<li>
+<p>The <code>NFS_SERVER</code> env in deployment.yaml can be hostname or IP address.</p>
 </li>
-<li><p>If several pods use the same PVC, they share the same PV.</p>
+<li>
+<p>If several pods use the same PVC, they share the same PV.</p>
 </li>
-<li><p>you can customize the storage class if it’s available. For example, set the reclaim policy as <code>retain</code> instead of <code>delete</code>. see <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/" target="_blank" rel="noopener">doc</a>.</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">storage.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StorageClass</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">standard</span></span><br><span class="line"><span class="attr">provisioner:</span> <span class="string">kubernetes.io/aws-ebs</span></span><br><span class="line"><span class="attr">parameters:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">gp2</span></span><br><span class="line"><span class="comment">## default is delete</span></span><br><span class="line"><span class="attr">reclaimPolicy:</span> <span class="string">Retain</span></span><br><span class="line"><span class="comment">## allow resize the volume by editing the corresponding PVC object</span></span><br><span class="line"><span class="comment">## cannot shrink</span></span><br><span class="line"><span class="attr">allowVolumeExpansion:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">volumeBindingMode:</span> <span class="string">Immediate</span></span><br></pre></td></tr></table></figure>
+<li>
+<p>you can customize the storage class if it’s available. For example, set the reclaim policy as <code>retain</code> instead of <code>delete</code>. see <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/" target="_blank" rel="noopener">doc</a>.</p>
 </li>
 </ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">storage.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StorageClass</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">standard</span></span><br><span class="line"><span class="attr">provisioner:</span> <span class="string">kubernetes.io/aws-ebs</span></span><br><span class="line"><span class="attr">parameters:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">gp2</span></span><br><span class="line"><span class="comment">## default is delete</span></span><br><span class="line"><span class="attr">reclaimPolicy:</span> <span class="string">Retain</span></span><br><span class="line"><span class="comment">## allow resize the volume by editing the corresponding PVC object</span></span><br><span class="line"><span class="comment">## cannot shrink</span></span><br><span class="line"><span class="attr">allowVolumeExpansion:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">volumeBindingMode:</span> <span class="string">Immediate</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -649,7 +642,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -746,7 +739,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1059,7 +1054,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1104,13 +1101,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

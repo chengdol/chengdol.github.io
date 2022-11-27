@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This article talks about the variable scope in shell, especially how to access variables between different scripts. Local VariablesThe set command displays all functions and local variables defined fo">
+  <meta name="description" content="This article talks about the variable scope in shell, especially how to access variables between different scripts. Local Variables The set command displays all functions and local variables defined f">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Variables in Shell">
 <meta property="og:url" content="http://yoursite.com/2019/06/02/shell-variables/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This article talks about the variable scope in shell, especially how to access variables between different scripts. Local VariablesThe set command displays all functions and local variables defined fo">
+<meta property="og:description" content="This article talks about the variable scope in shell, especially how to access variables between different scripts. Local Variables The set command displays all functions and local variables defined f">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-03-16T07:37:43.063Z">
+<meta property="og:updated_time" content="2021-03-16T07:37:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Variables in Shell">
-<meta name="twitter:description" content="This article talks about the variable scope in shell, especially how to access variables between different scripts. Local VariablesThe set command displays all functions and local variables defined fo">
+<meta name="twitter:description" content="This article talks about the variable scope in shell, especially how to access variables between different scripts. Local Variables The set command displays all functions and local variables defined f">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">16k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,46 +491,75 @@
 
       
         <p>This article talks about the <code>variable scope</code> in shell, especially how to access variables between different scripts.</p>
-<h1 id="Local-Variables"><a href="#Local-Variables" class="headerlink" title="Local Variables"></a>Local Variables</h1><p>The <code>set</code> command displays <strong>all</strong> functions and local variables defined for a specific process:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this definition will be in `set`, not in `env`</span></span><br><span class="line">HELLO=999</span><br><span class="line"><span class="comment"># run `set` will see `HELLO`</span></span><br><span class="line"><span class="built_in">set</span></span><br></pre></td></tr></table></figure></p>
+<h1>Local Variables</h1>
+<p>The <code>set</code> command displays <strong>all</strong> functions and local variables defined for a specific process:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this definition will be in `set`, not in `env`</span></span><br><span class="line">HELLO=999</span><br><span class="line"><span class="comment"># run `set` will see `HELLO`</span></span><br><span class="line"><span class="built_in">set</span></span><br></pre></td></tr></table></figure>
 <p>It also sorts the display alphabetically.</p>
 <p>注意<code>set</code>中的variables 不一定出现在<code>env</code>中，顾名思义, <code>env</code>中显示的才是当前运行shell会被采用的variables.</p>
-<h1 id="ENV-Variables"><a href="#ENV-Variables" class="headerlink" title="ENV Variables"></a>ENV Variables</h1><p>Environment variables are visible from the shell session and from <strong>any</strong> spawned child subshells, and also visable by the command launched from that shell. This makes environment variables useful in applications that create child subshells, which require parent shell information.</p>
-<p>To view environment variables, use the <code>env</code> or the <code>printenv</code> command:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">env | grep ^HOME</span><br><span class="line">printenv HOME</span><br></pre></td></tr></table></figure></p>
-<p>You can use <code>export</code> to create environment variable.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> demo=<span class="string">'hello world'</span></span><br></pre></td></tr></table></figure></p>
-<p>You can use <code>unset</code> to remove an existing environment variable.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> demo</span><br></pre></td></tr></table></figure></p>
-<p>If you want to only set the variable for one command in one use, just prefix it, eg:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># EDITOR will only works for crontab command</span></span><br><span class="line">EDITOR=vim crontab -e</span><br><span class="line"><span class="comment"># hot KUBECONFIG env variable</span></span><br><span class="line">KUBECONFIG=xx.yml kubectl get nodes</span><br></pre></td></tr></table></figure></p>
-<p>A common trick for programmers is to include the <code>single dot</code> symbol in their <code>PATH</code> environment variable. The single dot symbol represents the current directory:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span>:.</span><br></pre></td></tr></table></figure></p>
-<h1 id="Declare-Command"><a href="#Declare-Command" class="headerlink" title="Declare Command"></a>Declare Command</h1><p>Note that <code>declare</code> can print both <code>set</code> and <code>env</code> variables:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">declare</span> | grep ^HOME=</span><br></pre></td></tr></table></figure></p>
-<p><code>declare</code> command can be used to create local variables in <code>set</code> or export to <code>env</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i: integer</span></span><br><span class="line"><span class="built_in">declare</span> -i n=34</span><br><span class="line"><span class="comment"># can do arithmetic operations directly without let or expr</span></span><br><span class="line">n=n/2</span><br><span class="line"><span class="comment"># the result is 17</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$n</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -l: convert to lower case</span></span><br><span class="line"><span class="built_in">declare</span> -l hello=WORLD</span><br><span class="line"><span class="comment"># -u: convert to upper case</span></span><br><span class="line"><span class="built_in">declare</span> -u hello=world</span><br><span class="line"><span class="comment"># if reassign value to hello, will be convert to lower/upper case automatically</span></span><br><span class="line"></span><br><span class="line">hello=world</span><br><span class="line"><span class="comment"># -p: display the attributes and values of each name</span></span><br><span class="line"><span class="built_in">declare</span> -p hello</span><br><span class="line"><span class="comment">## result is below, -- means local variable with no options compare to others like -x -i, etc</span></span><br><span class="line"><span class="built_in">declare</span> -- hello=<span class="string">"world"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## declare can also export variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=123</span><br><span class="line"><span class="comment">## will see apple in env</span></span><br><span class="line">env | grep apple</span><br><span class="line"></span><br><span class="line"><span class="built_in">declare</span> -p apple</span><br><span class="line"><span class="comment">## result is below, -x means export variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=<span class="string">"123"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## remove from env</span></span><br><span class="line"><span class="built_in">declare</span> +x apple</span><br></pre></td></tr></table></figure></p>
-<p>You can mix the option:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">declare</span> -x -l EDITOR</span><br><span class="line">EDITOR=vIM</span><br><span class="line"></span><br><span class="line"><span class="built_in">declare</span> -p EDITOR</span><br><span class="line"><span class="comment">## auto fix it to lower case</span></span><br><span class="line"><span class="built_in">declare</span> -xl EDITOR=<span class="string">"vim"</span></span><br></pre></td></tr></table></figure></p>
-<p>Other ways to convert char to lower/upper case:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val=abcdEFG</span><br><span class="line"><span class="comment"># pattern is optional, eg [A-F]</span></span><br><span class="line"><span class="comment"># all to lower cases</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val,,pattern&#125;</span></span><br><span class="line"><span class="comment"># only first char to lower case</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val,pattern&#125;</span></span><br><span class="line"><span class="comment"># all to upper cases</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val^^pattern&#125;</span></span><br><span class="line"><span class="comment"># only first char to upper case</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val^pattern&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>Create constant (read-only) variable, cannot be unset and sustain for the shell session:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## set name as readonly</span></span><br><span class="line"><span class="built_in">declare</span> -r name=bob</span><br><span class="line"><span class="comment">## export it and readonly</span></span><br><span class="line"><span class="built_in">declare</span> -xr name=alice</span><br><span class="line"><span class="comment">## define a readonly array</span></span><br><span class="line"><span class="built_in">declare</span> -ra array=(1 2 3 4)</span><br></pre></td></tr></table></figure></p>
-<p>Declare different kind of arrays, see my other blog <a href="https://chengdol.github.io/2019/08/13/shell-array/" target="_blank" rel="noopener"><code>Array in Script</code></a>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## index-based</span></span><br><span class="line"><span class="built_in">declare</span> -a user_name</span><br><span class="line"><span class="comment">## associated-based</span></span><br><span class="line"><span class="built_in">declare</span> -A user_name</span><br></pre></td></tr></table></figure></p>
-<h1 id="Shell-Variables"><a href="#Shell-Variables" class="headerlink" title="Shell Variables"></a>Shell Variables</h1><p>Shell variables (actually the local variable) are available <strong>only</strong> in the shell that creates them. In fact, the Linux system also defines standard shell environment variables for you by default. </p>
-<p>How to define a Shell environment variable:<br><strong>No</strong> space can appear between the variable, the equal sign, and the value:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1=value</span><br></pre></td></tr></table></figure></p>
+<h1>ENV Variables</h1>
+<p>Environment variables are visible from the shell session and from <strong>any</strong> spawned child subshells, and also visable by the command launched from that shell. This makes environment variables useful in applications that create child subshells, which require parent shell information.</p>
+<p>To view environment variables, use the <code>env</code> or the <code>printenv</code> command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">env | grep ^HOME</span><br><span class="line">printenv HOME</span><br></pre></td></tr></table></figure>
+<p>You can use <code>export</code> to create environment variable.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> demo=<span class="string">'hello world'</span></span><br></pre></td></tr></table></figure>
+<p>You can use <code>unset</code> to remove an existing environment variable.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> demo</span><br></pre></td></tr></table></figure>
+<p>If you want to only set the variable for one command in one use, just prefix it, eg:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># EDITOR will only works for crontab command</span></span><br><span class="line">EDITOR=vim crontab -e</span><br><span class="line"><span class="comment"># hot KUBECONFIG env variable</span></span><br><span class="line">KUBECONFIG=xx.yml kubectl get nodes</span><br></pre></td></tr></table></figure>
+<p>A common trick for programmers is to include the <code>single dot</code> symbol in their <code>PATH</code> environment variable. The single dot symbol represents the current directory:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span>:.</span><br></pre></td></tr></table></figure>
+<h1>Declare Command</h1>
+<p>Note that <code>declare</code> can print both <code>set</code> and <code>env</code> variables:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">declare</span> | grep ^HOME=</span><br></pre></td></tr></table></figure>
+<p><code>declare</code> command can be used to create local variables in <code>set</code> or export to <code>env</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -i: integer</span></span><br><span class="line"><span class="built_in">declare</span> -i n=34</span><br><span class="line"><span class="comment"># can do arithmetic operations directly without let or expr</span></span><br><span class="line">n=n/2</span><br><span class="line"><span class="comment"># the result is 17</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$n</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -l: convert to lower case</span></span><br><span class="line"><span class="built_in">declare</span> -l hello=WORLD</span><br><span class="line"><span class="comment"># -u: convert to upper case</span></span><br><span class="line"><span class="built_in">declare</span> -u hello=world</span><br><span class="line"><span class="comment"># if reassign value to hello, will be convert to lower/upper case automatically</span></span><br><span class="line"></span><br><span class="line">hello=world</span><br><span class="line"><span class="comment"># -p: display the attributes and values of each name</span></span><br><span class="line"><span class="built_in">declare</span> -p hello</span><br><span class="line"><span class="comment">## result is below, -- means local variable with no options compare to others like -x -i, etc</span></span><br><span class="line"><span class="built_in">declare</span> -- hello=<span class="string">"world"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## declare can also export variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=123</span><br><span class="line"><span class="comment">## will see apple in env</span></span><br><span class="line">env | grep apple</span><br><span class="line"></span><br><span class="line"><span class="built_in">declare</span> -p apple</span><br><span class="line"><span class="comment">## result is below, -x means export variable</span></span><br><span class="line"><span class="built_in">declare</span> -x apple=<span class="string">"123"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## remove from env</span></span><br><span class="line"><span class="built_in">declare</span> +x apple</span><br></pre></td></tr></table></figure>
+<p>You can mix the option:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">declare</span> -x -l EDITOR</span><br><span class="line">EDITOR=vIM</span><br><span class="line"></span><br><span class="line"><span class="built_in">declare</span> -p EDITOR</span><br><span class="line"><span class="comment">## auto fix it to lower case</span></span><br><span class="line"><span class="built_in">declare</span> -xl EDITOR=<span class="string">"vim"</span></span><br></pre></td></tr></table></figure>
+<p>Other ways to convert char to lower/upper case:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val=abcdEFG</span><br><span class="line"><span class="comment"># pattern is optional, eg [A-F]</span></span><br><span class="line"><span class="comment"># all to lower cases</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val,,pattern&#125;</span></span><br><span class="line"><span class="comment"># only first char to lower case</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val,pattern&#125;</span></span><br><span class="line"><span class="comment"># all to upper cases</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val^^pattern&#125;</span></span><br><span class="line"><span class="comment"># only first char to upper case</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;val^pattern&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Create constant (read-only) variable, cannot be unset and sustain for the shell session:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## set name as readonly</span></span><br><span class="line"><span class="built_in">declare</span> -r name=bob</span><br><span class="line"><span class="comment">## export it and readonly</span></span><br><span class="line"><span class="built_in">declare</span> -xr name=alice</span><br><span class="line"><span class="comment">## define a readonly array</span></span><br><span class="line"><span class="built_in">declare</span> -ra array=(1 2 3 4)</span><br></pre></td></tr></table></figure>
+<p>Declare different kind of arrays, see my other blog <a href="https://chengdol.github.io/2019/08/13/shell-array/" target="_blank" rel="noopener"><code>Array in Script</code></a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## index-based</span></span><br><span class="line"><span class="built_in">declare</span> -a user_name</span><br><span class="line"><span class="comment">## associated-based</span></span><br><span class="line"><span class="built_in">declare</span> -A user_name</span><br></pre></td></tr></table></figure>
+<h1>Shell Variables</h1>
+<p>Shell variables (actually the local variable) are available <strong>only</strong> in the shell that creates them. In fact, the Linux system also defines standard shell environment variables for you by default.</p>
+<p>How to define a Shell environment variable:
+<strong>No</strong> space can appear between the variable, the equal sign, and the value:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1=value</span><br></pre></td></tr></table></figure>
 <p>Variables defined within the shell script maintain their values throughtout the life of the shell script but are vanished when the shell script completes.</p>
-<p>If you want to assign the value of one variable to another, must use <code>$</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=<span class="variable">$&#123;var1&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>otherwise, <code>var1</code> will be interpreted as text string.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=var1</span><br></pre></td></tr></table></figure></p>
-<h1 id="Variable-Scope"><a href="#Variable-Scope" class="headerlink" title="Variable Scope"></a>Variable Scope</h1><p>My question is how to pass variables from one script to another?<br>Basically there are 3 options:</p>
+<p>If you want to assign the value of one variable to another, must use <code>$</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=<span class="variable">$&#123;var1&#125;</span></span><br></pre></td></tr></table></figure>
+<p>otherwise, <code>var1</code> will be interpreted as text string.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var2=var1</span><br></pre></td></tr></table></figure>
+<h1>Variable Scope</h1>
+<p>My question is how to pass variables from one script to another?
+Basically there are 3 options:</p>
 <ol>
-<li><p>Make the variable an environment variable (<code>export</code> it) before calling the child script (<code>./script2</code>).</p>
+<li>
+<p>Make the variable an environment variable (<code>export</code> it) before calling the child script (<code>./script2</code>).</p>
 </li>
-<li><p><code>source</code> the child script and it will run in the same shell, This would let you share more complex variables like arrays easily, but also means that the other script could modify variables in the caller shell.</p>
+<li>
+<p><code>source</code> the child script and it will run in the same shell, This would let you share more complex variables like arrays easily, but also means that the other script could modify variables in the caller shell.</p>
 </li>
-<li><p>pass as parameters to child script: <code>./script2 var1 var2</code></p>
+<li>
+<p>pass as parameters to child script: <code>./script2 var1 var2</code></p>
 </li>
-<li><p>if use <code>exec</code> to replace current process, still need export variable.</p>
+<li>
+<p>if use <code>exec</code> to replace current process, still need export variable.</p>
 </li>
 </ol>
-<h1 id="Preserve-ENV-variables"><a href="#Preserve-ENV-variables" class="headerlink" title="Preserve ENV variables"></a>Preserve ENV variables</h1><p>Refer to <a href="https://unix.stackexchange.com/questions/188144/why-is-a-variable-passed-to-the-su-command-but-not-an-array-from-the-same-scope" target="_blank" rel="noopener">this</a> question. This is interesting and easy to make mistake, if I want to preserve global ENV variable when switch user in shell, use <code>su xxx</code> instead of <code>su - xxx</code>, <code>-</code> option will do:</p>
+<h1>Preserve ENV variables</h1>
+<p>Refer to <a href="https://unix.stackexchange.com/questions/188144/why-is-a-variable-passed-to-the-su-command-but-not-an-array-from-the-same-scope" target="_blank" rel="noopener">this</a> question. This is interesting and easy to make mistake, if I want to preserve global ENV variable when switch user in shell, use <code>su xxx</code> instead of <code>su - xxx</code>, <code>-</code> option will do:</p>
 <ol>
 <li>clears all environment variables except for TERM</li>
 <li>initializes the environment variables HOME, SHELL, USER, LOGNAME, PATH</li>
 <li>changes to the target user’s home directory</li>
-<li>sets argv[0] of the shell to ‘-‘ in order to make the shell a login shell</li>
+<li>sets argv[0] of the shell to ‘-’ in order to make the shell a login shell</li>
 </ol>
-<p>But be very careful not let shell do variable expanding in command option:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">"... echo <span class="variable">$a</span>"</span></span><br></pre></td></tr></table></figure></p>
-<p>Here <code>$a</code> will be expanded before executing, use single quote or escape the <code>$</code> sign:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">'... echo $a'</span></span><br><span class="line">su xxx -c <span class="string">"... echo \$a"</span></span><br></pre></td></tr></table></figure></p>
+<p>But be very careful not let shell do variable expanding in command option:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">"... echo <span class="variable">$a</span>"</span></span><br></pre></td></tr></table></figure>
+<p>Here <code>$a</code> will be expanded before executing, use single quote or escape the <code>$</code> sign:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su xxx -c <span class="string">'... echo $a'</span></span><br><span class="line">su xxx -c <span class="string">"... echo \$a"</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -669,7 +680,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -766,7 +777,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1079,7 +1092,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1115,7 +1130,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Local-Variables"><span class="nav-number">1.</span> <span class="nav-text">Local Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ENV-Variables"><span class="nav-number">2.</span> <span class="nav-text">ENV Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Declare-Command"><span class="nav-number">3.</span> <span class="nav-text">Declare Command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-Variables"><span class="nav-number">4.</span> <span class="nav-text">Shell Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Variable-Scope"><span class="nav-number">5.</span> <span class="nav-text">Variable Scope</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preserve-ENV-variables"><span class="nav-number">6.</span> <span class="nav-text">Preserve ENV variables</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Local Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">ENV Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Declare Command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Shell Variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Variable Scope</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Preserve ENV variables</span></a></li></ol></div>
             
 
           </div>
@@ -1141,13 +1156,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

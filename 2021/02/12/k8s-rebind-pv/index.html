@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="ReferenceReuse existing Persistent Volume BackgroundProd env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the correspondi">
+  <meta name="description" content="Reference Reuse existing Persistent Volume Background Prod env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the correspon">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rebinding Release PV with PVC">
 <meta property="og:url" content="http://yoursite.com/2021/02/12/k8s-rebind-pv/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="ReferenceReuse existing Persistent Volume BackgroundProd env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the correspondi">
+<meta property="og:description" content="Reference Reuse existing Persistent Volume Background Prod env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the correspon">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-02-16T01:48:34.021Z">
+<meta property="og:updated_time" content="2021-02-16T01:48:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rebinding Release PV with PVC">
-<meta name="twitter:description" content="ReferenceReuse existing Persistent Volume BackgroundProd env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the correspondi">
+<meta name="twitter:description" content="Reference Reuse existing Persistent Volume Background Prod env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the correspon">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">7k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,16 +490,25 @@
       
 
       
-        <p><strong>Reference</strong><br><a href="https://github.com/kubernetes/kubernetes/issues/48609#issuecomment-314066616" target="_blank" rel="noopener">Reuse existing Persistent Volume</a></p>
-<p><strong>Background</strong><br>Prod env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the corresponding PV got released, thanksfully the PV reclaim policy is <code>retain</code> so the data on disk was still preserved.</p>
+        <p><strong>Reference</strong>
+<a href="https://github.com/kubernetes/kubernetes/issues/48609#issuecomment-314066616" target="_blank" rel="noopener">Reuse existing Persistent Volume</a></p>
+<p><strong>Background</strong>
+Prod env upgrade failed, rolled back leads to historical monitoring data lost. The root cause is old PVC was removed accidently thus the corresponding PV got released, thanksfully the PV reclaim policy is <code>retain</code> so the data on disk was still preserved.</p>
 <p>这里和以前遇到的不同的地方是使用了storage class, PV 定义中有<code>claimRef</code> 去做绑定.</p>
-<p><strong>Question</strong><br>How to access the historical data on released PV?<br>显而易见需要重新bound.</p>
-<p><strong>Solution</strong><br>The PV is actually provisioned dynamically by custom storage class <code>gce-regional-ssd</code>, in its definition, it is preserved for specific PVC by specifying the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume" target="_blank" rel="noopener"><code>claimRef</code></a> field:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">claimRef:</span></span><br><span class="line"><span class="attr">  apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">  kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">monitoring-alertmanager</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">monitoring</span></span><br><span class="line"><span class="attr">  resourceVersion:</span> <span class="string">"21865"</span></span><br><span class="line"><span class="attr">  uid:</span> <span class="number">4036</span><span class="string">d03f-fe2f-4d6f-bae8-dd67f33ad423</span></span><br></pre></td></tr></table></figure></p>
-<p>Since the PVC <code>monitoring-alertmanager</code> is alreay used another PV, to make this one available, kubectl edit to remove the <code>uid</code> and <code>resourceVersion</code>, modify the <code>name</code>, save and quit:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">claimRef:</span></span><br><span class="line"><span class="attr">  apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">  kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">monitoring-alertmanager-old</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">monitoring</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Question</strong>
+How to access the historical data on released PV?
+显而易见需要重新bound.</p>
+<p><strong>Solution</strong>
+The PV is actually provisioned dynamically by custom storage class <code>gce-regional-ssd</code>, in its definition, it is preserved for specific PVC by specifying the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume" target="_blank" rel="noopener"><code>claimRef</code></a> field:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">claimRef:</span></span><br><span class="line"><span class="attr">  apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">  kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">monitoring-alertmanager</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">monitoring</span></span><br><span class="line"><span class="attr">  resourceVersion:</span> <span class="string">"21865"</span></span><br><span class="line"><span class="attr">  uid:</span> <span class="number">4036</span><span class="string">d03f-fe2f-4d6f-bae8-dd67f33ad423</span></span><br></pre></td></tr></table></figure>
+<p>Since the PVC <code>monitoring-alertmanager</code> is alreay used another PV, to make this one available, kubectl edit to remove the <code>uid</code> and <code>resourceVersion</code>, modify the <code>name</code>, save and quit:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">claimRef:</span></span><br><span class="line"><span class="attr">  apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">  kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">monitoring-alertmanager-old</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">monitoring</span></span><br></pre></td></tr></table></figure>
 <p>For now the PV becomes available only to PVC which is named <code>monitoring-alertmanager-old</code>. Or if you set <code>claimRef</code> to empty, PV will open to all PVCs.</p>
-<p>Then creating that PVC to consume the PV (binding):<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">monitoring</span></span><br><span class="line"><span class="attr">    component:</span> <span class="string">alertmanager</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">monitoring-alertmanager-old</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">monitoring</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  accessModes:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">ReadWriteOnce</span></span><br><span class="line"><span class="attr">  resources:</span></span><br><span class="line"><span class="attr">    requests:</span></span><br><span class="line"><span class="attr">      storage:</span> <span class="number">10</span><span class="string">Gi</span></span><br><span class="line"><span class="attr">  storageClassName:</span> <span class="string">gce-regional-ssd</span></span><br><span class="line"><span class="attr">  volumeMode:</span> <span class="string">Filesystem</span></span><br></pre></td></tr></table></figure></p>
+<p>Then creating that PVC to consume the PV (binding):</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolumeClaim</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  labels:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">monitoring</span></span><br><span class="line"><span class="attr">    component:</span> <span class="string">alertmanager</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">monitoring-alertmanager-old</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">monitoring</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  accessModes:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">ReadWriteOnce</span></span><br><span class="line"><span class="attr">  resources:</span></span><br><span class="line"><span class="attr">    requests:</span></span><br><span class="line"><span class="attr">      storage:</span> <span class="number">10</span><span class="string">Gi</span></span><br><span class="line"><span class="attr">  storageClassName:</span> <span class="string">gce-regional-ssd</span></span><br><span class="line"><span class="attr">  volumeMode:</span> <span class="string">Filesystem</span></span><br></pre></td></tr></table></figure>
 <p>Then mount the PVC to your target resource to access the data.</p>
-<p>其实如果describe PV, 可以找到在GCE中具体的Persistent Disk (under Compute Engine), 保险起见可以先snapshot 该persistent disk再做其他操作:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Source:</span></span><br><span class="line"><span class="attr">    Type:</span>       <span class="string">GCEPersistentDisk</span> <span class="string">(a</span> <span class="string">Persistent</span> <span class="string">Disk</span> <span class="string">resource</span> <span class="string">in</span> <span class="string">Google</span> <span class="string">Compute</span> <span class="string">Engine)</span></span><br><span class="line"><span class="attr">    PDName:</span>     <span class="string">gke-us-east4-f3e3fedd--pvc-4036d03f-fe2f-4d6f-bae8-dd67f33ad423</span></span><br><span class="line"><span class="attr">    FSType:</span>     <span class="string">ext4</span></span><br><span class="line"><span class="attr">    Partition:</span>  <span class="number">0</span></span><br><span class="line"><span class="attr">    ReadOnly:</span>   <span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+<p>其实如果describe PV, 可以找到在GCE中具体的Persistent Disk (under Compute Engine), 保险起见可以先snapshot 该persistent disk再做其他操作:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Source:</span></span><br><span class="line"><span class="attr">    Type:</span>       <span class="string">GCEPersistentDisk</span> <span class="string">(a</span> <span class="string">Persistent</span> <span class="string">Disk</span> <span class="string">resource</span> <span class="string">in</span> <span class="string">Google</span> <span class="string">Compute</span> <span class="string">Engine)</span></span><br><span class="line"><span class="attr">    PDName:</span>     <span class="string">gke-us-east4-f3e3fedd--pvc-4036d03f-fe2f-4d6f-bae8-dd67f33ad423</span></span><br><span class="line"><span class="attr">    FSType:</span>     <span class="string">ext4</span></span><br><span class="line"><span class="attr">    Partition:</span>  <span class="number">0</span></span><br><span class="line"><span class="attr">    ReadOnly:</span>   <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -629,7 +620,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -726,7 +717,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1039,7 +1032,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1084,13 +1079,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

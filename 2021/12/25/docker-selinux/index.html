@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="When performed the ES upgrade from a Linux jumpbox docker container, interestingly on one of the regions’ jumpbox I cannot read the mounted folder and got permission denied error. This is related to S">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-02-13T22:51:37.948Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Mount Access Permission Deny">
 <meta name="twitter:description" content="When performed the ES upgrade from a Linux jumpbox docker container, interestingly on one of the regions’ jumpbox I cannot read the mounted folder and got permission denied error. This is related to S">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.8k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -509,20 +491,25 @@
 
       
         <p>When performed the ES upgrade from a Linux jumpbox docker container, interestingly on one of the regions’ jumpbox I cannot read the mounted folder and got permission denied error. This is related to Selinux setting on docker daemon.</p>
-<p>For example, on that jumpbox:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test is a folder in host user home I want to mount</span></span><br><span class="line">sudo docker run \</span><br><span class="line">--rm \</span><br><span class="line">-v ~/<span class="built_in">test</span>:/<span class="built_in">test</span> \</span><br><span class="line">busybox sh \</span><br><span class="line">-c <span class="string">"ls /test"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># got access denied</span></span><br><span class="line">ls: can<span class="string">'t open '</span>/<span class="built_in">test</span><span class="string">': Permission denied</span></span><br></pre></td></tr></table></figure></p>
-<p>First, verify the Selinux mode is <code>enforcing</code>, you can check by<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getenforce</span><br><span class="line"><span class="comment"># enforcing</span></span><br></pre></td></tr></table></figure></p>
-<p>Then I see the docker daemon Selinux is <code>enabled</code>, this is why I get permission denied:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo docker info | grep Security -A5</span><br><span class="line"></span><br><span class="line">Security Options:</span><br><span class="line"> seccomp</span><br><span class="line">  Profile: /etc/docker/seccomp.json</span><br><span class="line"> <span class="comment"># below keyword means Selinux is enabled</span></span><br><span class="line"> selinux</span><br><span class="line">Kernel Version: 3.10.0-1062.12.1.el7.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>For example, on that jumpbox:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test is a folder in host user home I want to mount</span></span><br><span class="line">sudo docker run \</span><br><span class="line">--rm \</span><br><span class="line">-v ~/<span class="built_in">test</span>:/<span class="built_in">test</span> \</span><br><span class="line">busybox sh \</span><br><span class="line">-c <span class="string">"ls /test"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># got access denied</span></span><br><span class="line">ls: can<span class="string">'t open '</span>/<span class="built_in">test</span><span class="string">': Permission denied</span></span><br></pre></td></tr></table></figure>
+<p>First, verify the Selinux mode is <code>enforcing</code>, you can check by</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getenforce</span><br><span class="line"><span class="comment"># enforcing</span></span><br></pre></td></tr></table></figure>
+<p>Then I see the docker daemon Selinux is <code>enabled</code>, this is why I get permission denied:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo docker info | grep Security -A5</span><br><span class="line"></span><br><span class="line">Security Options:</span><br><span class="line"> seccomp</span><br><span class="line">  Profile: /etc/docker/seccomp.json</span><br><span class="line"> <span class="comment"># below keyword means Selinux is enabled</span></span><br><span class="line"> selinux</span><br><span class="line">Kernel Version: 3.10.0-1062.12.1.el7.x86_64</span><br></pre></td></tr></table></figure>
 <p>On other regions’ jumpbox, although the Selinux is <code>enforcing</code> mode but the docker daemon does not enable it specifically, so I can still read/write mounted foler.</p>
 <p>Solutions:</p>
 <ol>
-<li><p>set Selinux to <code>permissive</code> mode and mount as usual</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo setenforce 0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>mount with label <code>Z</code>, see this <a href="https://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker" target="_blank" rel="noopener">question</a></p>
-</li>
+<li>set Selinux to <code>permissive</code> mode and mount as usual</li>
 </ol>
-<p>From docker official, <a href="https://docs.docker.com/storage/bind-mounts/#configure-the-selinux-label" target="_blank" rel="noopener">Configure the selinux label</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test is a folder in host user home I want to mount</span></span><br><span class="line"><span class="comment"># append Z and ro(read-only) labels</span></span><br><span class="line"><span class="comment"># Z: the mount is private and unshared</span></span><br><span class="line">sudo docker run \</span><br><span class="line">--rm \</span><br><span class="line">-v ~/<span class="built_in">test</span>:/<span class="built_in">test</span>:Z,ro \</span><br><span class="line">busybox sh \</span><br><span class="line">-c <span class="string">"ls /test"</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://opensource.com/article/20/11/selinux-containers" target="_blank" rel="noopener">Secure your containers with SELinux</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo setenforce 0</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>mount with label <code>Z</code>, see this <a href="https://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker" target="_blank" rel="noopener">question</a></li>
+</ol>
+<p>From docker official, <a href="https://docs.docker.com/storage/bind-mounts/#configure-the-selinux-label" target="_blank" rel="noopener">Configure the selinux label</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test is a folder in host user home I want to mount</span></span><br><span class="line"><span class="comment"># append Z and ro(read-only) labels</span></span><br><span class="line"><span class="comment"># Z: the mount is private and unshared</span></span><br><span class="line">sudo docker run \</span><br><span class="line">--rm \</span><br><span class="line">-v ~/<span class="built_in">test</span>:/<span class="built_in">test</span>:Z,ro \</span><br><span class="line">busybox sh \</span><br><span class="line">-c <span class="string">"ls /test"</span></span><br></pre></td></tr></table></figure>
+<h1>Reference</h1>
+<p><a href="https://opensource.com/article/20/11/selinux-containers" target="_blank" rel="noopener">Secure your containers with SELinux</a></p>
 
       
     </div>
@@ -643,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -740,7 +727,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1053,7 +1042,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1089,7 +1080,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
@@ -1115,13 +1106,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

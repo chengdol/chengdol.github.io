@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Release TagWhen to use tag: every time you push to production, tag the release.Release tag points to a specific commit in history. 12345678910111213141516171819# fetch all remote tagsgit fetch --tags#">
+  <meta name="description" content="Release Tag When to use tag: every time you push to production, tag the release. Release tag points to a specific commit in history. 12345678910111213141516171819# fetch all remote tagsgit fetch --tag">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Release Tag and Branch">
 <meta property="og:url" content="http://yoursite.com/2020/12/09/git-tag-branch/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Release TagWhen to use tag: every time you push to production, tag the release.Release tag points to a specific commit in history. 12345678910111213141516171819# fetch all remote tagsgit fetch --tags#">
+<meta property="og:description" content="Release Tag When to use tag: every time you push to production, tag the release. Release tag points to a specific commit in history. 12345678910111213141516171819# fetch all remote tagsgit fetch --tag">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2020-12-10T23:55:25.360Z">
+<meta property="og:updated_time" content="2020-12-10T23:55:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Release Tag and Branch">
-<meta name="twitter:description" content="Release TagWhen to use tag: every time you push to production, tag the release.Release tag points to a specific commit in history. 12345678910111213141516171819# fetch all remote tagsgit fetch --tags#">
+<meta name="twitter:description" content="Release Tag When to use tag: every time you push to production, tag the release. Release tag points to a specific commit in history. 12345678910111213141516171819# fetch all remote tagsgit fetch --tag">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">7.1k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -508,21 +490,30 @@
       
 
       
-        <h1 id="Release-Tag"><a href="#Release-Tag" class="headerlink" title="Release Tag"></a>Release Tag</h1><p>When to use tag: every time you push to production, tag the release.<br>Release tag points to a specific commit in history.</p>
+        <h1>Release Tag</h1>
+<p>When to use tag: every time you push to production, tag the release.
+Release tag points to a specific commit in history.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fetch all remote tags</span></span><br><span class="line">git fetch --tags</span><br><span class="line"><span class="comment"># list all tags</span></span><br><span class="line">git tag [--list]</span><br><span class="line"><span class="comment"># delete tag</span></span><br><span class="line">git tag -d &lt;tag name&gt;</span><br><span class="line"><span class="comment"># Delete a tag from the server with push tags</span></span><br><span class="line">git push --delete origin &lt;tag name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># in your current branch tag latest commit</span></span><br><span class="line"><span class="comment"># create annotated tag, add more info</span></span><br><span class="line"><span class="comment"># will open editor</span></span><br><span class="line">git tag -a 0.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># tag specific commit</span></span><br><span class="line">git tag -a 0.1.0 &lt;commit <span class="built_in">hash</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># push tag to remote</span></span><br><span class="line">git push origin &lt;branch&gt; --tags</span><br></pre></td></tr></table></figure>
-<p>这个git command很有用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can see commit detail, tag annotation, and so on.</span></span><br><span class="line">git show [tag|or anything]</span><br></pre></td></tr></table></figure></p>
-<p>References:<br><a href="https://stackoverflow.com/questions/35979642/what-is-git-tag-how-to-create-tags-how-to-checkout-git-remote-tags" target="_blank" rel="noopener">what is tag</a><br><a href="https://stackoverflow.com/questions/11514075/what-is-the-difference-between-an-annotated-and-unannotated-tag" target="_blank" rel="noopener">annotated and non-annotated tag</a><br><a href="https://stackoverflow.com/questions/8044583/how-can-i-move-a-tag-on-a-git-branch-to-a-different-commit" target="_blank" rel="noopener">move a tag on a branch to different commit</a></p>
-<h1 id="Release-Branch"><a href="#Release-Branch" class="headerlink" title="Release Branch"></a>Release Branch</h1><p>Generally you only need tags for releases.<br>But when you need to make changes to production release without affecting master, you need release branch. For example, make hotfix. Release branch can be updated with new commits.</p>
+<p>这个git command很有用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## can see commit detail, tag annotation, and so on.</span></span><br><span class="line">git show [tag|or anything]</span><br></pre></td></tr></table></figure>
+<p>References:
+<a href="https://stackoverflow.com/questions/35979642/what-is-git-tag-how-to-create-tags-how-to-checkout-git-remote-tags" target="_blank" rel="noopener">what is tag</a>
+<a href="https://stackoverflow.com/questions/11514075/what-is-the-difference-between-an-annotated-and-unannotated-tag" target="_blank" rel="noopener">annotated and non-annotated tag</a>
+<a href="https://stackoverflow.com/questions/8044583/how-can-i-move-a-tag-on-a-git-branch-to-a-different-commit" target="_blank" rel="noopener">move a tag on a branch to different commit</a></p>
+<h1>Release Branch</h1>
+<p>Generally you only need tags for releases.
+But when you need to make changes to production release without affecting master, you need release branch. For example, make hotfix. Release branch can be updated with new commits.</p>
 <p>Use cases for release branches:</p>
 <ul>
 <li>Manual QA.</li>
 <li>Long running releases.</li>
 <li>On demand hot fixes.</li>
 </ul>
-<p>Workflow is like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># we have some hot fixes on release branch, then create a release tag on it for production</span></span><br><span class="line"><span class="comment"># finally merge into master</span></span><br><span class="line">master ------ + ----- + -----+ --- + --------------- + ------&gt;</span><br><span class="line">               \                               /</span><br><span class="line">                \       hotfix   hotfix       /</span><br><span class="line">                 \-------- + ----- + --------/</span><br><span class="line">      release branch           (release tag)</span><br></pre></td></tr></table></figure></p>
+<p>Workflow is like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># we have some hot fixes on release branch, then create a release tag on it for production</span></span><br><span class="line"><span class="comment"># finally merge into master</span></span><br><span class="line">master ------ + ----- + -----+ --- + --------------- + ------&gt;</span><br><span class="line">               \                               /</span><br><span class="line">                \       hotfix   hotfix       /</span><br><span class="line">                 \-------- + ----- + --------/</span><br><span class="line">      release branch           (release tag)</span><br></pre></td></tr></table></figure>
 <p>[x] This is why we have double-commit back to master branch. 我们把release tag放在master branch中了。</p>
-<p>You can also create release branch on the fly from release tags, the workflow:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># on master branch</span></span><br><span class="line"><span class="comment"># checkout to a tag (detched HEAD)</span></span><br><span class="line">git checkout v1.1</span><br><span class="line"><span class="comment"># create release branch on release tag</span></span><br><span class="line">git checkout -b rb1.1</span><br><span class="line"></span><br><span class="line"><span class="comment"># or in one command to checkout a tag to a new branch</span></span><br><span class="line">git checkout tags/v1.1 -b rb1.1</span><br><span class="line"></span><br><span class="line"><span class="comment"># make fix</span></span><br><span class="line">&lt;hot fix&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit</span></span><br><span class="line">git commit -m <span class="string">"hotfix"</span></span><br><span class="line">git tag -a v1.1.1 -m <span class="string">"hotfix"</span></span><br><span class="line"><span class="comment"># merge</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment"># or rebase/squash or fast-forward</span></span><br><span class="line">git merge rb1.1 -m <span class="string">"merged hotfix"</span></span><br><span class="line"><span class="comment"># delete branch, the tag is still there, because you merged to master</span></span><br><span class="line">git branch -d rb1.1</span><br></pre></td></tr></table></figure></p>
-
+<p>You can also create release branch on the fly from release tags, the workflow:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># on master branch</span></span><br><span class="line"><span class="comment"># checkout to a tag (detched HEAD)</span></span><br><span class="line">git checkout v1.1</span><br><span class="line"><span class="comment"># create release branch on release tag</span></span><br><span class="line">git checkout -b rb1.1</span><br><span class="line"></span><br><span class="line"><span class="comment"># or in one command to checkout a tag to a new branch</span></span><br><span class="line">git checkout tags/v1.1 -b rb1.1</span><br><span class="line"></span><br><span class="line"><span class="comment"># make fix</span></span><br><span class="line">&lt;hot fix&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># commit</span></span><br><span class="line">git commit -m <span class="string">"hotfix"</span></span><br><span class="line">git tag -a v1.1.1 -m <span class="string">"hotfix"</span></span><br><span class="line"><span class="comment"># merge</span></span><br><span class="line">git checkout master</span><br><span class="line"><span class="comment"># or rebase/squash or fast-forward</span></span><br><span class="line">git merge rb1.1 -m <span class="string">"merged hotfix"</span></span><br><span class="line"><span class="comment"># delete branch, the tag is still there, because you merged to master</span></span><br><span class="line">git branch -d rb1.1</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -642,7 +633,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -739,7 +730,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1052,7 +1045,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1088,7 +1083,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Release-Tag"><span class="nav-number">1.</span> <span class="nav-text">Release Tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Release-Branch"><span class="nav-number">2.</span> <span class="nav-text">Release Branch</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Release Tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Release Branch</span></a></li></ol></div>
             
 
           </div>
@@ -1114,13 +1109,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   

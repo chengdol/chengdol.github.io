@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="应用容器，一般来说只有一个main serivce process(it can spawn child processes). 需要一个 init process(PID 1) 去管理 children reaping, handle signals, 也就是说, 如果你的 service process 有 fork 但是 no reaping，那么你就需要一个 init process 了，">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-02-13T22:51:37.948Z">
+<meta property="og:updated_time" content="2022-02-13T22:51:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Multi-process">
 <meta name="twitter:description" content="应用容器，一般来说只有一个main serivce process(it can spawn child processes). 需要一个 init process(PID 1) 去管理 children reaping, handle signals, 也就是说, 如果你的 service process 有 fork 但是 no reaping，那么你就需要一个 init process 了，">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">150</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">42</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">266</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
 
   </li>
 
@@ -474,24 +474,6 @@
           
 
           
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">15k</span>
-              
-
-              
-
-              
-            </div>
-          
 
           
 
@@ -510,33 +492,46 @@
       
         <p>应用容器，一般来说只有一个main serivce process(it can spawn child processes). 需要一个 init process(PID 1) 去管理 children reaping, handle signals, 也就是说, 如果你的 service process 有 fork 但是 no reaping，那么你就需要一个 init process 了，否则会造成 zombie process.</p>
 <p>特别是在容器中使用第三方 app 的时候，不清楚对方是否会产生 child processes 或者 reaping, 所以最好使用 init process, see this <a href="https://medium.com/@BeNitinAgarwal/an-init-system-inside-the-docker-container-3821ee233f4b" target="_blank" rel="noopener">articale</a> and <a href="https://github.com/krallin/tini/issues/8" target="_blank" rel="noopener">what is the advantage of tini</a>.</p>
-<h2 id="Exploration"><a href="#Exploration" class="headerlink" title="Exploration"></a>Exploration</h2><p>这里一篇文章关于 <a href="https://docs.docker.com/config/containers/multi-service_container/" target="_blank" rel="noopener">run multiple services in docker</a>, the options could be:</p>
+<h2 id="Exploration">Exploration</h2>
+<p>这里一篇文章关于 <a href="https://docs.docker.com/config/containers/multi-service_container/" target="_blank" rel="noopener">run multiple services in docker</a>, the options could be:</p>
 <ul>
-<li><p>using <a href="https://docs.docker.com/engine/reference/run/#specify-an-init-process" target="_blank" rel="noopener"><code>--init</code></a>, it is <code>docker-init</code> process backed by <code>tini</code>.</p>
+<li>using <a href="https://docs.docker.com/engine/reference/run/#specify-an-init-process" target="_blank" rel="noopener"><code>--init</code></a>, it is <code>docker-init</code> process backed by <code>tini</code>.</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ps aux can see docker-init</span></span><br><span class="line">docker run --init -itd nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>using wrapper script, for example, entrypoint script.</p>
-</li>
+<ul>
+<li>using wrapper script, for example, entrypoint script.</li>
 <li>main process along with temporary processes, set job control in wrapper script.</li>
 <li>install dedicated init process and config them, for example, supervisord, tini, dumb-init, etc.</li>
 </ul>
-<p>For catching signals and child process reaping, if not using <code>tini</code> or other dedicated init process, you need to write code by yourself. </p>
-<h2 id="init-Process"><a href="#init-Process" class="headerlink" title="init Process"></a>init Process</h2><p>可以看看container commonly used init processes:</p>
+<p>For catching signals and child process reaping, if not using <code>tini</code> or other dedicated init process, you need to write code by yourself.</p>
+<h2 id="init-Process">init Process</h2>
+<p>可以看看container commonly used init processes:</p>
 <ul>
 <li><a href="https://github.com/krallin/tini" target="_blank" rel="noopener">tini</a></li>
 <li><a href="https://github.com/Yelp/dumb-init" target="_blank" rel="noopener">dumb-init</a></li>
 <li><a href="https://github.com/ochinchina/supervisord" target="_blank" rel="noopener">supervisord</a></li>
 </ul>
-<p>For <code>tini</code>, <a href="https://github.com/krallin/tini#using-tini" target="_blank" rel="noopener">using steps</a>:<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in alpine docker</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add --no-cache tini</span></span><br><span class="line"><span class="bash"><span class="comment"># tini is now available at /sbin/tini</span></span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">"/sbin/tini"</span>, <span class="string">"--"</span>]</span></span><br><span class="line"><span class="bash"><span class="comment"># or</span></span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">"/sbin/tini"</span>, <span class="string">"--"</span>, <span class="string">"/docker-entrypoint.sh"</span>]</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="How-tini-Proxies-Signal"><a href="#How-tini-Proxies-Signal" class="headerlink" title="How tini Proxies Signal"></a>How tini Proxies Signal</h2><p>之前看了一篇关于 Linux delivery signal 之于 container init process  的文章，提到了在 container 中 <code>kill 1</code> 的操作为什么有时会失败，然后讲了什么时候 kernel 会把信号推送到 init process，以及什么时候不会。这篇文章只提到了源码的一部分，也就是 init process(SIGNAL_UNKILLABLE) + non-default signal handler + current namespace, see the second if condition:<br><a href="https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L79-L99" target="_blank" rel="noopener">https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L79-L99</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">sig_task_ignored</span><span class="params">(struct task_struct *t, <span class="keyword">int</span> sig, <span class="keyword">bool</span> force)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">void</span> __user *handler;</span><br><span class="line"></span><br><span class="line">	handler = sig_handler(t, sig);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* SIGKILL and SIGSTOP may not be sent to the global init */</span></span><br><span class="line">	<span class="keyword">if</span> (unlikely(is_global_init(t) &amp;&amp; sig_kernel_only(sig)))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/***** see this condition *****/</span></span><br><span class="line">	<span class="keyword">if</span> (unlikely(t-&gt;signal-&gt;flags &amp; SIGNAL_UNKILLABLE) &amp;&amp;</span><br><span class="line">	    handler == SIG_DFL &amp;&amp; !(force &amp;&amp; sig_kernel_only(sig)))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  <span class="comment">/*******/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Only allow kernel generated signals to this kthread */</span></span><br><span class="line">	<span class="keyword">if</span> (unlikely((t-&gt;flags &amp; PF_KTHREAD) &amp;&amp;</span><br><span class="line">		     (handler == SIG_KTHREAD_KERNEL) &amp;&amp; !force))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> sig_handler_ignored(handler, sig);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>The emphasis is on <code>sigcgt</code> bitmask, this is correct as docker has documented here:<br><a href="https://docs.docker.com/engine/reference/run/#foreground" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/run/#foreground</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A process running as PID 1 inside a container is treated specially by Linux: it ignores any signal with the default action. As a result, the process will not terminate on SIGINT or SIGTERM unless it is coded to do so.</span><br></pre></td></tr></table></figure></p>
-<p>也就是说，用户如果在 init process 注册了 SIGTERM handler(<code>sigcgt</code> bit set to 1) 那么 <code>handler == SIG_DFL</code> is false，所以 init process 就可以收到了.  </p>
+<p>For <code>tini</code>, <a href="https://github.com/krallin/tini#using-tini" target="_blank" rel="noopener">using steps</a>:</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in alpine docker</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add --no-cache tini</span></span><br><span class="line"><span class="bash"><span class="comment"># tini is now available at /sbin/tini</span></span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">"/sbin/tini"</span>, <span class="string">"--"</span>]</span></span><br><span class="line"><span class="bash"><span class="comment"># or</span></span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">"/sbin/tini"</span>, <span class="string">"--"</span>, <span class="string">"/docker-entrypoint.sh"</span>]</span></span><br></pre></td></tr></table></figure>
+<h2 id="How-tini-Proxies-Signal">How tini Proxies Signal</h2>
+<p>之前看了一篇关于 Linux delivery signal 之于 container init process  的文章，提到了在 container 中 <code>kill 1</code> 的操作为什么有时会失败，然后讲了什么时候 kernel 会把信号推送到 init process，以及什么时候不会。这篇文章只提到了源码的一部分，也就是 init process(SIGNAL_UNKILLABLE) + non-default signal handler + current namespace, see the second if condition:
+<a href="https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L79-L99" target="_blank" rel="noopener">https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L79-L99</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">sig_task_ignored</span><span class="params">(struct task_struct *t, <span class="keyword">int</span> sig, <span class="keyword">bool</span> force)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">void</span> __user *handler;</span><br><span class="line"></span><br><span class="line">	handler = sig_handler(t, sig);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* SIGKILL and SIGSTOP may not be sent to the global init */</span></span><br><span class="line">	<span class="keyword">if</span> (unlikely(is_global_init(t) &amp;&amp; sig_kernel_only(sig)))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/***** see this condition *****/</span></span><br><span class="line">	<span class="keyword">if</span> (unlikely(t-&gt;signal-&gt;flags &amp; SIGNAL_UNKILLABLE) &amp;&amp;</span><br><span class="line">	    handler == SIG_DFL &amp;&amp; !(force &amp;&amp; sig_kernel_only(sig)))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  <span class="comment">/*******/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Only allow kernel generated signals to this kthread */</span></span><br><span class="line">	<span class="keyword">if</span> (unlikely((t-&gt;flags &amp; PF_KTHREAD) &amp;&amp;</span><br><span class="line">		     (handler == SIG_KTHREAD_KERNEL) &amp;&amp; !force))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> sig_handler_ignored(handler, sig);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The emphasis is on <code>sigcgt</code> bitmask, this is correct as docker has documented here:
+<a href="https://docs.docker.com/engine/reference/run/#foreground" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/run/#foreground</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A process running as PID 1 inside a container is treated specially by Linux: it ignores any signal with the default action. As a result, the process will not terminate on SIGINT or SIGTERM unless it is coded to do so.</span><br></pre></td></tr></table></figure>
+<p>也就是说，用户如果在 init process 注册了 SIGTERM handler(<code>sigcgt</code> bit set to 1) 那么 <code>handler == SIG_DFL</code> is false，所以 init process 就可以收到了.</p>
 <p>但问题是我查看 tini init process signal bitmask <code>sigcgt</code> is 0 for all fields, 所以 kernel 甚至都不会把信号传递过去, so how come the tini forwards signal if no signal would be delivered at all? I have opened a <a href="https://github.com/krallin/tini/issues/192" target="_blank" rel="noopener">question</a> regarding this.</p>
-<p>From the author’s comment, I know <code>The way Tini catches signals is by blocking all signals that should be forwarded to the child, and then waiting for them via sigtimedwait</code>. If takes a closer look at the caller of <code>sig_task_ignored</code>:<br><a href="https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L101-L120" target="_blank" rel="noopener">https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L101-L120</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">sig_ignored</span><span class="params">(struct task_struct *t, <span class="keyword">int</span> sig, <span class="keyword">bool</span> force)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Blocked signals are never ignored, since the</span></span><br><span class="line"><span class="comment">	 * signal handler may change by the time it is</span></span><br><span class="line"><span class="comment">	 * unblocked.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">if</span> (sigismember(&amp;t-&gt;blocked, sig) || sigismember(&amp;t-&gt;real_blocked, sig))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Tracers may want to know about even ignored signal unless it</span></span><br><span class="line"><span class="comment">	 * is SIGKILL which can't be reported anyway but can be ignored</span></span><br><span class="line"><span class="comment">	 * by SIGNAL_UNKILLABLE task.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">if</span> (t-&gt;ptrace &amp;&amp; sig != SIGKILL)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> sig_task_ignored(t, sig, force);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>You will see <code>Blocked signals are never ignored</code>! So tini will always receive the signals from kernel. </p>
-<p>关于 tini main loop 中的 <code>sigtimedwait</code> 其实就是block execution 等待信号的到来<br><a href="https://github.com/krallin/tini/blob/378bbbc8909a960e89de220b1a4e50781233a740/src/tini.c#L501-L514" target="_blank" rel="noopener">https://github.com/krallin/tini/blob/378bbbc8909a960e89de220b1a4e50781233a740/src/tini.c#L501-L514</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wait_and_forward_signal</span><span class="params">(<span class="keyword">sigset_t</span> <span class="keyword">const</span>* <span class="keyword">const</span> parent_sigset_ptr, <span class="keyword">pid_t</span> <span class="keyword">const</span> child_pid)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">siginfo_t</span> sig;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (sigtimedwait(parent_sigset_ptr, &amp;sig, &amp;ts) == <span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">switch</span> (errno) &#123;</span><br><span class="line">			<span class="keyword">case</span> EAGAIN:</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> EINTR:</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				PRINT_FATAL(<span class="string">"Unexpected error in sigtimedwait: '%s'"</span>, strerror(errno));</span><br><span class="line">				<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br></pre></td></tr></table></figure></p>
+<p>From the author’s comment, I know <code>The way Tini catches signals is by blocking all signals that should be forwarded to the child, and then waiting for them via sigtimedwait</code>. If takes a closer look at the caller of <code>sig_task_ignored</code>:
+<a href="https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L101-L120" target="_blank" rel="noopener">https://github.com/torvalds/linux/blob/a76c3d035872bf390d2fd92d8e5badc5ee28b17d/kernel/signal.c#L101-L120</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">sig_ignored</span><span class="params">(struct task_struct *t, <span class="keyword">int</span> sig, <span class="keyword">bool</span> force)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Blocked signals are never ignored, since the</span></span><br><span class="line"><span class="comment">	 * signal handler may change by the time it is</span></span><br><span class="line"><span class="comment">	 * unblocked.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">if</span> (sigismember(&amp;t-&gt;blocked, sig) || sigismember(&amp;t-&gt;real_blocked, sig))</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Tracers may want to know about even ignored signal unless it</span></span><br><span class="line"><span class="comment">	 * is SIGKILL which can't be reported anyway but can be ignored</span></span><br><span class="line"><span class="comment">	 * by SIGNAL_UNKILLABLE task.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">if</span> (t-&gt;ptrace &amp;&amp; sig != SIGKILL)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> sig_task_ignored(t, sig, force);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You will see <code>Blocked signals are never ignored</code>! So tini will always receive the signals from kernel.</p>
+<p>关于 tini main loop 中的 <code>sigtimedwait</code> 其实就是block execution 等待信号的到来
+<a href="https://github.com/krallin/tini/blob/378bbbc8909a960e89de220b1a4e50781233a740/src/tini.c#L501-L514" target="_blank" rel="noopener">https://github.com/krallin/tini/blob/378bbbc8909a960e89de220b1a4e50781233a740/src/tini.c#L501-L514</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">wait_and_forward_signal</span><span class="params">(<span class="keyword">sigset_t</span> <span class="keyword">const</span>* <span class="keyword">const</span> parent_sigset_ptr, <span class="keyword">pid_t</span> <span class="keyword">const</span> child_pid)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">siginfo_t</span> sig;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (sigtimedwait(parent_sigset_ptr, &amp;sig, &amp;ts) == <span class="number">-1</span>) &#123;</span><br><span class="line">		<span class="keyword">switch</span> (errno) &#123;</span><br><span class="line">			<span class="keyword">case</span> EAGAIN:</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> EINTR:</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				PRINT_FATAL(<span class="string">"Unexpected error in sigtimedwait: '%s'"</span>, strerror(errno));</span><br><span class="line">				<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br></pre></td></tr></table></figure>
 <p>可以参考 <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener">signal(7)</a> section <code>Synchronously accepting a signal</code> 关于 <code>sigtimedwait</code> 的讲解.</p>
-<p>还可以通过 <code>sudo strace -p &lt;pid&gt;</code> 去观察 tini 是如何 forward signal 的:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tini is init process</span></span><br><span class="line"><span class="comment"># bash is child</span></span><br><span class="line">docker run --name <span class="built_in">test</span> -itd tini_image:latest bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># find out pid in host namespace</span></span><br><span class="line">ps -ef | grep bash</span><br><span class="line"></span><br><span class="line">sudo strace -p &lt;tini pid&gt;</span><br><span class="line">sudo strace -p &lt;child bash pid&gt;</span><br><span class="line"></span><br><span class="line">docker stop <span class="built_in">test</span></span><br></pre></td></tr></table></figure></p>
+<p>还可以通过 <code>sudo strace -p &lt;pid&gt;</code> 去观察 tini 是如何 forward signal 的:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tini is init process</span></span><br><span class="line"><span class="comment"># bash is child</span></span><br><span class="line">docker run --name <span class="built_in">test</span> -itd tini_image:latest bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># find out pid in host namespace</span></span><br><span class="line">ps -ef | grep bash</span><br><span class="line"></span><br><span class="line">sudo strace -p &lt;tini pid&gt;</span><br><span class="line">sudo strace -p &lt;child bash pid&gt;</span><br><span class="line"></span><br><span class="line">docker stop <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -657,7 +652,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">266</span>
+                    <span class="site-state-item-count">267</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -754,7 +749,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1067,7 +1064,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">150</span>
+                      
+                    
+                    <span class="site-state-item-count">151</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1129,13 +1128,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">1.2m</span>
   
 
   
