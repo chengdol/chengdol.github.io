@@ -96,24 +96,25 @@
 
 
 
-  <meta name="description" content="AUTO GENERATION There are 7 blogs written or updated in last 60 days that need to review:  Hexo Quick Start Kubernetes CRD Deletion Hang iTerm2 and Oh-My-Zsh Setup Python gRPC  Python Logging Python P">
+  <meta name="description" content="Write Better Tests A single unittest case should have:  Cover only one path through code. Have better asserts and documentation. Providing informative failure messages.  To avoid repeition, using test">
+<meta name="keywords" content="python,unittest">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog Review List">
-<meta property="og:url" content="http://yoursite.com/2022/11/26/review-list/index.html">
+<meta property="og:title" content="Python Unittest">
+<meta property="og:url" content="http://yoursite.com/2022/11/24/python-unittest/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="AUTO GENERATION There are 7 blogs written or updated in last 60 days that need to review:  Hexo Quick Start Kubernetes CRD Deletion Hang iTerm2 and Oh-My-Zsh Setup Python gRPC  Python Logging Python P">
+<meta property="og:description" content="Write Better Tests A single unittest case should have:  Cover only one path through code. Have better asserts and documentation. Providing informative failure messages.  To avoid repeition, using test">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-11-27T00:56:29.555Z">
+<meta property="og:updated_time" content="2022-11-28T05:34:06.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog Review List">
-<meta name="twitter:description" content="AUTO GENERATION There are 7 blogs written or updated in last 60 days that need to review:  Hexo Quick Start Kubernetes CRD Deletion Hang iTerm2 and Oh-My-Zsh Setup Python gRPC  Python Logging Python P">
+<meta name="twitter:title" content="Python Unittest">
+<meta name="twitter:description" content="Write Better Tests A single unittest case should have:  Cover only one path through code. Have better asserts and documentation. Providing informative failure messages.  To avoid repeition, using test">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2022/11/26/review-list/">
+  <link rel="canonical" href="http://yoursite.com/2022/11/24/python-unittest/">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title>Blog Review List | 海胆阶段's Blog</title>
+  <title>Python Unittest | 海胆阶段's Blog</title>
   
 
 
@@ -259,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">151</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">152</span></a>
 
   </li>
         
@@ -297,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">267</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">268</span></a>
 
   </li>
 
@@ -378,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/26/review-list/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/24/python-unittest/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -395,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Blog Review List
+          <h1 class="post-title" itemprop="name headline">Python Unittest
 
               
             
@@ -421,12 +422,46 @@
                 
               
 
-              <time title="Created: 2022-11-26 16:56:29" itemprop="dateCreated datePublished" datetime="2022-11-26T16:56:29-08:00">2022-11-26</time>
+              <time title="Created: 2022-11-24 15:32:05" itemprop="dateCreated datePublished" datetime="2022-11-24T15:32:05-08:00">2022-11-24</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2022-11-27 21:34:06" itemprop="dateModified" datetime="2022-11-27T21:34:06-08:00">2022-11-27</time>
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -455,17 +490,97 @@
       
 
       
-        <p><strong>AUTO GENERATION</strong>
-There are <strong>7</strong> blogs written or updated in last <strong>60</strong> days that need to review:</p>
+        <h1>Write Better Tests</h1>
+<p>A single unittest case should have:</p>
+<ol>
+<li>Cover only one path through code.</li>
+<li>Have better asserts and documentation.</li>
+<li>Providing informative failure messages.</li>
+</ol>
+<p>To avoid repeition, using test fixtures:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">  setUpModule --&gt; setUpClass;</span><br><span class="line">  setUpClass --&gt; setUp;</span><br><span class="line">  setUp --&gt; test_*;</span><br><span class="line">  test_* --&gt; tearDown;</span><br><span class="line">  tearDown --&gt; setUp;</span><br><span class="line">  tearDown --&gt; tearDownClass;</span><br><span class="line">  tearDownClass --&gt; setUpClass;</span><br><span class="line">  tearDownClass --&gt; tearDownModule;</span><br></pre></td></tr></table></figure>
+<p>Assert methods allow custom messages, for example:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.assertEqual(</span><br><span class="line">    <span class="number">10</span>, call_count,</span><br><span class="line">    <span class="string">'The call count should be 10, not &#123;&#125;.'</span></span><br><span class="line">    .format(call_count))</span><br></pre></td></tr></table></figure>
+<h1>Write Testable Code</h1>
+<p>Some important techniques to make code easier to test:</p>
 <ul>
-<li><a href="https://chengdol.github.io/2019/01/27/hexo-setup" target="_blank" rel="noopener">Hexo Quick Start</a></li>
-<li><a href="https://chengdol.github.io/2022/11/21/k8s-crd-deletion-hang" target="_blank" rel="noopener">Kubernetes CRD Deletion Hang</a></li>
-<li><a href="https://chengdol.github.io/2020/07/26/mac-iterm2-zsh" target="_blank" rel="noopener">iTerm2 and Oh-My-Zsh Setup</a></li>
-<li><a href="https://chengdol.github.io/2022/11/21/python-grpc" target="_blank" rel="noopener">Python gRPC </a></li>
-<li><a href="https://chengdol.github.io/2021/11/13/python-logging" target="_blank" rel="noopener">Python Logging</a></li>
-<li><a href="https://chengdol.github.io/2020/08/22/python-virtual-environment" target="_blank" rel="noopener">Python Packages and Virtual Environment</a></li>
-<li><a href="https://chengdol.github.io/2020/05/28/vsc-setup" target="_blank" rel="noopener">Visual Studio Code Setup</a></li>
+<li>Documentation.</li>
+<li>Dependencies.</li>
+<li>Decomposition.</li>
+<li>Graceful and informative failure.</li>
 </ul>
+<p>Google Blog
+<a href="https://testing.googleblog.com/2008/08/by-miko-hevery-so-you-decided-to.html" target="_blank" rel="noopener">Writing Testable Code</a>.</p>
+<h1>Dependency Replacement</h1>
+<blockquote>
+<p>Test Double: A simplified replacement for any dependency of a system under
+test.</p>
+</blockquote>
+<p>You should use test doubles if  the real thing:</p>
+<ul>
+<li>Isn’t available</li>
+<li>Won’t return the results needed</li>
+<li>Would have undesirable side effects</li>
+<li>Would be too slow</li>
+</ul>
+<p>Types of test doubles:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What it does</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Placeholder</td>
+<td>Does nothing.<br>Passed around but never used</td>
+<td>You need a placeholder.</td>
+</tr>
+<tr>
+<td>Stub</td>
+<td>Provides canned answers.</td>
+<td>You want the same result every time.</td>
+</tr>
+<tr>
+<td>Spy</td>
+<td>A stub that remembers <br>how it was called.</td>
+<td>You want to verify functions were called the right way.</td>
+</tr>
+<tr>
+<td>Mock</td>
+<td>Configurable mimic of<br>a particular object.</td>
+<td>Can behave like a dummy, stub, or spy.</td>
+</tr>
+<tr>
+<td>Fake</td>
+<td>A simplified version of<br>the real thing</td>
+<td>Interacting with a complicated system.</td>
+</tr>
+</tbody>
+</table>
+<h1>Other Fakes</h1>
+<p>You can find on Internet such as MySQL fake, etc.</p>
+<h1>Mock</h1>
+<p>//TODO:
+[ ] mock usage, cookbook</p>
+<p>With mock object, we can make assertions about how it has been used.</p>
+<p>A mock object can pretend to be anything. It can:</p>
+<ul>
+<li>Return expected values when called.</li>
+<li>Keep track of how it was called.</li>
+<li>Have attributes.</li>
+<li>Call other functions.</li>
+<li>Raise exceptions.</li>
+</ul>
+<p>Some demos about basic usage:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">m = mock.Mock()</span><br><span class="line"><span class="comment"># Set up return value.</span></span><br><span class="line">m.return_value = <span class="string">'foo'</span></span><br><span class="line"><span class="comment"># Tracking calls and arguments</span></span><br><span class="line">self.assertTrue(m.called) <span class="comment"># bool</span></span><br><span class="line">self.assertEqual(<span class="number">10</span>, m.call_count) <span class="comment"># int</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># With what args called?</span></span><br><span class="line"><span class="comment"># All calls</span></span><br><span class="line">m = mock.Mock()(return_value=<span class="keyword">None</span>)</span><br><span class="line">m(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">m(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)</span><br><span class="line">m()</span><br><span class="line">expected = [mock.call(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), mock.call(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), mock.call()]</span><br><span class="line">self.assertEqual(expected, m.call_args_list)</span><br><span class="line"><span class="comment"># Most recent call.</span></span><br><span class="line">args, kwargs = m.call_args</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check most recent calls.</span></span><br><span class="line">m.assert_called_with(<span class="string">'foo'</span>, a=<span class="number">1</span>)</span><br><span class="line">m.assert_called_once_with(<span class="string">'foo'</span>, a=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check other calls.</span></span><br><span class="line"><span class="comment"># Use mock.ANY as a placeholder.</span></span><br><span class="line">self.assertTrue(m.assert_any_call(<span class="string">'foo'</span>, a=<span class="number">1</span>))</span><br><span class="line">self.assertTrue((m.assert_has_calls([</span><br><span class="line">  mock.call(<span class="string">'foo'</span>, a=<span class="number">1</span>),</span><br><span class="line">  mock.call(mock.ANY, a=<span class="number">1</span>),</span><br><span class="line">  ])))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set attributes.</span></span><br><span class="line">m = mock.Mock()</span><br><span class="line"><span class="comment"># Then you can use m.foo it will return 'bar'.</span></span><br><span class="line"><span class="comment"># Uninitialized attributes are mock objects.</span></span><br><span class="line">m.foo = <span class="string">'bar'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use another function to determine the return value</span></span><br><span class="line"><span class="comment"># m(3) will return 6</span></span><br><span class="line">m.side_effect = <span class="keyword">lambda</span> x: x * <span class="number">2</span></span><br><span class="line"><span class="comment"># Raises an exception when m() is called</span></span><br><span class="line">m.side_effect = Exception(<span class="string">'Boom!'</span>)</span><br><span class="line"><span class="comment"># If using iter, each call will return the next element.</span></span><br><span class="line">m.side_effect = iter([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<p>You can use patcher object to replace existing code with mock objects, for
+example this warpper function can be used in <code>setUp</code> method.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_mock_method</span><span class="params">(self, module, function_name, **kwargs)</span>:</span></span><br><span class="line">  <span class="string">"""Simplifies mocking via patchers."""</span></span><br><span class="line">  kwargs.setdefault(<span class="string">'autospec'</span>, <span class="keyword">True</span>)</span><br><span class="line">  patcher = mock.patch.object(module, function_name, **kwargs)</span><br><span class="line">  <span class="comment"># patcher.stop must be called to restore mock object.</span></span><br><span class="line">  <span class="comment"># If setUp() fails, meaning that tearDown() is not called, then any cleanup</span></span><br><span class="line">  <span class="comment"># functions added will still be called with addCleanup.</span></span><br><span class="line">  self.addCleanup(patcher.stop)</span><br><span class="line">  <span class="keyword">return</span> patcher.start()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Used in setUp method.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">  super().setUp()</span><br><span class="line">  self._mock_send_rpc = _mock_method(self, grpc_cli, <span class="string">'_send_rpc'</span>)</span><br></pre></td></tr></table></figure>
+<h1>Demo with Fake gRPC Service</h1>
+<p>//TODO: Combined with gRPC python</p>
 
       
     </div>
@@ -487,6 +602,14 @@ There are <strong>7</strong> blogs written or updated in last <strong>60</strong
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/unittest/" rel="tag"># unittest</a>
+          
+        </div>
+      
 
       
       
@@ -505,6 +628,10 @@ There are <strong>7</strong> blogs written or updated in last <strong>60</strong
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/11/27/review-list/" rel="prev" title="Blog Review List">
+                Blog Review List <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -549,8 +676,17 @@ There are <strong>7</strong> blogs written or updated in last <strong>60</strong
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -567,7 +703,7 @@ There are <strong>7</strong> blogs written or updated in last <strong>60</strong
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">267</span>
+                    <span class="site-state-item-count">268</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -981,7 +1117,9 @@ There are <strong>7</strong> blogs written or updated in last <strong>60</strong
                     
                       
                     
-                    <span class="site-state-item-count">151</span>
+                      
+                    
+                    <span class="site-state-item-count">152</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1006,6 +1144,23 @@ There are <strong>7</strong> blogs written or updated in last <strong>60</strong
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Write Better Tests</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Write Testable Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Dependency Replacement</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Other Fakes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Mock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Demo with Fake gRPC Service</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
