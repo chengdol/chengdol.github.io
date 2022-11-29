@@ -498,7 +498,15 @@
 <li>Providing informative failure messages.</li>
 </ol>
 <p>To avoid repeition, using test fixtures:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">  setUpModule --&gt; setUpClass;</span><br><span class="line">  setUpClass --&gt; setUp;</span><br><span class="line">  setUp --&gt; test_*;</span><br><span class="line">  test_* --&gt; tearDown;</span><br><span class="line">  tearDown --&gt; setUp;</span><br><span class="line">  tearDown --&gt; tearDownClass;</span><br><span class="line">  tearDownClass --&gt; setUpClass;</span><br><span class="line">  tearDownClass --&gt; tearDownModule;</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">graph TD;
+  setUpModule --> setUpClass;
+  setUpClass --> setUp;
+  setUp --> test_*;
+  test_* --> tearDown;
+  tearDown --> setUp;
+  tearDown --> tearDownClass;
+  tearDownClass --> setUpClass;
+  tearDownClass --> tearDownModule;</pre>
 <p>Assert methods allow custom messages, for example:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.assertEqual(</span><br><span class="line">    <span class="number">10</span>, call_count,</span><br><span class="line">    <span class="string">'The call count should be 10, not &#123;&#125;.'</span></span><br><span class="line">    .format(call_count))</span><br></pre></td></tr></table></figure>
 <h1>Write Testable Code</h1>
@@ -1199,6 +1207,14 @@ example this warpper function can be used in <code>setUp</code> method.</p>
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
 
         
 

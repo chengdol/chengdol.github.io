@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1IWR24a6-IJirz1o_f9r7LmceSFUdSoS3">
 <meta property="og:image" content="https://drive.google.com/uc?id=15FS4S4Lfi33giFDmf7NzeWMTq4N8p65M">
 <meta property="og:image" content="https://drive.google.com/uc?id=1UkhbU2jxwuw6Kd14YDPcBCc80kSXL5Jr">
-<meta property="og:updated_time" content="2022-11-27T00:56:18.340Z">
+<meta property="og:updated_time" content="2022-11-29T03:35:03.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo Quick Start">
 <meta name="twitter:description" content="[x] 另一个静态文件转换工具jekyll, you can use AWS s3 to host static website or use git page as well. Several weeks ago I decided to summarize and post what I have learned to online Blog platform, I struggled sev">
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-11-26 16:56:18" itemprop="dateModified" datetime="2022-11-26T16:56:18-08:00">2022-11-26</time>
+                <time title="Modified: 2022-11-28 19:35:03" itemprop="dateModified" datetime="2022-11-28T19:35:03-08:00">2022-11-28</time>
               
             
           </span>
@@ -597,6 +597,17 @@ install new one manually, from its README:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># First go to the blog root directory.</span></span><br><span class="line"><span class="comment"># Uninstall old.</span></span><br><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line"><span class="comment"># Install new.</span></span><br><span class="line">npm i hexo-renderer-markdown-it --save</span><br></pre></td></tr></table></figure>
 <p>The configuration is in root <code>_config.yml</code> file:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line"><span class="attr">  preset:</span> <span class="string">'default'</span></span><br><span class="line"><span class="attr">  render:</span></span><br><span class="line"><span class="attr">    html:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    xhtmlOut:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    langPrefix:</span> <span class="string">'language-'</span></span><br><span class="line">    <span class="comment"># To follow the 80 columns wide rule, we need to disable the</span></span><br><span class="line">    <span class="comment"># line break rendering.</span></span><br><span class="line"><span class="attr">    breaks:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    linkify:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    typographer:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    quotes:</span> <span class="string">'“”‘’'</span></span><br></pre></td></tr></table></figure>
+<h2 id="Mermaid-Diagram">Mermaid Diagram</h2>
+<p>This <a href="https://github.com/webappdevelp/hexo-filter-mermaid-diagrams" target="_blank" rel="noopener">Mermaid plugin</a>
+is for Hexo(not for VSCode), install by running:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Go to blog root folder first.</span></span><br><span class="line">npm install --save hexo-filter-mermaid-diagrams</span><br></pre></td></tr></table></figure>
+<p>After installation, in Hexo <code>_config.yml</code> file, append:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mermaid chart</span></span><br><span class="line"><span class="attr">mermaid:</span> <span class="comment">## mermaid url https://github.com/knsv/mermaid</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span>  <span class="comment"># default true</span></span><br><span class="line"><span class="attr">  version:</span> <span class="string">"7.1.2"</span> <span class="comment"># default v7.1.2</span></span><br><span class="line"><span class="attr">  options:</span>  <span class="comment"># find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js</span></span><br><span class="line">    <span class="comment">#startOnload: true  // default true</span></span><br></pre></td></tr></table></figure>
+<p>Additionally, appends below snippet at <code>Next</code> theme <code>layout/_partials/footer.swig</code> file.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.mermaid.enable %&#125;</span><br><span class="line">  &lt;script src=<span class="string">'https://unpkg.com/mermaid@&#123;&#123; theme.mermaid.version &#125;&#125;/dist/mermaid.min.js'</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;&#123; <span class="built_in">JSON</span>.stringify(theme.mermaid.options) &#125;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&#123;% endif %&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>NOTE: the swig file location is subject to change for different Next versions.</p>
+</blockquote>
 
       
     </div>
@@ -1171,7 +1182,7 @@ install new one manually, from its README:</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Hexo and GitHub Pages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Set up GitHub Pages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Set up Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Initializing Blog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Customizing Blog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Backup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Hexo Plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Search"><span class="nav-number">7.1.</span> <span class="nav-text">Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown-Rendering"><span class="nav-number">7.2.</span> <span class="nav-text">Markdown Rendering</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Hexo and GitHub Pages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Set up GitHub Pages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Set up Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Initializing Blog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Customizing Blog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Backup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Hexo Plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Search"><span class="nav-number">7.1.</span> <span class="nav-text">Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown-Rendering"><span class="nav-number">7.2.</span> <span class="nav-text">Markdown Rendering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mermaid-Diagram"><span class="nav-number">7.3.</span> <span class="nav-text">Mermaid Diagram</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1215,6 +1226,14 @@ install new one manually, from its README:</p>
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
 
         
 
