@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference from: https://gist.github.com/kevin-smets/8568070 Install iTerm2 Install iTerm2 on Mac https:">
+  <meta name="description" content="This post is about set up efficient, beautiful theme emulator with oh-my-zsh. Reference from: https://gist.github.com/kevin-smets/8568070 Install iTerm2 Install iTerm2 on Mac https://www.iterm2.com/ C">
 <meta name="keywords" content="mac,iterm2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iTerm2 and Oh-My-Zsh Setup">
 <meta property="og:url" content="http://yoursite.com/2020/07/26/mac-iterm2-zsh/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference from: https://gist.github.com/kevin-smets/8568070 Install iTerm2 Install iTerm2 on Mac https:">
+<meta property="og:description" content="This post is about set up efficient, beautiful theme emulator with oh-my-zsh. Reference from: https://gist.github.com/kevin-smets/8568070 Install iTerm2 Install iTerm2 on Mac https://www.iterm2.com/ C">
 <meta property="og:locale" content="中文|English">
 <meta property="og:image" content="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2">
 <meta property="og:image" content="https://drive.google.com/uc?id=1Q6qoOp8xFw6wa-XxCLEUp0jG9NebV_7W">
-<meta property="og:updated_time" content="2022-11-27T00:37:11.484Z">
+<meta property="og:updated_time" content="2022-12-21T05:21:24.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iTerm2 and Oh-My-Zsh Setup">
-<meta name="twitter:description" content="This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh. Reference from: https://gist.github.com/kevin-smets/8568070 Install iTerm2 Install iTerm2 on Mac https:">
+<meta name="twitter:description" content="This post is about set up efficient, beautiful theme emulator with oh-my-zsh. Reference from: https://gist.github.com/kevin-smets/8568070 Install iTerm2 Install iTerm2 on Mac https://www.iterm2.com/ C">
 <meta name="twitter:image" content="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2">
 
 
@@ -301,7 +301,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">268</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">269</span></a>
 
   </li>
 
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-11-26 16:37:11" itemprop="dateModified" datetime="2022-11-26T16:37:11-08:00">2022-11-26</time>
+                <time title="Modified: 2022-12-20 21:21:24" itemprop="dateModified" datetime="2022-12-20T21:21:24-08:00">2022-12-20</time>
               
             
           </span>
@@ -493,37 +493,41 @@
       
 
       
-        <p>This post primarily talks about how to setup efficient, beautiful theme emulator with oh-my-zsh.</p>
+        <p>This post is about set up efficient, beautiful theme emulator with oh-my-zsh.</p>
 <p>Reference from:
 <a href="https://gist.github.com/kevin-smets/8568070" target="_blank" rel="noopener">https://gist.github.com/kevin-smets/8568070</a></p>
 <h1>Install iTerm2</h1>
 <p>Install iTerm2 on Mac<br>
 <a href="https://www.iterm2.com/" target="_blank" rel="noopener">https://www.iterm2.com/</a></p>
 <h2 id="Configure-iTerm2">Configure iTerm2</h2>
-<p>Solarized Dark is bad for some syntax highlighting, to import other themes, download from there, zip file, you can uncompress and put the downloaded folder to the user home directory, for example <code>/Users/chengdol</code>:
+<p>Solarized Dark is bad for some syntax highlighting, to import other themes,
+download from there, zip file, you can uncompress and put the downloaded folder
+to the user home directory, for example <code>/Users/chengdol</code>:
 <a href="https://iterm2colorschemes.com/" target="_blank" rel="noopener">https://iterm2colorschemes.com/</a></p>
-<p>The theme I use is <code>Chalk</code>, import <code>Chalk.itermcolors</code> file(s) in the <code>scheme(s)</code> folder:
+<p>The theme I use is <code>Chalk</code>, import <code>Chalk.itermcolors</code> file(s) in the
+<code>scheme(s)</code> folder:
 <img src="https://drive.google.com/uc?id=1YBwdxAjAG_V8IztiBAz0ePf01m0N6eS2" alt=""></p>
 <p><img src="https://drive.google.com/uc?id=1Q6qoOp8xFw6wa-XxCLEUp0jG9NebV_7W" alt=""></p>
 <p>Additionally，go and set iTerm2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Preference -&gt;</span><br><span class="line">Advanced -&gt;</span><br><span class="line">mouse -&gt;</span><br><span class="line">Scroll wheel sends arrow keys when in alternate screen mode -&gt;</span><br><span class="line">yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Preference -&gt;</span><br><span class="line">Advanced -&gt;</span><br><span class="line">mouse -&gt;</span><br><span class="line">Scroll wheel sends arrow keys when <span class="keyword">in</span> alternate screen mode -&gt;</span><br><span class="line">yes</span><br></pre></td></tr></table></figure>
 <p>This fix the mess-up issue when you scroll cursor inside Vim.</p>
 <h2 id="iTerm2-Tips">iTerm2 Tips</h2>
 <ol>
+<li>Hotkeys, the floating terminal window setup:</li>
+</ol>
+<p>Go to <code>Preferences -&gt; Keys -&gt; Hotkey</code> and create a Dedicated Hotkey Window.
+My customized hotkey is <code>ctrl + shift + t</code>. Set the hotkey window profiles text
+font the same as the default iTerm2 window, here I use <code>MesloLGS NF</code>.</p>
+<ol start="2">
 <li>
-<p><code>imgcat</code> script, enable image presentation in terminal:
-<a href="https://iterm2.com/documentation-images.html" target="_blank" rel="noopener">https://iterm2.com/documentation-images.html</a></p>
+<p>Locating the cursor in iTerm2 terminal: <code>command + /</code>.</p>
 </li>
 <li>
-<p>Hotkeys, the floating terminal window setup:
-Preferences -&gt; Keys -&gt; Hotkey -&gt; Create a Dedicated Hotkey Window.
-My custom hotkey is <code>ctrl + shift + t</code>. Set the hotkey window profiles text font the same as the default iTerm2 window, here I use <code>MesloLGS NF</code>.</p>
+<p>Send commands to mutliple panes in the same tab <code>shift + command + i</code>,
+disable use the same command.</p>
 </li>
 <li>
-<p>Locating the cursor in iTerm2 terminal: <code>command + /</code></p>
-</li>
-<li>
-<p>Send commands to all tabs and all sessions <code>shift + command + i</code>, abort use the same command.</p>
+<p>Go to split pane by direction: <code>command + shift + arrow key</code>.</p>
 </li>
 <li>
 <p><a href="https://unix.stackexchange.com/questions/649739/why-am-i-seeing-as-the-line-end-when-running-cat-file-cmd" target="_blank" rel="noopener">zsh cat command appends ‘%’ in line end</a> if no newline at end.</p>
@@ -533,14 +537,18 @@ My custom hotkey is <code>ctrl + shift + t</code>. Set the hotkey window profile
 <p>Install <code>ohmyz</code> on Mac.
 Mac zsh is pre-installed, you can check by:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zsh --version</span><br></pre></td></tr></table></figure>
-<p>If not, <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH" target="_blank" rel="noopener">install zsh</a> first.
-Then <a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">install ohmyzsh</a>:</p>
+<p>If not, <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH" target="_blank" rel="noopener">install zsh</a>
+first. Then <a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">install ohmyzsh</a>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
 <p>Then install <code>Powerlevel10k</code> theme, this theme is what exactly I need:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/romkatv/powerlevel10k.git <span class="variable">$ZSH_CUSTOM</span>/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
-<p>By default it uses <code>robbyrussell</code> theme, you can see it from <code>~/.zshrc</code> file, the theme files are located in <code>~/.oh-my-zsh/themes</code> folder.</p>
+<p>By default it uses <code>robbyrussell</code> theme, you can see it from <code>~/.zshrc</code> file,
+the theme files are located in <code>~/.oh-my-zsh/themes</code> folder.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set name of the theme to load --- if set to "random", it will</span></span><br><span class="line"><span class="comment"># load a random theme each time oh-my-zsh is loaded, in which case,</span></span><br><span class="line"><span class="comment"># to know which specific one was loaded, run: echo $RANDOM_THEME</span></span><br><span class="line"><span class="comment"># See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</span></span><br><span class="line">ZSH_THEME=<span class="string">"powerlevel10k/powerlevel10k"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Which plugins would you like to load?</span></span><br><span class="line"><span class="comment"># Standard plugins can be found in $ZSH/plugins/</span></span><br><span class="line"><span class="comment"># Custom plugins may be added to $ZSH_CUSTOM/plugins/</span></span><br><span class="line"><span class="comment"># Example format: plugins=(rails git textmate ruby lighthouse)</span></span><br><span class="line"><span class="comment"># Add wisely, as too many plugins slow down shell startup.</span></span><br><span class="line">plugins=(git kubectl docker docker-compose gcloud)</span><br></pre></td></tr></table></figure>
-<p>Next when you start a new terminal session, the <code>Powerlevel10</code> configure wizard will be launched to set your prompt pattern, it will automatically check and install the font for you. When select encoding, choose <code>Unicode</code>, otherwise no icon will show.</p>
+<p>Next when you start a new terminal session, the <code>Powerlevel10</code> configure wizard
+will be launched to set your prompt pattern, it will automatically check and
+install the font for you. When select encoding, choose <code>Unicode</code>, otherwise no
+icon will show.</p>
 <p>If you want to reset the configuration, simply run:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p10k configure</span><br></pre></td></tr></table></figure>
 <p><code>Powerlevel10</code> project web page:
@@ -549,7 +557,8 @@ Then <a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">install 
 <a href="https://askubuntu.com/questions/131823/how-to-make-zsh-the-default-shell" target="_blank" rel="noopener">https://askubuntu.com/questions/131823/how-to-make-zsh-the-default-shell</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## verify default shell is zsh or not</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## If not zsh, set it</span></span><br><span class="line">chsh -s $(<span class="built_in">which</span> zsh)</span><br><span class="line"><span class="comment">## show current running shell</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span></span><br></pre></td></tr></table></figure>
 <p>After changing the theme, relaunch iTerm2.</p>
-<p><code>~./zshrc</code> works the same as <code>~/.bashrc</code> for bash, append other alias here, append following snippet in <code>~/.zshrc</code>:</p>
+<p><code>~./zshrc</code> works the same as <code>~/.bashrc</code> for bash, append other alias here,
+append following snippet in <code>~/.zshrc</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example aliases</span></span><br><span class="line"><span class="comment"># alias zshconfig="mate ~/.zshrc"</span></span><br><span class="line"><span class="comment"># alias ohmyzsh="mate ~/.oh-my-zsh"</span></span><br><span class="line"><span class="comment"># ### some alias for convenience</span></span><br><span class="line"><span class="built_in">alias</span> cdd=<span class="string">'cd ~/Desktop'</span></span><br><span class="line"><span class="built_in">alias</span> cdmb=<span class="string">'cd ~/Desktop/chengdol.blog/'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## docker</span></span><br><span class="line"><span class="built_in">alias</span> di=<span class="string">'docker images'</span></span><br><span class="line"><span class="built_in">alias</span> dp=<span class="string">'docker ps'</span></span><br><span class="line"><span class="built_in">alias</span> drp=<span class="string">'docker rm -f'</span></span><br><span class="line"><span class="built_in">alias</span> dri=<span class="string">'docker rmi -f'</span></span><br><span class="line"><span class="built_in">alias</span> dl=<span class="string">'docker logs -f'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> dexec()</span><br><span class="line">&#123;</span><br><span class="line"> docker <span class="built_in">exec</span> -it <span class="variable">$1</span> sh</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## python virtual env</span></span><br><span class="line"><span class="built_in">export</span> VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3</span><br><span class="line"><span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</span><br><span class="line"><span class="built_in">export</span> WORKON_HOME=<span class="string">"/Users/chengdol/virtualenvs"</span></span><br><span class="line"><span class="built_in">export</span> PROJECT_HOME=<span class="string">"/Users/chengdol/virtualprojects"</span></span><br><span class="line"><span class="built_in">alias</span> svenv=<span class="string">"source /Users/chengdol/virtualenvs/py3.10/bin/activate"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> OC_EDITOR=vim</span><br><span class="line"><span class="built_in">export</span> KUBE_EDITOR=vim</span><br><span class="line"></span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">"^[^[[C"</span> forward-word</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">"^[^[[D"</span> backward-word</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">"^U"</span> backward-kill-line</span><br></pre></td></tr></table></figure>
 <p>To list all shortcut in Zsh, run</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bindkey</span></span><br></pre></td></tr></table></figure>
@@ -560,7 +569,8 @@ Then <a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">install 
 </ul>
 <p>Use <code>cat</code> command to see what exactly the key will present is a good idea.</p>
 <h2 id="Visual-Studio-Code-Terminal">Visual Studio Code Terminal</h2>
-<p>To make the VSC build-in terminal good with <code>ohmyz</code> theme, needs to add below setting to <code>User</code> VSC <code>setting.json</code> file(open by <code>shift + command + P</code>):</p>
+<p>To make the VSC build-in terminal good with <code>ohmyz</code> theme, needs to add below
+setting to <code>User</code> VSC <code>setting.json</code> file(open by <code>shift + command + P</code>):</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"terminal.integrated.fontFamily"</span>: <span class="string">"MesloLGS NF"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Then restart the VSC, the theme should be good.</p>
 <h1>Bash with Starship</h1>
@@ -612,8 +622,8 @@ Then <a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">install 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/17/cloud-azure/" rel="next" title="Azure Cloud">
-                <i class="fa fa-chevron-left"></i> Azure Cloud
+              <a href="/2020/07/17/cloud-aws/" rel="next" title="AWS Cloud">
+                <i class="fa fa-chevron-left"></i> AWS Cloud
               </a>
             
           </div>
@@ -696,7 +706,7 @@ Then <a href="https://ohmyz.sh/#install" target="_blank" rel="noopener">install 
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">268</span>
+                    <span class="site-state-item-count">269</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

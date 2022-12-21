@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Summary from book &amp;lt;&amp;lt;System Performance 2rd&amp;gt;&amp;gt;, Network Chapter. Tuning depends on the network workload characterization, the available tunables also vary between versions of OS. Check curre">
+  <meta name="description" content="Summary from book &amp;lt;&amp;lt;System Performance 2rd&amp;gt;&amp;gt;, Network Chapter. Tuning depends on the network workload characterization, the available tunables also vary between versions of OS. Check TCP s">
 <meta name="keywords" content="linux,network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Networking Tunable">
 <meta property="og:url" content="http://yoursite.com/2021/07/17/linux-network-tunable/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Summary from book &amp;lt;&amp;lt;System Performance 2rd&amp;gt;&amp;gt;, Network Chapter. Tuning depends on the network workload characterization, the available tunables also vary between versions of OS. Check curre">
+<meta property="og:description" content="Summary from book &amp;lt;&amp;lt;System Performance 2rd&amp;gt;&amp;gt;, Network Chapter. Tuning depends on the network workload characterization, the available tunables also vary between versions of OS. Check TCP s">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-09-04T23:00:54.000Z">
+<meta property="og:updated_time" content="2022-12-21T05:21:24.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Networking Tunable">
-<meta name="twitter:description" content="Summary from book &amp;lt;&amp;lt;System Performance 2rd&amp;gt;&amp;gt;, Network Chapter. Tuning depends on the network workload characterization, the available tunables also vary between versions of OS. Check curre">
+<meta name="twitter:description" content="Summary from book &amp;lt;&amp;lt;System Performance 2rd&amp;gt;&amp;gt;, Network Chapter. Tuning depends on the network workload characterization, the available tunables also vary between versions of OS. Check TCP s">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">268</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">269</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-09-04 16:00:54" itemprop="dateModified" datetime="2021-09-04T16:00:54-07:00">2021-09-04</time>
+                <time title="Modified: 2022-12-20 21:21:24" itemprop="dateModified" datetime="2022-12-20T21:21:24-08:00">2022-12-20</time>
               
             
           </span>
@@ -491,12 +491,15 @@
 
       
         <p>Summary from book <code>&lt;&lt;System Performance 2rd&gt;&gt;</code>, Network Chapter.</p>
-<p>Tuning depends on the network workload characterization, the available tunables also vary between versions of OS.</p>
-<p>Check current TCP settings:</p>
+<p>Tuning depends on the network workload characterization, the available tunables
+also vary between versions of OS.</p>
+<p>Check TCP settings by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -a | grep -i tcp</span><br></pre></td></tr></table></figure>
-<p>Write to the file <code>/etc/sysctl.conf</code>, reload modified settings via <code>sysctl -p</code> command without rebooting.</p>
+<p>Write changes to the file <code>/etc/sysctl.conf</code>, reload the settings via
+<code>sysctl -p</code> command and it will take effect without rebooting.</p>
 <h1>Production Example</h1>
-<p>Socket and TCP buffer in bytes, may need to be set to 16M or higher to support full-speed 10GbE connections:</p>
+<p>Socket and TCP buffer in bytes, may need to be set to 16M or higher to support
+full-speed 10GbE connections:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net.core.rmem_max = 16777216</span><br><span class="line">net.core.wmem_max = 16777216</span><br></pre></td></tr></table></figure>
 <p>Enable auto-tuning TCP receive buffer:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_moderate_rcvbuf = 1</span><br></pre></td></tr></table></figure>
@@ -506,17 +509,19 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_max_syn_backlog = 4096</span><br></pre></td></tr></table></figure>
 <p>Listen backlog, for passing connections to accept:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.core.somaxconn = 1024</span><br></pre></td></tr></table></figure>
-<p>Above two with higher value to better handle burst of load.</p>
+<p>Above two attributes with bigger value can better handle burst of load.</p>
 <p>Device backlog queue length, per CPU (for example for 10Gbe NICs):</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.core.netdev_max_backlog = 10000</span><br></pre></td></tr></table></figure>
 <p>TCP congestion control, Linux supports pluggable congestion control algorithms.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check available ones</span></span><br><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line"></span><br><span class="line"><span class="comment"># load available algorithm `tcp_htcp`</span></span><br><span class="line">modprobe tcp_htcp</span><br><span class="line"><span class="comment"># check again</span></span><br><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line"></span><br><span class="line"><span class="comment"># set cubic as default</span></span><br><span class="line">net.ipv4.tcp_congestion_control = cubic</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Check available ones.</span></span><br><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load and enable available algorithm `tcp_htcp` to use</span></span><br><span class="line">modprobe tcp_htcp</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check again and see `tcp_htcp` is in list</span></span><br><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set cubic as default in config file</span></span><br><span class="line">net.ipv4.tcp_congestion_control = cubic</span><br></pre></td></tr></table></figure>
 <p>Other TCP options:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># improve performance over high latency network</span></span><br><span class="line">net.ipv4.tcp_sack = 1</span><br><span class="line">net.ipv4.tcp_fack = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># other settings</span></span><br><span class="line">net.ipv4.ip_local_port_range = 10240 65535</span><br><span class="line">net.ipv4.tcp_abort_on_overflow = 1</span><br><span class="line">net.ipv4.tcp_slow_start_after_idle = 0</span><br><span class="line">net.ipv4.tcp_syn_retries = 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Improve performance over high latency network</span></span><br><span class="line">net.ipv4.tcp_sack = 1</span><br><span class="line">net.ipv4.tcp_fack = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Other settings</span></span><br><span class="line">net.ipv4.ip_local_port_range = 10240 65535</span><br><span class="line">net.ipv4.tcp_abort_on_overflow = 1</span><br><span class="line">net.ipv4.tcp_slow_start_after_idle = 0</span><br><span class="line">net.ipv4.tcp_syn_retries = 2</span><br></pre></td></tr></table></figure>
 <h1>Queuing Disciplines</h1>
-<p>It is for network packets scheduling, manipluating, filtering and shaping, for example, control the packet loss rate.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check and set default </span></span><br><span class="line">sysctl net.core.default_qdisc</span><br><span class="line">net.core.default_qdisc = fq_codel</span><br></pre></td></tr></table></figure>
-<p>Many Linux distros have already switched to <code>fq_codel</code> as the default, it provides good performance in most cases.</p>
+<p>It is for network packets scheduling, manipluating, filtering and shaping,
+for example, control the packet loss rate.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Check default </span></span><br><span class="line">sysctl net.core.default_qdisc</span><br><span class="line"><span class="comment"># Set as fq_codel</span></span><br><span class="line">net.core.default_qdisc = fq_codel</span><br></pre></td></tr></table></figure>
+<p>Many Linux distros have already switched to <code>fq_codel</code> as the default, it
+provides good performance in most cases.</p>
 
       
     </div>
@@ -639,7 +644,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">268</span>
+                    <span class="site-state-item-count">269</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

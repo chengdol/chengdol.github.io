@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd">
 <meta property="og:image" content="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10">
 <meta property="og:image" content="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq">
-<meta property="og:updated_time" content="2022-05-04T04:02:21.000Z">
+<meta property="og:updated_time" content="2022-12-21T05:21:24.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH SCP SFTP Daily Work Summary">
 <meta name="twitter:description" content="This blog used to walk through some ssh(secure shell), scp and sftp use cases. Aside: difference between OpenSSH vs OpenSSL The file format is different but they both encode the same kind of keys. Mor">
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">268</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">269</span></a>
 
   </li>
 
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
+                <time title="Modified: 2022-12-20 21:21:24" itemprop="dateModified" datetime="2022-12-20T21:21:24-08:00">2022-12-20</time>
               
             
           </span>
@@ -499,43 +499,70 @@
       
 
       
-        <p>This blog used to walk through some <code>ssh</code>(secure shell), <code>scp</code> and <code>sftp</code> use cases.</p>
+        <p>This blog used to walk through some <code>ssh</code>(secure shell), <code>scp</code> and <code>sftp</code> use
+cases.</p>
 <p><strong>Aside:</strong>
 <a href="https://security.stackexchange.com/questions/29876/what-are-the-differences-between-ssh-generated-keysssh-keygen-and-openssl-keys" target="_blank" rel="noopener">difference between OpenSSH vs OpenSSL</a>
-The file format is different but they both encode the same kind of keys. Moreover, they are both generated with the same code.</p>
-<p>Notice that restart sshd daemon will not disconnect current ssh connection, even if you stop the sshd daemon for a short time or restart the network daemon(don’t stop it!), the current ssh session is still working, see this <a href="https://unix.stackexchange.com/questions/27636/how-does-ssh-connection-survive-a-network-restart" target="_blank" rel="noopener">issue</a>: The reason is, sshd fork a child process on each connection, the child process will not die if either sshd or the whole network is restarted. sshd listens on port 22 for incoming connections.  When someone connects it spawns a new process for that connection and goes back to listening.</p>
+The file format is different but they both encode the same kind of keys.
+Moreover, they are both generated with the same code.</p>
+<p>Notice that restart sshd daemon will not disconnect current ssh connection, even
+if you stop the sshd daemon for a short time or restart the network daemon(don’t
+stop it!), the current ssh session is still working, see this
+<a href="https://unix.stackexchange.com/questions/27636/how-does-ssh-connection-survive-a-network-restart" target="_blank" rel="noopener">issue</a>:
+The reason is, sshd fork a child process on each connection, the child process
+will not die if either sshd or the whole network is restarted. sshd listens on
+port 22 for incoming connections. When someone connects it spawns a new process
+for that connection and goes back to listening.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check pid and ppid of current ssh child process</span></span><br><span class="line">ps -ef | grep -v grep | grep ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># restart some daemon</span></span><br><span class="line">systemctl restart sshd</span><br><span class="line">systemctl restart network</span><br><span class="line"></span><br><span class="line"><span class="comment"># the old child ssh session ppid was changed to 1</span></span><br><span class="line">ps -ef | grep -v grep | grep ssh</span><br></pre></td></tr></table></figure>
 <h1>Install SSH (SCP SFTP)</h1>
-<p>Notice that <code>ssh</code>, <code>scp</code> and <code>sftp</code> are all installed from <code>openssh-clients</code> package. 操作的目标机器的用户以及密码就是目标机器上在<code>/etc/passwd</code>中对应的用户及其密码。</p>
-<p>First, understand that there are openssh client and openssh server: <a href="https://phoenixnap.com/kb/how-to-enable-ssh-centos-7" target="_blank" rel="noopener">Installing and Enabling OpenSSH on CentOS 7</a>, this article briefly introduces openssh configuration and firewall setting for it.</p>
+<p>Notice that <code>ssh</code>, <code>scp</code> and <code>sftp</code> are all installed from <code>openssh-clients</code>
+package. 操作的目标机器的用户以及密码就是目标机器上在<code>/etc/passwd</code>中对应的用户及其密码。</p>
+<p>First, understand that there are openssh client and openssh server:
+<a href="https://phoenixnap.com/kb/how-to-enable-ssh-centos-7" target="_blank" rel="noopener">Installing and Enabling OpenSSH on CentOS 7</a>,
+this article briefly introduces openssh configuration and firewall setting for
+it.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum –y install openssh-server openssh-clients</span><br></pre></td></tr></table></figure>
-<p>If only install <code>openssh-clients</code>, you can ssh to others but others cannot ssh to you, since you don’t have ssh server listening at port 22.</p>
+<p>If only install <code>openssh-clients</code>, you can ssh to others but others cannot ssh
+to you, since you don’t have ssh server listening at port 22.</p>
 <p>After installing openssh-server, enable and start the sshd daemon</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> sshd</span><br><span class="line">systemctl start sshd</span><br><span class="line"><span class="comment"># check status</span></span><br><span class="line">systemctl status sshd</span><br></pre></td></tr></table></figure>
-<p>The system OpenSSH server configuration file is <code>/etc/ssh/sshd_config</code>, the custom configuration file is <code>~/.ssh/config</code>. The <code>/etc/ssh/ssh_config</code> is for system-wide client behavior.</p>
+<p>The system OpenSSH server configuration file is <code>/etc/ssh/sshd_config</code>, the
+custom configuration file is <code>~/.ssh/config</code>. The <code>/etc/ssh/ssh_config</code> is for
+system-wide client behavior.</p>
 <p>Restricted configuration you may need on server side:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">PermitRootLogin prohibit-password</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line"><span class="comment"># after copy the public key in</span></span><br><span class="line">PasswordAuthentication no</span><br></pre></td></tr></table></figure>
 <p>After making changes, restart sshd daemon.</p>
 <p>Firewall setting for ssh is file <code>/etc/sysconfig/iptables</code>.</p>
 <h1>SSHFS</h1>
-<p>This is a remote mount implemented by SSH, handy if NFS is not workable, search my blog <code>&lt;&lt;Linux Storage System&gt;&gt;</code>.</p>
+<p>This is a remote mount implemented by SSH, handy if NFS is not workable, search
+my blog <code>&lt;&lt;Linux Storage System&gt;&gt;</code>.</p>
 <h1>SSH Tunnel</h1>
 <p>Forward a local port to remote port, one on one mapping.
-用在比如database or web servers 没有对外开放端口，我们可以通过SSH穿过防火墙(SSH的端口是开放的)去远程映射它们的端口到本地，然后通过localhost访问。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -L: port forward</span></span><br><span class="line"><span class="comment"># 3232: local port</span></span><br><span class="line"><span class="comment"># 80: remote port</span></span><br><span class="line">ssh -L 3232:remotehost:80 user@remotehost</span><br><span class="line"><span class="comment"># then you get login to remotehost, also the mapping is established</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -N: Do not execute a remote command.  This is useful for just forwarding ports.</span></span><br><span class="line"><span class="comment"># the 80 port is blocked by firewall remotely, but after mapping, we can see it locally</span></span><br><span class="line">ssh -L 1234:remotehost:80 user@remotehost -N</span><br></pre></td></tr></table></figure>
-<p>Then go to <code>localhost:1234</code> on browser to see the web page.</p>
+用在比如database or web servers 没有对外开放端口，我们可以通过SSH穿过防火墙(SSH的端口是开
+放的)去远程映射它们的端口到本地，然后通过localhost访问。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -L: port forward</span></span><br><span class="line"><span class="comment"># 10003: local port</span></span><br><span class="line"><span class="comment"># 8000: remote port of a web server, for example a python simple http server.</span></span><br><span class="line"><span class="comment"># -N: Do not execute a remote command. This is useful for just forwarding ports.</span></span><br><span class="line"><span class="comment"># If the 8000 port is blocked by firewall remotely, but after mapping,</span></span><br><span class="line"><span class="comment"># we can access it locally with the local port 1234.</span></span><br><span class="line">ssh -L [127.0.0.1:]10003:remotehost:8000 user@remotehost -N</span><br></pre></td></tr></table></figure>
+<p>Then go to <code>localhost:10003</code> on browser to see the web page.</p>
+<p>The port forwarding approach is limited on that single port mapping, for
+unlimited access, you need SOCKS proxy tunneling, see next section.</p>
 <h1>SSH SOCKS Proxy Tunnel</h1>
-<p>Aside: <a href="http://www.firewall.cx/vpn/vpn-guides-articles/1191-best-socks5-proxy-guide-torrenting-free-proxy-list.html" target="_blank" rel="noopener">Introduction to SOCKS proxy</a></p>
-<p>The transport protocol and by itself it is not encrypted.
-类似于VPN的部分功能，但是通过SSH实现, allow web access from restricted network.
-<a href="https://www.pandasecurity.com/mediacenter/technology/difference-vpn-vs-proxy" target="_blank" rel="noopener">What is the difference between a VPN and a proxy</a></p>
+<p><a href="http://www.firewall.cx/vpn/vpn-guides-articles/1191-best-socks5-proxy-guide-torrenting-free-proxy-list.html" target="_blank" rel="noopener">Introduction to SOCKS proxy</a></p>
+<p>Although by default SOCKS proxy does not provide encryption, but we run it over
+SSH, so the traffic is encrypted.</p>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel" target="_blank" rel="noopener">How To Route Web Traffic Securely Without a VPN Using a SOCKS Tunnel</a>:
-A SOCKS proxy is basically an SSH tunnel in which specific applications forward their traffic down the tunnel to the server, and then on the server end, the proxy forwards the traffic out to the general Internet. Unlike a VPN, a SOCKS proxy has to be configured on an app by app basis on the client machine, but can be set up without any specialty client agents.</p>
+A SOCKS proxy is basically an SSH tunnel in which specific applications forward
+their traffic down the tunnel to the server, and then on the server end, the
+proxy forwards the traffic out to the general Internet. Unlike a VPN, a SOCKS
+proxy has to be configured on an app by app basis on the client machine, but can
+be set up without any specialty client agents.</p>
 <p>The remote host must has ssh server running.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -D: dynamic application-level port forwarding</span></span><br><span class="line"><span class="comment"># -N: Do not execute a remote command.  This is useful for just forwarding ports.</span></span><br><span class="line"><span class="comment"># -C: Compresses the data before sending it</span></span><br><span class="line"><span class="comment"># -q: quiet</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -f: Forks the process in the background</span></span><br><span class="line"><span class="comment"># don't like tunnel, on the remote host it is dynamic forwarding</span></span><br><span class="line">ssh -D 1234 -f -C -N -q user@remotehost</span><br></pre></td></tr></table></figure>
-<p>Then configuring the web browser to use this socket proxy: <code>localhost:1234</code>, in firefox, check <code>Proxy DNS when using SOCKS v5</code>. 其实就类似于一个forward proxy了, 所有请求都相当于从remote host访问。可以对比使用前后<code>ip4.me</code>，不一样了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -D: dynamic application-level port forwarding, see curl man for more</span></span><br><span class="line"><span class="comment"># explanation about SOCKS support.</span></span><br><span class="line"><span class="comment"># [127.0.0.1:]11000: local mapping port.</span></span><br><span class="line"><span class="comment"># -N: Do not execute a remote command. This is useful for just forwarding ports.</span></span><br><span class="line"><span class="comment"># -C: Compresses the data before sending it</span></span><br><span class="line"><span class="comment"># -q: quiet</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -f: Forks the process in the background</span></span><br><span class="line"><span class="comment"># don't like tunnel, on the remote host it is dynamic forwarding</span></span><br><span class="line">ssh -D [127.0.0.1:]11000 -f -C -N -q user@remotehost</span><br></pre></td></tr></table></figure>
+<p>This is actaully a SOCKS5 proxy created by SSH, after it is established, you can
+check by:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Now you can access the web that original can only access by remote host.</span></span><br><span class="line">curl -ILk -x socks5://localhost:11000 <span class="string">"https://web_can_only_access_by_remotehost"</span></span><br></pre></td></tr></table></figure>
+<p>Or configuring the web browser to use this SOCKS5 proxy: <code>localhost:11000</code>.
+On Firefox <code>FoxyProxy</code> plugin, set and use it. Now we can access whatever the
+remotehost can access.</p>
 <p>Manually kill the tunnel process if you use <code>-f</code>.</p>
-<p>当时用SSH SOCKS tunnel 解决了内网中Vault 的访问问题，本地机器建立tunnel to Jenkins slave, which forward the request to Vault server.</p>
 <h1>SSH X11 Forwarding</h1>
 <p>Similar to VNC, but VNC transmits whole desktop which is more expensive.
 Linux has good support to X11, on Mac, need to install XQuartz(still not work on Mac).</p>
@@ -543,89 +570,95 @@ Linux has good support to X11, on Mac, need to install XQuartz(still not work on
 <h1>SSH Agent</h1>
 <p>很久之前看书的时候没明白这个概念. 一个常见的用处就是保护originating host的private key.
 A handy program called <code>ssh-agent</code> simplifies working with SSH private keys.</p>
-<p>In Mac, ssh-agent is running by default, but in Linux, start by yourself (ensure only one instance of ssh-agent is running)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># don't need do this if you are Mac, or your company laptop has agent running by default</span></span><br><span class="line"><span class="comment"># you can check by:</span></span><br><span class="line">ssh-add -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># first check if only one instance is running</span></span><br><span class="line">ps aux | grep ssh-agent$</span><br><span class="line"><span class="comment"># if it is there but cannot work, kill it.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> $(ssh-agent)</span><br></pre></td></tr></table></figure>
-<p>If you run <code>ssh-agent</code>, it will output environment vars you need to set, for example, you can also manually export these instead of using <code>eval</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># export these manually is OK</span></span><br><span class="line">SSH_AUTH_SOCK=/tmp/ssh-YI7PBGlkOteo/agent.2547; <span class="built_in">export</span> SSH_AUTH_SOCK;</span><br><span class="line">SSH_AGENT_PID=2548; <span class="built_in">export</span> SSH_AGENT_PID;</span><br><span class="line"><span class="built_in">echo</span> Agent pid 2548;</span><br></pre></td></tr></table></figure>
-<p>Add your private key to ssh-agent, sometimes git ssh clone failed, you may need to add private key to agent:</p>
+<p>In Mac, ssh-agent is running by default, but in Linux, start by yourself (ensure
+only one instance of ssh-agent is running).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Don't need do this if you are Mac, or your company laptop has agent running by</span></span><br><span class="line"><span class="comment"># default you can check by:</span></span><br><span class="line">ssh-add -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># First check if only one instance is running</span></span><br><span class="line">ps aux | grep ssh-agent</span><br><span class="line"><span class="comment"># if it is there but cannot work, kill it.</span></span><br></pre></td></tr></table></figure>
+<p>If you run <code>ssh-agent</code>, it will output environment vars you need to set, for
+example, you can also manually export these instead of using <code>eval</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># export these manually is OK</span></span><br><span class="line">SSH_AUTH_SOCK=/tmp/ssh-YI7PBGlkOteo/agent.2547; <span class="built_in">export</span> SSH_AUTH_SOCK;</span><br><span class="line">SSH_AGENT_PID=2548; <span class="built_in">export</span> SSH_AGENT_PID;</span><br><span class="line"><span class="built_in">echo</span> Agent pid 2548;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start it.</span></span><br><span class="line"><span class="built_in">eval</span> $(ssh-agent)</span><br></pre></td></tr></table></figure>
+<p>Add your private key to ssh-agent, sometimes git ssh clone failed, you may need
+to add private key to agent:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># default path ~/.ssh/id-rsa</span></span><br><span class="line">ssh-add</span><br><span class="line">ssh-add &lt;other private key path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># list all identities </span></span><br><span class="line">ssh-add -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># delete all identities</span></span><br><span class="line">ssh-add -D</span><br><span class="line"><span class="comment"># delete specified identity</span></span><br><span class="line">ssh-add -d &lt;private key path&gt;</span><br></pre></td></tr></table></figure>
 <p>How to start ssh-agent on login:
 <a href="https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login" target="_blank" rel="noopener">https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login</a>
 Add below to your <code>.bash_profile</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">SSH_ENV=<span class="string">"<span class="variable">$HOME</span>/.ssh/env"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> start_agent &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Initialising new SSH agent..."</span></span><br><span class="line">    /usr/bin/ssh-agent | sed <span class="string">'s/^echo/#echo/'</span> &gt; <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">'succeeded'</span></span><br><span class="line">    chmod 600 <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span></span><br><span class="line">    . <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span> &gt; /dev/null</span><br><span class="line">    <span class="comment"># add private key ~/.ssh/id_rsa.pub</span></span><br><span class="line">    /usr/bin/ssh-add;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Source SSH settings, if applicable</span></span><br><span class="line"><span class="keyword">if</span> [ -f <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="comment"># need resource, but ssh-agent is there</span></span><br><span class="line">    . <span class="string">"<span class="variable">$&#123;SSH_ENV&#125;</span>"</span> &gt; /dev/null</span><br><span class="line">    <span class="comment"># ps $&#123;SSH_AGENT_PID&#125; doesn't work under cywgin</span></span><br><span class="line">    ps -ef | grep <span class="variable">$&#123;SSH_AGENT_PID&#125;</span> | grep ssh-agent$ &gt; /dev/null || &#123;</span><br><span class="line">        <span class="comment"># statement block</span></span><br><span class="line">        start_agent;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    start_agent;</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>When you try to make a connection to a remote host, and you have ssh-agent running, the SSH client will automatically use the keys stored in ssh-agent to authenticate with the host.</p>
-<p>Advantages:</p>
+<p>When you try to make a connection to a remote host, and you have ssh-agent
+running, the SSH client will automatically use the keys stored in ssh-agent to
+authenticate with the host.</p>
+<p><strong>Advantages:</strong></p>
 <ol>
-<li>
-<p>For encrypted SSH private keys，只有第一次加入ssh-agent的时候要求输入password。如果不使用ssh-agent，每次SSH都会要求输入password</p>
-</li>
-<li>
-<p>If you are using Ansible to manage hosts that use different SSH keys, using an SSH agent simplifies your Ansible configuration files.</p>
-</li>
-<li>
-<p>ssh-agent forwarding, see below</p>
-</li>
+<li>For encrypted SSH private keys，只有第一次加入ssh-agent的时候要求输入password 如果
+不使用ssh-agent，每次SSH都会要求输入password</li>
+<li>If you are using Ansible to manage hosts that use different SSH keys, using
+an SSH agent simplifies your Ansible configuration files.</li>
+<li>ssh-agent forwarding, see below</li>
 </ol>
-<p>ssh-agent 还解决了一个问题，比如你有personal and work git account各一个，但各自是不同的ssh key pairs，在git clone的时候如何指定用哪个private key呢? see this <a href="https://stackoverflow.com/questions/4565700/how-to-specify-the-private-ssh-key-to-use-when-executing-shell-command-on-git" target="_blank" rel="noopener">link</a>.</p>
+<p>ssh-agent 还解决了一个问题，比如你有personal and work git account各一个，但各自是不同的
+ssh key pairs，在git clone的时候如何指定用哪个private key呢? see this
+<a href="https://stackoverflow.com/questions/4565700/how-to-specify-the-private-ssh-key-to-use-when-executing-shell-command-on-git" target="_blank" rel="noopener">link</a>.</p>
 <h1>SSH Agent Forwarding</h1>
-<p>If you are cloning a Git repository over SSH, you’ll need to use an SSH private key recognized by your Git server. I like to avoid copying private SSH keys to my remote host (for example, a EC2 instance), in order to limit the damage in case a host ever gets compromised.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example.xx.com does not have the private key to access git repo</span></span><br><span class="line"><span class="comment"># but the local host who issue ssh has</span></span><br><span class="line">ssh -A root@example.xxx.com</span><br><span class="line"><span class="comment"># git clone via ssh</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:lorin/mezzanine-example.git</span><br></pre></td></tr></table></figure>
-<p>Here <code>-A</code> limit the agent forwarding in this session only, you can have ssh config to set agent forwarding on a broad view.</p>
+<p>If you are cloning a Git repository on remote host via SSH, you’ll need to use
+an SSH private key recognized by your Git server. I like to avoid copying
+private SSH keys to my remote host (for example, a EC2 instance), in order to
+limit the damage in case a host ever gets compromised.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The example.xx.com does not have the private key to access git repo but the</span></span><br><span class="line"><span class="comment"># local host has.</span></span><br><span class="line"><span class="comment"># -A: agent forwarding</span></span><br><span class="line">ssh -A root@example.xxx.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># git clone via ssh mechanism on remote host with the private key provided by</span></span><br><span class="line"><span class="comment"># agent from local host.</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:lorin/mezzanine-example.git</span><br></pre></td></tr></table></figure>
+<p>Here <code>-A</code> limit the agent forwarding in this session only, you can have ssh
+config to set agent forwarding on a broad view.</p>
 <h1>ProxyJump</h1>
-<p>现在想想，当时登录openshift or softlayer 的master时，也需要经过堡垒机，所以应该可以配置proxyjump.
-这个和ssh-agent没有必然联系，如果没用ssh-agent, 则应该可以在配置config file中指定key的位置.</p>
+<p>现在想想，当时登录openshift or softlayer 的master时，也需要经过堡垒机，所以应该可以配置
+proxyjump. 这个和ssh-agent没有必然联系，如果没用ssh-agent, 则应该可以在配置config file中
+指定key的位置.</p>
 <p><a href="https://www.youtube.com/watch?v=QKZP9FbP3mo" target="_blank" rel="noopener">Using OpenSSH ProxyJump</a>
-It uses vagrant VMs to demonstrate. 但是我觉得不需要再指定port, user, identifykey对target server了，这些应该在bastion上已经配置好了。</p>
+It uses vagrant VMs to demonstrate. 但是我觉得不需要再指定port, user, identifykey对
+target server了，这些应该在bastion上已经配置好了。</p>
 <p><a href="https://smallstep.com/blog/ssh-agent-explained/" target="_blank" rel="noopener">SSH agent and ProxyJump explained</a>
-Talking risk of SSH agent forwarding, access internal hosts through a bastion, ProxyJump is much safer.
-也谈到了SSH是怎么handshake, 传输中用的是新的对称钥匙.</p>
+Talking risk of SSH agent forwarding, access internal hosts through a bastion,
+ProxyJump is much safer. 也谈到了SSH是怎么handshake, 传输中用的是新的对称钥匙.</p>
 <p><strong>JumpBox or Bastion Host:</strong>
-Baston hosts are usually public-facing, hardened systems that serve as an entrypoint to systems behind a firewall or other restricted location, and they are especially popular with the rise of cloud computing.</p>
-<p>Notice that you need to generate key and copy the public key to bastion host first.
-<a href="https://linuxize.com/post/using-the-ssh-config-file/" target="_blank" rel="noopener">Using the SSH Config File</a>
-<a href="https://www.redhat.com/sysadmin/ssh-proxy-bastion-proxyjump" target="_blank" rel="noopener">SSH to remote hosts though a proxy or bastion with ProxyJump</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -J specify the jumphost</span></span><br><span class="line">ssh -J &lt;bastion-host&gt; &lt;remote-host&gt; -l &lt;remote login user&gt; -i &lt;pem file&gt;</span><br><span class="line">ssh -J user@&lt;bastion:port&gt; &lt;user@remote:port&gt;</span><br><span class="line">ssh -J &lt;bastion1&gt;,&lt;bastion2&gt; &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+Notice that you need to generate key and copy the public key to bastion host
+first.</p>
+<ul>
+<li><a href="https://linuxize.com/post/using-the-ssh-config-file/" target="_blank" rel="noopener">Using the SSH Config File</a></li>
+<li><a href="https://www.redhat.com/sysadmin/ssh-proxy-bastion-proxyjump" target="_blank" rel="noopener">SSH to remote hosts though a proxy or bastion with ProxyJump</a></li>
+</ul>
+<p>Baston hosts are usually public-facing, hardened systems that serve as an
+entrypoint to systems behind a firewall or other restricted location, and they
+are especially popular with the rise of cloud computing.</p>
+<p>The ssh command has an easy way to make use of bastion hosts to connect to a
+remote host with a <strong>single</strong> command. Instead of first SSHing to the bastion
+host and then using ssh on the bastion to connect to the remote host, ssh can
+create the initial and second connections itself by using ProxyJump.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -J specify the jumphost</span></span><br><span class="line">ssh -J &lt;bastion-host&gt; &lt;remote-host&gt; [-l &lt;remote login user&gt;] [-i &lt;pem file&gt;]</span><br><span class="line">ssh -J user@&lt;bastion:port&gt; &lt;user@remote:port&gt;</span><br><span class="line"><span class="comment"># Jump through a series of hosts</span></span><br><span class="line">ssh -J &lt;bastion1&gt;,&lt;bastion2&gt; &lt;remote&gt;</span><br></pre></td></tr></table></figure>
 <p>最主要的还是配置<code>~/.ssh/config</code> 文件, basic settings:
-注意，之前遇到过奇怪的问题，用同样的config file，别人一切正常，但我就连不上，简化了一下config file后就好了，当时的解决办法是把Match host模块移到匹配的Host 下面，其实Match host不要也行，很多可以合并的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># May have more options, for example, User, Port, AgentForward, etc.</span></span><br><span class="line"><span class="comment"># refer `man ssh_config`</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `Host` sections are read in order and the options matched will get accumulated</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The Bastion Host</span></span><br><span class="line">Host &lt;jump-host-nickname&gt;</span><br><span class="line">  User &lt;user name&gt;</span><br><span class="line">  <span class="comment"># default is no</span></span><br><span class="line">  ProxyUseFdpass no</span><br><span class="line">  <span class="comment"># jumpbox port</span></span><br><span class="line">  Port 22</span><br><span class="line">  <span class="comment"># jumpbox IP</span></span><br><span class="line">  HostName &lt;hostname or IP&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># The Remote Host</span></span><br><span class="line">Host &lt;remote-host-nickname&gt;</span><br><span class="line">  Hostname &lt;remote-hostname or ip address <span class="keyword">for</span> example: 172.12.234.12&gt;</span><br><span class="line">  User &lt;user name&gt;</span><br><span class="line">  AddKeysToAgent yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">  <span class="comment"># may need pem file, the private key</span></span><br><span class="line">  IdentityFile ~/.ssh/file.pem</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  ServerAliveInterval 60</span><br><span class="line"></span><br><span class="line"><span class="comment"># the remote host match this IP will use jumpbox</span></span><br><span class="line"><span class="comment"># 这个可以不要，就是用来match Host的</span></span><br><span class="line">Match host 172.??.*</span><br><span class="line">  ProxyJump &lt;jump-host-nickname&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># or can specify jumpbox directly</span></span><br><span class="line">Host &lt;remote-host-nickname&gt;</span><br><span class="line">  HostName &lt; remote-hostname or ip address&gt;</span><br><span class="line">  ProxyJump bastion-host-nickname</span><br></pre></td></tr></table></figure>
+注意，之前遇到过奇怪的问题，用同样的config file，别人一切正常，但我就连不上，简化了一下config
+file后就好了，当时的解决办法是把Match host模块移到匹配的Host 下面，其实Match host不要也行
+很多可以合并的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># May have more options, for example, User, Port, AgentForward, etc.</span></span><br><span class="line"><span class="comment"># refer `man ssh_config`</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `Host` sections are read in order and the options matched will get</span></span><br><span class="line"><span class="comment"># accumulated</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The Bastion Host</span></span><br><span class="line">Host &lt;jump-host-nickname&gt;</span><br><span class="line">  User &lt;user name&gt;</span><br><span class="line">  <span class="comment"># default is no</span></span><br><span class="line">  ProxyUseFdpass no</span><br><span class="line">  <span class="comment"># jumpbox port</span></span><br><span class="line">  Port 22</span><br><span class="line">  <span class="comment"># jumpbox IP</span></span><br><span class="line">  HostName &lt;hostname or IP&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># The Remote Host</span></span><br><span class="line">Host &lt;remote-host-nickname&gt;</span><br><span class="line">  Hostname &lt;remote-hostname or ip address <span class="keyword">for</span> example: 172.12.234.12&gt;</span><br><span class="line">  User &lt;user name&gt;</span><br><span class="line">  AddKeysToAgent yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">  <span class="comment"># may need pem file, the private key</span></span><br><span class="line">  IdentityFile ~/.ssh/file.pem</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  ServerAliveInterval 60</span><br><span class="line"></span><br><span class="line"><span class="comment"># The remote host match this IP will use jumpbox</span></span><br><span class="line"><span class="comment"># 这个可以不要，就是用来match Host的</span></span><br><span class="line">Match host 172.??.*</span><br><span class="line">  ProxyJump &lt;jump-host-nickname&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or can specify jumpbox directly</span></span><br><span class="line">Host &lt;remote-host-nickname&gt;</span><br><span class="line">  HostName &lt; remote-hostname or ip address&gt;</span><br><span class="line">  ProxyJump bastion-host-nickname</span><br></pre></td></tr></table></figure>
 <p>Then you can ssh directly: <code>ssh remote-host-nickname</code></p>
 <p><code>ProxyCommand</code> is an alternative of ProxyJump, but it is old.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o ProxyCommand=<span class="string">"ssh -W %h:%p bastion-host"</span> remote-host</span><br></pre></td></tr></table></figure>
 <h1>Force SSH Password Login</h1>
-<p>Usually SSH password authentication is disabled, that is, you can only log in over SSH using public key authentication, to enable it:</p>
+<p>Usually SSH password authentication is disabled, that is, you can only log in
+over SSH using public key authentication, to enable password login:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/ssh/sshd_config</span></span><br><span class="line"><span class="comment"># set to yes</span></span><br><span class="line">PasswordAuthentication yes</span><br><span class="line"><span class="comment"># you may also need to allow root login</span></span><br><span class="line">PermitRootLogin yes</span><br><span class="line"><span class="comment"># restart sshd</span></span><br><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
 <p>Create new user to test:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd alice</span><br><span class="line">passwd alice</span><br></pre></td></tr></table></figure>
 <p>Logout and try:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># PubkeyAuthentication may be needed</span></span><br><span class="line">ssh -p 2222 \</span><br><span class="line">    -o StrictHostKeyChecking=no \</span><br><span class="line">    -o UserKnownHostsFile=/dev/null \</span><br><span class="line">    -o PubkeyAuthentication=no \</span><br><span class="line">    alice@127.0.0.1</span><br><span class="line"><span class="comment"># then input the password</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># PubkeyAuthentication may be needed</span></span><br><span class="line"><span class="comment"># then input the password</span></span><br><span class="line">ssh -p 2222 \</span><br><span class="line">    -o StrictHostKeyChecking=no \</span><br><span class="line">    -o UserKnownHostsFile=/dev/null \</span><br><span class="line">    -o PubkeyAuthentication=no \</span><br><span class="line">    alice@127.0.0.1</span><br></pre></td></tr></table></figure>
 <h1>Debug</h1>
 <ol>
-<li>Use <code>-v</code>, <code>-vv</code>, <code>-vvv</code> flag in ssh command (比如之前pem file 权限和格式没设置对，都有提示)</li>
-<li>Wireshark capture ssh traffic on that interface, you should see <code>SSHv2</code> protocol and more details</li>
+<li>Use <code>-v</code>, <code>-vv</code>, <code>-vvv</code> flag in ssh command (比如之前pem file 权限和格式没设置对都
+有提示)</li>
+<li>Wireshark capture ssh traffic on that interface, you should see <code>SSHv2</code>
+protocol and more details</li>
 <li>Check system log, <code>journalctl | grep sshd</code>.</li>
-<li>Launch sshd on another port in debug mode: <code>sudo /usr/bin/sshd -d -p 2020</code>, then ssh to this port <code>2020</code> from client <code>ssh -p 2020 user@remote_server</code>.</li>
-<li>May restriced by firewall</li>
+<li>Launch sshd on another port in debug mode: <code>sudo /usr/bin/sshd -d -p 2020</code>,
+then ssh to this port <code>2020</code> from client <code>ssh -p 2020 user@remote_server</code>.</li>
+<li>Possibly restriced by firewall</li>
 </ol>
 <h1>Usage Summary</h1>
-<p>################################################################
-#   Insert latest update at the top of the logs
-#<br>
-#   Date           Description
-#   10/01/2018     ssh send command
-#   11/14/2018     ssh run shell script
-#   12/19/2018     ssh-copy-id
-#   01/06/2019     ssh-kenscan
-#   01/08/2019     ECDSA host key changed
-#   01/22/2019     no prompt first time
-#   01/23/2019     sshpass
-#   02/21/2019     scp folder or files
-#   03/11/2019     ssh -i option
-#   03/12/2019     recover public key
-#   09/05/2020     sftp
-#   01/20/2021     ssh config
-#   03/17/2022     ssh config permission
-#
-################################################################</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">10/01/2018 ssh send command</span><br><span class="line">11/14/2018 ssh run shell script</span><br><span class="line">12/19/2018 ssh-copy-id</span><br><span class="line">01/06/2019 ssh-kenscan</span><br><span class="line">01/08/2019 ECDSA host key changed</span><br><span class="line">01/22/2019 no prompt first time</span><br><span class="line">01/23/2019 sshpass</span><br><span class="line">02/21/2019 scp folder or files</span><br><span class="line">03/11/2019 ssh -i option</span><br><span class="line">03/12/2019 recover public key</span><br><span class="line">09/05/2020 sftp</span><br><span class="line">01/20/2021 ssh config</span><br><span class="line">03/17/2022 ssh config permission</span><br></pre></td></tr></table></figure>
 <h2 id="10-01-2018">10/01/2018</h2>
 <p>use <code>ssh</code> send commands to execute on remote machine:
 <img src="https://drive.google.com/uc?id=1OgNJ5NJpx6Kkr46oCxScylGhu1ShYaCV" alt="">
@@ -635,68 +668,93 @@ Baston hosts are usually public-facing, hardened systems that serve as an entryp
 <p>use ssh run shell script in remote machine
 <img src="https://drive.google.com/uc?id=1FvvQTq-ujz1ETmharmWt9JsMBC1ipuUJ" alt=""></p>
 <h2 id="12-19-2018">12/19/2018</h2>
-<p>use <code>ssh-copy-id</code> to copy local machine public key to remote machine’s <code>~/.ssh/authorized_keys</code> file, so next time when you <code>ssh</code>, <code>scp</code> or <code>sftp</code> again, no prompt to require password:</p>
+<p>use <code>ssh-copy-id</code> to copy local machine public key to remote machine’s
+<code>~/.ssh/authorized_keys</code> file, so next time when you <code>ssh</code>, <code>scp</code> or <code>sftp</code>
+again, no prompt to require password:</p>
 <p><img src="https://drive.google.com/uc?id=1HdAmGdDB1HxPtwFSzrTQcS-g7hw5r3o4" alt=""></p>
-<p>Sometimes I see people use <code>~/.ssh/id_rsa</code> with <code>ssh-copy-id</code>, that confused me because that is private key, OK, <code>man</code> tell me why:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i identity_file</span><br><span class="line">        ...If the filename does not end in .pub this is added.  If the filename is omitted, the default_ID_file is used.</span><br></pre></td></tr></table></figure>
+<p>Sometimes I see people use <code>~/.ssh/id_rsa</code> with <code>ssh-copy-id</code>, that confused me
+because that is private key, OK, <code>man</code> tells me why:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-i identity_file</span><br><span class="line">        ...If the filename does not end in .pub this is added.  If the filename</span><br><span class="line">        is omitted, the default_ID_file is used.</span><br></pre></td></tr></table></figure>
 <h2 id="01-06-2019">01/06/2019</h2>
-<p>use <code>ssh-keyscan</code> to get remote machine ecdsa identity, you can put this item into local known_hosts file, so when first time <code>ssh</code> login, there is no prompt to input <code>yes</code>:
-<img src="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp" alt="">
-actually better to use <code>-o StrictHostKeyChecking=no</code> flag.</p>
+<p>use <code>ssh-keyscan</code> to get remote machine ecdsa identity, you can put this item
+into local known_hosts file, so when first time <code>ssh</code> login, there is no prompt
+to input <code>yes</code>:
+<img src="https://drive.google.com/uc?id=1C_IHZxToXYRN4iLabvmcW21x_5wbGcQp" alt=""></p>
+<p>Actually better to use <code>-o StrictHostKeyChecking=no</code> flag.</p>
 <h2 id="01-08-2019">01/08/2019</h2>
-<p>I create a new cluster with the same master hostname as the deleted one, so when I try to ssh to it, interesting thing happens:
-<img src="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd" alt="">
-go to <code>~/.ssh/known_hosts</code> file and delete the corresponding <code>ECDSA</code> line
+<p>I create a new cluster with the same master hostname as the deleted one, so when
+I try to ssh to it, interesting thing happens:
+<img src="https://drive.google.com/uc?id=1Fkc0M9_e0hufGmI2Es_qvFOBRaHLwPKd" alt=""></p>
+<p>go to <code>~/.ssh/known_hosts</code> file and delete the corresponding <code>ECDSA</code> line
 <img src="https://drive.google.com/uc?id=159d02J98eKyz2jJMUpTgJ6kCuZtqVe10" alt=""></p>
 <h2 id="01-22-2019">01/22/2019</h2>
-<p>when you first time ssh or scp, sftp to remote machine, it will prompt to add remote machine to <code>~/.ssh/known_hosts</code> file, this may interrupt <code>ansible</code> or shell script running, so I want to skip it. For example:
-<img src="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq" alt="">
-use <code>-o StrictHostKeyChecking=no</code> option, it will silently add remote host name to <code>~/.ssh/known_host</code> file.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_dsa.pub -o StrictHostKeyChecking=no root@example.com</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ./<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure>
-<p>if you don’t want to add the host name, <code>-o UserKnownHostsFile=/dev/null</code> option can save you.</p>
+<p>when you first time ssh or scp, sftp to remote machine, it will prompt to add
+remote machine to <code>~/.ssh/known_hosts</code> file, this may interrupt <code>ansible</code> or
+shell script running, so I want to skip it. For example:
+<img src="https://drive.google.com/uc?id=1WfbdXCFeyg5k7tr9wS5JjMRIifJcdPaq" alt=""></p>
+<p>use <code>-o StrictHostKeyChecking=no</code> option, it will silently add remote host name
+to <code>~/.ssh/known_host</code> file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_dsa.pub -o StrictHostKeyChecking=no root@example.com</span><br><span class="line">scp -o StrictHostKeyChecking=no -r ./<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure>
+<p>if you don’t want to add the host name, <code>-o UserKnownHostsFile=/dev/null</code> option
+can save you.</p>
 <h2 id="01-23-2019">01/23/2019</h2>
 <p>scp or ssh without prompt input password</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sshpass</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; scp/ssh ...</span><br></pre></td></tr></table></figure>
-<p>It’s useful to set password-less at first time, combine all of these, no prompt will show up:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y sshpass</span><br><span class="line"><span class="comment"># Explicitly input password</span></span><br><span class="line">sshpass -p &lt;password&gt; scp/ssh ...</span><br></pre></td></tr></table></figure>
+<p>It’s useful to set password-less at first time, combine all of these, no prompt
+will show up:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &lt;password&gt; ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no ...</span><br></pre></td></tr></table></figure>
 <h2 id="02-21-2019">02/21/2019</h2>
-<p>scp <code>source</code> directory and it’s content recursively to <code>root</code> user home directory in <code>example.com</code></p>
+<p>scp <code>source</code> directory and it’s content recursively to <code>root</code> user home
+directory in <code>example.com</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no -r ~/<span class="built_in">source</span> root@example.com:~</span><br></pre></td></tr></table></figure>
-<p>scp all files in <code>source</code> directory to <code>target</code> directory in <code>example.com</code></p>
+<p>scp all files in <code>source</code> directory to <code>target</code> directory in <code>example.com</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -o StrictHostKeyChecking=no ./<span class="built_in">source</span>/* root@example.com:~/target</span><br></pre></td></tr></table></figure>
 <h2 id="03-11-2019">03/11/2019</h2>
-<p>The <code>ssh</code> command has <code>-i</code> option, you associate <strong>private</strong> key with this flags:</p>
+<p>The <code>ssh</code> command has <code>-i</code> option, you associate <strong>private</strong> key with this
+flags:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa xxx</span><br></pre></td></tr></table></figure>
-<p>Note that SSH <strong>never</strong> send private key over the network, <code>-i</code> merely used to answer challenge that is generated using the corresponding public key from target machine, you don’t need to explicitly use <code>-i</code> if you use default private key in right location.</p>
+<p>Note that SSH <strong>never</strong> send private key over the network, <code>-i</code> merely used to
+answer challenge that is generated using the corresponding public key from
+target machine, you don’t need to explicitly use <code>-i</code> if you use default private
+key in right location.</p>
 <h2 id="03-12-2019">03/12/2019</h2>
 <p>If public key is lost, you can use existing private key to generate one:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -y -f ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
 <p>Or just create new key pair</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"yes"</span> | ssh-keygen -t rsa -N <span class="string">""</span> -f ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
 <h2 id="09-05-2020">09/05/2020</h2>
-<p><code>sftp</code> server is up when install <code>openssh-server</code> package, and can be configured in <code>/etc/ssh/sshd_config</code> file:
+<p><code>sftp</code> server is up when install <code>openssh-server</code> package, and can be configured
+in <code>/etc/ssh/sshd_config</code> file:
 <a href="https://www.techrepublic.com/article/how-to-set-up-an-sftp-server-on-linux/" target="_blank" rel="noopener">https://www.techrepublic.com/article/how-to-set-up-an-sftp-server-on-linux/</a></p>
-<p>For the interactive commands, see <code>man sftp</code>, there are logs of regular commands can be used in sftp, for example: cd, chmod, ln, rm, etc.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use password or ssh-public key to login to sftp server</span></span><br><span class="line">sftp -o StrictHostKeyChecking=no user@hostname[:path]</span><br><span class="line"></span><br><span class="line"><span class="comment"># print local working directory, the default place to hold download file</span></span><br><span class="line">sftp&gt; lpwd</span><br><span class="line"><span class="comment"># change local working directory</span></span><br><span class="line">sftp&gt; lcd [path]</span><br><span class="line"><span class="comment"># escape to local shell, type `exit` to back</span></span><br><span class="line">sftp&gt; !</span><br><span class="line"><span class="comment"># secape to local command</span></span><br><span class="line">sftp&gt; ![<span class="built_in">command</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># enable/disable progress meter</span></span><br><span class="line">sftp&gt; progress</span><br><span class="line"><span class="comment"># download file to local working directory</span></span><br><span class="line">sftp&gt; get &lt;filename&gt;</span><br><span class="line"><span class="comment"># download file to specified directory</span></span><br><span class="line">sftp&gt; get &lt;filename&gt; &lt;<span class="built_in">local</span> file path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># upload file</span></span><br><span class="line"><span class="comment"># default file is in local working directory and upload to sftp current folder</span></span><br><span class="line"><span class="comment"># if no path is specified</span></span><br><span class="line">sftp&gt; put [<span class="built_in">local</span> file path] [remote file path]</span><br><span class="line"></span><br><span class="line"><span class="comment"># quit sftp</span></span><br><span class="line">sftp&gt; <span class="built_in">bye</span></span><br></pre></td></tr></table></figure>
+<p>For the interactive commands, see <code>man sftp</code>, there are logs of regular commands
+can be used in sftp, for example: cd, chmod, ln, rm, etc.</p>
+<p>The <a href="https://test.rebex.net/" target="_blank" rel="noopener">online free ftp server</a> for testing purpose.
+Also, the <a href="https://www.mmnt.net/" target="_blank" rel="noopener">mmnt.net</a> can be used to find free ftp
+servers.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use password or ssh-public key to login to sftp server</span></span><br><span class="line">sftp -o UserKnownHostsFile=/dev/null \</span><br><span class="line">-o StrictHostKeyChecking=no \</span><br><span class="line">demo@test.rebex.net[:path]</span><br><span class="line"></span><br><span class="line"><span class="comment"># print local working directory, the default place to hold download file</span></span><br><span class="line">sftp&gt; lpwd</span><br><span class="line"><span class="comment"># change local working directory</span></span><br><span class="line">sftp&gt; lcd [path]</span><br><span class="line"><span class="comment"># escape to local shell, type `exit` to back</span></span><br><span class="line">sftp&gt; !</span><br><span class="line"><span class="comment"># secape to local command</span></span><br><span class="line">sftp&gt; ![<span class="built_in">command</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># enable/disable progress meter</span></span><br><span class="line">sftp&gt; progress</span><br><span class="line"><span class="comment"># download file to local working directory</span></span><br><span class="line">sftp&gt; get &lt;filename&gt;</span><br><span class="line"><span class="comment"># download file to specified directory</span></span><br><span class="line">sftp&gt; get &lt;filename&gt; &lt;<span class="built_in">local</span> file path&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># upload file</span></span><br><span class="line"><span class="comment"># default file is in local working directory and upload to sftp current folder</span></span><br><span class="line"><span class="comment"># if no path is specified</span></span><br><span class="line">sftp&gt; put [<span class="built_in">local</span> file path] [remote file path]</span><br><span class="line"></span><br><span class="line"><span class="comment"># quit sftp</span></span><br><span class="line">sftp&gt; <span class="built_in">bye</span></span><br></pre></td></tr></table></figure>
 <p>For non-interactive download/upload file:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># download</span></span><br><span class="line">sftp user@hostname[:path] &lt;<span class="built_in">local</span> file path&gt;</span><br><span class="line"><span class="comment"># upload, tricky</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"put &lt;local file path&gt;"</span> | sftp user@hostname[:path]</span><br><span class="line">sftp user@hostname[:path] &lt;&lt;&lt; $<span class="string">'put &lt;local file path&gt;'</span></span><br></pre></td></tr></table></figure>
 <p>Used in shell script:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sftp user@hostname &lt;&lt;EOF</span><br><span class="line"><span class="built_in">cd</span> /xxx/yyy/zzz</span><br><span class="line"><span class="built_in">cd</span> /aaa/bbb/ccc</span><br><span class="line">put file.tgz</span><br><span class="line"><span class="built_in">bye</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 <h2 id="01-20-2021">01/20/2021</h2>
-<p>When the network connection is poor and ruining your SSH session, you can adjust the connection settings with larger interval probing and retry times:</p>
+<p>When the network connection is poor and ruining your SSH session, you can adjust
+the connection settings with larger interval probing and retry times:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Host myhostshortcut</span><br><span class="line">    User XXX</span><br><span class="line">    Port 22</span><br><span class="line">    <span class="comment"># or ip address</span></span><br><span class="line">    HostName myhost.com</span><br><span class="line">    User barthelemy</span><br><span class="line">    <span class="comment"># no-op probe to server interval 60s</span></span><br><span class="line">    ServerAliveInterval 60</span><br><span class="line">    <span class="comment"># probe conunt max 10 times if noresponse</span></span><br><span class="line">    ServerAliveCountMax 10</span><br><span class="line">    <span class="comment"># no tcp no-op probe</span></span><br><span class="line">    TCPKeepAlive no</span><br></pre></td></tr></table></figure>
 <h2 id="08-13-2021">08/13/2021</h2>
 <p>When I ran <code>git pull</code> on Gitlab local repo from my cloudtop, I got error output:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Received disconnect from UNKNOWN port 65535:2: Too many authentication failures</span><br><span class="line">Disconnected from UNKNOWN port 65535</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
-<p>This was resolved by adding <code>IdentitiesOnly yes</code> in ssh config file under gitlab config block,  which instructs ssh to only use the authentication identity files specified on the command line or the configured in the ssh_config file.</p>
-<p>reference:
+<p>This was resolved by adding <code>IdentitiesOnly yes</code> in ssh config file under gitlab
+config block, which instructs ssh to only use the authentication identity files
+specified on the command line or the configured in the ssh_config file.</p>
+<p>Reference:
 <a href="https://www.tecmint.com/fix-ssh-too-many-authentication-failures-error/" target="_blank" rel="noopener">https://www.tecmint.com/fix-ssh-too-many-authentication-failures-error/</a></p>
 <h2 id="03-17-2022">03/17/2022</h2>
-<p>The ansible playbook failed to ssh target VM and reported error:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">module.backups-v2.null_resource.setup_cluster</span> <span class="string">(local-exec):</span> <span class="string">[WARNING]:</span> <span class="string">Unhandled</span> <span class="string">error</span> <span class="string">in</span> <span class="string">Python</span> <span class="string">interpreter</span> <span class="string">discovery</span> <span class="string">for</span> <span class="string">host</span></span><br><span class="line"><span class="string">module.backups-v2.null_resource.setup_cluster</span> <span class="string">(local-exec):</span> <span class="number">10.10</span><span class="number">.16</span><span class="number">.205</span><span class="string">:</span> <span class="string">Failed</span> <span class="string">to</span> <span class="string">connect</span> <span class="string">to</span> <span class="string">the</span> <span class="string">host</span> <span class="string">via</span> <span class="attr">ssh:</span> <span class="string">Bad</span> <span class="string">owner</span> <span class="string">or</span> <span class="string">permissions</span></span><br><span class="line"><span class="string">module.backups-v2.null_resource.setup_cluster</span> <span class="string">(local-exec):</span> <span class="string">on</span> <span class="string">/root/.ssh/config</span></span><br></pre></td></tr></table></figure>
-<p>It turns out the permission and owner issue on /root/.ssh/config file, see this ticket for <a href="https://superuser.com/questions/1212402/bad-owner-or-permissions-on-ssh-config-file" target="_blank" rel="noopener">detail</a>, the fix is to set 600 as chmod and chown by owner.</p>
+<p>The Ansible playbook failed to ssh target VM and reported error:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">module.backups-v2.null_resource.setup_cluster</span> <span class="string">(local-exec):</span> <span class="string">[WARNING]:</span> <span class="string">Unhandled</span></span><br><span class="line"><span class="string">error</span> <span class="string">in</span> <span class="string">Python</span> <span class="string">interpreter</span> <span class="string">discovery</span> <span class="string">for</span> <span class="string">host</span></span><br><span class="line"><span class="string">module.backups-v2.null_resource.setup_cluster</span> <span class="string">(local-exec):</span> <span class="number">10.10</span><span class="number">.16</span><span class="number">.205</span><span class="string">:</span> <span class="string">Failed</span></span><br><span class="line"><span class="string">to</span> <span class="string">connect</span> <span class="string">to</span> <span class="string">the</span> <span class="string">host</span> <span class="string">via</span> <span class="attr">ssh:</span> <span class="string">Bad</span> <span class="string">owner</span> <span class="string">or</span> <span class="string">permissions</span></span><br><span class="line"><span class="string">module.backups-v2.null_resource.setup_cluster</span> <span class="string">(local-exec):</span> <span class="string">on</span> <span class="string">/root/.ssh/config</span></span><br></pre></td></tr></table></figure>
+<p>It turns out the permission and owner issue on /root/.ssh/config file, see this
+ticket for
+<a href="https://superuser.com/questions/1212402/bad-owner-or-permissions-on-ssh-config-file" target="_blank" rel="noopener">detail</a>,
+the fix is to set 600 as chmod and chown by owner.</p>
 
       
     </div>
@@ -823,7 +881,7 @@ use <code>-o StrictHostKeyChecking=no</code> option, it will silently add remote
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">268</span>
+                    <span class="site-state-item-count">269</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
