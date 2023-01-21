@@ -29,7 +29,7 @@ date: {{ DATE }}
 ---
 
 **AUTO GENERATION**
-There are **{{ NUM }}** blogs written or updated in last **{{ DAY }}** days that need to review: 
+There are **{{ NUM }}** blogs written or updated in last **{{ DAY }}** days: 
 
 _EOF
 

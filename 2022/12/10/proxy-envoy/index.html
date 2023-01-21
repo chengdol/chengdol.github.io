@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="The first edition was written on 2020-08-30.  Demo This Github repo has demos for some important types of envoy proxies. Some issues I encountered back in time:  CONNECT with domain match Block or al">
+  <meta name="description" content="The first edition was written on 2020-08-30.  Demo This Github repo has demos for some important types of envoy proxies. Some issues I had at the time of using Envoy:  CONNECT with domain match Block">
 <meta name="keywords" content="proxy,envoy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Envoy">
 <meta property="og:url" content="http://yoursite.com/2022/12/10/proxy-envoy/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="The first edition was written on 2020-08-30.  Demo This Github repo has demos for some important types of envoy proxies. Some issues I encountered back in time:  CONNECT with domain match Block or al">
+<meta property="og:description" content="The first edition was written on 2020-08-30.  Demo This Github repo has demos for some important types of envoy proxies. Some issues I had at the time of using Envoy:  CONNECT with domain match Block">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-12-21T05:21:24.257Z">
+<meta property="og:updated_time" content="2023-01-21T01:35:10.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Proxy Envoy">
-<meta name="twitter:description" content="The first edition was written on 2020-08-30.  Demo This Github repo has demos for some important types of envoy proxies. Some issues I encountered back in time:  CONNECT with domain match Block or al">
+<meta name="twitter:description" content="The first edition was written on 2020-08-30.  Demo This Github repo has demos for some important types of envoy proxies. Some issues I had at the time of using Envoy:  CONNECT with domain match Block">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">269</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">270</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-12-20 21:21:24" itemprop="dateModified" datetime="2022-12-20T21:21:24-08:00">2022-12-20</time>
+                <time title="Modified: 2023-01-20 17:35:10" itemprop="dateModified" datetime="2023-01-20T17:35:10-08:00">2023-01-20</time>
               
             
           </span>
@@ -496,7 +496,7 @@
 <h1>Demo</h1>
 <p>This Github <a href="https://github.com/chengdol/proxy/tree/main/envoy" target="_blank" rel="noopener">repo</a> has demos
 for some important types of envoy proxies.</p>
-<p>Some issues I encountered back in time:</p>
+<p>Some issues I had at the time of using Envoy:</p>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/pull/13630" target="_blank" rel="noopener">CONNECT with domain match</a></li>
 <li><a href="https://github.com/envoyproxy/envoy/issues/8388" target="_blank" rel="noopener">Block or allow downstream source IPs</a></li>
@@ -504,7 +504,7 @@ for some important types of envoy proxies.</p>
 <h1>About Source Code</h1>
 <p>The protobuf plays a central role on Envoy configuration and every component in
 Envoy is defined by protobuf. Here I will show some of them I explored.</p>
-<p>For example, in ext authz
+<p>For example, in external authz
 <a href="https://github.com/solo-io/hoot/blob/master/15-envoy-external-services/server/server.go" target="_blank" rel="noopener">gRPC server</a>
 demo code:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	auth_pb <span class="string">"github.com/envoyproxy/go-control-plane/envoy/service/auth/v3"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *service)</span> <span class="title">Check</span><span class="params">(ctx context.Context,</span></span></span><br><span class="line"><span class="function"><span class="params">                        r *auth_pb.CheckRequest)</span></span></span><br><span class="line"><span class="function">                        <span class="params">(*auth_pb.CheckResponse, error)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"received check request"</span>)</span><br><span class="line">	<span class="comment">// return nil, fmt.Errorf("error")</span></span><br><span class="line">	<span class="keyword">return</span> &amp;auth_pb.CheckResponse&#123;&#125;, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	auth_pb.RegisterAuthorizationServer(grpcServer, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -521,6 +521,10 @@ demo code:</p>
 </ul>
 <p>For complex testing that multiple components are involved, utilizing docker
 compose to make them work together.</p>
+<blockquote>
+<p>NOTE: nc and telnet can also work with HTTP server, but you need to input HTTP
+directives in connection, for example: <code>GET /&lt;path&gt; HTTP/1.1</code></p>
+</blockquote>
 <h1>Envoy Training</h1>
 <p>So far the best Envoy learning <a href="https://github.com/solo-io/hoot#previous-episodes" target="_blank" rel="noopener">series</a>.
 The key takeaways are summarized in subsequent sections.</p>
@@ -683,7 +687,7 @@ see <a href="https://github.com/solo-io/hoot/tree/master/15-envoy-external-servi
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">269</span>
+                    <span class="site-state-item-count">270</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1155,7 +1159,7 @@ see <a href="https://github.com/solo-io/hoot/tree/master/15-envoy-external-servi
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2023</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
