@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="之前在IBM工作的时候，用Fyre 申请了一个专门的cluster 做Ansible 学习用，后来跳槽了。方便起见，用Vagrant在本地搭建自己的集群来继续学习，更加方便了。 Please check Vagrant Ansible testing cluster repo. Follow the README to set up and play with ansible. 当时遇到的问题是主">
+  <meta name="description" content="When I was working at IBM, I applied a dedicated cluster for Ansible learning. After I left, I decide to use Vagrant to create local cluster for the same purpose.  NOTE: I have also created a docker s">
 <meta name="keywords" content="ansible">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ansible Quick Test">
 <meta property="og:url" content="http://yoursite.com/2021/03/27/ansible-quick-test/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="之前在IBM工作的时候，用Fyre 申请了一个专门的cluster 做Ansible 学习用，后来跳槽了。方便起见，用Vagrant在本地搭建自己的集群来继续学习，更加方便了。 Please check Vagrant Ansible testing cluster repo. Follow the README to set up and play with ansible. 当时遇到的问题是主">
+<meta property="og:description" content="When I was working at IBM, I applied a dedicated cluster for Ansible learning. After I left, I decide to use Vagrant to create local cluster for the same purpose.  NOTE: I have also created a docker s">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-05-04T04:02:21.000Z">
+<meta property="og:updated_time" content="2023-02-12T21:31:20.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible Quick Test">
-<meta name="twitter:description" content="之前在IBM工作的时候，用Fyre 申请了一个专门的cluster 做Ansible 学习用，后来跳槽了。方便起见，用Vagrant在本地搭建自己的集群来继续学习，更加方便了。 Please check Vagrant Ansible testing cluster repo. Follow the README to set up and play with ansible. 当时遇到的问题是主">
+<meta name="twitter:description" content="When I was working at IBM, I applied a dedicated cluster for Ansible learning. After I left, I decide to use Vagrant to create local cluster for the same purpose.  NOTE: I have also created a docker s">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">152</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">154</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">43</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">44</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">270</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">274</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-05-03 21:02:21" itemprop="dateModified" datetime="2022-05-03T21:02:21-07:00">2022-05-03</time>
+                <time title="Modified: 2023-02-12 13:31:20" itemprop="dateModified" datetime="2023-02-12T13:31:20-08:00">2023-02-12</time>
               
             
           </span>
@@ -490,31 +490,57 @@
       
 
       
-        <p>之前在IBM工作的时候，用Fyre 申请了一个专门的cluster 做Ansible 学习用，后来跳槽了。方便起见，用Vagrant在本地搭建自己的集群来继续学习，更加方便了。</p>
-<p>Please check <a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-ansible" target="_blank" rel="noopener">Vagrant Ansible testing cluster repo</a>. Follow the README to set up and play with ansible. 当时遇到的问题是主要是如何配置ansible ssh connection 与Vagratn VM 建立连接. <code>make.sh</code>中 <code>sed</code> insert 在Mac 上运行有点问题，后来用了其他的workaround.</p>
+        <p>When I was working at IBM, I applied a dedicated cluster for Ansible learning.
+After I left, I decide to use Vagrant to create local cluster for the same
+purpose.</p>
+<blockquote>
+<p>NOTE: I have also created a docker sponsored Ansible testing environment,
+please see <a href="https://github.com/chengdol/InfraTree/tree/master/docker-ansible" target="_blank" rel="noopener">here</a></p>
+</blockquote>
+<p>Please check
+<a href="https://github.com/chengdol/InfraTree/tree/master/vagrant-ansible" target="_blank" rel="noopener">Vagrant Ansible testing cluster repo</a>. Follow the README to set up and play with ansible. The problems I had at the
+time of creating the repo:</p>
+<ol>
+<li>how to establish the SSH connection to Vagrant VM.</li>
+<li>the <code>sed</code> insert has subtle difference in Mac.</li>
+</ol>
 <h1>Ansible Install</h1>
 <p><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html" target="_blank" rel="noopener">Ansible Install guide</a></p>
 <ul>
 <li>Control node requirements:
-Starting with <code>ansible-core 2.11</code>, the project will only be packaged for Python <code>3.8</code> and newer.</li>
+Starting with <code>ansible-core 2.11</code>, the project will only be packaged for Python
+<code>3.8</code> and newer.</li>
 </ul>
-<p>If you are using Ansible to manage machines in a cloud, consider using a machine inside that cloud as your control node. In most cases Ansible will perform better from a machine on the cloud than from a machine on the open Internet.</p>
-<ul>
-<li>Managed node requirements:
-Although you do not need a daemon on your managed nodes, you do need a way for Ansible to communicate with them. For most managed nodes, Ansible makes a connection over SSH and transfers modules using SFTP. For any machine or device that can run Python, you also need Python 2 (version 2.6 or later) or Python 3 (version 3.5 or later).</li>
-</ul>
+<p>If you are using Ansible to manage machines in a cloud, consider using a machine
+inside that cloud as your control node. In most cases Ansible will perform
+better from a machine on the cloud than from a machine on the open Internet.</p>
+<p>Managed node requirements:
+Although you do not need a daemon on your managed nodes, you do need a way for
+Ansible to communicate with them. For most managed nodes, Ansible makes a
+connection over SSH and transfers modules using SFTP. For any machine or device
+that can run Python, you also need Python 2 (version 2.6 or later) or Python 3
+(version 3.5 or later).</p>
 <p>If install on Linux using yum (I use pip install in virtualenv in the demo, see repo README):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># search ansible package</span></span><br><span class="line"><span class="comment"># ansible.noarch</span></span><br><span class="line"><span class="comment"># ansible-python3.noarch</span></span><br><span class="line"><span class="comment"># SSH-based configuration management, deployment, and task execution system</span></span><br><span class="line">yum search ansible</span><br><span class="line"><span class="comment"># python2</span></span><br><span class="line">sudo yum install -y -q ansible</span><br><span class="line"><span class="comment"># python3</span></span><br><span class="line">sudo yum install -y -q ansible-python3</span><br></pre></td></tr></table></figure>
 <h1>Ansible Inventory</h1>
 <p><a href="https://docs.ansible.com/ansible/2.10/user_guide/intro_inventory.html#intro-inventory" target="_blank" rel="noopener">How to build your inventory</a>, for <code>inventory</code> file, 主要涉及一些ssh connection的设置.
 <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html#using-group-position-in-patterns" target="_blank" rel="noopener">Position the target hosts from group</a></p>
 <h1>Ansible Config</h1>
-<p><a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html" target="_blank" rel="noopener">Ansible Configuration Settings</a>, for <code>ansible.cfg</code> file.</p>
+<p><a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html" target="_blank" rel="noopener">Ansible Configuration Settings</a>
+for <code>ansible.cfg</code> file.</p>
 <ul>
 <li><a href="https://www.jeffgeerling.com/blog/2018/use-ansibles-yaml-callback-plugin-better-cli-experience" target="_blank" rel="noopener">ansible callback plugin</a>: use <code>stdout_callback = debug</code> is fine in most cases.</li>
 </ul>
+<h1>Ansible Yaml Format</h1>
+<p><a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html" target="_blank" rel="noopener">Yaml syntax</a>,
+Especially the difference between <code>&gt;</code> and <code>|</code> for multi-line coding:</p>
+<p>Spanning multiple lines using a <code>|</code> will include the newlines and any trailing
+spaces. Using a <code>&gt;</code> will fold newlines to spaces; In either case the indentation
+will be ignored.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">include_newlines:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            exactly as you see</span></span><br><span class="line"><span class="string">            will appear these three</span></span><br><span class="line"><span class="string">            lines of poetry</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span><span class="attr">fold_newlines:</span> <span class="string">&gt;</span></span><br><span class="line"><span class="string">            this is really a</span></span><br><span class="line"><span class="string">            single line of text</span></span><br><span class="line"><span class="string">            despite appearances</span></span><br></pre></td></tr></table></figure>
 <h1>Ansible Run</h1>
-<p><a href="https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html" target="_blank" rel="noopener">Ad-hoc command</a> example:</p>
+<p><a href="https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html" target="_blank" rel="noopener">Ad-hoc command</a>
+example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -v: verbose, display output</span></span><br><span class="line"><span class="comment"># can specify single machine</span></span><br><span class="line">ansible -v -i vagrant_ansible_inventory.ini worker1 -m ping</span><br><span class="line"><span class="comment"># all</span></span><br><span class="line">ansible -v -i vagrant_ansible_inventory.ini all -m shell -a <span class="string">'echo $(whoami)'</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_intro.html" target="_blank" rel="noopener">Playbook</a>
 <a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_reuse_roles.html" target="_blank" rel="noopener">Role</a>, check role directory structure and how to <a href="https://docs.ansible.com/ansible/2.10/user_guide/playbooks_reuse_roles.html#using-roles" target="_blank" rel="noopener">use role</a>.</p>
@@ -639,7 +665,7 @@ Although you do not need a daemon on your managed nodes, you do need a way for A
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">270</span>
+                    <span class="site-state-item-count">274</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -738,7 +764,9 @@ Although you do not need a daemon on your managed nodes, you do need a way for A
                     
                       
                     
-                    <span class="site-state-item-count">43</span>
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1055,7 +1083,11 @@ Although you do not need a daemon on your managed nodes, you do need a way for A
                     
                       
                     
-                    <span class="site-state-item-count">152</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">154</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1091,7 +1123,7 @@ Although you do not need a daemon on your managed nodes, you do need a way for A
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Ansible Install</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Ansible Inventory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Ansible Config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Ansible Run</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Ansible Install</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Ansible Inventory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Ansible Config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Ansible Yaml Format</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Ansible Run</span></a></li></ol></div>
             
 
           </div>
