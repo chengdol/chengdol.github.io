@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Redis Introduction Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine. Redis provides data structures such as string">
-<meta name="keywords" content="redis">
+  <meta name="description" content="In Golang, we usually define struct with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page&quot;`	UserInfo userInfo `json:&quot;user_info&quot;">
+<meta name="keywords" content="go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis">
-<meta property="og:url" content="http://yoursite.com/2023/01/01/cache-redis/index.html">
+<meta property="og:title" content="Golang JSON Marshal and Unmarshal">
+<meta property="og:url" content="http://yoursite.com/2023/04/08/golang-json-unmarshal/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Redis Introduction Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine. Redis provides data structures such as string">
+<meta property="og:description" content="In Golang, we usually define struct with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page&quot;`	UserInfo userInfo `json:&quot;user_info&quot;">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-01-21T01:43:37.720Z">
+<meta property="og:updated_time" content="2023-05-06T23:26:29.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis">
-<meta name="twitter:description" content="Redis Introduction Redis is an open source (BSD licensed), in-memory data structure store used as a database, cache, message broker, and streaming engine. Redis provides data structures such as string">
+<meta name="twitter:title" content="Golang JSON Marshal and Unmarshal">
+<meta name="twitter:description" content="In Golang, we usually define struct with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page&quot;`	UserInfo userInfo `json:&quot;user_info&quot;">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2023/01/01/cache-redis/">
+  <link rel="canonical" href="http://yoursite.com/2023/04/08/golang-json-unmarshal/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Redis | 海胆阶段's Blog</title>
+  <title>Golang JSON Marshal and Unmarshal | 海胆阶段's Blog</title>
   
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">276</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">278</span></a>
 
   </li>
 
@@ -379,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/01/cache-redis/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/04/08/golang-json-unmarshal/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="海胆阶段">
@@ -396,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis
+          <h1 class="post-title" itemprop="name headline">Golang JSON Marshal and Unmarshal
 
               
             
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2023-01-01 15:29:00" itemprop="dateCreated datePublished" datetime="2023-01-01T15:29:00-08:00">2023-01-01</time>
+              <time title="Created: 2023-04-08 16:52:23" itemprop="dateCreated datePublished" datetime="2023-04-08T16:52:23-07:00">2023-04-08</time>
             
 
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-01-20 17:43:37" itemprop="dateModified" datetime="2023-01-20T17:43:37-08:00">2023-01-20</time>
+                <time title="Modified: 2023-05-06 16:26:29" itemprop="dateModified" datetime="2023-05-06T16:26:29-07:00">2023-05-06</time>
               
             
           </span>
@@ -456,7 +456,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Cache/" itemprop="url" rel="index"><span itemprop="name">Cache</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a></span>
 
                 
                 
@@ -490,52 +490,38 @@
       
 
       
-        <h1>Redis Introduction</h1>
-<p><a href="https://redis.io/docs/about/" target="_blank" rel="noopener">Redis</a> is an open source (BSD licensed),
-in-memory data structure store used as a database, cache, message broker, and
-streaming engine. Redis provides data structures such as strings, hashes, lists,
-sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes,
-and streams.</p>
-<p>Redis has built-in replication, Lua scripting, LRU eviction, transactions, and
-different levels of on-disk persistence, and provides high availability via
-Redis Sentinel and automatic partitioning with Redis Cluster.</p>
-<p>You can run atomic operations on these types, like appending to a string;
-incrementing the value in a hash; pushing an element to a list; computing set
-intersection, union and difference; or getting the member with highest ranking
-in a sorted set.</p>
-<p>You can learn from <a href="https://university.redis.com/" target="_blank" rel="noopener">Redis university</a>.</p>
-<h1>Codelab</h1>
-<p>Dockerhub Redis: <a href="https://hub.docker.com/_/redis" target="_blank" rel="noopener">https://hub.docker.com/_/redis</a>.</p>
-<p>To try Redis in a quick way, spinning up a server and client instance
-separately in the same docker network(You can also use docker compose to
-assemble them):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create default bridge network for Redis instances.</span></span><br><span class="line">docker network create redis-network</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Redis server using default config with port 6379.</span></span><br><span class="line">docker run -d --network redis-network \</span><br><span class="line">--name redis-server \</span><br><span class="line">redis:latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create Redis client and connect to redis-server with port 6379 by default.</span></span><br><span class="line">docker run -it --network redis-network \</span><br><span class="line">--name redis-client \</span><br><span class="line">redis:latest redis-cli -h redis-server</span><br></pre></td></tr></table></figure>
-<p>From the client terminal, try example
-<a href="https://redis.io/docs/getting-started/#exploring-redis-with-the-cli" target="_blank" rel="noopener">commands</a>.</p>
-<p>The usage of other commands please start with <code>Data Types</code>(below section) and
-explore comprehensive commands <a href="https://redis.io/commands/" target="_blank" rel="noopener">here</a>.</p>
-<h1>Client Libraries</h1>
-<p>Client <a href="https://redis.io/resources/clients/" target="_blank" rel="noopener">libraries</a> for various languages.</p>
-<h1>Data Types</h1>
-<p>The supported <a href="https://redis.io/docs/data-types/" target="_blank" rel="noopener">data types</a></p>
-<h1>Usage Cases</h1>
-<h2 id="Cache">Cache</h2>
-<p>Redis can perform different roles based on user demands, the caching is one key
-role from them, please see
-<a href="https://redis.io/docs/manual/client-side-caching/" target="_blank" rel="noopener">client side caching</a> and
-<a href="https://redis.io/docs/reference/eviction/" target="_blank" rel="noopener">eviction</a> strategies for reference.</p>
-<h2 id="In-Memory-DB-with-Persistence">In-Memory DB with Persistence</h2>
-<p>Redis can <a href="https://redis.io/docs/management/persistence/" target="_blank" rel="noopener">persist</a> the data with
-different mechanism.</p>
-<h2 id="Message-Broker">Message Broker</h2>
-<p>Redis also provides <a href="https://redis.io/docs/manual/pubsub/" target="_blank" rel="noopener">pub/sub</a>
-functionality,</p>
-<p>[ ] vs <a href="https://redis.io/docs/data-types/streams/" target="_blank" rel="noopener">Stream</a> data type?</p>
-<h2 id="Other-Extensions">Other Extensions</h2>
-<p>Redis can be extended to fit more roles, for example, storing and query JSON
-objects like Mongodb, full-text search as Elasticsearch , graph DB like Neo4j,
-please see <a href="https://redis.io/docs/stack/" target="_blank" rel="noopener">here</a> for details.</p>
-
+        <p>In Golang, we usually define struct with struct tag to unmarshl/marshal JSON
+data, for example:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Response <span class="keyword">struct</span> &#123;</span><br><span class="line">	Page     <span class="keyword">int</span>      <span class="string">`json:"page"`</span></span><br><span class="line">	UserInfo userInfo <span class="string">`json:"user_info"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> userInfo <span class="keyword">struct</span> &#123;</span><br><span class="line">	Age    <span class="keyword">uint32</span>  <span class="string">`json:"age"`</span></span><br><span class="line">	Height <span class="keyword">float32</span> <span class="string">`json:"height"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/10858787/what-are-the-uses-for-struct-tags-in-go" target="_blank" rel="noopener">The use of tag in golang struct</a>.</p>
+</blockquote>
+<p>Only <code>exported field</code>(upper case) will be encoded/decoded, and struct tag can
+help map the JSON key name, if there is no struct tag, the exact struct field
+name will be used as JSON key name in marshalling.</p>
+<p>For unmarshal if there is no corresponding JSON field, the struct field will be
+assigned the default <code>zero</code> value of that type, for example:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">d := []<span class="keyword">byte</span>(<span class="string">`&#123;"page": 1&#125;`</span>)</span><br><span class="line"></span><br><span class="line">resp := Response&#123;&#125;</span><br><span class="line">err := json.Unmarshal(d, &amp;resp)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"%w"</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">"%+v\n"</span>, resp)</span><br><span class="line"></span><br><span class="line"><span class="comment">// output</span></span><br><span class="line">&#123;Page:<span class="number">1</span> UserInfo:&#123;Age:<span class="number">0</span> Height:<span class="number">0</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>Because the <code>user_info</code> JSON data is missing, so <code>UserInfo</code> gets a struct value
+with default value on all fields <code>UserInfo:{Age:0 Height:0}</code>, but this cannot
+tell if the <code>user_info</code> is really missing or it indeed has value but all 0.
+To solve this, we can use pointer on struct field:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Response <span class="keyword">struct</span> &#123;</span><br><span class="line">	Page     <span class="keyword">int</span>       <span class="string">`json:"page"`</span></span><br><span class="line">	UserInfo *userInfo <span class="string">`json:"user_info"`</span>  <span class="comment">// change to pointer</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And run again, the output will be:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Page:<span class="number">1</span> UserInfo:&lt;<span class="literal">nil</span>&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>By checking the <code>nil</code> default value of the field, we know the JSON part is
+actually missing.</p>
+<h1>Unmarshal Unknown fields</h1>
+<p>If there are unknown fields in JSON data, we can use interface and type
+assertion to help decode the JSON data, for example:</p>
+<p>From blog <a href="https://go.dev/blog/json" target="_blank" rel="noopener">JSON and Go</a>, the json package uses
+<code>map[string]interface{}</code> and <code>[]interface{}</code> values to store arbitrary JSON
+objects and arrays.</p>
+<h1>Marshal with Omit</h1>
+<p>For JSON marshal example, please see
+<a href="https://gobyexample.com/json" target="_blank" rel="noopener">Go by Example: JSON</a>, if you want to omit the
+JSON field when no corresponding fill data, use <code>omitempty</code> tag, for example:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Example <span class="keyword">struct</span> &#123;</span><br><span class="line">	Count     <span class="keyword">int</span>      <span class="string">`json:",omitempty"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -558,7 +544,7 @@ please see <a href="https://redis.io/docs/stack/" target="_blank" rel="noopener"
       
         <div class="post-tags">
           
-            <a href="/tags/redis/" rel="tag"># redis</a>
+            <a href="/tags/go/" rel="tag"># go</a>
           
         </div>
       
@@ -571,8 +557,8 @@ please see <a href="https://redis.io/docs/stack/" target="_blank" rel="noopener"
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/12/11/proxy-concepts/" rel="next" title="Proxy Concepts">
-                <i class="fa fa-chevron-left"></i> Proxy Concepts
+              <a href="/2023/04/01/network-simulator-gns3/" rel="next" title="GNS3">
+                <i class="fa fa-chevron-left"></i> GNS3
               </a>
             
           </div>
@@ -581,8 +567,8 @@ please see <a href="https://redis.io/docs/stack/" target="_blank" rel="noopener"
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2023/01/01/cache-memcached/" rel="prev" title="Memcached">
-                Memcached <i class="fa fa-chevron-right"></i>
+              <a href="/2023/05/06/review-list/" rel="prev" title="Blog Review List">
+                Blog Review List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,7 +641,7 @@ please see <a href="https://redis.io/docs/stack/" target="_blank" rel="noopener"
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">276</span>
+                    <span class="site-state-item-count">278</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1113,7 +1099,7 @@ please see <a href="https://redis.io/docs/stack/" target="_blank" rel="noopener"
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Redis Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Codelab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Client Libraries</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Data Types</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Usage Cases</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cache"><span class="nav-number">5.1.</span> <span class="nav-text">Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#In-Memory-DB-with-Persistence"><span class="nav-number">5.2.</span> <span class="nav-text">In-Memory DB with Persistence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Message-Broker"><span class="nav-number">5.3.</span> <span class="nav-text">Message Broker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Extensions"><span class="nav-number">5.4.</span> <span class="nav-text">Other Extensions</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Unmarshal Unknown fields</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Marshal with Omit</span></a></li></ol></div>
             
 
           </div>

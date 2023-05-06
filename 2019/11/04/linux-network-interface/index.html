@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networki">
+  <meta name="description" content="Sometimes I need to know IP of specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to yum install net-tools.x86_64 if it does not present:">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux Network Interface">
 <meta property="og:url" content="http://yoursite.com/2019/11/04/linux-network-interface/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networki">
+<meta property="og:description" content="Sometimes I need to know IP of specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to yum install net-tools.x86_64 if it does not present:">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2022-02-13T22:51:37.000Z">
+<meta property="og:updated_time" content="2023-04-01T20:47:20.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Network Interface">
-<meta name="twitter:description" content="Sometimes I need to fetch IP from specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to first yum install net-tools.x86_64 : Basic networki">
+<meta name="twitter:description" content="Sometimes I need to know IP of specified network interface, for example eth0. There are several ways to do it:  ifconfig command, but you need to yum install net-tools.x86_64 if it does not present:">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">276</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">278</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2022-02-13 14:51:37" itemprop="dateModified" datetime="2022-02-13T14:51:37-08:00">2022-02-13</time>
+                <time title="Modified: 2023-04-01 13:47:20" itemprop="dateModified" datetime="2023-04-01T13:47:20-07:00">2023-04-01</time>
               
             
           </span>
@@ -490,16 +490,17 @@
       
 
       
-        <p>Sometimes I need to fetch IP from specified network interface, for example <code>eth0</code>.</p>
+        <p>Sometimes I need to know IP of specified network interface, for example <code>eth0</code>.</p>
 <p>There are several ways to do it:</p>
-<ol>
-<li><code>ifconfig</code> command, but you need to first yum install <code>net-tools.x86_64 : Basic networking tools</code> if it does not present.</li>
-</ol>
+<ul>
+<li><code>ifconfig</code> command, but you need to yum install <code>net-tools.x86_64</code> if it does
+not present:</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 | grep <span class="string">"inet"</span> | awk <span class="string">'&#123;print $2&#125;'</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li><code>ip</code> command, this command is pre-installed in most linux machine and powerful.</li>
+<li><code>ip</code> command, this command is pre-installed in most Linux distros.</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show eth0 | grep &quot;inet\b&quot; | awk &apos;&#123;print $2&#125;&apos; | cut -d/ -f1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show eth0 | grep <span class="string">"inet\b"</span> | awk <span class="string">'&#123;print $2&#125;'</span> | cut -d/ -f1</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -611,7 +612,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">276</span>
+                    <span class="site-state-item-count">278</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
