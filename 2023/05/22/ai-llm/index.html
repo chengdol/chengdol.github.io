@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="中文|English">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="At the time of writing, there is a time-limited free course about ChatGPT prompt engineering for developers, shared by deeplearning.ai. Introduction Two types of LLMs:   Base LLM: predicts next word,">
+<meta name="keywords" content="ai">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prompt Engineering">
+<meta property="og:url" content="http://yoursite.com/2023/05/22/ai-llm/index.html">
+<meta property="og:site_name" content="海胆阶段&#39;s Blog">
+<meta property="og:description" content="At the time of writing, there is a time-limited free course about ChatGPT prompt engineering for developers, shared by deeplearning.ai. Introduction Two types of LLMs:   Base LLM: predicts next word,">
+<meta property="og:locale" content="中文|English">
+<meta property="og:updated_time" content="2023-05-29T17:45:23.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prompt Engineering">
+<meta name="twitter:description" content="At the time of writing, there is a time-limited free course about ChatGPT prompt engineering for developers, shared by deeplearning.ai. Introduction Two types of LLMs:   Base LLM: predicts next word,">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2023/05/22/ai-llm/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Prompt Engineering | 海胆阶段's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="中文|English">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海胆阶段's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">155</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">279</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/05/22/ai-llm/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="海胆阶段">
+      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+      <meta itemprop="image" content="/images/cuishao.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海胆阶段's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Prompt Engineering
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2023-05-22 16:21:33" itemprop="dateCreated datePublished" datetime="2023-05-22T16:21:33-07:00">2023-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2023-05-29 10:45:23" itemprop="dateModified" datetime="2023-05-29T10:45:23-07:00">2023-05-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>At the time of writing, there is a time-limited free course about ChatGPT prompt
+engineering for developers, shared by <a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener">deeplearning.ai</a>.</p>
+<h2 id="Introduction">Introduction</h2>
+<p>Two types of LLMs:</p>
+<ul>
+<li>
+<p>Base LLM: predicts next word, based on test training data, not able to answer
+user questions.</p>
+</li>
+<li>
+<p>Instruction Tuned LLM: tries to follow instruction, fine tune on instructions
+and good attempt at following those instructions. <code>RLHF</code>(refinement learning
+with human feedback).</p>
+</li>
+</ul>
+<p>The course is focusing on the second type.</p>
+<p>For how to write openai code, the Python library can be found here:
+<a href="https://platform.openai.com/docs/libraries" target="_blank" rel="noopener">https://platform.openai.com/docs/libraries</a></p>
+<p>The boilerplate:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openai</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv, find_dotenv</span><br><span class="line">_ = load_dotenv(find_dotenv()) <span class="comment"># read local .env file for openai api key</span></span><br><span class="line"></span><br><span class="line">openai.api_key  = os.getenv(<span class="string">'YOUR_OPENAI_API_KEY'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">perform_task</span><span class="params">(prompt, model=<span class="string">"gpt-3.5-turbo"</span>, temperature=<span class="number">0</span>)</span>:</span> </span><br><span class="line">    messages = [&#123;<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: prompt&#125;]</span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=model,</span><br><span class="line">        messages=messages,</span><br><span class="line">        temperature=temperature, </span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> response.choices[<span class="number">0</span>].message[<span class="string">"content"</span>]</span><br></pre></td></tr></table></figure>
+<p>Here is the openai chat completion guide:
+<a href="https://platform.openai.com/docs/guides/chat" target="_blank" rel="noopener">https://platform.openai.com/docs/guides/chat</a></p>
+<h2 id="Guidelines">Guidelines</h2>
+<p>Prompting principles and tactics:</p>
+<ul>
+<li>
+<p>Use clear and specific instructions.</p>
+<ul>
+<li>
+<p>Use delimiters to avoid prompt injection.</p>
+<ul>
+<li>Such as: <code>&quot;&quot;&quot;</code>, <code>---</code> or <code>&lt;tag&gt;</code>, <code>&lt;&gt;</code>, etc.</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">f"""</span></span><br><span class="line"><span class="string">You should ```express what you want``` a model to do by \ </span></span><br><span class="line"><span class="string">providing instructions that are as clear and \ </span></span><br><span class="line"><span class="string">specific as you can possibly make them. \ </span></span><br><span class="line"><span class="string">This will guide the model towards the desired output, \ </span></span><br><span class="line"><span class="string">and reduce the chances of receiving irrelevant \ </span></span><br><span class="line"><span class="string">or incorrect responses. Don't confuse writing a \ </span></span><br><span class="line"><span class="string">clear prompt with writing a short prompt. \ </span></span><br><span class="line"><span class="string">In many cases, longer prompts provide more clarity \ </span></span><br><span class="line"><span class="string">and context for the model, which can lead to \ </span></span><br><span class="line"><span class="string">more detailed and relevant outputs.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Summarize the text delimited by single backtick \ </span></span><br><span class="line"><span class="string">into a single sentence.</span></span><br><span class="line"><span class="string">`<span class="subst">&#123;text&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Ask for structed output.</p>
+<ul>
+<li>JSON, YAML, etc, so the they can be used later.</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Generate a list of three made-up book titles along \ </span></span><br><span class="line"><span class="string">with their authors and genres. </span></span><br><span class="line"><span class="string">Provide them in JSON format with the following keys: </span></span><br><span class="line"><span class="string">book_id, title, author, genre.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Ask the model to check whether conditions are satisfied.</p>
+<ul>
+<li>For example, does the input contain a sequence of instructions?</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">text_1 = <span class="string">f"""</span></span><br><span class="line"><span class="string">Making a cup of tea is easy! First, you need to get some \ </span></span><br><span class="line"><span class="string">water boiling. While that's happening, \ </span></span><br><span class="line"><span class="string">grab a cup and put a tea bag in it. Once the water is \ </span></span><br><span class="line"><span class="string">hot enough, just pour it over the tea bag. \ </span></span><br><span class="line"><span class="string">Let it sit for a bit so the tea can steep. After a \ </span></span><br><span class="line"><span class="string">few minutes, take out the tea bag. If you \ </span></span><br><span class="line"><span class="string">like, you can add some sugar or milk to taste. \ </span></span><br><span class="line"><span class="string">And that's it! You've got yourself a delicious \ </span></span><br><span class="line"><span class="string">cup of tea to enjoy.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">You will be provided with text delimited by triple quotes. </span></span><br><span class="line"><span class="string">If it contains a sequence of instructions, \ </span></span><br><span class="line"><span class="string">re-write those instructions in the following format:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Step 1 - ...</span></span><br><span class="line"><span class="string">Step 2 - …</span></span><br><span class="line"><span class="string">…</span></span><br><span class="line"><span class="string">Step N - …</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">If the text does not contain a sequence of instructions, \ </span></span><br><span class="line"><span class="string">then simply write \"No steps provided.\"</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\"\"\"<span class="subst">&#123;text_1&#125;</span>\"\"\"</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(<span class="string">"Completion for Text 1:"</span>)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>“Few-shot” prompting.</p>
+<ul>
+<li>Give successful example of completing tasks then ask model to perform the
+task.</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to answer in a consistent style.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;child&gt;: Teach me about patience.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;grandparent&gt;: The river that carves the deepest \ </span></span><br><span class="line"><span class="string">valley flows from a modest spring; the \ </span></span><br><span class="line"><span class="string">grandest symphony originates from a single note; \ </span></span><br><span class="line"><span class="string">the most intricate tapestry begins with a solitary thread.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;child&gt;: Teach me about resilience.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>Give the model time to “think”.</p>
+<ul>
+<li>Specify the steps required to complete a task.</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">f"""</span></span><br><span class="line"><span class="string">In a charming village, siblings Jack and Jill set out on \ </span></span><br><span class="line"><span class="string">a quest to fetch water from a hilltop \ </span></span><br><span class="line"><span class="string">well. As they climbed, singing joyfully, misfortune \ </span></span><br><span class="line"><span class="string">struck—Jack tripped on a stone and tumbled \ </span></span><br><span class="line"><span class="string">down the hill, with Jill following suit. \ </span></span><br><span class="line"><span class="string">Though slightly battered, the pair returned home to \ </span></span><br><span class="line"><span class="string">comforting embraces. Despite the mishap, \ </span></span><br><span class="line"><span class="string">their adventurous spirits remained undimmed, and they \ </span></span><br><span class="line"><span class="string">continued exploring with delight.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># example 1</span></span><br><span class="line">prompt_1 = <span class="string">f"""</span></span><br><span class="line"><span class="string">Perform the following actions: </span></span><br><span class="line"><span class="string">1 - Summarize the following text delimited by single \</span></span><br><span class="line"><span class="string">backtick with 1 sentence.</span></span><br><span class="line"><span class="string">2 - Translate the summary into French.</span></span><br><span class="line"><span class="string">3 - List each name in the French summary.</span></span><br><span class="line"><span class="string">4 - Output a json object that contains the following \</span></span><br><span class="line"><span class="string">keys: french_summary, num_names.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Separate your answers with line breaks.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Text:</span></span><br><span class="line"><span class="string">`<span class="subst">&#123;text&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt_1)</span><br><span class="line">print(<span class="string">"Completion for prompt 1:"</span>)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Instruct the model to work out its own solution before rushing to a
+conclusion.</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to determine if the student's solution \</span></span><br><span class="line"><span class="string">is correct or not.</span></span><br><span class="line"><span class="string">To solve the problem do the following:</span></span><br><span class="line"><span class="string">- First, work out your own solution to the problem. </span></span><br><span class="line"><span class="string">- Then compare your solution to the student's solution \ </span></span><br><span class="line"><span class="string">and evaluate if the student's solution is correct or not. </span></span><br><span class="line"><span class="string">Don't decide if the student's solution is correct until </span></span><br><span class="line"><span class="string">you have done the problem yourself.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Use the following format:</span></span><br><span class="line"><span class="string">Question:</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">question here</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">Student's solution:</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">student's solution here</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">Actual solution:</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">steps to work out the solution and your solution here</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">Is the student's solution the same as actual solution \</span></span><br><span class="line"><span class="string">just calculated:</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">yes or no</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">Student grade:</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">correct or incorrect</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Question:</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">I'm building a solar power installation and I need help \</span></span><br><span class="line"><span class="string">working out the financials. </span></span><br><span class="line"><span class="string">- Land costs $100 / square foot</span></span><br><span class="line"><span class="string">- I can buy solar panels for $250 / square foot</span></span><br><span class="line"><span class="string">- I negotiated a contract for maintenance that will cost \</span></span><br><span class="line"><span class="string">me a flat $100k per year, and an additional $10 / square \</span></span><br><span class="line"><span class="string">foot</span></span><br><span class="line"><span class="string">What is the total cost for the first year of operations \</span></span><br><span class="line"><span class="string">as a function of the number of square feet.</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">Student's solution:</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">Let x be the size of the installation in square feet.</span></span><br><span class="line"><span class="string">Costs:</span></span><br><span class="line"><span class="string">1. Land cost: 100x</span></span><br><span class="line"><span class="string">2. Solar panel cost: 250x</span></span><br><span class="line"><span class="string">3. Maintenance cost: 100,000 + 100x</span></span><br><span class="line"><span class="string">Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000</span></span><br><span class="line"><span class="string">``</span></span><br><span class="line"><span class="string">Actual solution:</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>NOTE: it is possible that the answer sounds plausible but are not true.</p>
+</blockquote>
+<p>Reduce the hallucinations: Ask the LLM first find relevant information, then
+answer the question based on the relevant information.</p>
+<h2 id="Iterative">Iterative</h2>
+<p>Iterative prompt development steps:</p>
+<ul>
+<li>Try something.</li>
+<li>Analyze where the result does not give what you want.</li>
+<li>Clarify instructions, give more time to think.</li>
+<li>Refine prompt with a batch of examples.</li>
+</ul>
+<p>For example, below examples show how to evolve the prompt to get desired outcome
+for a e-commerce website:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">fact_sheet_chair = <span class="string">"""</span></span><br><span class="line"><span class="string">OVERVIEW</span></span><br><span class="line"><span class="string">- Part of a beautiful family of mid-century inspired office furniture, </span></span><br><span class="line"><span class="string">including filing cabinets, desks, bookcases, meeting tables, and more.</span></span><br><span class="line"><span class="string">- Several options of shell color and base finishes.</span></span><br><span class="line"><span class="string">- Available with plastic back and front upholstery (SWC-100) </span></span><br><span class="line"><span class="string">or full upholstery (SWC-110) in 10 fabric and 6 leather options.</span></span><br><span class="line"><span class="string">- Base finish options are: stainless steel, matte black, </span></span><br><span class="line"><span class="string">gloss white, or chrome.</span></span><br><span class="line"><span class="string">- Chair is available with or without armrests.</span></span><br><span class="line"><span class="string">- Suitable for home or business settings.</span></span><br><span class="line"><span class="string">- Qualified for contract use.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">CONSTRUCTION</span></span><br><span class="line"><span class="string">- 5-wheel plastic coated aluminum base.</span></span><br><span class="line"><span class="string">- Pneumatic chair adjust for easy raise/lower action.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">DIMENSIONS</span></span><br><span class="line"><span class="string">- WIDTH 53 CM | 20.87”</span></span><br><span class="line"><span class="string">- DEPTH 51 CM | 20.08”</span></span><br><span class="line"><span class="string">- HEIGHT 80 CM | 31.50”</span></span><br><span class="line"><span class="string">- SEAT HEIGHT 44 CM | 17.32”</span></span><br><span class="line"><span class="string">- SEAT DEPTH 41 CM | 16.14”</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">OPTIONS</span></span><br><span class="line"><span class="string">- Soft or hard-floor caster options.</span></span><br><span class="line"><span class="string">- Two choices of seat foam densities: </span></span><br><span class="line"><span class="string"> medium (1.8 lb/ft3) or high (2.8 lb/ft3)</span></span><br><span class="line"><span class="string">- Armless or 8 position PU armrests </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">MATERIALS</span></span><br><span class="line"><span class="string">SHELL BASE GLIDER</span></span><br><span class="line"><span class="string">- Cast Aluminum with modified nylon PA6/PA66 coating.</span></span><br><span class="line"><span class="string">- Shell thickness: 10 mm.</span></span><br><span class="line"><span class="string">SEAT</span></span><br><span class="line"><span class="string">- HD36 foam</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">COUNTRY OF ORIGIN</span></span><br><span class="line"><span class="string">- Italy</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>Original prompt:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to help a marketing team create a </span></span><br><span class="line"><span class="string">description for a retail website of a product based </span></span><br><span class="line"><span class="string">on a technical fact sheet.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Write a product description based on the information </span></span><br><span class="line"><span class="string">provided in the technical specifications delimited by </span></span><br><span class="line"><span class="string">single backtick.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Technical specifications: `<span class="subst">&#123;fact_sheet_chair&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>If the output is too long, you can limit the length explicitly:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to help a marketing team create a </span></span><br><span class="line"><span class="string">description for a retail website of a product based </span></span><br><span class="line"><span class="string">on a technical fact sheet.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Write a product description based on the information </span></span><br><span class="line"><span class="string">provided in the technical specifications delimited by </span></span><br><span class="line"><span class="string">single backtick.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Use at most 50 words.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Technical specifications: `<span class="subst">&#123;fact_sheet_chair&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>After many rounds of improvements, the last prompt gets specified details and
+table/HTML format:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to help a marketing team create a </span></span><br><span class="line"><span class="string">description for a retail website of a product based </span></span><br><span class="line"><span class="string">on a technical fact sheet.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Write a product description based on the information </span></span><br><span class="line"><span class="string">provided in the technical specifications delimited by </span></span><br><span class="line"><span class="string">single backtick.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The description is intended for furniture retailers, </span></span><br><span class="line"><span class="string">so should be technical in nature and focus on the </span></span><br><span class="line"><span class="string">materials the product is constructed from.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">At the end of the description, include every 7-character </span></span><br><span class="line"><span class="string">Product ID in the technical specification.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">After the description, include a table that gives the </span></span><br><span class="line"><span class="string">product's dimensions. The table should have two columns.</span></span><br><span class="line"><span class="string">In the first column include the name of the dimension. </span></span><br><span class="line"><span class="string">In the second column include the measurements in inches only.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Give the table the title 'Product Dimensions'.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Format everything as HTML that can be used in a website. </span></span><br><span class="line"><span class="string">Place the description in a &lt;div&gt; element.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Technical specifications: `<span class="subst">&#123;fact_sheet_chair&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<h2 id="Summarizing">Summarizing</h2>
+<p>For example, the text to be summarized:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">prod_review = <span class="string">"""</span></span><br><span class="line"><span class="string">Got this panda plush toy for my daughter's birthday, \</span></span><br><span class="line"><span class="string">who loves it and takes it everywhere. It's soft and \ </span></span><br><span class="line"><span class="string">super cute, and its face has a friendly look. It's \ </span></span><br><span class="line"><span class="string">a bit small for what I paid though. I think there \ </span></span><br><span class="line"><span class="string">might be other options that are bigger for the \ </span></span><br><span class="line"><span class="string">same price. It arrived a day earlier than expected, \ </span></span><br><span class="line"><span class="string">so I got to play with it myself before I gave it \ </span></span><br><span class="line"><span class="string">to her.</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>You can ask LLM like this:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to generate a short summary of a product \</span></span><br><span class="line"><span class="string">review from an ecommerce site. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Summarize the review below, delimited by single </span></span><br><span class="line"><span class="string">backtick, in at most 30 words. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Review: `<span class="subst">&#123;prod_review&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Focusing on shipping and delivery details:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to generate a short summary of a product \</span></span><br><span class="line"><span class="string">review from an ecommerce site to give feedback to the \</span></span><br><span class="line"><span class="string">Shipping deparmtment. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Summarize the review below, delimited by single </span></span><br><span class="line"><span class="string">backtick, in at most 30 words, and focusing on any aspects \</span></span><br><span class="line"><span class="string">that mention shipping and delivery of the product. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Review: `<span class="subst">&#123;prod_review&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Focusing on price and value:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to generate a short summary of a product \</span></span><br><span class="line"><span class="string">review from an ecommerce site to give feedback to the \</span></span><br><span class="line"><span class="string">pricing deparmtment, responsible for determining the \</span></span><br><span class="line"><span class="string">price of the product.  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Summarize the review below, delimited by single </span></span><br><span class="line"><span class="string">backtick, in at most 30 words, and focusing on any aspects \</span></span><br><span class="line"><span class="string">that are relevant to the price and perceived value. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Review: `<span class="subst">&#123;prod_review&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>If the summaries are not relevant to focus, you can adjust the word by using
+<code>extract</code> instead of <code>summarize</code>:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Your task is to extract relevant information from \ </span></span><br><span class="line"><span class="string">a product review from an ecommerce site to give \</span></span><br><span class="line"><span class="string">feedback to the Shipping department. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">From the review below, delimited by single quote \</span></span><br><span class="line"><span class="string">extract the information relevant to shipping and \ </span></span><br><span class="line"><span class="string">delivery. Limit to 30 words. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Review: `<span class="subst">&#123;prod_review&#125;</span>`</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>To summarize multiple payloads:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># reviews contains multiple texts</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(reviews)):</span><br><span class="line">    prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">    Your task is to generate a short summary of a product \ </span></span><br><span class="line"><span class="string">    review from an ecommerce site. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Summarize the review below, delimited by triple \</span></span><br><span class="line"><span class="string">    quotes in at most 20 words. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Review: '''<span class="subst">&#123;reviews[i]&#125;</span>'''</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    response = perform_task(prompt)</span><br><span class="line">    print(i, response, <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Inferring">Inferring</h2>
+<p>For example, extract sentiment(positive or negative), LLMs are pretty good at
+extracting these.</p>
+<p>For example giving the customer review:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lamp_review = <span class="string">"""</span></span><br><span class="line"><span class="string">Needed a nice lamp for my bedroom, and this one had \</span></span><br><span class="line"><span class="string">additional storage and not too high of a price point. \</span></span><br><span class="line"><span class="string">Got it fast.  The string to our lamp broke during the \</span></span><br><span class="line"><span class="string">transit and the company happily sent over a new one. \</span></span><br><span class="line"><span class="string">Came within a few days as well. It was easy to put \</span></span><br><span class="line"><span class="string">together.  I had a missing part, so I contacted their \</span></span><br><span class="line"><span class="string">support and they very quickly got me the missing piece! \</span></span><br><span class="line"><span class="string">Lumina seems to me to be a great company that cares \</span></span><br><span class="line"><span class="string">about their customers and products!!</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>You can do multiple tasks at once:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Identify the following items from the review text: </span></span><br><span class="line"><span class="string">- Sentiment (positive or negative)</span></span><br><span class="line"><span class="string">- Is the reviewer expressing anger? (true or false)</span></span><br><span class="line"><span class="string">- Item purchased by reviewer</span></span><br><span class="line"><span class="string">- Company that made the item</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The review is delimited with triple backticks. \</span></span><br><span class="line"><span class="string">Format your response as a JSON object with \</span></span><br><span class="line"><span class="string">"Sentiment", "Anger", "Item" and "Brand" as the keys.</span></span><br><span class="line"><span class="string">If the information isn't present, use "unknown" \</span></span><br><span class="line"><span class="string">as the value.</span></span><br><span class="line"><span class="string">Make your response as short as possible.</span></span><br><span class="line"><span class="string">Format the Anger value as a boolean.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Review text: '''<span class="subst">&#123;lamp_review&#125;</span>'''</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>You can also infer topics:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Determine five topics that are being discussed in the \</span></span><br><span class="line"><span class="string">following text, which is delimited by triple backticks.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Make each item one or two words long. </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Format your response as a list of items separated by commas.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Text sample: '''<span class="subst">&#123;story&#125;</span>'''</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>And you can have a list of keywords and check if the text to be verified is in
+one of them:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># topic_list contains a list of key words to be identified.</span></span><br><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Determine whether each item in the following list of \</span></span><br><span class="line"><span class="string">topics is a topic in the text below, which</span></span><br><span class="line"><span class="string">is delimited with triple backticks.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Give your answer as list with 0 or 1 for each topic.\</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">List of topics: <span class="subst">&#123;<span class="string">", "</span>.join(topic_list)&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Text sample: '''<span class="subst">&#123;story&#125;</span>'''</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>You can output as JSON format to further process.</p>
+<h2 id="Transforming">Transforming</h2>
+<p>Such as language translation, spelling and grammar checking, tone adjustment,
+and format conversion.</p>
+<p>For example, a universal translator:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">user_messages = [</span><br><span class="line">  <span class="comment"># System performance is slower than normal</span></span><br><span class="line">  <span class="string">"La performance du système est plus lente que d'habitude."</span>,</span><br><span class="line">  <span class="comment"># My monitor has pixels that are not lighting</span></span><br><span class="line">  <span class="string">"Mi monitor tiene píxeles que no se iluminan."</span>,</span><br><span class="line">  <span class="comment"># My mouse is not working</span></span><br><span class="line">  <span class="string">"Il mio mouse non funziona"</span>,</span><br><span class="line">  <span class="comment"># My keyboard has a broken control key</span></span><br><span class="line">  <span class="string">"Mój klawisz Ctrl jest zepsuty"</span>,</span><br><span class="line">  <span class="comment"># My screen is flashing</span></span><br><span class="line">  <span class="string">"我的屏幕在闪烁"</span></span><br><span class="line">] </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> issue <span class="keyword">in</span> user_messages:</span><br><span class="line">    prompt = <span class="string">f"Tell me what language this is: ```<span class="subst">&#123;issue&#125;</span>```"</span></span><br><span class="line">    lang = perform_task(prompt)</span><br><span class="line">    print(<span class="string">f"Original message (<span class="subst">&#123;lang&#125;</span>): <span class="subst">&#123;issue&#125;</span>"</span>)</span><br><span class="line"></span><br><span class="line">    prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">    Translate the following  text to English \</span></span><br><span class="line"><span class="string">    and Korean: '''<span class="subst">&#123;issue&#125;</span>'''</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    response = perform_task(prompt)</span><br><span class="line">    print(response, <span class="string">"\n"</span>)</span><br></pre></td></tr></table></figure>
+<p>Tone transformation, for informal to formal:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">Translate the following from slang to a business letter: </span></span><br><span class="line"><span class="string">'Dude, This is Joe, check out this spec on this standing lamp.'</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Spelling and grammar check, to signal to the LLM that you want it to proofread
+your text, you instruct the model to ‘proofread’ or ‘proofread and correct’.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">text = [ </span><br><span class="line">  <span class="string">"The girl with the black and white puppies have a ball."</span>,  <span class="comment"># The girl has a ball.</span></span><br><span class="line">  <span class="string">"Yolanda has her notebook."</span>, <span class="comment"># ok</span></span><br><span class="line">  <span class="string">"Its going to be a long day. Does the car need it’s oil changed?"</span>,  <span class="comment"># Homonyms</span></span><br><span class="line">  <span class="string">"Their goes my freedom. There going to bring they’re suitcases."</span>,  <span class="comment"># Homonyms</span></span><br><span class="line">  <span class="string">"Your going to need you’re notebook."</span>,  <span class="comment"># Homonyms</span></span><br><span class="line">  <span class="string">"That medicine effects my ability to sleep. Have you heard of the butterfly affect?"</span>, <span class="comment"># Homonyms</span></span><br><span class="line">  <span class="string">"This phrase is to cherck chatGPT for speling abilitty"</span>  <span class="comment"># spelling</span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> text:</span><br><span class="line">    prompt = <span class="string">f"""Proofread and correct the following text</span></span><br><span class="line"><span class="string">    and rewrite the corrected version. If you don't find</span></span><br><span class="line"><span class="string">    and errors, just say "No errors found". Don't use </span></span><br><span class="line"><span class="string">    any punctuation around the text:</span></span><br><span class="line"><span class="string">    ```<span class="subst">&#123;t&#125;</span>```"""</span></span><br><span class="line">    response = perform_task(prompt)</span><br><span class="line">    print(response)</span><br></pre></td></tr></table></figure>
+<p>Another example, proofread and correct long text:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">f"""</span></span><br><span class="line"><span class="string">Got this for my daughter for her birthday cuz she keeps taking \</span></span><br><span class="line"><span class="string">mine from my room.  Yes, adults also like pandas too.  She takes \</span></span><br><span class="line"><span class="string">it everywhere with her, and it's super soft and cute.  One of the \</span></span><br><span class="line"><span class="string">ears is a bit lower than the other, and I don't think that was \</span></span><br><span class="line"><span class="string">designed to be asymmetrical. It's a bit small for what I paid for it \</span></span><br><span class="line"><span class="string">though. I think there might be other options that are bigger for \</span></span><br><span class="line"><span class="string">the same price.  It arrived a day earlier than expected, so I got \</span></span><br><span class="line"><span class="string">to play with it myself before I gave it to my daughter.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">prompt = <span class="string">f"proofread and correct this review: ```<span class="subst">&#123;text&#125;</span>```"</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">print(response)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> redlines <span class="keyword">import</span> Redlines</span><br><span class="line"></span><br><span class="line">diff = Redlines(text,response)</span><br><span class="line"><span class="comment"># This helps highlights the differences</span></span><br><span class="line">display(Markdown(diff.output_markdown))</span><br><span class="line"></span><br><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">proofread and correct this review. Make it more compelling. </span></span><br><span class="line"><span class="string">Ensure it follows APA style guide and targets an advanced reader. </span></span><br><span class="line"><span class="string">Output in markdown format.</span></span><br><span class="line"><span class="string">Text: '''<span class="subst">&#123;text&#125;</span>'''</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt)</span><br><span class="line">display(Markdown(response))</span><br></pre></td></tr></table></figure>
+<h2 id="Expanding">Expanding</h2>
+<p>Expand short text to long, for example, generate customer service emails that
+are tailored to each customer’s review.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assume the 'review' and 'sentiment' are ready to use.</span></span><br><span class="line">prompt = <span class="string">f"""</span></span><br><span class="line"><span class="string">You are a customer service AI assistant.</span></span><br><span class="line"><span class="string">Your task is to send an email reply to a valued customer.</span></span><br><span class="line"><span class="string">Given the customer email delimited by ```, \</span></span><br><span class="line"><span class="string">Generate a reply to thank the customer for their review.</span></span><br><span class="line"><span class="string">If the sentiment is positive or neutral, thank them for \</span></span><br><span class="line"><span class="string">their review.</span></span><br><span class="line"><span class="string">If the sentiment is negative, apologize and suggest that \</span></span><br><span class="line"><span class="string">they can reach out to customer service. </span></span><br><span class="line"><span class="string">Make sure to use specific details from the review.</span></span><br><span class="line"><span class="string">Write in a concise and professional tone.</span></span><br><span class="line"><span class="string">Sign the email as `AI customer agent`.</span></span><br><span class="line"><span class="string">Customer review: '''<span class="subst">&#123;review&#125;</span>'''</span></span><br><span class="line"><span class="string">Review sentiment: <span class="subst">&#123;sentiment&#125;</span></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">response = perform_task(prompt, temperature=<span class="number">0.7</span>)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>About the temperature parameter, uses <code>0</code> if you require reliability and
+predictability, use high value if requires variety.</p>
+<h2 id="Charbot">Charbot</h2>
+<p>Utilizing the chat format to have extended conversations with chatbots
+personalized or specialized for specific tasks or behaviors.</p>
+<p>Basically, you need to provide the <code>complete</code> context for each conversation, for
+example, by appending the messages(from user and assistant) to a list, and
+dumping the list to LLM for response.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The 'system' role is used to provide overall context and details.</span></span><br><span class="line"><span class="comment"># The 'user' role is used to carry user input.</span></span><br><span class="line"><span class="comment"># The 'assistant' role is to specify/record LLM response.</span></span><br><span class="line">messages =  [  </span><br><span class="line">&#123;<span class="string">'role'</span>:<span class="string">'system'</span>, <span class="string">'content'</span>:<span class="string">'You are an assistant that speaks like Shakespeare.'</span>&#125;,    </span><br><span class="line">&#123;<span class="string">'role'</span>:<span class="string">'user'</span>, <span class="string">'content'</span>:<span class="string">'tell me a joke'</span>&#125;,   </span><br><span class="line">&#123;<span class="string">'role'</span>:<span class="string">'assistant'</span>, <span class="string">'content'</span>:<span class="string">'Why did the chicken cross the road'</span>&#125;,   </span><br><span class="line">&#123;<span class="string">'role'</span>:<span class="string">'user'</span>, <span class="string">'content'</span>:<span class="string">'I don\'t know'</span>&#125;  ]</span><br><span class="line"></span><br><span class="line">response = perform_chatbot_task(messages, temperature=<span class="number">0</span>)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>And you can summarize the chat session, for example:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">messages =  context.copy()</span><br><span class="line">messages.append(</span><br><span class="line">&#123;<span class="string">'role'</span>:<span class="string">'system'</span>, <span class="string">'content'</span>:<span class="string">'create a json summary of the previous food order.\</span></span><br><span class="line"><span class="string">Itemize the price for each item the fields should be 1) pizza, include size 2) \</span></span><br><span class="line"><span class="string">list of toppings 3) list of drinks, include size   4) list of sides include \</span></span><br><span class="line"><span class="string">size  5)total price '</span>&#125;,    </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">response = get_completion_from_messages(messages, temperature=<span class="number">0</span>)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ai/" rel="tag"># ai</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/04/08/golang-json-unmarshal/" rel="next" title="Golang JSON Marshal and Unmarshal">
+                <i class="fa fa-chevron-left"></i> Golang JSON Marshal and Unmarshal
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/05/29/review-list/" rel="prev" title="Blog Review List">
+                Blog Review List <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cuishao.png" alt="海胆阶段">
+            
+              <p class="site-author-name" itemprop="name">海胆阶段</p>
+              <p class="site-description motion-element" itemprop="description">骐骥一跃，不能十步；驽马十驾，功在不舍</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">279</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">155</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Guidelines"><span class="nav-number">2.</span> <span class="nav-text">Guidelines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterative"><span class="nav-number">3.</span> <span class="nav-text">Iterative</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summarizing"><span class="nav-number">4.</span> <span class="nav-text">Summarizing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inferring"><span class="nav-number">5.</span> <span class="nav-text">Inferring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transforming"><span class="nav-number">6.</span> <span class="nav-text">Transforming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Expanding"><span class="nav-number">7.</span> <span class="nav-text">Expanding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Charbot"><span class="nav-number">8.</span> <span class="nav-text">Charbot</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengdong Liao</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize("");
+    }
+  </script>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
