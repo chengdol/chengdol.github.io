@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="In Golang, we usually define struct with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page&quot;`	UserInfo userInfo `json:&quot;user_info&quot;">
+  <meta name="description" content="In Golang, we usually define struct(you can use map[string]&amp;lt;T&amp;gt; too) with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page">
 <meta name="keywords" content="go">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang JSON Marshal and Unmarshal">
 <meta property="og:url" content="http://yoursite.com/2023/04/08/golang-json-unmarshal/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="In Golang, we usually define struct with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page&quot;`	UserInfo userInfo `json:&quot;user_info&quot;">
+<meta property="og:description" content="In Golang, we usually define struct(you can use map[string]&amp;lt;T&amp;gt; too) with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-05-06T23:26:29.448Z">
+<meta property="og:updated_time" content="2023-07-09T23:23:59.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang JSON Marshal and Unmarshal">
-<meta name="twitter:description" content="In Golang, we usually define struct with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page&quot;`	UserInfo userInfo `json:&quot;user_info&quot;">
+<meta name="twitter:description" content="In Golang, we usually define struct(you can use map[string]&amp;lt;T&amp;gt; too) with struct tag to unmarshl/marshal JSON data, for example: 123456789type Response struct &amp;#123;	Page     int      `json:&quot;page">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">155</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">156</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">279</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">285</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-05-06 16:26:29" itemprop="dateModified" datetime="2023-05-06T16:26:29-07:00">2023-05-06</time>
+                <time title="Modified: 2023-07-09 16:23:59" itemprop="dateModified" datetime="2023-07-09T16:23:59-07:00">2023-07-09</time>
               
             
           </span>
@@ -490,9 +490,9 @@
       
 
       
-        <p>In Golang, we usually define struct with struct tag to unmarshl/marshal JSON
-data, for example:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Response <span class="keyword">struct</span> &#123;</span><br><span class="line">	Page     <span class="keyword">int</span>      <span class="string">`json:"page"`</span></span><br><span class="line">	UserInfo userInfo <span class="string">`json:"user_info"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> userInfo <span class="keyword">struct</span> &#123;</span><br><span class="line">	Age    <span class="keyword">uint32</span>  <span class="string">`json:"age"`</span></span><br><span class="line">	Height <span class="keyword">float32</span> <span class="string">`json:"height"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>In Golang, we usually define struct(you can use <code>map[string]&lt;T&gt;</code> too) with
+struct tag to unmarshl/marshal JSON data, for example:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Response <span class="keyword">struct</span> &#123;</span><br><span class="line">	Page     <span class="keyword">int</span>      <span class="string">`json:"page" xml:"PAGE"`</span></span><br><span class="line">	UserInfo userInfo <span class="string">`json:"user_info" xml:"USER_INFO"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> userInfo <span class="keyword">struct</span> &#123;</span><br><span class="line">	Age    <span class="keyword">uint32</span>  <span class="string">`json:"age" xml:"AGE"`</span></span><br><span class="line">	Height <span class="keyword">float32</span> <span class="string">`json:"height" xml:"HEIGHT"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><a href="https://stackoverflow.com/questions/10858787/what-are-the-uses-for-struct-tags-in-go" target="_blank" rel="noopener">The use of tag in golang struct</a>.</p>
 </blockquote>
@@ -501,7 +501,7 @@ help map the JSON key name, if there is no struct tag, the exact struct field
 name will be used as JSON key name in marshalling.</p>
 <p>For unmarshal if there is no corresponding JSON field, the struct field will be
 assigned the default <code>zero</code> value of that type, for example:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">d := []<span class="keyword">byte</span>(<span class="string">`&#123;"page": 1&#125;`</span>)</span><br><span class="line"></span><br><span class="line">resp := Response&#123;&#125;</span><br><span class="line">err := json.Unmarshal(d, &amp;resp)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"%w"</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">"%+v\n"</span>, resp)</span><br><span class="line"></span><br><span class="line"><span class="comment">// output</span></span><br><span class="line">&#123;Page:<span class="number">1</span> UserInfo:&#123;Age:<span class="number">0</span> Height:<span class="number">0</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// backquote `` to avoid any escape chars</span></span><br><span class="line">d := []<span class="keyword">byte</span>(<span class="string">`</span></span><br><span class="line"><span class="string">		&#123;"page": 1&#125;</span></span><br><span class="line"><span class="string">	`</span>)</span><br><span class="line"></span><br><span class="line">resp := Response&#123;&#125;</span><br><span class="line">err := json.Unmarshal(d, &amp;resp)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"%w"</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">"%+v\n"</span>, resp)</span><br><span class="line"></span><br><span class="line"><span class="comment">// output</span></span><br><span class="line">&#123;Page:<span class="number">1</span> UserInfo:&#123;Age:<span class="number">0</span> Height:<span class="number">0</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>Because the <code>user_info</code> JSON data is missing, so <code>UserInfo</code> gets a struct value
 with default value on all fields <code>UserInfo:{Age:0 Height:0}</code>, but this cannot
 tell if the <code>user_info</code> is really missing or it indeed has value but all 0.
@@ -511,17 +511,40 @@ To solve this, we can use pointer on struct field:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Page:<span class="number">1</span> UserInfo:&lt;<span class="literal">nil</span>&gt;&#125;</span><br></pre></td></tr></table></figure>
 <p>By checking the <code>nil</code> default value of the field, we know the JSON part is
 actually missing.</p>
-<h1>Unmarshal Unknown fields</h1>
+<h1>For Unknown Field</h1>
 <p>If there are unknown fields in JSON data, we can use interface and type
 assertion to help decode the JSON data, for example:</p>
 <p>From blog <a href="https://go.dev/blog/json" target="_blank" rel="noopener">JSON and Go</a>, the json package uses
 <code>map[string]interface{}</code> and <code>[]interface{}</code> values to store arbitrary JSON
 objects and arrays.</p>
-<h1>Marshal with Omit</h1>
-<p>For JSON marshal example, please see
-<a href="https://gobyexample.com/json" target="_blank" rel="noopener">Go by Example: JSON</a>, if you want to omit the
-JSON field when no corresponding fill data, use <code>omitempty</code> tag, for example:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Example <span class="keyword">struct</span> &#123;</span><br><span class="line">	Count     <span class="keyword">int</span>      <span class="string">`json:",omitempty"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>I have encountered the case that a struct field the marshal and unmarshal have
+to use different type due to some reasons, so I have to use <code>interface{}</code> for
+that struct field and use assertion to access it.</p>
+<h1>Omit The Field If Not Exist</h1>
+<p>The “omitempty” option specifies that the field should be omitted from the
+marshal(encoding) if the field has an empty value, defined as false, 0, a nil
+pointer, a nil interface value, and any empty array, slice, map, or string.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Example <span class="keyword">struct</span> &#123;</span><br><span class="line">	Count     <span class="keyword">int</span>      <span class="string">`json:"count,omitempty"`</span> <span class="comment">// will not appear in JSON if empty value</span></span><br><span class="line">	Name      <span class="keyword">string</span>   <span class="string">`json:"name"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>Exclude The Field</h1>
+<p>This field will be skipped in either Marshal or Unmarshal.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Example <span class="keyword">struct</span> &#123;</span><br><span class="line">	Count     <span class="keyword">int</span>      <span class="string">`json:"-"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>JSON Encoder/Decoder</h1>
+<p>When to use marshal/unmarshal and encoder/decoder, reference <a href="https://stackoverflow.com/questions/21197239/decoding-json-using-json-unmarshal-vs-json-newdecoder-decode" target="_blank" rel="noopener">question</a>:</p>
+<ul>
+<li>
+<p>Use <code>json.Decoder</code> if your data is coming from an io.Reader stream, or you need
+to decode multiple values from a stream of data, for example the HTTP response,
+this can be memory efficiency because it does not load all data into memory.</p>
+</li>
+<li>
+<p>Use <code>json.Unmarshal</code> if you already have the JSON data in memory.</p>
+</li>
+</ul>
+<p>Also from <a href="https://go.dev/blog/json" target="_blank" rel="noopener">JSON and Go</a>:
+Due to the ubiquity of Readers and Writers, these Encoder and Decoder types can
+be used in a broad range of scenarios, such as reading and writing to HTTP
+connections, WebSockets, or files.</p>
+
       
     </div>
 
@@ -641,7 +664,7 @@ JSON field when no corresponding fill data, use <code>omitempty</code> tag, for 
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">279</span>
+                    <span class="site-state-item-count">285</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1067,7 +1090,9 @@ JSON field when no corresponding fill data, use <code>omitempty</code> tag, for 
                     
                       
                     
-                    <span class="site-state-item-count">155</span>
+                      
+                    
+                    <span class="site-state-item-count">156</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1103,7 +1128,7 @@ JSON field when no corresponding fill data, use <code>omitempty</code> tag, for 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Unmarshal Unknown fields</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Marshal with Omit</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">For Unknown Field</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Omit The Field If Not Exist</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Exclude The Field</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">JSON Encoder/Decoder</span></a></li></ol></div>
             
 
           </div>

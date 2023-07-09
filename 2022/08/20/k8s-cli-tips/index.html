@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips  Explain resources with specific fields. 123k explain epk explain pod.speck explain deploy.me">
+  <meta name="description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips  Explain resources with specific fields. This can help you explore the complete resource defi">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes CLI Tips">
 <meta property="og:url" content="http://yoursite.com/2022/08/20/k8s-cli-tips/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips  Explain resources with specific fields. 123k explain epk explain pod.speck explain deploy.me">
+<meta property="og:description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips  Explain resources with specific fields. This can help you explore the complete resource defi">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-05-29T17:37:35.942Z">
+<meta property="og:updated_time" content="2023-07-09T23:23:59.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes CLI Tips">
-<meta name="twitter:description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips  Explain resources with specific fields. 123k explain epk explain pod.speck explain deploy.me">
+<meta name="twitter:description" content="Some useful CLI tips in daily uses, references:  https://learncloudnative.com/blog/2022-05-10-kubectl-tips  Explain resources with specific fields. This can help you explore the complete resource defi">
 
 
 
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">155</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">156</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">279</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">285</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-05-29 10:37:35" itemprop="dateModified" datetime="2023-05-29T10:37:35-07:00">2023-05-29</time>
+                <time title="Modified: 2023-07-09 16:23:59" itemprop="dateModified" datetime="2023-07-09T16:23:59-07:00">2023-07-09</time>
               
             
           </span>
@@ -495,7 +495,9 @@
 <li><a href="https://learncloudnative.com/blog/2022-05-10-kubectl-tips" target="_blank" rel="noopener">https://learncloudnative.com/blog/2022-05-10-kubectl-tips</a></li>
 </ul>
 <h3 id="Explain-resources-with-specific-fields">Explain resources with specific fields.</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">k explain ep</span><br><span class="line">k explain pod.spec</span><br><span class="line">k explain deploy.metadata.labels</span><br></pre></td></tr></table></figure>
+<p>This can help you explore the complete resource definition to find all available
+fields.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">k explain ep</span><br><span class="line">k explain pod.spec</span><br><span class="line">k explain deploy.metadata.labels</span><br><span class="line">k explain BackendConfig.spec <span class="comment"># For GKE ingress</span></span><br></pre></td></tr></table></figure>
 <h3 id="Create-manual-job-from-cronjob-you-can-also-output-as-json-template-edit">Create manual job from cronjob, you can also output as json template, edit</h3>
 <p>and use it.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">k create job --from=cronjob/&lt;name of cronjob&gt; &lt;manual job name&gt;</span><br></pre></td></tr></table></figure>
@@ -531,10 +533,12 @@
 used without installing other dependencies, git clone and put the executable to
 <code>$PATH</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tail all pods from a deployment/sts.</span></span><br><span class="line">kubetail &lt;deployment name&gt;</span><br><span class="line"><span class="comment"># Tail specific container from deploy/sts.</span></span><br><span class="line">kubetail &lt;deploy name&gt; -c container1 -c container2</span><br><span class="line"><span class="comment"># Tail with regex matching.</span></span><br><span class="line">kubetail <span class="string">"^app1|.*my-demo.*"</span> --regex</span><br></pre></td></tr></table></figure>
-<h3 id="Rolling-out-back-resources-see">Rolling out/back resources, see</h3>
-<p>No longer needs to kubectl edit resource manually.
-<a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#updating-resources" target="_blank" rel="noopener">cheat sheet</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rolling update with new image</span></span><br><span class="line"><span class="comment"># foo1 is the container name</span></span><br><span class="line">k <span class="built_in">set</span> image deploy/foo foo1=image:v2  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Check the history of deployments including the revision</span></span><br><span class="line">k rollout <span class="built_in">history</span> deploy/foo</span><br><span class="line"><span class="comment"># Rollback to the previous deployment</span></span><br><span class="line">k rollout undo deploy/foo [--to-revision=3]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Watch rolling update status until completion</span></span><br><span class="line">k rollout status -w deploy/foo</span><br><span class="line"><span class="comment"># Rolling restart of the "foo" deployment</span></span><br><span class="line">k rollout restart deploy/foo</span><br></pre></td></tr></table></figure>
+<h3 id="Rolling-out-back-resources">Rolling out/back resources</h3>
+<p>Better than editing resource manually with <code>kubectl edit</code> cmd.
+The <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#updating-resources" target="_blank" rel="noopener">cheat sheet</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rolling update with new image</span></span><br><span class="line"><span class="comment"># foo1 is the container name</span></span><br><span class="line">k <span class="built_in">set</span> image deploy/foo foo1=image:v2  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Check the history of deployments including the revision</span></span><br><span class="line">k rollout <span class="built_in">history</span> deploy/foo</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rollback to the previous deployment or specific version</span></span><br><span class="line"><span class="comment"># Undo twice turns it back to the original: 1-&gt;2-&gt;1 </span></span><br><span class="line">k rollout undo deploy/foo</span><br><span class="line"></span><br><span class="line"><span class="comment"># Watch rolling update status until completion</span></span><br><span class="line">k rollout status -w deploy/foo</span><br><span class="line"><span class="comment"># Rolling restart of the "foo" deployment</span></span><br><span class="line">k rollout restart deploy/foo</span><br></pre></td></tr></table></figure>
+<p>How to roll out back to a specific version:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># first check current version number</span></span><br><span class="line">k get deploy/foo -o yaml | grep revision</span><br><span class="line"></span><br><span class="line"><span class="comment"># check rollout history and the revision detail</span></span><br><span class="line">k rollout <span class="built_in">history</span> deploy/foo</span><br><span class="line">k rollout <span class="built_in">history</span> deploy/foo --revision=13</span><br><span class="line"></span><br><span class="line"><span class="comment"># rollout to the target version</span></span><br><span class="line">k rollout undo deploy/foo --to-revision=13</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -654,7 +658,7 @@ used without installing other dependencies, git clone and put the executable to
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">279</span>
+                    <span class="site-state-item-count">285</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1080,7 +1084,9 @@ used without installing other dependencies, git clone and put the executable to
                     
                       
                     
-                    <span class="site-state-item-count">155</span>
+                      
+                    
+                    <span class="site-state-item-count">156</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1116,7 +1122,7 @@ used without installing other dependencies, git clone and put the executable to
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Explain-resources-with-specific-fields"><span class="nav-number">1.</span> <span class="nav-text">Explain resources with specific fields.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-manual-job-from-cronjob-you-can-also-output-as-json-template-edit"><span class="nav-number">2.</span> <span class="nav-text">Create manual job from cronjob, you can also output as json template, edit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-service-account-regular-user-permission"><span class="nav-number">3.</span> <span class="nav-text">Check service account/regular user permission.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Force-delete-pods-with-no-grace-period"><span class="nav-number">4.</span> <span class="nav-text">Force delete pods with no grace period</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-endpoints-pod-IP-port"><span class="nav-number">5.</span> <span class="nav-text">List endpoints(pod IP:port).</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-events-sorted-by-lastTimestamp"><span class="nav-number">6.</span> <span class="nav-text">List events sorted by lastTimestamp.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Watching-from-events"><span class="nav-number">7.</span> <span class="nav-text">Watching from events.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-raw-json-for-APIs"><span class="nav-number">8.</span> <span class="nav-text">Get raw json for APIs.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wait-for-pods-to-be-ready"><span class="nav-number">9.</span> <span class="nav-text">Wait for pods to be ready.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-customer-env-vars-from-a-resource"><span class="nav-number">10.</span> <span class="nav-text">List customer env vars from a resource.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-node-and-its-pods-mapping"><span class="nav-number">11.</span> <span class="nav-text">List node and its pods mapping.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-starter-YAML-for-resources"><span class="nav-number">12.</span> <span class="nav-text">Create starter YAML for resources.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pods-sorted-by-memory-usage"><span class="nav-number">13.</span> <span class="nav-text">Pods sorted by memory usage.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#To-examine-logs-of-previous-restarted-pod-container"><span class="nav-number">14.</span> <span class="nav-text">To examine logs of previous restarted pod/container:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aggregate-tail-follow-logs-from-multiple-pods-into-one-stream"><span class="nav-number">15.</span> <span class="nav-text">Aggregate(tail/follow) logs from multiple pods into one stream.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rolling-out-back-resources-see"><span class="nav-number">16.</span> <span class="nav-text">Rolling out/back resources, see</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Explain-resources-with-specific-fields"><span class="nav-number">1.</span> <span class="nav-text">Explain resources with specific fields.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-manual-job-from-cronjob-you-can-also-output-as-json-template-edit"><span class="nav-number">2.</span> <span class="nav-text">Create manual job from cronjob, you can also output as json template, edit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-service-account-regular-user-permission"><span class="nav-number">3.</span> <span class="nav-text">Check service account/regular user permission.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Force-delete-pods-with-no-grace-period"><span class="nav-number">4.</span> <span class="nav-text">Force delete pods with no grace period</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-endpoints-pod-IP-port"><span class="nav-number">5.</span> <span class="nav-text">List endpoints(pod IP:port).</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-events-sorted-by-lastTimestamp"><span class="nav-number">6.</span> <span class="nav-text">List events sorted by lastTimestamp.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Watching-from-events"><span class="nav-number">7.</span> <span class="nav-text">Watching from events.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-raw-json-for-APIs"><span class="nav-number">8.</span> <span class="nav-text">Get raw json for APIs.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wait-for-pods-to-be-ready"><span class="nav-number">9.</span> <span class="nav-text">Wait for pods to be ready.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-customer-env-vars-from-a-resource"><span class="nav-number">10.</span> <span class="nav-text">List customer env vars from a resource.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-node-and-its-pods-mapping"><span class="nav-number">11.</span> <span class="nav-text">List node and its pods mapping.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-starter-YAML-for-resources"><span class="nav-number">12.</span> <span class="nav-text">Create starter YAML for resources.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pods-sorted-by-memory-usage"><span class="nav-number">13.</span> <span class="nav-text">Pods sorted by memory usage.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#To-examine-logs-of-previous-restarted-pod-container"><span class="nav-number">14.</span> <span class="nav-text">To examine logs of previous restarted pod/container:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aggregate-tail-follow-logs-from-multiple-pods-into-one-stream"><span class="nav-number">15.</span> <span class="nav-text">Aggregate(tail/follow) logs from multiple pods into one stream.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rolling-out-back-resources"><span class="nav-number">16.</span> <span class="nav-text">Rolling out/back resources</span></a></li></ol></div>
             
 
           </div>

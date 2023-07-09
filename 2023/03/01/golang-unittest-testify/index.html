@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="For complex testing, the testify module is a big life saver, it has 4 main packages: assert, require, mock and suite. Their usages are quite straightforward from the testify README file. There is a se">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-05-06T23:26:29.449Z">
+<meta property="og:updated_time" content="2023-07-09T23:23:59.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go Unittest by testify">
 <meta name="twitter:description" content="For complex testing, the testify module is a big life saver, it has 4 main packages: assert, require, mock and suite. Their usages are quite straightforward from the testify README file. There is a se">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">155</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">156</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">279</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">285</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-05-06 16:26:29" itemprop="dateModified" datetime="2023-05-06T16:26:29-07:00">2023-05-06</time>
+                <time title="Modified: 2023-07-09 16:23:59" itemprop="dateModified" datetime="2023-07-09T16:23:59-07:00">2023-07-09</time>
               
             
           </span>
@@ -509,7 +509,7 @@ properly.</p>
 mockery binary:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Check current release tag and use it</span></span><br><span class="line"><span class="comment"># The mockery binary will be downloaded to $(go env GOPATH)/bin</span></span><br><span class="line">go install github.com/vektra/mockery/v2@v2.20.0</span><br></pre></td></tr></table></figure>
 <p>Mock objects generation command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This will create mocks package in current directory and generate HelloWorld.go</span></span><br><span class="line"><span class="comment"># file from student folder HelloWorld interface.</span></span><br><span class="line">mockery --dir student --name HelloWorld</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If you are using mockery binary downloaded, run it from the repo with absolute</span></span><br><span class="line"><span class="comment"># path.</span></span><br><span class="line"><span class="comment"># This will create a "mocks" folder in current directory and generate a mock</span></span><br><span class="line"><span class="comment"># file named as HelloWorld.go.</span></span><br><span class="line">/&lt;path to mockery parent folder&gt;/mockery --dir student --name HelloWorld</span><br></pre></td></tr></table></figure>
 <p>Other flags please see <code>mockery --help</code>.</p>
 <p>Then in your test go file, import the <code>mocks</code> package and use it.</p>
 <h1>Suite</h1>
@@ -641,7 +641,7 @@ cases.</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">279</span>
+                    <span class="site-state-item-count">285</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1067,7 +1067,9 @@ cases.</p>
                     
                       
                     
-                    <span class="site-state-item-count">155</span>
+                      
+                    
+                    <span class="site-state-item-count">156</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
