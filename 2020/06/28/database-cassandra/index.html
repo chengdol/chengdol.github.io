@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Revisit on 2023 March because of SPLA.  Intro Cassandra quick started with single docker node. Cassandra basics to understand consepts such as ring(cassandra cluster), horizontal scaling, partitionin">
+  <meta name="description" content="Revisit on 2023 March because of SPLA.  Intro Cassandra quick started with single docker node. You can extend it to test any Cassandra client, for example gocql, build the app with golang image and b">
 <meta name="keywords" content="database,cassandra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Cassandra">
 <meta property="og:url" content="http://yoursite.com/2020/06/28/database-cassandra/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Revisit on 2023 March because of SPLA.  Intro Cassandra quick started with single docker node. Cassandra basics to understand consepts such as ring(cassandra cluster), horizontal scaling, partitionin">
+<meta property="og:description" content="Revisit on 2023 March because of SPLA.  Intro Cassandra quick started with single docker node. You can extend it to test any Cassandra client, for example gocql, build the app with golang image and b">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-07-09T23:23:59.255Z">
+<meta property="og:updated_time" content="2023-09-17T23:04:12.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Cassandra">
-<meta name="twitter:description" content="Revisit on 2023 March because of SPLA.  Intro Cassandra quick started with single docker node. Cassandra basics to understand consepts such as ring(cassandra cluster), horizontal scaling, partitionin">
+<meta name="twitter:description" content="Revisit on 2023 March because of SPLA.  Intro Cassandra quick started with single docker node. You can extend it to test any Cassandra client, for example gocql, build the app with golang image and b">
 
 
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-07-09 16:23:59" itemprop="dateModified" datetime="2023-07-09T16:23:59-07:00">2023-07-09</time>
+                <time title="Modified: 2023-09-17 16:04:12" itemprop="dateModified" datetime="2023-09-17T16:04:12-07:00">2023-09-17</time>
               
             
           </span>
@@ -495,10 +495,14 @@
 </blockquote>
 <h1>Intro</h1>
 <p>Cassandra <a href="https://cassandra.apache.org/_/quickstart.html" target="_blank" rel="noopener">quick started</a> with
-single docker node.</p>
+single docker node. You can extend it to test any Cassandra client, for example
+<code>gocql</code>, build the app with golang image and bring it up in the same docker
+network.</p>
 <p>Cassandra <a href="https://cassandra.apache.org/_/cassandra-basics.html" target="_blank" rel="noopener">basics</a> to
-understand consepts such as ring(cassandra cluster), horizontal scaling,
-partitioning, RF(replication factor), CL(consistency level), quorum(RF/2+1).</p>
+understand consepts such as ring(cassandra cluster, masterless), horizontal
+scaling(aka scale-out), partitioning, RF(replication factor), CL(consistency
+level), quorum(RF/2+1), CAP(cassandar by default AP).</p>
+<p>How the quorum is <a href="https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/dml/dmlConfigConsistency.html#HowQUORUMiscalculated" target="_blank" rel="noopener">calculated</a>.</p>
 <h2 id="Replication-Strategy">Replication Strategy</h2>
 <p><code>Keyspace</code>: a namespace that defines data replication on nodes, one keyspace may
 have mutliple related tables, the <code>Replicatin Strategy</code> is keyspace-wide:</p>
@@ -507,9 +511,15 @@ have mutliple related tables, the <code>Replicatin Strategy</code> is keyspace-w
 <li>network topology strategy for multiple data centers</li>
 </ul>
 <p>Data center can have multiple racks.</p>
-<p>For example, one data center has 2 racks, rack1 has 2 nodes, rack2 has one node, if the simply strategy is 1, then rack1 owns 50% data, each node in rack1 owns 25%, rack2 owns 50%, since rack2 only contains 1 node, so that node owns 50%.</p>
+<p>For example, one data center has 2 racks, rack1 has 2 nodes, rack2 has one node,
+if the simply strategy is 1, then rack1 owns 50% data, each node in rack1 owns
+25%, rack2 owns 50%, since rack2 only contains 1 node, so that node owns 50%.</p>
 <h2 id="Tunable-Consistency">Tunable Consistency</h2>
-<p><code>Coordinator Node</code>: client connect to perform actions. Each connection to Cassandra may have a different coordinator node.</p>
+<p><code>Coordinator Node</code>: client connect to perform actions. Each connection to
+Cassandra may have a different coordinator node, any node can be the coordinator.</p>
+<p>You can configure consistency on a cluster, datacenter, or per individual read
+or write operation. see this doc for
+<a href="https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/dml/dmlConfigConsistency.html" target="_blank" rel="noopener">details</a>.</p>
 <p>Consistency level for <strong>write</strong>:</p>
 <ul>
 <li><code>ONE</code>, <code>TWO</code>, <code>THREE</code></li>
@@ -517,14 +527,20 @@ have mutliple related tables, the <code>Replicatin Strategy</code> is keyspace-w
 <li><code>ALL</code>(must all good)</li>
 <li><code>ANY</code>(include coordinator itself).</li>
 </ul>
-<p><code>Hinted Handoff</code>: when one write node is unavaiable, the data is written to coordinator node, the coordinator node will try repeatedly write to the unavailable node until succeeded.</p>
-<p>Consistency level for <strong>read</strong>: how many nodes to consult to return the most current data to caller.</p>
+<p><code>Hinted Handoff</code>: when one write node is unavaiable, the data is written to
+coordinator node, the coordinator node will try repeatedly write to the
+unavailable node until succeeded.</p>
+<p>Consistency level for <strong>read</strong>: how many nodes to consult to return the most
+current data to caller.</p>
 <ul>
+<li><code>SERIAL</code>: see this <a href="https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/dml/dmlConfigConsistency.html" target="_blank" rel="noopener">doc</a></li>
 <li><code>ONE</code>, <code>TWO</code>, <code>THREE</code></li>
 <li><code>QUORUM</code>(majority of nodes succeeds)</li>
 <li><code>ALL</code> (must all good)</li>
 </ul>
-<p><code>Read Repair</code>: 当对一个node写失败了but back online later，在read时如果有多个replicas的数据可以参考，则对那个node可重新写入上次wirte失败的数据. Run <code>nodetool repair</code> periodically will resolve the inconsistencies in cluster.</p>
+<p><code>Read Repair</code>: 当对一个node写失败了but back online later，在read时如果有多个replicas
+的数据可以参考，则对那个node可重新写入上次wirte失败的数据. Run <code>nodetool repair</code>
+periodically will resolve the inconsistencies in cluster.</p>
 <p>Achieving strong consistency:</p>
 <ul>
 <li>write consistency + read consistency &gt; replication factor</li>
@@ -536,13 +552,13 @@ have mutliple related tables, the <code>Replicatin Strategy</code> is keyspace-w
 <li><code>LOCAL_ONE</code>: the same as <code>ONE</code></li>
 </ul>
 <h1>Partition, Composite and Clustering Key</h1>
-<p>To correctly run cql, especially for the order by and sort features, you need to
-understand how to define primary key and use partition, composite and clustering
+<p>To correctly run cql, especially the <code>order by</code>, you need to understand how to
+define primary key and use partition, composite and clustering
 keys efficiently:</p>
 <p><a href="https://www.baeldung.com/cassandra-keys" target="_blank" rel="noopener">https://www.baeldung.com/cassandra-keys</a></p>
 <h1>CQL</h1>
-<p>A single Vagrant Cassandra node is enough for CQL.
-Cassandra Query Language:</p>
+<p>A single Cassandra docker node is enough for CQL.</p>
+<p>Cassandra Query Language:</p>
 <ul>
 <li><a href="https://cassandra.apache.org/doc/latest/cql/index.html" target="_blank" rel="noopener">https://cassandra.apache.org/doc/latest/cql/index.html</a></li>
 <li>Keyspace, table and basic data type</li>
@@ -551,8 +567,7 @@ Cassandra Query Language:</p>
 <li>Aggregate functions</li>
 </ul>
 <p>With <code>cqlsh</code> script, you can specify remote Cassandra node with port to connect,
-by default it will connect to localhost 9042 port. (类似于consul, 连接本地服务即可作
-用于全局)</p>
+by default it will connect to localhost 9042 port.</p>
 <p>Keyspace -&gt; Tables -&gt; partitions -&gt; row.</p>
 <p>In brief, each table requires a unique <code>primary key</code>. The first field listed is
 the <code>partition key</code>, since its hashed value is used to determine the node to
@@ -561,7 +576,7 @@ key is composite. Otherwise the first field is the partition key. Any fields
 listed after the primary key are called <code>clustering columns</code>. These store data
 in ascending or descending order within the partition for the fast retrieval of
 similar values. All the fields together are the primary key.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## help</span></span><br><span class="line">cqlsh&gt; <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">Documented shell commands:</span><br><span class="line">===========================</span><br><span class="line">CAPTURE  CLS          COPY  DESCRIBE  EXPAND  LOGIN   SERIAL  SOURCE   UNICODE</span><br><span class="line">CLEAR    CONSISTENCY  DESC  EXIT      HELP    PAGING  SHOW    TRACING</span><br><span class="line"></span><br><span class="line">CQL <span class="built_in">help</span> topics:</span><br><span class="line">================</span><br><span class="line">AGGREGATES               CREATE_KEYSPACE           DROP_TRIGGER      TEXT     </span><br><span class="line">ALTER_KEYSPACE           CREATE_MATERIALIZED_VIEW  DROP_TYPE         TIME     </span><br><span class="line">ALTER_MATERIALIZED_VIEW  CREATE_ROLE               DROP_USER         TIMESTAMP</span><br><span class="line">ALTER_TABLE              CREATE_TABLE              FUNCTIONS         TRUNCATE </span><br><span class="line">ALTER_TYPE               CREATE_TRIGGER            GRANT             TYPES    </span><br><span class="line">ALTER_USER               CREATE_TYPE               INSERT            UPDATE   </span><br><span class="line">APPLY                    CREATE_USER               INSERT_JSON       USE      </span><br><span class="line">ASCII                    DATE                      INT               UUID     </span><br><span class="line">BATCH                    DELETE                    JSON            </span><br><span class="line">BEGIN                    DROP_AGGREGATE            KEYWORDS        </span><br><span class="line">BLOB                     DROP_COLUMNFAMILY         LIST_PERMISSIONS</span><br><span class="line">BOOLEAN                  DROP_FUNCTION             LIST_ROLES      </span><br><span class="line">COUNTER                  DROP_INDEX                LIST_USERS      </span><br><span class="line">CREATE_AGGREGATE         DROP_KEYSPACE             PERMISSIONS     </span><br><span class="line">CREATE_COLUMNFAMILY      DROP_MATERIALIZED_VIEW    REVOKE          </span><br><span class="line">CREATE_FUNCTION          DROP_ROLE                 SELECT          </span><br><span class="line">             DROP_TABLE                SELECT_JSON </span><br><span class="line"></span><br><span class="line"><span class="comment">## specified</span></span><br><span class="line">cqlsh&gt; <span class="built_in">help</span> consistency;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## help</span></span><br><span class="line">cqlsh&gt; <span class="built_in">help</span></span><br><span class="line"></span><br><span class="line">Documented shell commands:</span><br><span class="line">===========================</span><br><span class="line">CAPTURE  CLS          COPY  DESCRIBE  EXPAND  LOGIN   SERIAL  SOURCE   UNICODE</span><br><span class="line">CLEAR    CONSISTENCY  DESC  EXIT      HELP    PAGING  SHOW    TRACING</span><br><span class="line"></span><br><span class="line"><span class="comment">## specified</span></span><br><span class="line">cqlsh&gt; <span class="built_in">help</span> consistency;</span><br><span class="line"></span><br><span class="line">CQL <span class="built_in">help</span> topics:</span><br><span class="line">================</span><br><span class="line">AGGREGATES               CREATE_KEYSPACE           DROP_TRIGGER      TEXT     </span><br><span class="line">ALTER_KEYSPACE           CREATE_MATERIALIZED_VIEW  DROP_TYPE         TIME     </span><br><span class="line">ALTER_MATERIALIZED_VIEW  CREATE_ROLE               DROP_USER         TIMESTAMP</span><br><span class="line">ALTER_TABLE              CREATE_TABLE              FUNCTIONS         TRUNCATE </span><br><span class="line">ALTER_TYPE               CREATE_TRIGGER            GRANT             TYPES    </span><br><span class="line">ALTER_USER               CREATE_TYPE               INSERT            UPDATE   </span><br><span class="line">APPLY                    CREATE_USER               INSERT_JSON       USE      </span><br><span class="line">ASCII                    DATE                      INT               UUID     </span><br><span class="line">BATCH                    DELETE                    JSON            </span><br><span class="line">BEGIN                    DROP_AGGREGATE            KEYWORDS        </span><br><span class="line">BLOB                     DROP_COLUMNFAMILY         LIST_PERMISSIONS</span><br><span class="line">BOOLEAN                  DROP_FUNCTION             LIST_ROLES      </span><br><span class="line">COUNTER                  DROP_INDEX                LIST_USERS      </span><br><span class="line">CREATE_AGGREGATE         DROP_KEYSPACE             PERMISSIONS     </span><br><span class="line">CREATE_COLUMNFAMILY      DROP_MATERIALIZED_VIEW    REVOKE          </span><br><span class="line">CREATE_FUNCTION          DROP_ROLE                 SELECT          </span><br><span class="line">DROP_TABLE               SELECT_JSON</span><br></pre></td></tr></table></figure>
 <p>Create a keyspace with:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> keyspace pluralsight <span class="keyword">with</span> <span class="keyword">replication</span> = &#123;<span class="string">'class'</span>:<span class="string">'SimpleStrategy'</span>, <span class="string">'replication_factor'</span>:<span class="number">1</span>&#125;;</span><br></pre></td></tr></table></figure>
 <p>Create a table in this keyspace with:</p>

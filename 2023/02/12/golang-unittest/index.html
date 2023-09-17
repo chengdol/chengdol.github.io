@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="For how to use testify packages for complex testing, please see &amp;lt;&amp;lt;Go Unittest by testify&amp;gt;&amp;gt;.  Golang has provided built-in testing framework composed of go test command and testing package">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-03-05T08:08:38.770Z">
+<meta property="og:updated_time" content="2023-09-17T23:04:12.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go Unittest">
 <meta name="twitter:description" content="For how to use testify packages for complex testing, please see &amp;lt;&amp;lt;Go Unittest by testify&amp;gt;&amp;gt;.  Golang has provided built-in testing framework composed of go test command and testing package">
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-03-05 00:08:38" itemprop="dateModified" datetime="2023-03-05T00:08:38-08:00">2023-03-05</time>
+                <time title="Modified: 2023-09-17 16:04:12" itemprop="dateModified" datetime="2023-09-17T16:04:12-07:00">2023-09-17</time>
               
             
           </span>
@@ -505,14 +505,21 @@ outputs are listed in a struct and a loop to walk through them, for example:</p>
 <p>For large test data that needs to be read from outside, the go tool will ignore
 a directory named <code>testdata</code>, making it available to hold ancillary data needed
 by the tests.</p>
+<h1>TestMain</h1>
+<p>If the test code contains a function:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestMain</span><span class="params">(m *testing.M)</span></span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// call at end</span></span><br><span class="line">  m.Run()</span><br><span class="line">  <span class="comment">// previously requires the os.Exist</span></span><br><span class="line">  <span class="comment">// https://github.com/golang/go/issues/34129#issuecomment-537598931</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>that function will be called instead of running the tests directly, this may
+come in handy when you need to do some global set-up/tear-down for your tests,
+see this <a href="https://medium.com/goingogo/why-use-testmain-for-testing-in-go-dafb52b406bc" target="_blank" rel="noopener">example</a>.</p>
 <h1>Run Test</h1>
 <p>To run test for specific packge:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ./... means all packages in this directory (and subdirectories)</span></span><br><span class="line">go list ./...</span><br><span class="line"></span><br><span class="line"><span class="comment"># For example the output would be:</span></span><br><span class="line">example.com/fruit</span><br><span class="line">example.com/world</span><br><span class="line">example.com/zoo</span><br><span class="line"></span><br><span class="line"><span class="comment"># If you want to run specific tests, such as: "TestHelloWorld", "TestExitWorld"</span></span><br><span class="line"><span class="comment"># in example.com/world package:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -race: for multi-thread program testing, may not need it</span></span><br><span class="line">go <span class="built_in">test</span> -buildvcs=<span class="literal">false</span> \</span><br><span class="line">-mod=<span class="built_in">readonly</span> \</span><br><span class="line">-v  -race\</span><br><span class="line">-run <span class="string">"HelloWorld|ExitWorld"</span> \</span><br><span class="line">example.com/world</span><br><span class="line"></span><br><span class="line"><span class="comment"># To test all packages in the current or sub directories</span></span><br><span class="line">go <span class="built_in">test</span> -buildvcs=<span class="literal">false</span> \</span><br><span class="line">-mod=<span class="built_in">readonly</span> \</span><br><span class="line">-v -race \</span><br><span class="line">./...</span><br></pre></td></tr></table></figure>
-<p>If you have build <code>tags</code> such as “integration”, “mock” in your test files, for
-example:</p>
+<p>If you have build <code>tags</code> such as “integration”, “mock” in your test or dependency files for example:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// +build integration</span></span><br><span class="line"><span class="comment">// +build mock</span></span><br></pre></td></tr></table></figure>
 <p>To include these taged test files in testing:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">test</span> -buildvcs=<span class="literal">false</span> \</span><br><span class="line">-mod=<span class="built_in">readonly</span> \</span><br><span class="line">-v -race \</span><br><span class="line">-tags <span class="string">"integration mock"</span> \</span><br><span class="line">-run <span class="string">"HelloWorld|ExitWorld"</span> \</span><br><span class="line">example.com/world</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">test</span> -buildvcs=<span class="literal">false</span> \</span><br><span class="line">-mod=<span class="built_in">readonly</span> \</span><br><span class="line">-v -race \</span><br><span class="line">-tags <span class="string">"integration mock"</span> \  <span class="comment"># use space to separate tags</span></span><br><span class="line">-run <span class="string">"HelloWorld|ExitWorld"</span> \</span><br><span class="line">example.com/world</span><br></pre></td></tr></table></figure>
+<p>If you don’t specify the correct <code>-tags</code> then you will get error like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">imports example.com/common.git/cassandra/setup:</span><br><span class="line">build constraints exclude all Go files in</span><br><span class="line">/usr/local/xxx/example.com/gcloud/cs-common-gc.git/cassandra/setup</span><br></pre></td></tr></table></figure>
 <p>The <code>-buildvcs</code>, <code>-mod</code>, <code>-race</code>, <code>-tags</code> are build tags from <code>go help build</code>.
 There is logic to combine and use multiple tags, please see
 <a href="https://www.digitalocean.com/community/tutorials/customizing-go-binaries-with-build-tags#build-tag-boolean-logic" target="_blank" rel="noopener">Build Tag Boolean Logic</a>.</p>
@@ -1123,7 +1130,7 @@ the actual counts.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Table Driven</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Folder for Test Data</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Run Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Test Coverage</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Table Driven</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Folder for Test Data</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">TestMain</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Run Test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Test Coverage</span></a></li></ol></div>
             
 
           </div>
