@@ -97,14 +97,14 @@
 
 
   <meta name="description" content="For complex testing, the testify module is a big life saver, it has 4 main packages: assert, require, mock and suite. Their usages are quite straightforward from the testify README file. There is a se">
-<meta name="keywords" content="go">
+<meta name="keywords" content="go,test">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go Unittest by testify">
 <meta property="og:url" content="http://yoursite.com/2023/03/01/golang-unittest-testify/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="For complex testing, the testify module is a big life saver, it has 4 main packages: assert, require, mock and suite. Their usages are quite straightforward from the testify README file. There is a se">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-09-17T23:04:12.762Z">
+<meta property="og:updated_time" content="2023-10-16T06:45:25.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go Unittest by testify">
 <meta name="twitter:description" content="For complex testing, the testify module is a big life saver, it has 4 main packages: assert, require, mock and suite. Their usages are quite straightforward from the testify README file. There is a se">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">158</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">159</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">47</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">48</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">288</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">291</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-09-17 16:04:12" itemprop="dateModified" datetime="2023-09-17T16:04:12-07:00">2023-09-17</time>
+                <time title="Modified: 2023-10-15 23:45:25" itemprop="dateModified" datetime="2023-10-15T23:45:25-07:00">2023-10-15</time>
               
             
           </span>
@@ -523,8 +523,8 @@ cases.</p>
 <p>The commonly used assertions:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s.Require().Nil(err)</span><br><span class="line">s.Require().NotNil(err)</span><br><span class="line"><span class="comment">// although not recommended to rely on error message</span></span><br><span class="line">s.Require().Contains(err.Error(), <span class="string">"xxxxxx"</span>)</span><br><span class="line">s.Require().EqualError(err, <span class="string">"xxxxxx"</span>)</span><br><span class="line"></span><br><span class="line">s.Require().Len(rcs, <span class="number">5</span>)</span><br><span class="line">s.Require().EqualValues(pt, <span class="string">"xxxxxx"</span>)</span><br></pre></td></tr></table></figure>
 <h1>Run Test</h1>
-<p>To run both suite, using the same <code>go test</code> command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To run the whole suite:</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=<span class="built_in">readonly</span> \</span><br><span class="line">-run &lt;suite struct name regexp&gt; \</span><br><span class="line">example.com/student</span><br><span class="line"></span><br><span class="line"><span class="comment"># to run test against the vendor folder</span></span><br><span class="line"><span class="comment"># -mod=vendor</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=vendor \</span><br><span class="line">-run &lt;suite struct name regexp&gt; \</span><br><span class="line">example.com/student</span><br><span class="line"></span><br><span class="line"><span class="comment"># to run specified tests in suite:</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=<span class="built_in">readonly</span> \</span><br><span class="line">-run &lt;suite struct name regexp&gt; \</span><br><span class="line">-testify.m &lt;<span class="built_in">test</span> name regexp&gt; \</span><br><span class="line">example.com/student</span><br><span class="line"></span><br><span class="line"><span class="comment"># to run test without prior cache</span></span><br><span class="line"><span class="comment"># -count 1</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=<span class="built_in">readonly</span> \</span><br><span class="line">-count 1 \</span><br><span class="line">-run &lt;suite struct name regexp&gt; \</span><br><span class="line">-testify.m &lt;<span class="built_in">test</span> name regexp&gt; \</span><br><span class="line">example.com/student</span><br></pre></td></tr></table></figure>
+<p>To run  suite, using the same <code>go test</code> command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To run the whole package test suites</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=<span class="built_in">readonly</span> \</span><br><span class="line">example.com/student</span><br><span class="line"></span><br><span class="line"><span class="comment"># To run specific suite in package</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=<span class="built_in">readonly</span> \</span><br><span class="line">example.com/student \</span><br><span class="line">-run &lt;suite struct name regexp&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># to run test against the vendor folder</span></span><br><span class="line"><span class="comment"># -mod=vendor</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=vendor \</span><br><span class="line">example.com/student \</span><br><span class="line">-run &lt;suite struct name regexp&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># to run specified tests in specific suite</span></span><br><span class="line"><span class="comment"># -run and -testify.m have to be after package</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=<span class="built_in">readonly</span> \</span><br><span class="line">example.com/student \</span><br><span class="line">-run &lt;suite struct name regexp&gt; \</span><br><span class="line">-testify.m &lt;<span class="built_in">test</span> name regexp&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># to run test without prior cache</span></span><br><span class="line"><span class="comment"># -count 1</span></span><br><span class="line">go <span class="built_in">test</span> -v -buildvcs=<span class="literal">false</span> -mod=<span class="built_in">readonly</span> \</span><br><span class="line">-count 1 \</span><br><span class="line">example.com/student \</span><br><span class="line">-run &lt;suite struct name regexp&gt; \</span><br><span class="line">-testify.m &lt;<span class="built_in">test</span> name regexp&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -549,6 +549,8 @@ cases.</p>
         <div class="post-tags">
           
             <a href="/tags/go/" rel="tag"># go</a>
+          
+            <a href="/tags/test/" rel="tag"># test</a>
           
         </div>
       
@@ -645,7 +647,7 @@ cases.</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">288</span>
+                    <span class="site-state-item-count">291</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -752,7 +754,9 @@ cases.</p>
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1081,7 +1085,9 @@ cases.</p>
                     
                       
                     
-                    <span class="site-state-item-count">158</span>
+                      
+                    
+                    <span class="site-state-item-count">159</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

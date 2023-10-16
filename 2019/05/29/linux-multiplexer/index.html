@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="Overall, tmux is the best among all selections here, but you should know how do others work in case tmux is unavailable. 你还需要理解VNC, Screen, tmux 的原理是什么? 为什么使用它们则SSH 断开之后进程仍可以继续运行呢? 哪里在收集和记录状态。 Run in">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-03-16T07:37:43.000Z">
+<meta property="og:updated_time" content="2023-10-16T06:45:25.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Multiplexer with VNC, Screen and Tmux">
 <meta name="twitter:description" content="Overall, tmux is the best among all selections here, but you should know how do others work in case tmux is unavailable. 你还需要理解VNC, Screen, tmux 的原理是什么? 为什么使用它们则SSH 断开之后进程仍可以继续运行呢? 哪里在收集和记录状态。 Run in">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">158</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">159</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">47</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">48</span></a>
 
   </li>
         
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">288</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">291</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2021-03-16 00:37:43" itemprop="dateModified" datetime="2021-03-16T00:37:43-07:00">2021-03-16</time>
+                <time title="Modified: 2023-10-15 23:45:25" itemprop="dateModified" datetime="2023-10-15T23:45:25-07:00">2023-10-15</time>
               
             
           </span>
@@ -490,21 +490,37 @@
       
 
       
-        <p>Overall, tmux is the best among all selections here, but you should know how do others work in case tmux is unavailable. 你还需要理解VNC, Screen, tmux 的原理是什么? 为什么使用它们则SSH 断开之后进程仍可以继续运行呢? 哪里在收集和记录状态。</p>
+        <p>Overall, tmux is the best among all selections here, but you should know how do
+others work in case tmux is unavailable. 你还需要理解VNC, Screen, tmux 的原理是什么?
+为什么使用它们则SSH 断开之后进程仍可以继续运行呢? 哪里在收集和记录状态。</p>
 <h1>Run in Background</h1>
-<p>The most straightforward way is put long running task in background, redirect the stdout/stderr to files or <code>/dev/null</code>, for example:</p>
+<p>The most straightforward way is put long running task in background, redirect
+the stdout/stderr to files or <code>/dev/null</code>, for example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./task.sh &amp;&gt; <span class="built_in">log</span>.$(date <span class="string">"+%Y-%m-%d"</span>) &amp;</span><br><span class="line"><span class="comment"># then working on it by jobs, bg, fg and ctrl+z commands</span></span><br></pre></td></tr></table></figure>
-<p>Note that ctrl+z also works when editting Vim file, it will suspend editing, put it in background and bring you back to terminal.</p>
-<p>To detach a job from the current <code>jobs</code> list, using <code>disown %&lt;job id&gt;</code> command. The detched job will still be running but cannot bring it back to <code>jobs</code>.</p>
+<p>Note that ctrl+z also works when editting Vim file, it will suspend editing, put
+it in background and bring you back to terminal.</p>
+<p>To detach a job from the current <code>jobs</code> list, using <code>disown %&lt;job id&gt;</code> command.
+The detched job will still be running but cannot bring it back to <code>jobs</code>.</p>
 <h1>Nohup</h1>
-<p>Why the work gets lost when SSH session drops is because the signal SIGHUP will be sent to the foreground process. If we let the process ignore this signal, then it can keep running when remote SSH connection is gone.</p>
+<p>Why the work gets lost when SSH session drops is because the signal SIGHUP will
+be sent to the foreground process. If we let the process ignore this signal, then
+it can keep running when remote SSH connection is gone.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nohup will redirect the stdin from /dev/null</span></span><br><span class="line"><span class="comment"># stdout/err to FILE $HOME/nohup.out</span></span><br><span class="line">nohup [bash|sh] &lt;script&gt; &amp;</span><br><span class="line"><span class="comment"># similar to</span></span><br><span class="line"><span class="comment"># &amp;&gt; is the modern version of 2&gt;&amp;1</span></span><br><span class="line">&lt;script&gt; &lt;/dev/null  &amp;&gt;/dev/null  &amp;</span><br></pre></td></tr></table></figure>
 <p>You can use <code>jobs</code>, <code>bg</code> and <code>fg</code> command to operate it.</p>
 <h1>VNC</h1>
-<p>之前用VNC的目的之一是为了keep SSH long running task on remote machine , prevent lost of work, the alternative is <code>screen</code> and <code>tmux</code>command(best).</p>
-<p><code>Virtual Network Computing (VNC)</code> is a graphical desktop-sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer. It transmits the keyboard and mouse events from one computer to another, relaying the graphical-screen updates back in the other direction, over a network.</p>
-<p>Popular uses for this technology include remote technical support and accessing files on one’s work computer from one’s home computer, or vice versa.</p>
-<p>I usually use it to do remote development on Fyre, I have a Fyre central control machine with VNC installed, after vnc to that machine I use it to SSH to other machines within the same internal network(usually connections will not break), you can also install IDE in VNC to do general programming work rather than developing locally.</p>
+<p>之前用VNC的目的之一是为了keep SSH long running task on remote machine , prevent lost
+of work, the alternative is <code>screen</code> and <code>tmux</code>command(best).</p>
+<p><code>Virtual Network Computing (VNC)</code> is a graphical desktop-sharing system that
+uses the Remote Frame Buffer protocol (RFB) to remotely control another computer.
+It transmits the keyboard and mouse events from one computer to another, relaying
+the graphical-screen updates back in the other direction, over a network.</p>
+<p>Popular uses for this technology include remote technical support and accessing
+files on one’s work computer from one’s home computer, or vice versa.</p>
+<p>I usually use it to do remote development on Fyre, I have a Fyre central control
+machine with VNC installed, after vnc to that machine I use it to SSH to other
+machines within the same internal network(usually connections will not break),
+you can also install IDE in VNC to do general programming work rather than
+developing locally.</p>
 <blockquote>
 <p>Note, there are other remote terminal tools such as <code>Termius</code>.</p>
 </blockquote>
@@ -515,12 +531,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep vnc</span><br><span class="line"></span><br><span class="line">root      2682  0.0  3.0 284860 116840 ?       Sl   May27   1:38 /usr/bin/Xvnc :1 -auth /root/.Xauthority -desktop mycentctl1.fyre.ibm.com:1 (root) -fp catalogue:/etc/X11/fontpath.d -geometry 1024x768 -pn -rfbauth /root/.vnc/passwd -rfbport 5901 -rfbwait 30000</span><br><span class="line">root      9199  1.4  1.6 231660 62388 pts/3    Sl   08:59   0:00 /usr/bin/Xvnc :2 -auth /root/.Xauthority -desktop mycentctl1.fyre.ibm.com:2 (root) -fp catalogue:/etc/X11/fontpath.d -geometry 1024x768 -pn -rfbauth /root/.vnc/passwd -rfbport 5902 -rfbwait 30000</span><br></pre></td></tr></table></figure>
 <p>you can kill it by running:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -<span class="built_in">kill</span> :2</span><br></pre></td></tr></table></figure>
-<p>If the VNC is broken due to Fyre maintenance, open a new vnc session again by <code>vncserver</code>.</p>
+<p>If the VNC is broken due to Fyre maintenance, open a new vnc session again by
+<code>vncserver</code>.</p>
 <h2 id="Install-VNC-viewer">Install VNC viewer</h2>
 <p>Install VNC viewer on your local laptop, then connect by for example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">centctl1.fyre.ibm.com:1</span><br></pre></td></tr></table></figure>
 <h2 id="Copy-and-Paste">Copy and Paste</h2>
-<p>If you want to copy from local to viewer, sometimes it’s malfunction, kill the <code>klipper</code> process:</p>
+<p>If you want to copy from local to viewer, sometimes it’s malfunction, kill the
+<code>klipper</code> process:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep klipper</span><br><span class="line"><span class="built_in">kill</span> -9 &lt;PID of klipper&gt;</span><br></pre></td></tr></table></figure>
 <p>You can adjust shortcuts in VNC viewer for copy and paste:
 Settings -&gt; Configure Shortcuts -&gt; copy / paste</p>
@@ -538,8 +556,14 @@ Settings -&gt; Manage Profiles -&gt; Edit Profile -&gt; Appearabce -&gt; Black o
 <h1>Screen</h1>
 <p>Create virtual terminal lives beyond your terminal session.</p>
 <p><a href="https://linuxize.com/post/how-to-use-linux-screen/" target="_blank" rel="noopener">How To Use Linux Screen</a>
-Screen or GNU Screen is a terminal multiplexer. In other words, it means that you can start a screen session and then open any number of windows (virtual terminals) inside that session. Processes running in Screen will continue to run when their window is not visible even if you get disconnected, the work or progress will not get lost! 所以说可以不用<code>&amp;</code> 后台运行了。</p>
-<p><a href="https://gist.github.com/jctosta/af918e1618682638aa82" target="_blank" rel="noopener">screen command cheat sheet</a>, or see help in screen:  <code>crtl+a ?</code>, hit enter to quit. you can use either <code>screen</code> or <code>ctrl+a</code>(key binding).</p>
+Screen or GNU Screen is a terminal multiplexer. In other words, it means that
+you can start a screen session and then open any number of windows (virtual
+terminals) inside that session. Processes running in Screen will continue to run
+when their window is not visible even if you get disconnected, the work or
+progress will not get lost! 所以说可以不用<code>&amp;</code> 后台运行了。</p>
+<p><a href="https://gist.github.com/jctosta/af918e1618682638aa82" target="_blank" rel="noopener">screen command cheat sheet</a>,
+or see help in screen:  <code>crtl+a ?</code>, hit enter to quit. you can use either <code>screen</code>
+or <code>ctrl+a</code>(key binding).</p>
 <p>Note that install and run <code>screen</code> on target machine, VNC 应该是同样的.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install -y screen</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">yum install -y screen</span><br><span class="line"></span><br><span class="line"><span class="comment"># start a screen session with description</span></span><br><span class="line"><span class="comment"># and enter into it</span></span><br><span class="line">screen -S remote_playbook</span><br></pre></td></tr></table></figure>
 <p>You can create multiple windows in one session</p>
@@ -549,16 +573,22 @@ Screen or GNU Screen is a terminal multiplexer. In other words, it means that yo
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show session id if you are in screen</span></span><br><span class="line"><span class="comment"># for example: 3384204.screen-es-upgrade</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$STY</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># return with screen prefix if you are in screen</span></span><br><span class="line"><span class="comment"># for example: screen.xterm-256color</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$TERM</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># press ctrl+a with t</span></span><br><span class="line"><span class="comment"># otherwise nothing will show</span></span><br><span class="line"><span class="comment"># for example: 22:26:35 Mar 04 chengdolcent 0.36 0.28 0.2</span></span><br></pre></td></tr></table></figure>
 <h1>Tmux</h1>
 <p>Tmux 相比Screen 有terminal底部的提示，不容易和host terminal搞混.</p>
-<p>Note that tmux has 3 terms(same as Screen): session -&gt; window -&gt; pane. you can have multiple sessions, each session can have mutliple windows and each window can have several panes. Usually rename the session and window with meanful symbol.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># version</span></span><br><span class="line">tmux -V</span><br><span class="line"><span class="comment"># start a session, notice the bottom line for window status</span></span><br><span class="line">tmux</span><br><span class="line"><span class="comment"># rename session, by default no meanful name</span></span><br><span class="line">Ctrl+b $</span><br><span class="line"><span class="comment"># list tmux sessions</span></span><br><span class="line">tmux ls</span><br><span class="line"><span class="comment"># switch list sessions</span></span><br><span class="line"><span class="comment"># use arrow key to expand each session and select</span></span><br><span class="line">Ctrl+b s</span><br><span class="line"></span><br><span class="line"><span class="comment"># detch tmux session</span></span><br><span class="line">Ctrl+b d</span><br><span class="line"><span class="comment"># attch again</span></span><br><span class="line">tmux [attach|a] -t &lt;session name&gt;</span><br><span class="line"><span class="comment"># attach most recent one</span></span><br><span class="line">tmux [a]ttach|a]</span><br><span class="line"></span><br><span class="line"><span class="comment"># kill session</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -t &lt;session name&gt;</span><br></pre></td></tr></table></figure>
-<p>In the bottom line, <code>*</code> means current window, you will see the windows list and name here.</p>
+<p>Note that tmux has 3 terms(same as Screen): session -&gt; window -&gt; pane. you can
+have multiple sessions, each session can have mutliple windows and each window
+can have several panes. Usually rename the session and window with meanful
+symbol.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># version</span></span><br><span class="line">tmux -V</span><br><span class="line"><span class="comment"># start a session, notice the bottom line for window status</span></span><br><span class="line">tmux</span><br><span class="line">tmux new -s &lt;session name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># rename session, by default no meanful name</span></span><br><span class="line">Ctrl+b $</span><br><span class="line"></span><br><span class="line"><span class="comment"># list tmux sessions</span></span><br><span class="line">tmux ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># switch list sessions</span></span><br><span class="line"><span class="comment"># use arrow key to expand each session and select</span></span><br><span class="line">Ctrl+b s</span><br><span class="line"></span><br><span class="line"><span class="comment"># detch tmux session</span></span><br><span class="line">Ctrl+b d</span><br><span class="line"><span class="comment"># attch again</span></span><br><span class="line">tmux [attach|a] -t &lt;session name&gt;</span><br><span class="line"><span class="comment"># attach most recent one</span></span><br><span class="line">tmux [a]ttach|a]</span><br><span class="line"></span><br><span class="line"><span class="comment"># kill all sessions but current</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -a</span><br><span class="line"><span class="comment"># kill all sessions but my session</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -t &lt;my session&gt;</span><br></pre></td></tr></table></figure>
+<p>In the bottom line, <code>*</code> means current window, you will see the windows list and
+name here.</p>
 <p>Some key bindings for window:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b ?         help, press `q` to quit</span><br><span class="line"></span><br><span class="line">Ctrl+b c         create new window</span><br><span class="line">Ctrl+b ,         rename window</span><br><span class="line">Ctrl+b w         list windows</span><br><span class="line"></span><br><span class="line">Ctrl+b &lt;id&gt;      switch to other window </span><br><span class="line">Ctrl+b n         go to next window</span><br><span class="line">Ctrl+b p         go to previous window</span><br><span class="line"></span><br><span class="line">Ctrl+b &amp;         kill and close the window</span><br><span class="line"></span><br><span class="line">Ctrl+b t         clock display, press any key goes back</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b ?         <span class="built_in">help</span>, press `q` to quit</span><br><span class="line"></span><br><span class="line">Ctrl+b c         create new window</span><br><span class="line">Ctrl+b ,         rename window</span><br><span class="line">Ctrl+b w         list windows</span><br><span class="line"></span><br><span class="line">Ctrl+b &lt;id&gt;      switch to other window </span><br><span class="line">Ctrl+b n         go to next window</span><br><span class="line">Ctrl+b p         go to previous window</span><br><span class="line"></span><br><span class="line">Ctrl+b &amp;         <span class="built_in">kill</span> and close the window</span><br><span class="line"></span><br><span class="line">Ctrl+b t         clock display, press any key goes back</span><br></pre></td></tr></table></figure>
 <p>Add panes to windows, active one has the green color.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b &quot;         horizontal split</span><br><span class="line">Ctrl+b %         vertical split</span><br><span class="line">Ctrl+b o         switch pane</span><br><span class="line">Ctrl+b arrow     switch pane by arrow key</span><br><span class="line">Ctrl+b ;         switch between most recently panes</span><br><span class="line">Ctrl+b x         close pane</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b <span class="string">"         horizontal split</span></span><br><span class="line"><span class="string">Ctrl+b %         vertical split</span></span><br><span class="line"><span class="string">Ctrl+b o         switch pane</span></span><br><span class="line"><span class="string">Ctrl+b arrow     switch pane by arrow key</span></span><br><span class="line"><span class="string">Ctrl+b ;         switch between most recently panes</span></span><br><span class="line"><span class="string">Ctrl+b x         close pane</span></span><br></pre></td></tr></table></figure>
 <p>You can also adjust the pane size or even promote the pane to a its own window.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b [esc + arrow]    连续多次esc + arrow resize the pane</span><br><span class="line">Ctrl+b !                promote window</span><br></pre></td></tr></table></figure>
-<p>Tmux also has command mode to accomplish the same task by key bindings, similar to Vim. 比如说monitor-activity设置，在有输出变化时会提示高亮. You can pre-set tmux config: <code>.tmux.conf</code>, there are a lot examples on Internet.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b [esc + arrow]    连续多次esc + arrow resize the pane</span><br><span class="line">Ctrl+b !                promote window</span><br></pre></td></tr></table></figure>
+<p>Tmux also has command mode to accomplish the same task by key bindings, similar
+to Vim. 比如说monitor-activity设置，在有输出变化时会提示高亮. You can pre-set tmux
+config: <code>.tmux.conf</code>, there are a lot examples on Internet.</p>
 
       
     </div>
@@ -685,7 +715,7 @@ Screen or GNU Screen is a terminal multiplexer. In other words, it means that yo
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">288</span>
+                    <span class="site-state-item-count">291</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -792,7 +822,9 @@ Screen or GNU Screen is a terminal multiplexer. In other words, it means that yo
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1121,7 +1153,9 @@ Screen or GNU Screen is a terminal multiplexer. In other words, it means that yo
                     
                       
                     
-                    <span class="site-state-item-count">158</span>
+                      
+                    
+                    <span class="site-state-item-count">159</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
