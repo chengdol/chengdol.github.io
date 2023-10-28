@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is a design and good practice about how to manage data in table for Spanner, and you can extend it to other types of DB accordingly. Table Schema Basically, the table will have 2 columns:  Object">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-10-16T06:45:25.650Z">
+<meta property="og:updated_time" content="2023-10-22T05:54:16.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Database Two-Column Table Design">
 <meta name="twitter:description" content="This is a design and good practice about how to manage data in table for Spanner, and you can extend it to other types of DB accordingly. Table Schema Basically, the table will have 2 columns:  Object">
@@ -422,12 +422,24 @@
                 
               
 
-              <time title="Created: 2023-10-15 12:17:18 / Modified: 23:45:25" itemprop="dateCreated datePublished" datetime="2023-10-15T12:17:18-07:00">2023-10-15</time>
+              <time title="Created: 2023-10-15 12:17:18" itemprop="dateCreated datePublished" datetime="2023-10-15T12:17:18-07:00">2023-10-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2023-10-21 22:54:16" itemprop="dateModified" datetime="2023-10-21T22:54:16-07:00">2023-10-21</time>
               
             
           </span>
@@ -534,7 +546,8 @@ will be created (LATEST or DELETED), otherwise there will be duplicate records
 from Object perspective although the Metadata.version_id is different.</p>
 <blockquote>
 <p>For DB which has changelogs for history, auditing, debugging, you may not need
-this design as it compliates the client side implementation.</p>
+this design as it compliates the client side implementation, but they may be not
+that straightforward in real case for quickly checking.</p>
 </blockquote>
 <h2 id="Data-Access-Layer">Data Access Layer</h2>
 <p>You need to create data access layer for common operations like above, the app
@@ -620,7 +633,7 @@ ARCHIVED ones, no transaction is needed.</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2023/10/21/review-list/" rel="prev" title="Blog Review List">
+              <a href="/2023/10/28/review-list/" rel="prev" title="Blog Review List">
                 Blog Review List <i class="fa fa-chevron-right"></i>
               </a>
             
