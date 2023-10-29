@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="This post talks about how to install multiple go binaries in the same machine and switch to use easily. You may need a primary go version for daily work. Download and install go for different operatin">
+  <meta name="description" content="There is a better alternative, please see &amp;lt;&amp;lt;VSC Developing inside a Container&amp;gt;&amp;gt;.  This post talks about how to install multiple go binaries in the same machine and switch back and forth e">
 <meta name="keywords" content="go">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go Version Management">
 <meta property="og:url" content="http://yoursite.com/2023/02/10/golang-version-manage/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="This post talks about how to install multiple go binaries in the same machine and switch to use easily. You may need a primary go version for daily work. Download and install go for different operatin">
+<meta property="og:description" content="There is a better alternative, please see &amp;lt;&amp;lt;VSC Developing inside a Container&amp;gt;&amp;gt;.  This post talks about how to install multiple go binaries in the same machine and switch back and forth e">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-03-05T08:08:38.771Z">
+<meta property="og:updated_time" content="2023-10-29T21:42:25.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go Version Management">
-<meta name="twitter:description" content="This post talks about how to install multiple go binaries in the same machine and switch to use easily. You may need a primary go version for daily work. Download and install go for different operatin">
+<meta name="twitter:description" content="There is a better alternative, please see &amp;lt;&amp;lt;VSC Developing inside a Container&amp;gt;&amp;gt;.  This post talks about how to install multiple go binaries in the same machine and switch back and forth e">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">291</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">292</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-03-05 00:08:38" itemprop="dateModified" datetime="2023-03-05T00:08:38-08:00">2023-03-05</time>
+                <time title="Modified: 2023-10-29 14:42:25" itemprop="dateModified" datetime="2023-10-29T14:42:25-07:00">2023-10-29</time>
               
             
           </span>
@@ -490,16 +490,18 @@
       
 
       
-        <p>This post talks about how to install multiple go binaries in the same machine
-and switch to use easily.</p>
+        <blockquote>
+<p>There is a better alternative, please see <code>&lt;&lt;VSC Developing inside a Container&gt;&gt;</code>.</p>
+</blockquote>
+<p>This post talks about how to install multiple go binaries in the same machine
+and switch back and forth easily.</p>
 <p>You may need a primary go version for daily work. Download and install go for
 different operating system from here:</p>
 <ul>
 <li><a href="https://go.dev/doc/install" target="_blank" rel="noopener">https://go.dev/doc/install</a></li>
 </ul>
-<p>The instruction puts the download to <code>/usr/local/go</code>, for multi-version install
-below, they are downloaded to different folder so there is no conflict but needs
-to take care.</p>
+<p>The instruction will put the download to <code>/usr/local/go</code>, for multi-version
+install below, they are downloaded to different folder so there is no conflict.</p>
 <p>If you need to install other go versions in the same machine:</p>
 <ul>
 <li><a href="https://go.dev/doc/manage-install" target="_blank" rel="noopener">https://go.dev/doc/manage-install</a></li>
@@ -507,28 +509,30 @@ to take care.</p>
 <p>First, there are 2 go env variables involved:</p>
 <ul>
 <li><code>GOROOT</code> is for compiler/tools.</li>
-<li><code>GOPATH</code> is for your own go projects / 3rd party libraries
+<li><code>GOPATH</code> is for your own go projects and 3rd party libraries
 (downloaded with <code>go get/install</code>).</li>
 </ul>
 <p>You can check their value by:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env GOROOT</span><br><span class="line">go env GOPATH</span><br></pre></td></tr></table></figure>
-<p>The <code>go install</code> location is controlled by the <code>GOPATH</code> and <code>GOBIN</code> environment
-variables. If <code>GOBIN</code> is set, binaries are installed to that directory. If
-<code>GOPATH</code> is set, binaries are installed to the <code>bin</code> subdirectory of the first
-directory in the <code>GOPATH</code> list. Otherwise, binaries are installed to the bin
-subdirectory of the default <code>GOPATH</code> (<code>$HOME/go</code>).</p>
+<p>The <code>go install</code> location is controlled by the <code>GOBIN</code> and <code>GOPATH</code> environment
+variables depends their existence, in the order:</p>
+<ul>
+<li>If <code>GOBIN</code> is set, binary is installed at that directory.</li>
+<li>If <code>GOPATH</code> is set, binary is installed at the <code>bin</code> subdirectory of the
+first path in the <code>GOPATH</code> list, otherwise binary is installed to the
+bin subdirectory of the default <code>GOPATH</code> (<code>$HOME/go</code>).</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go install golang.org/dl/go1.10.7@latest</span><br></pre></td></tr></table></figure>
 <p>Go to <code>$GOPATH/bin</code> to find the downloaded object and run:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go1.10.7 download</span><br></pre></td></tr></table></figure>
 <p>From output, <code>1.10.7</code> version go binary will be downloaded to <code>$GOPATH/../sdk</code>
 folder.</p>
-<p>To switch the current <code>go</code> to use this version, we can update the <code>PATH</code>
-environment variable:</p>
+<p>To use the downloaded version, we can update the <code>PATH</code> environment variable:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/google/home/&lt;user&gt;/sdk/go1.10.7/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>NOTE that if there are many go versions, must write the target go bin path at
-very left to other go bins in <code>PATH</code>, the <code>GOROOT</code> will be automatically set
-according to first go bin in the <code>PATH</code>.</p>
+<p>NOTE that if there are many go versions, must set the target go bin path at
+the beginning of <code>PATH</code>, the <code>GOROOT</code> will be automatically set according to
+first go bin in the <code>PATH</code>.</p>
 </blockquote>
 <p>Then verifying by running:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># go version</span></span><br><span class="line">go version go1.10.7 linux/amd64</span><br><span class="line"></span><br><span class="line"><span class="comment"># go env GOROOT is updated changed accordingly to 1.10.7 bin path</span></span><br><span class="line">/usr/<span class="built_in">local</span>/google/home/&lt;user&gt;/sdk/go1.10.7</span><br></pre></td></tr></table></figure>
@@ -644,7 +648,7 @@ according to first go bin in the <code>PATH</code>.</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">291</span>
+                    <span class="site-state-item-count">292</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
