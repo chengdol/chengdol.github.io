@@ -96,25 +96,23 @@
 
 
 
-  <meta name="description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从 Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的packages 安装工作比较耗时">
-<meta name="keywords" content="python,docker">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Docker Base Image Choice">
-<meta property="og:url" content="http://yoursite.com/2021/09/24/docker-base-image/index.html">
+  <meta name="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
+<meta property="og:type" content="website">
+<meta property="og:title" content="海胆阶段&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/archives/2023/11/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从 Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的packages 安装工作比较耗时">
+<meta property="og:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2021-10-06T00:56:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker Base Image Choice">
-<meta name="twitter:description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从 Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的packages 安装工作比较耗时">
+<meta name="twitter:title" content="海胆阶段&#39;s Blog">
+<meta name="twitter:description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/09/24/docker-base-image/">
+  <link rel="canonical" href="http://yoursite.com/archives/2023/11/">
 
 
 
@@ -124,7 +122,7 @@
   };
 </script>
 
-  <title>Docker Base Image Choice | 海胆阶段's Blog</title>
+  <title>Archive | 海胆阶段's Blog</title>
   
 
 
@@ -172,7 +170,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -286,7 +284,7 @@
         
         
           
-          <li class="menu-item menu-item-archives">
+          <li class="menu-item menu-item-archives menu-item-active">
 
     
     
@@ -317,6 +315,28 @@
 
   
     
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
 
   
 
@@ -363,269 +383,77 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      
+      <span class="archive-page-counter">
+        
+        
+         
+          
+        Excellent! 292 posts in total. Keep on posting.
+      </span>
+      
 
-  
-  
-  
+      
 
-  
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2023">2023</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/24/docker-base-image/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="海胆阶段">
-      <meta itemprop="description" content="骐骥一跃，不能十步；驽马十驾，功在不舍">
-      <meta itemprop="image" content="/images/cuishao.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="海胆阶段's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+          <a class="post-title-link" href="/2023/11/04/review-list/" itemprop="url">
+            
+              <span itemprop="name">Blog Review List</span>
+            
+          </a>
         
-          <h1 class="post-title" itemprop="name headline">Docker Base Image Choice
+      </h2>
 
-              
-            
-          </h1>
-        
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2023-11-04T12:05:36-07:00" content="2023-11-04">
+          11-04
+        </time>
+      </div>
 
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2021-09-24 14:18:00" itemprop="dateCreated datePublished" datetime="2021-09-24T14:18:00-07:00">2021-09-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2021-10-05 17:56:32" itemprop="dateModified" datetime="2021-10-05T17:56:32-07:00">2021-10-05</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>最近针对目前的pipeline 有2个优化:</p>
-<ol>
-<li>把deployer base image 单独分出来，在这一阶段安装一些general common packages.</li>
-<li>把base image flavor 从 Alpine 换到 Debian.</li>
-</ol>
-<p>对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的packages 安装工作比较耗时，如果大部分工作都在 base image中安装好了，剩余的工作量就少很多。</p>
-<p>对于2，以前我没有想到这一点，怎么选择合适的base image 以及为什么需要切换base image呢？首先从Python image的各种类型开始了解(不同的Application 情况不同，这里只讨论Python).</p>
-<p><a href="https://hub.docker.com/_/python" target="_blank" rel="noopener">Python Image Variants</a>
-There are 4 types:</p>
-<ul>
-<li>python:[version]</li>
-<li>python:[version]-slim</li>
-<li>python:[version]-alpine</li>
-<li>python:[version]-windowsservercore</li>
-</ul>
-<p>前2种都是Debian-based, 只是内部安装的packages 数量不同，slim 只安装了运行Python所需的最小packages数量. 关于Debain release code name, such as buster, stretch. See this <a href="https://wiki.debian.org/DebianReleases" target="_blank" rel="noopener">reference</a>.</p>
-<p>可以查看使用的Python image Dockerfile 了解哪些packages 已经安装，避免重复，比如slim <a href="https://github.com/docker-library/python/blob/master/3.9/buster/slim/Dockerfile" target="_blank" rel="noopener">Dockerfile</a>.</p>
-<p>至于为什么对于Python image需要从Alpine 切换到 Debian呢？这篇文章总结到了: <a href="https://pythonspeed.com/articles/alpine-docker-python/" target="_blank" rel="noopener">Using Alpine can make Python Docker builds 50× slower</a>. 针对我们使用的Python image, 我也做了比较，确实debian based image对于PIP requirements.txt 安装要更快，但随着Alpine base的更新以后情况可能会改变。</p>
-<p>这篇文章所在网站的其他内容也很有参考价值:</p>
-<ul>
-<li><a href="https://pythonspeed.com/articles/base-image-python-docker-images/" target="_blank" rel="noopener">Best Docker Base Image for Python Applciation 2021</a></li>
-<li><a href="https://pythonspeed.com/docker/" target="_blank" rel="noopener">Overall articles list for Python production-ready practices</a></li>
-</ul>
-<p>Other good articles:</p>
-<ul>
-<li><a href="http://crunchtools.com/comparison-linux-container-images/" target="_blank" rel="noopener">A Comparison Of Linux Container Images</a>,这篇article的table很不错。</li>
-</ul>
-<h1>Dockerfile Best Practice</h1>
-<p><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_blank" rel="noopener">Dockerfile Best Practices</a>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --no-cache: do not rely on build cache</span></span><br><span class="line"><span class="comment"># -f: specify dockerfile</span></span><br><span class="line"><span class="comment"># context: build context location, usually .(current dir)</span></span><br><span class="line">docker build --no-cache -t helloapp:v2 -f dockerfiles/Dockerfile &lt;context path&gt;</span><br></pre></td></tr></table></figure>
-<p>Make sure do not include unnecessary files in your build context, that will result in larger image size. Or using <code>.dockeringore</code> to exclude files from build context.</p>
-<p>Pipe in dockerfile, no files will be sent to build context:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cannot use COPY in this way</span></span><br><span class="line"><span class="comment"># -: read Dockerfilr from stdin</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'FROM busybox\nRUN echo "hello world"'</span> | docker build -</span><br><span class="line"><span class="comment"># here document</span></span><br><span class="line">docker build -&lt;&lt;EOF</span><br><span class="line">FROM busybox</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"hello world"</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-<p>Omitting the build context can be useful in situations where your Dockerfile does <strong>not</strong> require files to be copied into the image, and improves the build-speed, as no files are sent to the daemon.</p>
-<p><a href="https://docs.docker.com/develop/develop-images/multistage-build/" target="_blank" rel="noopener">Multi-Stage builds</a> allow you to drastically reduce the size of your final image, without struggling to reduce the number of intermediate layers and files. For <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#use-multi-stage-builds" target="_blank" rel="noopener">example</a>, the Elasticserach curator <a href="https://github.com/elastic/curator/blob/master/Dockerfile" target="_blank" rel="noopener">Dockerfile</a> also adopt this workflow:</p>
-<ul>
-<li>Install tools you need to build your application</li>
-<li>Install or update library dependencies</li>
-<li>Generate your application</li>
-</ul>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the simplest base image</span></span><br><span class="line"><span class="keyword">FROM</span> scratch</span><br></pre></td></tr></table></figure>
-<p>To reduce complexity, dependencies, file sizes, and build times, avoid installing extra or unnecessary packages just because they might be “nice to have.” For example, you don’t need to include a text editor in a database image.</p>
-<p><strong>Only</strong> the instructions <code>RUN</code>, <code>COPY</code>, <code>ADD</code> create layers. Other instructions create temporary intermediate images, and do not increase the size of the build.</p>
-<p>Sort multi-line arguments, for example debian:</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Always combine RUN apt-get update with apt-get install in the same RUN</span></span><br><span class="line"><span class="comment"># otherwise apt-get update clause will be skipped in rebuild if no --no-cache</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get update &amp;&amp; apt-get install -y \</span></span><br><span class="line"><span class="bash">  bzr \</span></span><br><span class="line"><span class="bash">  cvs \</span></span><br><span class="line"><span class="bash">  git \</span></span><br><span class="line"><span class="bash">  mercurial \</span></span><br><span class="line"><span class="bash">  subversion \</span></span><br><span class="line"><span class="bash">  &amp;&amp; rm -rf /var/lib/apt/lists/*</span></span><br><span class="line"><span class="bash"><span class="comment"># clean up the apt cache by removing /var/lib/apt/lists it reduces the image size</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="Dockerfile-Clause">Dockerfile Clause</h2>
-<p><code>LABEL</code> can be used to filter image with with <code>-f</code> option in <code>docker images</code> command.</p>
-<p>Using pipe:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Docker executes these commands using the /bin/sh -c interpreter</span></span><br><span class="line">RUN <span class="built_in">set</span> -o pipefail &amp;&amp; wget -O - https://some.site | wc -l &gt; /number</span><br><span class="line"></span><br><span class="line"><span class="comment"># or explicitly specify shell to support -o pipefail</span></span><br><span class="line">RUN [<span class="string">"/bin/bash"</span>, <span class="string">"-c"</span>, <span class="string">"set -o pipefail &amp;&amp; wget -O - https://some.site | wc -l &gt; /number"</span>]</span><br></pre></td></tr></table></figure>
-<p><code>CMD</code> should rarely be used in the manner of CMD <code>[&quot;param&quot;, &quot;param&quot;]</code> in conjunction with <code>ENTRYPOINT</code>, unless you and your expected users are already quite familiar with how ENTRYPOINT works. <code>CMD</code> should almost always be used in the form of CMD <code>[&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;…]</code>.</p>
-<p>Use <code>ENTRYPOINY</code> with <code>docker-entrypoint.sh</code> helper script is also common:</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="bash"> ./docker-entrypoint.sh /</span></span><br><span class="line"><span class="bash">ENTRYPOINT [<span class="string">'/docker-entrypoint.sh'</span>]</span></span><br><span class="line"><span class="bash"><span class="comment"># will be substituted with command in docker run end</span></span></span><br><span class="line"><span class="bash"><span class="comment"># docker run --it --rm image_name:tag &lt;param1&gt; &lt;param2&gt; ...</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"--help"</span>]</span></span><br></pre></td></tr></table></figure>
-<p>Each <code>ENV</code> line creates a <strong>new</strong> intermediate layer, just like <code>RUN</code> commands. This means that even if you unset the environment variable in a future layer, it still persists in this layer and its value can be dumped. To prevent this, and really unset the environment variable, use a <code>RUN</code> command with shell commands, to set, use, and unset the variable all in a single layer. You can separate your commands with ; or &amp;&amp;:</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># syntax=docker/dockerfile:1</span></span><br><span class="line"><span class="keyword">FROM</span> alpine</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">export</span> ADMIN_USER=<span class="string">"mark"</span> \</span></span><br><span class="line"><span class="bash">    &amp;&amp; <span class="built_in">echo</span> <span class="variable">$ADMIN_USER</span> &gt; ./mark \</span></span><br><span class="line"><span class="bash">    &amp;&amp; <span class="built_in">unset</span> ADMIN_USER</span></span><br><span class="line"><span class="bash">CMD sh</span></span><br></pre></td></tr></table></figure>
-<p>Although <code>ADD</code> and <code>COPY</code> are functionally similar, generally speaking, <code>COPY</code> is preferred. If multiple files need to be <code>COPY</code>, copy them separately in use rather than all in one go, this can help to invalidate the cache.</p>
-<p>Because image size matters, using <code>ADD</code> to fetch packages from remote URLs is strongly <strong>discouraged</strong>; you should use <code>curl</code> or <code>wget</code> instead. That way you can delete the files you no longer need after they’ve been extracted and you don’t have to add another layer in your image.</p>
-<p>You are strongly encouraged to use <code>VOLUME</code> for any mutable and/or user-serviceable parts of your image. (I rarely use)</p>
-<p>Avoid installing or using sudo as it has unpredictable TTY and signal-forwarding behavior that can cause problems. If you absolutely need functionality similar to sudo, such as initializing the daemon as root but running it as non-root, consider using <code>gosu</code>.</p>
-<p>Lastly, to reduce layers and complexity, avoid switching <code>USER</code> back and forth frequently.</p>
-<p>For clarity and reliability, you should always use absolute paths for your <code>WORKDIR</code>.</p>
-<p>Think of the <code>ONBUILD</code> command as an instruction the parent Dockerfile gives to the child Dockerfile.</p>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2021/09/19/monitor-grafana/" rel="next" title="Grafana Quick Start">
-                <i class="fa fa-chevron-left"></i> Grafana Quick Start
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/10/08/oncall-sys-performance/" rel="prev" title="On-Call System Performance">
-                On-Call System Performance <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
+
+      
+
+    </div>
   </div>
-
-
-          </div>
-          
+  
+  
+  
 
   
 
 
+
+          </div>
+          
 
         </div>
         
@@ -646,17 +474,8 @@ There are 4 types:</p>
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1139,23 +958,6 @@ There are 4 types:</p>
       </div>
 
       
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Dockerfile Best Practice</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile-Clause"><span class="nav-number">1.1.</span> <span class="nav-text">Dockerfile Clause</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
       
 
@@ -1287,10 +1089,6 @@ There are 4 types:</p>
   
 
   
-  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
-<script src="/js/src/post-details.js?v=6.7.0"></script>
-
-
 
   
 
