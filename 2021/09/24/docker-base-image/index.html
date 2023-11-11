@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="最近针对目前的pipeline 有2个优化:  把deployer base image 单独分出来，在这一阶段安装一些general common packages. 把base image flavor 从 Alpine 换到 Debian.  对于1， 很容易理解，因为每次CI/CD pipeline 都会rebuild deployer image，大量的packages 安装工作比较耗时">
-<meta name="keywords" content="python,docker">
+<meta name="keywords" content="docker,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Base Image Choice">
 <meta property="og:url" content="http://yoursite.com/2021/09/24/docker-base-image/index.html">
@@ -574,9 +574,9 @@ There are 4 types:</p>
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
             <a href="/tags/docker/" rel="tag"># docker</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
