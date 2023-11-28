@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This is a convenient function to create isolated, self-contained environment for development. For example, I want to test my Go/Python app in different versions w/wo external service dependencies. Pre">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2023-10-30T03:03:55.663Z">
+<meta property="og:updated_time" content="2023-11-19T21:28:24.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VSC Developing inside a Container">
 <meta name="twitter:description" content="This is a convenient function to create isolated, self-contained environment for development. For example, I want to test my Go/Python app in different versions w/wo external service dependencies. Pre">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">293</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">294</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2023-10-29 20:03:55" itemprop="dateModified" datetime="2023-10-29T20:03:55-07:00">2023-10-29</time>
+                <time title="Modified: 2023-11-19 13:28:24" itemprop="dateModified" datetime="2023-11-19T13:28:24-08:00">2023-11-19</time>
               
             
           </span>
@@ -510,7 +510,7 @@ compose) with SVC editor even in parallel, the setup is as simple as below.</p>
 <li>create a <code>devcontainer.json</code> file inside <code>.devcontainer</code> folder and add
 settings, for example:</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">// For format details, see https://aka.ms/devcontainer.json. For config options, see the</span><br><span class="line">// README at: https://github.com/devcontainers/templates/tree/main/src/go</span><br><span class="line">&#123;</span><br><span class="line">  // A name for the dev container displayed in VSC left corner status bar</span><br><span class="line">  "name": "Demo",</span><br><span class="line">  // other pre-build image to use</span><br><span class="line">  // https://github.com/devcontainers/images/tree/main/src</span><br><span class="line">  "image": "golang:1.21.3-bullseye",</span><br><span class="line"></span><br><span class="line">  // Dockerfile is most suitable for installing packages and tools independent of your workspace files.</span><br><span class="line">  // https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile</span><br><span class="line">  // "build": &#123; "dockerfile": "Dockerfile" &#125;,</span><br><span class="line"></span><br><span class="line">  // Docker compose</span><br><span class="line">  // https://code.visualstudio.com/docs/devcontainers/create-dev-container#_use-docker-compose</span><br><span class="line"></span><br><span class="line">  // Features to add to the dev container. More info: https://containers.dev/features.</span><br><span class="line">  // For example, you can install go, git here instead of using post create command</span><br><span class="line">  // "features": &#123;</span><br><span class="line">  // 	"ghcr.io/devcontainers/features/common-utils:2": &#123;&#125;,</span><br><span class="line">  // 	"ghcr.io/devcontainers/features/sshd:1": &#123;&#125;</span><br><span class="line">  // &#125;,</span><br><span class="line"></span><br><span class="line">  // Configure tool-specific properties.</span><br><span class="line">  "customizations": &#123;</span><br><span class="line">    // Configure properties specific to VS Code.</span><br><span class="line">    "vscode": &#123;</span><br><span class="line">      "settings": &#123;&#125;,</span><br><span class="line">      "extensions": [</span><br><span class="line">        <span class="string">"streetsidesoftware.code-spell-checker"</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // Use 'forwardPorts' to make a list of ports inside the container available locally.</span><br><span class="line">  // "forwardPorts": [9000],</span><br><span class="line"></span><br><span class="line">  // Use 'portsAttributes' to set default properties for specific forwarded ports. </span><br><span class="line">  // More info: https://containers.dev/implementors/json_reference/#port-attributes</span><br><span class="line">  // "portsAttributes": &#123;</span><br><span class="line">  // 	"9000": &#123;</span><br><span class="line">  // 		"label": "Hello Remote World",</span><br><span class="line">  // 		"onAutoForward": "notify"</span><br><span class="line">  // 	&#125;</span><br><span class="line">  // &#125;,</span><br><span class="line"></span><br><span class="line">  // Use 'postCreateCommand' to run commands after the container is created.</span><br><span class="line">  // you can have a utility script in your workspace folder to indicate what</span><br><span class="line">  // to install here, but a Dockerfile may be more efficient.</span><br><span class="line">  // "postCreateCommand": "bash -i scripts/install-dependencies.sh",</span><br><span class="line"></span><br><span class="line">  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.</span><br><span class="line">  // "remoteUser": "root"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">// For format details, see https://aka.ms/devcontainer.json. For config options, see the</span><br><span class="line">// README at: https://github.com/devcontainers/templates/tree/main/src/go</span><br><span class="line">&#123;</span><br><span class="line">  // A name for the dev container displayed in VSC left corner status bar</span><br><span class="line">  "name": "Demo",</span><br><span class="line">  // other pre-build image to use, it has better support and features.</span><br><span class="line">  // https://github.com/devcontainers/images/tree/main/src</span><br><span class="line">  "image": "golang:1.21.3-bullseye",</span><br><span class="line"></span><br><span class="line">  // Dockerfile is most suitable for installing packages and tools independent of your workspace files.</span><br><span class="line">  // https://code.visualstudio.com/docs/devcontainers/create-dev-container#_dockerfile</span><br><span class="line">  // "build": &#123; "dockerfile": "Dockerfile" &#125;,</span><br><span class="line"></span><br><span class="line">  // Docker compose</span><br><span class="line">  // https://code.visualstudio.com/docs/devcontainers/create-dev-container#_use-docker-compose</span><br><span class="line"></span><br><span class="line">  // Features to add to the dev container. More info: https://containers.dev/features.</span><br><span class="line">  // For example, you can install go, git here instead of using post create command</span><br><span class="line">  // "features": &#123;</span><br><span class="line">  // 	"ghcr.io/devcontainers/features/common-utils:2": &#123;&#125;,</span><br><span class="line">  // 	"ghcr.io/devcontainers/features/sshd:1": &#123;&#125;</span><br><span class="line">  // &#125;,</span><br><span class="line"></span><br><span class="line">  // Configure tool-specific properties.</span><br><span class="line">  "customizations": &#123;</span><br><span class="line">    // Configure properties specific to VS Code.</span><br><span class="line">    "vscode": &#123;</span><br><span class="line">      "settings": &#123;&#125;,</span><br><span class="line">      "extensions": [</span><br><span class="line">        <span class="string">"streetsidesoftware.code-spell-checker"</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // Use 'forwardPorts' to make a list of ports inside the container available locally.</span><br><span class="line">  // "forwardPorts": [9000],</span><br><span class="line"></span><br><span class="line">  // Use 'portsAttributes' to set default properties for specific forwarded ports. </span><br><span class="line">  // More info: https://containers.dev/implementors/json_reference/#port-attributes</span><br><span class="line">  // "portsAttributes": &#123;</span><br><span class="line">  // 	"9000": &#123;</span><br><span class="line">  // 		"label": "Hello Remote World",</span><br><span class="line">  // 		"onAutoForward": "notify"</span><br><span class="line">  // 	&#125;</span><br><span class="line">  // &#125;,</span><br><span class="line"></span><br><span class="line">  // Use 'postCreateCommand' to run commands after the container is created.</span><br><span class="line">  // you can have a utility script in your workspace folder to indicate what</span><br><span class="line">  // to install here, but a Dockerfile may be more efficient.</span><br><span class="line">  // "postCreateCommand": "bash -i scripts/install-dependencies.sh",</span><br><span class="line"></span><br><span class="line">  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.</span><br><span class="line">  "remoteUser": "root"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>start dev container:</li>
 </ol>
@@ -541,17 +541,15 @@ step and place.</p>
 <p>For example, <a href="https://github.com/devcontainers/templates/tree/main/src/go-postgres" target="_blank" rel="noopener">Go &amp; PostgreSQL</a>
 Docker compose dev container setup.</p>
 <h2 id="Other-Use-Cases">Other Use Cases</h2>
+<p>1.<a href="https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-ssh-host-in-a-container" target="_blank" rel="noopener">Open a folder on a remote SSH host in a container</a></p>
 <ul>
-<li>
-<p><a href="https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-ssh-host-in-a-container" target="_blank" rel="noopener">Open a folder on a remote SSH host in a container</a></p>
-</li>
-<li>
-<p><a href="https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-tunnel-host-in-a-container" target="_blank" rel="noopener">Open a folder on a remote Tunnel host in a container</a></p>
-</li>
-<li>
-<p><a href="https://code.visualstudio.com/docs/devcontainers/attach-container#_attach-to-a-container-in-a-kubernetes-cluster" target="_blank" rel="noopener">Attach to a container in a Kubernetes cluster</a></p>
-</li>
+<li>install Docker on remote host.</li>
+<li>ssh to the remote host and open the target folder by VSC.</li>
+<li>create and set up the dev container config file.</li>
+<li>start the remote dev container from VSC.</li>
 </ul>
+<p>2.<a href="https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-tunnel-host-in-a-container" target="_blank" rel="noopener">Open a folder on a remote Tunnel host in a container</a></p>
+<p>3.<a href="https://code.visualstudio.com/docs/devcontainers/attach-container#_attach-to-a-container-in-a-kubernetes-cluster" target="_blank" rel="noopener">Attach to a container in a Kubernetes cluster</a></p>
 
       
     </div>
@@ -598,8 +596,8 @@ Docker compose dev container setup.</p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2023/11/15/review-list/" rel="prev" title="Blog Review List">
-                Blog Review List <i class="fa fa-chevron-right"></i>
+              <a href="/2023/11/27/english-chinese-life/" rel="prev" title="Chinese Life in English">
+                Chinese Life in English <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -672,7 +670,7 @@ Docker compose dev container setup.</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">293</span>
+                    <span class="site-state-item-count">294</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
