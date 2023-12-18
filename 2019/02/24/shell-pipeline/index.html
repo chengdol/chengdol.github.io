@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
 <meta property="og:description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. Problem Let’s say the command conky stopped responding on my desktop, and I want to kill">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2019-09-14T23:54:57.000Z">
+<meta property="og:updated_time" content="2023-12-18T07:36:17.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BASH Pipeline Demo">
 <meta name="twitter:description" content="This blog reformats and builds on top of this stackoverflow topic. Big thanks to rahmu and people contributed. Problem Let’s say the command conky stopped responding on my desktop, and I want to kill">
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">295</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">296</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-14 16:54:57" itemprop="dateModified" datetime="2019-09-14T16:54:57-07:00">2019-09-14</time>
+                <time title="Modified: 2023-12-17 23:36:17" itemprop="dateModified" datetime="2023-12-17T23:36:17-08:00">2023-12-17</time>
               
             
           </span>
@@ -490,42 +490,69 @@
       
 
       
-        <p>This blog reformats and builds on top of this <em>stackoverflow</em> <a href="https://unix.stackexchange.com/questions/30759/whats-a-good-example-of-piping-commands-together" target="_blank" rel="noopener">topic</a>. Big thanks to <strong>rahmu</strong> and people contributed.</p>
+        <p>This blog reformats and builds on top of this <em>stackoverflow</em>
+<a href="https://unix.stackexchange.com/questions/30759/whats-a-good-example-of-piping-commands-together" target="_blank" rel="noopener">topic</a>.
+Big thanks to <strong>rahmu</strong> and people contributed.</p>
 <h3 id="Problem">Problem</h3>
-<p>Let’s say the command <code>conky</code> stopped responding on my desktop, and I want to kill it manually. I know a little bit of Unix, so I know that what I need to do is execute the command <code>kill &lt;PID&gt;</code>. In order to retrieve the PID, I can use <code>ps</code> or <code>top</code> or whatever tool my Unix distribution has given me. But how can I do this in one command?</p>
+<p>Let’s say the command <code>conky</code> stopped responding on my desktop, and I want to
+kill it manually. I know a little bit of Unix, so I know that what I need to do
+is execute the command <code>kill &lt;PID&gt;</code>. In order to retrieve the PID, I can use
+<code>ps</code> or <code>top</code> or whatever tool my Unix distribution has given me. But how can I
+do this in one command?</p>
 <h3 id="Answer">Answer</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep conky | grep -v grep | awk <span class="string">'&#123;print $2&#125;'</span> | xargs <span class="built_in">kill</span></span><br></pre></td></tr></table></figure>
-<p><em>DISCLAIMER</em>: This command only works in certain cases. Don’t copy/paste it in your terminal and start using it, it could kill processes unsuspectingly. Rather learn <strong>how to build it</strong>.</p>
+<p><em>DISCLAIMER</em>: This command only works in certain cases. Don’t copy/paste it in
+your terminal and start using it, it could kill processes unsuspectingly.
+Rather learn <strong>how to build it</strong>.</p>
 <h3 id="How-it-works">How it works</h3>
 <ul>
 <li><strong><code>ps aux</code></strong></li>
 </ul>
-<p>This command will output the list of running processes and some info about them. The interesting info is that it’ll output the PID of each process in its 2nd column. Here’s an extract from the output of the command on my box:</p>
+<p>This command will output the list of running processes and some info about them.
+The interesting info is that it’ll output the PID of each process in its 2nd
+column. Here’s an extract from the output of the command on my box:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux</span><br><span class="line"> rahmu     1925  0.0  0.1 129328  6112 ?        S    11:55   0:06 tint2</span><br><span class="line"> rahmu     1931  0.0  0.3 154992 12108 ?        S    11:55   0:00 volumeicon</span><br><span class="line"> rahmu     1933  0.1  0.2 134716  9460 ?        S    11:55   0:24 parcellite</span><br><span class="line"> rahmu     1940  0.0  0.0  30416  3008 ?        S    11:55   0:10 xcompmgr -cC -t-5 -l-5 -r4.2 -o.55 -D6</span><br><span class="line"> rahmu     1941  0.0  0.2 160336  8928 ?        Ss   11:55   0:00 xfce4-power-manager</span><br><span class="line"> rahmu     1943  0.0  0.0  32792  1964 ?        S    11:55   0:00 /usr/lib/xfconf/xfconfd</span><br><span class="line"> rahmu     1945  0.0  0.0  17584  1292 ?        S    11:55   0:00 /usr/lib/gamin/gam_server</span><br><span class="line"> rahmu     1946  0.0  0.5 203016 19552 ?        S    11:55   0:00 python /usr/bin/system-config-printer-applet</span><br><span class="line"> rahmu     1947  0.0  0.3 171840 12872 ?        S    11:55   0:00 nm-applet --sm-disable</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:38 conky -q</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>grep conky</code></strong></li>
 </ul>
-<p>I’m only interested in one process, so I use <code>grep</code> to find the entry corresponding to my program <code>conky</code>.</p>
+<p>I’m only interested in one process, so I use <code>grep</code> to find the entry
+corresponding to my program <code>conky</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:39 conky -q</span><br><span class="line"> rahmu     3233  0.0  0.0   7592   840 pts/1    S+   16:55   0:00 grep conky</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>grep -v grep</code></strong></li>
 </ul>
-<p>As you can see in step 2, the command ps outputs the <code>grep conky</code> process in its list (it’s a running process after all). In order to filter it, I can run <code>grep -v grep</code>. The option<code> -v</code> tells grep to match all the lines excluding the ones containing the pattern.</p>
+<p>As you can see in step 2, the command ps outputs the <code>grep conky</code> process in its
+list (it’s a running process after all). In order to filter it, I can run
+<code>grep -v grep</code>. The option<code> -v</code> tells grep to match all the lines excluding the
+ones containing the pattern.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky | grep -v grep</span><br><span class="line"> rahmu     1948  0.2  0.0 276000  3564 ?        Sl   11:55   0:39 conky -q</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>awk '{print $2}'</code></strong></li>
 </ul>
-<p>Now that I have isolated my target process. I want to retrieve its PID. In other words I want to retrieve the 2nd word of the output. Lucky for me, most (all?) modern unices will provide some version of <code>awk</code>, a scripting language that does wonders with tabular data. Our task becomes as easy as <code>print $2</code>.</p>
+<p>Now that I have isolated my target process. I want to retrieve its PID. In other
+words I want to retrieve the 2nd word of the output. Lucky for me, most (all?)
+modern unices will provide some version of <code>awk</code>, a scripting language that does
+wonders with tabular data. Our task becomes as easy as <code>print $2</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep conky | grep -v grep | awk <span class="string">'&#123;print $2&#125;'</span></span><br><span class="line"> 1948</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>xargs kill</code></strong></li>
 </ul>
-<p>I have the PID. All I need is to pass it to <code>kill</code>. To do this, I will use <code>xargs</code>.</p>
-<p><code>xargs kill</code> will read from the input (in our case from the pipe), form a command consisting of <code>kill &lt;items&gt;</code> (<code>&lt;items&gt;</code> are whatever it read from the input), and then execute the command created. In our case it will execute <code>kill 1948</code>. Mission accomplished.</p>
+<p>I have the PID. All I need is to pass it to <code>kill</code>. To do this, I will use
+<code>xargs</code>.</p>
+<p><code>xargs kill</code> will read from the input (in our case from the pipe), form a command
+consisting of <code>kill &lt;items&gt;</code> (<code>&lt;items&gt;</code> are whatever it read from the input),
+and then execute the command created. In our case it will execute <code>kill 1948</code>.
+Mission accomplished.</p>
 <h3 id="Final-words">Final words</h3>
-<p>Note that depending on what version of unix you’re using, certain programs may behave a little differently (for example, <code>ps</code> might output the PID in column $3). If something seems wrong or different, read your vendor’s documentation (or better, the man pages). Also be careful as <strong>long pipes can be dangerous</strong>. Don’t make any assumptions especially when using commands like <code>kill</code> or <code>rm</code>. For example, if there was another user named ‘conky’ (or ‘Aconkyous’) my command may kill all his running processes too!</p>
+<p>Note that depending on what version of unix you’re using, certain programs may
+behave a little differently (for example, <code>ps</code> might output the PID in column
+$3). If something seems wrong or different, read your vendor’s documentation
+(or better, the man pages). Also be careful as <strong>long pipes can be dangerous</strong>.</p>
+<p>Don’t make any assumptions especially when using commands like <code>kill</code> or <code>rm</code>.
+For example, if there was another user named ‘conky’ (or ‘Aconkyous’) my command
+may kill all his running processes too!</p>
 <h3 id="Complement">Complement</h3>
-<p>actually you can simplify the pipeline further to</p>
+<p>Actually you can simplify the pipeline further to</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill conky</span><br></pre></td></tr></table></figure>
 <p>or</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> $(pgrep conky)</span><br></pre></td></tr></table></figure>
@@ -648,7 +675,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">295</span>
+                    <span class="site-state-item-count">296</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

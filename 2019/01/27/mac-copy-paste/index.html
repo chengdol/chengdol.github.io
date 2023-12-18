@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Mac provides the command line for copy and paste, useful for some tasks.  refer link：http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/  Copy copy the content of the file">
+  <meta name="description" content="Mac provides the command line for copy and paste, useful for some tasks.  reference link：http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/  Copy copy the content of the">
 <meta name="keywords" content="mac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Copy &amp; Paste in Terminal">
 <meta property="og:url" content="http://yoursite.com/2019/01/27/mac-copy-paste/index.html">
 <meta property="og:site_name" content="海胆阶段&#39;s Blog">
-<meta property="og:description" content="Mac provides the command line for copy and paste, useful for some tasks.  refer link：http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/  Copy copy the content of the file">
+<meta property="og:description" content="Mac provides the command line for copy and paste, useful for some tasks.  reference link：http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/  Copy copy the content of the">
 <meta property="og:locale" content="中文|English">
-<meta property="og:updated_time" content="2019-12-11T22:52:30.000Z">
+<meta property="og:updated_time" content="2023-12-18T07:36:17.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Copy &amp; Paste in Terminal">
-<meta name="twitter:description" content="Mac provides the command line for copy and paste, useful for some tasks.  refer link：http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/  Copy copy the content of the file">
+<meta name="twitter:description" content="Mac provides the command line for copy and paste, useful for some tasks.  reference link：http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/  Copy copy the content of the">
 
 
 
@@ -298,7 +298,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">295</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">296</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-11 14:52:30" itemprop="dateModified" datetime="2019-12-11T14:52:30-08:00">2019-12-11</time>
+                <time title="Modified: 2023-12-17 23:36:17" itemprop="dateModified" datetime="2023-12-17T23:36:17-08:00">2023-12-17</time>
               
             
           </span>
@@ -492,21 +492,22 @@
       
         <p>Mac provides the command line for copy and paste, useful for some tasks.</p>
 <blockquote>
-<p>refer link：<a href="http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/" target="_blank" rel="noopener">http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/</a></p>
+<p>reference link：<a href="http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/" target="_blank" rel="noopener">http://osxdaily.com/2007/03/05/manipulating-the-clipboard-from-the-command-line/</a></p>
 </blockquote>
 <h2 id="Copy">Copy</h2>
 <p>copy the content of the file</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; file.txt</span><br></pre></td></tr></table></figure>
-<p>now the content is in clipboard, ready to be pasted</p>
+<p>Now the content is in clipboard, ready to be pasted.</p>
 <blockquote>
-<p>you can use pipe to combine command such as <code>find</code>,<code> grep</code>, <code>awk</code> and <code>cut</code> to filter and aggregate data.</p>
+<p>you can use pipe to combine command such as <code>find</code>,<code> grep</code>, <code>awk</code> and <code>cut</code> to
+filter and augment data.</p>
 </blockquote>
 <p>for example:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images | grep <span class="string">"iis-"</span> | pbcopy</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"this is a demo"</span> | pbcopy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"this is a demo"</span> | pbcopy</span><br><span class="line">docker images | grep <span class="string">"iis-"</span> | pbcopy</span><br></pre></td></tr></table></figure>
 <h2 id="Paste">Paste</h2>
+<p>Simply run this command:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbpaste</span><br></pre></td></tr></table></figure>
-<p>redirect content to a file</p>
+<p>Redirect content to a file:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbpaste &gt; file.txt</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbpaste | grep <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
 
@@ -629,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">295</span>
+                    <span class="site-state-item-count">296</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
